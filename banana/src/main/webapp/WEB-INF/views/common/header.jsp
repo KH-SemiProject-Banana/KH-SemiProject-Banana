@@ -1,21 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon"  sizes="16x16 32x32 64x64" href="https://i.ibb.co/4tCGZqD/Banana.png">
-    <title>바꾸고 나누자 나랑: 바나나 마켓</title>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-    <link rel="stylesheet" href="css/style.css">
-    <script src="https://kit.fontawesome.com/f7459b8054.js" crossorigin="anonymous"></script>
 
-</head>
-<body>
-    
 
-    <main>
-        <!-- header 시작----------------------------------------------------------------------------------------- -->
         <header>
             <section class="section-topmenu">
                 <a href="#" class="topmenu__talk fa-regular fa-comment">바나나톡</a>
@@ -141,17 +128,4 @@
             </ul>
         </nav>
 
- <!-- header 끝----------------------------------------------------------------------------------------- -->
-
-        
-        <section class="content"> 
-            <section class="content-1"></section>
-            <section class="content-2"></section>
-            <section class="content-3"></section>
-        </section>
-    </main>
-
-    
  
-</body>
-</html>

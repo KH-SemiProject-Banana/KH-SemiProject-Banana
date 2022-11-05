@@ -19,134 +19,8 @@
     
 
     <main>
-        <!-- header 시작----------------------------------------------------------------------------------------- -->
-        <header>
-            <section class="section-topmenu">
-                <a href="#" class="topmenu__talk fa-regular fa-comment">바나나톡</a>
-                <a href="#" class="topmenu__login">로그인/회원가입</a>
-            </section>
-            <section class="section-query">
-                <div class="query__area">
-                    <a href="#">
-                        <img src="images/banana-logo.png" id="logo-img">
-                    </a>
-                    <div class="query__logo">
-                        <p>바꾸고 나누자 나랑</p>
-                        <p id="query__banana">Banana Market</p>
-                    </div>
-                </div>
-                
-                <article class="search-area">
-            
-                    <!-- form : 내부 input태그의 값을 서버 또는 페이지로 전달(제출) -->
-                    <form action="#">
-                        <fieldset>
-                            <input type="search" id="query" name="query" placeholder="검색어를 입력해주세요">
-                            <button type="submit" id="search-btn" class="fa-solid fa-magnifying-glass">
-                            </button>
-                        </fieldset>
-                    </form>
-                </article>
-                <div class="sellingMy">
-                    <div>내 물건<br>판매하기</div>
-                </div>
-            </section>
-            
-        </header>
 
-        <nav>
-            
-            <ul>
-                <li class="category_list">
-                    <a href="#">
-                        <div class="category__detail">
-                            <i class="fa-solid fa-heart"></i>
-                            <p>인기매물</p>
-                        </div>
-                    </a></li>
-                <li class="category_list">
-                    <a href="#">
-                        <div class="category__detail">
-                            <i class="fa-solid fa-computer"></i>
-                            <p>전자기기</p>
-                        </div>
-                    </a></li>
-                <li class="category_list">
-                    <a href="#">
-                        <div class="category__detail">
-                            <i class="fa-solid fa-couch"></i>
-                            <p>가구/인테리어</p>
-                        </div>
-                    </a></li>
-                <li class="category_list">
-                    <a href="#">
-                        <div class="category__detail">
-                            <i class="fa-solid fa-kitchen-set"></i>
-                            <p>생활/주방</p>
-                        </div>
-                    </a></li>
-                <li class="category_list">
-                    <a href="#">
-                        <div class="category__detail">
-                            <i class="fa-solid fa-baby"></i>
-                            <p>유아용품</p>
-                        </div>
-                    </a></li>
-                <li class="category_list">
-                    <a href="#">
-                        <div class="category__detail">
-                            <i class="fa-solid fa-shirt"></i>
-                            <p>의류/잡화</p>
-                        </div>
-                    </a></li>
-            
-                <li class="category_list">
-                    <a href="#">
-                        <div class="category__detail">
-                            <i class="fa-solid fa-wand-magic-sparkles"></i>
-                            <p>뷰티/미용</p>
-                        </div>
-                    </a></li>
-                <li class="category_list">
-                    <a href="#">
-                        <div class="category__detail">
-                            <i class="fa-solid fa-icons"></i>
-                            <p>취미/게임/음반</p>
-                        </div>
-                    </a></li>
-                <li class="category_list">
-                    <a href="#">
-                        <div class="category__detail">
-                            <i class="fa-solid fa-book"></i>
-                            <p> 티켓/도서</p>
-                        </div>
-                    </a></li>
-                <li class="category_list">
-                    <a href="#">
-                        <div class="category__detail">
-                            <i class="fa-solid fa-dog"></i>
-                            <p>반려동물용품</p>
-                        </div>
-                    </a></li>
-                <li class="category_list">
-                    <a href="#">
-                        <div class="category__detail">
-                            <i class="fa-brands fa-stack-overflow"></i>
-                            <p>기타중고물품</p>
-                        </div>
-                    </a></li>
-                <li class="category_list">
-                    <a href="#">
-                        <div class="category__detail">
-                            <i class="fa-solid fa-hand-holding"></i>
-                            <p>삽니다</p>
-                        </div>
-                    </a></li>
-            </ul>
-        </nav>
-
- <!-- header 끝----------------------------------------------------------------------------------------- -->
-
+		<jsp:include page="/WEB-INF/views/common/header.jsp" />
         
         <section class="content"> 
             
@@ -158,11 +32,11 @@
                 <input type="radio" name="slide" class="slide" id="slide5">
                 
                 <ul id="imgHolder" class="imgs">
-                    <li><img src="images/main-add1.jpg" class="slide-img"></li>
-                    <li><img src="images/main-add2.jpg" class="slide-img"></li>
-                    <li><img src="images/main-add3.jfif" class="slide-img"></li>
-                    <li><img src="images/main-add4.jpg" class="slide-img"></li>
-                    <li><img src="images/main-add5.jpg" class="slide-img"></li>
+                    <li><img src="/resources/images/main-add1.jpg" class="slide-img"></li>
+                    <li><img src="/resources/images/main-add2.jpg" class="slide-img"></li>
+                    <li><img src="/resources/images/main-add3.jfif" class="slide-img"></li>
+                    <li><img src="/resources/images/main-add4.jpg" class="slide-img"></li>
+                    <li><img src="/resources/images/main-add5.jpg" class="slide-img"></li>
                 </ul>
                 <div class="bullets">
                     <label for="slide1">&nbsp;</label>
@@ -176,7 +50,7 @@
             <section class="content-comment">
                 <div>
                     <i class="fa-solid fa-face-laugh-squint"></i>
-                    <p class=" title">  인기 상품</p>
+                    <p class="title">  인기 상품</p>
                 </div>
                 
                 <a href="#">더보기</a>
@@ -189,7 +63,7 @@
                     <div>
                         <div class="favorite__img">
                             <a href="">
-                                <img src="images/sampleGoods.jpg" class="favorite__img">
+                                <img src="/resources/images/sampleGoods.jpg" class="favorite__img">
                             </a>
                         </div>
                         <div class="favorite__price-heart">
@@ -210,7 +84,7 @@
                     <div>
                         <div class="favorite__img">
                             <a href="">
-                                <img src="images/sampleGoods.jpg" class="favorite__img">
+                                <img src="/resources/images/sampleGoods.jpg" class="favorite__img">
                             </a>
                         </div>
                         <div class="favorite__price-heart">
@@ -231,7 +105,7 @@
                     <div>
                         <div class="favorite__img">
                             <a href="">
-                                <img src="images/sampleGoods.jpg" class="favorite__img">
+                                <img src="/resources/images/sampleGoods.jpg" class="favorite__img">
                             </a>
                         </div>
                         <div class="favorite__price-heart">
@@ -251,7 +125,7 @@
                     <div>
                         <div class="favorite__img">
                             <a href="">
-                                <img src="images/sampleGoods.jpg" class="favorite__img">
+                                <img src="/resources/images/sampleGoods.jpg" class="favorite__img">
                             </a>
                         </div>
                         <div class="favorite__price-heart">
@@ -272,7 +146,7 @@
                     <div>
                         <div class="favorite__img">
                             <a href="">
-                                <img src="images/sampleGoods.jpg" class="favorite__img">
+                                <img src="/resources/images/sampleGoods.jpg" class="favorite__img">
                             </a>
                         </div>
                         <div class="favorite__price-heart">
@@ -314,7 +188,7 @@
                     <div>
                         <div class="favorite__img">
                             <a href="">
-                                <img src="images/sampleGoods.jpg" class="new__img">
+                                <img src="/resources/images/sampleGoods.jpg" class="new__img">
                             </a>
                         </div>
                         <div class="favorite__price-heart">
@@ -335,7 +209,7 @@
                     <div>
                         <div class="favorite__img">
                             <a href="">
-                                <img src="images/sampleGoods.jpg" class="new__img">
+                                <img src="/resources/images/sampleGoods.jpg" class="new__img">
                             </a>
                         </div>
                         <div class="favorite__price-heart">
@@ -355,7 +229,7 @@
                     <div>
                         <div class="favorite__img">
                             <a href="">
-                                <img src="images/sampleGoods.jpg" class="new__img">
+                                <img src="/resources/images/sampleGoods.jpg" class="new__img">
                             </a>
                         </div>
                         <div class="favorite__price-heart">
@@ -376,7 +250,7 @@
                     <div>
                         <div class="favorite__img">
                             <a href="">
-                                <img src="images/sampleGoods.jpg" class="new__img">
+                                <img src="/resources/images/sampleGoods.jpg" class="new__img">
                             </a>
                         </div>
                         <div class="favorite__price-heart">
@@ -397,7 +271,7 @@
                     <div>
                         <div class="favorite__img">
                             <a href="">
-                                <img src="images/sampleGoods.jpg" class="new__img">
+                                <img src="/resources/images/sampleGoods.jpg" class="new__img">
                             </a>
                         </div>
                         <div class="favorite__price-heart">
@@ -425,25 +299,7 @@
 
     <script src="/resources/js/main.js"></script>
 
-    
- <!-- footer 시작----------------------------------------------------------------------------------------- -->
-
-    <footer>
-        <p>
-            Copyright &copy; KH Information Educational Institute A-Class 중고거래 프로젝트 팀
-        </p>
-        <article>
-            <a href="#">프로젝트 소개</a>
-            <span> | </span>
-            <a href="#">이용약관</a>
-            <span> | </span>
-            <a href="#">개인정보취급방침</a>
-            <span> | </span>
-            <a href="#">고객센터</a>
-        </article>
-    </footer>
-     <!-- footer 끝----------------------------------------------------------------------------------------- -->
-
+	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
 </body>
 </html>

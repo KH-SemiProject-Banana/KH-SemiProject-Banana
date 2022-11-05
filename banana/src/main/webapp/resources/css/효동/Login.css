@@ -1,0 +1,187 @@
+/* 테이블 설정 */
+/* .loginClass  *{ 
+    border: 1px solid /black;
+} */
+
+.loginClass{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+}
+
+/*************************************************/
+/* 바나나텍스트 */
+.loginHeader{ 
+    margin-top: 200px;
+    height: 200px;
+    width: 700px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    font-weight: bold;
+}
+.loginHeader > div:nth-child(3){
+        font-size: 30px;
+}
+.loginHeader > div:nth-child(2){
+    font-size: 25px;
+}
+
+.banana {
+    width: 200px;
+    position: absolute;
+    right: 438px;
+    bottom: 50px;
+}
+
+/*************************************************/
+ /* LOGIN 텍스트 밖 div  */
+ .SignUpAgreement3{
+    display: flex;
+    width: 100%;
+    height: 60px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+/* LOGIN 텍스트 */
+#SignUpAgreement3-1{
+    font-size: 30px;
+    text-align: center;
+    align-items: center;
+    color: gray;
+    font-weight : bolder;
+    margin-bottom: 50px;
+}
+/*************************************************/
+
+/* 아이디 저장  */
+#saveId{display: none;} /* 체크박스 숨기기 */
+
+.saveId-area{
+    margin-bottom:  20px;
+}
+#saveId + label{
+    display: flex;
+    cursor: pointer;
+    margin-left: 30px;
+}
+
+#saveId + label > i{
+    display:  flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 25px;
+    height: 25px;
+    border: 1px solid #ccc;
+
+    border-radius: 50%;
+    color: #ccc;
+
+
+    margin-right: 10px;
+}
+
+#saveId + label > div{
+    color: gray;
+    display: inline-flex;
+    align-items: center;
+}
+
+
+
+
+
+/* 체크박스 체크 시 아이콘 스타일 지정 */
+#saveId:checked + label > i{
+    background-color: white;
+    border-color: #e53095;
+    color: #e53095;
+}
+
+/*************************************************/
+
+/*  텍스트 입력 박스 감싼 div 박스 설정 */
+.textbox{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 500px;
+    padding: 0 0 10px 0;
+    position: relative;  
+}
+/* 텍스트 입력 박스 설정 */
+.inputBox{
+    display: flex;
+    width: 500px;
+    height: 58px;
+    border-radius: 50px;
+    border: none;
+    padding: 0 40px;
+    background-color: #FDF6BB;
+    font-size: 18px;
+    outline: none;
+    box-shadow: 3px 3px 3px 3px rgba(221, 221, 221, 0.934); /* 박스그림자 */
+}
+
+.inputBox:focus{
+    border: 2px solid #e53095;
+}
+
+
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active  {
+    box-shadow: 0 0 0 30px #FDF6BB inset;
+}
+
+/*************************************************/
+/* id/pw 찾기 회원가입 버튼 설정*/
+.text-area > a {
+    text-decoration: none;
+    color: gray;
+    margin: 15px;
+}
+.text-area{
+    margin-top: 40px;
+    
+}
+
+/*************************************************/
+/*로그인버튼 감싼 div */
+.loginFooter{ 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    font-size: 15px;
+    margin-bottom: 200px;
+    margin-top: 90px;
+}
+
+/* 로그인 버튼 */
+.login-btn{ 
+    width: 300px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    background-color: var(--yellow);
+    color: black;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.login-btn:hover{
+    transform: scale(0.9);
+}
+/*************************************************/

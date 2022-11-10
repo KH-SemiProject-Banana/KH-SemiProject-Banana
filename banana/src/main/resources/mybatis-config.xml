@@ -27,7 +27,6 @@
 		<typeAlias type="edu.kh.banana.chat.model.vo.Chat" alias="Chat"/>
 		<typeAlias type="edu.kh.banana.pay.model.vo.BananaPay" alias="BananaPay"/>
 		<typeAlias type="edu.kh.banana.review.model.vo.Review" alias="Review"/>
-		<typeAlias type="edu.kh.banana.member.model.vo.GoodsSell" alias="GoodsSell"/>
 		<typeAlias type="edu.kh.banana.userComplain.model.vo.UserComplain" alias="UserComplain"/>
 	</typeAliases>
 	
@@ -38,6 +37,12 @@
 	<mappers>
  		<mapper resource="/mappers/member-mapper.xml"/>
 		<mapper resource="/mappers/myPage-mapper.xml"/>
+		<mapper resource="/mappers/boardComplain-mapper.xml"/>
+		<mapper resource="/mappers/chat-mapper.xml"/>
+		<mapper resource="/mappers/goods-mapper.xml"/>
+		<mapper resource="/mappers/pay-mapper.xml"/>
+		<mapper resource="/mappers/review-mapper.xml"/>
+		<mapper resource="/mappers/userComplain-mapper.xml"/>
 	</mappers>
 
 

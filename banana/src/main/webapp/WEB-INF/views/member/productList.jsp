@@ -22,11 +22,11 @@
         <div class="mainContent">
             <div class="category">
                 <a href="#">HOME</a>
-                <a href="#">> ${ct}</a>
+                <a href="#">> ${category}</a>
             </div>
 
             <div class="category_title">
-                <h1>${ct}</h1>
+                <h1>${category}</h1>
             </div>
             
             <form id="searchGu" action="productList.html">

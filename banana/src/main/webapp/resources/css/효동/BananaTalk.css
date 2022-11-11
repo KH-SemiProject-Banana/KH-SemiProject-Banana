@@ -26,8 +26,8 @@
 }
 .profilImages{
     display: flex;
-    height: 80px;
-    width: 80px;
+    height: 60px;
+    width: 60px;
     border-radius: 50%;
     border: 1px solid #ddd;
     justify-content: center;
@@ -51,7 +51,7 @@
     justify-content: left;
     /* align-items: center; */
     width: 900px;
-    height: 650px;
+    height: 640px;
     margin: 30px 0;
     /* background-color: aqua; */
 }
@@ -65,30 +65,34 @@
     margin-right: 50px;
     /* background-color: green; */
     border: 1px solid black;
+    overflow-y: scroll;
+    /* overflow: hidden; */
+    text-overflow: hidden;
+}
+/* 스크롤바 투명 */
+#chatProfile::-webkit-scrollbar{
+    display: none;
 }
 
 /* 채팅 User프로필 BOX */
 #user1Profile{
-    width: 250px;
-    height: 100px;
+    width: 248px;
+    height: 80px;
     border-bottom: 1px solid black;
     display: flex;
     align-items: center;
 }
-
+/* 마우스 클릭시 색 유지 js으로 해야함-------------- */
 #user1Profile:hover{
     background-color: #FFF597;
     cursor: pointer;
 }
 /* 채팅 프로필 사진 */
 .talkProfileImages{
-    border-radius: 50%;
+    border-radius: 15px;
     border: 1px solid black;
-    width: 70px;
-    height: 70px;
-    /* display: flex; */
-    /* justify-content: center; */
-    /* align-items: center; */
+    width: 56px;
+    height: 56px;
     background-color: white;
 }
 /* 채팅프로필 이름 */
@@ -98,15 +102,39 @@
     display: flex;
     justify-content: left;
     align-items: center;
-    width: 90px;
+    width: 100px;
     height: 100%;
-    margin-left: 15px;
+    margin-left: 8px;
     font-weight: bold;
 }
-.talkClock{
-    font-size: 12px;
+/* 메세지 시간,알림 감싼박스 설정 */
+.talkClockAlarm{
+    /* background-color:  rgb(10, 225, 128); */
+    width: 60px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
 }
-
+/* 메세지 시간 */
+.talkClock{
+    /* background-color:  blue; */
+    font-size: 12px;
+    margin-bottom: 7px;
+}
+/* 메세지 미확인 알림 */
+.talkAlarm{
+    /* border: 1px solid black; */
+    background-color:  red;
+    font-weight: bold;
+    font-size: 11px;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    color: white;
+    display: flex;
+}
 /*************************************************/
 /* 채팅 내용*/
 

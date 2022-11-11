@@ -13,10 +13,10 @@
 }
 
 /*************************************************/
-/* 회원가입 */
+/* 내 정보 수정 */
 .SignUpAgreement1{ 
     display: flex;
-    height: 250px;
+    height: 200px;
     font-size: 45px;
     align-items: center;
     color: #333;
@@ -25,7 +25,7 @@
 
 
 /*************************************************/
- /* 개인정보 입력 및 필수입력사항  */
+ /* 회색 부분은 수정이 불가능 합니다.  */
  .SignUpAgreement3{
     display: flex;
     width: 100%;
@@ -34,7 +34,7 @@
     align-items: center;
     flex-direction: column;
 }
-/* 개인정보 입력 */
+/* 개인 정보 수정 */
 #SignUpAgreement3-1{
     font-size: 25px;
     text-align: center;
@@ -53,88 +53,29 @@
 
 
 /*************************************************/
- /* 회원 가입 단계별 이미지  */
-.SignUpAgreement2{
+/* 수정 불가능 아이디/ 이름 / 생년월일 */
+
+.textboxNo{
     display: flex;
-    width: 700px;
-    justify-content: space-between;
     align-items: center;
-    /* flex-direction: column; */
-}
-
-
-/* 노란색원 */
-.SignUpAgreement2 > div:nth-child(2n+1){ 
-    /* padding: 8px 0 8px; */
-    flex-basis: 30%;
-    /* border-radius: 50%; */
-    /* width: 200px;
-    height: 200px; */
-    display: flex;
-}
-/* 노란색원 이미지 폰트 크기 */
-.fa-user-check, .fa-circle-check, .fa-file-pen {
-    font-size: 40px;
-}
-/* 노란색 원 내용 설정 */
-#lineBreak{
-    display: flex;
-    flex-direction: column;
-    font-size: 17px;
-    font-weight: bold;
-    line-height: 3;
-}
-
-/* 원 색상 및 설정 */
-.SignUpAgreement2 > div >div{
-    background-color: var(--yellow);
-    height: 155px;
-    width: 155px;
-    border-radius: 50%;
-}
-
-/* 보라색 작은원 설정 */
-.SignUpAgreement2 > div:nth-child(2n){
-    padding: 0px;
-    flex-basis: 10%;
-    /* border-radius: 50%; */
-    width: 10px;
-    height:40px;
-    display: flex;
     justify-content: center;
-    align-items: center;
-    align-content: center;
-    font-size: 30px;
+    width: 500px;
+    padding: 0 0 10px 0;
+    position: relative;  
 }
-
-.next1 {
-    justify-content: center;
-}
-.one {
-    justify-content: center;
-}
-
-.one>*, .next1 >*,.next2 >*{
+/* 텍스트 입력 박스 설정 */
+.inputBoxNo{
     display: flex;
-    justify-content: center;
-    align-items: center;
+    width: 500px;
+    height: 58px;
+    border-radius: 50px;
+    border: none;
+    padding: 0 40px;
+    background-color: #ddd;
+    font-size: 18px;
+    outline: none;
+    box-shadow: 3px 3px 3px 3px rgba(221, 221, 221, 0.934); /* 박스그림자 */
 }
-
-/* 진행도 */
-.fa-user-check, .next1,.fa-file-pen,.fa-file-pen + p,.fa-user-check + p, .next2 {
-    color: #e53095;
-}
-.fa-user-check, .fa-file-pen {
-    margin-left : 15px;
-}
-.fa-circle-check{
-    color: #A4A4A4;
-}
-
-/* .fa-file-pen{
-    color: #e53095;
-} */
-
 /*************************************************/
 
 /*  텍스트 박스 감싼 div 박스 설정 */

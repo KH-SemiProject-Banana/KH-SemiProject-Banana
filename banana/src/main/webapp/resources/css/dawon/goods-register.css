@@ -1,0 +1,247 @@
+*{
+    /* border: 1px solid black; */
+}
+
+input, select, .introduce{
+    border: 2px solid rgba(0,0,0,0.1);
+    border-radius: 8px;
+    text-align: left;
+    color: var(--innerGray);
+    width: 100%;
+    font-size: 17px;
+    padding: 8px 8px 8px 16px;
+    height: 52px;
+}
+
+.introduce{
+    padding: 16px 8px 8px 16px;
+}
+
+
+.goods-register{
+    display: flex;
+    flex-direction: column;
+    min-height: 1500px;
+    width: 100%;
+    padding: 20px 80px;
+}
+
+#register__content {
+    width: 100%;
+}
+
+.register__title{
+    height: 80px;
+}
+
+.required{
+    color: var(--checkRed);
+}
+
+.register__title{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-bottom: 2px solid black;
+    padding: 10px;
+}
+
+.register__title >p:first-child{
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.register__title >p:last-child{
+    font-weight: bold;
+}
+
+.content-image, .content-title, .content-category, .content-discription, .content-delivery, .content-status, .content-finish{
+    display: flex;
+    width: 100%;
+    padding: 60px 0;
+    
+    border-bottom: 2px solid rgba(0,0,0,0.1);
+    /* background-color: cadetblue; */
+}
+
+.content-finish {
+    margin-bottom: 50px;
+    border-bottom: none;
+}
+
+/* conetnt-image---------------------- */
+.left-bar{
+    width: 180px;
+    padding-left: 10px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.content-image__title {
+    flex-direction: column;
+}
+
+.right-bar{
+    width: 100%;
+    display: flex;
+    /* background-color: aquamarine; */
+}
+
+.content-image__title > div {
+    display: flex;
+}
+
+.content-image__title {
+    height: 180px;
+}
+
+.title {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+
+/* content-title */
+.content-title{
+    height: 200px;
+}
+
+.introduce {
+    outline: none;
+    resize: none;
+    height: 170px;
+}
+
+
+/* content-finish */
+.content-finish {
+    justify-content: center;
+}
+
+
+.content-finish > button{
+    width: 380px;
+    height: 68px;
+    margin: 0 7px;
+
+    font-size: 24px;
+    font-weight: bold;
+    border: none;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.content-finish > button:nth-child(1){
+    background-color: #ddd;
+}
+
+.content-finish > button:nth-child(1):hover{
+    background-color: var(--buttonGray);
+    transition-duration: 0.3s;
+}
+
+.content-finish > button:nth-child(2){
+    background-color: var(--yellow);
+}
+
+.content-finish > button:nth-child(2):hover{
+    background-color: var(--darkYellow);
+    transition-duration: 0.3s;
+}
+
+
+/* 이미지 등록 */
+.browse-btn{
+    height: 100px;
+    cursor: pointer;
+}
+
+
+
+/* fileContainer 스타일 조정 */
+.fileContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.fileContainer > * {
+    height: 160px;
+    width: 160px;
+}
+
+/* 못생긴 기존 input 숨기기 */
+#chooseFile {
+    visibility: hidden;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+#image-show{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: first baseline;
+    align-content: center;
+    background-color: white;
+    z-index: 1;
+}
+
+#image-show>*:hover{
+    opacity: 0.5;
+}
+
+
+/* content-status */
+#sell-status{
+    background-color: #eee;
+}
+
+.goodsUpdate {
+    background-color: white !important;
+}
+
+
+
+
+
+/* 유효성 검사---------------------------------------------------------- */
+.content-price__content  {
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+
+    position: relative;
+}
+
+
+
+.confirm{
+    color:green;
+}
+.error{
+    color: red;
+}
+
+
+.content-title__content, .content-discription__content, .content-category__content {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0 0;
+}
+
+
+
+#titleMessage, #contentMessage, #priceMessage, #categoryMessage{
+    padding: 10px 10px 30px;
+}
+
+#price {
+    z-index: 1;
+    right:15px;
+    top: 35px;
+    position: absolute;
+}

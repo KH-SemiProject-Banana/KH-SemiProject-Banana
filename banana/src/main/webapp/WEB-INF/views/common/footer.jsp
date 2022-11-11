@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 
-   <footer>
+    <footer>
         <p>
             Copyright &copy; KH Information Educational Institute A-Class 중고거래 프로젝트 팀
         </p>

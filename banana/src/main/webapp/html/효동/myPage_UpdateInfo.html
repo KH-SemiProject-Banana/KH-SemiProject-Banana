@@ -11,7 +11,7 @@
     <script src="https://kit.fontawesome.com/f7459b8054.js" crossorigin="anonymous"></script>
 
         
-    <link rel="stylesheet" href="/banana/src/main/webapp/resources/css/효동/UpdateInfo.css">
+    <link rel="stylesheet" href="/banana/src/main/webapp/resources/css/효동/myPage_UpdateInfo.css">
 </head>
 <body>
     <main>
@@ -54,57 +54,19 @@
  <!-- header 끝----------------------------------------------------------------------------------------- -->
             <div class="signUpInfoClass">
                 <div class="SignUpAgreement1">
-                    <div>회원가입</div>
-
+                    <div>내 정보 수정</div>
                 </div>
-                <div class="SignUpAgreement2" >
-                    <div class="one">
-                        <div id="lineBreak">
-                            <i class="fa-solid fa-user-check"></i>
-                            <p>약관동의</p>
-                        </div>
-                    </div>
 
-                    <div class="next1"> <!-- 다음 -->
-                        <i class="fa-solid fa-circle-chevron-right"></i>
-                    </div>
-
-                    <div class="one" id="midCircle"> 
-                        <div id="lineBreak">
-                            <i class="fa-solid fa-file-pen"></i> 
-                            <p>정보입력</p> 
-                        </div>
-                    </div>
-                
-                    <div class="next2"> <!-- 다음 -->
-                        <i class="fa-solid fa-circle-chevron-right"></i>
-                    </div>
-                
-                    <div class="one">
-                        <div id="lineBreak">
-                            <i class="fa-regular fa-circle-check"></i>
-                            <p>가입완료</p> 
-                        </div>
-                    </div>
-                </div>
                 <div class="SignUpAgreement3">
-                    <div id="SignUpAgreement3-1">개인 정보입력</div>
-                    <div id="SignUpAgreement3-2">* 아래 입력사항은 필수입력 사항입니다. *</div>
+                    <div id="SignUpAgreement3-1">개인 정보 수정</div>
+                    <div id="SignUpAgreement3-2">* 회색 부분은 수정이 불가능합니다. *</div>
                 </div>
-                 
+
                 <!------------------------------------------->
                 <div>
                     <!-- 아이디(이메일) -->
-                    <div class="signUp-input-Email textbox">
-                        <input type="text" name="memberEmail" id="memberEmail" class="inputBox" placeholder="아이디 (이메일)" maxlength="20" autocomplete="off" required>
-                        <button type="button" class="checkButton">인증번호 받기</button>
-                    </div>
-                    <div class="signUp-input-EmailCertification textbox">
-                        <input type="text" name="memberEmailCertification" id="memberEmailCertification" class="inputBox" placeholder="인증번호 입력" maxlength="20" autocomplete="off" required>
-                        <button type="button" class="checkButton">인증하기</button>
-                    </div>
-                    <div class="firstBox">
-                        <span class="signUp-message confirm">인증되었습니다.</span>
+                    <div class="signUp-input-Email textboxNo">
+                        <input type="text" disabled name="memberEmail" id="memberEmail" class="inputBoxNo" placeholder="아이디 (이메일)" maxlength="20" autocomplete="off" required>
                     </div>
 
 
@@ -128,11 +90,11 @@
                     </div>
 
                     <!-- 이름/생년월일/휴대번호 -->
-                    <div class="signUp-input-Name textbox">
-                        <input type="text" name="memberName" class="inputBox" id="memberName" placeholder="이름" maxlength="10" required>
+                    <div class="signUp-input-Name textboxNo">
+                        <input type="text" disabled name="memberName" class="inputBoxNo" id="memberName" placeholder="이름" maxlength="10" required>
                     </div>
-                    <div class="signUp-input-Birth textbox">
-                        <input type="text" name="memberBirth" class="inputBox" id="memberBirth" placeholder="생년월일 ex)19910502" maxlength="8" required>
+                    <div class="signUp-input-Birth textboxNo">
+                        <input type="text" disabled name="memberBirth" class="inputBoxNo" id="memberBirth" placeholder="생년월일 ex)19910502" maxlength="8" required>
                     </div>
                     <div class="signUp-input-Tel textbox">
                         <input type="text" name="memberTel" class="inputBox" id="memberTel" placeholder="휴대번호 ex)01045459986" maxlength="11" required>
@@ -168,7 +130,7 @@
                 <!--------------------------->
 
                 <div class="SignUpAgreement6">
-                    <div colspan="5" class="SignUp">회원 가입하기</div>
+                    <div colspan="5" class="SignUp">내 정보 수정 완료</div>
                 </div>
             </div>
 

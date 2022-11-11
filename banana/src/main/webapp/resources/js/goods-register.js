@@ -68,6 +68,6 @@ goodsPrice.addEventListener("input", function(){
         priceMessage.classList.remove("error");
     }
 
-    if()
+    
 });
 

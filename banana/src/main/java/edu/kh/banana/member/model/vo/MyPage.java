@@ -9,7 +9,7 @@ import lombok.ToString;
 @Setter
 @Getter
 @NoArgsConstructor
-public class Member {
+public class MyPage {
 
 	private int memberNo;
 	private String memberEmail;
@@ -25,18 +25,5 @@ public class Member {
 	private String blockFlag;
 	private String birthday;
 	private int manner;
-	
-	
-	// 카테고리(CATEGORY)테이블
-	private int categoryNo;
-	private String categoryName;
-	
-	
-	// ERD의 찜했따(GOODS_LIKE) 테이블
-	private int[] likeGoodsNo; // 내가 찜한 판매글번호
-	private String likeTime; // 찜한 시간
-	
-	// 유저차단 테이블(USER_BLOCK)
-	private int[] userBlocked; // 차단당한사람
 	
 }

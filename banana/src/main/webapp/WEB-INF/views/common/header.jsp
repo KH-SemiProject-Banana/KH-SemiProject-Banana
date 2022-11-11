@@ -48,35 +48,35 @@
                         </div>
                     </a></li>
                 <li class="category_list">
-                    <a href="/category/product">
+                    <a href="/category/product?ct=2">
                         <div class="category__detail">
                             <i class="fa-solid fa-computer"></i>
                             <p>전자기기</p>
                         </div>
                     </a></li>
                 <li class="category_list">
-                    <a href="/category/product">
+                    <a href="/category/product?ct=3">
                         <div class="category__detail">
                             <i class="fa-solid fa-couch"></i>
                             <p>가구/인테리어</p>
                         </div>
                     </a></li>
                 <li class="category_list">
-                    <a href="/category/product">
+                    <a href="/category/product?ct=4">
                         <div class="category__detail">
                             <i class="fa-solid fa-kitchen-set"></i>
                             <p>생활/주방</p>
                         </div>
                     </a></li>
                 <li class="category_list">
-                    <a href="/category/product">
+                    <a href="/category/product?ct=5">
                         <div class="category__detail">
                             <i class="fa-solid fa-baby"></i>
                             <p>유아용품</p>
                         </div>
                     </a></li>
                 <li class="category_list">
-                    <a href="/category/product">
+                    <a href="/category/product?ct=6">
                         <div class="category__detail">
                             <i class="fa-solid fa-shirt"></i>
                             <p>의류/잡화</p>
@@ -84,42 +84,42 @@
                     </a></li>
             
                 <li class="category_list">
-                    <a href="/category/product">
+                    <a href="/category/product?ct=7">
                         <div class="category__detail">
                             <i class="fa-solid fa-wand-magic-sparkles"></i>
                             <p>뷰티/미용</p>
                         </div>
                     </a></li>
                 <li class="category_list">
-                    <a href="/category/product">
+                    <a href="/category/product?ct=8">
                         <div class="category__detail">
                             <i class="fa-solid fa-icons"></i>
                             <p>취미/게임/음반</p>
                         </div>
                     </a></li>
                 <li class="category_list">
-                    <a href="/category/product">
+                    <a href="/category/product?ct=9">
                         <div class="category__detail">
                             <i class="fa-solid fa-book"></i>
                             <p> 티켓/도서</p>
                         </div>
                     </a></li>
                 <li class="category_list">
-                    <a href="/category/product">
+                    <a href="/category/product?ct=10">
                         <div class="category__detail">
                             <i class="fa-solid fa-dog"></i>
                             <p>반려동물용품</p>
                         </div>
                     </a></li>
                 <li class="category_list">
-                    <a href="/category/product">
+                    <a href="/category/product?ct=11">
                         <div class="category__detail">
                             <i class="fa-brands fa-stack-overflow"></i>
                             <p>기타중고물품</p>
                         </div>
                     </a></li>
                 <li class="category_list">
-                    <a href="/category/product">
+                    <a href="/category/product?ct=12">
                         <div class="category__detail">
                             <i class="fa-solid fa-hand-holding"></i>
                             <p>삽니다</p>
@@ -127,6 +127,3 @@
                     </a></li>
             </ul>
         </nav>
-
-    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
-    <script src="/resources/js/header.js"></script>

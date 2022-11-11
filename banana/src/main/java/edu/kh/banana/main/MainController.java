@@ -9,19 +9,22 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-@SessionAttributes("inkki")
+@SessionAttributes("ct")
 @Controller
 public class MainController {
 	
+	// main ¿Ãµø
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String mainPage() {
 		
 		return "common/main";
 	}
-
+	
+	// header
 	@GetMapping("/category/product")
-	public String categoryPage(@RequestParam(name = "ct") int ct) {
+	public String categoryPage(@RequestParam(name = "ct", required=false) String ct, Model model) {
 		System.out.println(ct);
+		model.addAttribute("ct", ct);
 		return "member/productList";
 	}
 }

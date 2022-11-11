@@ -1,0 +1,193 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+img{
+    width: 100%;
+    height: 100%;
+}
+
+/* 상단 링크 */
+.category{
+    height: 40px;
+    padding-left: 10px;
+    font-size: 12px;
+    margin-top: 25px;
+    font-weight: bold;
+}
+
+.category > a, span > a{
+    text-decoration: none;
+    color: black;
+}
+
+/* 상품 이미지 */
+.product{
+    /* background-color: burlywood; */
+    height: 600px;
+    display: flex;
+}
+
+.product > section{
+    width: 50%;
+}
+
+.product > section:first-child{
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: space-between;
+}
+
+.product_img{
+    width: 90%;
+    height: 500px;
+}
+
+.imglist{
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    height: 70px;
+}
+
+.small_img{
+    width: 70px;
+    height: 70px;
+    margin: 0 5px;
+}
+
+
+/* 상품 설명 */
+.product_intro{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.product_top{
+    width: 100%;
+    height: 28px;
+}
+
+.top_right{
+    height: 100%;
+    font-size: 12px;
+    float: right;
+    margin-left: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.top_left{
+    display: inline-flex;
+    align-items: center;
+    background-color: #FFF8D8;
+    color:#FFAB00;
+    height: 100%;
+    padding: 0px 10px;
+    border: 1px solid #FFAB00;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.product_option > div{
+    display: inline-block;
+    width: 40%;
+}
+
+.product_title > h2:first-child,
+.product_option div > h3,
+.detailed_intro > h3{
+    margin-bottom: 15px;
+}
+
+.product_option > div > h3 + span,
+.product_option + div > h3 + span{
+    font-size: 15px;
+}
+
+.product_title,
+.product_option > div > span,
+.detailed_intro > span
+{
+    letter-spacing: -1px;  
+}
+
+.detailed_intro{height: 250px;}
+
+/* 찜하기, 바나나톡 */
+.like_talk{
+    width: 100%;
+    height: 70px;
+    display: flex;
+    align-items: center;
+}
+
+.like_talk > div:first-child{
+    width: 15%;
+}
+
+#like + label{
+    display: flex;
+    cursor: pointer;
+    width: 50px;
+}
+
+#like + label > i{
+    font-size: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    text-align: center;
+    border: 1px solid #ccc;
+    width: 100%;
+    height: 50px;
+    border-radius: 20px;
+    padding-left: 2px;
+}
+
+#like:hover + label > i{
+    color: rgb(255, 42, 53);
+}
+
+#like:checked + label > i{
+    color: rgb(255, 42, 53);
+}
+
+#like{display: none;}
+
+.like_talk div:last-child{width: 85%;}
+
+.like_talk button{
+    background-color: rgb(255, 216, 76);
+    width: 100%;
+    height: 50px;
+    border: none;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+.like_talk button:hover{
+    background-color: rgb(255, 200, 0);
+    transition-duration: 0.5s;
+}
+
+.precautions{
+    background-color: rgb(255, 216, 76);
+    height: 100px;
+    margin-bottom: 50px;
+    border-radius: 20px;
+    padding-top: 20px;
+    padding-left: 30px;
+    font-size: 13px;
+    font-weight: bold;
+}

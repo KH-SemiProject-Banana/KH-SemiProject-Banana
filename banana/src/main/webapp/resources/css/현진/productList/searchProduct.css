@@ -1,0 +1,78 @@
+/* 우리 동네에서 찾기 */
+#searchGu{
+    width: 100%;
+    height: 220px;
+    background-color: rgb(255, 216, 76);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.location{
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+ul{list-style: none;}
+
+li{
+    float: left;
+    margin: 0 12px;
+    width: 80px;
+}
+
+li > label{cursor: pointer;}
+
+li > label > input{cursor: pointer;}
+
+#searchGu > button{
+    width: 70px;
+    height: 30px;
+    background-color: white;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+/* 오른쪽 옵션 */
+.rightOption{
+    width: 100%;
+    position: relative;
+    padding-bottom: 10px;
+    border-bottom: 2px solid rgb(255, 216, 76);
+    display: flex;
+    justify-content: end;
+}
+
+.selectBox{
+    float: right;
+}
+
+select{
+    width: 80px;
+    height: 25px;
+}
+
+.checkGu{
+    display: inline-flex;
+    align-items: center;
+    background-color: #FFF8D8;
+    color:#FFAB00;
+    height: 25px;
+    padding: 0px 10px;
+    border: 1px solid #FFAB00;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.checkGu > span:first-child{
+    margin-right: 5px;
+    cursor: pointer;
+}

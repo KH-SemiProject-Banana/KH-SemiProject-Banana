@@ -1,0 +1,45 @@
+	/* INPUT 가리기 */
+	.product_img [id*="slide"] {display:none;}
+	
+    img{
+        width: 100%;
+        height: 100%;
+    }
+
+	/* 슬라이드 영역 - max-width 크기를 조절해주면 됩니다*/
+	.product_img .slidewrap {width:100%;height:100%;overflow:hidden;position:relative;}
+	.product_img .slidelist {height:100%;white-space:nowrap;font-size:0;}
+	.product_img .slidelist > li {width:100%;height:100%;display:inline-block;vertical-align:middle;transition:all .5s;}
+	.product_img .slidelist > li > a {height:100%;display:block;position:relative;}
+
+	/* 좌우로 넘기는 LABEL버튼에 대한 스타일 */
+	.product_img .slide_arrow {position:absolute;top:0;left:0;z-index:10;width:100%;height:100%;}
+	.product_img .slide_arrow label {position:absolute;z-index:1;top:50%;transform:translateY(-50%);padding:20px;cursor:pointer;}
+	.product_img .slide_arrow .left {left:0px;background:url('../../../images/left.png') center center / 80% no-repeat;}
+	.product_img .slide_arrow .right {right:0px;background:url('../../../images/right.png') center center / 80% no-repeat;}
+	.product_img .slide_arrow [class*="arrow"] {display:none;}
+
+	/* INPUT이 체크되면 변화값이 li까지 전달되는 스타일 */
+	.product_img [id="slide01"]:checked ~ .slidewrap .slidelist > li {transform:translateX(0%);}
+	.product_img [id="slide02"]:checked ~ .slidewrap .slidelist > li {transform:translateX(-100%);}
+	.product_img [id="slide03"]:checked ~ .slidewrap .slidelist > li {transform:translateX(-200%);}
+	.product_img [id="slide04"]:checked ~ .slidewrap .slidelist > li {transform:translateX(-300%);}
+	.product_img [id="slide05"]:checked ~ .slidewrap .slidelist > li {transform:translateX(-400%);}
+	
+	/*  INPUT이 체크되면 변화값이 좌우 슬라이드 버튼을 담고 있는 div 까지 전달되는 스타일 */
+	.product_img [id="slide01"]:checked ~ .slidewrap .arrow01 {display:block;}
+	.product_img [id="slide02"]:checked ~ .slidewrap .arrow02 {display:block;}
+	.product_img [id="slide03"]:checked ~ .slidewrap .arrow03 {display:block;}
+	.product_img [id="slide04"]:checked ~ .slidewrap .arrow04 {display:block;}
+	.product_img [id="slide05"]:checked ~ .slidewrap .arrow05 {display:block;}
+
+	.slidebox .slide-control [class*="control"] label {width: 70px; height: 70px;  cursor:pointer;}
+	.slidebox .slide-control [class*="control"] label.prev {background-image: url('../../../images/left.png')}
+	.slidebox .slide-control [class*="control"] label.next {background-image: url('../../../images/right.png')}
+
+	.slide-control [class*="control"] {display:none;}
+	#slide01:checked ~ .slide-control .control01 {display:block;}
+	#slide02:checked ~ .slide-control .control02 {display:block;}
+	#slide03:checked ~ .slide-control .control03 {display:block;}
+	#slide04:checked ~ .slide-control .control04 {display:block;}
+	#slide05:checked ~ .slide-control .control05 {display:block;}

@@ -104,8 +104,20 @@ header>section:nth-child(2){flex-basis: 70%; }
 
 #header-top-menu {
     height: 100%;
+    margin-left: 5px;
+
+    font-size: 20px;
+    color: rgba(0,0,0,0.6);
+    text-decoration: none;
+
+    display: flex;
+    align-items: center;
 }
 
+#header-top-menu * {
+    color: rgba(0,0,0,0.6);
+    text-decoration: none;
+}
 
 
 /* 선택자가 중복작성되어도 오류X, 모든 css 속성이 적용됨 */
@@ -368,7 +380,7 @@ label[for="header-menu-toggle"]{
     min-width: 100px;
     margin: 0 10px;
     font-size: 20px;
-    padding-top: 17px;
+
 
     align-items: center;
     justify-content: center;
@@ -395,9 +407,9 @@ label[for="header-menu-toggle"]{
   }
   
 
-  /* .fa-caret-down {
-    position:relative;
-  } */
+  .fa-caret-down {
+    margin: 0 3px;
+  }
   /* 닉네임 클릭시 보이는 메뉴 */
   #header-menu{
     position:absolute;

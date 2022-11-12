@@ -47,7 +47,7 @@
                 </div>
             </section>
 
-            <section class="content-comment">
+            <section class="content-comment first">
                 <div>
                     <i class="fa-solid fa-face-laugh-squint"></i>
                     <p class="title">  인기 상품</p>

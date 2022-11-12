@@ -75,6 +75,7 @@ input, select, .introduce{
     padding-left: 10px;
     display: flex;
     align-items: center;
+    margin-bottom: 20px;
 }
 
 .content-image__title {
@@ -103,7 +104,7 @@ input, select, .introduce{
 
 /* content-title */
 .content-title{
-    height: 170px;
+    height: 200px;
 }
 
 .introduce {
@@ -199,15 +200,48 @@ input, select, .introduce{
     background-color: #eee;
 }
 
+.goodsUpdate {
+    background-color: white !important;
+}
 
 
-/* 유효성 검사 */
-.content-price__content {
+
+
+
+/* 유효성 검사---------------------------------------------------------- */
+.content-price__content  {
     display: flex;
     flex-direction: column;
     padding-top: 20px;
+
+    position: relative;
 }
 
-#priceMessage {
-    padding-top: 10px;
+
+
+.confirm{
+    color:green;
+}
+.error{
+    color: red;
+}
+
+
+.content-title__content, .content-discription__content, .content-category__content {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0 0;
+}
+
+
+
+#titleMessage, #contentMessage, #priceMessage, #categoryMessage{
+    padding: 10px 10px 30px;
+}
+
+#price {
+    z-index: 1;
+    right:15px;
+    top: 35px;
+    position: absolute;
 }

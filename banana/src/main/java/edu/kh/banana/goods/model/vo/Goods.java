@@ -12,10 +12,11 @@ import lombok.ToString;
 	@Setter
 	@Getter
 	@NoArgsConstructor
-	public class GoodsSell {
+	public class Goods {
 
 		private int goodsNo;
 		private int sellerNo;
+		private int buyerNo;
 		private int categoryNo;
 		private String title;
 		private int sellPrice;

@@ -170,6 +170,8 @@ header>section:nth-child(2){flex-basis: 70%; }
 .sellingMy{
     display: flex;
     justify-content: flex-end;
+
+    text-decoration: none;
 }
 
 
@@ -180,6 +182,7 @@ header>section:nth-child(2){flex-basis: 70%; }
 
     background-color: var(--yellow);
     color: rgba(0,0,0,0.6);
+   
     font-weight: 600;
     display: flex;
     justify-content: center;

@@ -33,7 +33,7 @@ public class GoodsController {
 	@PostMapping("/goods/registerGoods")
 	public String registerGoods(Goods inputGoods,
 			RedirectAttributes ra,
-			String[] imagePath,
+			@RequestParam(value="imagePath") String[] imagePath,
 			@RequestHeader("referer") String referer) {
 			
 		

@@ -17,7 +17,7 @@
                     <c:otherwise>
                         <label for="header-menu-toggle">
                             <div class="profileImgArea">
-                                <img src="images/banana-logo.png"  id="profileImg">
+                                <img src="/resources/images/banana-logo.png"  id="profileImg">
                             </div>
                             ${loginMember.memberNickname}
                             <i class="fa-solid fa-caret-down"></i>
@@ -45,7 +45,7 @@
             <section class="section-query">
                 <div class="query__area">
                     <a href="/">
-                        <img src="images/banana-logo.png" id="logo-img"/>
+                        <img src="/resources/images/banana-logo.png" id="logo-img"/>
                     </a>
                     <div class="query__logo">
                         <p>바꾸고 나누자 나랑</p>

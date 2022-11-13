@@ -18,6 +18,7 @@
    		<result property="goodsDelFlag" column="GOODS_DEL_FL"></result>
    		<result property="imageNo" column="IMAGE_NO"></result>
    		<result property="imagePath" column="IMAGE_PATH"></result>
+   		<result property="orderNo" column="ORDER_NO"></result>
   
  	 </resultMap>
  	 

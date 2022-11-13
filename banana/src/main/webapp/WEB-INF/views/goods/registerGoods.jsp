@@ -12,8 +12,8 @@
     <link rel="shortcut icon" sizes="16x16 32x32 64x64" href="https://i.ibb.co/4tCGZqD/Banana.png">
     <title>바꾸고 나누자 나랑: 바나나 마켓</title>
 
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/screens/goods-register.css">
+    <link rel="stylesheet" href="/resources/css/style.css">
+    <link rel="stylesheet" href="/resources/css/goods/goods-register.css">
 
     <script src="https://kit.fontawesome.com/f7459b8054.js" crossorigin="anonymous"> </script>
 
@@ -48,7 +48,7 @@
                                 <!-- <form  method="POST" onsubmit="return false;" enctype="multipart/form-data"> -->
                                     <div class="button">
                                         <label for="chooseFile">
-                                            <img src="images/image-upload.png" class="browse-btn">
+                                            <img src="/resources/images/image-upload.png" class="browse-btn">
                                         </label>
                                     </div>
                                     <input type="file" id="chooseFile" name="imagePath" accept="image/*"
@@ -72,7 +72,7 @@
                         <div class="required">*</div>
                     </div>
                     <div class="content-title__content right-bar">
-                        <input type="text" placeholder="상품 제목을 입력해주세요" name="title" id="goodsTitle">
+                        <input type="text" placeholder="상품 제목을 입력해주세요" name="title" id="goodsTitle" value="${registerGoods.title}">
                         <div id="titleMessage"></div>
                     </div>
                 </div>
@@ -83,7 +83,7 @@
                         <div class="required">*</div>
                     </div>
                     <div class="content-category__content right-bar">
-                        <select name="categoryNo" id="goodsCategory">
+                        <select name="categoryNo" id="goodsCategory" value="${registerGoods.category}">
 
                             <option value="">옵션을 선택하세요</option>
                             <option value="1">전자기기</option>
@@ -108,7 +108,7 @@
                         <div class="required">*</div>
                     </div>
                     <div class="content-discription__content right-bar">
-                        <textarea row="5" col="30" class="introduce" id="goodsContent" name="description"
+                        <textarea row="5" col="30" class="introduce" id="goodsContent" name="description" value="${registerGoods.description}"
                             placeholder="상품의 상태를 정확하게 알 수 있는 여러 장의 상품  사진과 구입 연도, 브랜드, 사용감, 하자 유무 등 구매자에게 필요한 정보를 꼭 포함해 주세요! 문의를 줄이고 더 쉽게 판매할 수 있어요."></textarea>
                         <div id="contentMessage"></div>
                     </div>
@@ -120,7 +120,7 @@
                         <div class="required">*</div>
                     </div>
                     <div class="content-price__content right-bar">
-                        <input type="text" placeholder="판매 금액을 입력해주세요(단위 : 원)" name="sellPrice" id="goodsPrice">
+                        <input type="text" placeholder="판매 금액을 입력해주세요(단위 : 원)" name="sellPrice" id="goodsPrice" value="${registerGoods.sellPrice}">
                         <div id="priceMessage"></div>
                         <div id="price">원</div>
                     </div>

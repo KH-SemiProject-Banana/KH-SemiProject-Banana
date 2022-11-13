@@ -17,7 +17,7 @@ for(let i = 0; i < slide.length; i++){
     
         if(i == slide.length-1){i = 0}
 
-    }, 2000);
+    }, 5000);
 
     
 

@@ -93,6 +93,7 @@ public class GoodsServiceImpl implements GoodsService {
 	@Override
 	public List<Goods> selectFavorite(int memberNo) {
 		
+		
 		return dao.selectFavorite(memberNo);
 	}
 

@@ -102,7 +102,7 @@
     padding: 10px;
 }
 
-.favorite__content{
+.favorite__title, .new__title{
     padding: 7px 0 7px 20px;
 }
 
@@ -165,7 +165,7 @@ label[for="heart"]{
     justify-content: center;
 }
 
-.favorite__content {
+.favorite__title, .new__title {
     margin-left: 5px;
   
     display: flex;
@@ -174,7 +174,7 @@ label[for="heart"]{
     color: rgba(0,0,0,0.6);
 }
 
-.favorite__price{
+.favorite__price, .new__price{
     font-weight: 700;
     font-size: 20px;
 }

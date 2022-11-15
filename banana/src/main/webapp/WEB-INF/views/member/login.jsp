@@ -38,7 +38,7 @@
                         <!-- 아이디(이메일) -->
                         <div class="signUp-input-Email textbox">
                             <input type="text" name="memberEmail" id="memberEmail" class="inputBox" placeholder="아이디 (이메일)"
-                                maxlength="20" autocomplete="off" required>
+                                maxlength="20" autocomplete="off" required value=${cookie.saveId.value}>
                         </div>
                         <!-- 아이디 저장 -->
                         <div class="saveId-area">

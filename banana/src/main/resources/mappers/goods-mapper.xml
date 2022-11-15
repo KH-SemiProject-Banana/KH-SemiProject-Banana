@@ -3,7 +3,7 @@
 <mapper namespace = "goodsMapper">
   
   
-  <resultMap type="Goods" id="goods_rm">
+  	<resultMap type="Goods" id="goods_rm">
    
    		<id property="goodsNo" column="GOODS_NO"/>
    		
@@ -19,11 +19,38 @@
    		<result property="imageNo" column="IMAGE_NO"></result>
    		<result property="imagePath" column="IMAGE_PATH"></result>
    		<result property="orderNo" column="ORDER_NO"></result>
-  
- 	 </resultMap>
+ 	</resultMap>
  	 
- 	 <insert id="registerGoods">
- 	 	
+ 	 
+	<resultMap type="GoodsImage" id="goodsImage_rm">
+	
+		<id property="goodsNo" column="GOODS_NO"/>
+   		
+   		<result property="imageNo" column="IMAGE_NO"></result>
+   		<result property="imagePath" column="IMAGE_PATH"></result>
+	
+	</resultMap>
+ 	 
+ 	 
+ 	 <insert id="registerGoods" parameterType="Goods">
+ 	 	INSERT INTO GOODS_SELL	
+		VALUES(SEQ_GOODS_NO.NEXTVAL, #{sellerNo}, NULL, #{categoryNo}, #{title}, 
+		#{sellPrice}, DEFAULT, #{description}, NULL, DEFAULT, DEFAULT)
+ 	 </insert>
+ 	 
+ 	 
+ 	 
+ 	 <select id="selectMyGoods" resultType="_int">
+ 	 	SELECT GOODS_NO FROM(
+		SELECT GOODS_NO FROM GOODS_SELL
+		ORDER BY CREATED_AT DESC)
+		WHERE ROWNUM <![CDATA[<= 1]]>
+ 	 </select>
+ 	 
+ 	 
+ 	 <insert id="registerImage" parameterType="GoodsImage">
+ 	 	INSERT INTO GOODS_IMAGE
+ 	 	VALUES(SEQ_IMAGE_NO.NEXTVAL, #{goodsNo}, #{imagePath})
  	 </insert>
   
 </mapper>

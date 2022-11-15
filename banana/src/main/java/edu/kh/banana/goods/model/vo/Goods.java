@@ -26,8 +26,6 @@ import lombok.ToString;
 		private String createdAt;
 		private String goodsDelFlag;
 		private String sellStatus;
-		private int imageNo;
-		private String imagePath;
 		
 		
 		//페이이용내역(REQUEST_PAY)

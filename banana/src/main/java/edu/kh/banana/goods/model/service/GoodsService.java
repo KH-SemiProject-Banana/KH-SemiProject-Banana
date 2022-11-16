@@ -25,7 +25,7 @@ public interface GoodsService {
 	 * @param memberNo
 	 * @return
 	 */
-	List<Goods> selectFavorite(int memberNo);
+	List<Goods> selectFavorite();
 
 
 

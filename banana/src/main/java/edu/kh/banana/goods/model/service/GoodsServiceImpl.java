@@ -91,10 +91,10 @@ public class GoodsServiceImpl implements GoodsService {
 	 * 메인페이지 상품조회
 	 */
 	@Override
-	public List<Goods> selectFavorite(int memberNo) {
+	public List<Goods> selectFavorite() {
 		
 		
-		return dao.selectFavorite(memberNo);
+		return dao.selectFavorite();
 	}
 
 }

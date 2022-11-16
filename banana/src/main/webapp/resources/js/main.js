@@ -30,7 +30,7 @@ const favoriteHeart = document.getElementsByClassName("favorite__heart");
 const favoriteTitle = document.getElementsByClassName("favorite__title");
 
 
-// 페이지 로드되자마자 실행
+// 페이지 로드되자마자 실행 + 60초마다 실행
 selectFavorite();
 
 function selectFavorite(){

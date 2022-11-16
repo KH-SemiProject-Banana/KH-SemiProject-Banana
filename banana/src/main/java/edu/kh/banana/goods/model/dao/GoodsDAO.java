@@ -51,11 +51,11 @@ public class GoodsDAO {
 	 * @param memberNo
 	 * @return
 	 */
-	public List<Goods> selectFavorite(int memberNo) {
+	public List<Goods> selectFavorite() {
 		// TODO Auto-generated method stub
 		
 		// 여기서 goods 5개 조회해오고, mypage-mapper에서 내가 좋아요한 여부를 조회해와서 합치기
-		return sqlSession.selectList("goodsMapper.selectFavorite", memberNo);
+		return sqlSession.selectList("goodsMapper.selectFavorite");
 	}
 
 

@@ -52,5 +52,12 @@
  	 	INSERT INTO GOODS_IMAGE
  	 	VALUES(SEQ_IMAGE_NO.NEXTVAL, #{goodsNo}, #{imagePath})
  	 </insert>
+ 	 
+ 	 
+ 	 <select id="selectList">
+ 	 	SELECT * FROM GOODS_SELL
+		WHERE GOODS_DEL_FL = 'N' AND (BUYER_NO IS NULL)
+		ORDER BY VIEW_COUNT DESC, REFRESHED_AT DESC, CREATED_AT DESC
+ 	 </select>
   
 </mapper>

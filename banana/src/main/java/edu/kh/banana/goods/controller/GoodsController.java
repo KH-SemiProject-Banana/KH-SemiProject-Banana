@@ -97,10 +97,9 @@ public class GoodsController {
 	 */
 	@PostMapping("/selectFavorite")
 	@ResponseBody
-	public String selectFavorite(
-			@SessionAttribute("loginMember") Member loginMember) {
+	public String selectFavorite() {
 		
-		List<Goods> favoriteGoods = service.selectFavorite(loginMember.getMemberNo());
+		List<Goods> favoriteGoods = service.selectFavorite();
 		
 		return new Gson().toJson(favoriteGoods);
 	}

@@ -91,17 +91,21 @@ public class GoodsController {
 		
 	}
 	
-	/** 메인페이지 상품조회
-	 * @param loginMember
-	 * @return List<Goods> favoriteGoods
-	 */
-	@PostMapping("/selectFavorite")
-	@ResponseBody
-	public String selectFavorite() {
-		
-		List<Goods> favoriteGoods = service.selectFavorite();
-		
-		return new Gson().toJson(favoriteGoods);
-	}
+//	/** 메인페이지 상품조회
+//	 * @param loginMember
+//	 * @return List<Goods> favoriteGoods
+//	 */
+//	@PostMapping("/selectFavorite")
+//	@ResponseBody
+//	public String selectFavorite() {
+//		
+//		List<Goods> favoriteGoods = service.selectFavorite();
+//		
+//		for(Goods goods : favoriteGoods) {
+//			System.out.println(goods);
+//		}
+//		
+//		return new Gson().toJson(favoriteGoods);
+//	}
 
 }

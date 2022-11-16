@@ -21,11 +21,11 @@ public interface GoodsService {
 	 */
 	int registerGoods(String webPath, String filePath, List<MultipartFile> imagePath, Goods inputGoods) throws Exception;
 
-	/** 메인페이지 상품조회
-	 * @param memberNo
-	 * @return
-	 */
-	List<Goods> selectFavorite();
+//	/** 메인페이지 상품조회
+//	 * @param memberNo
+//	 * @return
+//	 */
+//	List<Goods> selectFavorite();
 
 
 

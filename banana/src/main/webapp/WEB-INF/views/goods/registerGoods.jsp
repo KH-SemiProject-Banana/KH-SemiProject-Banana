@@ -12,8 +12,8 @@
     <link rel="shortcut icon" sizes="16x16 32x32 64x64" href="https://i.ibb.co/4tCGZqD/Banana.png">
     <title>바꾸고 나누자 나랑: 바나나 마켓</title>
 
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/screens/goods-register.css">
+    <link rel="stylesheet" href="/resources/css/style.css">
+    <link rel="stylesheet" href="/resources/css/goods/goods-register.css">
 
     <script src="https://kit.fontawesome.com/f7459b8054.js" crossorigin="anonymous"> </script>
 
@@ -48,7 +48,7 @@
                                 <!-- <form  method="POST" onsubmit="return false;" enctype="multipart/form-data"> -->
                                     <div class="button">
                                         <label for="chooseFile">
-                                            <img src="images/image-upload.png" class="browse-btn">
+                                            <img src="/resources/images/image-upload.png" class="browse-btn">
                                         </label>
                                     </div>
                                     <input type="file" id="chooseFile" name="imagePath" accept="image/*"
@@ -150,7 +150,7 @@
     </main>
 
 
-  <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+  	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
     <script src="/resources/js/goods/goods-register.js"></script>
 </body>

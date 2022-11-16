@@ -40,9 +40,14 @@
                             <input type="text" name="memberEmail" id="memberEmail" class="inputBox" placeholder="아이디 (이메일)"
                                 maxlength="20" autocomplete="off" required value=${cookie.saveId.value}>
                         </div>
+
+                        <c:if test="${!empty cookie.saveId.value}">
+                            <c:set var="temp" value="checked"/>
+                        </c:if>
+                        
                         <!-- 아이디 저장 -->
                         <div class="saveId-area">
-                            <input type="checkbox" name="saveId" id="saveId">
+                            <input type="checkbox" name="saveId" id="saveId" ${temp}>
                             <label for="saveId">
                                 <i class="fas fa-check"></i>
                                 <div>아이디 저장</div>

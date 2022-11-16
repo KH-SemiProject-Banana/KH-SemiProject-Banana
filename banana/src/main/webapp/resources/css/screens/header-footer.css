@@ -290,6 +290,8 @@ nav{
     top:0;
     background-color: white;
     /* padding-top: 10px; */
+
+    z-index: 150;
 }
 
 

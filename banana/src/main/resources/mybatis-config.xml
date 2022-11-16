@@ -22,6 +22,7 @@
 		<typeAlias type="edu.kh.banana.member.model.vo.Member" alias="Member"/>
 		<typeAlias type="edu.kh.banana.member.model.vo.MyPage" alias="MyPage"/>
 		<typeAlias type="edu.kh.banana.goods.model.vo.Goods" alias="Goods"/>
+		<typeAlias type="edu.kh.banana.goods.model.vo.GoodsImage" alias="GoodsImage"/>
 		<typeAlias type="edu.kh.banana.boardComplain.model.vo.BoardComplain" alias="BoardComplain"/>
 		<typeAlias type="edu.kh.banana.board.model.vo.Board" alias="Board"/>
 		<typeAlias type="edu.kh.banana.chat.model.vo.Chat" alias="Chat"/>

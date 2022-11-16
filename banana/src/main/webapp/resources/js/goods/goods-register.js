@@ -98,8 +98,8 @@ function submitChk(){
             return false;
         }
     }
-    let goodsPriceValue = document.getElementById("goods-price");
-    goodsPriceValue.value = Number(goodsPriceValue.value.replaceAll(',', ''));
+    // let goodsPriceValue = document.getElementById("goods-price");
+    // goodsPriceValue.value = Number(goodsPriceValue.value.replaceAll(',', ''));
 
     return true;
 
@@ -178,11 +178,12 @@ goodsPrice.addEventListener("input", function(e){
     const regEx = /^[0-9]{1,10}$/;
 
     let value = e.target.value;
-    value = Number(value.replaceAll(',', ''));
-    const formatValue = value.toLocaleString('ko-KR');
-    goodsPrice.value = formatValue;
+    // value = Number(value.replaceAll(',', ''));
+    // const formatValue = value.toLocaleString('ko-KR');
+    // goodsPrice.value = formatValue;
 
-    if(regEx.test(goodsPrice.value.replaceAll(',', ''))){ // 유효한 경우
+    // if(regEx.test(goodsPrice.value.replaceAll(',', ''))){ // 유효한 경우
+    if(regEx.test(goodsPrice.value)){ // 유효한 경우
         priceMessage.innerText = "유효한 형식입니다(숫자)";
         priceMessage.classList.remove("error");
         priceMessage.classList.add("confirm");

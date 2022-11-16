@@ -29,8 +29,8 @@ public class Member {
 	
 	
 	// 카테고리(CATEGORY)테이블
-	private int categoryNo;
-	private String categoryName;
+//	private int categoryNo;
+//	private String categoryName;
 	
 	
 	// ERD의 찜했따(GOODS_LIKE) 테이블

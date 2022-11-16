@@ -58,7 +58,7 @@
 
 
 
-            <section class="content-favorite">
+            <section class="content-favorite" id="favorite">
                 <div class="favorite__pack">
                     <div>
                         <div class="favorite__img">
@@ -69,7 +69,7 @@
                         <div class="favorite__price-heart">
                             <div class="favorite__price">00원(가격)</div>
                             <div class="favorite__heart">
-                                <input type="checkbox" name="heart" id="heart1">
+                                <input type="checkbox" name="heart" class="favorite__heart">
                                 <label for="heart1">
                                     <i class="fa-solid fa-heart-circle-plus"></i>
                                 </label>
@@ -77,7 +77,7 @@
                         </div>
                     </div>
                 
-                    <div class="favorite__content">상품 이름</div>
+                    <div class="favorite__title">상품 이름</div>
                 </div>
 
                 <div class="favorite__pack">
@@ -90,7 +90,7 @@
                         <div class="favorite__price-heart">
                             <div class="favorite__price">00원(가격)</div>
                             <div class="favorite__heart">
-                                <input type="checkbox" name="heart" id="heart2">
+                                <input type="checkbox" name="heart" class="favorite__heart">
                                 <label for="heart2">
                                     <i class="fa-solid fa-heart-circle-plus"></i>
                                 </label>
@@ -98,7 +98,7 @@
                         </div>
                     </div>
                 
-                    <div class="favorite__content">상품 이름</div>
+                    <div class="favorite__title">상품 이름</div>
                 </div>
 
                 <div class="favorite__pack">
@@ -111,14 +111,14 @@
                         <div class="favorite__price-heart">
                             <div class="favorite__price">00원(가격)</div>
                             <div class="favorite__heart">
-                                <input type="checkbox" name="heart" id="heart3">
+                                <input type="checkbox" name="heart" class="favorite__heart">
                                 <label for="heart3">
                                     <i class="fa-solid fa-heart-circle-plus"></i>
                                 </label>
                             </div>
                         </div>
                     </div>
-                    <div class="favorite__content">상품 이름</div>
+                    <div class="favorite__title">상품 이름</div>
                 </div>
 
                 <div class="favorite__pack">
@@ -131,7 +131,7 @@
                         <div class="favorite__price-heart">
                             <div class="favorite__price">00원(가격)</div>
                             <div class="favorite__heart">
-                                <input type="checkbox" name="heart" id="heart4">
+                                <input type="checkbox" name="heart" class="favorite__heart">
                                 <label for="heart4">
                                     <i class="fa-solid fa-heart-circle-plus"></i>
                                 </label>
@@ -139,7 +139,7 @@
                         </div>
                     </div>
                 
-                    <div class="favorite__content">상품 이름</div>
+                    <div class="favorite__title">상품 이름</div>
                 </div>
 
                 <div class="favorite__pack">
@@ -152,7 +152,7 @@
                         <div class="favorite__price-heart">
                             <div class="favorite__price">00원(가격)</div>
                             <div class="favorite__heart">
-                                <input type="checkbox" name="heart" id="heart5">
+                                <input type="checkbox" name="heart" class="favorite__heart">
                                 <label for="heart5">
                                     <i class="fa-solid fa-heart-circle-plus"></i>
                                 </label>
@@ -160,7 +160,7 @@
                         </div>
                     </div>
                 
-                    <div class="favorite__content">상품 이름</div>
+                    <div class="favorite__title">상품 이름</div>
                 </div>
                 
                 
@@ -192,9 +192,9 @@
                             </a>
                         </div>
                         <div class="favorite__price-heart">
-                            <div class="favorite__price">00원(가격)</div>
+                            <div class="new__price">00원(가격)</div>
                             <div class="favorite__heart">
-                                <input type="checkbox" name="heart" id="heart6">
+                                <input type="checkbox" name="heart" class="new__heart">
                                 <label for="heart6">
                                     <i class="fa-solid fa-heart-circle-plus"></i>
                                 </label>
@@ -202,7 +202,7 @@
                         </div>
                     </div>
                 
-                    <div class="favorite__content">상품 이름</div>
+                    <div class="new__title">상품 이름</div>
                 </div>
 
                 <div class="favorite__pack">
@@ -213,16 +213,16 @@
                             </a>
                         </div>
                         <div class="favorite__price-heart">
-                            <div class="favorite__price">00원(가격)</div>
+                            <div class="new__price">00원(가격)</div>
                             <div class="favorite__heart">
-                                <input type="checkbox" name="heart" id="heart7">
+                                <input type="checkbox" name="heart" class="new__heart">
                                 <label for="heart7">
                                     <i class="fa-solid fa-heart-circle-plus"></i>
                                 </label>
                             </div>
                         </div>
                     </div>
-                    <div class="favorite__content">상품 이름</div>
+                    <div class="new__title">상품 이름</div>
                 </div>
 
                 <div class="favorite__pack">
@@ -233,9 +233,9 @@
                             </a>
                         </div>
                         <div class="favorite__price-heart">
-                            <div class="favorite__price">00원(가격)</div>
+                            <div class="new__price">00원(가격)</div>
                             <div class="favorite__heart">
-                                <input type="checkbox" name="heart" id="heart8">
+                                <input type="checkbox" name="heart" class="new__heart">
                                 <label for="heart8">
                                     <i class="fa-solid fa-heart-circle-plus"></i>
                                 </label>
@@ -243,7 +243,7 @@
                         </div>
                     </div>
                 
-                    <div class="favorite__content">상품 이름</div>
+                    <div class="new__title">상품 이름</div>
                 </div>
 
                 <div class="favorite__pack">
@@ -254,9 +254,9 @@
                             </a>
                         </div>
                         <div class="favorite__price-heart">
-                            <div class="favorite__price">00원(가격)</div>
+                            <div class="new__price">00원(가격)</div>
                             <div class="favorite__heart">
-                                <input type="checkbox" name="heart" id="heart9">
+                                <input type="checkbox" name="heart" class="new__heart">
                                 <label for="heart9">
                                     <i class="fa-solid fa-heart-circle-plus"></i>
                                 </label>
@@ -264,7 +264,7 @@
                         </div>
                     </div>
                 
-                    <div class="favorite__content">상품 이름</div>
+                    <div class="new__title">상품 이름</div>
                 </div>
 
                 <div class="favorite__pack">
@@ -275,16 +275,16 @@
                             </a>
                         </div>
                         <div class="favorite__price-heart">
-                            <div class="favorite__price">00원(가격)</div>
+                            <div class="new__price">00원(가격)</div>
                             <div class="favorite__heart">
-                                <input type="checkbox" name="heart" id="heart10">
+                                <input type="checkbox" name="heart" class="new__heart">
                                 <label for="heart10">
                                     <i class="fa-solid fa-heart-circle-plus"></i>
                                 </label>
                             </div>
                         </div>
                     </div>
-                    <div class="favorite__content">상품 이름</div>
+                    <div class="new__title">상품 이름</div>
                 </div>
                 
                 
@@ -297,7 +297,13 @@
         </section>
     </main>
 
+
+    <!-- jQuery CDN 방식으로 추가-->
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <script src="/resources/js/main.js"></script>
+
+
+
 
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 

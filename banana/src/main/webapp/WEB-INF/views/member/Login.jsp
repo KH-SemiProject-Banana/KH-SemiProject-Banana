@@ -12,6 +12,7 @@
 
     <link rel="stylesheet" href="/resources/css/style.css">
     <script src="https://kit.fontawesome.com/f7459b8054.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/1023652dd4.js" crossorigin="anonymous"></script>
 
         
     <link rel="stylesheet" href="/resources/css/효동/Login.css">

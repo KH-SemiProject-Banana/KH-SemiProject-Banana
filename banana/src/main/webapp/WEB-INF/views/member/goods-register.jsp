@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="/resources/css/screens/goods-register.css">
 
     <script src="https://kit.fontawesome.com/f7459b8054.js" crossorigin="anonymous"> </script>
+    <script src="https://kit.fontawesome.com/1023652dd4.js" crossorigin="anonymous"></script>
 
     <script src="js/goods-register.js"></script>
 </head>

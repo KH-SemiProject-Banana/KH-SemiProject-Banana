@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,8 +15,8 @@
     <script src="https://kit.fontawesome.com/1023652dd4.js" crossorigin="anonymous"></script>
     
     
-    <link rel="stylesheet" href="/banana/src/main/webapp/resources/css/style.css">
-    <link rel="stylesheet" href="/banana/src/main/webapp/resources/css/효동/SignUpAgreement.css">
+    <link rel="stylesheet" href="/resources/css/style.css">
+    <link rel="stylesheet" href="/resources/css/효동/SignUpAgreement.css">
 </head>
 <body>
     <main>
@@ -70,7 +74,7 @@
                 <p class="ag_text mt">본 약관에 명시되지 아니한 사항에 대해서는 전기통신기본법, 전기통신사업법, 정보통신망 이용촉진등에 관한 법률 및 기타 관련 법령의 규정에 따릅니다.</p>
             </div>
 
-            <form action="/member/signUp/agreement" method="post">
+            <form action="/member/signUp/agreement" method="GET" onsubmit="return memberSignUpAgreement()">
                 <div class="SignUpAgreement5">
                     <div>
                         <input type="checkbox" name="nextSignUp" id="nextSignUp">

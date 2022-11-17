@@ -1,6 +1,7 @@
 /* 테이블 설정 */
+
 /* .loginClass  *{ 
-    border: 1px solid /black;
+    border: 1px solid black;
 } */
 
 .loginClass{
@@ -41,7 +42,7 @@
 
 /*************************************************/
  /* LOGIN 텍스트 밖 div  */
- .SignUpAgreement3{
+.SignUpAgreement3{
     display: flex;
     width: 100%;
     height: 60px;
@@ -152,6 +153,8 @@ input:-webkit-autofill:active  {
 }
 .text-area{
     margin-top: 40px;
+    display: flex;
+    justify-content: center;
     
 }
 
@@ -179,6 +182,7 @@ input:-webkit-autofill:active  {
     color: black;
     cursor: pointer;
     font-weight: bold;
+    border: none;
 }
 
 .login-btn:hover{

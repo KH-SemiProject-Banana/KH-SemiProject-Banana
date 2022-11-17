@@ -10,11 +10,13 @@
     <link rel="shortcut icon"  sizes="16x16 32x32 64x64" href="http://61.73.18.194:5555/KH_Project/images/Banana.png">
     <title>바꾸고 나누자 나랑: 바나나 마켓</title>
 
-    <link rel="stylesheet" href="/resources/css/style.css">
     <script src="https://kit.fontawesome.com/f7459b8054.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/1023652dd4.js" crossorigin="anonymous"></script>
 
-        
+
+    <link rel="stylesheet" href="/resources/css/style.css">
     <link rel="stylesheet" href="/resources/css/member/login.css">
+        
 </head>
 <body>
     <main>
@@ -38,7 +40,7 @@
                         <!-- 아이디(이메일) -->
                         <div class="signUp-input-Email textbox">
                             <input type="text" name="memberEmail" id="memberEmail" class="inputBox" placeholder="아이디 (이메일)"
-                                maxlength="20" autocomplete="off" required value=${cookie.saveId.value}>
+                                maxlength="20" autocomplete="off" value=${cookie.saveId.value}>
                         </div>
                         <!-- 아이디 저장 -->
                         <div class="saveId-area">
@@ -51,8 +53,7 @@
             
                         <!-- 비밀번호 -->
                         <div class="signUp-input-password textbox">
-                            <input type="password" name="memberPw" class="inputBox" id="memberPw" placeholder="비밀번호" maxlength="20"
-                                required>
+                            <input type="password" name="memberPw" class="inputBox" id="memberPw" placeholder="비밀번호" maxlength="20">
                         </div>
                     </div>
             

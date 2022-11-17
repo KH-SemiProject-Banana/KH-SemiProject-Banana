@@ -5,39 +5,47 @@
 
         <header>
             <section class="section-topmenu">
-                <a href="#" class="topmenu__talk fa-regular fa-comment">바나나톡</a>
-                
-                <div id="header-top-menu">
-                <c:choose>
-                    <%-- 로그인 X 경우 --%>
-                    <c:when test="${empty sessionScope.loginMember}">
-                        <a href="/member/login" class="topmenu__login">로그인/회원가입</a>
-                    </c:when>
-                    <%-- 로그인 O인 경우 --%>
-                    <c:otherwise>
-                        <label for="header-menu-toggle">
-                            <div class="profileImgArea">
-                                <img src="/resources/images/banana-logo.png"  id="profileImg">
-                            </div>
-                            ${loginMember.memberNickname}
-                            <i class="fa-solid fa-caret-down"></i>
-                            <div>
-                                <input type="checkbox" id="header-menu-toggle">
-
-                                <div id="header-menu">
-                                    <a href="#">내 정보</a>
-                                    <a href="/member/logout">로그아웃</a>
+                <div>
+                    <a href="/board/1" class="fa-regular fa-file-lines boardListLink"> 게시판</a>
+                </div>
+                <div class="talkAndlogin">
+                    <a href="#" class="topmenu__talk fa-regular fa-comment">바나나톡</a>
+                    
+                    <div id="header-top-menu">
+                    <c:choose>
+                        <%-- 로그인 X 경우 --%>
+                        <c:when test="${empty sessionScope.loginMember}">
+                            <a href="/member/login" class="topmenu__login">로그인/회원가입</a>
+                        </c:when>
+                        <%-- 로그인 O인 경우 --%>
+                        <c:otherwise>
+                            <label for="header-menu-toggle">
+                                <div class="profileImgArea">
+                                    <img src="/resources/images/banana-logo.png"  id="profileImg">
                                 </div>
-                            </div>
-                        </label>
+                                ${loginMember.memberNickname}
+                                <i class="fa-solid fa-caret-down"></i>
+                                <div>
+                                    <input type="checkbox" id="header-menu-toggle">
 
-                    </c:otherwise>
-                </c:choose>
+                                    <div id="header-menu">
+                                        <a href="#">내 정보</a>
+                                        <a href="/member/logout">로그아웃</a>
+                                    </div>
+                                </div>
+                            </label>
+
+                        </c:otherwise>
+                    </c:choose>
+                </div>
+
+
+                
 
 
 
                 
-            </div>
+           
 
 
 

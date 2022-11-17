@@ -20,7 +20,7 @@
 </head>
 <body>
     <main>
-        <jsp:include page="/WEB-INF/views/common/header.jsp" />
+        <jsp:include  page="/WEB-INF/views/common/header.jsp" />
 
         <div class="signUpClass">
             <div class="SignUpAgreement1">
@@ -74,7 +74,7 @@
                 <p class="ag_text mt">본 약관에 명시되지 아니한 사항에 대해서는 전기통신기본법, 전기통신사업법, 정보통신망 이용촉진등에 관한 법률 및 기타 관련 법령의 규정에 따릅니다.</p>
             </div>
 
-            <form action="/member/signUp/agreement" method="GET" onsubmit="return memberSignUpAgreement()">
+            <form action="/member/signUp/info" method="GET" onsubmit="return memberSignUpAgreement()">
                 <div class="SignUpAgreement5">
                     <div>
                         <input type="checkbox" name="nextSignUp" id="nextSignUp">

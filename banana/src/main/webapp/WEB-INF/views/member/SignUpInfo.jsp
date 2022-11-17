@@ -68,7 +68,7 @@
         </div>
 
         <!------------------------------------------->
-        <form action="/member/signUp/info">
+        <form action="" method="GET">
           <div>
             <!-- 아이디(이메일) -->
             <div class="signUp-input-Email textbox">
@@ -224,7 +224,7 @@
           <!--------------------------->
 
           <div class="SignUpAgreement6">
-            <div colspan="5" class="SignUp">회원 가입하기</div>
+            <button class="SignUp">회원 가입하기</button>
           </div>
         </form>
     </main>

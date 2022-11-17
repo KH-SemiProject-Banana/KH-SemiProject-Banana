@@ -1,6 +1,4 @@
-//인라인 모델로 탈퇴처리
 function memberSignUpAgreement(){
-
 
     // 체크 여부 검사
     const nextSignUp = document.getElementById("nextSignUp");
@@ -11,13 +9,5 @@ function memberSignUpAgreement(){
         nextSignUp.focus();
         return false; 
 }
-
-    // 탈퇴여부 확인
-    // if(!confirm("정말로 탈퇴 하시겠습니까?")){
-    //     alert("탈퇴 취소");
-    //     return false;
-    // }
-        
     return true;
-
 }

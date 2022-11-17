@@ -101,16 +101,17 @@ public class MemberController {
 	 */
 	@GetMapping("/member/signUp/agreement")
 	public String signUpAgreement() {
-		return "/member/SignUpAgreement";
+		return "member/SignUpAgreement";
 	}
+	
 	
 
 	/** 회원가입 정보입력 페이지 이동
 	 * @return
 	 */
-	@PostMapping("/member/signUp/info")
-	public String SignUpInfo() {
-		return "/member/SignUpInfo";
+	@GetMapping("/member/signUp/info")
+	public String signUpInfo() {
+		return "member/SignUpInfo";
 	}
 	
 	

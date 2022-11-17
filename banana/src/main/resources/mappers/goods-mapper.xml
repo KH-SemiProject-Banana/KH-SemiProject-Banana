@@ -59,5 +59,19 @@
 		WHERE GOODS_DEL_FL = 'N' AND (BUYER_NO IS NULL)
 		ORDER BY VIEW_COUNT DESC, REFRESHED_AT DESC, CREATED_AT DESC
  	 </select>
+ 	 
+ 	 
+ 	 <select id="selectGoods" parameterType="_int" resultType="Goods">
+ 	 	SELECT * FROM GOODS_SELL
+ 	 	WHERE GOODS_NO = #{goodsNo}
+ 	 </select>
+  
+  	<select id="selectGoodsImg" parameterType="_int" resultType="list">
+  		SELECT * FROM GOODS_IMAGE
+  		WHERE GOODS_NO = #{goodsNo}
+  	</select>
+  
+  
+  
   
 </mapper>

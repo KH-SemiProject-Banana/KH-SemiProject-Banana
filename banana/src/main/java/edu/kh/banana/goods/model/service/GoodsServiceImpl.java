@@ -3,6 +3,7 @@ package edu.kh.banana.goods.model.service;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -87,14 +88,47 @@ public class GoodsServiceImpl implements GoodsService {
 		return 0;
 	}
 
-//	/**
-//	 * 메인페이지 상품조회
-//	 */
-//	@Override
-//	public List<Goods> selectFavorite() {
-//		
-//		
-//		return dao.selectFavorite();
-//	}
+	/**
+	 * 내가 등록한 상품 1개 조회
+	 */
+	@Override
+	public Goods selectGoods(int goodsNo) {
+		
+		Goods goods = dao.selectGoods(goodsNo);
+		
+		List<Integer> imageList = dao.selectGoodsImg(goodsNo);
+		if(!imageList.isEmpty()) {
+			
+		}
+		
+		return goods;
+	}
+
+	/**
+	 * 내 상품 수정
+	 */
+	@Override
+	@Transactional(rollbackFor = Exception.class)
+	public int updateGoods(String webPath, String filePath, List<MultipartFile> imagePath, Goods inputGoods) 
+			throws Exception {
+
+		int updateResult = dao.registerGoods(inputGoods);
+		
+		if(updateResult > 0) {
+			
+			GoodsImage goodsImage = new GoodsImage();
+			goodsImage.setGoodsNo(inputGoods.getGoodsNo());
+			
+			if(imagePath != null) {
+				
+				
+			}
+		}
+		
+		
+		return 0;
+	}
+
+
 
 }

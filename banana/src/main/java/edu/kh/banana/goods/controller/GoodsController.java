@@ -107,5 +107,55 @@ public class GoodsController {
 //		
 //		return new Gson().toJson(favoriteGoods);
 //	}
+	
+	
+
+	
+	
+	// 내 상품 수정하기
+	@GetMapping("/updateGoods")
+	public String updateGoods(@RequestParam(value="goodsNo") int goodsNo,
+			Model model) {
+		
+		// 내 상품 정보(Goods)를 얻어와서 forward로 날릴때 같이 보내기(model)??
+		// goodsNo만 얻어짐 --> service에서 selectGoods 호출
+		Goods goods = service.selectGoods(goodsNo);
+		
+		model.addAttribute("goods", goods);
+		
+		return "goods/goods-update";
+		
+	}
+
+	
+	// 내 상품 수정 페이지
+	@PostMapping("/updateGoods")
+	public String updateGoods(@RequestHeader("referer") String referer,
+			/*ModelAttribute*/Goods inputGoods,
+			RedirectAttributes ra,
+			@RequestParam(value="imagePath", required = false) List<MultipartFile> imagePath,
+			HttpServletRequest req
+			) throws Exception {
+		
+		String webPath = "/resources/images/goodsImage/";
+		String filePath = req.getSession().getServletContext().getRealPath(webPath);
+		
+		int result = service.updateGoods(webPath, filePath, imagePath, inputGoods);
+		
+		String path = null;
+		String message = null;
+		
+		if(result > 0) {
+			path = "/";
+			message = "상품 수정 완료";
+		} else {
+			path = referer;
+			message = "상품 수정 실패";
+		}
+		
+		ra.addFlashAttribute("message", message);
+		
+		return "redirect:" + path;
+	}
 
 }

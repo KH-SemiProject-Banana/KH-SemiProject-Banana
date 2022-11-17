@@ -82,7 +82,7 @@
 }
 /* 문제있다ㅏㅏ
 마지막 애를선택해서  */
-#mainBox > div:nth-last-child(){
+#chatProfile > div:last-child{
     border-bottom: none;
 }
 /* 마우스 클릭시 색 유지 js으로 해야함-------------- */

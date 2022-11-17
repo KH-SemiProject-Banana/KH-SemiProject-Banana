@@ -68,11 +68,13 @@
         </div>
 
         <!------------------------------------------->
-        <form action="" method="GET">
+        <form action="" method="POST" name="signUp-frm" id="signUp-frm">
+
+
           <div>
             <!-- 아이디(이메일) -->
             <div class="signUp-input-Email textbox">
-              <input
+              <input 
                 type="text"
                 name="memberEmail"
                 id="memberEmail"
@@ -80,10 +82,11 @@
                 placeholder="아이디 (이메일)"
                 maxlength="20"
                 autocomplete="off"
-                required
               />
               <button type="button" class="checkButton">인증번호 받기</button>
             </div>
+
+            <!-- 인증번호 입력 -->
             <div class="signUp-input-EmailCertification textbox">
               <input
                 type="text"
@@ -91,9 +94,8 @@
                 id="memberEmailCertification"
                 class="inputBox"
                 placeholder="인증번호 입력"
-                maxlength="20"
+                maxlength="6"
                 autocomplete="off"
-                required
               />
               <button type="button" class="checkButton">인증하기</button>
             </div>
@@ -110,9 +112,9 @@
                 id="memberPw"
                 placeholder="비밀번호"
                 maxlength="20"
-                required
               />
             </div>
+            <%-- 비밀번호확인 --%>
             <div class="signUp-input-password textbox">
               <input
                 type="password"
@@ -121,7 +123,6 @@
                 id="memberPwConfirm"
                 placeholder="비밀번호 확인"
                 maxlength="20"
-                required
               />
             </div>
             <div class="firstBox">
@@ -139,7 +140,6 @@
                 id="memberNickname"
                 placeholder="닉네임"
                 maxlength="10"
-                required
               />
             </div>
             <div class="firstBox">
@@ -157,7 +157,6 @@
                 id="memberName"
                 placeholder="이름"
                 maxlength="10"
-                required
               />
             </div>
             <div class="signUp-input-Birth textbox">
@@ -168,7 +167,7 @@
                 id="memberBirth"
                 placeholder="생년월일 ex)19910502"
                 maxlength="8"
-                required
+                
               />
             </div>
             <div class="signUp-input-Tel textbox">
@@ -179,7 +178,6 @@
                 id="memberTel"
                 placeholder="휴대번호 ex)01045459986"
                 maxlength="11"
-                required
               />
             </div>
             <div class="firstBox">

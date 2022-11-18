@@ -46,7 +46,6 @@ memberEmail.addEventListener("input",()=>{
 
         emailMessage.classList.remove("confirm","error");emailMessage
 
-        // 유효성 검사 확인 객체에 현재 상태 저장
         checkObj.memberEmail = false;
         return;
     }
@@ -57,19 +56,20 @@ memberEmail.addEventListener("input",()=>{
     if(regEx.test(memberEmail.value)){ // 유효할때
         $.ajax({
 
-            url : "/emailDupCheck", 
+            url : "/emailDupCheck",
             data : {"memberEmail" : memberEmail.value}, 
             type : "GET", 
             success : (result) => {
+                console.log(result);
 
-                if(result == 0) {// 중복 아님
+                if(result == 0) {// 중복 아닐떄
                     emailMessage.innerText="사용 가능한 이메일 입니다."
                     emailMessage.classList.remove("error")
                     emailMessage.classList.add("confirm")
 
                     checkObj.memberEmail = true;
 
-                }else{// 중복 임
+                }else{// 중복 일떄
                     emailMessage.innerText="이미 사용중인 이메일 입니다."
                     emailMessage.classList.remove("confirm")
                     emailMessage.classList.add("error")
@@ -77,10 +77,10 @@ memberEmail.addEventListener("input",()=>{
                     checkObj.memberEmail = false;
                 }
             }, 
-            error : () => { //비동기 통신이 실패했을 때, 수행한다.
+            error : () => { 
                 console.log("ajax 통신 실패");
             },
-            complete : () => { // success, error 수행여부 관계없이 무조건 수행
+            complete : () => {
                 console.log("중복 검사 수행 완료");
             },
 

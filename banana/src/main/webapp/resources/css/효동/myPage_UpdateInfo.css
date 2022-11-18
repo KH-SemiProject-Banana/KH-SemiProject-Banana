@@ -1,0 +1,172 @@
+/* 테이블 설정 */
+.signUpInfoClass  *{ 
+    /* border: 1px solid black; */
+    justify-content: center;
+}
+.signUpInfoClass{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+}
+
+/*************************************************/
+/* 내 정보 수정 */
+.SignUpAgreement1{ 
+    display: flex;
+    height: 200px;
+    font-size: 45px;
+    align-items: center;
+    color: #333;
+    font-weight : bolder;
+}
+
+
+/*************************************************/
+ /* 회색 부분은 수정이 불가능 합니다.  */
+ .SignUpAgreement3{
+    display: flex;
+    width: 100%;
+    height: 200px;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+}
+/* 개인 정보 수정 */
+#SignUpAgreement3-1{
+    font-size: 25px;
+    text-align: center;
+    align-items: center;
+    color: #333;
+    padding: 0 0 25px;
+    font-weight : bolder;
+}
+#SignUpAgreement3-2{
+    font-size: 16px;
+    text-align: center;
+    align-items: center;
+    color: #e53095;
+    font-weight : bolder;
+}
+
+
+/*************************************************/
+/* 수정 불가능 아이디/ 이름 / 생년월일 */
+
+.textboxNo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 500px;
+    padding: 0 0 10px 0;
+    position: relative;  
+}
+/* 텍스트 입력 박스 설정 */
+.inputBoxNo{
+    display: flex;
+    width: 500px;
+    height: 58px;
+    border-radius: 50px;
+    border: none;
+    padding: 0 40px;
+    background-color: #ddd;
+    font-size: 18px;
+    outline: none;
+    box-shadow: 3px 3px 3px 3px rgba(221, 221, 221, 0.934); /* 박스그림자 */
+}
+/*************************************************/
+
+/*  텍스트 박스 감싼 div 박스 설정 */
+.textbox{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 500px;
+    padding: 0 0 10px 0;
+    position: relative;  
+}
+/* 텍스트 입력 박스 설정 */
+.inputBox{
+    display: flex;
+    width: 500px;
+    height: 58px;
+    border-radius: 50px;
+    border: none;
+    padding: 0 40px;
+    background-color: #FDF6BB;
+    font-size: 18px;
+    outline: none;
+    box-shadow: 3px 3px 3px 3px rgba(221, 221, 221, 0.934); /* 박스그림자 */
+}
+
+.inputBox:focus{
+    border: 2px solid #e53095;
+}
+
+/* 인증번호받기, 인증하기, 중복확인 */
+.checkButton{
+    position: absolute;
+    cursor: pointer;
+    color: #e53095;
+    background-color: #FDF6BB;
+    font-size: 18px;
+    width: 120px;
+    right: 15px; 
+    border: none;
+}
+
+/* 입력 관련 메세지 */
+.signUp-message{
+    font-size: 14px;
+    letter-spacing: -1px;
+    position: relative;
+    left: 20px;
+    /* top: 100px; */
+}
+.confirm{ color: green;}
+.error{ color: red;}
+
+/* 입력관련 메세지 바로아래 박스 */
+.firstBox {
+    height: 50px;
+    padding: 0 0 35px 0;
+}
+
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active  {
+    box-shadow: 0 0 0 30px #FDF6BB inset;
+}
+
+/*************************************************/
+/*회원가입하기 다음페이지 이동 버튼 */
+.SignUpAgreement6{ 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    font-size: 15px;
+}
+
+/*회원가입하기 다음페이지 이동 버튼 */
+.SignUp{ 
+    width: 300px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    background-color: var(--yellow);
+    color: black;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.SignUp:hover{
+    transform: scale(0.9);
+}
+/*************************************************/

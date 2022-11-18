@@ -65,7 +65,7 @@ footer span {
 
 
 header{
-    height: 200px;
+    height: 230px;
 
      /*내부 요소를 유연하게 배치/정렬
         -> 내부 요소의 자동으로 지정된 margin이 모두 사라져 한 줄(기본값 row)로 배치*/
@@ -102,8 +102,22 @@ header>section:nth-child(2){flex-basis: 70%; }
 }
 
 
+#header-top-menu {
+    height: 100%;
+    margin-left: 5px;
 
+    font-size: 20px;
+    color: rgba(0,0,0,0.6);
+    text-decoration: none;
 
+    display: flex;
+    align-items: center;
+}
+
+#header-top-menu * {
+    color: rgba(0,0,0,0.6);
+    text-decoration: none;
+}
 
 
 /* 선택자가 중복작성되어도 오류X, 모든 css 속성이 적용됨 */
@@ -156,6 +170,8 @@ header>section:nth-child(2){flex-basis: 70%; }
 .sellingMy{
     display: flex;
     justify-content: flex-end;
+
+    text-decoration: none;
 }
 
 
@@ -166,6 +182,7 @@ header>section:nth-child(2){flex-basis: 70%; }
 
     background-color: var(--yellow);
     color: rgba(0,0,0,0.6);
+   
     font-weight: 600;
     display: flex;
     justify-content: center;
@@ -273,6 +290,8 @@ nav{
     top:0;
     background-color: white;
     /* padding-top: 10px; */
+
+    z-index: 150;
 }
 
 
@@ -347,11 +366,92 @@ section.content{
     display:flex;
 }
 
-.content-1{flex-basis:20%;}
+/* .content-1{flex-basis:20%;}
 .content-2{flex-basis:60%;}
-.content-3{flex-basis:20%;}
+.content-3{flex-basis:20%;} */
 
 
 
 
 
+/* header------------------------------------------------- */
+ /* ------------------------------------- */
+  /* 오른쪽 상단 닉네임 */
+/* label태그 중 for속성 값이 header-menu-toggle인 것 */
+label[for="header-menu-toggle"]{
+    cursor: pointer;
+    display: flex;
+    height: 42px;
+    min-width: 100px;
+    margin: 0 10px;
+    font-size: 20px;
+
+
+    align-items: center;
+    justify-content: center;
+
+    position:relative;
+
+  }
+
+  #header-menu-toggle {
+    visibility: hidden;
+  }
+  
+  label[for="header-menu-toggle"]:hover{
+    text-decoration: underline;
+  }
+  
+  /* 체크박스 다음 div */
+  #header-menu-toggle + div{
+    display: none;
+  }
+  /* 체크박스가 체크되었을때 다음 div */
+  #header-menu-toggle:checked + div{
+    display: block;
+  }
+  
+
+  .fa-caret-down {
+    margin: 0 3px;
+  }
+  /* 닉네임 클릭시 보이는 메뉴 */
+  #header-menu{
+    position:absolute;
+    z-index: 500;
+    width: 100px;
+    height: 80px;
+    /* left: 1400px;
+    top: 40px; */
+    margin-top: 5px;
+    border: 1px solid black;
+    background-color: white;
+  }
+  
+  #header-menu > a{
+    display: flex;
+    height: 50%;
+    align-items: center;
+    justify-content: center;
+
+    text-decoration: none;
+    color: rgba(0,0,0,0.6);
+  }
+  
+  #header-menu > a:first-child{
+    border-bottom: 1px solid #ccc;
+  }
+  
+  #header-menu > a:hover{
+    background-color: #455ba890;
+  }
+
+  #profileImg{
+    background-color: red;
+    width: 42px;
+    height: 42px;
+    margin-top : 5px;
+    margin-right: 5px;
+    border: 1px solid #eee;
+    border-radius: 5px;
+  }

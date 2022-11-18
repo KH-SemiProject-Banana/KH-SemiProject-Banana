@@ -102,7 +102,7 @@
     padding: 10px;
 }
 
-.favorite__content{
+.favorite__title, .new__title{
     padding: 7px 0 7px 20px;
 }
 
@@ -165,7 +165,7 @@ label[for="heart"]{
     justify-content: center;
 }
 
-.favorite__content {
+.favorite__title, .new__title {
     margin-left: 5px;
   
     display: flex;
@@ -174,7 +174,7 @@ label[for="heart"]{
     color: rgba(0,0,0,0.6);
 }
 
-.favorite__price{
+.favorite__price, .new__price{
     font-weight: 700;
     font-size: 20px;
 }
@@ -201,6 +201,7 @@ label[for="heart"]{
   height: 420px;
   position: relative;
   padding-top: 50px;
+  padding-bottom: 50px;
   max-width: 100%;
   margin: 0 auto;
   overflow: hidden; /* 현재 슬라이드 오른쪽에 위치한 나머지 슬라이드 들이 보이지 않도록 가림 */
@@ -227,7 +228,7 @@ label[for="heart"]{
     position: absolute;
     left: 640px;
     transition-delay: 1s; /* 새 슬라이드가 이동해 오는 동안 이전 슬라이드 이미지가 배경이 보이도록 지연 */
-    width: 800px !important;
+    /* width: 800px !important; */
     padding: 0;
     margin: 0;
   }
@@ -307,4 +308,6 @@ label[for="heart"]{
     z-index: 1;
   }
 
-  
+  .first {
+    margin-top: 50px;
+  }

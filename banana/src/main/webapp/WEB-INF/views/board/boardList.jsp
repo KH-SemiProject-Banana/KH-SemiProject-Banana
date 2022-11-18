@@ -21,6 +21,22 @@
     <main>
         <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 
+        <nav>
+            <ul>
+				<%-- items에서 값 하나씩 꺼내서(Map형태) 그걸 boardType이라 부르겠다 --%>
+                <c:forEach var="boardType" items="${boardTypeList}">
+                
+                	<li>
+                		<!-- 컬럼명 대문자 그대로 작성(KEY) => VALUE가 나옴 -->
+                		<a href="/board/${boardType.BOARD_CODE}">${boardType.BOARD_NAME}</a>
+                	</li>
+                
+                </c:forEach>
+                
+                
+            </ul>
+        </nav>
+
         
         <section class="board-list">
 

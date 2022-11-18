@@ -39,4 +39,13 @@ public class BoardServiceImpl implements BoardService{
 		
 		return map;
 	}
+
+	/**
+	 * 게시판 타입 조회
+	 */
+	@Override
+	public List<Map<String, Object>> selectBoardType() {
+
+		return dao.selectBoardType();
+	}
 }

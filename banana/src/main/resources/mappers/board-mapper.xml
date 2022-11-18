@@ -19,6 +19,13 @@
       <result property="thumbnail" column="THUMBNAIL"/>
 	
 	</resultMap>
+	
+	
+	<select id="selectBoardType">
+		SELECT BOARD_CODE, BOARD_NAME 
+		FROM BOARD_TYPE
+		ORDER BY 1
+	</select>
 
   
   <select id="getListCount" parameterType="_int" resultType="_int">

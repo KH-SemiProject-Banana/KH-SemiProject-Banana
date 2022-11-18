@@ -52,5 +52,10 @@ public class BoardDAO {
 		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
 		
 		return sqlSession.selectList("boardMapper.selectBoardList", boardCode, rowBounds);
+	}
+
+	public List<Map<String, Object>> selectBoardType() {
+		
+		return sqlSession.selectList("boardMapper.selectBoardType");
 	} 
 }

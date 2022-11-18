@@ -188,11 +188,14 @@
 .error{ color: red;}
 
 /* 입력관련 메세지 바로아래 박스 */
-.firstBox {
+.firstBox  {
     height: 50px;
     padding: 0 0 35px 0;
 }
-
+.emailMessageBox{
+    height: 35px;
+    padding: 0 0 10px 0;
+}
 
 input:-webkit-autofill,
 input:-webkit-autofill:hover, 

@@ -6,11 +6,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="shortcut icon"
-      sizes="16x16 32x32 64x64"
-      href="http://61.73.18.194:5555/KH_Project/images/Banana.png"
-    />
+    <link rel="shortcut icon"  sizes="16x16 32x32 64x64" href="https://i.ibb.co/4tCGZqD/Banana.png">
     <title>바꾸고 나누자 나랑: 바나나 마켓</title>
 
     <script src="https://kit.fontawesome.com/f7459b8054.js"crossorigin="anonymous"></script>
@@ -18,7 +14,7 @@
 
 
     <link rel="stylesheet" href="/resources/css/style.css">
-    <link rel="stylesheet" href="/resources/css/효동/SignUpInfo.css">
+    <link rel="stylesheet" href="/resources/css/hyodong/SignUpInfo.css">
   </head>
   <body>
     <main>
@@ -85,6 +81,9 @@
               />
               <button type="button" class="checkButton">인증번호 받기</button>
             </div>
+            <div class="emailMessageBox">
+              <span class="signUp-message"id="emailMessage">메일을 받을 수 있는 이메일을 입력해주세요.</span>
+            </div>
 
             <!-- 인증번호 입력 -->
             <div class="signUp-input-EmailCertification textbox">
@@ -100,7 +99,7 @@
               <button type="button" class="checkButton">인증하기</button>
             </div>
             <div class="firstBox">
-              <span class="signUp-message confirm">인증되었습니다.</span>
+              <span class="signUp-message ">인증되었습니다.</span>
             </div>
 
             <!-- 비밀번호 -->
@@ -126,9 +125,7 @@
               />
             </div>
             <div class="firstBox">
-              <span class="signUp-message error"
-                >비밀번호가 일치하지 않습니다.</span
-              >
+              <span class="signUp-message">비밀번호가 일치하지 않습니다.</span>
             </div>
 
             <!-- 닉네임 -->
@@ -143,9 +140,7 @@
               />
             </div>
             <div class="firstBox">
-              <span class="signUp-message confirm"
-                >사용 가능한 닉네임 입니다.</span
-              >
+              <span class="signUp-message">사용 가능한 닉네임 입니다.</span>
             </div>
 
             <!-- 이름/생년월일/휴대번호 -->
@@ -181,9 +176,7 @@
               />
             </div>
             <div class="firstBox">
-              <span class="signUp-message error"
-                >전화번호 형식이 올바르지 않습니다</span
-              >
+              <span class="signUp-message">전화번호 형식이 올바르지 않습니다</span>
             </div>
 
             <!-- 우편 번호/주소/상세주소 -->
@@ -228,5 +221,6 @@
     </main>
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+    <script src="/resources/js/hyodong/SignUpInfo.js"></script>
   </body>
 </html>

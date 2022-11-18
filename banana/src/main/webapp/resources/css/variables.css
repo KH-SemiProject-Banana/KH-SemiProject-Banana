@@ -1,0 +1,10 @@
+:root{
+    --lightYellow:  lightgoldenrodyellow;
+    --yellow:rgb(251, 238, 97);
+    --darkYellow: rgb(255, 216, 76);
+    --menu: rgb(255, 216, 76);
+    --checkRed: rgb(248, 69, 69);
+    --innerGray: #333d4b;
+    --buttonGray: #ADB1C5;
+    --titleFont: 'Sunflower', sans-serif;
+}

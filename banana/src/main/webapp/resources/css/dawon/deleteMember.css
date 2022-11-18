@@ -1,0 +1,95 @@
+.deleteMember {
+    min-height: 800px;
+    /* background-color: aqua; */
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.delTitle {
+    height: 100px;
+    border-bottom: 2px solid #eee;
+    padding: 15px;
+}
+
+
+.delTitleName > p:nth-child(1) {
+    font-size: 25px;
+    font-weight: bold;
+    padding-bottom: 5px;
+}
+
+.delContent {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+}
+
+.delMember {
+    display: flex;
+    align-items: center;
+    height: 100px;
+    margin-bottom: 5px;
+    background-color: rgba(0,0,0,0.05);
+
+    margin-bottom: 20px;
+}
+
+.memberImgArea{
+    height: 100px;
+    width: 100px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.memberImg {
+    height: 70px;
+    width: 70px;
+}
+
+.memberNickname {
+    width: 250px;
+    height: 100%;
+    border-right: 2px solid rgba(0,0,0,0.1);
+
+    font-weight: bold;
+    font-size: 20px;
+
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+}
+
+.memberAddress {
+    height: 100px;
+    width: 650px;
+    padding-left: 30px;
+
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+
+    /* background-color: aqua; */
+}
+
+.delAdm {
+
+    margin-right: 30px;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: black;
+    text-decoration: none;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.delAdm:hover{
+    background-color: #ccc;
+    transition-duration: 0.3s;
+}

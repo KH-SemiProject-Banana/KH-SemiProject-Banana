@@ -96,9 +96,23 @@ public class MemberController {
 		return "redirect:/";
 	}
 	
+	/** 회원가입 동의 페이지 이동
+	 * @return
+	 */
+	@GetMapping("/member/signUp/agreement")
+	public String signUpAgreement() {
+		return "member/SignUpAgreement";
+	}
+	
 	
 
-	
+	/** 회원가입 정보입력 페이지 이동
+	 * @return
+	 */
+	@GetMapping("/member/signUp/info")
+	public String signUpInfo() {
+		return "member/SignUpInfo";
+	}
 	
 	
 	

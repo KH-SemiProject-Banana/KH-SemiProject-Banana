@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon"  sizes="16x16 32x32 64x64" href="http://61.73.18.194:5555/KH_Project/images/Banana.png">
+    <link rel="shortcut icon"  sizes="16x16 32x32 64x64" href="https://i.ibb.co/4tCGZqD/Banana.png">
     <title>바꾸고 나누자 나랑: 바나나 마켓</title>
 
     <script src="https://kit.fontawesome.com/f7459b8054.js" crossorigin="anonymous"></script>
@@ -16,7 +16,7 @@
     
     
     <link rel="stylesheet" href="/resources/css/style.css">
-    <link rel="stylesheet" href="/resources/css/효동/SignUpAgreement.css">
+    <link rel="stylesheet" href="/resources/css/hyodong/SignUpAgreement.css">
 </head>
 <body>
     <main>
@@ -60,6 +60,7 @@
             <div class="SignUpAgreement3">
                 <th>약관동의</th>
                 
+                
             </div>
             <div class="SignUpAgreement4 Scroll">
                 <p class="ag_text mt">제 1 장 총칙</p><br>
@@ -96,6 +97,6 @@
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
-    <script src="/resources/js/효동/signUpAgreement.js"></script>
+    <script src="/resources/js/hyodong/signUpAgreement.js"></script>
 </body>
 </html>

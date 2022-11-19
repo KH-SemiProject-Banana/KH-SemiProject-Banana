@@ -45,6 +45,8 @@ public class GoodsServiceImpl implements GoodsService {
 			
 			if(imagePath != null) {
 				
+				int i = 0;
+				
 				for (MultipartFile item : imagePath) {
 					
 					
@@ -56,6 +58,9 @@ public class GoodsServiceImpl implements GoodsService {
 						rename = Util.fileRename(item.getOriginalFilename());
 
 						goodsImage.setImagePath(webPath + rename);
+						goodsImage.setImageOrder(i++);
+						
+						System.out.println(goodsImage);
 
 					} else { // ??? 써줘야하나??
 
@@ -96,10 +101,9 @@ public class GoodsServiceImpl implements GoodsService {
 		
 		Goods goods = dao.selectGoods(goodsNo);
 		
-		List<Integer> imageList = dao.selectGoodsImg(goodsNo);
-		if(!imageList.isEmpty()) {
-			
-		}
+
+		
+
 		
 		return goods;
 	}
@@ -107,27 +111,27 @@ public class GoodsServiceImpl implements GoodsService {
 	/**
 	 * 내 상품 수정
 	 */
-	@Override
-	@Transactional(rollbackFor = Exception.class)
-	public int updateGoods(String webPath, String filePath, List<MultipartFile> imagePath, Goods inputGoods) 
-			throws Exception {
-
-		int updateResult = dao.registerGoods(inputGoods);
-		
-		if(updateResult > 0) {
-			
-			GoodsImage goodsImage = new GoodsImage();
-			goodsImage.setGoodsNo(inputGoods.getGoodsNo());
-			
-			if(imagePath != null) {
-				
-				
-			}
-		}
-		
-		
-		return 0;
-	}
+//	@Override
+//	@Transactional(rollbackFor = Exception.class)
+//	public int updateGoods(String webPath, String filePath, List<MultipartFile> imagePath, Goods inputGoods) 
+//			throws Exception {
+//
+//		int updateResult = dao.registerGoods(inputGoods);
+//		
+//		if(updateResult > 0) {
+//			
+//			GoodsImage goodsImage = new GoodsImage();
+//			goodsImage.setGoodsNo(inputGoods.getGoodsNo());
+//			
+//			if(imagePath != null) {
+//				
+//				
+//			}
+//		}
+//		
+//		
+//		return 0;
+//	}
 
 
 

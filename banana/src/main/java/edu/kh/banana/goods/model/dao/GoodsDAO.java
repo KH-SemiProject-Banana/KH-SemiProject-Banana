@@ -53,12 +53,7 @@ public class GoodsDAO {
 		return sqlSession.selectOne("goodsMapper.selectGoods", goodsNo);
 	}
 
-	public List<Integer> selectGoodsImg(int goodsNo) {
 
-
-		return sqlSession.selectList("goodsMapper.selectGoodsImg", goodsNo);
-		
-	}
 
 
 

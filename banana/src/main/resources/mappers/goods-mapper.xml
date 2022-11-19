@@ -28,6 +28,7 @@
    		
    		<result property="imageNo" column="IMAGE_NO"></result>
    		<result property="imagePath" column="IMAGE_PATH"></result>
+   		<result property="ImageOrder" column="IMG_ORDER"></result>
 	
 	</resultMap>
  	 
@@ -50,7 +51,7 @@
  	 
  	 <insert id="registerImage" parameterType="GoodsImage">
  	 	INSERT INTO GOODS_IMAGE
- 	 	VALUES(SEQ_IMAGE_NO.NEXTVAL, #{goodsNo}, #{imagePath})
+ 	 	VALUES(SEQ_IMAGE_NO.NEXTVAL, #{goodsNo}, #{imagePath}, #{imageOrder})
  	 </insert>
  	 
  	 
@@ -66,10 +67,7 @@
  	 	WHERE GOODS_NO = #{goodsNo}
  	 </select>
   
-  	<select id="selectGoodsImg" parameterType="_int" resultType="list">
-  		SELECT * FROM GOODS_IMAGE
-  		WHERE GOODS_NO = #{goodsNo}
-  	</select>
+
   
   
   

@@ -37,7 +37,7 @@ public interface GoodsService {
 	 * @param inputGoods
 	 * @return
 	 */
-	int updateGoods(String webPath, String filePath, List<MultipartFile> imagePath, Goods inputGoods);
+//	int updateGoods(String webPath, String filePath, List<MultipartFile> imagePath, Goods inputGoods);
 
 
 

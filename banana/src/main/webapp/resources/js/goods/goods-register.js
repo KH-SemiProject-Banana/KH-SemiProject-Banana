@@ -206,7 +206,7 @@ goodsPrice.addEventListener("input", function (e) {
         return;
     }
 
-    const regEx = /^[0-9]{1,10}$/;
+    const regEx = /^[0-9]{1,9}$/;
 
     let value = e.target.value;
     // value = Number(value.replaceAll(',', ''));

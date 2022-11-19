@@ -141,32 +141,32 @@ public class GoodsController {
 
 	
 	// 내 상품 수정 페이지
-	@PostMapping("/updateGoods")
-	public String updateGoods(@RequestHeader("referer") String referer,
-			/*ModelAttribute*/Goods inputGoods,
-			RedirectAttributes ra,
-			@RequestParam(value="imagePath", required = false) List<MultipartFile> imagePath,
-			HttpServletRequest req
-			) throws Exception {
-		
-		String webPath = "/resources/images/goodsImage/";
-		String filePath = req.getSession().getServletContext().getRealPath(webPath);
-		
-		int result = service.updateGoods(webPath, filePath, imagePath, inputGoods);
-		
-		String message = null;
-		
-		if(result > 0) {
-
-			message = "상품 수정 완료";
-		} else {
-
-			message = "상품 수정 실패";
-		}
-		
-		ra.addFlashAttribute("message", message);
-		
-		return "redirect:" + referer;
-	}
+//	@PostMapping("/updateGoods")
+//	public String updateGoods(@RequestHeader("referer") String referer,
+//			/*ModelAttribute*/Goods inputGoods,
+//			RedirectAttributes ra,
+//			@RequestParam(value="imagePath", required = false) List<MultipartFile> imagePath,
+//			HttpServletRequest req
+//			) throws Exception {
+//		
+//		String webPath = "/resources/images/goodsImage/";
+//		String filePath = req.getSession().getServletContext().getRealPath(webPath);
+//		
+//		int result = service.updateGoods(webPath, filePath, imagePath, inputGoods);
+//		
+//		String message = null;
+//		
+//		if(result > 0) {
+//
+//			message = "상품 수정 완료";
+//		} else {
+//
+//			message = "상품 수정 실패";
+//		}
+//		
+//		ra.addFlashAttribute("message", message);
+//		
+//		return "redirect:" + referer;
+//	}
 
 }

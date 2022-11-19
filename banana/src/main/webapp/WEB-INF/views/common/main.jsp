@@ -7,7 +7,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon"  sizes="16x16 32x32 64x64" href="https://i.ibb.co/4tCGZqD/Banana.png">
+    <link rel="shortcut icon" sizes="16x16 32x32 64x64" href="https://i.ibb.co/4tCGZqD/Banana.png">
+
     <title>바꾸고 나누자 나랑: 바나나 마켓</title>
 
     <link rel="stylesheet" href="/resources/css/screens/main.css">
@@ -22,6 +23,7 @@
     <main>
 
 		<jsp:include page="/WEB-INF/views/common/header.jsp" />
+		<jsp:include page="/WEB-INF/views/common/nav.jsp" />
         
         <section class="content"> 
             
@@ -33,11 +35,11 @@
                 <input type="radio" name="slide" class="slide" id="slide5">
                 
                 <ul id="imgHolder" class="imgs">
-                    <li><img src="/resources/images/main-add1.jpg" class="slide-img"></li>
-                    <li><img src="/resources/images/main-add2.jpg" class="slide-img"></li>
-                    <li><img src="/resources/images/main-add3.jfif" class="slide-img"></li>
-                    <li><img src="/resources/images/main-add4.jpg" class="slide-img"></li>
-                    <li><img src="/resources/images/main-add5.jpg" class="slide-img"></li>
+                    <li><img src="/resources/images/mainAdd/main-add1.jpg" class="slide-img"></li>
+                    <li><img src="/resources/images/mainAdd/main-add2.jpg" class="slide-img"></li>
+                    <li><img src="/resources/images/mainAdd/main-add3.jfif" class="slide-img"></li>
+                    <li><img src="/resources/images/mainAdd/main-add4.jpg" class="slide-img"></li>
+                    <li><img src="/resources/images/mainAdd/main-add5.jpg" class="slide-img"></li>
                 </ul>
                 <div class="bullets">
                     <label for="slide1">&nbsp;</label>

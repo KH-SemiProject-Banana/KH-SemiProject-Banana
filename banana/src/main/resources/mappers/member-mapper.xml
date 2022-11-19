@@ -37,5 +37,7 @@
  	 	AND AUTHORITY = 1
  	 	AND MEMBER_EMAIL = #{memberEmail}
  	 </select>
+ 	 
+ 	 
   
 </mapper>

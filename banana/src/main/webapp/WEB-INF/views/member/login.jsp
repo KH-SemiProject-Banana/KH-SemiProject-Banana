@@ -7,18 +7,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon"  sizes="16x16 32x32 64x64" href="http://61.73.18.194:5555/KH_Project/images/Banana.png">
+    <link rel="shortcut icon"  sizes="16x16 32x32 64x64" href="https://i.ibb.co/4tCGZqD/Banana.png">
     <title>바꾸고 나누자 나랑: 바나나 마켓</title>
 
-    <link rel="stylesheet" href="/resources/css/style.css">
     <script src="https://kit.fontawesome.com/f7459b8054.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/1023652dd4.js" crossorigin="anonymous"></script>
 
-        
+
+    <link rel="stylesheet" href="/resources/css/style.css">
     <link rel="stylesheet" href="/resources/css/member/login.css">
+        
 </head>
 <body>
     <main>
         <jsp:include page="/WEB-INF/views/common/header.jsp" />
+        <jsp:include page="/WEB-INF/views/common/nav.jsp" />
 
             <div class="loginClass">
                 <!-- 바나나 텍스트 -->
@@ -38,7 +41,7 @@
                         <!-- 아이디(이메일) -->
                         <div class="signUp-input-Email textbox">
                             <input type="text" name="memberEmail" id="memberEmail" class="inputBox" placeholder="아이디 (이메일)"
-                                maxlength="20" autocomplete="off" required value=${cookie.saveId.value}>
+                                maxlength="20" autocomplete="off" value=${cookie.saveId.value}>
                         </div>
 
                         <c:if test="${!empty cookie.saveId.value}">
@@ -56,14 +59,13 @@
             
                         <!-- 비밀번호 -->
                         <div class="signUp-input-password textbox">
-                            <input type="password" name="memberPw" class="inputBox" id="memberPw" placeholder="비밀번호" maxlength="20"
-                                required>
+                            <input type="password" name="memberPw" class="inputBox" id="memberPw" placeholder="비밀번호" maxlength="20">
                         </div>
                     </div>
             
                     <div class="text-area">
                         <a href="#">ID/PW 찾기</a>
-                        <a href="#">회원가입</a>
+                        <a href="/member/signUp/agreement">회원가입</a>
                     </div>
             
                     <div class="loginFooter">

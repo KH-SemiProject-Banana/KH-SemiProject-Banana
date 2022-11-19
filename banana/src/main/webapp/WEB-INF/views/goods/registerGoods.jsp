@@ -24,6 +24,7 @@
 
     <main>
        <jsp:include page="/WEB-INF/views/common/header.jsp" />
+       <jsp:include page="/WEB-INF/views/common/nav.jsp" />
 
         <section class="goods-register">
             <div class="register__title">

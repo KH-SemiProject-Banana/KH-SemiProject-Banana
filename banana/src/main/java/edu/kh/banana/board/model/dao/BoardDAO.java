@@ -17,12 +17,12 @@ public class BoardDAO {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 
-	public Map<String, Object> selectBoardList(int boardCode, int cp) {
-
-
-		
-		return null;
-	}
+//	public Map<String, Object> selectBoardList(int boardCode, int cp) {
+//
+//
+//		
+//		return null;
+//	}
 
 	/** 특정 게시판의 게시글 수 조회
 	 * @param boardCode
@@ -54,8 +54,22 @@ public class BoardDAO {
 		return sqlSession.selectList("boardMapper.selectBoardList", boardCode, rowBounds);
 	}
 
+
+	
+	/** 게시판 목록 조회
+	 * @return boardTypeList
+	 */
 	public List<Map<String, Object>> selectBoardType() {
 		
 		return sqlSession.selectList("boardMapper.selectBoardType");
-	} 
+	}
+
+	/** 게시글 상세조회 + 댓글 목록 조회
+	 * @param boardNo
+	 * @return board
+	 */
+	public Board selectBoardDetail(int boardNo) {
+		
+		return sqlSession.selectOne("boardMapper.selectBoardDetail", boardNo);
+	}
 }

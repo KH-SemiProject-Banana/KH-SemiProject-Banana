@@ -3,6 +3,7 @@
 
 <c:set var="boardList" value="${map.boardList}"></c:set>
 <c:set var="pagination" value="${map.pagination}"></c:set>
+<c:set var="boardName" value="${boardTypeList[boardCode-1].BOARD_NAME}" />
 
 <!DOCTYPE html>
 <html lang="en">
@@ -13,7 +14,7 @@
     <title>${boardName}</title>
 
     <link rel="stylesheet" href="/resources/css/style.css">
-    <link rel="stylesheet" href="/resources/css/board/boardList-style.css">
+    <link rel="stylesheet" href="/resources/css/board/boardList.css">
 
     <script src="https://kit.fontawesome.com/f7459b8054.js" crossorigin="anonymous"></script>
 </head>
@@ -23,24 +24,18 @@
 
         <nav>
             <ul>
-				<%-- items에서 값 하나씩 꺼내서(Map형태) 그걸 boardType이라 부르겠다 --%>
-                <c:forEach var="boardType" items="${boardTypeList}">
-                
-                	<li>
-                		<!-- 컬럼명 대문자 그대로 작성(KEY) => VALUE가 나옴 -->
-                		<a href="/board/${boardType.BOARD_CODE}">${boardType.BOARD_NAME}</a>
-                	</li>
-                
-                </c:forEach>
-                
-                
+            <c:forEach var="boardType" items="${boardTypeList}">
+                <li>
+                    <a href="/board/${boardType.BOARD_CODE}">${boardType.BOARD_NAME}</a>
+                </li>
+            </c:forEach>
             </ul>
         </nav>
 
         
         <section class="board-list">
 
-            <h1 class="board-name">${boardName}게시판이름 들어갈곳이다</h1>
+            <h1 class="board-name">${boardName}</h1>
 
 
             <div class="list-wrapper">
@@ -73,7 +68,7 @@
                                             <c:if test="${not empty board.thumbnail}">
                                                 <img class="list-thumbnail" src="${board.thumbnail}">
                                             </c:if>
-                                            <a href="#">${board.boardTitle}</a>   
+                                            <a href="/board/${boardCode}/${board.boardNo}">${board.boardTitle}</a>   
                                             [${board.commentCount}]                        
                                         </td>
                                         <td>${board.memberNickname}</td>
@@ -104,34 +99,32 @@
 
                 <ul class="pagination">
                 
-                    <!-- 첫 페이지로 이동 -->
-                    <li><a href="#">&lt;&lt;</a></li>
+                    <!-- 첫 페이지로 이동( <<) -->
+                    <li><a href="/board/${boardCode}">&lt;&lt;</a></li>
 
-                    <!-- 이전 목록 마지막 번호로 이동 -->
-                    <li><a href="#">&lt;</a></li>
+                    <!-- 이전 목록 마지막 번호로 이동 ( < ) -->
+                    <li><a href="/board/${boardCode}?cp=${pagination.prevPage}">&lt;</a></li>
 
 					
                     <!-- 특정 페이지로 이동 -->
+                    <c:forEach var="i" begin="${pagination.startPage}" end="${pagination.endPage}" step="1">
+                        <c:choose>
+                            <c:when test="${i == pagination.currentPage}">
+                                <%-- 현재 보고있는 페이지 --%>
+                                <li><a class="current">${i}</a></li>
+                            </c:when>
+                            <c:otherwise>
+                                <%-- 현재 페이지를 제외한 나머지 --%>
+                                <li><a href="/board/${boardCode}?cp=${i}">${i}</a></li>
+                            </c:otherwise>
+                        </c:choose>
+                    </c:forEach>
                     
-                    <!-- 현재 보고있는 페이지 -->
-                    <li><a class="current">1</a></li>
-                    
-                    <!-- 현재 페이지를 제외한 나머지 -->
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li><a href="#">6</a></li>
-                    <li><a href="#">7</a></li>
-                    <li><a href="#">8</a></li>
-                    <li><a href="#">9</a></li>
-                    <li><a href="#">10</a></li>
-                    
-                    <!-- 다음 목록 시작 번호로 이동 -->
-                    <li><a href="#">&gt;</a></li>
+                    <!-- 다음 목록 시작 번호로 이동 ( > )-->
+                    <li><a href="/board/${boardCode}?cp=${pagination.nextPage}">&gt;</a></li>
 
-                    <!-- 끝 페이지로 이동 -->
-                    <li><a href="#">&gt;&gt;</a></li>
+                    <!-- 끝 페이지로 이동 ( >> ) -->
+                    <li><a href="/board/${boardCode}?cp=${pagination.maxPage}">&gt;&gt;</a></li>
 
                 </ul>
             </div>

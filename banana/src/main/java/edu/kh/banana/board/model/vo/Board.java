@@ -1,12 +1,16 @@
 package edu.kh.banana.board.model.vo;
 
+import java.util.List;
+
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
 @Getter
 @Setter
 @ToString
+@NoArgsConstructor
 public class Board {
 
     private int boardNo;
@@ -20,4 +24,10 @@ public class Board {
     private int memberNo;
     private String profileImage;
     private String thumbnail;
+    
+    private List<BoardImage> imageList;
+    
+    private List<Comment> commentList;
+    
+    
 }

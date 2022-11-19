@@ -7,6 +7,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -14,6 +15,7 @@ import edu.kh.banana.board.model.service.BoardService;
 
 public class BoardTypeInterceptor implements HandlerInterceptor{
 	
+	@Autowired
 	private BoardService service;
 
 	// preHandle : 컨트롤러 실행 전
@@ -25,7 +27,7 @@ public class BoardTypeInterceptor implements HandlerInterceptor{
 
 		ServletContext application = request.getSession().getServletContext();
 		
-		if(application.getAttribute("boardType") == null) {
+		if(application.getAttribute("boardTypeList") == null) {
 			
 			List<Map<String, Object>> boardTypeList = service.selectBoardType();
 			

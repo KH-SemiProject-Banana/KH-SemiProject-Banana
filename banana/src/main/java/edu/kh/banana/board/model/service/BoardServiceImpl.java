@@ -48,4 +48,13 @@ public class BoardServiceImpl implements BoardService{
 
 		return dao.selectBoardType();
 	}
+
+	/**
+	 * 게시글 상세조회 + 댓글 목록 조회
+	 */
+	@Override
+	public Board selectBoardDetail(int boardNo) {
+		
+		return dao.selectBoardDetail(boardNo);
+	}
 }

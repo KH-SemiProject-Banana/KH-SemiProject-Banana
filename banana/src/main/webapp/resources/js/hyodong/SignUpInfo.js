@@ -86,11 +86,12 @@ memberEmail.addEventListener("input",()=>{
 
 
 
-/*************************** 비밀번호 유효성 검사 ***************************/
+/*************************** 비밀번호/비밀번호 확인 유효성 검사 ***************************/
 const memberPw = document.getElementById("memberPw");
 const memberPwConfirm =document.getElementById("memberPwConfirm");
 const pwMessage = document.getElementById("pwMessage");
 
+// 비밀번호 유효성 검사
 memberPw.addEventListener("input",()=>{
 
     // 비밀번호 미입력 시
@@ -105,10 +106,10 @@ memberPw.addEventListener("input",()=>{
     // 비밀번호 정규 표현식
     const regEx =/^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[`~!@$!%*#^?&\\(\\)\\-_=+])(?!.*[^a-zA-z0-9`~!@$!%*#^?&\\(\\)\\-_=+]).{8,16}$/;
     
-    if(regEx.test(memberPw.value)){ // 비밀번호 유효 할때
+    if(regEx.test(memberPw.value)){ // 정규표현식이 일치할경우
         checkObj.memberPw = true;
 
-        // 비밀번호 확인 미 작성
+        // 비밀번호 확인 미 작성시
         if(memberPwConfirm.value.trim().length == 0){
             pwMessage.innerText="유효한 비밀번호 형식입니다";
             pwMessage.classList.remove("error");
@@ -121,6 +122,7 @@ memberPw.addEventListener("input",()=>{
                 pwMessage.classList.remove("error");
                 pwMessage.classList.add("confirm");
                 checkObj.memberPwConfirm = true;
+
             } else { // 동일하지 않은 경우
                 pwMessage.innerText = "비밀번호가 일치하지 않습니다.";
                 pwMessage.classList.remove("confirm");
@@ -129,10 +131,34 @@ memberPw.addEventListener("input",()=>{
             }
         }
 
-    } else { // 비밀번호 유효하지 않음
+    } else { // 정규표현식이 일치하지 않을 경우
         pwMessage.innerText="비밀번호 형식이 유효하지 않습니다.";
         pwMessage.classList.remove("confirm");
         pwMessage.classList.add("error");
         checkObj.memberPw = false;
     }
 });
+
+// 비밀번호 확인 유효성 검상
+memberPwConfirm.addEventListener("input",()=>{
+
+    // 정규표현식이 일치할경우
+    if(checkObj.memberPw){
+
+        if(memberPw.value == memberPwConfirm.value){ // 동일한 경우
+            pwMessage.innerText="비밀번호가 일치합니다.";
+            pwMessage.classList.remove("error");
+            pwMessage.classList.add("confirm");
+            checkObj.memberPwConfirm = true;
+
+        } else { // 동일하지 않을 경우
+            pwMessage.innerText="비밀번호가 일치하지 않습니다.";
+            pwMessage.classList.remove("confirm");
+            pwMessage.classList.add("error");
+            checkObj.memberPwConfirm = false;
+        }
+
+    }else{ // 정규표현식이 일치하지 않을 경우
+        checkObj.memberPwConfirm = false;
+    }
+})

@@ -41,7 +41,8 @@
 
     <main>
         <%-- header.jsp.include --%>
-        <jsp:include page = "/WEB-INF/views/common/header.jsp" />
+        <jsp:include page="/WEB-INF/views/common/header.jsp" />
+        <jsp:include page= "/WEB-INF/views/common/nav.jsp" />
     
         <div class = "myBanana">
             <!--섹션1********************************************************************************************************섹션1-->
@@ -65,8 +66,8 @@
                 
                 <div class = "myBanana-content">
                     <div class = "myBanana-info">
-                        <div class = "myBanana-name">냥냥이</div>
-                        <div class = "myBanana-address">도화동</div>
+                        <div class = "myBanana-name">${loginMember.memberNickname}</div>
+                        <div class = "myBanana-address">${address}</div>
                         <div class = "myBanana-changeInfo">
                             <a href="#"><i class="fa-solid fa-pen"></i></a>
                                                     

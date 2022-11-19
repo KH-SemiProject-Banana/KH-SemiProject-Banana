@@ -221,6 +221,10 @@
     </main>
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+
+    <!-- jQuery 라이브러리(.js 파일) 추가(CDN 방식) -->
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+
     <script src="/resources/js/hyodong/SignUpInfo.js"></script>
   </body>
 </html>

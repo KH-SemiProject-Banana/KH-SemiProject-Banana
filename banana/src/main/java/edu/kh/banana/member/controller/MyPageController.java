@@ -17,7 +17,7 @@ public class MyPageController {
 	
 	@GetMapping("/main") // 나머지 주소 작성
 	public String main() {
-		return "member/myPage-info";
+		return "member/myPage_main";
 	}
 	
 }

@@ -3,15 +3,12 @@
 <mapper namespace="ajaxMapper">
 
 
-	<!-- 이메일 유효성 검사 -->		
-	<select id="emailDupcheck" parameterType="">
-		SELECT COUNT(*)
-	   FROM "MEMBER"
-	   WHERE MEMBER_EMAIL = #{memberEmail}
-	   AND MEMBER_DEL_FL  = 'N'
+	<!-- 이메일 중복 검사 -->
+	<select id="emailDupCheck" parameterType = "string" resultType = "_int">
+	SELECT COUNT(*)
+   FROM "MEMBER"
+   WHERE MEMBER_EMAIL = #{memberEmail}
+   AND MEMBER_DEL_FL  = 'N'
 	</select>
-
-
-
-
+	 
 </mapper>

@@ -125,7 +125,7 @@
               />
             </div>
             <div class="firstBox">
-              <span class="signUp-message">비밀번호가 일치하지 않습니다.</span>
+              <span class="signUp-message" id="pwMessage">영문자/숫자/특수문자 포함 8~16글자로 사이로 입력해주세요.</span>
             </div>
 
             <!-- 닉네임 -->

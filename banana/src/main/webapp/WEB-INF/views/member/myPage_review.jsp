@@ -53,7 +53,7 @@
             </section>
             <section class = "review_section_2">
                 <div class = "review_2">
-                    <div class = "photo">
+                    <div class = "userphoto">
                         <img  src="/resources/images/banana-logo.png" alt="">
                     </div>
                     <div class="memberInfoBox">

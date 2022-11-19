@@ -173,16 +173,23 @@ document.getElementById("fourth-category").addEventListener("click",function(){
     
 // })
 
+const first = document.getElementById("myBanana-sellList");
 const fourth = document.querySelector("#changeJsp");
-const ms = document.getElementById("myBanana-sellList");
+
+fourth.style.display = "none";
 
 document.getElementById("first-category").addEventListener("click",function(){
     alert("첫번째 카테고리 open");
 
     
-
     fourth.style.display = "none";
-    ms.style.display = "block";
+    if(first.style.display == "none"){
+        first.style.display = "block";
+        fourth.style.display = "none";
+    } else {
+        fourth.style.display = "none";  
+    }
+    
     
 
     
@@ -193,12 +200,16 @@ document.getElementById("first-category").addEventListener("click",function(){
 document.getElementById("fourth-category").addEventListener("click",function(){
     alert("네번째 오픈");
 
-    console.log(document.querySelector("#changeJsp"));
-
-    fourth.style.display = "block";
-    ms.style.display = "none";
+    //first.style.display == "none";
+    // console.log(document.querySelector("#changeJsp"));
+    if(fourth.style.display == "none"){
+        fourth.style.display = "block";
+        first.style.display = "none";
+     } else {
+        first.style.display = "none";
+    }
     
-
+       
     
 })
 

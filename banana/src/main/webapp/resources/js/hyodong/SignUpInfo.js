@@ -39,7 +39,7 @@ memberEmail.addEventListener("input",()=>{
 
     // 미입력시
     if(memberEmail.value.trim().length == 0){
-        emailMessage.innerText="메일을 받을 수 있는 이메일을 입력해주세요.";
+        emailMessage.innerText="인증번호를 받을 수 있는 이메일을 입력해주세요.";
         emailMessage.classList.remove("confirm","error");emailMessage
         memberEmail.value="";
         checkObj.memberEmail = false;
@@ -53,7 +53,6 @@ memberEmail.addEventListener("input",()=>{
         $.ajax({
             url : "/emailDupCheck",
             data : {"memberEmail" : memberEmail.value}, 
-            type : "GET", 
             success : (result) => {
                 if(result == 0) {// 중복 아닐떄
                     emailMessage.innerText="사용 가능한 이메일 입니다."
@@ -69,10 +68,10 @@ memberEmail.addEventListener("input",()=>{
                 }
             }, 
             error : () => { 
-                console.log("ajax 통신 실패");
+                console.log("이메일 ajax 중복검사  실패");
             },
             complete : () => {
-                console.log("중복 검사 수행 완료");
+                console.log("이메일 ajax 중복검사  실패 완료");
             },
         });
 
@@ -96,7 +95,7 @@ memberPw.addEventListener("input",()=>{
 
     // 비밀번호 미입력 시
     if(memberPw.value.trim().length == 0){
-        pwMessage.innerText ="영문자/숫자/특수문자 포함 8~16글자로 사이로 입력해주세요.";
+        pwMessage.innerText ="영문자/숫자/특수문자 포함 8~16글자 사이로 입력해주세요.";
         pwMessage.classList.remove("confirm","error");
         memberPw.value="";
         checkObj = false;
@@ -161,4 +160,36 @@ memberPwConfirm.addEventListener("input",()=>{
     }else{ // 정규표현식이 일치하지 않을 경우
         checkObj.memberPwConfirm = false;
     }
+})
+
+/*************************** 닉네임 확인 유효성 검사 ***************************/
+const memberNickname = document.getElementById("memberNickname");
+const nickMessage = document.getElementById("nickMessage");
+
+memberNickname.addEventListener("input",()=>{
+
+    // 닉네임 미입력 시
+    if(memberNickname.value.trim().length = 0){
+        nickMessage.innerHTML="한글,영어,숫자로만 2~10글자 사이로 입력해주세요.";
+        nickMessage.classList.remove("confirm","error");
+        checkObj.memberNickname= false;
+        return
+    }
+    // 닉네임 정규 표현식
+    const regEx =/^[가-힣\w]{2,10}$/;
+
+    if(regEx.test(memberNickname.value)){ // 정규표현식 일치하는 경우
+
+        // 닉네임 중복검사
+        //const dbNicknameCheck = {""};
+
+        $({
+            url  : '',
+            data : dbNicknameCheck,
+            success : (result)=>{
+                
+            }
+        })
+    }
+
 })

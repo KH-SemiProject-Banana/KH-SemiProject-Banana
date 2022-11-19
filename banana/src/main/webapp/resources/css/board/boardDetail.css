@@ -215,8 +215,11 @@ nav li>a:hover {
     /* color: white; */
 }
 
-var(--darkYellow);
+
 .boardNameArea {
     font-weight: bold;
     color: #aaa;
 }
+
+
+

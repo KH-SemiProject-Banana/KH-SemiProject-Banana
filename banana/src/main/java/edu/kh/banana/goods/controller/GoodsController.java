@@ -33,6 +33,9 @@ public class GoodsController {
 	@Autowired
 	private GoodsService service;
 	
+	/** 상품 등록 페이지로 이동
+	 * @return
+	 */
 	@GetMapping("/registerGoods")
 	public String registerGoods() {
 		
@@ -41,6 +44,16 @@ public class GoodsController {
 	
 	
 	
+	/** 상품 등록 페이지
+	 * @param loginMember
+	 * @param inputGoods
+	 * @param ra
+	 * @param imagePath
+	 * @param req
+	 * @param referer
+	 * @return
+	 * @throws Exception
+	 */
 	@PostMapping("/registerGoods")
 	public String registerGoods(
 			@SessionAttribute("loginMember") Member loginMember,
@@ -117,8 +130,7 @@ public class GoodsController {
 	public String updateGoods(@RequestParam(value="goodsNo") int goodsNo,
 			Model model) {
 		
-		// 내 상품 정보(Goods)를 얻어와서 forward로 날릴때 같이 보내기(model)??
-		// goodsNo만 얻어짐 --> service에서 selectGoods 호출
+
 		Goods goods = service.selectGoods(goodsNo);
 		
 		model.addAttribute("goods", goods);
@@ -142,20 +154,19 @@ public class GoodsController {
 		
 		int result = service.updateGoods(webPath, filePath, imagePath, inputGoods);
 		
-		String path = null;
 		String message = null;
 		
 		if(result > 0) {
-			path = "/";
+
 			message = "상품 수정 완료";
 		} else {
-			path = referer;
+
 			message = "상품 수정 실패";
 		}
 		
 		ra.addFlashAttribute("message", message);
 		
-		return "redirect:" + path;
+		return "redirect:" + referer;
 	}
 
 }

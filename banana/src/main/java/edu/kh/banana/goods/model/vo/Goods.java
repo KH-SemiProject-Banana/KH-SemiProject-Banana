@@ -2,6 +2,7 @@ package edu.kh.banana.goods.model.vo;
 
 import java.util.List;
 
+import edu.kh.banana.pay.model.vo.BananaPay;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -30,11 +31,11 @@ import lombok.ToString;
 		private String sellStatus;
 		
 		// 메인페이지에 상품을 넣기 위한 VO
-		private int[] imageNo;
+		private List<GoodsImage> imageList;
 		
 		
 		//페이이용내역(REQUEST_PAY)
-		private int orderNo; // 페이 주문번호
+		private List<BananaPay> payList;
 		
 	
 }

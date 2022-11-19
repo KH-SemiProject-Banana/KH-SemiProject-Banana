@@ -27,6 +27,9 @@ public interface GoodsService {
 	 */
 	Goods selectGoods(int goodsNo);
 
+	
+	
+	
 	/** 내 상품 수정
 	 * @param webPath
 	 * @param filePath

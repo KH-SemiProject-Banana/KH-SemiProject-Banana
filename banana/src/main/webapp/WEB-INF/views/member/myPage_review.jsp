@@ -21,7 +21,7 @@
         <section class = "myBanana-sellList">
             <section class = "title_section_1">
                 <p>받은 매너 평가</p>
-                <i class="fa-solid fa-angle-right"></i>
+                <a href="WEB-INF/views/member/myPage_review_good.jsp"><i class="fa-solid fa-angle-right"></i></a>
             </section>
             <section class ="review_section_1">
                 <section class = "row1">
@@ -56,7 +56,7 @@
                     <div class = "userphoto">
                         <img  src="/resources/images/banana-logo.png" alt="">
                     </div>
-                    <div class="memberInfoBox">
+                    <div class="memberInfoBox">     
                         <div class="memberInfo">
                             <div class = "row2_1">
                                 <div class = "name">바나나</div>

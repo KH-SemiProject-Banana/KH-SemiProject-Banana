@@ -15,5 +15,11 @@ public class AjaxServiceImpl implements AjaxService {
 	public int emailDupCheck(String memberEmail) {
 		return dao.emailDupcheck(memberEmail);
 	}
+
+	// 회원가입 닉네임 중복 검사
+	@Override
+	public int nicknameDupCheck(String memberNickname) {
+		return dao.nicknameDupCheck(memberNickname);
+	}
 	
 }

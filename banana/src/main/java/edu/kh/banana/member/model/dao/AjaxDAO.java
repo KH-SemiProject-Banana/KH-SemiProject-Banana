@@ -18,6 +18,11 @@ public class AjaxDAO {
 	public int emailDupcheck(String memberEmail) {
 		return sqlSession.selectOne("ajaxMapper.emailDupCheck", memberEmail);
 	}
+
+
+	public int nicknameDupCheck(String memberNickname) {
+		return sqlSession.selectOne("ajaxMapper.nicknameDupCheck", memberNickname);
+	}
 	
 
 

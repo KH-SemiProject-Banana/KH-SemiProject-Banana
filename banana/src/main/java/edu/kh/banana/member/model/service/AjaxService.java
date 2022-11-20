@@ -12,6 +12,12 @@ public interface AjaxService {
 	 */
 	int emailDupCheck(String memberEmail);
 
+	/** 회원가입 닉네임 중복 검사
+	 * @param memberNickname
+	 * @return result
+	 */
+	int nicknameDupCheck(String memberNickname);
+
 
 
 }

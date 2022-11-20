@@ -53,6 +53,23 @@ public class GoodsDAO {
 		return sqlSession.selectOne("goodsMapper.selectGoods", goodsNo);
 	}
 
+	/** 메인페이지 인기상품
+	 * @return
+	 */
+	public List<Goods> favoriteGoods() {
+		
+		return sqlSession.selectList("goodsMapper.favoriteGoods");
+	}
+
+	/** 메인화면 상품의 썸네일 구하기
+	 * @param goodsNo
+	 * @return
+	 */
+	public String selectGoodsThumbnail(int goodsNo) {
+		
+		return sqlSession.selectOne("goodsMapper.selectGoodsThumbnail", goodsNo);
+	}
+
 
 
 

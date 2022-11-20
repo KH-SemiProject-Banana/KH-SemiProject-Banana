@@ -21,11 +21,22 @@ public interface GoodsService {
 	 */
 	int registerGoods(String webPath, String filePath, List<MultipartFile> imagePath, Goods inputGoods) throws Exception;
 
+	
+	
+	
 	/** 내가 등록한 상품 1개 조회
 	 * @param goodsNo
 	 * @return goods
 	 */
 	Goods selectGoods(int goodsNo);
+
+	
+	
+	
+	/** 메인페이지 인기상품
+	 * @return
+	 */
+	List<Goods> favoriteGoods();
 
 	
 	

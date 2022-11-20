@@ -33,6 +33,7 @@
 	</resultMap>
  	 
  	 
+ 	 <!-- 상품등록 -->
  	 <insert id="registerGoods" parameterType="Goods">
  	 	INSERT INTO GOODS_SELL	
 		VALUES(SEQ_GOODS_NO.NEXTVAL, #{sellerNo}, NULL, #{categoryNo}, #{title}, 
@@ -40,7 +41,7 @@
  	 </insert>
  	 
  	 
- 	 
+ 	 <!-- 방금 등록된 상품번호 조회 -->
  	 <select id="selectMyGoods" resultType="_int">
  	 	SELECT GOODS_NO FROM(
 		SELECT GOODS_NO FROM GOODS_SELL
@@ -49,6 +50,7 @@
  	 </select>
  	 
  	 
+ 	 <!-- registerImage -->
  	 <insert id="registerImage" parameterType="GoodsImage">
  	 	INSERT INTO GOODS_IMAGE
  	 	VALUES(SEQ_IMAGE_NO.NEXTVAL, #{goodsNo}, #{imagePath}, #{imageOrder})
@@ -68,6 +70,49 @@
  	 </select>
   
 
+
+
+
+
+	<!-- 메인페이지 인기상품 -->
+	<select id="favoriteGoods" resultMap="goods_rm">
+		SELECT GOODS_NO, SELLER_NO, BUYER_NO, CATEGORY_NO, TITLE, 
+		SELL_PRICE, VIEW_COUNT, DESCRIPTION, REFRESHED_AT, CREATED_AT, GOODS_DEL_FL
+		FROM
+		 (SELECT 
+		 <![CDATA[
+			 CASE  
+			      WHEN SYSDATE - CREATED_AT < 1/24/60
+			      THEN FLOOR( (SYSDATE - CREATED_AT) * 24 * 60 * 60 ) || '초 전'
+			      WHEN SYSDATE - CREATED_AT < 1/24
+			      THEN FLOOR( (SYSDATE - CREATED_AT) * 24 * 60) || '분 전'
+			      WHEN SYSDATE - CREATED_AT < 1
+			      THEN FLOOR( (SYSDATE - CREATED_AT) * 24) || '시간 전'
+			      ELSE TO_CHAR(CREATED_AT, 'YYYY-MM-DD')
+			   		END CREATED_AT, 
+   			CASE  
+			      WHEN SYSDATE - REFRESHED_AT < 1/24/60
+			      THEN FLOOR( (SYSDATE - REFRESHED_AT) * 24 * 60 * 60 ) || '초 전'
+			      WHEN SYSDATE - REFRESHED_AT < 1/24
+			      THEN FLOOR( (SYSDATE - REFRESHED_AT) * 24 * 60) || '분 전'
+			      WHEN SYSDATE - REFRESHED_AT < 1
+			      THEN FLOOR( (SYSDATE - REFRESHED_AT) * 24) || '시간 전'
+			      ELSE TO_CHAR(REFRESHED_AT, 'YYYY-MM-DD')
+			   		END REFRESHED_AT,  ]]>
+   			GOODS_NO, SELLER_NO, BUYER_NO, CATEGORY_NO, TITLE, 
+			SELL_PRICE, VIEW_COUNT, DESCRIPTION, GOODS_DEL_FL
+	 		FROM GOODS_SELL gs 
+	 		ORDER BY VIEW_COUNT DESC)
+ 		<![CDATA[WHERE ROWNUM <= 5]]>
+	</select>
+	
+	
+	
+	<select id="selectGoodsThumbnail" parameterType="_int" resultType="string">
+		SELECT IMAGE_PATH  FROM GOODS_IMAGE
+		WHERE GOODS_NO = #{goodsNo}
+		AND IMG_ORDER = 0
+	</select>
   
   
   

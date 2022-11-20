@@ -109,6 +109,31 @@ public class GoodsServiceImpl implements GoodsService {
 	}
 
 	/**
+	 * 메인페이지 인기상품
+	 */
+	@Override
+	public List<Goods> favoriteGoods() {
+		
+		List<Goods> favoriteGoods = dao.favoriteGoods();
+		
+		
+		for(int i = 0; i < favoriteGoods.size(); i++) {
+			
+			int goodsNo = favoriteGoods.get(i).getGoodsNo();
+			
+			String thumbnail = dao.selectGoodsThumbnail(goodsNo);
+			
+			Goods goods = favoriteGoods.get(i);
+			goods.setThumbnail(thumbnail);
+			
+			
+			favoriteGoods.set(i, goods);
+		}
+		
+		return favoriteGoods;
+	}
+
+	/**
 	 * 내 상품 수정
 	 */
 //	@Override

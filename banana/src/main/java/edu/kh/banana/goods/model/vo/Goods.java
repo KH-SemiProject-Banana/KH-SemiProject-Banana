@@ -30,6 +30,10 @@ import lombok.ToString;
 		private String goodsDelFlag;
 		private String sellStatus;
 		
+		
+		// 메인페이지에 보여질 이미지중 썸네일(img_order == 0)
+		private String thumbnail;
+		
 		// 메인페이지에 상품을 넣기 위한 VO
 		private List<GoodsImage> imageList;
 		

@@ -140,7 +140,7 @@
               />
             </div>
             <div class="firstBox">
-              <span class="signUp-message nickMessage">한글,영어,숫자로만 2~10글자 사이로 입력해주세요.</span>
+              <span class="signUp-message" id="nickMessage">한글,영어,숫자로만 2~10글자 사이로 입력해주세요.</span>
             </div>
 
             <!-- 이름/생년월일/휴대번호 -->

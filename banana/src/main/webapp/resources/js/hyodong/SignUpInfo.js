@@ -169,11 +169,11 @@ const nickMessage = document.getElementById("nickMessage");
 memberNickname.addEventListener("input",()=>{
 
     // 닉네임 미입력 시
-    if(memberNickname.value.trim().length = 0){
-        nickMessage.innerHTML="한글,영어,숫자로만 2~10글자 사이로 입력해주세요.";
+    if(memberNickname.value.trim().length == 0){
+        nickMessage.innerText="한글,영어,숫자로만 2~10글자 사이로 입력해주세요.";
         nickMessage.classList.remove("confirm","error");
         checkObj.memberNickname= false;
-        return
+        return;
     }
     // 닉네임 정규 표현식
     const regEx =/^[가-힣\w]{2,10}$/;
@@ -181,23 +181,24 @@ memberNickname.addEventListener("input",()=>{
     if(regEx.test(memberNickname.value)){ // 정규표현식 일치하는 경우
 
         // 닉네임 중복검사
-        //const dbNicknameCheck = {""};
+        const dbNicknameCheck = {"memberNickname":memberNickname.value};
 
         $.ajax({
             url  : '/nicknameDupCheck',
             data : dbNicknameCheck,
             success : (result)=>{
 
-                if(result ==0){ // 중복된 닉네임이 없다면
+                if(result == 0){ // 중복된 닉네임이 없다면
                     nickMessage.innerText="유효한 닉네임 형식 입니다.";
                     nickMessage.classList.remove("error");
                     nickMessage.classList.add("confirm");
                     checkObj.memberNickname=true;
 
                 }else{ // 중복된 닉네임이 있다면
-                    nickMessage.innerText="이미 사용중인 닉네임 입니다."
+                    nickMessage.innerText="이미 사용중인 닉네임 입니다.";
                     nickMessage.classList.remove("confirm");
                     nickMessage.classList.add("error");
+                    checkObj.memberNickname = false;
                 }
             },
             error : ()=>{

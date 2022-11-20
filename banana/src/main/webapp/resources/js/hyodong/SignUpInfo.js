@@ -3,6 +3,7 @@ const checkObj = {
     "memberPw"      : false,
     "memberPwConfirm" : false,
     "memberNickname" : false,
+    "memberBirth" : false,
     "memberTel" : false,
     "memberEmailCertification" : false
 }
@@ -20,6 +21,7 @@ document.getElementById("signUp-frm").addEventListener("submit",function(event){
                 case "memberPw"                 : str = "비밀번호가 유효하지 않습니다.";      break;
                 case "memberPwConfirm"          : str = "비밀번호 확인이 유효하지 않습니다."; break;
                 case "memberNickname"           : str = "닉네임이 유효하지 않습니다.";        break;
+                case "memberBirth"              : str = "생년월일이 유효하지 않습니다.";      break;
                 case "memberTel"                : str = "전화번호가 유효하지 않습니다.";      break;
                 case "memberEmailCertification" : str = "인증이 완료되지 않았습니다.";        break;
             }
@@ -216,3 +218,63 @@ memberNickname.addEventListener("input",()=>{
         checkObj.memberNickname= false;
     }
 });
+/*************************** 생년월일 유효성 검사 ***************************/
+const memberBirth = document.getElementById("memberBirth");
+const birthMessage = document.getElementById("birthMessage");
+
+memberBirth.addEventListener("input",()=>{
+
+    // 생년월일 미 입력시
+    if(memberBirth.value.trim().length == 0){
+        birthMessage.innerText="숫자로 생년월일 8자리를 입력해주세요.";
+        birthMessage.classList.remove("confirm","error");
+        checkObj.memberBirth = false;
+        return;
+    }
+
+    //생년월일 정규표현식 검사
+    const regEx =/^[\d]{8}$/;
+
+    if(regEx.test(memberBirth.value)){ // 정규표현식이 일치한 경우
+        birthMessage.innerText="유효한 생년월일 형식 입니니다.";
+        birthMessage.classList.remove("error");
+        birthMessage.classList.add("confirm");
+        checkObj.memberBirth = true;
+    } else { // 정규표현식이 일치 하지 않는 경우
+        birthMessage.innerText="유효하지 않은 생년월일 형식 입니다.";
+        birthMessage.classList.remove("confirm");
+        birthMessage.classList.add("error");
+        checkObj.memberBirth = false;
+    }
+});
+
+/*************************** 전화번호 유효성 검사 ***************************/
+const memberTel = document.getElementById("memberTel");
+const temlMessage = document.getElementById("temlMessage");
+
+memberTel.addEventListener("input",()=>{
+
+    // 전화번호 미 입력시
+    if(memberTel.value.trim().length == 0){
+        temlMessage.innerText="전화번호를 입력해 주세요.(-제외)";
+        temlMessage.classList.remove("confirm","error");
+        checkObj.memberTel = false;
+        return;
+    } 
+
+    // 전화번호 정규표현식
+    const regEx = /^0(1[01679]|2|[3-6][1-5]|70)[1-9]\d{2,3}\d{4}$/;
+
+    if(regEx.test(memberTel.value)){ // 정규표현식이 일치한 경우
+        temlMessage.innerText="사용 가능한 전화번호 입니다.";
+        temlMessage.classList.remove("error");
+        temlMessage.classList.add("confirm")
+        checkObj.memberTel = true;
+
+    } else { // 정규표현식이 일치하지 않는 경우
+        temlMessage.innerText="전화번호 형식이 유효하지 않습니다.";
+        temlMessage.classList.remove("confirm");
+        temlMessage.classList.add("error");
+        checkObj.memberTel = false;
+    }
+})

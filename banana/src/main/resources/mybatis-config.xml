@@ -53,6 +53,7 @@
 		<mapper resource="/mappers/pay-mapper.xml"/>
 		<mapper resource="/mappers/review-mapper.xml"/>
 		<mapper resource="/mappers/userComplain-mapper.xml"/>
+		<mapper resource="/mappers/ajax-mapper.xml"/>
 		
 		<mapper resource="/mappers/board-mapper.xml"/>
 	</mappers>

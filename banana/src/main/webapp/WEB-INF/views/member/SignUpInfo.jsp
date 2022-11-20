@@ -82,7 +82,7 @@
               <button type="button" class="checkButton">인증번호 받기</button>
             </div>
             <div class="emailMessageBox">
-              <span class="signUp-message"id="emailMessage">메일을 받을 수 있는 이메일을 입력해주세요.</span>
+              <span class="signUp-message"id="emailMessage">인증번호를 받을 수 있는 이메일을 입력해주세요.</span>
             </div>
 
             <!-- 인증번호 입력 -->
@@ -125,7 +125,7 @@
               />
             </div>
             <div class="firstBox">
-              <span class="signUp-message">비밀번호가 일치하지 않습니다.</span>
+              <span class="signUp-message" id="pwMessage">영문자/숫자/특수문자 포함 8~16글자 사이로 입력해주세요.</span>
             </div>
 
             <!-- 닉네임 -->
@@ -140,7 +140,7 @@
               />
             </div>
             <div class="firstBox">
-              <span class="signUp-message">사용 가능한 닉네임 입니다.</span>
+              <span class="signUp-message nickMessage">한글,영어,숫자로만 2~10글자 사이로 입력해주세요.</span>
             </div>
 
             <!-- 이름/생년월일/휴대번호 -->
@@ -221,6 +221,10 @@
     </main>
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+
+    <!-- jQuery 라이브러리(.js 파일) 추가(CDN 방식) -->
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+
     <script src="/resources/js/hyodong/SignUpInfo.js"></script>
   </body>
 </html>

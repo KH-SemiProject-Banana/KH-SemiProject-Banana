@@ -7,12 +7,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import edu.kh.banana.member.model.service.AjaxService;
 
-@Controller // 요청 -> 알맞은 서비스 -> 결과 반환 -> 알맞은 view 응답 제어역할 + bean 등록
+@Controller 
 public class AjaxController {
 	
+	@Autowired
 	private AjaxService service;
 	
-	   //이메일 중복 검사
+	   //  회원가입 이메일 중복 검사
 	   @GetMapping("/emailDupCheck")
 	   @ResponseBody 
 	   public int emailDupCheck(String memberEmail) {
@@ -22,7 +23,15 @@ public class AjaxController {
 		      return result;
 		   }
 	   
-	   
+	   // 회원가입 닉네임 중복검사 
+	   @GetMapping("/nicknameDupCheck")
+	   @ResponseBody
+	   public int nicknameDupCheck(String memberNickname) {
+		   
+		   int result = service.nicknameDupCheck(memberNickname);
+		   
+		   return result;
+	   }
 	   
 	   
 }

@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,10 +11,10 @@
     <link rel="shortcut icon"  sizes="16x16 32x32 64x64" href="https://i.ibb.co/4tCGZqD/Banana.png">
     <title>바꾸고 나누자 나랑: 바나나 마켓</title>
 
-    <link rel="stylesheet" href="../../resources/css/style.css">
-    <link rel="stylesheet" href="../../resources/css/manager/manager.css">
+    <link rel="stylesheet" href="/resources/css/style.css">
+    <link rel="stylesheet" href="/resources/css/manager/manager.css">
     <script src="https://kit.fontawesome.com/f7459b8054.js" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="js/manager.js"></script>
+    <script type="text/javascript" src="/resources/js/manager.js"></script>
 
 
 
@@ -19,19 +23,65 @@
     
 
     <main>
-        <!-- header 시작----------------------------------------------------------------------------------------- -->
-        <header>
+
+    
+    <header>
             <section class="section-topmenu">
-                <a href="#" class="topmenu__alarm fa-regular fa-bell">알람</a>
-                <a href="#" class="topmenu__talk fa-regular fa-comment">바나나톡</a>
-                <a href="#" class="topmenu__login">로그인/회원가입
+                <div>
+                    <a href="/board/1" class="fa-regular fa-file-lines boardListLink"> 게시판</a>
+                </div>
+                <div class="talkAndlogin">
+                    <a href="#" class="topmenu__talk fa-regular fa-comment">바나나톡</a>
                     
-                </a>
+                    <div id="header-top-menu">
+                    <c:choose>
+                        <%-- 로그인 X 경우 --%>
+                        <c:when test="${empty sessionScope.loginManager}">
+                            <a href="/member/login" class="topmenu__login">로그인/회원가입</a>
+                        </c:when>
+                        <%-- 로그인 O인 경우 --%>
+                        <c:otherwise>
+                            <label for="header-menu-toggle">
+                                <div class="profileImgArea">
+                                    <c:if test="${empty loginManager.profileImage}">
+                                        <img src="/resources/images/banana-logo.png"  id="profileImg">
+                                    </c:if>
+                                    <c:if test="${not empty loginManager.profileImage}">
+                                        <img src="${loginManager.profileImage}" id="profileImg">
+                                    </c:if>
+
+                                </div>
+                                ${loginManager.memberNickname}
+                                <i class="fa-solid fa-caret-down"></i>
+                                <div>
+                                    <input type="checkbox" id="header-menu-toggle">
+
+                                    <div id="header-menu">
+                                        <a href="#">내 정보</a>
+                                        <a href="/member/logout">로그아웃</a>
+                                    </div>
+                                </div>
+                            </label>
+
+                        </c:otherwise>
+                    </c:choose>
+                </div>
+
+
+                
+
+
+
+                
+           
+
+
+
             </section>
             <section class="section-query">
                 <div class="query__area">
-                    <a href="#">
-                        <img src="images/banana-logo.png" id="logo-img">
+                    <a href="/">
+                        <img src="/resources/images/banana-logo.png" id="logo-img"/>
                     </a>
                     <div class="query__logo">
                         <p>바꾸고 나누자 나랑</p>
@@ -50,19 +100,14 @@
                         </fieldset>
                     </form>
                 </article>
-                <div class="sellingMy">
-                    <div>여기엔<br> 뭘 적을까?</div>
-                </div>
+                <a href="/goods/registerGoods" class="sellingMy">
+                    <div>내 물건<br>판매하기</div>
+                </a>
             </section>
-            
             
         </header>
 
-        
 
- <!-- header 끝----------------------------------------------------------------------------------------- -->
-
-    
         <section class="category-lists">
             <a href = "manager-main.html" class="detail link-member">회원</a>
             <a href = "javascript:Getshow()" class="detail link-basic">기본설정</a>
@@ -245,24 +290,7 @@
     </main>
 
     
- <!-- footer 시작----------------------------------------------------------------------------------------- -->
-
-    <footer>
-        <p>
-            Copyright &copy; KH Information Educational Institute A-Class 중고거래 프로젝트 팀
-        </p>
-        <article>
-            <a href="#">프로젝트 소개</a>
-            <span> | </span>
-            <a href="#">이용약관</a>
-            <span> | </span>
-            <a href="#">개인정보취급방침</a>
-            <span> | </span>
-            <a href="#">고객센터</a>
-        </article>
-    </footer>
-     <!-- footer 끝----------------------------------------------------------------------------------------- -->
-
+<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
 </body>
 </html>

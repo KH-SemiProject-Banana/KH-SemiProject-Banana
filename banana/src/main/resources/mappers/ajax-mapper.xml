@@ -3,7 +3,7 @@
 <mapper namespace="ajaxMapper">
 
 
-	<!-- 이메일 중복 검사 -->
+	<!-- 회원가입 이메일 중복 검사 -->
 	<select id="emailDupCheck" parameterType = "string" resultType = "_int">
 	SELECT COUNT(*)
    FROM "MEMBER"

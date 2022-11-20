@@ -68,10 +68,10 @@ memberEmail.addEventListener("input",()=>{
                 }
             }, 
             error : () => { 
-                console.log("이메일 ajax 중복검사  실패");
+                console.log("이메일 ajax 중복검사 실패");
             },
             complete : () => {
-                console.log("이메일 ajax 중복검사  실패 완료");
+                console.log("이메일 ajax 중복검사 완료");
             },
         });
 
@@ -183,13 +183,35 @@ memberNickname.addEventListener("input",()=>{
         // 닉네임 중복검사
         //const dbNicknameCheck = {""};
 
-        $({
-            url  : '',
+        $.ajax({
+            url  : '/nicknameDupCheck',
             data : dbNicknameCheck,
             success : (result)=>{
-                
-            }
-        })
-    }
 
-})
+                if(result ==0){ // 중복된 닉네임이 없다면
+                    nickMessage.innerText="유효한 닉네임 형식 입니다.";
+                    nickMessage.classList.remove("error");
+                    nickMessage.classList.add("confirm");
+                    checkObj.memberNickname=true;
+
+                }else{ // 중복된 닉네임이 있다면
+                    nickMessage.innerText="이미 사용중인 닉네임 입니다."
+                    nickMessage.classList.remove("confirm");
+                    nickMessage.classList.add("error");
+                }
+            },
+            error : ()=>{
+                console.log("닉네임 ajax 중복검사 실패");
+            },
+            complete : ()=>{
+                console.log("닉네임 ajax 중복검사 완료");
+            }
+        });
+
+    } else { // 정규표현식 일치하지 않은 경우
+        nickMessage.innerText="유효한 닉네임 형식이 아닙니다.";
+        nickMessage.classList.remove("confirm");
+        nickMessage.classList.add("error");
+        checkObj.memberNickname= false;
+    }
+});

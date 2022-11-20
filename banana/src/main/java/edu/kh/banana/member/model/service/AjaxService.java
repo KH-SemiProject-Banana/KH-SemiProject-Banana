@@ -6,7 +6,7 @@ package edu.kh.banana.member.model.service;
 // 설계, 유지보수성 향상, AOP 때문에
 public interface AjaxService {
 	
-	/** 이메일 중복 검사
+	/** 회원가입 이메일 중복 검사
 	 * @param memberEmail
 	 * @return result
 	 */

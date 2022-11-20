@@ -11,7 +11,7 @@ public class AjaxDAO {
 	private SqlSessionTemplate sqlSession;
 	
 	
-	/** 이메일 중복 검사
+	/** 회원가입 이메일 중복 검사
 	 * @param memberEmail
 	 * @return result
 	 */

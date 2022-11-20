@@ -206,6 +206,7 @@
                 type="text"
                 name="memberAddress"
                 class="inputBox"
+                id="sample6_address"
                 placeholder="도로명/지번 주소"
                 value="${addr[1]}"
               />
@@ -216,6 +217,7 @@
                 type="text"
                 name="memberAddress"
                 class="inputBox"
+                id="sample6_detailAddress"
                 placeholder="상세 주소"
                 value="${addr[2]}"
               />

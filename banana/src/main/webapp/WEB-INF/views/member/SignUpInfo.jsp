@@ -185,7 +185,7 @@
             </div>
 
             <%-- 주소 문자열 -> 배열로 쪼개기 --%>
-            <c:set var="addr" value="${fn:split(tempMember.memberAddress,',,')}" />
+            <%-- <c:set var="addr" value="${fn:split(tempMember.memberAddress,',,')}" /> --%>
             <!-- 우편 번호/주소/상세주소 -->
             <div class="signUp-input-area textbox">
               <input
@@ -207,7 +207,7 @@
                 name="memberAddress"
                 class="inputBox"
                 placeholder="도로명/지번 주소"
-                value="${addr[1]}
+                value="${addr[1]}"
               />
             </div>
 
@@ -217,7 +217,7 @@
                 name="memberAddress"
                 class="inputBox"
                 placeholder="상세 주소"
-                value="${addr[2]}
+                value="${addr[2]}"
               />
             </div>
           </div>
@@ -229,7 +229,6 @@
           </div>
         </form>
     </main>
-
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
     <!-- jQuery 라이브러리(.js 파일) 추가(CDN 방식) -->
@@ -237,6 +236,7 @@
 
     <script src="/resources/js/hyodong/SignUpInfo.js"></script>
 
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
         <script> /* 주소 검색 api */
         function sample6_execDaumPostcode() {
             new daum.Postcode({

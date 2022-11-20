@@ -19,7 +19,7 @@
    		<result property="memberDeleteFlag" column="MEMBER_DEL_FL"></result>
    		<result property="authority" column="AUTHORITY"></result>
    		<result property="blockFlag" column="BLOCK_FL"></result>
-   		<result property="birthday" column="BIRTHDAY"></result>
+   		<result property="memberBirth" column="BIRTHDAY"></result>
    		<result property="manner" column="MANNER"></result>
   
  	 </resultMap>

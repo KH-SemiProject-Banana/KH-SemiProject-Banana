@@ -90,9 +90,7 @@ public class MemberController {
 	 */
 	@GetMapping("/member/logout")
 	public String logout(SessionStatus status){
-		
 		status.setComplete();
-		
 		return "redirect:/";
 	}
 	
@@ -104,8 +102,6 @@ public class MemberController {
 		return "member/SignUpAgreement";
 	}
 	
-	
-
 	/** 회원가입 정보입력 페이지 이동
 	 * @return
 	 */
@@ -114,6 +110,17 @@ public class MemberController {
 		return "member/SignUpInfo";
 	}
 	
+	/** 회원가입 입력 정보 제출
+	 * @return
+	 */
+	@PostMapping("/member/signUp")
+	public String signUp(/* @ModelAttribute */ Member inputMember,
+						String[] memberAddress,
+						RedirectAttributes ra) {
+		 
+		
+		return null;
+	} 
 	
 	
 

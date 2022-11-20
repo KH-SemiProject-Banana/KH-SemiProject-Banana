@@ -64,8 +64,7 @@
         </div>
 
         <!------------------------------------------->
-        <form action="" method="POST" name="signUp-frm" id="signUp-frm">
-
+        <form action="/member/signUp" method="POST" name="signUp-frm" id="signUp-frm">
 
           <div>
             <!-- 아이디(이메일) -->

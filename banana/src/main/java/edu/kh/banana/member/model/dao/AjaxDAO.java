@@ -11,12 +11,17 @@ public class AjaxDAO {
 	private SqlSessionTemplate sqlSession;
 	
 	
-	/** 이메일 중복 검사
+	/** 회원가입 이메일 중복 검사
 	 * @param memberEmail
 	 * @return result
 	 */
 	public int emailDupcheck(String memberEmail) {
 		return sqlSession.selectOne("ajaxMapper.emailDupCheck", memberEmail);
+	}
+
+
+	public int nicknameDupCheck(String memberNickname) {
+		return sqlSession.selectOne("ajaxMapper.nicknameDupCheck", memberNickname);
 	}
 	
 

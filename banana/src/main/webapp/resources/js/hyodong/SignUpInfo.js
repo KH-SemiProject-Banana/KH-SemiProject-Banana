@@ -5,7 +5,8 @@ const checkObj = {
     "memberNickname" : false,
     "memberBirth" : false,
     "memberTel" : false,
-    "memberEmailCertification" : false
+    "memberEmailCertification" : false,
+    // "memberAddress" : false
 }
 // 회원 가입 양식이 제출 되었을 때
 document.getElementById("signUp-frm").addEventListener("submit",function(event){
@@ -24,6 +25,7 @@ document.getElementById("signUp-frm").addEventListener("submit",function(event){
                 case "memberBirth"              : str = "생년월일이 유효하지 않습니다.";      break;
                 case "memberTel"                : str = "전화번호가 유효하지 않습니다.";      break;
                 case "memberEmailCertification" : str = "인증이 완료되지 않았습니다.";        break;
+                case "memberAddress"            : str = "주소가 유효하지 않습니다.";          break;
             }
             alert(str);
             document.getElementById(key).focus();
@@ -85,8 +87,6 @@ memberEmail.addEventListener("input",()=>{
     }
 });
 
-
-
 /*************************** 비밀번호/비밀번호 확인 유효성 검사 ***************************/
 const memberPw = document.getElementById("memberPw");
 const memberPwConfirm =document.getElementById("memberPwConfirm");
@@ -100,7 +100,7 @@ memberPw.addEventListener("input",()=>{
         pwMessage.innerText ="영문자/숫자/특수문자 포함 8~16글자 사이로 입력해주세요.";
         pwMessage.classList.remove("confirm","error");
         memberPw.value="";
-        checkObj = false;
+        checkObj.memberPw = false;
         return;
     }
 
@@ -218,6 +218,7 @@ memberNickname.addEventListener("input",()=>{
         checkObj.memberNickname= false;
     }
 });
+
 /*************************** 생년월일 유효성 검사 ***************************/
 const memberBirth = document.getElementById("memberBirth");
 const birthMessage = document.getElementById("birthMessage");
@@ -278,3 +279,157 @@ memberTel.addEventListener("input",()=>{
         checkObj.memberTel = false;
     }
 })
+
+/*************************** 주소 유효성 검사 ***************************/
+const sample6_postcode = document.getElementById("sample6_postcode");
+const sample6_address = document.getElementById("sample6_address");
+const addMessage = document.getElementById("addMessage");
+
+
+sample6_postcode.addEventListener("focusout", ()=>{
+
+    // 우편번호 미 입력시
+    if(sample6_postcode.value.trim().length == 0){
+        addMessage.innerText="검색을 눌러 주소를 입력해 주세요.";
+        addMessage.classList.remove("confirm","error");
+        checkObj.memberAddress = false;
+        return;
+    }
+    // 우편번호 정규표현식
+    const regEx = /^\d{5}$/;
+    
+    if(regEx.test(sample6_postcode.value)){ // 정규표현식이 일치한 경우
+        addMessage.innerText="우편번호 형식이 일치합니다.";
+        addMessage.classList.remove("error");
+        addMessage.classList.add("confirm")
+        checkObj.memberAddress = true;
+
+    } else { // 정규표현식이 일치하지 않는 경우
+        addMessage.innerText="우편번호 형식이 일치하지 않습니다.";
+        addMessage.classList.remove("confirm");
+        addMessage.classList.add("error");
+        checkObj.memberAddress = false;
+    }
+});
+
+sample6_address.addEventListener("focusout",()=>{
+
+    // 도로명/ 지번 주소 미 입력시
+    if(sample6_address.value.trim().length == 0){
+        addMessage.innerText="검색을 눌러 주소를 입력해 주세요.";
+        addMessage.classList.remove("confirm","error");
+        checkObj.memberAddress = false;
+        return;
+    }
+    // 도로명/지번 정규표현식
+    const regEx = /^[서울]{2}\s[ㄱ-힣]{2,3}[구]\s[가-힣\d]+\s[\d\-]+/;
+
+    if(regEx.test(sample6_address.value)){ // 정규표현식 일치한 경우
+        addMessage.innerText="도로명/지번 형식이 일치합니다.";
+        addMessage.classList.remove("error");
+        addMessage.classList.add("confirm")
+        checkObj.memberAddress = true;
+
+    }else {
+        addMessage.innerText="도로명/지번 형식이 일치하지 않습니다.";
+        addMessage.classList.remove("confirm");
+        addMessage.classList.add("error");
+        checkObj.memberAddress = false;
+    }
+});
+
+/*************************** 이메일 인증번호 ***************************/
+
+// 이메일 인증코드 발송 / 확인
+
+// 인증번호 발송
+const sendAuthKeyBtn = document.getElementById("sendAuthKeyBtn");
+const authKeyMessage = document.getElementById("authKeyMessage");
+let authTimer;
+let authMin = 4;
+let authSec = 59;
+
+sendAuthKeyBtn.addEventListener("click", function(){
+    authMin = 4;
+    authSec = 59;
+    checkObj.memberEmailCertification = false;
+
+    if(checkObj.memberEmail){ // 중복이 아닌 이메일인 경우
+        $.ajax({
+            url : "/sendEmail/signUp",
+            data : {"email": memberEmail.value},
+            success : (result) => {
+                if(result > 0){
+                    console.log("인증 번호가 발송되었습니다.")
+                }else{
+                    console.log("인증번호 발송 실패")
+                }
+            }, error : () => {
+                console.log("이메일 발송 중 에러 발생");
+            }
+        })
+        alert("인증번호가 발송 되었습니다.");
+        authKeyMessage.innerText = "05:00";
+        authKeyMessage.classList.remove("confirm");
+
+
+        authTimer = window.setInterval(()=>{
+
+            authKeyMessage.innerText = "0" + authMin + ":" + (authSec<10 ? "0" + authSec : authSec);
+            
+            // 남은 시간이 0분 0초인 경우
+            if(authMin == 0 && authSec == 0){
+                checkObj.memberEmailCertification = false;
+                clearInterval(authTimer);
+                return;
+            }
+
+            // 0초인 경우
+            if(authSec == 0){
+                authSec = 60;
+                authMin--;
+            }
+
+            authSec--; // 1초 감소
+        }, 1000)
+
+    } else{
+        alert("중복되지 않은 이메일을 작성해주세요.");
+        memberEmail.focus();
+    }
+});
+
+
+// 인증 확인
+const memberEmailCertification = document.getElementById("memberEmailCertification");
+const checkAuthKeyBtn = document.getElementById("checkAuthKeyBtn");
+
+checkAuthKeyBtn.addEventListener("click", function(){
+
+    if(authMin > 0 || authSec > 0){ // 시간 제한이 지나지 않은 경우에만 인증번호 검사 진행
+
+        $.ajax({
+            url : "/sendEmail/checkAuthKey",
+            data : {"inputKey": memberEmailCertification.value},
+            success : (result) => {
+
+                if(result > 0){
+                    clearInterval(authTimer);
+                    authKeyMessage.innerText = "인증되었습니다.";
+                    authKeyMessage.classList.add("confirm");
+                    checkObj.memberEmailCertification = true;
+
+                } else{
+                    alert("인증번호가 일치하지 않습니다.")
+                    checkObj.memberEmailCertification = false;
+                }
+            }, 
+            error : () => {
+                console.log("인증코드 확인 오류");
+            }
+        })
+
+    } else{
+        alert("인증 시간이 만료되었습니다. 다시 시도해주세요.")
+    }
+});

@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%-- 문자열 관련 메서드를 제공하는 JSTL (EL 형식) --%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -64,7 +67,7 @@
         </div>
 
         <!------------------------------------------->
-        <form action="/member/signUp" method="POST" name="signUp-frm" id="signUp-frm">
+        <form action="/member/signUp/info" method="POST" name="signUp-frm" id="signUp-frm">
 
           <div>
             <!-- 아이디(이메일) -->
@@ -77,8 +80,9 @@
                 placeholder="아이디 (이메일)"
                 maxlength="20"
                 autocomplete="off"
+                required value="${tempMember.memberEmail}"
               />
-              <button type="button" class="checkButton">인증번호 받기</button>
+              <button id="sendAuthKeyBtn" type="button" class="checkButton">인증번호 받기</button>
             </div>
             <div class="emailMessageBox">
               <span class="signUp-message"id="emailMessage">인증번호를 받을 수 있는 이메일을 입력해주세요.</span>
@@ -95,10 +99,10 @@
                 maxlength="6"
                 autocomplete="off"
               />
-              <button type="button" class="checkButton">인증하기</button>
+              <button id="checkAuthKeyBtn" type="button" class="checkButton">인증하기</button>
             </div>
             <div class="firstBox">
-              <span class="signUp-message ">인증되었습니다.</span>
+              <span id="authKeyMessage" class="signUp-message "></span>
             </div>
 
             <!-- 비밀번호 -->
@@ -136,6 +140,7 @@
                 id="memberNickname"
                 placeholder="닉네임"
                 maxlength="10"
+                value="${tempMember.memberNickname}"
               />
             </div>
             <div class="firstBox">
@@ -177,6 +182,7 @@
                 id="memberTel"
                 placeholder="휴대번호 ex)01045459986"
                 maxlength="11"
+                value="${tempMember.memberTel}"
               />
             </div>
             <div class="firstBox">
@@ -184,7 +190,7 @@
             </div>
 
             <%-- 주소 문자열 -> 배열로 쪼개기 --%>
-            <%-- <c:set var="addr" value="${fn:split(tempMember.memberAddress,',,')}" /> --%>
+            <c:set var="addr" value="${fn:split(tempMember.memberAddress,',,')}" />
             <!-- 우편 번호/주소/상세주소 -->
             <div class="signUp-input-area textbox">
               <input
@@ -222,7 +228,9 @@
               />
             </div>
           </div>
-
+          <div class="firstBox">
+            <span class="signUp-message" id="addMessage">검색을 눌러 주소를 입력해 주세요.</span>
+          </div>
           <!--------------------------->
 
           <div class="SignUpAgreement6">

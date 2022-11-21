@@ -13,6 +13,7 @@
 		<param-value> 
 			classpath:spring/root-context.xml  <!-- 원래 있는거 -->
 			classpath:spring/spring-security.xml <!-- 우리가 만든 거 -->
+			classpath:spring/email-context.xml <!-- 이메일 인증 -->
 		</param-value>
 	</context-param>
 	

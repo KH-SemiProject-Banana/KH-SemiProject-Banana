@@ -113,15 +113,37 @@ public class MemberController {
 	/** 회원가입 입력 정보 제출
 	 * @return
 	 */
-	@PostMapping("/member/signUp")
+	@PostMapping("/member/signUp/info")
 	public String signUp(/* @ModelAttribute */ Member inputMember,
 						String[] memberAddress,
-						RedirectAttributes ra) {
+						RedirectAttributes ra,
+						@RequestHeader("referer") String referer) {
 		 
+		if (inputMember.getMemberAddress().equals(",,")) {
+			inputMember.setMemberAddress(null);
+			
+		}else {
+			inputMember.setMemberAddress(String.join(",,", memberAddress));
+		}
 		
-		return null;
+		int result = service.signUp(inputMember);
+		
+		String path = null;
+		String message = null;
+		
+		if (result > 0) { //회원가입 성공
+			path = "/";
+			message = "회원가입 성공했습니다.";
+		} else { //회원가입 실패
+			path = referer;
+			message = "회원가입 도중 문제가 발생하여 실패하였습니다.";
+			
+			inputMember.setMemberPw(null); 
+			ra.addFlashAttribute("tempMember", inputMember);
+		}
+		
+		ra.addFlashAttribute("message",message);
+		
+		return "redirect:"+ path;
 	} 
-	
-	
-
 }

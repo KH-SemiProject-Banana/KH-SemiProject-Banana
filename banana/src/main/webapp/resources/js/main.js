@@ -1,98 +1,87 @@
-let slide = document.getElementsByClassName("slide");
+
+// main-add 실행?? 해야함!
+// let slide = document.getElementsByClassName("slide");
 
 
-for(let i = 0; i < slide.length; i++){
+// for(let i = 0; i < slide.length; i++){
 
-    setTimeout(function(){
+//     setTimeout(function(){
 
-        slide[i].addEventListener("change", function(){
-            if(slide.checked){
+//         slide[i].addEventListener("change", function(){
+//             if(slide.checked){
                 
-                slide.checked = false;
+//                 slide.checked = false;
                 
-                slide[i+1].checked = true;
-            }
-        
-        });
-    
-        if(i == slide.length-1){i = 0}
-
-    }, 5000);
-
-    
-
-}
-
-
-// const favoriteImg = document.getElementsByClassName("favorite__img");
-// const favoritePrice = document.getElementsByClassName("favorite__price");
-// const favoriteHeart = document.getElementsByClassName("favorite__heart");
-// const favoriteTitle = document.getElementsByClassName("favorite__title");
-
-
-// // 페이지 로드되자마자 실행 + 60초마다 실행
-// selectFavorite();
-
-// function selectFavorite(){
-
-//     $.ajax({
-//         url: "/goods/selectFavorite",
-//         type: "POST",
-//         dataType: "JSON",
-//         success: (favoriteGoods) => {
-//             if(favoriteGoods != null){
-//                 for(let i = 0; i < 5; i++){
-//                     favoriteImg[i].setAttribute("src", favoriteGoods[0].imagePath)
-//                     favoritePrice[i].innerText = favoriteGoods[0].sellPrice + "원";
-//                     favoriteHeart[i].setAttribute("checked",favoriteGoods[0].isLike);
-//                     favoriteTitle[i].innerText = favoriteGoods[0].title;
-//                 }
+//                 slide[i+1].checked = true;
 //             }
-//         },
-//         error: () => {
-//             console.log("데이터 가져오기 실패");
-//         }
-//     });
+        
+//         });
+    
+//         if(i == slide.length-1){i = 0}
+
+//     }, 5000);
+
+    
+
 // }
 
 
+const heartList = document.getElementsByClassName("fa-heart-circle-plus");
+
+for(let heart of heartList){
+
+    const goodsNo = heart.nextElementSibling;
+
+    heart.addEventListener("click", e => {
+
+        // 로그인하지 않은 상태
+        if(loginMember != null){
+            alert("로그인 후 이용해 주세요");
+            return;
+        }
+
+        // 로그인 상태 + 좋아요 상태가 아닌 경우
+        if(!e.target.classList.contains("choose")){
+
+            
+            $.ajax({
+                
+                url : "/goods/like/up",
+                data : {"goodsNo" : goodsNo, "memerNo" : memberNo},
+                type : "GET",
+                success : (result) => {
+                    
+                    if(result > 0) {
+                        
+                        e.target.classList.add("choose");
+
+                    } else {
+                        console.log("증가 실패");
+                    }
+                },
+                error : () => {console.log("증가 중에 에러 발생");}
+
+            });
+
+        } else { // 로그인 상태 + 좋아요 상태
+
+            $.ajax({
+
+                url : "/goods/like/up",
+                data : {"goodsNo" : goodsNo, "memberNo" : memberNo},
+                type : "GET",
+                success : (result) => {
+                    if(result > 0) {
+
+                        e.target.classList.remove("choose");
+                    } else {
+                        console.log("감소 실패");
+                    }
+                },
+                error : () => {console.log("감소 중 에러 발생");}
+            })
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// ajax로  인기상품 조회
-// const favorite = document.getElementsByClassName("favorite");
-
-// const heart = document.createElement("i");
-// heart.classList.add("fa-solid, fa-heart-circle-plus");
-
-// const label = document.createElement("label");
-// label.setAttribute("for", "heart1");
-// label.append(heart);
-
-// const input = document.createElement("input");
-// input.setAttribute("type", "checkbox");
-// input.setAttribute("name", "heart");
-// input.setAttribute("id", "heart1");
-
-// const favoriteHeartDiv = document.createElement("div");
-// favoriteHeartDiv.classList.add("favorite__heart");
-
-// favoriteHeartDiv.append(input);
-// favoriteHeartDiv.append(label);
-
-// const favoritePriceDiv = document.createElement("div");
-
-
+        }
+    })
+}

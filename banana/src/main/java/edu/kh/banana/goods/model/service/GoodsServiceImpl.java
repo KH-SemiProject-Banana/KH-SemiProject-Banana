@@ -112,25 +112,52 @@ public class GoodsServiceImpl implements GoodsService {
 	 * 메인페이지 인기상품
 	 */
 	@Override
+	@Transactional(rollbackFor= Exception.class)
 	public List<Goods> favoriteGoods() {
 		
-		List<Goods> favoriteGoods = dao.favoriteGoods();
+		List<Goods> favoriteGoodsList = dao.favoriteGoods();
 		
 		
-		for(int i = 0; i < favoriteGoods.size(); i++) {
+		for(int i = 0; i < favoriteGoodsList.size(); i++) {
 			
-			int goodsNo = favoriteGoods.get(i).getGoodsNo();
+			int goodsNo = favoriteGoodsList.get(i).getGoodsNo();
 			
 			String thumbnail = dao.selectGoodsThumbnail(goodsNo);
 			
-			Goods goods = favoriteGoods.get(i);
+			Goods goods = favoriteGoodsList.get(i);
 			goods.setThumbnail(thumbnail);
 			
 			
-			favoriteGoods.set(i, goods);
+			favoriteGoodsList.set(i, goods);
 		}
 		
-		return favoriteGoods;
+		return favoriteGoodsList;
+	}
+
+	/**
+	 * 메인페이지 최근글
+	 */
+	@Override
+	@Transactional(rollbackFor = Exception.class)
+	public List<Goods> newGoods() {
+		
+		List<Goods> newGoodsList = dao.newGoods();
+		
+		
+		for(int i = 0; i < newGoodsList.size(); i++) {
+			
+			int goodsNo = newGoodsList.get(i).getGoodsNo();
+			
+			String thumbnail = dao.selectGoodsThumbnail(goodsNo);
+			
+			Goods goods = newGoodsList.get(i);
+			goods.setThumbnail(thumbnail);
+			
+			
+			newGoodsList.set(i, goods);
+		}
+		
+		return newGoodsList;
 	}
 
 	/**

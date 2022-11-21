@@ -467,11 +467,18 @@ label[for="header-menu-toggle"]:hover {
 }
 
 #profileImg {
-    background-color: red;
+    /* background-color: red; */
     width: 42px;
     height: 42px;
     margin-top: 5px;
     margin-right: 5px;
     border: 1px solid #eee;
     border-radius: 5px;
+}
+
+
+
+/* 하트 좋아요 누른 상태 */
+.choose{
+    color: hotpink;
 }

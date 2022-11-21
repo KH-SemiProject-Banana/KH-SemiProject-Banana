@@ -34,9 +34,17 @@ public interface GoodsService {
 	
 	
 	/** 메인페이지 인기상품
-	 * @return
+	 * @return List<Goods> favoriteGoodsList
 	 */
 	List<Goods> favoriteGoods();
+
+
+
+
+	/** 메인페이지 최근글
+	 * @return List<Goods> newGoodsList
+	 */
+	List<Goods> newGoods();
 
 	
 	

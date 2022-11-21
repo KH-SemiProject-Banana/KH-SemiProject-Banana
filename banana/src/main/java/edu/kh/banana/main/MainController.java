@@ -1,17 +1,22 @@
 package edu.kh.banana.main;
 
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import edu.kh.banana.goods.model.service.GoodsService;
 import edu.kh.banana.goods.model.vo.Goods;
+import edu.kh.banana.member.model.vo.Member;
 
 
 @Controller
@@ -23,8 +28,9 @@ public class MainController {
 	
 
 	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String mainPage(Model model) {
+	@GetMapping("/")
+	public String mainPage(Model model,
+			@SessionAttribute(value="loginMember", required=false) Member loginMember) {
 		
 		// 1. Model model 넣고
 		// 2. service->dao->sql에서 조회한 goods(인기상품/최근) 조회해서 담기
@@ -34,13 +40,34 @@ public class MainController {
 		
 		
 		// 메인페이지 인기상품
-		List<Goods> favoriteGoods = service.favoriteGoods();
+		List<Goods> favoriteGoodsList = service.favoriteGoods();
+		
+		// 메인페이지 최근글
+		List<Goods> newGoodsList = service.newGoods();
+		
+		
+		// 로그인 상태라면 
+		if(loginMember != null) {
+			
+			for(Goods goods: favoriteGoodsList) {
+				
+				Map<String, Object> map = new HashMap<String, Object>();
+				map.put("memberNo", loginMember.getMemberNo());
+				map.put("goodsNo", goods.getGoodsNo());
+				
+				int result = service.isLike(map);
+				if(result > 0) {goods.setLikeMemberNoList(1)}
+			}
+			
+			;
+		}
 		
 
 		
 		
 		
-		model.addAttribute("favoriteGoods", favoriteGoods);
+		model.addAttribute("favoriteGoodsList", favoriteGoodsList);
+		model.addAttribute("newGoodsList", newGoodsList);
 		
 		
 		

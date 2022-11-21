@@ -19,17 +19,33 @@
    		<result property="imageNo" column="IMAGE_NO"></result>
    		<result property="imagePath" column="IMAGE_PATH"></result>
    		<result property="orderNo" column="ORDER_NO"></result>
+   		
+   		<result property="thumbnail" column="THUMBNAIL"></result>
+   		
+   		<!-- GOODS별 좋아요 누른 memberNo list -->
+   		<collection property="likeMemberNoList" javaType="java.util.ArrayList"
+   		ofType="int" select="selectLikeMemberNo" column="GOODS_NO"/>
+   		
+   		
  	</resultMap>
  	 
  	 
 	<resultMap type="GoodsImage" id="goodsImage_rm">
-	
 		<id property="goodsNo" column="GOODS_NO"/>
    		
    		<result property="imageNo" column="IMAGE_NO"></result>
    		<result property="imagePath" column="IMAGE_PATH"></result>
    		<result property="ImageOrder" column="IMG_ORDER"></result>
+	</resultMap>
 	
+	
+	
+	<resultMap type="GoodsLike" id="goodsLike_rm">
+	
+		<id property="memberNo" column="MEMBER_NO"/>
+		<id property="goodsNo" column="GOODS_NO"/>
+   		
+   		<result property="likeTime" column="LIKE_TIME"></result>
 	</resultMap>
  	 
  	 
@@ -107,6 +123,39 @@
 	</select>
 	
 	
+	<!-- 메인페이지 최근상품 -->
+	<select id="newGoods" resultMap="goods_rm">
+		SELECT GOODS_NO, SELLER_NO, BUYER_NO, CATEGORY_NO, TITLE, 
+		SELL_PRICE, VIEW_COUNT, DESCRIPTION, REFRESHED_AT, CREATED_AT, GOODS_DEL_FL
+		FROM
+		 (SELECT 
+		 <![CDATA[
+			 CASE  
+			      WHEN SYSDATE - CREATED_AT < 1/24/60
+			      THEN FLOOR( (SYSDATE - CREATED_AT) * 24 * 60 * 60 ) || '초 전'
+			      WHEN SYSDATE - CREATED_AT < 1/24
+			      THEN FLOOR( (SYSDATE - CREATED_AT) * 24 * 60) || '분 전'
+			      WHEN SYSDATE - CREATED_AT < 1
+			      THEN FLOOR( (SYSDATE - CREATED_AT) * 24) || '시간 전'
+			      ELSE TO_CHAR(CREATED_AT, 'YYYY-MM-DD')
+			   		END CREATED_AT, 
+   			CASE  
+			      WHEN SYSDATE - REFRESHED_AT < 1/24/60
+			      THEN FLOOR( (SYSDATE - REFRESHED_AT) * 24 * 60 * 60 ) || '초 전'
+			      WHEN SYSDATE - REFRESHED_AT < 1/24
+			      THEN FLOOR( (SYSDATE - REFRESHED_AT) * 24 * 60) || '분 전'
+			      WHEN SYSDATE - REFRESHED_AT < 1
+			      THEN FLOOR( (SYSDATE - REFRESHED_AT) * 24) || '시간 전'
+			      ELSE TO_CHAR(REFRESHED_AT, 'YYYY-MM-DD')
+			   		END REFRESHED_AT,  ]]>
+   			GOODS_NO, SELLER_NO, BUYER_NO, CATEGORY_NO, TITLE, 
+			SELL_PRICE, VIEW_COUNT, DESCRIPTION, GOODS_DEL_FL
+	 		FROM GOODS_SELL gs 
+	 		ORDER BY CREATED_AT DESC)
+ 		<![CDATA[WHERE ROWNUM <= 5]]>
+	</select>
+	
+	
 	
 	<select id="selectGoodsThumbnail" parameterType="_int" resultType="string">
 		SELECT IMAGE_PATH  FROM GOODS_IMAGE
@@ -114,6 +163,13 @@
 		AND IMG_ORDER = 0
 	</select>
   
+  
+  
+  	<select id="selectLikeMemberNo"  resultType="_int">
+  		SELECT count(*) FROM GOODS_LIKE
+		WHERE GOODS_NO = #{goodsNo}
+		AND MEMBER_NO = #{memberNo}
+  	</select>
   
   
   

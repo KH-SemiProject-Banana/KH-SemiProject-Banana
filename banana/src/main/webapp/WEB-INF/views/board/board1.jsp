@@ -15,7 +15,7 @@
     <title>바꾸고 나누자 나랑: 바나나 마켓</title>
 
     <link rel="stylesheet" href="/resources/css/style.css">
-    <link rel="stylesheet" href="/resources/css/customer/notice.css">
+    <link rel="stylesheet" href="/resources/css/board/board1.css">
 
     <script src="https://kit.fontawesome.com/f7459b8054.js" crossorigin="anonymous"> </script>
 
@@ -64,7 +64,7 @@
                         <div class="area" style="display:none">
                             <div class="profile">
                                 <div class="profile-img">
-                                    <img src="images/banana-logo.png" id="admin-img">
+                                    <img src="/resources/images/banana-logo.png" id="admin-img">
                                 </div>
                                 <div class="name-date">
                                     <p class= "nickname" id="admin-name">바나나마켓_운영지원팀</p>
@@ -88,7 +88,7 @@
                         <div class="area" style="display:none">
                             <div class="profile">
                                 <div class="profile-img">
-                                    <img src="images/banana-logo.png" id="admin-img">
+                                    <img src="/resources/images/banana-logo.png" id="admin-img">
                                 </div>
                                 <div class="name-date">
                                     <p class= "nickname" id="admin-name">바나나마켓_운영지원팀</p>
@@ -124,7 +124,7 @@
                         <div class="area" style="display:none">
                             <div class="profile">
                                 <div class="profile-img">
-                                    <img src="images/banana-logo.png" id="admin-img">
+                                    <img src="/resources/images/banana-logo.png" id="admin-img">
                                 </div>
                                 <div class="name-date">
                                     <p class= "nickname" id="admin-name">바나나마켓_운영지원팀</p>
@@ -159,7 +159,7 @@
                         <div class="area" style="display:none">
                             <div class="profile">
                                 <div class="profile-img">
-                                    <img src="images/banana-logo.png" id="admin-img">
+                                    <img src="/resources/images/banana-logo.png" id="admin-img">
                                 </div>
                                 <div class="name-date">
                                     <p class= "nickname" id="admin-name">바나나마켓_운영지원팀</p>
@@ -183,7 +183,7 @@
                         <div class="area" style="display:none">
                             <div class="profile">
                                 <div class="profile-img">
-                                    <img src="images/banana-logo.png" id="admin-img">
+                                    <img src="/resources/images/banana-logo.png" id="admin-img">
                                 </div>
                                 <div class="name-date">
                                     <p class= "nickname" id="admin-name">바나나마켓_운영지원팀</p>
@@ -209,7 +209,7 @@
                         <div class="area"style="display:none">
                             <div class="profile">
                                 <div class="profile-img">
-                                    <img src="images/banana-logo.png" id="admin-img">
+                                    <img src="/resources/images/banana-logo.png" id="admin-img">
                                 </div>
                                 <div class="name-date">
                                     <p class= "nickname" id="admin-name">바나나마켓_운영지원팀</p>
@@ -235,7 +235,7 @@
                         <div class="area" style="display:none">
                             <div class="profile">
                                 <div class="profile-img">
-                                    <img src="images/banana-logo.png" id="admin-img">
+                                    <img src="/resources/images/banana-logo.png" id="admin-img">
                                 </div>
                                 <div class="name-date">
                                     <p class= "nickname" id="admin-name">바나나마켓_운영지원팀</p>
@@ -264,7 +264,6 @@
 
   	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
-    <script src="/resources/js/goods/goods-register.js"></script>
 </body>
 
 </html>

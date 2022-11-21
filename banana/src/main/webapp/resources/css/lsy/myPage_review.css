@@ -190,14 +190,13 @@
     
 }
 /* 섹션5********************************************************************************************************섹션5 */
-.myBanana-sellList{
-    /* border :1px solid black; */
-    /* height: 825px; */
-    /* background-color: #feffbc; */
+/* .myBanana-reviewList{
+    border :1px solid black;
+    height: 825px;
+    background-color: #feffbc;
     margin-top: 15px;
-    /* margin-bottom: 15px; */
-    
-}
+    margin-bottom: 15px;
+} */
 
 /* .myBanana-sellList > .title_section_1, .bubble_section, .icon_section, .number_section, .title_section_2  {
     font-size: 20px;
@@ -209,10 +208,10 @@
    font-size: 20px;
 } */
 
-.myBanana-sellList > .title_section_1 {
+.title_section_1 {
     height : 100px;
     display: flex;
-    /* justify-content: center; */
+    
     align-items: center;
     font-size: 20px;
     border-bottom:1px solid #ccc;
@@ -220,7 +219,7 @@
 
 }
 
-.myBanana-sellList > .title_section_1 > * {
+.title_section_1 > * {
     margin: 10px;
 }
 
@@ -366,7 +365,7 @@
 }
 
 
-.myBanana-sellList > .title_section_2 {
+.title_section_2 {
     display: flex;
     height : 100px;
     align-items: center;
@@ -376,8 +375,7 @@
 
 }
 
-
-.myBanana-sellList > .title_section_2 > * {
+.title_section_2 > * {
     margin: 10px;
 }
 

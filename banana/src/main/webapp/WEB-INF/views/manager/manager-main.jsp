@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="/resources/css/style.css">
     <link rel="stylesheet" href="/resources/css/manager/manager.css">
     <script src="https://kit.fontawesome.com/f7459b8054.js" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="/resources/js/manager.js"></script>
+    <%-- <script type="text/javascript" src="/resources/js/manager.js"></script> --%>
 
 
 

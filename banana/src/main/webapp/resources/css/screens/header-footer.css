@@ -467,7 +467,7 @@ label[for="header-menu-toggle"]:hover {
 }
 
 #profileImg {
-    background-color: red;
+    /* background-color: red; */
     width: 42px;
     height: 42px;
     margin-top: 5px;

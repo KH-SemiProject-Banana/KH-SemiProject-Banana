@@ -23,7 +23,7 @@ public class ManagerServiceImpl implements ManagerService{
 		
 		
 		if(loginManager != null) {
-			if(bcrypt.matches(inputManager.getMemberEmail(), loginManager.getMemberEmail())) {
+			if(bcrypt.matches(inputManager.getMemberPw(), loginManager.getMemberPw())) {
 				loginManager.setMemberPw(null);
 			} else {
 				loginManager = null;

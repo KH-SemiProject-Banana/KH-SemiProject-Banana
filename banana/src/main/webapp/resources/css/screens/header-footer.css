@@ -134,7 +134,7 @@ header>section:nth-child(2) {
 .section-topmenu a {
 
     height: 100%;
-    margin: 0 10px;
+    /* margin: 0 10px; */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -451,6 +451,7 @@ label[for="header-menu-toggle"]:hover {
 #header-menu>a {
     display: flex;
     height: 50%;
+    width: 100%;
     align-items: center;
     justify-content: center;
 
@@ -463,7 +464,7 @@ label[for="header-menu-toggle"]:hover {
 }
 
 #header-menu>a:hover {
-    background-color: #455ba890;
+    background-color: var(--lightYellow);
 }
 
 #profileImg {

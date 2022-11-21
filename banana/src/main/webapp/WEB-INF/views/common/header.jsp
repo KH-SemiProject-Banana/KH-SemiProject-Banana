@@ -21,7 +21,12 @@
                         <c:otherwise>
                             <label for="header-menu-toggle">
                                 <div class="profileImgArea">
-                                    <img src="/resources/images/banana-logo.png"  id="profileImg">
+                                    <c:if test="${empty loginMember.profileImage}">
+                                        <img src="/resources/images/banana-logo.png"  id="profileImg">
+                                    </c:if>
+                                    <c:if test="${not empty loginMember.profileImage}">
+                                        <img src="${loginMember.profileImage}" id="profileImg">
+                                    </c:if>
                                 </div>
                                 ${loginMember.memberNickname}
                                 <i class="fa-solid fa-caret-down"></i>

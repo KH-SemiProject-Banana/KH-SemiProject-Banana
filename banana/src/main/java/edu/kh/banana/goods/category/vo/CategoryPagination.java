@@ -1,7 +1,7 @@
-package edu.kh.banana.goods.model.vo;
+package edu.kh.banana.goods.category.vo;
 
 //페이징 처리에 필요한 모든 값들을 저장 하고있는 객체
-public class Pagination {
+public class CategoryPagination {
 
 private int currentPage;      // 현재 페이지 번호
 private int listCount;         // 전체 게시글 수
@@ -17,7 +17,7 @@ private int prevPage;         // 이전 페이지의 페이지 번호 맨 끝
 private int nextPage;         // 다음 페이지의 페이지 번호 맨 앞
 
 
-public Pagination(int listCount, int currentPage) {
+public CategoryPagination(int listCount, int currentPage) {
    this.listCount = listCount;
    this.currentPage = currentPage;
    
@@ -26,7 +26,7 @@ public Pagination(int listCount, int currentPage) {
    makePagination();
 }
 
-public Pagination(int listCount, int currentPage, int limit, int pageSize) {
+public CategoryPagination(int listCount, int currentPage, int limit, int pageSize) {
    this.listCount = listCount;
    this.currentPage = currentPage;
    this.limit = limit;

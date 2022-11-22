@@ -5,9 +5,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-
-
-
 	@ToString
 	@Setter
 	@Getter
@@ -32,7 +29,5 @@ import lombok.ToString;
 		
 		
 		//페이이용내역(REQUEST_PAY)
-		private int orderNo; // 페이 주문번호
-		
-	
+		private int orderNo; // 페이 주문번호	
 }

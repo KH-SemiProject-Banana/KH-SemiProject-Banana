@@ -23,6 +23,8 @@
     <main>
 
         <jsp:include page="/WEB-INF/views/common/header.jsp" />
+        <jsp:include page="/WEB-INF/views/common/nav.jsp" />
+        
 
         <div class="mainContent">
             <div class="category">

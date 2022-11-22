@@ -22,7 +22,7 @@
 	
 		<!-- 값이 있는 것 -->
 		<typeAlias type="edu.kh.banana.member.model.vo.Member" alias="Member"/>
-		<typeAlias type="edu.kh.banana.goods.model.vo.Goods" alias="Goods"/>
+		<typeAlias type="edu.kh.banana.goods.model.vo.GoodsSell" alias="GoodsSell"/>
 		<typeAlias type="edu.kh.banana.goods.model.vo.GoodsImage" alias="GoodsImage"/>
 		
 		<typeAlias type="edu.kh.banana.board.model.vo.Board" alias="Board"/>
@@ -58,8 +58,8 @@
 		<mapper resource="/mappers/review-mapper.xml"/>
 		<mapper resource="/mappers/userComplain-mapper.xml"/>
 		<mapper resource="/mappers/ajax-mapper.xml"/>
-		
 		<mapper resource="/mappers/board-mapper.xml"/>
+		<mapper resource="/mappers/category-mapper.xml"/>
 	</mappers>
 
 

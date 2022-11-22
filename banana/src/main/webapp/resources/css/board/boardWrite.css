@@ -103,7 +103,7 @@ input, select, .introduce{
     font-weight: bold;
 }
 
-.content-image, .content-title, .content-category, .content-discription,  .content-finish{
+.img-container, .content-title, .content-category, .content-discription,  .content-finish{
     display: flex;
 
     padding: 60px 0;
@@ -267,7 +267,7 @@ input, select, .introduce{
 
 .content-image__content {
     width: 980px;
-    padding-top: 60px;
+    /* padding-top: 60px; */
 }
 
 .confirm{

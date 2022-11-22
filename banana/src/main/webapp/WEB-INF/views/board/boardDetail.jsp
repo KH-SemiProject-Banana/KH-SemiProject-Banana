@@ -11,9 +11,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>게시판</title>
+    <title>바꾸고 나누자 나랑: 바나나 마켓</title>
 
 
+    <link rel="shortcut icon" sizes="16x16 32x32 64x64" href="https://i.ibb.co/4tCGZqD/Banana.png">
     <link rel="stylesheet" href="/resources/css/style.css">
     <link rel="stylesheet" href="/resources/css/board/boardDetail.css">
     <link rel="stylesheet" href="/resources/css/board/comment.css">
@@ -82,50 +83,7 @@
             </div>
 
 
-            <!-- 이미지가 있을 경우 -->
-            <%-- <c:if test="${not empty board.imageList}"> --%>
-                <%-- 썸네일 영역(썸네일이 있을 경우) --%>
-                <%-- <c:if test="${board.imageList[0].imageOrder == 0}">
-                    <c:set var="thumbnail" value="${board.imageList[0]}"/>
-                </c:if>
 
-                <c:if test="${not empty thumbnail}">
-                    <h5>썸네일</h5>
-                    <div class="img-box">
-                        <div class="boardImg thumbnail">
-                            <img src="${thumbnail.imagePath}${thumbnail.imageRename}">
-                            <a href="${thumbnail.imagePath}${thumbnail.imageRename}"
-                            download="${thumbnail.imageOriginal}">다운로드</a>         
-                        </div>
-                    </div>
-                </c:if> --%>
-
-                <%-- 업로드 이미지가 있는 경우 --%>
-                <%-- <c:if test="${empty thumbnail}">
-                    <c:set var="start" value ="0"/>
-                </c:if>
-                <c:if test="${not empty thumbnail}">
-                    <c:set var="start" value ="1"/>
-                </c:if> --%>
-
-                <%-- imageList의 이미지 갯수가 start보다 클 경우//
-                    썸네일 유무 관계 없이 다른 이미지가 있을 경우
-                 --%>
-                <%-- <c:if test="${fn:length(board.imageList) > start}"> --%>
-                    <%-- 업로드 이미지 영역 --%>
-                    <%-- <h5>업로드 이미지</h5>
-                    <div class="img-box">
-                        <c:forEach var="i" begin="${start}" end="${fn:length(board.boardList) - 1}" step="1">
-                            <div class="boardImg">
-                                <img src="${board.imageList[i].imagePath}${board.imageList[i].imageRename}">
-                                <a href="${board.imageList[i].imagePath}${board.imageList[i].imageRename}"
-                                download="${board.imageList[i].imageOriginal}">다운로드</a>                
-                            </div>
-                        </c:forEach>
-                    </div>
-                </c:if>
-
-            </c:if> --%>
           
             <!-- 내용 -->
             <div class="board-content">

@@ -67,6 +67,7 @@
 
                         <p id = "p_intro" class="p_intro">나는 썩은 바나나가 아니에요</p>
                         <p id="introUpdateBtn" class = "introUpdateBtn">수정</p>
+                        <p id = "changedBtn" class = "changedBtn">수정하기</p>
                         
                     </div>
                     <div class = "myBanana-temp">

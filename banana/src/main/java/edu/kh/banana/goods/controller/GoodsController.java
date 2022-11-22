@@ -1,6 +1,7 @@
 package edu.kh.banana.goods.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -57,12 +58,7 @@ public class GoodsController {
 	@PostMapping("/registerGoods")
 	public String registerGoods(
 			@SessionAttribute("loginMember") Member loginMember,
-//			@RequestParam(name="title", required = false) String title,
-//			@RequestParam(name="categoryNo", required = false) int categoryNo,
-//			@RequestParam(name="description", required = false) String description,
-//			@RequestParam(name="sellPrice", required = false) int sellPrice,
-			Goods inputGoods,
-			
+			Goods inputGoods,	
 			RedirectAttributes ra,
 			@RequestParam(value="imagePath", required = false) List<MultipartFile> imagePath,
 			HttpServletRequest req,
@@ -104,22 +100,7 @@ public class GoodsController {
 		
 	}
 	
-//	/** 메인페이지 상품조회
-//	 * @param loginMember
-//	 * @return List<Goods> favoriteGoods
-//	 */
-//	@PostMapping("/selectFavorite")
-//	@ResponseBody
-//	public String selectFavorite() {
-//		
-//		List<Goods> favoriteGoods = service.selectFavorite();
-//		
-//		for(Goods goods : favoriteGoods) {
-//			System.out.println(goods);
-//		}
-//		
-//		return new Gson().toJson(favoriteGoods);
-//	}
+
 	
 	
 
@@ -140,33 +121,31 @@ public class GoodsController {
 	}
 
 	
-	// 내 상품 수정 페이지
-//	@PostMapping("/updateGoods")
-//	public String updateGoods(@RequestHeader("referer") String referer,
-//			/*ModelAttribute*/Goods inputGoods,
-//			RedirectAttributes ra,
-//			@RequestParam(value="imagePath", required = false) List<MultipartFile> imagePath,
-//			HttpServletRequest req
-//			) throws Exception {
-//		
-//		String webPath = "/resources/images/goodsImage/";
-//		String filePath = req.getSession().getServletContext().getRealPath(webPath);
-//		
-//		int result = service.updateGoods(webPath, filePath, imagePath, inputGoods);
-//		
-//		String message = null;
-//		
-//		if(result > 0) {
-//
-//			message = "상품 수정 완료";
-//		} else {
-//
-//			message = "상품 수정 실패";
-//		}
-//		
-//		ra.addFlashAttribute("message", message);
-//		
-//		return "redirect:" + referer;
-//	}
+	
+	/** 좋아요 수 증가
+	 * @param paramMap
+	 * @return result
+	 */
+	@GetMapping("/like/up")
+	@ResponseBody
+	public int goodsLikeUp(@RequestParam Map<String, Object> paramMap) {
+		
+		
+		return service.goodsLikeUp(paramMap);
+	}
+	
+	
+	/** 좋아요 수 감소
+	 * @param paramMap
+	 * @return result
+	 */
+	@GetMapping("/like/down")
+	@ResponseBody
+	public int goodsLikeDown(@RequestParam Map<String, Object> paramMap) {
+		
+		
+		return service.goodsLikeDown(paramMap);
+	}
+
 
 }

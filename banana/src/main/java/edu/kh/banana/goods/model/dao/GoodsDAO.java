@@ -56,28 +56,46 @@ public class GoodsDAO {
 	/** 메인페이지 인기상품
 	 * @return List<Goods> favoriteGoodsList
 	 */
-	public List<Goods> favoriteGoods() {
+	public List<Goods> favoriteGoods(int memberNo) {
 		
-		return sqlSession.selectList("goodsMapper.favoriteGoods");
+		return sqlSession.selectList("goodsMapper.favoriteGoods", memberNo);
 	}
 
 	
-	/** 메인화면 상품의 썸네일 구하기
-	 * @param goodsNo
-	 * @return
-	 */
-	public String selectGoodsThumbnail(int goodsNo) {
-		
-		return sqlSession.selectOne("goodsMapper.selectGoodsThumbnail", goodsNo);
-	}
+//	/** 메인화면 상품의 썸네일 구하기
+////	 * @param goodsNo
+////	 * @return
+////	 */
+//	public String selectGoodsThumbnail(int goodsNo) {
+//		
+//		return sqlSession.selectOne("goodsMapper.selectGoodsThumbnail", goodsNo);
+//	}
 
 	
 	/** 메인페이지 최근상품
 	 * @return List<Goods> newGoodsList
 	 */
-	public List<Goods> newGoods() {
+	public List<Goods> newGoods(int memberNo) {
 		
-		return sqlSession.selectList("goodsMapper.newGoods");
+		return sqlSession.selectList("goodsMapper.newGoods", memberNo);
+	}
+
+	/** 좋아요 수 증가
+	 * @param paramMap
+	 * @return result
+	 */
+	public int goodsLikeUp(Map<String, Object> paramMap) {
+		
+		return sqlSession.insert("goodsMapper.goodsLikeUp", paramMap);
+	}
+
+	/** 좋아요 수 감소
+	 * @param paramMap
+	 * @return result
+	 */
+	public int goodsLikeDown(Map<String, Object> paramMap) {
+		
+		return sqlSession.delete("goodsMapper.goodsLikeDown", paramMap);
 	}
 
 

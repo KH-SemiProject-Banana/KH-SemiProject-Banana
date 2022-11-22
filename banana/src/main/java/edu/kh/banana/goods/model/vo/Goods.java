@@ -38,7 +38,7 @@ import lombok.ToString;
 		
 		
 		// 이 상품에 좋아요 누른 회원의 번호 정보
-		private List<Integer> likeMemberNoList;
+//		private List<Integer> likeMemberNoList;
 		// 특정 로그인 회원의 상품 좋아요 여부
 		private int isLike;
 		

@@ -113,23 +113,10 @@ public class GoodsServiceImpl implements GoodsService {
 	 */
 	@Override
 	@Transactional(rollbackFor= Exception.class)
-	public List<Goods> favoriteGoods() {
+	public List<Goods> favoriteGoods(int memberNo) {
 		
-		List<Goods> favoriteGoodsList = dao.favoriteGoods();
+		List<Goods> favoriteGoodsList = dao.favoriteGoods(memberNo);
 		
-		
-		for(int i = 0; i < favoriteGoodsList.size(); i++) {
-			
-			int goodsNo = favoriteGoodsList.get(i).getGoodsNo();
-			
-			String thumbnail = dao.selectGoodsThumbnail(goodsNo);
-			
-			Goods goods = favoriteGoodsList.get(i);
-			goods.setThumbnail(thumbnail);
-			
-			
-			favoriteGoodsList.set(i, goods);
-		}
 		
 		return favoriteGoodsList;
 	}
@@ -139,51 +126,35 @@ public class GoodsServiceImpl implements GoodsService {
 	 */
 	@Override
 	@Transactional(rollbackFor = Exception.class)
-	public List<Goods> newGoods() {
+	public List<Goods> newGoods(int memberNo) {
 		
-		List<Goods> newGoodsList = dao.newGoods();
+		List<Goods> newGoodsList = dao.newGoods(memberNo);
 		
 		
-		for(int i = 0; i < newGoodsList.size(); i++) {
-			
-			int goodsNo = newGoodsList.get(i).getGoodsNo();
-			
-			String thumbnail = dao.selectGoodsThumbnail(goodsNo);
-			
-			Goods goods = newGoodsList.get(i);
-			goods.setThumbnail(thumbnail);
-			
-			
-			newGoodsList.set(i, goods);
-		}
+		
 		
 		return newGoodsList;
 	}
 
 	/**
-	 * 내 상품 수정
+	 * 좋아요 수 증가
 	 */
-//	@Override
-//	@Transactional(rollbackFor = Exception.class)
-//	public int updateGoods(String webPath, String filePath, List<MultipartFile> imagePath, Goods inputGoods) 
-//			throws Exception {
-//
-//		int updateResult = dao.registerGoods(inputGoods);
-//		
-//		if(updateResult > 0) {
-//			
-//			GoodsImage goodsImage = new GoodsImage();
-//			goodsImage.setGoodsNo(inputGoods.getGoodsNo());
-//			
-//			if(imagePath != null) {
-//				
-//				
-//			}
-//		}
-//		
-//		
-//		return 0;
-//	}
+	@Override
+	public int goodsLikeUp(Map<String, Object> paramMap) {
+		
+		return dao.goodsLikeUp(paramMap);
+	}
+
+	/**
+	 * 좋아요 수 감소
+	 */
+	@Override
+	public int goodsLikeDown(Map<String, Object> paramMap) {
+		
+		return dao.goodsLikeDown(paramMap);
+	}
+
+
 
 
 

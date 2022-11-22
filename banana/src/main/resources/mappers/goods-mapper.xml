@@ -21,10 +21,9 @@
    		<result property="orderNo" column="ORDER_NO"></result>
    		
    		<result property="thumbnail" column="THUMBNAIL"></result>
+   		<result property="isLike" column="IS_LIKE"></result>
    		
-   		<!-- GOODS별 좋아요 누른 memberNo list -->
-   		<collection property="likeMemberNoList" javaType="java.util.ArrayList"
-   		ofType="int" select="selectLikeMemberNo" column="GOODS_NO"/>
+
    		
    		
  	</resultMap>
@@ -40,13 +39,7 @@
 	
 	
 	
-	<resultMap type="GoodsLike" id="goodsLike_rm">
-	
-		<id property="memberNo" column="MEMBER_NO"/>
-		<id property="goodsNo" column="GOODS_NO"/>
-   		
-   		<result property="likeTime" column="LIKE_TIME"></result>
-	</resultMap>
+
  	 
  	 
  	 <!-- 상품등록 -->
@@ -90,14 +83,19 @@
 
 
 
-	<!-- 메인페이지 인기상품 -->
+	<!-- 메인페이지 인기상품 + goods에 좋아요 누른여부, 썸네일 -->
 	<select id="favoriteGoods" resultMap="goods_rm">
 		SELECT GOODS_NO, SELLER_NO, BUYER_NO, CATEGORY_NO, TITLE, 
-		SELL_PRICE, VIEW_COUNT, DESCRIPTION, REFRESHED_AT, CREATED_AT, GOODS_DEL_FL
+		SELL_PRICE, VIEW_COUNT, DESCRIPTION, REFRESHED_AT, CREATED_AT, GOODS_DEL_FL, 		
+		(SELECT COUNT(*) FROM GOODS_LIKE GL
+			WHERE (GL.GOODS_NO = G.GOODS_NO)
+			AND (MEMBER_NO = #{memberNo})) IS_LIKE,			
+		(SELECT IMAGE_PATH  FROM GOODS_IMAGE GI
+		WHERE (G.GOODS_NO = GI.GOODS_NO)
+		AND IMG_ORDER = 0) THUMBNAIL
 		FROM
-		 (SELECT 
-		 <![CDATA[
-			 CASE  
+		 (SELECT  
+		 	CASE  <![CDATA[
 			      WHEN SYSDATE - CREATED_AT < 1/24/60
 			      THEN FLOOR( (SYSDATE - CREATED_AT) * 24 * 60 * 60 ) || '초 전'
 			      WHEN SYSDATE - CREATED_AT < 1/24
@@ -105,8 +103,8 @@
 			      WHEN SYSDATE - CREATED_AT < 1
 			      THEN FLOOR( (SYSDATE - CREATED_AT) * 24) || '시간 전'
 			      ELSE TO_CHAR(CREATED_AT, 'YYYY-MM-DD')
-			   		END CREATED_AT, 
-   			CASE  
+			   		END CREATED_AT, ]]>
+			CASE  <![CDATA[
 			      WHEN SYSDATE - REFRESHED_AT < 1/24/60
 			      THEN FLOOR( (SYSDATE - REFRESHED_AT) * 24 * 60 * 60 ) || '초 전'
 			      WHEN SYSDATE - REFRESHED_AT < 1/24
@@ -114,23 +112,28 @@
 			      WHEN SYSDATE - REFRESHED_AT < 1
 			      THEN FLOOR( (SYSDATE - REFRESHED_AT) * 24) || '시간 전'
 			      ELSE TO_CHAR(REFRESHED_AT, 'YYYY-MM-DD')
-			   		END REFRESHED_AT,  ]]>
+			   		END REFRESHED_AT, ]]>
    			GOODS_NO, SELLER_NO, BUYER_NO, CATEGORY_NO, TITLE, 
 			SELL_PRICE, VIEW_COUNT, DESCRIPTION, GOODS_DEL_FL
-	 		FROM GOODS_SELL gs 
-	 		ORDER BY VIEW_COUNT DESC)
- 		<![CDATA[WHERE ROWNUM <= 5]]>
+		 		FROM GOODS_SELL S
+		 		ORDER BY  VIEW_COUNT DESC) G
+ 		<![CDATA[ WHERE ROWNUM <= 5 ]]>
 	</select>
 	
 	
-	<!-- 메인페이지 최근상품 -->
-	<select id="newGoods" resultMap="goods_rm">
+	<!-- 메인페이지 최근상품 + goods에 좋아요 누른여부, 썸네일 -->
+	<select id="newGoods" parameterType="_int" resultMap="goods_rm">
 		SELECT GOODS_NO, SELLER_NO, BUYER_NO, CATEGORY_NO, TITLE, 
-		SELL_PRICE, VIEW_COUNT, DESCRIPTION, REFRESHED_AT, CREATED_AT, GOODS_DEL_FL
+		SELL_PRICE, VIEW_COUNT, DESCRIPTION, REFRESHED_AT, CREATED_AT, GOODS_DEL_FL, 
+		(SELECT COUNT(*) FROM GOODS_LIKE GL
+			WHERE (GL.GOODS_NO = G.GOODS_NO)
+			AND (MEMBER_NO = #{memberNo})) IS_LIKE,		
+		(SELECT IMAGE_PATH  FROM GOODS_IMAGE GI
+		WHERE (G.GOODS_NO = GI.GOODS_NO)
+		AND IMG_ORDER = 0) THUMBNAIL
 		FROM
-		 (SELECT 
-		 <![CDATA[
-			 CASE  
+		 (SELECT  
+		 	CASE  <![CDATA[
 			      WHEN SYSDATE - CREATED_AT < 1/24/60
 			      THEN FLOOR( (SYSDATE - CREATED_AT) * 24 * 60 * 60 ) || '초 전'
 			      WHEN SYSDATE - CREATED_AT < 1/24
@@ -138,8 +141,8 @@
 			      WHEN SYSDATE - CREATED_AT < 1
 			      THEN FLOOR( (SYSDATE - CREATED_AT) * 24) || '시간 전'
 			      ELSE TO_CHAR(CREATED_AT, 'YYYY-MM-DD')
-			   		END CREATED_AT, 
-   			CASE  
+			   		END CREATED_AT, ]]>
+			CASE  <![CDATA[
 			      WHEN SYSDATE - REFRESHED_AT < 1/24/60
 			      THEN FLOOR( (SYSDATE - REFRESHED_AT) * 24 * 60 * 60 ) || '초 전'
 			      WHEN SYSDATE - REFRESHED_AT < 1/24
@@ -147,30 +150,23 @@
 			      WHEN SYSDATE - REFRESHED_AT < 1
 			      THEN FLOOR( (SYSDATE - REFRESHED_AT) * 24) || '시간 전'
 			      ELSE TO_CHAR(REFRESHED_AT, 'YYYY-MM-DD')
-			   		END REFRESHED_AT,  ]]>
+			   		END REFRESHED_AT, ]]>
    			GOODS_NO, SELLER_NO, BUYER_NO, CATEGORY_NO, TITLE, 
 			SELL_PRICE, VIEW_COUNT, DESCRIPTION, GOODS_DEL_FL
-	 		FROM GOODS_SELL gs 
-	 		ORDER BY CREATED_AT DESC)
- 		<![CDATA[WHERE ROWNUM <= 5]]>
+		 		FROM GOODS_SELL S
+		 		ORDER BY GOODS_NO DESC) G
+ 		<![CDATA[ WHERE ROWNUM <= 5 ]]>
 	</select>
 	
 	
-	
-	<select id="selectGoodsThumbnail" parameterType="_int" resultType="string">
-		SELECT IMAGE_PATH  FROM GOODS_IMAGE
-		WHERE GOODS_NO = #{goodsNo}
-		AND IMG_ORDER = 0
-	</select>
+	<!-- 좋아요 수 증가 -->
+	<delete id="goodsLikeDown" parameterType="map">
+		DELETE FROM GOODS_LIKE 
+		WHERE BOARD_NO = #{boardNo}
+		AND MEMBER_ = #{memberNo}
+	</delete>
   
   
-  
-  	<select id="selectLikeMemberNo"  resultType="_int">
-  		SELECT count(*) FROM GOODS_LIKE
-		WHERE GOODS_NO = #{goodsNo}
-		AND MEMBER_NO = #{memberNo}
-  	</select>
-  
-  
+
   
 </mapper>

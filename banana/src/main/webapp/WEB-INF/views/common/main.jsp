@@ -2,7 +2,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 
-<c:set var="favorite" value="${favoriteGoodsList}"></c:set>
 
 
 
@@ -68,15 +67,10 @@
 
             <section class="content-favorite" id="favorite">
                 <c:forEach var="favorite" items="${favoriteGoodsList}">
-
-                <%-- 로그인상태인 경우 회원번호 가져와 like list 가져와 goods테이블에 대입(-) --%>
-                <c:if test="${not empty loginMember}">
-                    <c:forEach var="likeMemberNo" items="${likeMemberNoList}">
-                        <c:if test="${loginMember.memberNo == likeMemberNo}">
-                            <c:set var="choose" value="choose"/>
-                        </c:if>
-                    </c:forEach>
-                </c:if>
+                    <%-- 로그인상태인 경우 회원번호 가져와 like list 가져와 goods테이블에 대입(-) --%>
+                    <c:if test="${favorite.isLike == 1}">
+                        <c:set var="isLike" value="choose"/>
+                    </c:if>
 
                     <div class="favorite__pack">
                         <div>
@@ -91,7 +85,7 @@
                                 <div class="favorite__heart">
                                     <input type="checkbox" name="heart" class="favorite__heart">
                                     <label for="heart1">
-                                        <i class="fa-solid fa-heart-circle-plus ${choose}"></i>
+                                        <i class="fa-solid fa-heart-circle-plus ${isLike}"></i>
                                         <input type="hidden" value="${newGoods.goodsNo}">
                                     </label>
                                 </div>
@@ -100,6 +94,8 @@
                     
                         <div class="favorite__title">${favorite.title}</div>
                     </div>
+
+                    <c:remove var="isLike"/>
                 </c:forEach>
             </section>
             
@@ -119,6 +115,9 @@
 
             <section class="content-favorite">
                 <c:forEach var="newGoods" items="${newGoodsList}">
+                    <c:if test="${newGoods.isLike == 1}">
+                        <c:set var="isLike" value="choose"/>
+                    </c:if>
                     <div class="favorite__pack">
                         <div>
                             <div class="favorite__img">
@@ -148,7 +147,9 @@
 
 
     <script>
+        const loginMember = "${loginMember}"
         const memberNo = "${loginMember.memberNo}";
+        // const goodsNo = "${loginMember.goodsNo}";
     
     </script>
 

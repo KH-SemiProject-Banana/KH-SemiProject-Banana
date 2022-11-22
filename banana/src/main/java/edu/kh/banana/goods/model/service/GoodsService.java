@@ -2,6 +2,7 @@ package edu.kh.banana.goods.model.service;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -36,7 +37,7 @@ public interface GoodsService {
 	/** 메인페이지 인기상품
 	 * @return List<Goods> favoriteGoodsList
 	 */
-	List<Goods> favoriteGoods();
+	List<Goods> favoriteGoods(int memberNo);
 
 
 
@@ -44,7 +45,25 @@ public interface GoodsService {
 	/** 메인페이지 최근글
 	 * @return List<Goods> newGoodsList
 	 */
-	List<Goods> newGoods();
+	List<Goods> newGoods(int memberNo);
+
+
+
+
+	/** 좋아요 수 증가
+	 * @param paramMap
+	 * @return
+	 */
+	int goodsLikeUp(Map<String, Object> paramMap);
+
+
+
+
+	/** 좋아요 수 감소
+	 * @param paramMap
+	 * @return
+	 */
+	int goodsLikeDown(Map<String, Object> paramMap);
 
 	
 	

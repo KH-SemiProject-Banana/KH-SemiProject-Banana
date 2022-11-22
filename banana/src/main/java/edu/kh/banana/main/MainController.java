@@ -39,28 +39,20 @@ public class MainController {
 		// + 로그인한 상태에서는 좋아요 눌렀는지 여부 체크는 어떻게..?
 		
 		
+		int memberNo = -1;
+		
+		if(loginMember != null) {
+			memberNo = loginMember.getMemberNo();
+		}
+		
+		
 		// 메인페이지 인기상품
-		List<Goods> favoriteGoodsList = service.favoriteGoods();
+		List<Goods> favoriteGoodsList = service.favoriteGoods(memberNo);
 		
 		// 메인페이지 최근글
-		List<Goods> newGoodsList = service.newGoods();
+		List<Goods> newGoodsList = service.newGoods(memberNo);
 		
 		
-		// 로그인 상태라면 
-		if(loginMember != null) {
-			
-			for(Goods goods: favoriteGoodsList) {
-				
-				Map<String, Object> map = new HashMap<String, Object>();
-				map.put("memberNo", loginMember.getMemberNo());
-				map.put("goodsNo", goods.getGoodsNo());
-				
-				int result = service.isLike(map);
-				if(result > 0) {goods.setLikeMemberNoList(1)}
-			}
-			
-			;
-		}
 		
 
 		

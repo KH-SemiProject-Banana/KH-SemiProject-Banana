@@ -1,0 +1,60 @@
+@import url("productList/searchProduct.css");
+@import url("productList/imgList.css");
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3{letter-spacing: -2px;}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+/* 카테고리 */
+.category{
+    height: 40px;
+    padding-left: 10px;
+    font-size: 12px;
+    margin-top: 25px;
+    font-weight: bold;
+}
+
+.category_title{
+    padding-left: 10px;
+    margin-bottom: 30px;
+}
+
+/* 페이지 번호 */
+.pageList{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    margin-bottom: 70px;
+}
+
+.page{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    text-decoration: none;
+    width: 30px;
+    height: 30px;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.selectPage{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(241, 189, 0);
+    border: 1px solid rgb(241, 189, 0);
+    width: 30px;
+    height: 30px;
+}

@@ -15,7 +15,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import edu.kh.banana.goods.model.service.GoodsService;
 import edu.kh.banana.goods.model.vo.GoodsSell;
 
-@SessionAttributes("category")
+//@SessionAttributes("category")
 @Controller
 public class GoodsController {
 	

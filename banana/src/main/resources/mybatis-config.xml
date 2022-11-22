@@ -28,6 +28,9 @@
 		<typeAlias type="edu.kh.banana.board.model.vo.Board" alias="Board"/>
 		<typeAlias type="edu.kh.banana.board.model.vo.Comment" alias="Comment"/>
 		<typeAlias type="edu.kh.banana.board.model.vo.BoardImage" alias="BoardImage"/>
+		<typeAlias type="edu.kh.banana.customer.model.vo.Customer" alias="Customer"/>
+		
+		
 		
 		
 		
@@ -47,6 +50,7 @@
 	<mappers>
  		<mapper resource="/mappers/member-mapper.xml"/>
 		<mapper resource="/mappers/myPage-mapper.xml"/>
+		<mapper resource="/mappers/customer-mapper.xml"/>
 		<mapper resource="/mappers/boardComplain-mapper.xml"/>
 		<mapper resource="/mappers/chat-mapper.xml"/>
 		<mapper resource="/mappers/goods-mapper.xml"/>

@@ -6,7 +6,7 @@
         <header>
             <section class="section-topmenu">
                 <div>
-                    <a href="/board/1" class="fa-regular fa-file-lines boardListLink"> 게시판</a>
+                    <%-- <a href="/board/1" class="fa-regular fa-file-lines boardListLink"> 게시판</a> --%>
                 </div>
                 <div class="talkAndlogin">
                     <a href="#" class="topmenu__talk fa-regular fa-comment">바나나톡</a>
@@ -21,7 +21,12 @@
                         <c:otherwise>
                             <label for="header-menu-toggle">
                                 <div class="profileImgArea">
-                                    <img src="/resources/images/banana-logo.png"  id="profileImg">
+                                    <c:if test="${empty loginMember.profileImage}">
+                                        <img src="/resources/images/banana-logo.png"  id="profileImg">
+                                    </c:if>
+                                    <c:if test="${not empty loginMember.profileImage}">
+                                        <img src="${loginMember.profileImage}" id="profileImg">
+                                    </c:if>
                                 </div>
                                 ${loginMember.memberNickname}
                                 <i class="fa-solid fa-caret-down"></i>

@@ -33,7 +33,14 @@ public class BoardController {
 		
 		model.addAttribute("map", map);
 		
-		return "board/boardList";
+		String path = null;
+		if(boardCode == 1) {
+			path = "board1";
+		} else {
+			path="boardList";
+		}
+		
+		return "board/" + path;
 	}
 	
 	

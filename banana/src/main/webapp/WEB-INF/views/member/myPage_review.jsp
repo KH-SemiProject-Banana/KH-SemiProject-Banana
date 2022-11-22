@@ -18,10 +18,10 @@
 </head>
 <body>
     <div class = "myBanana" id = "reviewss">
-        <section class = "myBanana-sellList">
+        <section class = "myBanana-reviewList">
             <section class = "title_section_1">
-                <p>받은 매너 평가</p>
-                <a href="WEB-INF/views/member/myPage_review_good.jsp"><i class="fa-solid fa-angle-right"></i></a>
+                <a href="/member/myPage/review/good">받은 매너 평가&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+            </section>
             </section>
             <section class ="review_section_1">
                 <section class = "row1">
@@ -48,8 +48,7 @@
                 </section>
             </section>
             <section class = "title_section_2">
-                <p>받은 거래 후기</p>
-                <i class="fa-solid fa-angle-right"></i>
+                <a href="/member/myPage/review/detail">받은 거래 후기&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa-solid fa-angle-right"></i></a>
             </section>
             <section class = "review_section_2">
                 <div class = "review_2">

@@ -1,0 +1,174 @@
+/* *{border: 1px solid red;} */
+
+
+.report-top{
+    display: flex;
+    height: 30%;
+    border-bottom: 1px solid black;
+    font-size: 20px;
+    padding: 3%;
+}
+.report-top > *{
+    text-decoration: none;
+    color: black;
+}
+
+.report-why{
+    border-bottom: 1px solid black;
+    height: 30%;
+    padding: 3%;
+    font-size: 20px;
+}
+
+
+.report-reason  {
+    border-bottom: 1px solid black;
+    padding: 15px;
+    
+    
+}
+
+.report-reason:hover{
+    background-color: var(--lightYellow);
+}
+
+.report-reason > a {
+    
+    text-decoration: none;
+    color: black;
+    font-size: 15px;
+    height: 30%;
+}
+
+.report-reason > a  > div{
+    display: flex;
+    justify-content: space-between;
+}
+
+.report-other{
+    padding: 15px;
+    border-bottom: 1px solid black;
+}
+
+.report-other:hover{
+    background-color: var(--lightYellow);
+}
+
+.report-other >a {
+    text-decoration: none;
+    color: black;
+    font-size: 15px;
+    height: 30%;
+}
+
+.report-other > a > div{
+    display: flex;
+    justify-content: space-between;
+}
+
+.report-user{
+    display: flex;
+    border-bottom: 1px solid black;
+    font-size: 13px;
+    height: 30%;
+    padding: 3%;
+    margin-top: 40px;
+    
+}
+
+.user-doreport{
+    font-size: 13px;
+  
+}
+
+.user-doreport > *{
+    text-decoration: none;
+   
+}
+
+.report-why > p:only-of-type{
+    font-weight: bold;
+}
+
+.report-why > div:only-of-type{
+    font-weight: bold;
+    padding: 5px;
+}
+
+.bottom {
+    margin-bottom: 100px;
+}
+
+
+ /* *{border: 1px solid red;}  */
+
+ .report-top{
+    display: flex;
+    height: 30%;
+    border-bottom: 1px solid black;
+    font-size: 20px;
+    padding: 3%;
+}
+
+
+.report-top > *{
+    text-decoration: none;
+    color: black;
+}
+
+.report-confirm{
+    margin-bottom: 20px;
+}
+
+.content-block{
+    margin-bottom: 20px;
+}
+
+.content-block > checkbox{
+
+}
+
+.report-notice{
+    color: gray;
+    margin-bottom:  20px;
+}
+
+
+.report-submit button{
+    background-color: yellow;
+    cursor: pointer;
+    width: 400px;
+    height: 30px;
+}
+
+.report-confirm > a{
+    text-decoration: none;
+    color: black;
+}
+
+
+
+.textbox > textarea {
+    resize: none;
+    margin-top: 30px;
+    border: 1px solid black;
+}
+
+
+
+.noneVisible {
+    display: none !important;
+}
+
+
+.ctg1:last-child, .ctg2:last-child, .ctg3:last-child, .ctg4:last-child, .ctg5:last-child {
+    display: none !important;
+}
+
+/* div[class*="ctg"]{
+    display: none;
+} */
+
+/* #click1 {
+    height: 800px;
+} */

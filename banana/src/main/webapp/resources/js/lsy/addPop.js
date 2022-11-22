@@ -83,7 +83,7 @@ for(let dot of dotList){
             
         })
 
-        div3.classList.add("anotherPop1" , "babo");
+        div3.classList.add("anotherPop1");
         div3.innerText = "끌어올리기";
         div3.addEventListener("click", function(){
             

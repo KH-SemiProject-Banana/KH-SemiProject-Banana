@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,59 +11,24 @@
     <link rel="shortcut icon" sizes="16x16 32x32 64x64" href="https://i.ibb.co/4tCGZqD/Banana.png">
     <title>바꾸고 나누자 나랑: 바나나 마켓</title>
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/resources/css/style.css">
     
-    <link rel="stylesheet" href="css/myPage_review_good.css">
+    <link rel="stylesheet" href="/resources/css/lsy/myPage_review_good.css">
 
 
     <script src="https://kit.fontawesome.com/f7459b8054.js" crossorigin="anonymous"></script>
 
+
+
 </head>
 <body>
     <main>
-        <!-- header 시작----------------------------------------------------------------------------------------- -->
-        <header>
-            <section class="section-topmenu">
-                <a href="#" class="topmenu__alarm fa-regular fa-bell">알람</a>
-                <a href="#" class="topmenu__talk fa-regular fa-comment">바나나톡</a>
-                <a href="#" class="topmenu__login">로그인/회원가입
+        
+        <%-- header.jsp.include --%>
+        <jsp:include page="/WEB-INF/views/common/header.jsp" />
 
-                </a>
-            </section>
-            <section class="section-query">
-                <div class="query__area">
-                    <a href="#">
-                        <img src="images/banana-logo.png" id="logo-img">
-                    </a>
-                        <div class="query__logo">
-                        <p>바꾸고 나누자 나랑</p>
-                        <p id="query__banana">Banana Market</p>
-                    </div>
-                </div>
-
-                <article class="search-area">
-
-                    <!-- form : 내부 input태그의 값을 서버 또는 페이지로 전달(제출) -->
-                    <form action="#">
-                        <fieldset>
-                            <input type="search" id="query" name="query" placeholder="검색어를 입력해주세요">
-                            <button type="submit" id="search-btn" class="fa-solid fa-magnifying-glass">
-                            </button>
-                        </fieldset>
-                    </form>
-                </article>
-                <div class="sellingMy">
-                    <div>내 물건<br>판매하기</div>
-                </div>
-            </section>
-
-        </header>
-
-
-        <!-- header 끝----------------------------------------------------------------------------------------- -->
     <section class = "title">
-        <a href="../html/myPage_main_addPop.html">></a>
-        <p>매너 상세</p>
+        <i id = "back" class="fa-solid fa-angle-right"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;매너 상세
     </section>      
     <section class = "content">
         <div class= "side">
@@ -229,24 +197,10 @@
 </main>
 
 
-<!-- footer 시작----------------------------------------------------------------------------------------- -->
+    <%-- footer.jsp.include --%>
+    <jsp:include page = "/WEB-INF/views/common/footer.jsp" />
 
-<footer>
-    <p>
-        Copyright &copy; KH Information Educational Institute A-Class 중고거래 프로젝트 팀
-    </p>
-    <article>
-        <a href="#">프로젝트 소개</a>
-        <span> | </span>
-        <a href="#">이용약관</a>
-        <span> | </span>
-        <a href="#">개인정보취급방침</a>
-        <span> | </span>
-        <a href="#">고객센터</a>
-    </article>
-</footer>
-<!-- footer 끝----------------------------------------------------------------------------------------- -->
 
-    <script src="js/myPage_review_good.js"></script>
+    <script src="/resources/js/lsy/myPage_review_good.js"></script>
 </body>
 </html>

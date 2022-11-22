@@ -1,145 +1,43 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<c:set var="boardList" value="${map.boardList}"></c:set>
+<c:set var="boardName" value="${boardTypeList[boardCode-1].BOARD_NAME}"/>
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon"  sizes="16x16 32x32 64x64" href="https://i.ibb.co/4tCGZqD/Banana.png">
+    <link rel="shortcut icon" sizes="16x16 32x32 64x64" href="https://i.ibb.co/4tCGZqD/Banana.png">
     <title>바꾸고 나누자 나랑: 바나나 마켓</title>
 
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/screens/notice.css">
-    <script src="https://kit.fontawesome.com/f7459b8054.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/resources/css/style.css">
+    <link rel="stylesheet" href="/resources/css/board/board1.css">
 
+    <script src="https://kit.fontawesome.com/f7459b8054.js" crossorigin="anonymous"> </script>
 
-</head>
-<body>
     
+</head>
+
+<body>
 
     <main>
-        <!-- header 시작----------------------------------------------------------------------------------------- -->
-        <header>
-            <section class="section-topmenu">
-                <a href="#" class="topmenu__alarm fa-regular fa-bell">알람</a>
-                <a href="#" class="topmenu__talk fa-regular fa-comment">바나나톡</a>
-                <a href="#" class="topmenu__login">로그인/회원가입
-                    
-                </a>
-            </section>
-            <section class="section-query">
-                <div class="query__area">
-                    <a href="#">
-                        <img src="images/banana-logo.png" id="logo-img">
-                    </a>
-                    <div class="query__logo">
-                        <p>바꾸고 나누자 나랑</p>
-                        <p id="query__banana">Banana Market</p>
-                    </div>
-                </div>
-                
-                <article class="search-area">
-            
-                    <!-- form : 내부 input태그의 값을 서버 또는 페이지로 전달(제출) -->
-                    <form action="#">
-                        <fieldset>
-                            <input type="search" id="query" name="query" placeholder="검색어를 입력해주세요">
-                            <button type="submit" id="search-btn" class="fa-solid fa-magnifying-glass">
-                            </button>
-                        </fieldset>
-                    </form>
-                </article>
-                <div class="sellingMy">
-                    <div>내 물건<br>판매하기</div>
-                </div>
-            </section>
-            
-        </header>
-        <nav>
-            <ul>
-                <li><a href="#">
-                        <div class="category__detail">
-                            <i class="fa-solid fa-heart"></i>
-                            <p>인기매물</p>
-                        </div>
-                    </a></li>
-                <li><a href="#">
-                        <div class="category__detail">
-                            <i class="fa-solid fa-computer"></i><p>전자기기</p>
-                        </div>
-                    </a></li>
-                <li><a href="#">
-                        <div class="category__detail">
-                            <i class="fa-solid fa-couch"></i><p>가구/인테리어</p>
-                        </div>
-                    </a></li>
-                <li><a href="#">
-                        <div class="category__detail">
-                            <i class="fa-solid fa-kitchen-set"></i><p>생활/주방</p>
-                        </div>
-                    </a></li>
-                <li><a href="#">
-                        <div class="category__detail">
-                            <i class="fa-solid fa-baby"></i><p>유아용품</p>
-                        </div>
-                    </a></li>
-                <li><a href="#">
-                        <div class="category__detail">
-                            <i class="fa-solid fa-shirt"></i><p>의류/잡화</p>
-                        </div>
-                    </a></li>
-            
-                <li><a href="#">
-                        <div class="category__detail">
-                            <i class="fa-solid fa-wand-magic-sparkles"></i><p>뷰티/미용</p>
-                        </div>
-                    </a></li>
-                <li><a href="#">
-                        <div class="category__detail">
-                            <i class="fa-solid fa-icons"></i><p>취미/게임/음반</p>
-                        </div>
-                    </a></li>
-                <li><a href="#">
-                        <div class="category__detail">
-                            <i class="fa-solid fa-book"></i><p> 티켓/도서</p>
-                        </div>
-                    </a></li>
-                <li><a href="#">
-                        <div class="category__detail">
-                            <i class="fa-solid fa-dog"></i><p>반려동물용품</p>
-                        </div>
-                    </a></li>
-                <li><a href="#">
-                        <div class="category__detail">
-                            <i class="fa-brands fa-stack-overflow"></i><p>기타중고물품</p>
-                        </div>
-                    </a></li>
-                <li><a href="#">
-                        <div class="category__detail">
-                            <i class="fa-solid fa-hand-holding"></i><p>삽니다</p>
-                        </div>
-                    </a></li>
-            </ul>
-        </nav>
-
- <!-- header 끝----------------------------------------------------------------------------------------- -->
-
-              
-
-
-
-
-        
-    </main>
+       <jsp:include page="/WEB-INF/views/common/header.jsp" />
+       <jsp:include page="/WEB-INF/views/common/nav.jsp" />
+        </main>
 
     <div class="longMain">
         <div class="sidebar">
             <div>
                 <div class="sidebar__title">바나나센터</div>
                 <div class="sidebar__content">
-                    <a href="#"">자주 묻는 질문</a>
-                    <a href="#">운영정책</a>
-                    <a href="#">일반 문의</a>
-                    <a href="#">공지사항</a>
+
+                    <c:forEach var="boardType" items="${boardTypeList}">
+                        <a href="/board/${boardType.BOARD_CODE}">${boardType.BOARD_NAME}</a>
+                    </c:forEach>
                 </div>
             </div>
 
@@ -152,7 +50,7 @@
                 </div>
                 
                 <div class ="frequent-question__title">
-                    <p>자주 묻는 질문</p>
+                    <p>${boardName}</p>
                 </div>
                 
     
@@ -166,7 +64,7 @@
                         <div class="area" style="display:none">
                             <div class="profile">
                                 <div class="profile-img">
-                                    <img src="images/banana-logo.png" id="admin-img">
+                                    <img src="/resources/images/banana-logo.png" id="admin-img">
                                 </div>
                                 <div class="name-date">
                                     <p class= "nickname" id="admin-name">바나나마켓_운영지원팀</p>
@@ -190,7 +88,7 @@
                         <div class="area" style="display:none">
                             <div class="profile">
                                 <div class="profile-img">
-                                    <img src="images/banana-logo.png" id="admin-img">
+                                    <img src="/resources/images/banana-logo.png" id="admin-img">
                                 </div>
                                 <div class="name-date">
                                     <p class= "nickname" id="admin-name">바나나마켓_운영지원팀</p>
@@ -226,7 +124,7 @@
                         <div class="area" style="display:none">
                             <div class="profile">
                                 <div class="profile-img">
-                                    <img src="images/banana-logo.png" id="admin-img">
+                                    <img src="/resources/images/banana-logo.png" id="admin-img">
                                 </div>
                                 <div class="name-date">
                                     <p class= "nickname" id="admin-name">바나나마켓_운영지원팀</p>
@@ -261,7 +159,7 @@
                         <div class="area" style="display:none">
                             <div class="profile">
                                 <div class="profile-img">
-                                    <img src="images/banana-logo.png" id="admin-img">
+                                    <img src="/resources/images/banana-logo.png" id="admin-img">
                                 </div>
                                 <div class="name-date">
                                     <p class= "nickname" id="admin-name">바나나마켓_운영지원팀</p>
@@ -285,7 +183,7 @@
                         <div class="area" style="display:none">
                             <div class="profile">
                                 <div class="profile-img">
-                                    <img src="images/banana-logo.png" id="admin-img">
+                                    <img src="/resources/images/banana-logo.png" id="admin-img">
                                 </div>
                                 <div class="name-date">
                                     <p class= "nickname" id="admin-name">바나나마켓_운영지원팀</p>
@@ -311,7 +209,7 @@
                         <div class="area"style="display:none">
                             <div class="profile">
                                 <div class="profile-img">
-                                    <img src="images/banana-logo.png" id="admin-img">
+                                    <img src="/resources/images/banana-logo.png" id="admin-img">
                                 </div>
                                 <div class="name-date">
                                     <p class= "nickname" id="admin-name">바나나마켓_운영지원팀</p>
@@ -337,7 +235,7 @@
                         <div class="area" style="display:none">
                             <div class="profile">
                                 <div class="profile-img">
-                                    <img src="images/banana-logo.png" id="admin-img">
+                                    <img src="/resources/images/banana-logo.png" id="admin-img">
                                 </div>
                                 <div class="name-date">
                                     <p class= "nickname" id="admin-name">바나나마켓_운영지원팀</p>
@@ -363,27 +261,9 @@
         <div></div>
     </div> 
 
-    
 
-    
- <!-- footer 시작----------------------------------------------------------------------------------------- -->
-
-    <footer>
-        <p>
-            Copyright &copy; KH Information Educational Institute A-Class 중고거래 프로젝트 팀
-        </p>
-        <article>
-            <a href="#">프로젝트 소개</a>
-            <span> | </span>
-            <a href="#">이용약관</a>
-            <span> | </span>
-            <a href="#">개인정보취급방침</a>
-            <span> | </span>
-            <a href="#">고객센터</a>
-        </article>
-    </footer>
-     <!-- footer 끝----------------------------------------------------------------------------------------- -->
-
+  	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
 </body>
+
 </html>

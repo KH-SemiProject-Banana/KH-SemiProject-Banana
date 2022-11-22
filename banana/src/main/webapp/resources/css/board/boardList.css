@@ -14,10 +14,10 @@ a:hover {
     text-decoration: underline;
 }
 
-/* .board-list{
-    width: 1000px;
-    margin : 50px auto;
-} */
+.board-list{
+    width: 1140px;
+    /* margin : 20px auto; */
+}
 
 .board-title{
     margin-left : 30px;
@@ -325,4 +325,109 @@ nav li>a {
 nav li>a:hover {
     background-color: var(--lightYellow);
     /* color: white; */
+}
+
+
+
+
+/* 사이드바 */
+.longMain {
+    /* width: 2378px; */
+    /* background-color: aquamarine; */
+    height: auto;
+
+    display: flex;
+    /* flex-direction: column; */
+    /* justify-content: center; */
+}
+
+.longMain > div:nth-child(1){
+    width: 280px;
+    /* background-color: red; */
+    /* border-right: 2px solid #eee; */
+}
+
+/* .longMain > div:nth-child(2){
+    width: 1140px;
+}
+
+.longMain > div:nth-child(3){
+    width: 280px;
+} */
+
+
+
+
+.sidebar {
+    height: 100px;
+    
+    margin-top: 50px;
+    /* background-color: aqua; */
+
+    position: sticky;
+    top: 80px;
+    
+}
+
+.sidebar > div {
+    /* z-index: 3; */
+    
+    background-color: white;
+    border: 2px solid #eee;
+    margin: 0 20px;
+    /* background-color: wheat; */
+    
+}
+
+.sidebar__title {
+    /* height: 50px; */
+    border-bottom: 2px solid #eee;
+    font-size: 25px;
+    font-weight: bold;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.sidebar__content {
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar__content > a{
+    padding: 20px;
+    text-decoration: none;
+    color: rgba(0,0,0,0.7);
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.sidebar__content > a:hover {
+    background-color: var(--lightYellow);
+}
+
+/* .sidebar__content > a:nth-child(1) {
+    background-color: var(--yellow);
+} */
+
+.selected{
+    background-color: var(--yellow);
+}
+
+
+
+.notice__title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 0;
+    margin: 50px 0;
+    border-bottom: 2px solid #eee;
+}
+
+.notice__title > p{
+    font-size: 50px;
+    font-weight: bold;
 }

@@ -21,28 +21,14 @@
 
 
     <script src="https://kit.fontawesome.com/f7459b8054.js" crossorigin="anonymous"></script>
-
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript">   
-    $(document).ready( function() {
-
-    $("#reviewssss").load("myPage_review.html");  // 원하는 파일 경로를 삽입하면 된다
-    $("#footers").load("common/footer.html");  // 추가 인클루드를 원할 경우 이런식으로 추가하면 된다
-
-    });
-    </script>
-
-
 
 </head>
 
 <body>
-
-
     <main>
-        <%-- header.jsp.include --%>
         <jsp:include page="/WEB-INF/views/common/header.jsp" />
-        <jsp:include page= "/WEB-INF/views/common/nav.jsp" />
+        <jsp:include page="/WEB-INF/views/common/nav.jsp" />
     
         <div class = "myBanana">
             <!--섹션1********************************************************************************************************섹션1-->
@@ -51,13 +37,11 @@
                 <i class="topmenu__alarm fa-regular fa-bell fa-2x"></i>                
                 <p>차단 관리</p>
             </section>
-             <!--섹션2********************************************************************************************************섹션1-->
+            <!--섹션2********************************************************************************************************섹션1-->
             <section class = "myBanana-title">
-                
                     <p>나의 바나나</p>
-                
             </section>
-             <!--섹션3********************************************************************************************************섹션1-->
+            <!--섹션3********************************************************************************************************섹션1-->
             <section class = "myBanana-detail">
                 <div class = "myBanana-photo">
                     <img  class = "photo" src="/resources/images/banana-logo.png" alt="">
@@ -69,33 +53,55 @@
                         <div class = "myBanana-name">${loginMember.memberNickname}</div>
                         <div class = "myBanana-address">${address}</div>
                         <div class = "myBanana-changeInfo">
-                            <a href="#"><i class="fa-solid fa-pen"></i></a>
-                                                    
+                            <a href="/member/myPage/updateInfo">
+                                 <p id="introUpdateBtn1" class = "introUpdateBtn1">수정</p>
+                            </a>
                         </div>
                     </div>
 
                     <div class = "myBanana-intro">
-                        <p id = "p_intro">나는 썩은 바나나가 아니에요</p>
-                        <a href="#"><i id = "pen_intro" class = "fa-solid fa-pen" ></i></a>
-                                            
+                        <%-- (기존꺼)강사님과 함께.... --%>
+                        <%-- <p id = "p_intro">나는 썩은 바나나가 아니에요</p>
+                        <a href="#" id="introUpdateBtn"><i id = "pen_intro" class = "fa-solid fa-pen" ></i></a>
+                        --%>
+
+                        <p id = "p_intro" class="p_intro">나는 썩은 바나나가 아니에요</p>
+                        <p id="introUpdateBtn2" class = "introUpdateBtn2">수정</p>
+                        <p id = "changedBtn" class = "changedBtn">수정하기</p>
+                        
                     </div>
                     <div class = "myBanana-temp">
-                        <p class ="temp-text">바나나 온도</p>
-                        <div class = temperature>온도계</div>
+                        <p class ="temp-text">나의 바나나 온도 : ${loginMember.manner}도</p>
+                        <div class = "container">
+                            <c:choose>
+                                <c:when test="${loginMember.manner >= 80}">
+                                    <div class = "temperature" style = "width:${loginMember.manner}%; background-color:red"></div>
+                                </c:when>
+                                <c:when test="${loginMember.manner >= 60}">
+                                    <div class = "temperature" style = "width:${loginMember.manner}%; background-color:orange"></div>
+                                </c:when>
+                                <c:when test="${loginMember.manner >= 40}">
+                                    <div class = "temperature" style = "width:${loginMember.manner}%; background-color:yellow"></div>
+                                </c:when>
+                                <c:when test="${loginMember.manner >= 20}">
+                                    <div class = "temperature" style = "width:${loginMember.manner}%; background-color:green"></div>
+                                </c:when>
+                                <c:otherwise>
+                                    <div class = "temperature" style = "width:${loginMember.manner}%; background-color:blue"></div>
+                                </c:otherwise>
+                            </c:choose>
+                        </div>
                     </div>
                 </div>
             </section>
-             <!--섹션4********************************************************************************************************섹션1-->
-             
-             
-             
-             <section class = "myBanana-category">
-                 <div id =first-category>판매내역</div>
-                 <div id =second-category>구매내역</div>
-                 <div id =third-category>관심목록</div>
-                 <div id =fourth-category>후기</div>
-                </section>
-                <!--섹션5********************************************************************************************************섹션1-->
+            <!--섹션4********************************************************************************************************섹션1-->
+            <section class = "myBanana-category">
+                <div id =first-category>판매내역</div>
+                <div id =second-category>구매내역</div>
+                <div id =third-category>관심목록</div>
+                <div id =fourth-category>후기</div>
+            </section>
+            <!--섹션5********************************************************************************************************섹션1-->
                 <div id = changeJsp>
                     <jsp:include page="/WEB-INF/views/member/myPage_review.jsp"></jsp:include>
                 </div>
@@ -104,123 +110,97 @@
                         <div id="selling">판매중</div>
                         <div id="sold">판매완료</div>
                     </div>
-                    <section class="content_1"> 
-            
-                
-        
-                        <section class="content-comment">
-                            
-                            
-                        </section>
-        
-        
-        
-                        <section class="content-favorite">
-                            <div class="favorite__pack">
-                                <div>
-                                    <div class="favorite__img">
-                                        <img src="/resources/images/2leaf.png" >
-                                        <i class="fa-solid fa-ellipsis-vertical dot"></i>
-                                        <!-- <div class = "anotherPop">
-                                            <div class = "anotherPop1 babo">글 수정하기</div>
-                                            <div class = "anotherPop1 babo">글 삭제하기</div>
-                                            <div class = "anotherPop1">끌어올리기</div>
-                                        </div> -->
-                                    </div>
-                                    <div class="favorite__price-heart">
-                                        <div class="favorite__price">투썸 마스카포네 치즈를 팝니다. 마싯서용</div>
-                                    </div>
-                                </div>
-                            
-                                <div class="favorite__content">11달 전</div>
-                                <a href="javascript:openPop()" id = "popopen">
-                                    <div class="testcolor">거래 후기 보내기</div>
-                                </a>    
-                            </div>
-            
-                            <div class="favorite__pack">
-                                <div>
-                                    <div class="favorite__img">
-                                        <img src="/resources/images/bananaTree.png" >
-                                        <i class="fa-solid fa-ellipsis-vertical dot" ></i>
-                                    </div>
-                                    <div class="favorite__price-heart">
-                                        <div class="favorite__price">거지같은 옷</div>
-                                    
-                                    </div>
-                                </div>
-                            
-                                <div class="favorite__content">12달 전</div>
-                                <div class="testcolor2">보낸 후기 보기</div>
-                            </div>
-            
-                            <div class="favorite__pack">
-                                <div>
-                                    <div class="favorite__img">
-                                        <img src="/resources/images/sampleGoods.jpg" >
-                                        <i class="fa-solid fa-ellipsis-vertical dot" ></i>
-                                    </div>
-                                    <div class="favorite__price-heart">
-                                        <div class="favorite__price">이딴게 옷?</div>
-                                        
-                                    </div>
-                                </div>
-                                <div class="favorite__content">1년 전</div>
-                                <a href="javascript:openPop()">
-                                    <div class="testcolor">거래 후기 보내기</div>
-                                </a>  
-                            </div>
-            
-                            <div class="favorite__pack">
-                                <div>
-                                    <div class="favorite__img">
-                                        <img src="/resources/images/sampleGoods.jpg" >
-                                        <i class="fa-solid fa-ellipsis-vertical dot" ></i>
-                                    </div>
-                                    <div class="favorite__price-heart">
-                                        <div class="favorite__price">이상한 옷</div>
-                                        
-                                    </div>
-                                </div>
-                            
-                                <div class="favorite__content">1년 전</div>
-                                <a href="javascript:openPop()">
-                                    <div class="testcolor">거래 후기 보내기</div>
-                                </a>  
-                            </div>
-            
-                            <div class="favorite__pack">
-                                <div>
-                                    <div class="favorite__img">
-                                        <img src="/resources/images/sampleGoods.jpg" >
-                                        <i class="fa-solid fa-ellipsis-vertical dot" ></i>
-                                    </div>
-                                    <div class="favorite__price-heart">
-                                        <div class="favorite__price">비싼 옷</div>
-                                        
-                                    </div>
-                                </div>
-                            
-                                <div class="favorite__content">1년 전</div>
-                                <a href="javascript:openPop()">
-                                    <div class="testcolor">거래 후기 보내기</div>
-                                </a>  
-                            </div>
-                            
-                            
-                            
-            
-                            
-                            
-                    </section>
-                    <section class="content-comment">
-                
-                
-                    </section>
-        
-        
-        
+
                     <section class="content-favorite">
+
+                        <%-- 상품박스 --%>
+                        <div class="favorite__pack">
+                            <div>
+                                <div class="favorite__img">
+                                    <img src="/resources/images/runningCat.png" >
+                                    <i class="fa-solid fa-ellipsis-vertical dot"></i>
+                                </div>
+                                <div class="favorite__price-heart">
+                                    <div class="favorite__price">투썸 마스카포네 치즈를 팝니다. 마싯서용</div>
+                                </div>
+                            </div>
+                            <div class="favorite__content">11달 전</div>
+                            <a href="javascript:openPop()" id = "popopen">
+                                <div class="testcolor">거래 후기 보내기</div>
+                            </a>    
+                        </div>
+
+                        <%-- 상품박스 --%>
+                        <div class="favorite__pack">
+                            <div>
+                                <div class="favorite__img">
+                                    <img src="/resources/images/bananaTree.png" >
+                                    <i class="fa-solid fa-ellipsis-vertical dot" ></i>
+                                </div>
+                                <div class="favorite__price-heart">
+                                    <div class="favorite__price">거지같은 옷</div>
+                                </div>
+                            </div>
+                            <div class="favorite__content">12달 전</div>
+                            <div class="testcolor2">보낸 후기 보기</div>
+                        </div>
+
+                        <%-- 상품박스 --%>
+                        <div class="favorite__pack">
+                            <div>
+                                <div class="favorite__img">
+                                    <img src="/resources/images/sampleGoods.jpg" >
+                                    <i class="fa-solid fa-ellipsis-vertical dot" ></i>
+                                </div>
+                                <div class="favorite__price-heart">
+                                    <div class="favorite__price">이딴게 옷?</div>
+                                </div>
+                            </div>
+                            <div class="favorite__content">1년 전</div>
+                            <a href="javascript:openPop()">
+                                <div class="testcolor">거래 후기 보내기</div>
+                            </a>  
+                        </div>
+                        <%-- 상품박스 --%>
+                        <div class="favorite__pack">
+                            <div>
+                                <div class="favorite__img">
+                                    <img src="/resources/images/sampleGoods.jpg" >
+                                    <i class="fa-solid fa-ellipsis-vertical dot" ></i>
+                                </div>
+                                <div class="favorite__price-heart">
+                                    <div class="favorite__price">이상한 옷</div>
+                                    
+                                </div>
+                            </div>
+                            <div class="favorite__content">1년 전</div>
+                            <a href="javascript:openPop()">
+                                <div class="testcolor">거래 후기 보내기</div>
+                            </a>  
+                        </div>
+
+                        <%-- 상품박스 --%>
+                        <div class="favorite__pack">
+                            <div>
+                                <div class="favorite__img">
+                                    <img src="/resources/images/sampleGoods.jpg" >
+                                    <i class="fa-solid fa-ellipsis-vertical dot" ></i>
+                                </div>
+                                <div class="favorite__price-heart">
+                                    <div class="favorite__price">비싼 옷</div>
+                                    
+                                </div>
+                            </div>
+                            <div class="favorite__content">1년 전</div>
+                            <a href="javascript:openPop()">
+                                <div class="testcolor">거래 후기 보내기</div>
+                            </a>  
+                        </div>
+
+                        
+                        <%-------------- 구분선--------------%>
+                    
+                        <%-- 상품박스 --%>
                         <div class="favorite__pack">
                             <div>
                                 <div class="favorite__img">
@@ -231,16 +211,15 @@
                                 </div>
                                 <div class="favorite__price-heart">
                                     <div class="favorite__price">깨꾹이인형 팔아요</div>
-                                    
                                 </div>
                             </div>
-                        
                             <div class="favorite__content">2년 전</div>
                             <a href="javascript:openPop()">
                                 <div class="testcolor">거래 후기 보내기</div>
                             </a>  
                         </div>
-        
+
+                        <%-- 상품박스 --%>
                         <div class="favorite__pack">
                             <div>
                                 <div class="favorite__img">
@@ -249,7 +228,6 @@
                                 </div>
                                 <div class="favorite__price-heart">
                                     <div class="favorite__price">이클립스냠냠</div>
-                                    
                                 </div>
                             </div>
                             <div class="favorite__content">2년 전</div>
@@ -257,8 +235,9 @@
                                 <div class="testcolor">거래 후기 보내기</div>
                             </a>  
                         </div>
-        
-                        <div class="favorite__pack">
+
+                        <%-- 상품박스 --%>
+                        <%-- <div class="favorite__pack">
                             <div>
                                 <div class="favorite__img">
                                     <img src="/resources/images/sampleGoods.jpg" >
@@ -269,14 +248,14 @@
                                     
                                 </div>
                             </div>
-                        
                             <div class="favorite__content">3년 전</div>
                             <a href="javascript:openPop()">
                                 <div class="testcolor">거래 후기 보내기</div>
                             </a>  
-                        </div>
-        
-                        <div class="favorite__pack">
+                        </div> --%>
+
+                        <%-- 상품박스 --%>
+                        <%-- <div class="favorite__pack">
                             <div>
                                 <div class="favorite__img">
                                     <img src="/resources/images/sampleGoods.jpg" >
@@ -287,14 +266,14 @@
                                     
                                 </div>
                             </div>
-                        
                             <div class="favorite__content">5년 전</div>
                             <a href="javascript:openPop()">
                                 <div class="testcolor">거래 후기 보내기</div>
                             </a>  
-                        </div>
-        
-                        <div class="favorite__pack">
+                        </div> --%>
+
+                        <%-- 상품박스 --%>
+                        <%-- <div class="favorite__pack">
                             <div>
                                 <div class="favorite__img">
                                     <img src="/resources/images/sampleGoods.jpg" >
@@ -310,15 +289,8 @@
                                 <div class="testcolor">거래 후기 보내기</div>
                             </a>  
                         </div>
-                        
-                        
-                        
-        
-                        
-                        
                     </section>
-                    
-                </section>
+                </section> --%>
                 
                 <div class="popup_layer" id="popup_layer" style="display: none;">
                     <div class="popup_box Scroll ">

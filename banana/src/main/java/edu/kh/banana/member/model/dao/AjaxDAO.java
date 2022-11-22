@@ -20,6 +20,10 @@ public class AjaxDAO {
 	}
 
 
+	/** 회원가입 닉네임 중복 검사
+	 * @param memberNickname
+	 * @return
+	 */
 	public int nicknameDupCheck(String memberNickname) {
 		return sqlSession.selectOne("ajaxMapper.nicknameDupCheck", memberNickname);
 	}

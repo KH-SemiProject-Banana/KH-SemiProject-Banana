@@ -1,8 +1,8 @@
-*{
+* {
     box-sizing: border-box;
     /* html요소가 가지고 있는 고유한 padding, margin을 모두 없앰 */
-    padding:0;
-    margin:0;
+    padding: 0;
+    margin: 0;
     font-family: 'Nanum Gothic', sans-serif;
 }
 
@@ -13,9 +13,10 @@
 } */
 
 /* main-------------------------------------------------------------------------- */
-main{
+main {
     width: 1140px;
-    margin:auto; /*body태그 가로방향 가운데 정렬*/
+    margin: auto;
+    /*body태그 가로방향 가운데 정렬*/
 }
 
 body {
@@ -26,31 +27,31 @@ body {
 /* footer -------------------------------------------------------------------------*/
 /* ----------------------------------------------------------------------------- */
 
-footer{
+footer {
     height: 200px;
     background-color: #a3add342;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items:center;
+    align-items: center;
 }
 
-footer>p{
+footer>p {
     font-weight: bold;
     margin: 16px 0;
 }
 
-footer>article>*{
+footer>article>* {
     font-size: 14px;
 }
 
-footer a{
+footer a {
     text-decoration: none;
-    color:black;
+    color: black;
 }
 
 footer span {
-    padding:0 10px;
+    padding: 0 10px;
 }
 
 
@@ -64,23 +65,29 @@ footer span {
 }
 
 
-header{
-    height: 200px;
+header {
+    height: 230px;
 
-     /*내부 요소를 유연하게 배치/정렬
+    /*내부 요소를 유연하게 배치/정렬
         -> 내부 요소의 자동으로 지정된 margin이 모두 사라져 한 줄(기본값 row)로 배치*/
-    display: flex; 
+    display: flex;
     flex-direction: column;
     padding: 20px;
     border-bottom: 3px solid #ddd;
-    
-    
+
+
 }
+
 /* flex-basis : 중심축 방향으로 일정한 크기를 갖게 하고
     display: flex 설정시 지정되는 align-items의 기본값 stretch를 이용해서
     item의 높이(cros-axis 방향)를 부모만큼 늘어나게 함*/
-header>section:nth-child(1){flex-basis: 30%;  }
-header>section:nth-child(2){flex-basis: 70%; }
+header>section:nth-child(1) {
+    flex-basis: 30%;
+}
+
+header>section:nth-child(2) {
+    flex-basis: 70%;
+}
 
 
 .query__area {
@@ -88,63 +95,79 @@ header>section:nth-child(2){flex-basis: 70%; }
     flex-direction: row;
 }
 
-.section-menu{
+.section-menu {
     display: flex;
-    
+
 }
 
-.section-topmenu{
-    flex-basis: 30%; 
+
+
+#header-top-menu {
     height: 100%;
+    margin-left: 5px;
+
+    font-size: 20px;
+    color: rgba(0, 0, 0, 0.6);
+    text-decoration: none;
 
     display: flex;
-    justify-content: flex-end;
+    align-items: center;
 }
 
-
-
-
+#header-top-menu * {
+    color: rgba(0, 0, 0, 0.6);
+    text-decoration: none;
+}
 
 
 /* 선택자가 중복작성되어도 오류X, 모든 css 속성이 적용됨 */
 .section-topmenu {
-    display : inline-flex;
-   
-    justify-content: flex-end;
-    align-items: center;
-    
 
+    height: 100%;
+    display: inline-flex;
+
+    justify-content: space-between;
+    align-items: center;
 
 }
 
-.section-topmenu > a{
-   
+.section-topmenu a {
+
     height: 100%;
-    margin: 0 10px;
+    /* margin: 0 10px; */
     display: flex;
     align-items: center;
     justify-content: center;
     text-decoration: none;
     font-size: 20px;
-    color: rgba(0,0,0,0.6);
+    color: rgba(0, 0, 0, 0.6);
 }
 
+.talkAndlogin {
+    display: flex;
+    align-items: center;
+}
+
+.topmenu__talk, .boardListLink {
+    padding-top: 3px;
+}
 /* ------------------------------------------- */
-.section-query{
+.section-query {
     width: 100%;
     padding-right: 20px;
-    
+
 }
 
 
-.section-query>*:nth-child(2){
+.section-query>*:nth-child(2) {
     width: 50%;
 }
-.section-query>*:nth-child(3){
+
+.section-query>*:nth-child(3) {
     width: 20%;
 }
 
-.section-query>*:nth-child(1){
+.section-query>*:nth-child(1) {
     /* background-color: #455ba8; */
     /* padding-right: 50px; */
     display: flex;
@@ -153,31 +176,34 @@ header>section:nth-child(2){flex-basis: 70%; }
     align-items: center;
 }
 
-.sellingMy{
+.sellingMy {
     display: flex;
     justify-content: flex-end;
+
+    text-decoration: none;
 }
 
 
-.sellingMy>div{
+.sellingMy>div {
 
     padding: 5px;
     width: 150px;
 
     background-color: var(--yellow);
-    color: rgba(0,0,0,0.6);
+    color: rgba(0, 0, 0, 0.6);
+
     font-weight: 600;
     display: flex;
     justify-content: center;
     align-items: center;
     border: 2px solid #ddd;
     border-radius: 15px;
-    
+
     font-size: 16px;
     text-align: center;
 }
 
-.sellingMy>div:hover{
+.sellingMy>div:hover {
     justify-content: center;
     width: 150px;
     background-color: var(--darkYellow);
@@ -185,8 +211,8 @@ header>section:nth-child(2){flex-basis: 70%; }
     transition-duration: 0.3s;
 }
 
-.sellingMy>div:active{
-    box-shadow: 3px 4px 0 rgba(0,0,0,0.5);
+.sellingMy>div:active {
+    box-shadow: 3px 4px 0 rgba(0, 0, 0, 0.5);
 }
 
 
@@ -195,11 +221,12 @@ header>section:nth-child(2){flex-basis: 70%; }
     text-align: center;
     margin-bottom: 10px;
 }
+
 .query__logo>p:first-child {
     text-align: center;
     font-size: 18px;
     font-weight: 600;
-    color: rgba(0,0,0,0.6);
+    color: rgba(0, 0, 0, 0.6);
 }
 
 #query__banana {
@@ -214,10 +241,12 @@ header>section:nth-child(2){flex-basis: 70%; }
 }
 
 /* 검색창 입력상자------------- */
-.search-area{
+.search-area {
     width: 500px;
     margin-left: 50px;
-} /*검색창 전체 너비 지정*/
+}
+
+/*검색창 전체 너비 지정*/
 
 .search-area fieldset {
     padding: 2px;
@@ -256,31 +285,36 @@ header>section:nth-child(2){flex-basis: 70%; }
     font-weight: bold;
     cursor: pointer;
 }
-header>section:nth-child(2){
-    display : flex;
+
+header>section:nth-child(2) {
+    display: flex;
     justify-content: center;
     align-items: center;
 }
+
 /* nav--------------------------------------------------------------------------*/
 /* ----------------------------------------------------------------------------- */
 
-nav{
+nav {
     height: 100px;
     /* border-bottom: 2px solid black; */
 
     /* 화면 밖으로 요소가 벗어났을 때 지정된 위치에 고정 */
-    position:sticky;
-    top:0;
+    position: sticky;
+    top: 0;
     background-color: white;
     /* padding-top: 10px; */
+
+    z-index: 150;
 }
 
 
 /* ul 스타일 지정 */
-nav>ul{
-    margin:0;
+nav>ul {
+    margin: 0;
     /* padding-top: 10px; */
-    list-style: none; /*li앞에 나오는 점, 숫자 등 없애는것*/
+    list-style: none;
+    /*li앞에 나오는 점, 숫자 등 없애는것*/
     display: flex;
     height: 100%;
     justify-content: center;
@@ -289,35 +323,37 @@ nav>ul{
 nav>ul>div {
     height: 100%;
 }
+
 /* navigator 메뉴 */
-.category_list{
+.category_list {
     flex-basis: 150px;
-    padding-top:10px;
+    padding-top: 10px;
 
 
 }
 
 /* 메뉴 내부 a태그 */
-nav li>a{
-    text-decoration: none; /*밑줄 없애기*/
+nav li>a {
+    text-decoration: none;
+    /*밑줄 없애기*/
     font-weight: bold;
-    color:black;
+    color: black;
     display: block;
     height: 100%;
-    
+
     border-radius: 5px;
     transition-duration: 0.3s;
 
 }
 
-.category_list:hover{
+.category_list:hover {
     background-color: var(--lightYellow);
     border-radius: 5px;
-    
+
     /* color: white; */
 }
 
-.category__detail{
+.category__detail {
     display: flex;
     flex-direction: column;
     /* justify-content: center; */
@@ -325,33 +361,118 @@ nav li>a{
 }
 
 
-.category__detail  i{
+.category__detail i {
     font-size: 50px;
-    text-align:center;
+    text-align: center;
     color: var(--menu);
 }
 
 .category__detail p {
     padding-top: 10px;
     font-size: 14px;
-    text-align:center;
+    text-align: center;
     font-weight: 600;
 }
+
 /* .fa-heart, .fa-computer, .fa-couch, .fa-kitchen-set, .fa-baby, 
 .fa-shirt, .fa-wand-magic-sparkles, .fa-icons, .fa-book,
 .fa-dog, .fa-stack-overflow */
 /* content -------------------------------------------------------------------*/
 /* ----------------------------------------------------------------------------- */
-section.content{
+section.content {
     /* min-height: 800px; */
-    display:flex;
+    display: flex;
 }
 
-.content-1{flex-basis:20%;}
+/* .content-1{flex-basis:20%;}
 .content-2{flex-basis:60%;}
-.content-3{flex-basis:20%;}
+.content-3{flex-basis:20%;} */
 
 
 
 
 
+/* header------------------------------------------------- */
+/* ------------------------------------- */
+/* 오른쪽 상단 닉네임 */
+/* label태그 중 for속성 값이 header-menu-toggle인 것 */
+label[for="header-menu-toggle"] {
+    cursor: pointer;
+    display: flex;
+    height: 42px;
+    min-width: 100px;
+    margin: 0 10px;
+    font-size: 20px;
+
+
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+
+}
+
+#header-menu-toggle {
+    visibility: hidden;
+}
+
+label[for="header-menu-toggle"]:hover {
+    text-decoration: underline;
+}
+
+/* 체크박스 다음 div */
+#header-menu-toggle+div {
+    display: none;
+}
+
+/* 체크박스가 체크되었을때 다음 div */
+#header-menu-toggle:checked+div {
+    display: block;
+}
+
+
+.fa-caret-down {
+    margin: 0 3px;
+}
+
+/* 닉네임 클릭시 보이는 메뉴 */
+#header-menu {
+    position: absolute;
+    z-index: 500;
+    width: 100px;
+    height: 80px;
+    /* left: 1400px;
+    top: 40px; */
+    margin-top: 5px;
+    border: 1px solid black;
+    background-color: white;
+}
+
+#header-menu>a {
+    display: flex;
+    height: 50%;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.6);
+}
+
+#header-menu>a:first-child {
+    border-bottom: 1px solid #ccc;
+}
+
+#header-menu>a:hover {
+    background-color: var(--lightYellow);
+}
+
+#profileImg {
+    /* background-color: red; */
+    width: 42px;
+    height: 42px;
+    margin-top: 5px;
+    margin-right: 5px;
+    border: 1px solid #eee;
+    border-radius: 5px;
+}

@@ -15,21 +15,22 @@ public class Member {
 	private String memberEmail;
 	private String memberPw;
 	private String memberNickname;
-	private String introduce;
+	private String memberName;
+	private String memberBirth;
 	private String memberTel;
 	private String memberAddress;
+	private String introduce;
 	private String profileImage;
 	private String enrollDate;
 	private String memberDeleteFlag;
 	private int authority;
 	private String blockFlag;
-	private String birthday;
 	private int manner;
 	
 	
 	// 카테고리(CATEGORY)테이블
-	private int categoryNo;
-	private String categoryName;
+//	private int categoryNo;
+//	private String categoryName;
 	
 	
 	// ERD의 찜했따(GOODS_LIKE) 테이블

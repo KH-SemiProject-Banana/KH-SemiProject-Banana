@@ -1,0 +1,212 @@
+/* *{
+        border: 1px solid red;
+} */
+
+/* **섹선1*******************************************  */
+.title {
+    display : flex;
+    justify-content: center;
+    align-items: center;
+    
+    
+
+}
+.title > .title_image {
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.title_image >img:only-child{
+    width: 50px;
+    height: 50px;
+    margin : 10px;
+}
+.title > p:only-of-type{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    font-weight: bold;
+}
+/* 섹선2************************************************* */
+
+.question1 {
+    margin-top: 20px;
+}
+
+.question1 > p:first-child {
+    margin-bottom:5px;
+    font-size : 20px;
+    font-weight: bold;
+}
+
+.question1 > p:nth-child(2) {
+    font-size : 20px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.question1 > p:nth-child(3){
+    color :gray;
+}
+
+.choice {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.choice > div{
+    margin:20px;
+}
+
+.goodchoice {
+    display: none;
+}
+.badchoice {
+    display : none;
+}
+.goodchoice + label {
+    width : 65px; height : 65px; 
+    border : 2px solid #ccc;
+    cursor : pointer;
+
+    /* 수평분할 + 크기조정 0 */
+    display : inline-block; 
+
+    background-image: url(../images/banana-logo.png);
+    background-repeat: no-repeat;
+    background-size : 60px;
+    background-color: white;
+    border-radius: 10px;
+    
+    
+    
+}
+.goodchoice:checked + label {
+    
+    background-image: url(../images/banana-logo.png);
+    background-repeat: no-repeat;
+    background-size : 60px;
+    background-color: lightgray;
+    border-radius: 10px;
+    /* background-position: -1px 10px; */
+}
+
+
+
+.badchoice + label {
+    width : 65px; height : 65px; 
+    border : 2px solid #ccc;
+
+    /* 수평분할 + 크기조정 0 */
+    display : inline-block; 
+
+    background-image: url(../images/sadBanana.gif);
+    background-repeat: no-repeat;
+    background-size : 60px;
+    background-color: white;
+    border-radius: 10px;
+    
+
+}
+
+.badchoice:checked + label {
+    /* background-color: gray; */
+    border-radius: 10px;
+}
+/****섹선3(1)******************************************* */
+/****섹선4(1)*******************************************  */
+.goodAnswer {
+    display: flex;
+    flex-direction: column;
+}
+
+input[name="good"] {
+    margin-bottom: 10px;
+}
+
+input[name="bad"] {
+    margin-bottom: 10px;
+}
+/****섹선3(2)******************************************** */
+/* **섹선4(2)********************************************  */
+.badAnswer {
+    display: flex;
+    flex-direction: column;
+}
+/* **섹선5************************  */
+/* .question2 > div:only-of-type{
+    display: flex;
+    justify-content: center;
+} */
+.question {
+    display: flex;
+    margin-top : 20px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.question_leaf {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* margin:20px; */
+}
+.question_leaf >img:only-child   {
+    width: 20px;
+    height: 20px;
+    
+}
+
+.question > p{
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+    
+}
+
+.questionNext {
+    font-size: 15px;
+    color : gray;
+
+}
+
+.answer2 {
+    margin-top: 10px;
+    resize: none;
+    width: 482px;
+    font-size: 15px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    padding:20px;
+
+}
+
+textarea:focus{
+    outline : none;
+}
+
+.submitBtn {
+    display: flex;
+    justify-content: end;
+}
+
+.submitBtn  button {
+
+    width: 100px;
+    height:40px;
+    font-size: 15px;
+    background-color: var(--menu);
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+
+
+

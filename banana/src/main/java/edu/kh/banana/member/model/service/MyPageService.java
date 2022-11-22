@@ -1,5 +1,6 @@
 package edu.kh.banana.member.model.service;
 
-public class MyPageService {
+
+public interface MyPageService {
 
 }

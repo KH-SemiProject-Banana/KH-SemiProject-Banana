@@ -6,7 +6,7 @@
   	<id property="goodsNo" column="GOODS_NO" />
   	<result property="sellerNo" column="SELLER_NO" />
   	<result property="categoryNo" column="CATEGORY_NO" />
-  	<result property="categoryName" column="" />
+  	<result property="categoryName" column="" /> 
   	<result property="title" column="TITLE" />
   	<result property="sellPrice" column="SELL_PRICE" />
   	<result property="viewCount" column="VIEW_COUNT" />
@@ -17,6 +17,7 @@
   	<result property="imageNo" column="IMAGE_NO" />
   	<result property="imagePath" column="IMAGE_PATH" />
   	<result property="likeCount" column="LIKE_COUNT" />
+	<result property="orderNo" column="ORDER_NO" />
   </resultMap>
 
   <select id="categoryPage" parameterType="_int" resultType="String">
@@ -51,5 +52,31 @@
 	WHERE GOODS_DEL_FL = 'N'
 	ORDER BY LIKE_COUNT DESC, CREATED_AT DESC
   </select>
-  
+
+	<insert id="registerGoods" parameterType="Goods">
+ 	 	INSERT INTO GOODS_SELL	
+		VALUES(SEQ_GOODS_NO.NEXTVAL, #{sellerNo}, NULL, #{categoryNo}, #{title}, 
+		#{sellPrice}, DEFAULT, #{description}, NULL, DEFAULT, DEFAULT)
+ 	 </insert>
+ 	 
+ 	<select id="selectMyGoods" resultType="_int">
+ 	 	SELECT GOODS_NO FROM(
+		SELECT GOODS_NO FROM GOODS_SELL
+		ORDER BY CREATED_AT DESC)
+		WHERE ROWNUM <![CDATA[<= 1]]>
+ 	</select>
+ 	 
+ 	 
+ 	<insert id="registerImage" parameterType="GoodsImage">
+ 	 	INSERT INTO GOODS_IMAGE
+ 	 	VALUES(SEQ_IMAGE_NO.NEXTVAL, #{goodsNo}, #{imagePath})
+ 	</insert>
+ 	 
+ 	 
+ 	<select id="selectList">
+ 	 	SELECT * FROM GOODS_SELL
+		WHERE GOODS_DEL_FL = 'N' AND (BUYER_NO IS NULL)
+		ORDER BY VIEW_COUNT DESC, REFRESHED_AT DESC, CREATED_AT DESC
+ 	</select>
+
 </mapper>

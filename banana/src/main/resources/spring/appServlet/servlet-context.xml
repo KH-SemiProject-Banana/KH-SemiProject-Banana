@@ -55,6 +55,20 @@
    -->
    <context:component-scan base-package="edu.kh.banana" />
    
+   <!-- 인터셉터 등록/매핑주소 설정 -->
+	<interceptors>
+	
+		<interceptor>
+		
+			<mapping path="/**"/> <!-- 모든 요청 주소 -->
+		
+			<!-- 이 클래스를 bean으로 등록해서 객체로 만들겠다 -->
+			<beans:bean id="boardTypeInterceptor" class="edu.kh.banana.common.interceptor.BoardTypeInterceptor"/>
+		
+		</interceptor>
+		
+	</interceptors>
+   
    
    
 </beans:beans>

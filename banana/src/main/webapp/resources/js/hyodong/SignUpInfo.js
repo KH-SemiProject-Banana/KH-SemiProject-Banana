@@ -6,7 +6,7 @@ const checkObj = {
     "memberBirth" : false,
     "memberTel" : false,
     "memberEmailCertification" : false,
-    // "memberAddress" : false
+    "memberAddress" : false
 }
 // 회원 가입 양식이 제출 되었을 때
 document.getElementById("signUp-frm").addEventListener("submit",function(event){
@@ -285,8 +285,9 @@ const sample6_postcode = document.getElementById("sample6_postcode");
 const sample6_address = document.getElementById("sample6_address");
 const addMessage = document.getElementById("addMessage");
 
+const sample6_detailAddress = document.getElementById("sample6_detailAddress");
 
-sample6_postcode.addEventListener("focusout", ()=>{
+sample6_postcode.addEventListener("change", ()=>{
 
     // 우편번호 미 입력시
     if(sample6_postcode.value.trim().length == 0){
@@ -312,7 +313,7 @@ sample6_postcode.addEventListener("focusout", ()=>{
     }
 });
 
-sample6_address.addEventListener("focusout",()=>{
+sample6_address.addEventListener("change",()=>{
 
     // 도로명/ 지번 주소 미 입력시
     if(sample6_address.value.trim().length == 0){
@@ -337,6 +338,63 @@ sample6_address.addEventListener("focusout",()=>{
         checkObj.memberAddress = false;
     }
 });
+
+// 이이이이이잉
+
+sample6_detailAddress.addEventListener("focusout",()=>{
+
+        // 우편번호 미 입력시
+        if(sample6_postcode.value.trim().length == 0){
+            addMessage.innerText="검색을 눌러 주소를 입력해 주세요.";
+            addMessage.classList.remove("confirm","error");
+            checkObj.memberAddress = false;
+            return;
+        }
+        // 우편번호 정규표현식
+        const regEx1 = /^\d{5}$/;
+        
+        if(regEx1.test(sample6_postcode.value)){ // 정규표현식이 일치한 경우
+            addMessage.innerText="우편번호 형식이 일치합니다.";
+            addMessage.classList.remove("error");
+            addMessage.classList.add("confirm")
+            checkObj.memberAddress = true;
+    
+        } else { // 정규표현식이 일치하지 않는 경우
+            addMessage.innerText="우편번호 형식이 일치하지 않습니다.";
+            addMessage.classList.remove("confirm");
+            addMessage.classList.add("error");
+            checkObj.memberAddress = false;
+        }
+
+
+    // 도로명/ 지번 주소 미 입력시
+    if(sample6_address.value.trim().length == 0){
+        addMessage.innerText="검색을 눌러 주소를 입력해 주세요.";
+        addMessage.classList.remove("confirm","error");
+        checkObj.memberAddress = false;
+        return;
+    }
+    // 도로명/지번 정규표현식
+    const regEx2 = /^[서울]{2}\s[ㄱ-힣]{2,3}[구]\s[가-힣\d]+\s[\d\-]+/;
+
+    if(regEx2.test(sample6_address.value)){ // 정규표현식 일치한 경우
+        addMessage.innerText="도로명/지번 형식이 일치합니다.";
+        addMessage.classList.remove("error");
+        addMessage.classList.add("confirm")
+        checkObj.memberAddress = true;
+
+    }else {
+        addMessage.innerText="도로명/지번 형식이 일치하지 않습니다.";
+        addMessage.classList.remove("confirm");
+        addMessage.classList.add("error");
+        checkObj.memberAddress = false;
+    }
+
+})
+
+
+
+
 
 /*************************** 이메일 인증번호 ***************************/
 

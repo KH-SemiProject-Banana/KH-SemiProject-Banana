@@ -232,9 +232,9 @@ document.getElementById("fourth-category").addEventListener("click",function(){
 
 // })
 
-const introUpdateBtn = document.getElementById("introUpdateBtn");
+const introUpdateBtn2 = document.getElementById("introUpdateBtn2");
 
-introUpdateBtn.addEventListener("click", e => {
+introUpdateBtn2.addEventListener("click", e => {
     // e.preventDefault();
     // console.log(e.target);
     const pIntro = document.getElementById("p_intro");

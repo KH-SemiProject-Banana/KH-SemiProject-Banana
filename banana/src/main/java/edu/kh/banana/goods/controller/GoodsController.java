@@ -35,7 +35,6 @@ public class GoodsController {
 	
 	@GetMapping("/registerGoods")
 	public String registerGoods() {
-		
 		return "goods/registerGoods";
 	}
 	
@@ -95,7 +94,7 @@ public class GoodsController {
 	 * @param loginMember
 	 * @return List<Goods> favoriteGoods
 	 */
-	@PostMapping("/selectFavorite")
+//	@PostMapping("/selectFavorite")
 	@ResponseBody
 	public String selectFavorite() {
 		

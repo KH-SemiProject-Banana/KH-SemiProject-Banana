@@ -48,6 +48,10 @@ public class MyPageController {
 //		return "redirect:" + referer;
 //	}
 	
-	
+	@GetMapping("/updateInfo")
+	public String updateInfo() {
+		return "member/myPage_UpdateInfo";
+		
+	}
 	
 }

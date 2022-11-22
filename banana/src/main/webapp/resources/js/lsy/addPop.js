@@ -216,11 +216,27 @@ document.getElementById("fourth-category").addEventListener("click",function(){
 
 //강사님과 함께...
 
-const introUpdateBtn = document.getElementById("introUpdateBtn");
+// const introUpdateBtn = document.getElementById("introUpdateBtn");
 
-introUpdateBtn.addEventListener("click", e => {
-    e.preventDefault();
-    console.log(e.target);
+// introUpdateBtn.addEventListener("click", e => {
+//     e.preventDefault();
+//     console.log(e.target);
+//     const pIntro = document.getElementById("p_intro");
+//     const input = document.createElement("input");
+    
+//     input.value = pIntro.innerText;
+//     pIntro.after(input); //after():선택한요소뒤에 컨텐츠삽입 - pIntro뒤에 input삽입
+//     pIntro.remove();
+    
+//     input.classList.add("changed");
+
+// })
+
+const introUpdateBtn2 = document.getElementById("introUpdateBtn2");
+
+introUpdateBtn2.addEventListener("click", e => {
+    // e.preventDefault();
+    // console.log(e.target);
     const pIntro = document.getElementById("p_intro");
     const input = document.createElement("input");
     
@@ -231,6 +247,13 @@ introUpdateBtn.addEventListener("click", e => {
     input.classList.add("changed");
 
 })
+
+document.getElementById("changedBtn").addEventListener("click",function(){
+
+    
+})
+
+
 
 
 

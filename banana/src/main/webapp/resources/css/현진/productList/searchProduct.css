@@ -49,9 +49,7 @@ li > label > input{cursor: pointer;}
     justify-content: end;
 }
 
-.selectBox{
-    float: right;
-}
+.selectBox{float: right;}
 
 select{
     width: 80px;

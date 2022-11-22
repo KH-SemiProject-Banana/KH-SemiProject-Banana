@@ -41,42 +41,42 @@
             
             <ul>
                 <li class="category_list">
-                    <a href="/category/product?ct=0" id="aaa">
+                    <a href="/category?categoryNo=0">
                         <div class="category__detail">
                             <i class="fa-solid fa-heart"></i>
                             <p>인기매물</p>
                         </div>
                     </a></li>
                 <li class="category_list">
-                    <a href="/category/product?ct=1">
+                    <a href="/category?categoryNo=1">
                         <div class="category__detail">
                             <i class="fa-solid fa-computer"></i>
                             <p>전자기기</p>
                         </div>
                     </a></li>
                 <li class="category_list">
-                    <a href="/category/product?ct=2">
+                    <a href="/category?categoryNo=2">
                         <div class="category__detail">
                             <i class="fa-solid fa-couch"></i>
                             <p>가구/인테리어</p>
                         </div>
                     </a></li>
                 <li class="category_list">
-                    <a href="/category/product?ct=3">
+                    <a href="/category?categoryNo=3">
                         <div class="category__detail">
                             <i class="fa-solid fa-kitchen-set"></i>
                             <p>생활/주방</p>
                         </div>
                     </a></li>
                 <li class="category_list">
-                    <a href="/category/product?ct=4">
+                    <a href="/category?categoryNo=4">
                         <div class="category__detail">
                             <i class="fa-solid fa-baby"></i>
                             <p>유아용품</p>
                         </div>
                     </a></li>
                 <li class="category_list">
-                    <a href="/category/product?ct=5">
+                    <a href="/category?categoryNo=5">
                         <div class="category__detail">
                             <i class="fa-solid fa-shirt"></i>
                             <p>의류/잡화</p>
@@ -84,42 +84,42 @@
                     </a></li>
             
                 <li class="category_list">
-                    <a href="/category/product?ct=6">
+                    <a href="/category?categoryNo=6">
                         <div class="category__detail">
                             <i class="fa-solid fa-wand-magic-sparkles"></i>
                             <p>뷰티/미용</p>
                         </div>
                     </a></li>
                 <li class="category_list">
-                    <a href="/category/product?ct=7">
+                    <a href="/category?categoryNo=7">
                         <div class="category__detail">
                             <i class="fa-solid fa-icons"></i>
                             <p>취미/게임/음반</p>
                         </div>
                     </a></li>
                 <li class="category_list">
-                    <a href="/category/product?ct=8">
+                    <a href="/category?categoryNo=8">
                         <div class="category__detail">
                             <i class="fa-solid fa-book"></i>
                             <p> 티켓/도서</p>
                         </div>
                     </a></li>
                 <li class="category_list">
-                    <a href="/category/product?ct=9">
+                    <a href="/category?categoryNo=9">
                         <div class="category__detail">
                             <i class="fa-solid fa-dog"></i>
                             <p>반려동물용품</p>
                         </div>
                     </a></li>
                 <li class="category_list">
-                    <a href="/category/product?ct=10">
+                    <a href="/category?categoryNo=10">
                         <div class="category__detail">
                             <i class="fa-brands fa-stack-overflow"></i>
                             <p>기타중고물품</p>
                         </div>
                     </a></li>
                 <li class="category_list">
-                    <a href="/category/product?ct=11">
+                    <a href="/category?categoryNo=11">
                         <div class="category__detail">
                             <i class="fa-solid fa-hand-holding"></i>
                             <p>삽니다</p>

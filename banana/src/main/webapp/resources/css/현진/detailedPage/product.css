@@ -25,7 +25,6 @@ img{
 
 /* 상품 이미지 */
 .product{
-    /* background-color: burlywood; */
     height: 600px;
     display: flex;
 }
@@ -37,14 +36,15 @@ img{
 .product > section:first-child{
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
     justify-content: space-between;
 }
 
 .product_img{
     width: 90%;
     height: 500px;
+    position: relative;
 }
+
 
 .imglist{
     width: 90%;
@@ -103,21 +103,14 @@ img{
 
 .product_title > h2:first-child,
 .product_option div > h3,
-.detailed_intro > h3{
-    margin-bottom: 15px;
-}
+.detailed_intro > h3{margin-bottom: 15px;}
 
 .product_option > div > h3 + span,
-.product_option + div > h3 + span{
-    font-size: 15px;
-}
+.product_option + div > h3 + span{font-size: 15px;}
 
 .product_title,
 .product_option > div > span,
-.detailed_intro > span
-{
-    letter-spacing: -1px;  
-}
+.detailed_intro > span{letter-spacing: -1px;}
 
 .detailed_intro{height: 250px;}
 
@@ -129,9 +122,7 @@ img{
     align-items: center;
 }
 
-.like_talk > div:first-child{
-    width: 15%;
-}
+.like_talk > div:first-child{width: 15%;}
 
 #like + label{
     display: flex;
@@ -153,13 +144,11 @@ img{
     padding-left: 2px;
 }
 
-#like:hover + label > i{
-    color: rgb(255, 42, 53);
-}
+#like:hover + label,
+#like:checked + label{color: rgb(255, 23, 66);}
 
-#like:checked + label > i{
-    color: rgb(255, 42, 53);
-}
+#like:active + label,
+#like:checked:active + label{color: rgb(219, 16, 53);}
 
 #like{display: none;}
 

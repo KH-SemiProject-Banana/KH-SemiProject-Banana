@@ -17,6 +17,7 @@ import lombok.ToString;
 		private int goodsNo;
 		private int sellerNo;
 		private int categoryNo;
+		private String categoryName;
 		private String title;
 		private int sellPrice;
 		private int viewCount;
@@ -27,6 +28,7 @@ import lombok.ToString;
 		private String sellStatus;
 		private int imageNo;
 		private String imagePath;
+		private int likeCount;
 		
 		
 		//페이이용내역(REQUEST_PAY)

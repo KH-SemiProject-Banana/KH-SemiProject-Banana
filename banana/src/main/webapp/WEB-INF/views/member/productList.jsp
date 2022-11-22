@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
+
+<c:set var="goodsList" value="${map.goodsList}" />
+<c:set var="pagination" value="${map.pagination}" />
 
 <!DOCTYPE html>
 <html lang="en">
@@ -21,15 +26,16 @@
 
         <div class="mainContent">
             <div class="category">
-                <a href="#">HOME</a>
-                <a href="#">> ${category}</a>
+                <a href="/">HOME</a>
+                <a href="#">> ${category.categoryName}</a>
             </div>
 
             <div class="category_title">
-                <h1>${category}</h1>
+                <h1>${category.categoryName}</h1>
             </div>
             
-            <form id="searchGu" action="productList.html">
+            <form id="searchGu" action="/category/Gu?categoryNo=${category.categoryNo}">
+                <input type="hidden" name="categoryNo" value="${category.categoryNo}">
                 <div><h2>우리 동네에서 찾기</h2></div>
             
                 <div class="location">
@@ -90,18 +96,60 @@
             </div>
             
             <div>
-                <section>
+                <!-- var는 변수, value는 뭐... 말그대로 값 -->
+                <!--  -->
+                <c:set var="i" value="1" />
+                <c:set var="e" value="true" />
+                <c:forEach var="goods" items="${goodsList}">
+                    
+                    <c:if test="${i%4 == 1}">
+                        <section>
+                        <c:set var="e" value="false" />
+                    </c:if>
+
+                        <div class="imgList_row">
+                            <input type="checkbox" name="like${i}" id="like${i}">
+                            <label for="like${i}" class="like_yn"><i class="fa-solid fa-heart"></i></label>
+
+                            <c:choose>
+                                <c:when test="${goods.imagePath == null}">
+                                    <a href="/detailed"><img src="../../resources/images/noImage.png"></a>
+                                </c:when>
+
+                                <c:otherwise>
+                                    <a href="/detailed"><img src="${goods.imagePath}"></a>
+                                </c:otherwise>
+                            </c:choose>
+
+                            <span><h2><a href="/detailed">${goods.title}</a></h2></span>
+                            <span><h3><a href="/detailed"><fmt:formatNumber value="${goods.sellPrice}" pattern="#,###"/></a></h3></span>
+                        </div>
+
+                    <c:if test="${i%4 == 0}">
+                        </section>
+                        <c:set var="e" value="true" />
+                    </c:if>
+
+                    <c:set var="i" value="${i+1}" />
+
+                </c:forEach>
+
+                <c:if test="${e eq false}">
+                    </section>
+                </c:if>
+
+                <!-- <section>
                     <div class="imgList_row">
                         <input type="checkbox" name="like1" id="like1">
-                        <div class="like_yn"><label for="like1"></label></div>
-                        <a href="#"><img src="../../resources/images/pikachu.jpg"></a>
-                        <span><h2><a href="#">피카츄 스티커</a></h2></span>
-                        <span><h3><a href="#">5,000원</a></h3></span>
+                        <label for="like1" class="like_yn"><i class="fa-solid fa-heart"></i></label>
+                        <a href="/detailed"><img src="../../resources/images/pikachu.jpg"></a>
+                        <span><h2><a href="/detailed">피카츄 스티커</a></h2></span>
+                        <span><h3><a href="/detailed">5,000원</a></h3></span>
                     </div>
                     
                     <div class="imgList_row">
                         <input type="checkbox" name="like2" id="like2">
-                        <div class="like_yn"><label for="like2"></label></div>
+                        <label for="like2" class="like_yn"><i class="fa-solid fa-heart"></i></label>
                         <a href="#"><img src="../../resources/images/pikachu.jpg"></a>
                         <span><h2><a href="#">피카츄 스티커</a></h2></span>
                         <span><h3><a href="#">5,000원</a></h3></span>
@@ -109,7 +157,7 @@
                     
                     <div class="imgList_row">
                         <input type="checkbox" name="like3" id="like3">
-                        <div class="like_yn"><label for="like3"></label></div>
+                        <label for="like3" class="like_yn"><i class="fa-solid fa-heart"></i></label>
                         <a href="#"><img src="../../resources/images/pikachu.jpg"></a>
                         <span><h2><a href="#">피카츄 스티커</a></h2></span>
                         <span><h3><a href="#">5,000원</a></h3></span>
@@ -117,7 +165,7 @@
                     
                     <div class="imgList_row">
                         <input type="checkbox" name="like4" id="like4">
-                        <div class="like_yn"><label for="like4"></label></div>
+                        <label for="like4" class="like_yn"><i class="fa-solid fa-heart"></i></label>
                         <a href="#"><img src="../../resources/images/pikachu.jpg"></a>
                         <span><h2><a href="#">피카츄 스티커</a></h2></span>
                         <span><h3><a href="#">5,000원</a></h3></span>
@@ -127,7 +175,7 @@
                 <section>
                     <div class="imgList_row">
                         <input type="checkbox" name="like5" id="like5">
-                        <div class="like_yn"><label for="like5"></label></div>
+                        <label for="like5" class="like_yn"><i class="fa-solid fa-heart"></i></label>
                         <a href="#"><img src="../../resources/images/pikachu.jpg"></a>
                         <span><h2><a href="#">피카츄 스티커</a></h2></span>
                         <span><h3><a href="#">5,000원</a></h3></span>
@@ -135,7 +183,7 @@
                     
                     <div class="imgList_row">
                         <input type="checkbox" name="like6" id="like6">
-                        <div class="like_yn"><label for="like6"></label></div>
+                        <label for="like6" class="like_yn"><i class="fa-solid fa-heart"></i></label>
                         <a href="#"><img src="../../resources/images/pikachu.jpg"></a>
                         <span><h2><a href="#">피카츄 스티커</a></h2></span>
                         <span><h3><a href="#">5,000원</a></h3></span>
@@ -143,7 +191,7 @@
                     
                     <div class="imgList_row">
                         <input type="checkbox" name="like7" id="like7">
-                        <div class="like_yn"><label for="like7"></label></div>
+                        <label for="like7" class="like_yn"><i class="fa-solid fa-heart"></i></label>
                         <a href="#"><img src="../../resources/images/pikachu.jpg"></a>
                         <span><h2><a href="#">피카츄 스티커</a></h2></span>
                         <span><h3><a href="#">5,000원</a></h3></span>
@@ -151,7 +199,7 @@
                     
                     <div class="imgList_row">
                         <input type="checkbox" name="like8" id="like8">
-                        <div class="like_yn"><label for="like8"></label></div>
+                        <label for="like8" class="like_yn"><i class="fa-solid fa-heart"></i></label>
                         <a href="#"><img src="../../resources/images/pikachu.jpg"></a>
                         <span><h2><a href="#">피카츄 스티커</a></h2></span>
                         <span><h3><a href="#">5,000원</a></h3></span>
@@ -161,7 +209,7 @@
                 <section>
                     <div class="imgList_row">
                         <input type="checkbox" name="like9" id="like9">
-                        <div class="like_yn"><label for="like9"></label></div>
+                        <label for="like9" class="like_yn"><i class="fa-solid fa-heart"></i></label>
                         <a href="#"><img src="../../resources/images/pikachu.jpg"></a>
                         <span><h2><a href="#">피카츄 스티커</a></h2></span>
                         <span><h3><a href="#">5,000원</a></h3></span>
@@ -169,7 +217,7 @@
                     
                     <div class="imgList_row">
                         <input type="checkbox" name="like10" id="like10">
-                        <div class="like_yn"><label for="like10"></label></div>
+                        <label for="like10" class="like_yn"><i class="fa-solid fa-heart"></i></label>
                         <a href="#"><img src="../../resources/images/pikachu.jpg"></a>
                         <span><h2><a href="#">피카츄 스티커</a></h2></span>
                         <span><h3><a href="#">5,000원</a></h3></span>
@@ -177,7 +225,7 @@
                     
                     <div class="imgList_row">
                         <input type="checkbox" name="like11" id="like11">
-                        <div class="like_yn"><label for="like11"></label></div>
+                        <label for="like11" class="like_yn"><i class="fa-solid fa-heart"></i></label>
                         <a href="#"><img src="../../resources/images/pikachu.jpg"></a>
                         <span><h2><a href="#">피카츄 스티커</a></h2></span>
                         <span><h3><a href="#">5,000원</a></h3></span>
@@ -185,7 +233,7 @@
                     
                     <div class="imgList_row">
                         <input type="checkbox" name="like12" id="like12">
-                        <div class="like_yn"><label for="like12"></label></div>
+                        <label for="like12" class="like_yn"><i class="fa-solid fa-heart"></i></label>
                         <a href="#"><img src="../../resources/images/pikachu.jpg"></a>
                         <span><h2><a href="#">피카츄 스티커</a></h2></span>
                         <span><h3><a href="#">5,000원</a></h3></span>
@@ -195,7 +243,7 @@
                 <section>
                     <div class="imgList_row">
                         <input type="checkbox" name="like13" id="like13">
-                        <div class="like_yn"><label for="like13"></label></div>
+                        <label for="like13" class="like_yn"><i class="fa-solid fa-heart"></i></label>
                         <a href="#"><img src="../../resources/images/pikachu.jpg"></a>
                         <span><h2><a href="#">피카츄 스티커</a></h2></span>
                         <span><h3><a href="#">5,000원</a></h3></span>
@@ -203,7 +251,7 @@
                     
                     <div class="imgList_row">
                         <input type="checkbox" name="like14" id="like14">
-                        <div class="like_yn"><label for="like14"></label></div>
+                        <label for="like14" class="like_yn"><i class="fa-solid fa-heart"></i></label>
                         <a href="#"><img src="../../resources/images/pikachu.jpg"></a>
                         <span><h2><a href="#">피카츄 스티커</a></h2></span>
                         <span><h3><a href="#">5,000원</a></h3></span>
@@ -211,7 +259,7 @@
                     
                     <div class="imgList_row">
                         <input type="checkbox" name="like15" id="like15">
-                        <div class="like_yn"><label for="like15"></label></div>
+                        <label for="like15" class="like_yn"><i class="fa-solid fa-heart"></i></label>
                         <a href="#"><img src="../../resources/images/pikachu.jpg"></a>
                         <span><h2><a href="#">피카츄 스티커</a></h2></span>
                         <span><h3><a href="#">5,000원</a></h3></span>
@@ -219,7 +267,7 @@
                     
                     <div class="imgList_row">
                         <input type="checkbox" name="like16" id="like16">
-                        <div class="like_yn"><label for="like16"></label></div>
+                        <label for="like16" class="like_yn"><i class="fa-solid fa-heart"></i></label>
                         <a href="#"><img src="../../resources/images/pikachu.jpg"></a>
                         <span><h2><a href="#">피카츄 스티커</a></h2></span>
                         <span><h3><a href="#">5,000원</a></h3></span>
@@ -229,7 +277,7 @@
                 <section>
                     <div class="imgList_row">
                         <input type="checkbox" name="like17" id="like17">
-                        <div class="like_yn"><label for="like17"></label></div>
+                        <label for="like17" class="like_yn"><i class="fa-solid fa-heart"></i></label>
                         <a href="#"><img src="../../resources/images/pikachu.jpg"></a>
                         <span><h2><a href="#">피카츄 스티커</a></h2></span>
                         <span><h3><a href="#">5,000원</a></h3></span>
@@ -237,7 +285,7 @@
                     
                     <div class="imgList_row">
                         <input type="checkbox" name="like18" id="like18">
-                        <div class="like_yn"><label for="like18"></label></div>
+                        <label for="like18" class="like_yn"><i class="fa-solid fa-heart"></i></label>
                         <a href="#"><img src="../../resources/images/pikachu.jpg"></a>
                         <span><h2><a href="#">피카츄 스티커</a></h2></span>
                         <span><h3><a href="#">5,000원</a></h3></span>
@@ -245,7 +293,7 @@
                     
                     <div class="imgList_row">
                         <input type="checkbox" name="like19" id="like19">
-                        <div class="like_yn"><label for="like19"></label></div>
+                        <label for="like19" class="like_yn"><i class="fa-solid fa-heart"></i></label>
                         <a href="#"><img src="../../resources/images/pikachu.jpg"></a>
                         <span><h2><a href="#">피카츄 스티커</a></h2></span>
                         <span><h3><a href="#">5,000원</a></h3></span>
@@ -253,16 +301,16 @@
                     
                     <div class="imgList_row">
                         <input type="checkbox" name="like20" id="like20">
-                        <div class="like_yn"><label for="like20"></label></div>
+                        <label for="like20" class="like_yn"><i class="fa-solid fa-heart"></i></label>
                         <a href="#"><img src="../../resources/images/pikachu.jpg"></a>
                         <span><h2><a href="#">피카츄 스티커</a></h2></span>
                         <span><h3><a href="#">5,000원</a></h3></span>
                     </div>
-                </section>
+                </section> -->
             </div>
 
             <div class="pageList">
-                <span class="page" id="leftArrow"><</span>
+                <span class="page" id="leftArrow">&lt;</span>
                 <a href="#" class="page pageNo">1</a>
                 <a href="#" class="page pageNo">2</a>
                 <a href="#" class="page pageNo">3</a>
@@ -273,7 +321,7 @@
                 <a href="#" class="page pageNo">8</a>
                 <a href="#" class="page pageNo">9</a>
                 <a href="#" class="page pageNo">10</a>
-                <span class="page" id="rightArrow">></span>
+                <span class="page" id="rightArrow">&gt;</span>
             </div>
         </div>
     </main>

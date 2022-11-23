@@ -81,7 +81,4 @@
                     <div>내 물건<br>판매하기</div>
                 </a>
             </section>
-            
         </header>
-
-        

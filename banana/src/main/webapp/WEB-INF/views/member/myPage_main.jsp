@@ -54,7 +54,7 @@
                         <div class = "myBanana-address">${address}</div>
                         <div class = "myBanana-changeInfo">
                             <a href="/member/myPage/updateInfo">
-                                 <p id="introUpdateBtn1" class = "introUpdateBtn1">수정</p>
+                                <p id="introUpdateBtn1" class = "introUpdateBtn1">수정</p>
                             </a>
                         </div>
                     </div>
@@ -65,9 +65,10 @@
                         <a href="#" id="introUpdateBtn"><i id = "pen_intro" class = "fa-solid fa-pen" ></i></a>
                         --%>
 
-                        <p id = "p_intro" class="p_intro">나는 썩은 바나나가 아니에요</p>
+                        <p id = "p_intro" class="p_intro">${loginMember.introduce}</p>
+                        
                         <p id="introUpdateBtn2" class = "introUpdateBtn2">수정</p>
-                        <p id = "changedBtn" class = "changedBtn">수정하기</p>
+                    <%--  <p id = "changedBtn" class = "changedBtn">수정하기</p> --%>
                         
                     </div>
                     <div class = "myBanana-temp">

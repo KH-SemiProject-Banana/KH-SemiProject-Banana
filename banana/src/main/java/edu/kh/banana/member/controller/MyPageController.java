@@ -6,6 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
 import edu.kh.banana.member.model.service.MyPageService;
@@ -52,6 +54,25 @@ public class MyPageController {
 	public String updateInfo() {
 		return "member/myPage_UpdateInfo";
 		
+	}
+	
+	@GetMapping("/changeIntroduce")
+	@ResponseBody
+	public int changeIntroduce(
+//			@RequestParam("introducew") String introducew,
+			String introduce,
+			@SessionAttribute("loginMember") Member loginMember
+			) {
+		
+		Member member = new Member(); 
+		
+		member.setMemberNo(loginMember.getMemberNo());
+		member.setIntroduce(introduce);
+		loginMember.setIntroduce(introduce); // 세션 동기화
+		
+		int result = service.changeIntroduce(member);
+		System.out.println(result);
+		return result;
 	}
 	
 }

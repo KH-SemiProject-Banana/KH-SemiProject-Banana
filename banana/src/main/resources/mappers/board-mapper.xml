@@ -135,4 +135,46 @@
 		ORDER SIBLINGS BY COMMENT_NO
   </select> 
   
+  
+  
+  <!-- 게시글만 삽입 -->
+  <insert id="boardWrite" parameterType="Board" useGeneratedKeys="true">
+  	
+  		<selectKey keyProperty="boardNo" resultType="_int" order="BEFORE">
+  			SELECT SEQ_BOARD_NO.NEXTVAL FROM DUAL
+  		</selectKey>
+  		
+  		<!-- 시퀀스를 board에 담아놓은 boardNo로 바꿔줌 -->
+  		INSERT INTO "BOARD" VALUES(
+  			#{boardNo}, #{boardCode}, #{memberNo}, #{boardTitle}, 
+  			#{boardContent}, DEFAULT, DEFAULT, DEFAULT, DEFAULT
+  		)
+  </insert>
+  
+  
+  <!-- 동적 sql(foreach)
+  	
+  	- collection : 반복할 객체의 타입(list, set, map, array, ...)
+  	- item : collection 객체에서 하나씩 순서대로 꺼낸 요소
+  	- index : 현재 인덱스를 나타내는 변수
+  	- open : 반복 전 출력할 구문
+  	- close : 반복이 끝난 후 출력할 구문
+  	- seperator : 분리기호(반복 사이 구분자)
+   -->
+  <insert id="insertBoardImageList" parameterType="list">
+  	INSERT INTO BOARD_IMG
+  	SELECT SEQ_IMG_NO.NEXTVAL IMG_NO, A.* FROM
+  	
+  	<foreach collection="list" item="img" open="(" close=") A"
+  	separator="UNION ALL">
+  		SELECT 
+  		#{img.boardNo} BOARD_NO,
+  		#{img.imagePath} IMG_PATH,
+  		#{img.imageRename} IMG_RENAME,
+  		#{img.imageOriginal} IMG_ORIGINAL,
+  		#{img.imageOrder} IMG_ORDER
+  		FROM DUAL
+  	</foreach>
+  </insert>
+  
 </mapper>

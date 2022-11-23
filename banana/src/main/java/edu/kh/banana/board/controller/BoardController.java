@@ -1,5 +1,6 @@
 package edu.kh.banana.board.controller;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -90,10 +91,38 @@ public class BoardController {
 			RedirectAttributes ra,
 			HttpSession session
 			
-			) {
+			) throws IOException {
+		
+		// 1. boardCode를 board객체에 셋팅
+		board.setBoardCode(boardCode);
+		
+		// 2. 로그인한 회원의 번호를 board객체에 셋팅
+		board.setMemberNo(loginMember.getMemberNo());
+		
+		// 3. 업로드된 파일의 웹 접근 경로 / 서버 내부 경로 준비
+		String webPath = "/resources/images/board/";
+		String folderPath = session.getServletContext().getRealPath(webPath);
+		
+		// 4. 게시글 삽입 서비스 호출
+		int boardNo = service.boardWrite(board, imageList, webPath, folderPath);
+		
+		String message = null;
+		String path = null;
+		
+		if(boardNo > 0) {
+			
+			message = "게시글이 등록되었습니다.";
+			path = "/board/" + boardCode + "/" + boardNo; //   /board/1/2003
+			
+		} else {
+			
+			message = "게시글 등록 실패";
+			path = referer;
+		}
+		
+		ra.addFlashAttribute("message", message);
 		
 		
-		
-		return null;
+		return "redirect:" + path;
 	}
 }

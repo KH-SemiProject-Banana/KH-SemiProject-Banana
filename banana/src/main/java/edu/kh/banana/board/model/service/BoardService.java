@@ -1,7 +1,10 @@
 package edu.kh.banana.board.model.service;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
+
+import org.springframework.web.multipart.MultipartFile;
 
 import edu.kh.banana.board.model.vo.Board;
 
@@ -27,5 +30,17 @@ public interface BoardService {
 	 * @return board
 	 */
 	Board selectBoardDetail(int boardNo);
+
+	
+	
+	/** 게시글 작성
+	 * @param board
+	 * @param imageList
+	 * @param webPath
+	 * @param folderPath
+	 * @return boardNo
+	 * @throws IOException 
+	 */
+	int boardWrite(Board board, List<MultipartFile> imageList, String webPath, String folderPath) throws IOException;
 
 }

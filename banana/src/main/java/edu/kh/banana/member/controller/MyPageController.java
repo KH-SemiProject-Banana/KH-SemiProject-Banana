@@ -4,14 +4,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.kh.banana.member.model.service.MyPageService;
 import edu.kh.banana.member.model.vo.Member;
+import oracle.jdbc.proxy.annotation.Post;
 
 @RequestMapping("/member/myPage")
 @Controller
@@ -74,5 +77,22 @@ public class MyPageController {
 		System.out.println(result);
 		return result;
 	}
+	
+	
+	// 내정보 수정
+	@PostMapping("/updateInfo")
+	public String updateInfo(Member inputMember,
+							String[] memberAdd,
+							@SessionAttribute("loginMember")Member loginMember,
+							RedirectAttributes ra){
+		
+		
+		
+		return "redirect:updateInfo";
+	}
+	
+	
+	
+	
 	
 }

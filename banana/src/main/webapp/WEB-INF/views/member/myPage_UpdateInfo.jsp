@@ -15,9 +15,8 @@
     <script src="https://kit.fontawesome.com/f7459b8054.js"crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/1023652dd4.js" crossorigin="anonymous"></script>
 
-
     <link rel="stylesheet" href="/resources/css/style.css">
-    <link rel="stylesheet" href="/resources/css/hyodong/SignUpInfo.css">
+    <link rel="stylesheet" href="/resources/css/hyodong/myPage_UpdateInfo.css">
   </head>
   <body>
     <main>
@@ -38,38 +37,18 @@
 
           <div>
             <!-- 아이디(이메일) -->
-            <div class="signUp-input-Email textbox">
+            <div class="signUp-input-Email textboxNo">
               <input 
                 type="text"
                 name="memberEmail"
                 id="memberEmail"
-                class="inputBox"
+                class="inputBoxNo"
                 placeholder="아이디 (이메일)"
                 maxlength="20"
                 autocomplete="off"
                 required value="${tempMember.memberEmail}"
+                disabled
               />
-              <button id="sendAuthKeyBtn" type="button" class="checkButton">인증번호 받기</button>
-            </div>
-            <div class="emailMessageBox">
-              <span class="signUp-message"id="emailMessage">인증번호를 받을 수 있는 이메일을 입력해주세요.</span>
-            </div>
-
-            <!-- 인증번호 입력 -->
-            <div class="signUp-input-EmailCertification textbox">
-              <input
-                type="text"
-                name="memberEmailCertification"
-                id="memberEmailCertification"
-                class="inputBox"
-                placeholder="인증번호 입력"
-                maxlength="6"
-                autocomplete="off"
-              />
-              <button id="checkAuthKeyBtn" type="button" class="checkButton">인증하기</button>
-            </div>
-            <div class="firstBox">
-              <span id="authKeyMessage" class="signUp-message "></span>
             </div>
 
             <!-- 비밀번호 -->
@@ -116,30 +95,29 @@
 
             <!-- 이름/생년월일/휴대번호 -->
             <%-- 이름 --%>
-            <div class="signUp-input-Name textbox">
+            <div class="signUp-input-Name textboxNo">
               <input
                 type="text"
                 name="memberName"
-                class="inputBox"
+                class="inputBoxNo"
                 id="memberName"
                 placeholder="이름"
                 maxlength="10"
+                disabled
               />
             </div>
               <%-- 생년월일 --%>
-            <div class="signUp-input-Birth textbox">
+            <div class="signUp-input-Birth textboxNo">
               <input
                 type="text"
                 name="memberBirth"
-                class="inputBox"
+                class="inputBoxNo"
                 id="memberBirth"
                 placeholder="생년월일 ex)19910502"
                 maxlength="8"
+                disabled
               />
             </div>
-              <div class="firstBox">
-                <span class="signUp-message" id="birthMessage">숫자로 생년월일 8자리를 입력해주세요.</span>
-              </div>
               <%-- 휴대번호 --%>
             <div class="signUp-input-Tel textbox">
               <input
@@ -201,7 +179,7 @@
           <!--------------------------->
 
           <div class="SignUpAgreement6">
-            <button class="SignUp">회원 가입하기</button>
+              <div colspan="5" class="SignUp">내 정보 수정 완료</div>
           </div>
         </form>
     </main>

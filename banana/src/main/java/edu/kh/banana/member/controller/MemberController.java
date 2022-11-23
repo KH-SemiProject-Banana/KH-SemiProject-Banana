@@ -134,7 +134,7 @@ public class MemberController {
 		if (result > 0) { //회원가입 성공
 			path = "/";
 			message = "회원가입 성공했습니다.";
-			 n
+			 
 		} else { //회원가입 실패
 			path = referer;
 			message = "회원가입 도중 문제가 발생하여 실패하였습니다.";

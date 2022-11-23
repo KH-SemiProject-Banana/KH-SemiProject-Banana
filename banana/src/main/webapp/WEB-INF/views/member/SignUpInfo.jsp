@@ -246,7 +246,7 @@
     <script src="/resources/js/hyodong/SignUpInfo.js"></script>
 
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-        <script> /* 주소 검색 api */
+        <%-- <script> /* 주소 검색 api */
         function sample6_execDaumPostcode() {
             new daum.Postcode({
                 oncomplete: function(data) {
@@ -273,6 +273,6 @@
                 }
             }).open();
         }
-    </script>
+    </script> --%>
   </body>
 </html>

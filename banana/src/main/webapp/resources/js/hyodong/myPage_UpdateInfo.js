@@ -1,3 +1,10 @@
+/* 나중에 수정 할꺼
+input 태그 hidden으로 기존 로그인 값 가져오기 말고 
+
+어차피 처음 수정페이지 들어오면 값들이 다 있으니 그것들을 
+스크립트 맨 위에 변수만들어줘서 미리 세팅 해준다음 비교하기
+*/
+
 const checkObj = {
     "memberPw"      : true,
     "memberPwConfirm" : true,
@@ -119,7 +126,7 @@ memberPwConfirm.addEventListener("input",()=>{
 
         if(memberPw.value == memberPwConfirm.value){ // 동일한 경우
 
-                pwMessage.innerText="비밀번호가 일치합니다.222";
+                pwMessage.innerText="비밀번호가 일치합니다.";
                 pwMessage.classList.remove("error");
                 pwMessage.classList.add("confirm");
                 checkObj.memberPwConfirm = true;
@@ -320,7 +327,6 @@ function sample6_execDaumPostcode() {
         }
     }).open();
 }
-
 
 sample6_postcode.addEventListener("input", ()=>{
 

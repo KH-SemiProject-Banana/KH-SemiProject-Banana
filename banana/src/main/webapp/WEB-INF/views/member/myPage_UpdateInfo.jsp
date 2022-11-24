@@ -51,7 +51,7 @@
               />
             </div>
 
-            <!-- 비밀번호 -->
+            <!-- 새 비밀번호 -->
             <div class="signUp-input-password textbox">
               <input
                 type="password"
@@ -62,7 +62,7 @@
                 maxlength="20"
               />
             </div>
-            <%-- 비밀번호확인 --%>
+            <%-- 새 비밀번호확인 --%>
             <div class="signUp-input-password textbox">
               <input
                 type="password"

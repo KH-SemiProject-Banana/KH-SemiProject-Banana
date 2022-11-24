@@ -1,5 +1,7 @@
 package edu.kh.banana.member.controller;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -82,8 +84,9 @@ public class MyPageController {
 	// 내정보 수정
 	@PostMapping("/updateInfo")
 	public String updateInfo(Member inputMember,
-							String[] memberAddress,
 							@SessionAttribute("loginMember")Member loginMember,
+							@RequestParam Map<String, Object> paramMap,
+							String[] memberAddress,
 							RedirectAttributes ra){
 		
 		inputMember.setMemberNo(loginMember.getMemberNo());
@@ -101,6 +104,7 @@ public class MyPageController {
 			loginMember.setMemberNickname(inputMember.getMemberNickname());
 			loginMember.setMemberTel(inputMember.getMemberTel());
 			loginMember.setMemberAddress(inputMember.getMemberAddress());
+			loginMember.setMemberPw(inputMember.getMemberPw());
 		}else {
 			 message = "회원 정보 수정 실패";	
 		}		  

@@ -463,10 +463,6 @@ sample6_address.addEventListener("input",()=>{
 });
 
 
-
-
-
-
 /*************************** 이메일 인증번호 ***************************/
 
 // 이메일 인증코드 발송 / 확인
@@ -518,7 +514,6 @@ sendAuthKeyBtn.addEventListener("click", function(){
                 authSec = 60;
                 authMin--;
             }
-
             authSec--; // 1초 감소
         }, 1000)
 

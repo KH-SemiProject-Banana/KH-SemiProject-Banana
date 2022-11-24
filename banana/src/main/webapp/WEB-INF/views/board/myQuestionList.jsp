@@ -4,7 +4,7 @@
 <c:set var="boardList" value="${map.boardList}"></c:set>
 <c:set var="pagination" value="${map.pagination}"></c:set>
 <c:set var="boardName" value="${boardTypeList[boardCode-1].BOARD_NAME}" />
-<c:set var="boardCode" value="${boardTypeList[boardCode-1].BOARD_CODE}" />
+<c:set var="boardCode" value="3" />
 
 <!DOCTYPE html>
 <html lang="en">
@@ -40,10 +40,10 @@
 
                             <c:choose>
                                 <c:when test="${boardType.BOARD_CODE == boardCode}">
-                                    <a class="selected" href="${boardType.BOARD_CODE}">${boardType.BOARD_NAME}</a>
+                                    <a class="selected" href="/board/${boardType.BOARD_CODE}">${boardType.BOARD_NAME}</a>
                                 </c:when>
                                 <c:otherwise>
-                                    <a href="${boardType.BOARD_CODE}">${boardType.BOARD_NAME}</a>
+                                    <a href="/board/${boardType.BOARD_CODE}">${boardType.BOARD_NAME}</a>
                                 </c:otherwise>
                             
                             </c:choose>
@@ -60,8 +60,8 @@
 
 
             <div class="make-question">
-                <a href="/board/${boardCode}">전체보기</a>
-                <a href="/board/question/myQuestion">나의 문의/안내 내역</a>
+                <a href="/board/${boardCode}" style='background-color:white'>전체보기</a>
+                <a href="/question/myQuestion" style='background-color:var(--yellow); font-weight:bold;'>나의 문의/안내 내역</a>
             </div>
 
            

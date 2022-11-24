@@ -1,9 +1,16 @@
 package edu.kh.banana.board.controller;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,12 +69,79 @@ public class BoardController {
 	@GetMapping("/board/{boardCode}/{boardNo}")
 	public String selectBoardDetail(@PathVariable("boardNo") int boardNo,
 			@PathVariable("boardCode") int boardCode,
-			Model model) {
+			Model model,
+			HttpServletRequest req,
+			HttpServletResponse resp) throws ParseException {
 		
 		// 게시글 상세조회 서비스 호출
 		Board board = service.selectBoardDetail(boardNo);
 		model.addAttribute("board", board);
+		
 		// + 조회수 증가(쿠키 이용해서 해당 IP당 하루 1번)
+		if(board != null) {
+			Cookie[] cookies = req.getCookies();
+			Cookie readBoardNo = null;
+			
+			if(cookies != null) {
+				
+				for(Cookie temp : cookies) {
+					if(temp.getName().equals("readBoardNo")) {
+						
+						readBoardNo = temp;
+					}
+				}
+			}
+			
+			int result = 0;
+			
+			if(readBoardNo == null) { // readBoardNo라는 쿠키가 없다면
+				
+				result = service.updateReadCount(boardNo);
+				
+				readBoardNo = new Cookie("readBoardNo", "|" + boardNo + "|");
+				
+				
+			} else {
+				
+				// 해당하는 게시글번호의 쿠키가 없다면
+				if(readBoardNo.getValue().indexOf("|" + boardNo + "|") == -1) {
+					
+					readBoardNo.setValue(readBoardNo.getValue() + "|" + boardNo + "|");
+					result = service.updateReadCount(boardNo);
+				}
+			}
+			// 조회수 증가 성공시 DB와 조회된 board 조회수 동기화
+			if(result > 0) {
+				
+				board.setViewCount(board.getViewCount() + 1);
+				readBoardNo.setPath("/");
+				
+				
+				
+				// 쿠키 시간 설정(금일 자정까지)
+				Date now = new Date(); // 현재시간
+				Calendar tomorrow = Calendar.getInstance();
+				// Calendar의 time : 기준시간(1970년 1월1일)부터 현재까지 얼마나 지났는지 계산
+				
+				// cal.add(단위(연월일시분초), 추가할 일수)
+				tomorrow.add(tomorrow.DATE, 1); // 날짜에 1추가 => 내일날짜 현재시간
+				
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+				
+				// 하루 증가한 내일 날짜의 값을 이용해 date객체 생성
+				Date temp = new Date(tomorrow.getTimeInMillis());
+				
+				// simpleDateFormat 이용해서 시분초 삭제(->내일날짜 00:00)
+				Date midnight = sdf.parse(sdf.format(temp));
+				
+				long diff = midnight.getTime() - now.getTime();
+				long sec = diff/1000;
+				
+				readBoardNo.setMaxAge((int) sec);
+				resp.addCookie(readBoardNo);
+				
+			}
+		}
 		
 		
 		
@@ -130,4 +204,30 @@ public class BoardController {
 		
 		return "redirect:" + path;
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	// 나의 문의/안내 내역 페이지로 이동
+	@GetMapping("/question/myQuestion")
+	public String myQuestion(Model model,
+			@SessionAttribute("loginMember") Member loginMember,
+			@RequestParam(value="cp", required=false, defaultValue="1") int cp
+			) {
+		
+		int memberNo = loginMember.getMemberNo();
+		Map<String, Object> map = service.selectMyQuestion(memberNo, cp);
+		
+		model.addAttribute("map", map);
+		
+		
+		return "board/myQuestionList";
+	}
+	
+	
+
 }

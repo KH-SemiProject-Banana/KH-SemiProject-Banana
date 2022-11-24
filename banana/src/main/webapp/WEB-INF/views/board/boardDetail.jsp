@@ -55,8 +55,8 @@
 
 
             <div class="make-question">
-                <a href="question.html">전체보기</a>
-                <a href="question-answer.html">나의 문의/안내 내역</a>
+                <a href="/board/${boardCode}">전체보기</a>
+                <a href="/question/myQuestion">나의 문의/안내 내역</a>
             </div>
 
             <div class="boardNameArea">게시판 > ${boardName}</div>
@@ -129,6 +129,9 @@
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
+    <!-- jQuery CDN 방식으로 추가-->
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script src="/resources/js/board/boardDetail.js"></script>
 
 </body>
 </html>

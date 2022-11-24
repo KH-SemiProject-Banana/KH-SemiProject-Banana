@@ -97,4 +97,38 @@ public class BoardDAO {
 		
 		return sqlSession.insert("boardMapper.insertBoardImageList", boardImageList);
 	}
+
+	/** 나의 문의/안내내역 게시판의 게시글 수 조회
+	 * @param memberNo
+	 * @param cp
+	 * @return
+	 */
+	public int getMyQuestionListCount(int memberNo) {
+		
+		return sqlSession.selectOne("boardMapper.getMyQuestionListCount", memberNo);
+	}
+	
+	
+
+	/**나의 문의/안내내역 게시판의 게시글 리스트 조회
+	 * @param pagination
+	 * @param memberNo
+	 * @return
+	 */
+	public List<Board> selectMyQuestionList(Pagination pagination, int memberNo) {
+		
+		int offset = (pagination.getCurrentPage() -1) * pagination.getLimit();
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+		
+		return sqlSession.selectList("boardMapper.selectMyQuestionList", memberNo, rowBounds);
+	}
+
+	/** 게시글 상세페이지 조회수 증가
+	 * @param boardNo
+	 * @return
+	 */
+	public int updateReadCount(int boardNo) {
+		
+		return sqlSession.update("boardMapper.updateReadCount", boardNo);
+	}
 }

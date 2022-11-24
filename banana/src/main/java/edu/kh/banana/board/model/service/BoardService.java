@@ -43,4 +43,19 @@ public interface BoardService {
 	 */
 	int boardWrite(Board board, List<MultipartFile> imageList, String webPath, String folderPath) throws IOException;
 
+	
+	
+	/** 나의 문의/안내내역 조회
+	 * @param cp
+	 * @return
+	 */
+	Map<String, Object> selectMyQuestion(int memberNo, int cp);
+
+	
+	/** 상세페이지 조회수 증가
+	 * @param boardNo
+	 * @return
+	 */
+	int updateReadCount(int boardNo);
+
 }

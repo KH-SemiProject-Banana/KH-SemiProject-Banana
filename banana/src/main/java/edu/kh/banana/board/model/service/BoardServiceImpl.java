@@ -146,4 +146,36 @@ public class BoardServiceImpl implements BoardService{
 		
 		return boardNo;
 	}
+
+	/**
+	 * 나의 문의/안내내역 조회
+	 */ 
+	@Override
+	public Map<String, Object> selectMyQuestion(int memberNo, int cp) {
+		
+		// 1. 특정 게시판의 전체 게시글 수 조회
+		// 2. 전체 게시글 수 + CP(current Page)를 이용해 페이징처리 객체 생성
+		// 3. 페이징처리 객체를 이용해 게시글 목록 조회
+		
+
+		int listCount = dao.getMyQuestionListCount(memberNo);
+		Pagination pagination = new Pagination(listCount, cp);
+		List<Board> boardList = dao.selectMyQuestionList(pagination, memberNo);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("pagination", pagination);
+		map.put("boardList", boardList);
+		
+		
+		return map;
+	}
+
+	/**
+	 * 게시글 상세페이지 조회수 증가
+	 */
+	@Override
+	public int updateReadCount(int boardNo) {
+		
+		return dao.updateReadCount(boardNo);
+	}
 }

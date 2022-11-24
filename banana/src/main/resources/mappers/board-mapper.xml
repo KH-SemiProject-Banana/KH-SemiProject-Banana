@@ -177,4 +177,45 @@
   	</foreach>
   </insert>
   
+  
+  <!-- 나의 문의/안내내역 게시판의 게시글 수 조회 -->
+  <select id="getMyQuestionListCount" parameterType="_int" resultType="_int">
+  	SELECT COUNT(*) FROM BOARD
+  	WHERE BOARD_CODE = 3
+  	AND MEMBER_NO = #{memberNo}
+  </select>
+  
+  
+  <select id="selectMyQuestionList" parameterType="_int" resultMap="board_rm">
+  	SELECT BOARD_NO, BOARD_TITLE, MEMBER_NICKNAME, VIEW_COUNT, 
+		CASE  <![CDATA[
+      WHEN SYSDATE - B_CREATED_AT < 1/24/60
+      THEN FLOOR( (SYSDATE - B_CREATED_AT) * 24 * 60 * 60 ) || '초 전'
+      WHEN SYSDATE - B_CREATED_AT < 1/24
+      THEN FLOOR( (SYSDATE - B_CREATED_AT) * 24 * 60) || '분 전'
+      WHEN SYSDATE - B_CREATED_AT < 1
+      THEN FLOOR( (SYSDATE - B_CREATED_AT) * 24) || '시간 전'
+      ELSE TO_CHAR(B_CREATED_AT, 'YYYY-MM-DD')
+   	END B_CREATED_AT,  ]]>
+	(SELECT COUNT(*) FROM "COMMENT" C
+	WHERE BOARD_NO = B.BOARD_NO) COMMENT_COUNT,
+	(SELECT IMG_PATH ||IMG_RENAME FROM BOARD_IMG
+	WHERE IMG_ORDER = 0
+	AND BOARD_NO = B.BOARD_NO) THUMBNAIL
+	FROM BOARD B 
+	JOIN MEMBER USING(MEMBER_NO)
+	WHERE BOARD_CODE = 3
+	AND MEMBER_NO = #{memberNo}
+	AND BOARD_DEL_FL = 'N'
+	ORDER BY BOARD_NO DESC
+  </select>
+  
+  
+  <!-- 게시글 상세조회 좋아요 수 증가 -->
+  <update id="updateReadCount" parameterType="_int">
+  	UPDATE BOARD SET
+	VIEW_COUNT  = VIEW_COUNT  + 1
+	WHERE BOARD_NO = #{boardNo}
+  </update>
+  
 </mapper>

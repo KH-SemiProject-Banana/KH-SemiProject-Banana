@@ -60,8 +60,8 @@
 
 
             <div class="make-question">
-                <a href="/board/3">전체보기</a>
-                <a href="/board/5">나의 문의/안내 내역</a>
+                <a href="/board/${boardCode}">전체보기</a>
+                <a href="/question/myQuestion">나의 문의/안내 내역</a>
             </div>
 
            

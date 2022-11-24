@@ -16,14 +16,15 @@ public class MyPageServiceImpl implements MyPageService{
 	@Autowired
 	private BCryptPasswordEncoder bcrypt;
 
+	
+	// 마이페이지 자기소개 수정 
 	@Override
 	public int changeIntroduce(Member member) {
-		
 		return dao.changeIntroduce(member);
 	}
 
 	
-	// 내정보 수정
+	// 내 회원 정보 수정
 	@Override
 	@Transactional(rollbackFor = Exception.class)
 	public int updateInfo(Member inputMember) {

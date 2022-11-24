@@ -7,7 +7,7 @@
 	WHERE MEMBER_NO = #{memberNo}
 </update>
 
- <!-- 내정보 수정 -->
+ <!-- 내 회원 정보 수정 -->
  <update id="updateInfo" parameterType="Member">
 	 	UPDATE "MEMBER" SET
 		MEMBER_NICKNAME = #{memberNickname},

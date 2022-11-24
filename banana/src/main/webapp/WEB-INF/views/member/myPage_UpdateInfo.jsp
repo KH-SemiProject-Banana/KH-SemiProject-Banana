@@ -58,7 +58,7 @@
                 name="memberPw"
                 class="inputBox"
                 id="memberPw"
-                placeholder="비밀번호"
+                placeholder="새 비밀번호"
                 maxlength="20"
               />
             </div>
@@ -69,7 +69,7 @@
                 name="memberPwConfirm"
                 class="inputBox"
                 id="memberPwConfirm"
-                placeholder="비밀번호 확인"
+                placeholder="새 비밀번호 확인"
                 maxlength="20"
               />
             </div>
@@ -88,6 +88,7 @@
                 maxlength="10"
                 value="${loginMember.memberNickname}"
               />
+              <input type = "hidden" id= "memberNicknameBefore" value="${loginMember.memberNickname}"/>
             </div>
             <div class="firstBox">
               <span class="signUp-message" id="nickMessage">한글,영어,숫자로만 2~10글자 사이로 입력해주세요.</span>
@@ -110,7 +111,7 @@
               <%-- 생년월일 --%>
             <div class="signUp-input-Birth textboxNo">
               <input
-                type="text"
+                type="text"s
                 name="memberBirth"
                 class="inputBoxNo"
                 id="memberBirth"
@@ -131,6 +132,7 @@
                 maxlength="11"
                 value="${loginMember.memberTel}"
               />
+              <input type = "hidden" id= "memberTelBefore" value="${loginMember.memberTel}"/>
             </div>
             <div class="firstBox">
               <span class="signUp-message" id="temlMessage">전화번호를 입력해 주세요.(-제외)</span>
@@ -181,7 +183,7 @@
           <!--------------------------->
 
           <div class="SignUpAgreement6">
-              <div colspan="5" class="SignUp">내 정보 수정 완료</div>
+              <button class="SignUp">내 정보 수정 완료</button>
           </div>
         </form>
     </main>

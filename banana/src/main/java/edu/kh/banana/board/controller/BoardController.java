@@ -46,6 +46,8 @@ public class BoardController {
 		String path = null;
 		if(boardCode == 1) {
 			path = "board1";
+		} else if(boardCode == 3){
+			path = "myBoardList";
 		} else {
 			path="boardList";
 		}
@@ -66,6 +68,9 @@ public class BoardController {
 		Board board = service.selectBoardDetail(boardNo);
 		model.addAttribute("board", board);
 		// + 조회수 증가(쿠키 이용해서 해당 IP당 하루 1번)
+		
+		
+		
 		
 		return "board/boardDetail";
 	}

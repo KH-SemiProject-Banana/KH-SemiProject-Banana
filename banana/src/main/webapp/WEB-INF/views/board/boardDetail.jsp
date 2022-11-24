@@ -60,7 +60,7 @@
 
                     <!-- 프로필 이미지 -->
                     <c:if test="${empty board.profileImage}">
-                        <img src="/resources/images/user.png"/>
+                        <img src="/resources/images/banana-logo.png"/>
                     </c:if>
                     <c:if test="${not empty board.profileImage}">
                         <img src="${board.profileImage}">

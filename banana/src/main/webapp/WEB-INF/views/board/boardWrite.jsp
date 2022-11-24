@@ -37,7 +37,7 @@
                 <a href="#">문의/안내 내역</a>
                 <a href="#">문의하기</a>
             </div>
-            <form action="/write/${boardCode}" method="POST" enctype="multipart/form-data" id="question-form" onsubmit="return writeValidate()">
+            <form action="/write/${boardCode}" method="POST" enctype="multipart/form-data" id="question-form">
                 
 
                 

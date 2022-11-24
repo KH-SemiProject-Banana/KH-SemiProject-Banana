@@ -300,134 +300,136 @@
                         </div>
                         <!--팝업 컨텐츠 영역-->
                         <div class="popup_cont ">
-                                    <!-- 섹선1------------------------------------------------------------>
-                                    <section class = "title">
-                                        <div class = "title_image"><img  src="/resources/images/bananaTree.png" alt=""></div>
-                                        <p>거래 후기</p>
-                                        <div class = "title_image"><img  src="/resources/images/bananaTree.png" alt=""></div>
-                                    </section>
-                                    <!-- 섹선2------------------------------------------------------------->
-                                    <section class = "question1">
-                                        <p>바나나님,</p>
-                                        <p>냥냥님과의 거래가 어떠셨나요?</p>
-                                        <p>거래선호도는 나만 볼 수 있어요</p>
-                                        <div class = "choice">
-                                            <div>
-                                            <input type="checkbox" name = "badchoice" class = "badchoice" id = "badchoice" value="badchoice">
-                                            <label for="badchoice"></label>
-                                            <p>별로예요</p>
+                                    <%-- <form action = "/member/myPage/sendingReview" method = "post"> --%>
+                                        <!-- 섹선1------------------------------------------------------------>
+                                        <section class = "title">
+                                            <div class = "title_image"><img  src="/resources/images/bananaTree.png" alt=""></div>
+                                            <p>거래 후기</p>
+                                            <div class = "title_image"><img  src="/resources/images/bananaTree.png" alt=""></div>
+                                        </section>
+                                        <!-- 섹선2------------------------------------------------------------->
+                                        <section class = "question1">
+                                            <p>${loginMember.memberNickname}님,</p>
+                                            <p>냥냥님과의 거래가 어떠셨나요?</p>
+                                            <p>거래선호도는 나만 볼 수 있어요</p>
+                                            <div class = "choice">
+                                                <div>
+                                                <input type="checkbox" name = "badchoice" class = "badchoice" id = "badchoice" value="badchoice">
+                                                <label for="badchoice"></label>
+                                                <p>별로예요</p>
+                                                </div>
+                                                <div>
+                                                <input type="checkbox" name = "goodchoice" class = "goodchoice" id = "goodchoice" value="goodchoice">
+                                                <label for="goodchoice"></label>
+                                                <p>최고예요</p>
+                                                </div>
+                                                <!-- <a href="javascript:doDisplay();">별로예요</a> -->
                                             </div>
-                                            <div>
-                                            <input type="checkbox" name = "goodchoice" class = "goodchoice" id = "goodchoice" value="goodchoice">
-                                            <label for="goodchoice"></label>
-                                            <p>최고예요</p>
-                                            </div>
-                                            <!-- <a href="javascript:doDisplay();">별로예요</a> -->
-                                        </div>
-                                    </section>
-                                    <section id = "goodsection">
-                                            <!-- 섹선3(1)------------------------------------------------------------->
+                                        </section>
+                                        <section id = "goodsection">
+                                                <!-- 섹선3(1)------------------------------------------------------------->
+                                                <section class = "question">
+                                                    <div class="question_leaf"><img src="/resources/images/2leaf.png" alt=""></div>
+                                                    <p>어떤 점이 최고였나요?</p>
+                                                </section>
+                                                <!-- 섹선4(1)------------------------------------------------------------->
+                                                <section class = "goodAnswer" id = "goodAnswer">
+                                                    <div>
+                                                        <input type="checkbox" name = "rev" id = "good1" value="1">
+                                                        <label for="good1">나눔을 해주셨어요</label>
+                                                    </div>
+                                                    <div>
+                                                        <input type="checkbox" name = "rev" id = "good2" value="2">
+                                                        <label for="good2">상품상태가 설명한것과 같아요</label>
+                                                    </div>
+                                                    <div>
+                                                        <input type="checkbox" name = "rev" id = "good3" value="3">
+                                                        <label for="good3">상품설명이 자세해요</label>
+                                                    </div>
+                                                    <div>
+                                                        <input type="checkbox" name = "rev" id = "good4" value="4">
+                                                        <label for="good4">좋은 상품을 저렴하게 판매해요</label>
+                                                    </div>
+                                                    <div>
+                                                        <input type="checkbox" name = "rev" id = "good5" value="5">
+                                                        <label for="good5">시간약속을 잘 지켜요</label>
+                                                    </div>
+                                                    <div>
+                                                        <input type="checkbox" name = "rev" id = "good6" value="6">
+                                                        <label for="good6">응답이 빨라요</label>
+                                                    </div>
+                                                    <div>
+                                                        <input type="checkbox" name = "rev" id = "good7" value="7">
+                                                        <label for="good7">친절하고 매너가 좋아요</label>
+                                                    </div>
+                                                </section>
+                                        </section>
+                                        <section id = "badsection">
+                                            <!-- 섹선3(2)------------------------------------------------------------->
                                             <section class = "question">
                                                 <div class="question_leaf"><img src="/resources/images/2leaf.png" alt=""></div>
-                                                <p>어떤 점이 최고였나요?</p>
+                                                <p>어떤 점이 별로였나요?</p>
                                             </section>
-                                            <!-- 섹선4(1)------------------------------------------------------------->
-                                            <section class = "goodAnswer" id = "goodAnswer">
+                                            <!-- 섹션4(2)------------------------------------------------------- -->
+                                            <section class = "badAnswer" id = "badAnswer"> <!-- 원래 id :  -->
                                                 <div>
-                                                    <input type="checkbox" name = "good" id = "good1" value="1">
-                                                    <label for="good1">나눔을 해주셨어요</label>
+                                                    <input type="checkbox" name = "rev" id = "bad1" value="8">
+                                                    <label for="bad1">원하지 않는 가격을 계속 요구해요</label>
                                                 </div>
                                                 <div>
-                                                    <input type="checkbox" name = "good" id = "good2" value="2">
-                                                    <label for="good2">상품상태가 설명한것과 같아요</label>
+                                                    <input type="checkbox" name = "rev" id = "bad2" value="9">
+                                                    <label for="bad2">시간약속을 안 지켜요</label>
                                                 </div>
                                                 <div>
-                                                    <input type="checkbox" name = "good" id = "good3" value="3">
-                                                    <label for="good3">상품설명이 자세해요</label>
+                                                    <input type="checkbox" name = "rev" id = "bad3" value="10">
+                                                    <label for="bad3">예약만 하고 거래 시간을 명확하게 알려주지 않아요</label>
                                                 </div>
                                                 <div>
-                                                    <input type="checkbox" name = "good" id = "good4" value="4">
-                                                    <label for="good4">좋은 상품을 저렴하게 판매해요</label>
+                                                    <input type="checkbox" name = "rev" id = "bad4" value="11">
+                                                    <label for="bad4">거래 시간과 장소를 정한 후 거래 직전 취소했어요</label>
                                                 </div>
                                                 <div>
-                                                    <input type="checkbox" name = "good" id = "good5" value="5">
-                                                    <label for="good5">시간약속을 잘 지켜요</label>
+                                                    <input type="checkbox" name = "rev" id = "bad5" value="12">
+                                                    <label for="bad5">거래 시간과 장소를 정한 후 연락이 안돼요</label>
                                                 </div>
                                                 <div>
-                                                    <input type="checkbox" name = "good" id = "good6" value="6">
-                                                    <label for="good6">응답이 빨라요</label>
+                                                    <input type="checkbox" name = "rev" id = "bad6" value="13">
+                                                    <label for="bad6">약속 장소에 나타나지 않았어요</label>
                                                 </div>
                                                 <div>
-                                                    <input type="checkbox" name = "good" id = "good7" value="7">
-                                                    <label for="good7">친절하고 매너가 좋아요</label>
+                                                    <input type="checkbox" name = "rev" id = "bad7" value="14">
+                                                    <label for="bad7">상품 상태가 설명과 달라요</label>
+                                                </div>
+                                                <div>
+                                                    <input type="checkbox" name = "rev" id = "bad7" value="15">
+                                                    <label for="bad7">반말을 사용해요</label>
+                                                </div>
+                                                <div>
+                                                    <input type="checkbox" name = "rev" id = "bad7" value="16">
+                                                    <label for="bad7">불친절해요</label>
                                                 </div>
                                             </section>
-                                    </section>
-                                    <section id = "badsection">
-                                        <!-- 섹선3(2)------------------------------------------------------------->
-                                        <section class = "question">
-                                            <div class="question_leaf"><img src="/resources/images/2leaf.png" alt=""></div>
-                                            <p>어떤 점이 별로였나요?</p>
                                         </section>
-                                        <!-- 섹션4(2)------------------------------------------------------- -->
-                                        <section class = "badAnswer" id = "badAnswer"> <!-- 원래 id :  -->
-                                            <div>
-                                                <input type="checkbox" name = "bad" id = "bad1" value="1">
-                                                <label for="bad1">원하지 않는 가격을 계속 요구해요</label>
+                                        <!-- 섹선5------------------------------------------------------------->
+                                        <section >
+                                            <div class = "question">
+                                                <div class="question_leaf"><img src="/resources/images/2leaf.png" alt=""></div>
+                                                <p>따뜻한 거래경험을 알려주세요</p>
                                             </div>
-                                            <div>
-                                                <input type="checkbox" name = "bad" id = "bad2" value="2">
-                                                <label for="bad2">시간약속을 안 지켜요</label>
-                                            </div>
-                                            <div>
-                                                <input type="checkbox" name = "bad" id = "bad3" value="3">
-                                                <label for="bad3">예약만 하고 거래 시간을 명확하게 알려주지 않아요</label>
-                                            </div>
-                                            <div>
-                                                <input type="checkbox" name = "bad" id = "bad4" value="4">
-                                                <label for="bad4">거래 시간과 장소를 정한 후 거래 직전 취소했어요</label>
-                                            </div>
-                                            <div>
-                                                <input type="checkbox" name = "bad" id = "bad5" value="5">
-                                                <label for="bad5">거래 시간과 장소를 정한 후 연락이 안돼요</label>
-                                            </div>
-                                            <div>
-                                                <input type="checkbox" name = "bad" id = "bad6" value="6">
-                                                <label for="bad6">약속 장소에 나타나지 않았어요</label>
-                                            </div>
-                                            <div>
-                                                <input type="checkbox" name = "bad" id = "bad7" value="7">
-                                                <label for="bad7">상품 상태가 설명과 달라요</label>
-                                            </div>
-                                            <div>
-                                                <input type="checkbox" name = "bad" id = "bad7" value="7">
-                                                <label for="bad7">반말을 사용해요</label>
-                                            </div>
-                                            <div>
-                                                <input type="checkbox" name = "bad" id = "bad7" value="7">
-                                                <label for="bad7">불친절해요</label>
-                                            </div>
+                                            <p class = "questionNext">남겨주신 거래후기는 상대방의 프로필에 공개돼요.</p>
                                         </section>
-                                    </section>
-                                    <!-- 섹선5------------------------------------------------------------->
-                                    <section >
-                                        <div class = "question">
-                                            <div class="question_leaf"><img src="/resources/images/2leaf.png" alt=""></div>
-                                            <p>따뜻한 거래경험을 알려주세요</p>
-                                        </div>
-                                        <p class = "questionNext">남겨주신 거래후기는 상대방의 프로필에 공개돼요.</p>
-                                    </section>
-                                    <!-- 섹선6------------------------------------------------------------->
-                                    <section >
-                                        <textarea name="" id="" class = "answer2" 
-                                        cols="30" rows="10"
-                                        placeholder="내용을 입력해주세요."></textarea>
-                                        
-                                    </section>
-                                    <!-- 섹선6------------------------------------------------------------->
-                                    <section class = "submitBtn">
-                                        <button id = submitButton>제출하기</button>
-                                    </section>
+                                        <!-- 섹선6------------------------------------------------------------->
+                                        <section >
+                                            <textarea name="" id="" class = "answer2" 
+                                            cols="30" rows="10"
+                                            placeholder="내용을 입력해주세요."></textarea>
+                                            
+                                        </section>
+                                        <!-- 섹선6------------------------------------------------------------->
+                                        <section class = "submitBtn">
+                                            <button id = submitButton>제출하기</button>
+                                        </section>
+                                    </form>
     
                         </div>
                         <!--팝업 버튼 영역-->

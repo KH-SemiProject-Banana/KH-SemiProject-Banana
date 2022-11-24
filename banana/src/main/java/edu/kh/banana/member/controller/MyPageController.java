@@ -1,9 +1,12 @@
 package edu.kh.banana.member.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -43,12 +46,7 @@ public class MyPageController {
 	public String reviewDetail() {
 		return "member/myPage_review_detail";
 	}
-//	@GetMapping("/review")
-//	public String backToReview(
-//			@RequestHeader(value = "referer") String referer
-//			) {
-//		return "redirect:" + referer;
-//	}
+
 	
 	@GetMapping("/updateInfo")
 	public String updateInfo() {
@@ -59,7 +57,7 @@ public class MyPageController {
 	@GetMapping("/changeIntroduce")
 	@ResponseBody
 	public int changeIntroduce(
-//			@RequestParam("introducew") String introducew,
+//			@RequestParam("introducew123") String introducew,
 			String introduce,
 			@SessionAttribute("loginMember") Member loginMember
 			) {
@@ -74,5 +72,15 @@ public class MyPageController {
 		System.out.println(result);
 		return result;
 	}
+	
+//	@PostMapping("/sendingReview")
+//	public int sendingReview(
+//			List<String> checkedArr
+//			
+//			) {
+//		
+//		int result = 0;
+//		return result;
+//	}
 	
 }

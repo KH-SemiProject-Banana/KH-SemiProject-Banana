@@ -2,7 +2,47 @@
 function openPop() {
     document.getElementById("popup_layer").style.display = "block";
 
+
+
+    
 }
+
+const submitBtn = document.getElementById("submitButton");
+
+const checkedArr = [];
+
+submitBtn.addEventListener("click", function(){
+    const checkArr = document.querySelectorAll("input[name ='rev']:checked"); 
+    console.log(checkArr);
+    for(let i = 0; i<checkArr.length ; i++){
+        checkedArr.push(checkArr[i].value);
+    }
+    console.log(checkedArr);
+
+    $.ajax({
+        url: "/member/myPage/sendingReview",
+        data : {"checkedArr":checkedArr},
+        success:(result) => {
+    
+            if(result > 0){ //성공
+
+                
+                alert("db에 제출 완료된 듯?");
+
+            } else { //실패
+                console.log("서버에 저장 실패");
+            }
+
+        },
+        error : () => {console.log("동작에러남");},
+
+        complete : () => { //success, error 수행여부 관계없이 무조건 수행
+            console.log("아무때나 나타나는 친구");
+        }
+
+
+    })
+})
 
 //팝업 닫기
 function closePop() {
@@ -260,7 +300,7 @@ introUpdateBtn2.addEventListener("click", e => {
         changedBtn.style.display = "block";
     }
 
-
+const introduce =
 
     changedBtn.addEventListener("click",function(e){
         console.log(input.value);
@@ -296,6 +336,13 @@ introUpdateBtn2.addEventListener("click", e => {
         });
     })
 })
+
+
+
+
+
+
+
 
 
 

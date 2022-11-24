@@ -55,8 +55,8 @@
 
 
             <div class="make-question">
-                <a href="question-answer.html">나의 문의/안내 내역</a>
                 <a href="question.html">전체보기</a>
+                <a href="question-answer.html">나의 문의/안내 내역</a>
             </div>
 
             <div class="boardNameArea">게시판 > ${boardName}</div>

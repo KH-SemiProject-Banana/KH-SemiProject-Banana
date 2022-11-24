@@ -60,8 +60,8 @@
 
 
             <div class="make-question">
-                <a href="/board/3">전체보기</a>
-                <a href="/board/5">나의 문의/안내 내역</a>
+                <a href="/board/${boardCode}">전체보기</a>
+                <a href="/board/question/myQuestion">나의 문의/안내 내역</a>
             </div>
 
            
@@ -119,13 +119,8 @@
 
                 <div class="btn-area">
 
-                    <!-- 로그인 상태일 경우 글쓰기 버튼 노출 -->
-                    <c:if test="${not empty loginMember}">
-                        <c:if test="${boardCode == 3}">
-                            <button id="insertBtn">문의하기</button>                     
-                        </c:if>
-                    </c:if>
-
+                    
+                    <button id="insertBtn">문의하기</button>                     
                 </div>
 
 

@@ -56,9 +56,9 @@
             
             <section class="board-list">
 
-                <div class="notice__title">
+                <%-- <div class="notice__title">
                     <p>고객센터</p>
-                </div>
+                </div> --%>
 
                 <h1 class="board-name">${boardName}</h1>
 

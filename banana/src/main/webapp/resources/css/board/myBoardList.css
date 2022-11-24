@@ -1,3 +1,99 @@
+/* section, div{ border : 1px solid black;} */
+
+.board-name{
+    font-size : 2em;
+    margin : 20px 0;
+ }
+ 
+ a{
+     text-decoration: none;
+     color : black;
+ }
+ 
+ a:hover {
+     text-decoration: underline;
+ }
+ 
+ .board-list{
+     width: 1140px;
+     /* margin : 20px auto; */
+ }
+ 
+ .board-title{
+     margin-left : 30px;
+     font-size: 2.5em;
+ }
+ 
+ 
+ .list-wrapper{
+     min-height: 670px;
+     width: 100%;
+ }
+ 
+ .list-table{
+     width: 100%;
+     padding: 20px;
+     border-collapse: collapse;
+ }
+ 
+ .list-table > thead{ background-color: var(--darkYellow); color: white;}
+ 
+ 
+ .list-table tr{
+     height: 60px;
+ }
+ 
+ .list-table > tbody > tr{
+     border-bottom: 1px solid gray;
+ 
+ }
+ 
+ 
+ .list-table tr > *{ text-align: center; }
+ .list-table tr > *:nth-of-type(1){ width: 10%; }
+ 
+ .list-table tr > td:nth-of-type(2){
+      width: 50%; 
+      text-align: left;
+      padding-left: 50px;
+      text-decoration: none;
+ }
+ 
+ .list-table tr > *:nth-of-type(3){ width: 13%; }
+ .list-table tr > *:nth-of-type(4){ width: 10%; }
+ .list-table tr > *:nth-of-type(5){ width: 8%; }
+ .list-table tr > *:nth-of-type(6){ width: 8%; }
+ 
+ 
+ .btn-area{
+     height: 50px;
+     display: flex;
+     justify-content: flex-end;
+     align-items: center;
+ }
+ 
+ 
+ .btn-area > button{
+     margin-right: 50px;
+     
+     width: 80px;
+     height: 40px;   
+     background-color: white;
+ 
+     font-weight: bold;
+     color: var(--darkYellow);
+     border: 2px solid var(--darkYellow);
+     border-radius: 5px;
+ 
+     cursor: pointer;
+ 
+ }
+
+
+
+
+
+/* 0------------------------------------- */
 .make-question {
     display: flex;
     /* padding-bottom: 20px; */
@@ -33,25 +129,29 @@
 
 .question-bundle{
     /* background-color: aqua; */
-    height: 150px;
+    /* height: 70px; */
+    width: 100%;
     display: flex;
     flex-direction: column;
+    /* justify-content: space-between; */
+    /* align-items: center; */
+    border-bottom: 2px solid #ddd;
 }
 
 .question-bundle>div:nth-child(1){
-    height: 60%;
+    /* height: 60%; */
     /* background-color: red; */
-    padding: 45px 15px 0;
+    padding-top: 10px;
     font-size: 20px;
     font-weight: bold;
 
 }
 .question-bundle>div:nth-child(2){
-    height: 40%;
+    /* height: 40%; */
     /* background-color: yellow; */
     padding: 15px 15px 0;
-    padding-bottom: 40px;
-    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+    /* border-bottom: 2px solid #ddd; */
 
     display: flex;
     justify-content: flex-end;
@@ -157,4 +257,94 @@
     background-color: var(--yellow);
 }
 
-/* ------------------------------------------------- */
+/* -pagination------------------------------------------------ */
+
+.pagination-area {
+    margin-top: 100px;
+}
+
+.pagination{
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+}
+
+.pagination li{
+    width: 20px;
+    margin: 0 10px;
+
+    text-align: center;
+
+
+}
+
+.pagination a{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.current{
+    padding: 4px;
+    font-weight: bold;
+    background-color: var(--darkYellow);
+    border-radius: 50%;
+    color: white !important;
+    letter-spacing: 0 !important;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#boardSearch{
+    text-align: center;
+    width: 500px;
+    height: 30px;
+    margin: 30px auto;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+
+#boardSearch * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+#boardSearch select{
+    width: 100px;
+}
+
+#boardSearch input{
+    flex-grow: 1;
+    margin: 0 10px;
+    padding-left: 10px;
+}  
+
+#boardSearch button{
+    
+    width: 100px;
+
+    font-weight: bold;
+    background-color: var(--darkYellow);
+    border: none;
+    color: white;
+
+    cursor: pointer;
+    
+
+}
+
+a{
+    text-decoration: none;
+    color : black;
+}
+/* ---------------------------------------------- */
+.make-question__section {
+    min-height: 500px;
+}

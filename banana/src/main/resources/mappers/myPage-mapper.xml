@@ -6,4 +6,15 @@
   UPDATE "MEMBER" SET INTRODUCE = #{introduce}
 	WHERE MEMBER_NO = #{memberNo}
 </update>
+
+ <!-- 내 회원 정보 수정 -->
+ <update id="updateInfo" parameterType="Member">
+	 	UPDATE "MEMBER" SET
+		MEMBER_NICKNAME = #{memberNickname},
+		MEMBER_TEL= #{memberTel},
+		MEMBER_ADDRESS = #{memberAddress},
+		MEMBER_PW = #{memberPw}
+		WHERE MEMBER_NO = #{memberNo}
+</update>
+
 </mapper>

@@ -267,10 +267,33 @@ memberTel.addEventListener("input",()=>{
     const regEx = /^0(1[01679]|2|[3-6][1-5]|70)[1-9]\d{2,3}\d{4}$/;
 
     if(regEx.test(memberTel.value)){ // 정규표현식이 일치한 경우
-        temlMessage.innerText="사용 가능한 전화번호 입니다.";
-        temlMessage.classList.remove("error");
-        temlMessage.classList.add("confirm")
-        checkObj.memberTel = true;
+        const dbTelCheck ={"memberTel":memberTel.value};
+            
+            $.ajax({
+                url :"/telDupCheck",
+                data: dbTelCheck,
+                success : (result)=>{
+                    if(result == 0){ // 중복된 전화번호가 없다면
+                        temlMessage.innerText="사용 가능한 전화번호 입니다.";
+                        temlMessage.classList.remove("error");
+                        temlMessage.classList.add("confirm")
+                        checkObj.memberTel = true;
+
+                    } else { // 중복된 전화번호가 있다면
+                        temlMessage.innerText="이미 사용중인 전화번호 입니다.";
+                        temlMessage.classList.remove("confirm");
+                        temlMessage.classList.add("error");
+                        checkObj.memberTel = false;
+                    }
+
+                },
+                error : ()=>{
+                    console.log("전화번호 ajax 중복검사 실패");
+                },
+                complete : ()=>{
+                    console.log("전화번호 ajax 중복검사 완료");
+                }
+            });
 
     } else { // 정규표현식이 일치하지 않는 경우
         temlMessage.innerText="전화번호 형식이 유효하지 않습니다.";

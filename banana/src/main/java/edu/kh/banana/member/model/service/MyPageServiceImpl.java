@@ -29,11 +29,18 @@ public class MyPageServiceImpl implements MyPageService{
 	@Transactional(rollbackFor = Exception.class)
 	public int updateInfo(Member inputMember) {
 		
-		// 비밀번호 암호화
-		String encPw = bcrypt.encode(inputMember.getMemberPw());
-		inputMember.setMemberPw(encPw);
+		int result = -1;
 		
-		int result =  dao.updateInfo(inputMember);
+		if (inputMember.getMemberPw().equals("")) {
+			result = dao.updateInfoNoPw(inputMember);
+		}else {
+			// 비밀번호 암호화
+			String encPw = bcrypt.encode(inputMember.getMemberPw());
+			inputMember.setMemberPw(encPw);
+			 result =  dao.updateInfoPw(inputMember);
+		}
+		
+		
 		
 		return result;
 	}

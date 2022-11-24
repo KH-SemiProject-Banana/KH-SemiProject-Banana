@@ -24,81 +24,108 @@
 <body>
     <main>
         <jsp:include page="/WEB-INF/views/common/header.jsp"/>
+    </main>
 
-        <nav>
-            <ul>
-            <c:forEach var="boardType" items="${boardTypeList}">
-                <li>
-                    <a href="/board/${boardType.BOARD_CODE}">${boardType.BOARD_NAME}</a>
-                </li>
-            </c:forEach>
-            </ul>
-        </nav>
+    <div class="longMain">
 
-        <div class="boardNameArea">게시판 > ${boardName}</div>
-        <section class="board-detail">  
+        <div class="sidebar">
+            <div>
+                <div class="sidebar__title">바나나센터</div>
+                <div class="sidebar__content">
 
-            <!-- 버튼 영역-->
-            <div class="board-btn-area">
+                    <c:forEach var="boardType" items="${boardTypeList}">
 
-                <!-- 로그인한 회원과 게시글 작성자 번호가 같은 경우-->
-                <button id="updateBtn">수정</button>
-                <button id="deleteBtn">삭제</button>
+                            <c:choose>
+                                <c:when test="${boardType.BOARD_CODE == boardCode}">
+                                    <a class="selected" href="/board/${boardType.BOARD_CODE}">${boardType.BOARD_NAME}</a>
+                                </c:when>
+                                <c:otherwise>
+                                    <a href="/board/${boardType.BOARD_CODE}">${boardType.BOARD_NAME}</a>
+                                </c:otherwise>
+                            
+                            </c:choose>
 
-
-                <button id="goToListBtn">목록으로</button>
-            </div>
-
-
-
-            <!-- 제목 -->
-            <h1 class="board-title">${board.boardTitle}</h1>
-
-            <!-- 프로필 + 닉네임 + 작성일 + 조회수 -->
-            <div class="board-header">
-                <div class="board-writer">
-
-                    <!-- 프로필 이미지 -->
-                    <c:if test="${empty board.profileImage}">
-                        <img src="/resources/images/banana-logo.png"/>
-                    </c:if>
-                    <c:if test="${not empty board.profileImage}">
-                        <img src="${board.profileImage}">
-                    </c:if>
-
-                    <span>${board.memberNickname}</span>
-
-                </div>
-
-                <div class="board-info">
-                    <p> <span>작성일</span>${board.boardCreateDate}</p>     
-
-                    <!-- 수정한 게시글인 경우 -->
-                    <c:if test="${not empty board.boardUpdateDate}">
-                        <p> <span>마지막 수정일</span>${board.boardUpdateDate}</p>   
-                    </c:if>
-
-                    <p> <span>조회수</span>${board.viewCount}</p>                    
+                            
+                        </c:forEach>
                 </div>
             </div>
+        </div>
+
+        <section class="question-section">
 
 
-
-          
-            <!-- 내용 -->
-            <div class="board-content">
-                ${board.boardContent}
+            <div class="make-question">
+                <a href="question-answer.html">나의 문의/안내 내역</a>
+                <a href="question.html">전체보기</a>
             </div>
+
+            <div class="boardNameArea">게시판 > ${boardName}</div>
+            <section class="board-detail">  
+
+                <!-- 버튼 영역-->
+                <div class="board-btn-area">
+
+                    <!-- 로그인한 회원과 게시글 작성자 번호가 같은 경우-->
+                    <button id="updateBtn">수정</button>
+                    <button id="deleteBtn">삭제</button>
+
+
+                    <button id="goToListBtn">목록으로</button>
+                </div>
+
+
+
+                <!-- 제목 -->
+                <h1 class="board-title">${board.boardTitle}</h1>
+
+                <!-- 프로필 + 닉네임 + 작성일 + 조회수 -->
+                <div class="board-header">
+                    <div class="board-writer">
+
+                        <!-- 프로필 이미지 -->
+                        <c:if test="${empty board.profileImage}">
+                            <img src="/resources/images/banana-logo.png"/>
+                        </c:if>
+                        <c:if test="${not empty board.profileImage}">
+                            <img src="${board.profileImage}">
+                        </c:if>
+
+                        <span>${board.memberNickname}</span>
+
+                    </div>
+
+                    <div class="board-info">
+                        <p> <span>작성일</span>${board.boardCreateDate}</p>     
+
+                        <!-- 수정한 게시글인 경우 -->
+                        <c:if test="${not empty board.boardUpdateDate}">
+                            <p> <span>마지막 수정일</span>${board.boardUpdateDate}</p>   
+                        </c:if>
+
+                        <p> <span>조회수</span>${board.viewCount}</p>                    
+                    </div>
+                </div>
+
 
 
             
+                <!-- 내용 -->
+                <div class="board-content">
+                    ${board.boardContent}
+                </div>
 
 
-        </section>
+                
 
+
+            </section>
         <!-- 댓글 include-->
         <jsp:include page="comment.jsp"/>
-    </main>
+        </section>
+
+        
+    </div>
+
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 

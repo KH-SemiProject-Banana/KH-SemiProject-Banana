@@ -17,6 +17,14 @@ public class MyPageDAO {
 		return sqlSession.update("myPageMapper.changeIntroduce",member);
 	}
 
+	/** 내정보 수정
+	 * @param inputMember
+	 * @return
+	 */
+	public int updateInfo(Member inputMember) {
+		return sqlSession.update("myPageMapper.updateInfo",inputMember);
+	}
+
 
 
 	

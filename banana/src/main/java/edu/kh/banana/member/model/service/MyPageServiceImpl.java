@@ -18,5 +18,12 @@ public class MyPageServiceImpl implements MyPageService{
 	}
 
 	
+	// 내정보 수정
+	@Override
+	public int updateInfo(Member inputMember) {
+		return dao.updateInfo(inputMember);
+	}
+
+	
 
 }

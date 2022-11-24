@@ -6,5 +6,11 @@ public interface MyPageService {
 
 	int changeIntroduce(Member member);
 
+	/** 내정보 수정
+	 * @param inputMember
+	 * @return
+	 */
+	public abstract int updateInfo(Member inputMember);
+
 	
 }

@@ -82,12 +82,30 @@ public class MyPageController {
 	// 내정보 수정
 	@PostMapping("/updateInfo")
 	public String updateInfo(Member inputMember,
-							String[] memberAdd,
+							String[] memberAddress,
 							@SessionAttribute("loginMember")Member loginMember,
 							RedirectAttributes ra){
 		
+		inputMember.setMemberNo(loginMember.getMemberNo());
+		
+		String address = String.join(",,", memberAddress);
+		inputMember.setMemberAddress(address);
 		
 		
+		int result = service.updateInfo(inputMember);
+		
+		String message = null;
+		
+		if(result > 0) {
+			message = "회원 정보가 수정 되었습니다.";
+			loginMember.setMemberNickname(inputMember.getMemberNickname());
+			loginMember.setMemberTel(inputMember.getMemberTel());
+			loginMember.setMemberAddress(inputMember.getMemberAddress());
+		}else {
+			 message = "회원 정보 수정 실패";	
+		}		  
+		
+		ra.addFlashAttribute("message", message);
 		return "redirect:updateInfo";
 	}
 	

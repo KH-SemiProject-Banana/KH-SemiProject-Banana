@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%-- 문자열 관련 메서드를 제공하는 JSTL (EL 형식) --%>
+<%-- 문자열 관련 메서드를 제공하는 JSTL (EL형식) --%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <!DOCTYPE html>
@@ -46,7 +46,7 @@
                 placeholder="아이디 (이메일)"
                 maxlength="20"
                 autocomplete="off"
-                required value="${tempMember.memberEmail}"
+                value="${loginMember.memberEmail}"
                 disabled
               />
             </div>
@@ -86,7 +86,7 @@
                 id="memberNickname"
                 placeholder="닉네임"
                 maxlength="10"
-                value="${tempMember.memberNickname}"
+                value="${loginMember.memberNickname}"
               />
             </div>
             <div class="firstBox">
@@ -104,6 +104,7 @@
                 placeholder="이름"
                 maxlength="10"
                 disabled
+                value="${loginMember.memberName}"
               />
             </div>
               <%-- 생년월일 --%>
@@ -116,6 +117,7 @@
                 placeholder="생년월일 ex)19910502"
                 maxlength="8"
                 disabled
+                value="${loginMember.memberBirth}"
               />
             </div>
               <%-- 휴대번호 --%>
@@ -127,7 +129,7 @@
                 id="memberTel"
                 placeholder="휴대번호 ex)01045459986"
                 maxlength="11"
-                value="${tempMember.memberTel}"
+                value="${loginMember.memberTel}"
               />
             </div>
             <div class="firstBox">
@@ -135,7 +137,7 @@
             </div>
 
             <%-- 주소 문자열 -> 배열로 쪼개기 --%>
-            <c:set var="addr" value="${fn:split(tempMember.memberAddress,',,')}" />
+            <c:set var="addr" value="${fn:split(loginMember.memberAddress,',,')}" />
             <!-- 우편 번호/주소/상세주소 -->
             <div class="signUp-input-area textbox">
               <input

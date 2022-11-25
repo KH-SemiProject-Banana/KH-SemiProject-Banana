@@ -318,7 +318,10 @@ nav li>a:hover {
     margin-bottom: 30px;
 }
 
-.make-question > a{
+.make-question > *{
+    border: none;
+    background-color: white;
+
     flex-basis: 50%;
     height: 80px;
 
@@ -328,14 +331,18 @@ nav li>a:hover {
     font-size: 20px;
     text-decoration: none;
     color: rgba(0,0,0,0.7);
-    font-weight: bold;
 
 }
 
 
 
 
-.make-question > a:hover{
+.make-question > *:hover{
     background-color: var(--lightYellow);
+}
+
+.make-question > *:nth-child(1) {
+    background-color: var(--yellow);
+    font-weight: bold;
 }
 /* ------------------------------------------------- */

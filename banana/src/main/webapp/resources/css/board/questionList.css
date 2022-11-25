@@ -101,7 +101,11 @@
     margin-bottom: 30px;
 }
 
-.make-question > a{
+.make-question > *{
+
+    border: none;
+    background-color: white;
+
     flex-basis: 50%;
     height: 80px;
 
@@ -114,9 +118,14 @@
 
 }
 
+.make-question > *:hover{
+    background-color: var(--lightYellow);
+    cursor: pointer;
+}
 
 
-.make-question > a:nth-child(1) {
+
+.make-question > *:nth-child(1) {
     background-color: var(--yellow);
     font-weight: bold;
 }

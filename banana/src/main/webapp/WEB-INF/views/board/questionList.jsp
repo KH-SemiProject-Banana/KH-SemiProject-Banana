@@ -17,7 +17,7 @@
     <title>바꾸고 나누자 나랑: 바나나 마켓</title>
 
     <link rel="stylesheet" href="/resources/css/style.css">
-    <link rel="stylesheet" href="/resources/css/board/myBoardList.css">
+    <link rel="stylesheet" href="/resources/css/board/questionList.css">
     <script src="https://kit.fontawesome.com/f7459b8054.js" crossorigin="anonymous"></script>
 
 </head>
@@ -60,8 +60,8 @@
 
 
             <div class="make-question">
-                <a href="/board/${boardCode}">전체보기</a>
-                <a href="/question/myQuestion">나의 문의/안내 내역</a>
+                <button href="/board/${boardCode}" id="questionList">전체보기</button>
+                <button href="/question/myQuestion" id="myQuestionList">나의 문의/안내 내역</button>
             </div>
 
            
@@ -186,7 +186,6 @@
 
 
             
-            
 
         </section>
     
@@ -195,13 +194,17 @@
 
 
 
-
-
+    <script>
+        const boardCode = "${boardCode}";
+        const loginMember = "${loginMember}"
+    </script>
 
    
 
 
    <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+
+   <script src="/resources/js/board/boardList.js"></script>
 </body>
 
 </html>

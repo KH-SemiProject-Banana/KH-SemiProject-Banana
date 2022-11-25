@@ -54,7 +54,7 @@ public class BoardController {
 		if(boardCode == 1) {
 			path = "board1";
 		} else if(boardCode == 3){
-			path = "myBoardList";
+			path = "questionList";
 		} else {
 			path="boardList";
 		}
@@ -229,5 +229,6 @@ public class BoardController {
 	}
 	
 	
+
 
 }

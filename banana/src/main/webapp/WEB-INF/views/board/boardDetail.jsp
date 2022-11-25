@@ -55,8 +55,8 @@
 
 
             <div class="make-question">
-                <a href="/board/${boardCode}">전체보기</a>
-                <a href="/question/myQuestion">나의 문의/안내 내역</a>
+                 <button href="/board/${boardCode}" id="questionList">전체보기</button>
+                <button href="/question/myQuestion" id="myQuestionList">나의 문의/안내 내역</button>
             </div>
 
             <div class="boardNameArea">게시판 > ${boardName}</div>
@@ -125,6 +125,11 @@
 
         
     </div>
+
+    <script>
+        const boardCode = "${boardCode}";
+        const loginMember = "${loginMember}"
+    </script>
 
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>

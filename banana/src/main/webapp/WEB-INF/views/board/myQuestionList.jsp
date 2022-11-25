@@ -60,8 +60,8 @@
 
 
             <div class="make-question">
-                <a href="/board/${boardCode}" style='background-color:white'>전체보기</a>
-                <a href="/question/myQuestion" style='background-color:var(--yellow); font-weight:bold;'>나의 문의/안내 내역</a>
+                <button href="/board/${boardCode}" id="questionList">전체보기</button>
+                <button href="/question/myQuestion" id="myQuestionList">나의 문의/안내 내역</button>
             </div>
 
            
@@ -130,10 +130,10 @@
                     <ul class="pagination">
                     
                         <!-- 첫 페이지로 이동( <<) -->
-                        <li><a href="/board/${boardCode}">&lt;&lt;</a></li>
+                        <li><a href="/question/myQuestion">&lt;&lt;</a></li>
 
                         <!-- 이전 목록 마지막 번호로 이동 ( < ) -->
-                        <li><a href="/board/${boardCode}?cp=${pagination.prevPage}">&lt;</a></li>
+                        <li><a href="/question/myQuestion?cp=${pagination.prevPage}">&lt;</a></li>
 
                         
                         <!-- 특정 페이지로 이동 -->
@@ -145,16 +145,16 @@
                                 </c:when>
                                 <c:otherwise>
                                     <%-- 현재 페이지를 제외한 나머지 --%>
-                                    <li><a href="/board/${boardCode}?cp=${i}">${i}</a></li>
+                                    <li><a href="/question/myQuestion?cp=${i}">${i}</a></li>
                                 </c:otherwise>
                             </c:choose>
                         </c:forEach>
                         
                         <!-- 다음 목록 시작 번호로 이동 ( > )-->
-                        <li><a href="/board/${boardCode}?cp=${pagination.nextPage}">&gt;</a></li>
+                        <li><a href="/question/myQuestion?cp=${pagination.nextPage}">&gt;</a></li>
 
                         <!-- 끝 페이지로 이동 ( >> ) -->
-                        <li><a href="/board/${boardCode}?cp=${pagination.maxPage}">&gt;&gt;</a></li>
+                        <li><a href="/question/myQuestion?cp=${pagination.maxPage}">&gt;&gt;</a></li>
 
                     </ul>
                 </div>
@@ -188,8 +188,10 @@
     </div>
 
 
-
-
+    <script>
+        const boardCode = "${boardCode}";
+        const loginMember = "${loginMember}"
+    </script>
 
 
 
@@ -197,6 +199,7 @@
 
 
    <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+   <script src="/resources/js/board/myQuestionList.jsp"></script>
 </body>
 
 </html>

@@ -182,8 +182,10 @@
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
+
     <script>
         const boardCode = "${boardCode}";
+        const loginMember = "${loginMember}"
     </script>
 
     <script src="/resources/js/board/boardList.js"></script>

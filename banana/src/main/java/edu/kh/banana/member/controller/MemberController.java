@@ -18,6 +18,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import edu.kh.banana.member.model.service.MemberService;
 import edu.kh.banana.member.model.vo.Member;
 
+/**
+ * @author gyehd
+ *
+ */
 @Controller
 @SessionAttributes({"loginMember", "message"})
 public class MemberController {
@@ -146,4 +150,18 @@ public class MemberController {
 		ra.addFlashAttribute("message",message);
 		return "redirect:"+ path;
 	} 
+	
+	
+	/** 회원 ID/PW 찾기 페이지로 이동
+	 * @return
+	 */
+	@GetMapping("/member/infoFind")
+	public String infoFind() {
+		return "member/memberFindIdPw";
+	}
+	
+	
+	
+	
+	
 }

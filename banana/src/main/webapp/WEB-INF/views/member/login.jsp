@@ -59,7 +59,7 @@
                     </div>
             
                     <div class="text-area">
-                        <a href="#">ID/PW 찾기</a>
+                        <a href="/member/infoFind">ID/PW 찾기</a>
                         <a href="/member/signUp/agreement">회원가입</a>
                     </div>
             

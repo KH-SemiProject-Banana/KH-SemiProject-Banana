@@ -1,3 +1,8 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%-- 문자열 관련 메서드를 제공하는 JSTL (EL형식) --%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,8 +13,8 @@
     <link rel="shortcut icon" sizes="16x16 32x32 64x64" href="http://61.73.18.194:5555/KH_Project/images/Banana.png">
     <title>바꾸고 나누자 나랑: 바나나 마켓</title>
 
-    <link rel="stylesheet" href="/banana/src/main/webapp/resources/css/style.css">
-    <link rel="stylesheet" href="/banana/src/main/webapp/resources/css/hyodong/memberFindIdPw.css">
+    <link rel="stylesheet" href="/resources/css/style.css">
+    <link rel="stylesheet" href="/resources/css/hyodong/memberFindIdPw.css">
 </head>
 
 <body>
@@ -17,7 +22,7 @@
         <div class="findClass">
             <!-- 바나나 텍스트 -->
             <div class="findHeader">
-                <img class="banana" src="http://61.73.18.194:5555/KH_Project/images/Banana-logo_128px.png" />
+                <img class="banana" src="/resources/images/banana-logo.png"/>
                 <div>
                     <div>바꾸고 나누자 나랑</div>
                     <div>Banana Market</div>
@@ -78,6 +83,6 @@
                 <div class="findPW" id="findPW">비밀번호 찾기</div>
             </div>
     </main>
-    <script src="../../resources/js/hyodong/memberFindIdPw.js"></script>
+    <script src="/resources/js/hyodong/memberFindIdPw.js"></script>
 </body>
 </html>

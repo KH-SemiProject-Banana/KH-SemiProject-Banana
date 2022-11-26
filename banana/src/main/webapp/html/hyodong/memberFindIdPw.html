@@ -30,9 +30,7 @@
                 <div id="findMainBoxText">아이디 찾기</div>
             </div>
 
-
-            <form action="/member/findId" method="post" id="findForm">
-
+            <form action="/member/findId" method="post" id="findForm" name="findForm">
                 <div>
                     <!-- 가입한 이름 -->
                     <div class="find-input-name textbox">
@@ -45,7 +43,6 @@
                         maxlength="20" 
                         autocomplete="off">
                     </div>
-
                     <!-- 가입한 전화번호 -->
                     <div class="find-input-tel textbox">
                         <input 
@@ -57,7 +54,6 @@
                         maxlength="20"
                         autocomplete="off">
                     </div>
-
                     <!-- 메일 받을 새 이메일 -->
                     <div class="find-input-newEmail textbox">
                         <input 
@@ -69,13 +65,16 @@
                         maxlength="20"
                         autocomplete="off">
                     </div>
+                    <div class="newEmailMessageBox">
+                        <span class="newEmai-message"id="newEmaiMessage">메일을 받을 수 있는 새 메일을 정확하게 입력해주세요.</span>
+                    </div>
                 </div>
 
+                <div class="findBtnDiv">
+                    <button class="find-btn" id="btn_id">아이디 찾기</button>
+                </div>
             </form>
 
-            <div class="findBtnDiv">
-                <button class="find-btn" id="btn_id">아이디 찾기</button>
-            </div>
             <div class="findBox">
                 <div class="findID activate" id="findID">아이디 찾기</div>
                 <div class="findPW" id="findPW">비밀번호 찾기</div>

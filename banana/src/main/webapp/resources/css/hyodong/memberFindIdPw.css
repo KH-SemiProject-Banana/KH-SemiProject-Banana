@@ -163,3 +163,13 @@ input:-webkit-autofill:active  {
 .activate{
     background-color: rgb(253, 253, 137);
 }
+
+.newEmai-message{
+    font-size: 14px;
+    letter-spacing: -1px;
+    /* position: relative; */
+    left: 20px;
+    /* top: 100px; */
+}
+.confirm{ color: green;}
+.error{ color: red;}

@@ -30,6 +30,16 @@ public class MyPageDAO {
 		return sqlSession.update("myPageMapper.updateInfo",inputMember);
 	}
 
+	
+	/** 판매완료한 내 게시글의 수 조회
+	 * @param memberNo
+	 * @return
+	 */
+	public int getListCount(int memberNo) {
+		
+		return sqlSession.selectOne("myPageMapper.getListCount", memberNo);
+	}
+
 
 
 	

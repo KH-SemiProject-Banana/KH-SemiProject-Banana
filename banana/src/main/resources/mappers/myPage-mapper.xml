@@ -17,4 +17,14 @@
 		WHERE MEMBER_NO = #{memberNo}
 </update>
 
+<select id = "getListCount" parameterType = "_int" resultType = "_int">
+	SELECT COUNT(*) FROM(
+	SELECT RATING_NO 
+	FROM GOODS_SELL 
+	LEFT JOIN REVIEW  USING(GOODS_NO)
+	WHERE GOODS_DEL_FL = 'N' AND SELLER_NO = #{memberNo}
+	AND (RECEIVER_NO != SELLER_NO  OR RECEIVER_NO IS NULL)
+	AND BUYER_NO IS NOT NULL)
+</select>
+
 </mapper>

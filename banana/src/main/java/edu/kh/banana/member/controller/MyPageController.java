@@ -34,6 +34,10 @@ public class MyPageController {
 		String address = loginMember.getMemberAddress();
 		model.addAttribute("address", address.substring(10,13));
 		
+		int memberNo = loginMember.getMemberNo();
+		
+		Map<String, Object> map = service.selectGoodsSoldLsit(memberNo);
+		
 		return "member/myPage_main";
 	}
 

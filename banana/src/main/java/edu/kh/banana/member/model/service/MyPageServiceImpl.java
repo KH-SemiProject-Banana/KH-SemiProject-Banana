@@ -45,7 +45,7 @@ public class MyPageServiceImpl implements MyPageService{
 	public Map<String, Object> selectGoodsSoldLsit(int memberNo) {
 		
 		// 1단계 : 특정 게시판의 전체 게시글 수를 조회한다(단, 삭제된 글 제외)
-		int listCount = dao.getListCount(memberNo);
+		//int listCount = dao.getListCount(memberNo);
 		
 		
 		return null;

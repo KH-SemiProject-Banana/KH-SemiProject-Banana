@@ -5,5 +5,9 @@ public interface EmailService {
     String createAuthKey();
     
     String signUp(String email);
+
+    
+    
+	String findEmailId(String result);
     
 }

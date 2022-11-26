@@ -1,5 +1,7 @@
 package edu.kh.banana.member.model.service;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -50,6 +52,14 @@ public class MemberServiceImpl  implements MemberService{
 		int result = dao.signUp(inputMember);
 		
 		return result;
+	}
+
+	/**
+	 * 회원 ID 찾기
+	 */
+	@Override
+	public String infoFindId(Map<String, Object> paramMap) {
+		return dao.infoFindId(paramMap);
 	}
 	
 	

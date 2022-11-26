@@ -10,7 +10,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" sizes="16x16 32x32 64x64" href="http://61.73.18.194:5555/KH_Project/images/Banana.png">
+    <link rel="shortcut icon" sizes="16x16 32x32 64x64" href="https://i.ibb.co/4tCGZqD/Banana.png">
     <title>바꾸고 나누자 나랑: 바나나 마켓</title>
 
     <link rel="stylesheet" href="/resources/css/style.css">
@@ -44,7 +44,8 @@
                         class="inputBox" 
                         placeholder="이름"
                         maxlength="20" 
-                        autocomplete="off">
+                        autocomplete="off"
+                        value="${tempMember.memberName}">
                     </div>
                     <!-- 가입한 전화번호 -->
                     <div class="find-input-tel textbox">
@@ -53,9 +54,10 @@
                         name="memberTel" 
                         id="memberTel" 
                         class="inputBox" 
-                        placeholder="전화번호"
+                        placeholder="전화번호 ( - 제외)"
                         maxlength="20"
-                        autocomplete="off">
+                        autocomplete="off"
+                        value="${tempMember.memberTel}">
                     </div>
                     <!-- 메일 받을 새 이메일 -->
                     <div class="find-input-newEmail textbox">
@@ -66,7 +68,8 @@
                         class="inputBox" 
                         placeholder="메일을 받을수 있는 새 이메일" 
                         maxlength="20"
-                        autocomplete="off">
+                        autocomplete="off"
+                        value="${tempMember.memberNewEmail}">
                     </div>
                     <div class="newEmailMessageBox">
                         <span class="newEmai-message"id="newEmaiMessage">메일을 받을 수 있는 새 메일을 정확하게 입력해주세요.</span>
@@ -82,7 +85,16 @@
                 <div class="findID activate" id="findID">아이디 찾기</div>
                 <div class="findPW" id="findPW">비밀번호 찾기</div>
             </div>
+
+            
     </main>
+        <c:if test="${!empty message}">
+        <script>
+            alert("${message}")
+        </script>
+
+        <c:remove var="message"></c:remove>
+    </c:if>
     <script src="/resources/js/hyodong/memberFindIdPw.js"></script>
 </body>
 </html>

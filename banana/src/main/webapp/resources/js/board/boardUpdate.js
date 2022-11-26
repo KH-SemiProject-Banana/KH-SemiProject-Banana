@@ -73,6 +73,18 @@ const imagePicCount = document.getElementsByClassName("img__pic-count")[0];
                         input.click();
                     })();
 
+                    imageCount = 0;
+                    for(let i = 0; i < 5; i++){
+                        if(preview[i].getAttribute("src") == ""){
+                            boardImg[i].style.display = "none";
+                        } else {
+                            
+                            imageCount++;
+                        }
+                     }
+                 
+                     imagePicCount.innerText = "(" + imageCount + "/5)";
+
                 }
             }
 

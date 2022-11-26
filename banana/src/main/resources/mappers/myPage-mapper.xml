@@ -7,8 +7,8 @@
 	WHERE MEMBER_NO = #{memberNo}
 </update>
 
- <!-- 내 회원 정보 수정 -->
- <update id="updateInfo" parameterType="Member">
+ <!-- 내 회원 정보 수정 (비밀번호 포함) -->
+ <update id="updateInfoPw" parameterType="Member">
 	 	UPDATE "MEMBER" SET
 		MEMBER_NICKNAME = #{memberNickname},
 		MEMBER_TEL= #{memberTel},
@@ -16,6 +16,7 @@
 		MEMBER_PW = #{memberPw}
 		WHERE MEMBER_NO = #{memberNo}
 </update>
+
 
 <select id = "getListCount" parameterType = "_int" resultType = "_int">
 	SELECT COUNT(*) FROM(
@@ -50,5 +51,15 @@ WHERE GOODS_DEL_FL = 'N' AND SELLER_NO = 2
 AND (RECEIVER_NO != SELLER_NO  OR RECEIVER_NO IS NULL)
 AND BUYER_NO IS NOT NULL
 </select>
+
+ <!-- 내 회원 정보 수정 (비밀번호 제외) -->
+ <update id="updateInfoNoPw" parameterType="Member">
+	 	UPDATE "MEMBER" SET
+		MEMBER_NICKNAME = #{memberNickname},
+		MEMBER_TEL= #{memberTel},
+		MEMBER_ADDRESS = #{memberAddress}
+		WHERE MEMBER_NO = #{memberNo}
+</update>
+
 
 </mapper>

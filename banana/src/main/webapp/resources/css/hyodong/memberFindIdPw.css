@@ -1,0 +1,165 @@
+/* 테이블 설정 */
+
+/* *{ 
+    border: 1px solid black;
+} */
+
+main{
+    height: 1500px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    width: 1000px;
+    height:800px;
+}
+.findClass{
+    align-items: center;
+    display: flex;
+    width: 550px;
+    height: 715px;
+    flex-direction: column;
+    border: 1px solid black;
+    box-shadow: 5px 5px 5px 5px rgba(221, 221, 221, 0.747); /* 박스그림자 */
+
+}
+
+/*************************************************/
+/* 바나나텍스트 */
+.findHeader{ 
+    height: 180px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    margin-left: 100px;
+    padding-top: 20px;
+}
+/* 로고 글자 설정 */
+.findHeader > div>div:nth-child(3){
+        font-size: 40px;
+}
+.findHeader > div>div:nth-child(2){
+    font-size: 35px;
+}
+
+/* 바나나 이미지 설정*/
+.banana {
+    width: 150px;
+    margin-right: 10px;
+}
+
+/*************************************************/
+ /* 상단 찾기  텍스트 밖 div  */
+.findMainBox{
+    display: flex;
+    width: 100%;
+    height: 100px;
+    /* text-align: center; */
+    align-items: center;
+    justify-content: center;
+    /* background-color: red; */
+}
+/* 텍스트 */
+#findMainBoxText{
+    font-size: 30px;
+    text-align: center;
+    align-items: center;
+    color: gray;
+    font-weight : bolder;
+    margin-bottom: 50px;
+    /* background-color: yellow; */
+}
+
+/*************************************************/
+
+/*  텍스트 입력 박스 감싼 div 박스 설정 */
+.textbox{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 400px;
+    padding: 0 0 20px 0;
+    position: relative;  
+}
+/* 텍스트 입력 박스 설정 */
+.inputBox{
+    display: flex;
+    width: 500px;
+    height: 58px;
+    border-radius: 50px;
+    border: none;
+    padding: 0 40px;
+    background-color: #FDF6BB;
+    font-size: 18px;
+    outline: none;
+    box-shadow: 3px 3px 3px 3px rgba(221, 221, 221, 0.934); /* 박스그림자 */
+}
+
+.inputBox:focus{
+    border: 2px solid #e53095;
+}
+
+
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active  {
+    box-shadow: 0 0 0 30px #FDF6BB inset;
+}
+
+/*************************************************/
+/*로그인버튼 감싼 div */
+.findBtnDiv{ 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+    font-size: 15px;
+    /* margin-bottom: 200px; */
+    /* margin-top: 90px; */
+}
+
+/* 로그인 버튼 */
+.find-btn{ 
+    width: 300px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    background-color: var(--yellow);
+    color: black;
+    cursor: pointer;
+    font-weight: bold;
+    border: none;
+    font-size: 14px;
+}
+
+.find-btn:hover{
+    transform: scale(0.9);
+}
+/*************************************************/
+.findBox{
+    display: flex;
+    /* background-color: red; */
+    width: 100%;
+    height: 50px;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.findID, .findPW {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 50%;
+    font-weight: bold;
+    cursor: pointer;
+    
+}
+
+.activate{
+    background-color: rgb(253, 253, 137);
+}

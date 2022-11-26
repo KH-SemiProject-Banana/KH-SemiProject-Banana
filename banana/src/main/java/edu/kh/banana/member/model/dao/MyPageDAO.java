@@ -22,12 +22,20 @@ public class MyPageDAO {
 		return sqlSession.update("myPageMapper.changeIntroduce",member);
 	}
 
-	/** 내 회원 정보 수정
+	/** 내 회원 정보 수정 (비밀번호 포함)
 	 * @param inputMember
 	 * @return
 	 */
-	public int updateInfo(Member inputMember) {
-		return sqlSession.update("myPageMapper.updateInfo",inputMember);
+	public int updateInfoPw(Member inputMember) {
+		return sqlSession.update("myPageMapper.updateInfoPw",inputMember);
+	}
+
+	/** 내 회원 정보 수정 (비밀번호 제외)
+	 * @param inputMember
+	 * @return
+	 */
+	public int updateInfoNoPw(Member inputMember) {
+		return sqlSession.update("myPageMapper.updateInfoNoPw",inputMember);
 	}
 
 	

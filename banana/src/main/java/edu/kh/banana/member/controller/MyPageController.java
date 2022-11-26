@@ -100,6 +100,7 @@ public class MyPageController {
 			loginMember.setMemberTel(inputMember.getMemberTel());
 			loginMember.setMemberAddress(inputMember.getMemberAddress());
 			loginMember.setMemberPw(inputMember.getMemberPw());
+			
 		}else {
 			message = "회원 정보 수정 실패";	
 		}		  

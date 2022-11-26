@@ -142,7 +142,9 @@
 
     <script>
         const boardCode = "${boardCode}";
-        const loginMember = "${loginMember}"
+        const loginMember = "${loginMember}";
+        const memberNo = "${loginMember.memberNo}";
+
     </script>
 
 

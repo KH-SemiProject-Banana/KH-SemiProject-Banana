@@ -149,4 +149,13 @@ public class BoardDAO {
 		
 		return sqlSession.delete("boardMapper.boardImageDelete", condition);
 	}
+
+	/** 게시글 삭제
+	 * @param boardNo
+	 * @return
+	 */
+	public int boardDelete(int boardNo) {
+		
+		return sqlSession.update("boardMapper.boardDelete", boardNo);
+	}
 }

@@ -293,5 +293,35 @@ public class BoardController {
 		return "redirect:" + path;
 	}
 
+	
+	// 게시글 삭제
+	@GetMapping("board/{boardCode}/{boardNo}/delete")
+	public String boardDelete(
+			@PathVariable("boardCode") int boardCode,
+			@PathVariable("boardNo") int boardNo,
+			RedirectAttributes ra,
+			@RequestHeader("referer") String referer
+			) {
+		
+		int result = service.boardDelete(boardNo);
+		
+		String message = null;
+		String path = null;
+		
+		if(result >0) {
+			
+			message = "삭제되었습니다";
+			path = "/board/{boardCode}";
+			
+		} else {
+			
+			message = "게시글 삭제 실패";
+			path = referer;
+		}
+		
+		ra.addFlashAttribute("message", message);
+		
+		return "redirect:" + path;
+	}
 
 }

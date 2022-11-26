@@ -80,3 +80,16 @@ updateBtn.addEventListener("click", () =>{
     location.href = location.pathname + "/update" + location.search;
 
 });
+
+
+
+
+// 삭제하기
+const deleteBtn = document.getElementById("deleteBtn");
+deleteBtn.addEventListener("click", () =>{
+
+    if(confirm("정말 삭제하시겠습니까?")){
+
+        location.href = location.pathname + "/delete";
+    }
+});

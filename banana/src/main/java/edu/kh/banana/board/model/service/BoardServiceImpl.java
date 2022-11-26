@@ -217,4 +217,13 @@ public class BoardServiceImpl implements BoardService{
 		
 		return 0;
 	}
+
+	/**
+	 * 게시글 삭제
+	 */
+	@Override
+	public int boardDelete(int boardNo) {
+		
+		return dao.boardDelete(boardNo);
+	}
 }

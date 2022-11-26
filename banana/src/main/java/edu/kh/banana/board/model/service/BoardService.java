@@ -70,4 +70,11 @@ public interface BoardService {
 	 */
 	int boardUpdate(String webPath, String folderPath, Board board, List<MultipartFile> imageList, String deleteList);
 
+	
+	/** 게시글 삭제
+	 * @param boardNo
+	 * @return
+	 */
+	int boardDelete(int boardNo);
+
 }

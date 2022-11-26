@@ -21,7 +21,9 @@
                         </c:if>
 
                         <%-- 닉네임 --%>
-                        <span>${comment.memberNickname}</span>
+                        <a href="#" class="nicknameLink">
+                            <span>${comment.memberNickname}</span>
+                        </a>
                         <%-- 작성일 --%>
                         <span>(${comment.commentCreateDate})</span>
                     </p>

@@ -5,6 +5,8 @@
     border:  1px solid #ccc;
     margin: 10px 0 50px;
 
+    position:relative;
+
 }
 
 
@@ -72,7 +74,8 @@
 
 .img-box{
     display: flex;
-    justify-content: space-between;
+    position: absolute;
+    bottom : 0px;
 }
 
 
@@ -86,8 +89,8 @@
 
 /* 이미지 */
 .boardImg img{
-    max-width: 90%;
-    max-height: 90%;
+    width: 90%;
+    height: 90%;
 }
 
 /* 썸네일만 이미지 크게 */

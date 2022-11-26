@@ -12,7 +12,7 @@
 
             if (loginMember != '') {
 
-                boardCode = 3;
+                
 
                 location.href = "/write/" + boardCode;
 

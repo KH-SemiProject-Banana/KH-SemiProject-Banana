@@ -218,4 +218,21 @@
 	WHERE BOARD_NO = #{boardNo}
   </update>
   
+  
+  <!-- 게시글 내용만 수정 -->
+ 	<update id="boardUpdate" parameterType="Board">
+ 		UPDATE BOARD SET
+ 		BOARD_TITLE = #{boardTitle},
+ 		BOARD_CONTENT = #{boardContent}
+ 		WHERE BOARD_NO = #{boardNo}
+ 	</update>
+  
+  
+  
+  <!-- 게시글 이미지만 삭제 -->
+  <delete id="boardImageDelete">
+  	DELETE FROM BOARD_IMG
+  	${condition}
+  </delete>
+  
 </mapper>

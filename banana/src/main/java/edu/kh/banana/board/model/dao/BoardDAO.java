@@ -131,4 +131,22 @@ public class BoardDAO {
 		
 		return sqlSession.update("boardMapper.updateReadCount", boardNo);
 	}
+
+	/** 게시글 내용만 수정
+	 * @param board
+	 */
+	public int boardUpdate(Board board) {
+
+		return sqlSession.update("boardMapper.boardUpdate");
+		
+	}
+
+	/** 게시글 이미지만 삭제
+	 * @param condition
+	 * @return
+	 */
+	public int boardImageDelete(String condition) {
+		
+		return sqlSession.delete("boardMapper.boardImageDelete", condition);
+	}
 }

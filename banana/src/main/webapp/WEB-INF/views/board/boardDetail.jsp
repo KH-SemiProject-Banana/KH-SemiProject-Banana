@@ -114,7 +114,21 @@
                     ${board.boardContent}
                 </div>
 
+                <!-- 이미지가 있을 경우 -->
+                <c:if test="${not empty board.imageList}">
 
+ 
+                        <div class="img-box">
+
+                            <c:forEach var="img" items="${board.imageList}">
+                                <div class="boardImg">
+                                    <img src="${img.imagePath}${img.imageRename}">        
+                                </div>
+                            </c:forEach>
+                        </div>
+                    
+
+                </c:if>
                 
 
 

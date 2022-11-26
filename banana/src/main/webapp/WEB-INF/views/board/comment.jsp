@@ -13,7 +13,7 @@
                     <p class="comment-writer">
                         <%-- 프로필 이미지가 없는 경우 --%>
                         <c:if test="${empty comment.profileImage}">
-                            <img src="/resources/images/user.png">
+                            <img src="/resources/images/banana-logo.png">
                         </c:if>
                         <c:if test="${not empty comment.profileImage}">
                             <img src="${comment.profileImage}"/>

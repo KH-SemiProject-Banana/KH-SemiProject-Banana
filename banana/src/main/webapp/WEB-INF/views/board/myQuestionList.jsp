@@ -17,7 +17,7 @@
     <title>바꾸고 나누자 나랑: 바나나 마켓</title>
 
     <link rel="stylesheet" href="/resources/css/style.css">
-    <link rel="stylesheet" href="/resources/css/board/myBoardList.css">
+    <link rel="stylesheet" href="/resources/css/board/boardList.css">
     <script src="https://kit.fontawesome.com/f7459b8054.js" crossorigin="anonymous"></script>
 
 </head>
@@ -199,7 +199,7 @@
 
 
    <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
-   <script src="/resources/js/board/myQuestionList.jsp"></script>
+   <script src="/resources/js/board/myQuestionList.js"></script>
 </body>
 
 </html>

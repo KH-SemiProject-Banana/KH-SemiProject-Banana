@@ -178,4 +178,43 @@ public class BoardServiceImpl implements BoardService{
 		
 		return dao.updateReadCount(boardNo);
 	}
+
+	/**
+	 * 게시글 수정
+	 */
+	@Override
+	public int boardUpdate(String webPath, String folderPath, Board board, List<MultipartFile> imageList,
+			String deleteList) {
+		
+		// 1. 게시글 부분만 수정
+		
+		// 		1) XSS방지처리, 개행문자
+		board.setBoardTitle(Util.XSSHandling(board.getBoardTitle()));
+		board.setBoardContent(Util.XSSHandling(board.getBoardContent()));
+		board.setBoardContent(Util.newLineHandling(board.getBoardContent()));
+		// 		1) DAO 호출
+		int result = dao.boardUpdate(board); // title, content, boardNo 들어있음
+		
+		
+		// 2. 이미지 수정
+		if(result > 0) {
+			
+			
+			// 1) 삭제된 이미지가 있을 경우 삭제 진행
+			if(!deleteList.equals("")) {
+				
+				String condition = "WHERE BOARD_NO = " + board.getBoardNo()
+					+ " AND IMG_ORDER IN(" + deleteList + ")";
+				
+				result = dao.boardImageDelete(condition);
+			}
+			
+			
+			// 2) DAO 호출
+		}
+		
+		
+		
+		return 0;
+	}
 }

@@ -27,6 +27,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.kh.banana.board.model.service.BoardService;
 import edu.kh.banana.board.model.vo.Board;
+import edu.kh.banana.common.Util;
 import edu.kh.banana.member.model.vo.Member;
 
 @Controller
@@ -229,6 +230,67 @@ public class BoardController {
 	}
 	
 	
+	
+	// 게시글 수정 화면 전환
+	@GetMapping("/board/{boardCode}/{boardNo}/update")
+	public String boardUpdate(
+			@PathVariable("boardNo") int boardNo,
+			@PathVariable("boardCode") int boardCode,
+			Model model
+			) {
+		
+		Board board = service.selectBoardDetail(boardNo);
+		
+		// 개행문자 처리해제
+		board.setBoardContent(Util.newLineClear(board.getBoardContent()));
+		model.addAttribute("board", board);
+		
+		return "board/boardUpdate";
+	}
+	
+	
+	// 게시글 수정
+	@PostMapping("/board/{boardCode}/{boardNo}/update")
+	public String boardUpdate(
+			@PathVariable("boardCode") int boardCode,
+			@PathVariable("boardNo") int boardNo,
+			Board board,
+			@RequestParam(value="cp", required=false, defaultValue = "1") int cp,
+			@RequestParam(value="deleteList", required=false) String deleteList, // 삭제된 이미지 순서
+			@RequestParam(value="images", required= false) List<MultipartFile> imageList,
+			@RequestHeader("referer") String referer,
+			HttpSession session,
+			RedirectAttributes ra
+		) {
+		
+		// 1. board 객체에 boardCode 셋팅
+		board.setBoardNo(boardNo);
+		
+		// 2. 이미지 저장 경로 얻어오기
+		String webPath = "/resources/images/board/";
+		String folderPath = session.getServletContext().getRealPath(webPath);
+		
+		// 3. 게시글 수정 서비스 호출
+		int result = service.boardUpdate(webPath, folderPath, board, imageList, deleteList);
+		
+		// 4. 서비스 결과에 따른 응답 제어
+		String message = null;
+		String path = null;
+		
+		if(result > 0) {
+			
+			message = "게시글이 수정되었습니다";
+			path = "/board/" + boardCode + "/" + boardNo + "/cp=" + cp; 
+			
+		} else {
+			
+			message = "게시글 수정 실패";
+			path = referer;
+			
+		}
+		
+		return "redirect:" + path;
+	}
 
 
 }

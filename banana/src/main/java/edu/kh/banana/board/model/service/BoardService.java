@@ -58,4 +58,16 @@ public interface BoardService {
 	 */
 	int updateReadCount(int boardNo);
 
+	
+	
+	/** 게시글 수정
+	 * @param webPath
+	 * @param folderPath
+	 * @param board
+	 * @param imageList
+	 * @param deleteList
+	 * @return
+	 */
+	int boardUpdate(String webPath, String folderPath, Board board, List<MultipartFile> imageList, String deleteList);
+
 }

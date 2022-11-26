@@ -1,4 +1,6 @@
 package edu.kh.banana.member.model.service;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -43,6 +45,17 @@ public class MyPageServiceImpl implements MyPageService{
 		
 		
 		return result;
+	}
+
+	// 판매완료한 내 게시글 목록 조회
+	@Override
+	public Map<String, Object> selectGoodsSoldLsit(int memberNo) {
+		
+		// 1단계 : 특정 게시판의 전체 게시글 수를 조회한다(단, 삭제된 글 제외)
+		//int listCount = dao.getListCount(memberNo);
+		
+		
+		return null;
 	}
 
 	

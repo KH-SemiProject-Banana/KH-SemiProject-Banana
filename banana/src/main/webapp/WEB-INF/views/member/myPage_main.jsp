@@ -114,6 +114,8 @@
 
                     <section class="content-favorite">
 
+                        
+
                         <%-- 상품박스 --%>
                         <div class="favorite__pack">
                             <div>

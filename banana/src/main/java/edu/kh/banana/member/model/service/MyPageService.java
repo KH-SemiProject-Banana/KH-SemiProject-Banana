@@ -1,5 +1,7 @@
 package edu.kh.banana.member.model.service;
 
+import java.util.Map;
+
 import edu.kh.banana.member.model.vo.Member;
 
 public interface MyPageService {
@@ -17,6 +19,8 @@ public interface MyPageService {
 	 * @return
 	 */
 	public abstract int updateInfo(Member inputMember);
+
+	Map<String, Object> selectGoodsSoldLsit(int memberNo);
 
 	
 }

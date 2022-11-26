@@ -62,7 +62,13 @@
  	 	AND MEMBER_EMAIL = #{memberEmail}
  	 </select>
 
- 	 
+	<!-- 회원 ID 찾기 -->
+ 	 <select id="infoFindId" resultType="string">
+ 		SELECT MEMBER_EMAIL
+		FROM "MEMBER"
+		WHERE MEMBER_NAME = #{memberName}
+		AND MEMBER_TEL =#{memberTel}
+ 	 </select>
  	 
   
 </mapper>

@@ -1,5 +1,7 @@
 package edu.kh.banana.member.model.dao;
 
+import java.util.Map;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -26,6 +28,14 @@ public class MemberDAO {
 	 */
 	public int signUp(Member inputMember) {
 		return sqlSession.insert("memberMapper.signUp", inputMember);
+	}
+
+	/** 회원 ID 찾기
+	 * @param paramMap
+	 * @return 
+	 */
+	public String infoFindId(Map<String, Object> paramMap) {
+		return sqlSession.selectOne("memberMapper.infoFindId",paramMap);
 	}
 	
 	

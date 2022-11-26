@@ -1,5 +1,7 @@
 package edu.kh.banana.member.controller;
 
+import java.util.Map;
+
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 
@@ -9,21 +11,30 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import edu.kh.banana.email.model.service.EmailService;
 import edu.kh.banana.member.model.service.MemberService;
 import edu.kh.banana.member.model.vo.Member;
 
+/**
+ * @author gyehd
+ *
+ */
 @Controller
 @SessionAttributes({"loginMember", "message"})
 public class MemberController {
 	
 	@Autowired
 	public MemberService service;
+	
+	@Autowired
+    private EmailService eService;
 	
 	
 
@@ -146,4 +157,48 @@ public class MemberController {
 		ra.addFlashAttribute("message",message);
 		return "redirect:"+ path;
 	} 
+	
+	
+	/** 회원 ID/PW 찾기 페이지로 이동
+	 * @return
+	 */
+	@GetMapping("/member/infoFind")
+	public String infoFind() {
+		return "member/memberFindIdPw";
+	}
+	
+	
+	/** 회원 ID 찾기
+	 * @return
+	 */
+	@PostMapping("/member/findId")
+	public String infoFindId(@RequestParam Map<String, Object> paramMap,
+							@RequestHeader("referer") String referer,
+							RedirectAttributes ra) {
+		// 회원 조회
+		String result = service.infoFindId(paramMap);
+		
+		String path = null;
+		String message = null;
+		
+		String a = eService.findEmailId(result);
+		
+		
+		if (result != null) { // 등록된 회원 있음 
+			path="/member/login";
+			message="등록된 회원이 있어 이메일을 발송했습니다.11";
+			
+			
+		} else { // 등록된 회원 없음
+			path=referer;
+			message="등록된 회원이 없습니다. 이름과 전화번호를 확인해주세요.11";
+			
+			ra.addFlashAttribute("tempMember", paramMap);
+		}
+		
+		ra.addFlashAttribute("message",message);
+		return "redirect:"+ path;
+	}
+	
+	
 }

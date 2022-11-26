@@ -1,5 +1,7 @@
 package edu.kh.banana.member.model.service;
 
+import java.util.Map;
+
 import edu.kh.banana.member.model.vo.Member;
 
 public interface MemberService {
@@ -15,5 +17,11 @@ public interface MemberService {
 	 * @return
 	 */
 	int signUp(Member inputMember);
+
+	/** 회원 ID 찾기
+	 * @param paramMap
+	 * @return
+	 */
+	String infoFindId(Map<String, Object> paramMap);
 
 }

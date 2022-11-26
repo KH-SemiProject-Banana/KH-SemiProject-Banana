@@ -1,3 +1,8 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%-- 문자열 관련 메서드를 제공하는 JSTL (EL형식) --%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,11 +10,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" sizes="16x16 32x32 64x64" href="http://61.73.18.194:5555/KH_Project/images/Banana.png">
+    <link rel="shortcut icon" sizes="16x16 32x32 64x64" href="https://i.ibb.co/4tCGZqD/Banana.png">
     <title>바꾸고 나누자 나랑: 바나나 마켓</title>
 
-    <link rel="stylesheet" href="/banana/src/main/webapp/resources/css/style.css">
-    <link rel="stylesheet" href="/banana/src/main/webapp/resources/css/hyodong/memberFindIdPw.css">
+    <link rel="stylesheet" href="/resources/css/style.css">
+    <link rel="stylesheet" href="/resources/css/hyodong/memberFindIdPw.css">
 </head>
 
 <body>
@@ -17,7 +22,7 @@
         <div class="findClass">
             <!-- 바나나 텍스트 -->
             <div class="findHeader">
-                <img class="banana" src="http://61.73.18.194:5555/KH_Project/images/Banana-logo_128px.png" />
+                <img class="banana" src="/resources/images/banana-logo.png"/>
                 <div>
                     <div>바꾸고 나누자 나랑</div>
                     <div>Banana Market</div>
@@ -39,7 +44,8 @@
                         class="inputBox" 
                         placeholder="이름"
                         maxlength="20" 
-                        autocomplete="off">
+                        autocomplete="off"
+                        value="${tempMember.memberName}">
                     </div>
                     <!-- 가입한 전화번호 -->
                     <div class="find-input-tel textbox">
@@ -48,9 +54,10 @@
                         name="memberTel" 
                         id="memberTel" 
                         class="inputBox" 
-                        placeholder="전화번호"
+                        placeholder="전화번호 ( - 제외)"
                         maxlength="20"
-                        autocomplete="off">
+                        autocomplete="off"
+                        value="${tempMember.memberTel}">
                     </div>
                     <!-- 메일 받을 새 이메일 -->
                     <div class="find-input-newEmail textbox">
@@ -61,7 +68,8 @@
                         class="inputBox" 
                         placeholder="메일을 받을수 있는 새 이메일" 
                         maxlength="20"
-                        autocomplete="off">
+                        autocomplete="off"
+                        value="${tempMember.memberNewEmail}">
                     </div>
                     <div class="newEmailMessageBox">
                         <span class="newEmai-message"id="newEmaiMessage">메일을 받을 수 있는 새 메일을 정확하게 입력해주세요.</span>
@@ -77,7 +85,16 @@
                 <div class="findID activate" id="findID">아이디 찾기</div>
                 <div class="findPW" id="findPW">비밀번호 찾기</div>
             </div>
+
+            
     </main>
-    <script src="../../resources/js/hyodong/memberFindIdPw.js"></script>
+        <c:if test="${!empty message}">
+        <script>
+            alert("${message}")
+        </script>
+
+        <c:remove var="message"></c:remove>
+    </c:if>
+    <script src="/resources/js/hyodong/memberFindIdPw.js"></script>
 </body>
 </html>

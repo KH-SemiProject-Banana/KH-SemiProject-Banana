@@ -44,7 +44,7 @@ memberEmail.addEventListener("input",()=>{
     // 미입력시
     if(memberEmail.value.trim().length == 0){
         emailMessage.innerText="인증번호를 받을 수 있는 이메일을 입력해주세요.";
-        emailMessage.classList.remove("confirm","error");emailMessage
+        emailMessage.classList.remove("confirm","error");
         memberEmail.value="";
         checkObj.memberEmail = false;
         return;

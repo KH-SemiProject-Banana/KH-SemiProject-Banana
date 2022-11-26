@@ -42,7 +42,7 @@
 
                 
 
-
+<%-- 
                 <div class="content-category">
                     <div class="content-category__title left-bar">
                         <div class="title">유형</div>
@@ -57,7 +57,8 @@
                         </select>
                         <div id="categoryMessage"></div>
                     </div>
-                </div>
+                </div> --%>
+                <input type="hidden" name="boardType" value="3">
 
 
                 <div class="content-title">

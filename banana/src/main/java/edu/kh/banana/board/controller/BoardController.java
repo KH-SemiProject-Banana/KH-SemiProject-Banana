@@ -288,6 +288,7 @@ public class BoardController {
 			path = referer;
 			
 		}
+		ra.addFlashAttribute("message", message);
 		
 		return "redirect:" + path;
 	}

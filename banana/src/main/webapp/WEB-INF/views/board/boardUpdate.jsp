@@ -39,14 +39,14 @@
                 <a href="#">문의/안내 내역</a>
                 <a href="#">문의하기</a>
             </div>
-            <form action="/write/${boardCode}" method="POST" 
+            <form action="update" method="POST" 
             enctype="multipart/form-data" id="question-form" onsubmit="return updateValidate()">
                 
 
                 
 
 
-                <div class="content-category">
+                <%-- <div class="content-category">
                     <div class="content-category__title left-bar">
                         <div class="title">유형</div>
                         <div class="required">*</div>
@@ -60,7 +60,8 @@
                         </select>
                         <div id="categoryMessage"></div>
                     </div>
-                </div>
+                </div> --%>
+                <input type="hidden" name="boardType" value="3">
 
 
                 <div class="content-title">
@@ -185,7 +186,7 @@
                     </div>
                 </div>
                 <div class="content-finish">
-                    <button type="submit" id="insertBtn">문의하기</button>
+                    <button type="submit" id="insertBtn">내 문의 수정 완료</button>
                 </div>
             </form>
 

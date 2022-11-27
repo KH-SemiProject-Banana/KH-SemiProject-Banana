@@ -62,13 +62,20 @@
  	 	AND MEMBER_EMAIL = #{memberEmail}
  	 </select>
 
-	<!-- 회원 ID 찾기 -->
- 	 <select id="infoFindId" resultType="string">
+	<!-- 회원 ID/PW 찾기 회원조회 -->
+ 	 <select id="infoFindSelect" resultType="string">
  		SELECT MEMBER_EMAIL
 		FROM "MEMBER"
 		WHERE MEMBER_NAME = #{memberName}
 		AND MEMBER_TEL =#{memberTel}
  	 </select>
+ 	 
+ 	 <update id="findEmailPw">
+		UPDATE "MEMBER" SET
+		MEMBER_PW = #{encPw}
+		WHERE MEMBER_EMAIL = #{result}
+ 	 </update>
+ 	 
  	 
   
 </mapper>

@@ -68,33 +68,6 @@ public class EmailController {
     }
     
     
-    /** 아이디 찾기 이메일 발송
-     * @param paramMap
-     * @param model
-     * @return
-     */
-    @GetMapping("/member/findEmailId")
-    @ResponseBody
-    public int findEmailId(@RequestParam Map<String, Object> paramMap) {
-        
-    	
-    	String result = mService.infoFindId(paramMap);
-    	
-    	System.out.println("여기있나요?"+result);
-    	System.out.println("여기있나요?"+paramMap);
-    	
-        String authKey = service.findEmailId(result);
-        
-        if(authKey != null) {
-            return 1;
-            
-        }else {
-        	
-            return 0;
-        }
-    }
-    
-    
     
     
     

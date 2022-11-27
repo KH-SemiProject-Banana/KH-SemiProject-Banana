@@ -1,5 +1,7 @@
 package edu.kh.banana.email.model.service;
 
+import java.util.Map;
+
 import javax.mail.Message;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
@@ -94,35 +96,37 @@ public class EmailServiceImpl implements EmailService {
 
     
     
-    
+    /**
+     * 아이디 찾기 이메일 발송
+     */
+    @Transactional
 	@Override
-	public String findEmailId(String result) {
+	public String findEmailId(String result, Map<String, Object> paramMap) {
+    	
+    	String inputEmail = (String) paramMap.get("memberNewEmail");
         
-		String a = "안녕";
-		System.out.println("야!!!!" + result);
 		try {
 
             //인증메일 보내기
             MimeMessage mail = mailSender.createMimeMessage();
             
             // 제목
-            String subject = "[Semi Project] 중고 거래 바나나 마켓 회원가입 인증번호";
+            String subject = "[Semi Project] 중고 거래 바나나 마켓 회원 ID 찾기";
             
             // 문자 인코딩
             String charset = "UTF-8";
             
             // 메일 내용
             String mailContent 
-                = "<p>바나나 마켓 회원 가입 인증번호입니다.</p>"
-                + "<h3 style='color:blue'>" + result + "</h3>";
-            
-            
+                = "<p>바나나 마켓 회원 가입한 아이디입니다.</p>"
+                + "<h3 style='color:blue'>" + result + "</h3>"
+                + "<p> 로그인 페이지로 이동 : http://localhost/member/login </p>";
             
             // 송신자(보내는 사람) 지정
             mail.setFrom(new InternetAddress(fromEmail, fromUsername));
-            mail.addRecipient(Message.RecipientType.TO, new InternetAddress(result));
             
             // 수신자(받는사람) 지정
+            mail.addRecipient(Message.RecipientType.TO, new InternetAddress(inputEmail));
             
             // 이메일 제목 세팅
             mail.setSubject(subject, charset);
@@ -131,12 +135,13 @@ public class EmailServiceImpl implements EmailService {
             mail.setText(mailContent, charset, "html"); //"html" 추가 시 HTML 태그가 해석됨
             
             mailSender.send(mail); // 메일 발송
+            
         } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
 
-        return a;
+        return null;
 	}
     
     

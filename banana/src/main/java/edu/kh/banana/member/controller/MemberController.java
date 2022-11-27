@@ -181,17 +181,18 @@ public class MemberController {
 		String path = null;
 		String message = null;
 		
-		String a = eService.findEmailId(result);
+		// 조회된 회원 메일로 보내기
+		 eService.findEmailId(result,paramMap);
 		
 		
 		if (result != null) { // 등록된 회원 있음 
 			path="/member/login";
-			message="등록된 회원이 있어 이메일을 발송했습니다.11";
+			message="등록된 회원이 있어 이메일을 발송했습니다.";
 			
 			
 		} else { // 등록된 회원 없음
 			path=referer;
-			message="등록된 회원이 없습니다. 이름과 전화번호를 확인해주세요.11";
+			message="등록된 회원이 없습니다. 이름과 전화번호를 확인해주세요.";
 			
 			ra.addFlashAttribute("tempMember", paramMap);
 		}

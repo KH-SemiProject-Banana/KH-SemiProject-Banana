@@ -15,5 +15,11 @@ public interface EmailService {
 	 * @return
 	 */
 	String findEmailId(String result, Map<String, Object> paramMap);
+
+	/** 비밀번호 찾기 이메일 발송
+	 * @param result
+	 * @param paramMap
+	 */
+	int findEmailPw(String result, Map<String, Object> paramMap);
     
 }

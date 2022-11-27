@@ -176,7 +176,7 @@ public class MemberController {
 							@RequestHeader("referer") String referer,
 							RedirectAttributes ra) {
 		// 회원 조회
-		String result = service.infoFindId(paramMap);
+		String result = service.infoFindSelect(paramMap);
 		
 		String path = null;
 		String message = null;
@@ -189,6 +189,42 @@ public class MemberController {
 			path="/member/login";
 			message="등록된 회원이 있어 이메일을 발송했습니다.";
 			
+			
+		} else { // 등록된 회원 없음
+			path=referer;
+			message="등록된 회원이 없습니다. 이름과 전화번호를 확인해주세요.";
+			
+			ra.addFlashAttribute("tempMember", paramMap);
+		}
+		
+		ra.addFlashAttribute("message",message);
+		return "redirect:"+ path;
+	}
+	
+	
+	
+	
+	/** 회원 PW 찾기
+	 * @return
+	 */
+	@PostMapping("/member/findPw")
+	public String infoFindPw(@RequestParam Map<String, Object> paramMap,
+							@RequestHeader("referer") String referer,
+							RedirectAttributes ra) {
+		// 회원 조회
+		String result = service.infoFindSelect(paramMap);
+		
+		String path = null;
+		String message = null;
+		
+		if (result != null) { // 등록된 회원 있음 
+			// 조회된 회원 메일로 보내기
+			int result1 = eService.findEmailPw(result,paramMap);
+			
+			if (result1> 0) {
+				path="/member/login";
+				message="등록된 회원이 있어 이메일로 임시 비밀번호를 발송했습니다.";
+			}
 			
 		} else { // 등록된 회원 없음
 			path=referer;

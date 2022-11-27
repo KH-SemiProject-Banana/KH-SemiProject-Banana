@@ -29,7 +29,6 @@
 </select>
 
 
-
  <!-- 내 회원 정보 수정 (비밀번호 제외) -->
  <update id="updateInfoNoPw" parameterType="Member">
 	 	UPDATE "MEMBER" SET

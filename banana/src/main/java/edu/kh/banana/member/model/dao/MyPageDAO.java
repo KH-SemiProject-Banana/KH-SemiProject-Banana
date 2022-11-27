@@ -1,9 +1,12 @@
 package edu.kh.banana.member.model.dao;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import edu.kh.banana.goods.model.vo.GoodsSell;
 import edu.kh.banana.member.model.vo.Member;
 
 @Repository
@@ -48,6 +51,14 @@ public class MyPageDAO {
 		return sqlSession.selectOne("myPageMapper.getListCount", memberNo);
 	}
 
+	/**판매완료한 내 게시글의 목록 조회
+	 * @param memberNo
+	 * @return
+	 */
+	public List<GoodsSell> selectGoodsSoldList(int memberNo) {
+		
+		return sqlSession.selectList("myPageMapper.selectGoodsSoldList",memberNo);
+	}
 
 
 	

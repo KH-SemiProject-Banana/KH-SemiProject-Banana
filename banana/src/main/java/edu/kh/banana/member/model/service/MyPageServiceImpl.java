@@ -1,4 +1,6 @@
 package edu.kh.banana.member.model.service;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -6,6 +8,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import edu.kh.banana.goods.model.vo.GoodsSell;
 import edu.kh.banana.member.model.dao.MyPageDAO;
 import edu.kh.banana.member.model.vo.Member;
 
@@ -49,15 +52,18 @@ public class MyPageServiceImpl implements MyPageService{
 
 	// 판매완료한 내 게시글 목록 조회
 	@Override
-	public Map<String, Object> selectGoodsSoldLsit(int memberNo) {
+	public Map<String, Object> selectGoodsSoldList(int memberNo) {
 		
 		// 1단계 : 특정 게시판의 전체 게시글 수를 조회한다(단, 삭제된 글 제외)
 		//int listCount = dao.getListCount(memberNo);
 		
+		List<GoodsSell> soldList = dao.selectGoodsSoldList(memberNo);
+		System.out.println(soldList);
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("soldList", soldList);
 		
-		return null;
-	}
+		return map;
 
 	
-
+	}
 }

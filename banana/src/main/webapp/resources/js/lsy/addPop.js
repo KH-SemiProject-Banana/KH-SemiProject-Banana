@@ -7,6 +7,22 @@ function openPop() {
     
 }
 
+//클릭이벤트로 클릭 시에 다른 쪽에 있는 체크박스 전부해제하는 코드
+const badChoice = document.getElementById("badchoice");
+const goodChoice = document.getElementById("goodchoice");
+const badArr = document.getElementsByClassName("bad");
+const goodArr = document.getElementsByClassName("good");
+
+badChoice.addEventListener("click",()=>{
+    $("input[class='good']").attr("checked",false);
+})
+
+goodChoice.addEventListener("click",()=>{
+    $("input[class='bad']").attr("checked",false);
+})
+
+
+
 const submitBtn = document.getElementById("submitButton");
 
 const checkedArr = [];
@@ -218,6 +234,7 @@ const fourth = document.querySelector("#changeJsp");
 
 fourth.style.display = "none";
 
+// 판매목록 카테고리 클릭 시 오픈
 document.getElementById("first-category").addEventListener("click",function(){
     alert("첫번째 카테고리 open");
 
@@ -236,7 +253,7 @@ document.getElementById("first-category").addEventListener("click",function(){
 })
 
 
-
+// 후기 카테고리 클릭 시 오픈
 document.getElementById("fourth-category").addEventListener("click",function(){
     alert("네번째 오픈");
 
@@ -272,6 +289,8 @@ document.getElementById("fourth-category").addEventListener("click",function(){
 
 // })
 
+
+//자기소개 수정하기 
 const introUpdateBtn2 = document.getElementById("introUpdateBtn2");
 const pIntro = document.getElementById("p_intro");
 
@@ -300,7 +319,7 @@ introUpdateBtn2.addEventListener("click", e => {
         changedBtn.style.display = "block";
     }
 
-const introduce =
+
 
     changedBtn.addEventListener("click",function(e){
         console.log(input.value);

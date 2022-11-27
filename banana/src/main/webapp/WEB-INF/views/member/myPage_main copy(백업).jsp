@@ -1,9 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<%-- map에 저장된 값을 꺼내어 각각 변수에 저장 --%>
-<c:set var = "soldList" value = "${map.soldList}" />
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -117,47 +114,186 @@
 
                     <section class="content-favorite">
 
-                        <!-- 게시글 목록 조회 결과가 비어있다면 -->
+                        
 
-                        <%-- choose 내에서는 jsp주석 적어야 해 --%>
-                        <c:choose>
-                            <c:when test = "${empty soldList}">
-                            <%-- 게시글 목록 조회 결과가 비어있다면 --%>
-                            <tr>
-                                <th colspan="6">게시글이 존재하지 않습니다.</th>
-                            </tr>
-                            </c:when>
+                        <%-- 상품박스 --%>
+                        <div class="favorite__pack">
+                            <div>
+                                <div class="favorite__img">
+                                    <img src="/resources/images/runningCat.png" >
+                                    <i class="fa-solid fa-ellipsis-vertical dot"></i>
+                                </div>
+                                <div class="favorite__price-heart">
+                                    <div class="favorite__price">투썸 마스카포네 치즈를 팝니다. 마싯서용</div>
+                                </div>
+                            </div>
+                            <div class="favorite__content">11달 전</div>
+                            <a href="javascript:openPop()" id = "popopen">
+                                <div class="testcolor">거래 후기 보내기</div>
+                            </a>    
+                        </div>
 
-                            <c:otherwise>
-                                <c:forEach var = "sold" items = "${soldList}">
-                                    <%-- 상품박스 --%>
-                                    <div class="favorite__pack">
-                                        <div>
-                                            <div class="favorite__img">
-                                                <img src="${sold.imagePath}" >
-                                                <i class="fa-solid fa-ellipsis-vertical dot"></i>
-                                            </div>
-                                            <div class="favorite__price-heart">
-                                                <div class="favorite__price">${sold.title}</div>
-                                            </div>
-                                        </div>
-                                        <div class="favorite__content">${sold.createdAt}</div>
-                                        <c:choose>
-                                            <c:when test = "${sold.ratingNo == 0}">
-                                            <a href="javascript:openPop()" id = "popopen">
-                                                <div class="testcolor">거래 후기 보내기</div>
-                                            </a>    
-                                            </c:when>
-                                            <c:otherwise>
-                                             <div class="testcolor2">보낸 후기 보기</div>
-                                            </c:otherwise>
-                                        </c:choose>
-                                    </div>
-                                </c:forEach>
-                            </c:otherwise>
-                        </c:choose>
+                        <%-- 상품박스 --%>
+                        <div class="favorite__pack">
+                            <div>
+                                <div class="favorite__img">
+                                    <img src="/resources/images/bananaTree.png" >
+                                    <i class="fa-solid fa-ellipsis-vertical dot" ></i>
+                                </div>
+                                <div class="favorite__price-heart">
+                                    <div class="favorite__price">거지같은 옷</div>
+                                </div>
+                            </div>
+                            <div class="favorite__content">12달 전</div>
+                            <div class="testcolor2">보낸 후기 보기</div>
+                        </div>
+
+                        <%-- 상품박스 --%>
+                        <div class="favorite__pack">
+                            <div>
+                                <div class="favorite__img">
+                                    <img src="/resources/images/sampleGoods.jpg" >
+                                    <i class="fa-solid fa-ellipsis-vertical dot" ></i>
+                                </div>
+                                <div class="favorite__price-heart">
+                                    <div class="favorite__price">이딴게 옷?</div>
+                                </div>
+                            </div>
+                            <div class="favorite__content">1년 전</div>
+                            <a href="javascript:openPop()">
+                                <div class="testcolor">거래 후기 보내기</div>
+                            </a>  
+                        </div>
+                        <%-- 상품박스 --%>
+                        <div class="favorite__pack">
+                            <div>
+                                <div class="favorite__img">
+                                    <img src="/resources/images/sampleGoods.jpg" >
+                                    <i class="fa-solid fa-ellipsis-vertical dot" ></i>
+                                </div>
+                                <div class="favorite__price-heart">
+                                    <div class="favorite__price">이상한 옷</div>
+                                    
+                                </div>
+                            </div>
+                            <div class="favorite__content">1년 전</div>
+                            <a href="javascript:openPop()">
+                                <div class="testcolor">거래 후기 보내기</div>
+                            </a>  
+                        </div>
+
+                        <%-- 상품박스 --%>
+                        <div class="favorite__pack">
+                            <div>
+                                <div class="favorite__img">
+                                    <img src="/resources/images/sampleGoods.jpg" >
+                                    <i class="fa-solid fa-ellipsis-vertical dot" ></i>
+                                </div>
+                                <div class="favorite__price-heart">
+                                    <div class="favorite__price">비싼 옷</div>
+                                    
+                                </div>
+                            </div>
+                            <div class="favorite__content">1년 전</div>
+                            <a href="javascript:openPop()">
+                                <div class="testcolor">거래 후기 보내기</div>
+                            </a>  
+                        </div>
 
                         
+                        <%-------------- 구분선--------------%>
+                    
+                        <%-- 상품박스 --%>
+                        <div class="favorite__pack">
+                            <div>
+                                <div class="favorite__img">
+                                    <img src="/resources/images/sampleGoods.jpg" >
+                                    <i class="fa-solid fa-ellipsis-vertical dot" >
+                                        안녕
+                                    </i>
+                                </div>
+                                <div class="favorite__price-heart">
+                                    <div class="favorite__price">깨꾹이인형 팔아요</div>
+                                </div>
+                            </div>
+                            <div class="favorite__content">2년 전</div>
+                            <a href="javascript:openPop()">
+                                <div class="testcolor">거래 후기 보내기</div>
+                            </a>  
+                        </div>
+
+                        <%-- 상품박스 --%>
+                        <div class="favorite__pack">
+                            <div>
+                                <div class="favorite__img">
+                                    <img src="/resources/images/sampleGoods.jpg" >
+                                    <i class="fa-solid fa-ellipsis-vertical dot" ></i>
+                                </div>
+                                <div class="favorite__price-heart">
+                                    <div class="favorite__price">이클립스냠냠</div>
+                                </div>
+                            </div>
+                            <div class="favorite__content">2년 전</div>
+                            <a href="javascript:openPop()">
+                                <div class="testcolor">거래 후기 보내기</div>
+                            </a>  
+                        </div>
+
+                        <%-- 상품박스 --%>
+                        <%-- <div class="favorite__pack">
+                            <div>
+                                <div class="favorite__img">
+                                    <img src="/resources/images/sampleGoods.jpg" >
+                                    <i class="fa-solid fa-ellipsis-vertical dot" ></i>
+                                </div>
+                                <div class="favorite__price-heart">
+                                    <div class="favorite__price">파닥몬파닥파닥</div>
+                                    
+                                </div>
+                            </div>
+                            <div class="favorite__content">3년 전</div>
+                            <a href="javascript:openPop()">
+                                <div class="testcolor">거래 후기 보내기</div>
+                            </a>  
+                        </div> --%>
+
+                        <%-- 상품박스 --%>
+                        <%-- <div class="favorite__pack">
+                            <div>
+                                <div class="favorite__img">
+                                    <img src="/resources/images/sampleGoods.jpg" >
+                                    <i class="fa-solid fa-ellipsis-vertical dot" ></i>
+                                </div>
+                                <div class="favorite__price-heart">
+                                    <div class="favorite__price">냥냐얀ㅇ야야야야야야야야야ㅑ야야야ㅑ야ㅑ</div>
+                                    
+                                </div>
+                            </div>
+                            <div class="favorite__content">5년 전</div>
+                            <a href="javascript:openPop()">
+                                <div class="testcolor">거래 후기 보내기</div>
+                            </a>  
+                        </div> --%>
+
+                        <%-- 상품박스 --%>
+                        <%-- <div class="favorite__pack">
+                            <div>
+                                <div class="favorite__img">
+                                    <img src="/resources/images/sampleGoods.jpg" >
+                                    <i class="fa-solid fa-ellipsis-vertical dot" ></i>
+                                </div>
+                                <div class="favorite__price-heart">
+                                    <div class="favorite__price">집에 가고싶어지는 시간 바로 지금</div>
+                                
+                                </div>
+                            </div>
+                            <div class="favorite__content">5년 전</div>
+                            <a href="javascript:openPop()">
+                                <div class="testcolor">거래 후기 보내기</div>
+                            </a>  
+                        </div>
+                    </section>
+                </section> --%>
                 
                 <div class="popup_layer" id="popup_layer" style="display: none;">
                     <div class="popup_box Scroll ">
@@ -201,31 +337,31 @@
                                                 <!-- 섹선4(1)------------------------------------------------------------->
                                                 <section class = "goodAnswer" id = "goodAnswer">
                                                     <div>
-                                                        <input type="checkbox" name = "rev" id = "good1" value="1" class = "good">
+                                                        <input type="checkbox" name = "rev" id = "good1" value="1">
                                                         <label for="good1">나눔을 해주셨어요</label>
                                                     </div>
                                                     <div>
-                                                        <input type="checkbox" name = "rev" id = "good2" value="2" class = "good">
+                                                        <input type="checkbox" name = "rev" id = "good2" value="2">
                                                         <label for="good2">상품상태가 설명한것과 같아요</label>
                                                     </div>
                                                     <div>
-                                                        <input type="checkbox" name = "rev" id = "good3" value="3" class = "good">
+                                                        <input type="checkbox" name = "rev" id = "good3" value="3">
                                                         <label for="good3">상품설명이 자세해요</label>
                                                     </div>
                                                     <div>
-                                                        <input type="checkbox" name = "rev" id = "good4" value="4" class = "good">
+                                                        <input type="checkbox" name = "rev" id = "good4" value="4">
                                                         <label for="good4">좋은 상품을 저렴하게 판매해요</label>
                                                     </div>
                                                     <div>
-                                                        <input type="checkbox" name = "rev" id = "good5" value="5" class = "good">
+                                                        <input type="checkbox" name = "rev" id = "good5" value="5">
                                                         <label for="good5">시간약속을 잘 지켜요</label>
                                                     </div>
                                                     <div>
-                                                        <input type="checkbox" name = "rev" id = "good6" value="6" class = "good">
+                                                        <input type="checkbox" name = "rev" id = "good6" value="6">
                                                         <label for="good6">응답이 빨라요</label>
                                                     </div>
                                                     <div>
-                                                        <input type="checkbox" name = "rev" id = "good7" value="7" class = "good">
+                                                        <input type="checkbox" name = "rev" id = "good7" value="7">
                                                         <label for="good7">친절하고 매너가 좋아요</label>
                                                     </div>
                                                 </section>
@@ -239,35 +375,35 @@
                                             <!-- 섹션4(2)------------------------------------------------------- -->
                                             <section class = "badAnswer" id = "badAnswer"> <!-- 원래 id :  -->
                                                 <div>
-                                                    <input type="checkbox" name = "rev" id = "bad1" value="8" class = "bad" checked >
+                                                    <input type="checkbox" name = "rev" id = "bad1" value="8">
                                                     <label for="bad1">원하지 않는 가격을 계속 요구해요</label>
                                                 </div>
                                                 <div>
-                                                    <input type="checkbox" name = "rev" id = "bad2" value="9" class = "bad">
+                                                    <input type="checkbox" name = "rev" id = "bad2" value="9">
                                                     <label for="bad2">시간약속을 안 지켜요</label>
                                                 </div>
                                                 <div>
-                                                    <input type="checkbox" name = "rev" id = "bad3" value="10" class = "bad">
+                                                    <input type="checkbox" name = "rev" id = "bad3" value="10">
                                                     <label for="bad3">예약만 하고 거래 시간을 명확하게 알려주지 않아요</label>
                                                 </div>
                                                 <div>
-                                                    <input type="checkbox" name = "rev" id = "bad4" value="11" class = "bad">
+                                                    <input type="checkbox" name = "rev" id = "bad4" value="11">
                                                     <label for="bad4">거래 시간과 장소를 정한 후 거래 직전 취소했어요</label>
                                                 </div>
                                                 <div>
-                                                    <input type="checkbox" name = "rev" id = "bad5" value="12" class = "bad">
+                                                    <input type="checkbox" name = "rev" id = "bad5" value="12">
                                                     <label for="bad5">거래 시간과 장소를 정한 후 연락이 안돼요</label>
                                                 </div>
                                                 <div>
-                                                    <input type="checkbox" name = "rev" id = "bad6" value="13" class = "bad">
+                                                    <input type="checkbox" name = "rev" id = "bad6" value="13">
                                                     <label for="bad6">약속 장소에 나타나지 않았어요</label>
                                                 </div>
                                                 <div>
-                                                    <input type="checkbox" name = "rev" id = "bad7" value="14" class = "bad">
+                                                    <input type="checkbox" name = "rev" id = "bad7" value="14">
                                                     <label for="bad7">상품 상태가 설명과 달라요</label>
                                                 </div>
                                                 <div>
-                                                    <input type="checkbox" name = "rev" id = "bad7" value="15" class = "bad">
+                                                    <input type="checkbox" name = "rev" id = "bad7" value="15">
                                                     <label for="bad7">반말을 사용해요</label>
                                                 </div>
                                                 <div>

@@ -238,4 +238,16 @@ public class MemberController {
 	}
 	
 	
+	/** 바나나톡
+	 * @return
+	 */
+	@GetMapping("/member/bananaTalk") 
+	public String bananaTalk() {
+		return "member/BananaTalk"; 
+	}
+	
+	
+	
+	
+	
 }

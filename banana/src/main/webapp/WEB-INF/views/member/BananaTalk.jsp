@@ -1,3 +1,8 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%-- 문자열 관련 메서드를 제공하는 JSTL (EL형식) --%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,11 +12,11 @@
     <link rel="shortcut icon"  sizes="16x16 32x32 64x64" href="http://61.73.18.194:5555/KH_Project/images/Banana.png">
     <title>바꾸고 나누자 나랑: 바나나 마켓</title>
 
-    <link rel="stylesheet" href="/banana/src/main/webapp/resources/css/hyodong/BananaTalk_Header-footer.css">
+    <link rel="stylesheet" href="/resources/css/hyodong/BananaTalk_Header-footer.css">
     <script src="https://kit.fontawesome.com/f7459b8054.js" crossorigin="anonymous"></script>
 
         
-    <link rel="stylesheet" href="/banana/src/main/webapp/resources/css/hyodong/BananaTalk.css">
+    <link rel="stylesheet" href="/resources/css/hyodong/BananaTalk.css">
 </head>
 <body> 
     <main>
@@ -22,8 +27,8 @@
             <section class="section-query">
                 <!-- 바나나 로고 -->
                 <div class="query__area">
-                    <a href="#"> 
-                        <img src="/banana/bin/src/main/webapp/resources/images/banana-logo.png" id="logo-img">
+                    <a href="/"> 
+                        <img src="/resources/images/banana-logo.png" id="logo-img">
                     </a>
                     <div class="query__logo">
                         <p>바꾸고 나누자 나랑</p>
@@ -32,8 +37,8 @@
                 </div>
                 <!-- 프로필관련 -->
                 <div class="profil">
-                    <img class="profilImages" src="/banana/src/main/webapp/resources/images/user.png" >
-                    <div class="profilName">바나나님</div>
+                    <img class="profilImages" src="/resources/images/user.png" >
+                    <div class="profilName">${loginMember.memberNickname}</div>
                 </div>
             </section>
         </header>
@@ -46,7 +51,7 @@
                         
                         <!-- User프로필1 -->
                         <div class="user1Profile">
-                            <img class="talkProfileImages" src="/banana/bin/src/main/webapp/resources/images/banana-logo.png">
+                            <img class="talkProfileImages" src="/resources/images/banana-logo.png">
                             <div class="name">바나나</div>
                             <div class="talkClockAlarm">
                                 <div class="talkClock">오후 09:10</div>
@@ -55,7 +60,7 @@
                         </div>
                         <!-- User프로필2 -->
                         <div class="user1Profile">
-                            <img class="talkProfileImages" src="/banana/src/main/webapp/resources/images/hyodongProfile/emoticon_1.gif">
+                            <img class="talkProfileImages" src="/resources/images/hyodongProfile/emoticon_1.gif">
                             <div class="name">모코코안녕</div>
                             <div class="talkClockAlarm">
                                 <div class="talkClock">오후 09:10</div>
@@ -65,7 +70,7 @@
 
                         <!-- User프로필2 -->
                         <div class="user1Profile">
-                            <img class="talkProfileImages" src="/banana/src/main/webapp/resources/images/hyodongProfile/emoticon_2.gif">
+                            <img class="talkProfileImages" src="/resources/images/hyodongProfile/emoticon_2.gif">
                             <div class="name">모코코하트</div>
                             <div class="talkClockAlarm">
                                 <div class="talkClock">오후 09:10</div>
@@ -75,7 +80,7 @@
 
                         <!-- User프로필2 -->
                         <div class="user1Profile">
-                            <img class="talkProfileImages" src="/banana/src/main/webapp/resources/images/hyodongProfile/emoticon_4.gif">
+                            <img class="talkProfileImages" src="/resources/images/hyodongProfile/emoticon_4.gif">
 
                             <div class="name">모코코화난다!!</div>
                             <div class="talkClockAlarm">
@@ -86,7 +91,7 @@
 
                         <!-- User프로필2 -->
                         <div class="user1Profile">
-                            <img class="talkProfileImages" src="/banana/src/main/webapp/resources/images/hyodongProfile/emoticon_6.gif">
+                            <img class="talkProfileImages" src="/resources/images/hyodongProfile/emoticon_6.gif">
 
                             <div class="name">모코코신난다</div>
                             <div class="talkClockAlarm">
@@ -97,7 +102,7 @@
 
                         <!-- User프로필2 -->
                         <div class="user1Profile">
-                            <img class="talkProfileImages" src="/banana/src/main/webapp/resources/images/hyodongProfile/emoticon_7.gif">
+                            <img class="talkProfileImages" src="/resources/images/hyodongProfile/emoticon_7.gif">
 
                             <div class="name">모코코파이팅</div>
                             <div class="talkClockAlarm">
@@ -108,7 +113,7 @@
 
                         <!-- User프로필2 -->
                         <div class="user1Profile">
-                            <img class="talkProfileImages" src="/banana/src/main/webapp/resources/images/hyodongProfile/emoticon_8.gif">
+                            <img class="talkProfileImages" src="/resources/images/hyodongProfile/emoticon_8.gif">
 
                             <div class="name">모코코OTL</div>
                             <div class="talkClockAlarm">
@@ -119,7 +124,7 @@
 
                         <!-- User프로필2 -->
                         <div class="user1Profile">
-                            <img class="talkProfileImages" src="/banana/src/main/webapp/resources/images/hyodongProfile/emoticon_9.gif">
+                            <img class="talkProfileImages" src="/resources/images/hyodongProfile/emoticon_9.gif">
 
                             <div class="name">모코코씨앗</div>
                             <div class="talkClockAlarm">
@@ -130,7 +135,7 @@
 
                         <!-- User프로필2 -->
                         <div class="user1Profile">
-                            <img class="talkProfileImages" src="/banana/src/main/webapp/resources/images/hyodongProfile/emoticon_10.gif">
+                            <img class="talkProfileImages" src="/resources/images/hyodongProfile/emoticon_10.gif">
 
                             <div class="name">모코코몰루?</div>
                             <div class="talkClockAlarm">
@@ -141,7 +146,7 @@
 
                         <!-- User프로필2 -->
                         <div class="user1Profile">
-                            <img class="talkProfileImages" src="/banana/src/main/webapp/resources/images/hyodongProfile/emoticon_11.gif">
+                            <img class="talkProfileImages" src="/resources/images/hyodongProfile/emoticon_11.gif">
 
                             <div class="name">모코코우왕</div>
                             <div class="talkClockAlarm">
@@ -152,7 +157,7 @@
 
                         <!-- User프로필2 -->
                         <div class="user1Profile">
-                            <img class="talkProfileImages" src="/banana/bin/src/main/webapp/resources/images/banana-logo.png">
+                            <img class="talkProfileImages" src="/resources/images/banana-logo.png">
                             <div class="name">내려간다~~</div>
                             <div class="talkClockAlarm">
                                 <div class="talkClock">오후 09:10</div>
@@ -162,7 +167,7 @@
 
                         <!-- User프로필2 -->
                         <div class="user1Profile">
-                            <img class="talkProfileImages" src="/banana/bin/src/main/webapp/resources/images/banana-logo.png">
+                            <img class="talkProfileImages" src="/resources/images/banana-logo.png">
                             <div class="name">내주식처럼</div>
                             <div class="talkClockAlarm">
                                 <div class="talkClock">오후 09:10</div>
@@ -172,7 +177,7 @@
 
                         <!-- User프로필2 -->
                         <div class="user1Profile">
-                            <img class="talkProfileImages" src="/banana/bin/src/main/webapp/resources/images/banana-logo.png">
+                            <img class="talkProfileImages" src="/resources/images/banana-logo.png">
                             <div class="name">내려간다ㅏㅏ</div>
                             <div class="talkClockAlarm">
                                 <div class="talkClock">오후 09:10</div>
@@ -182,7 +187,7 @@
 
                         <!-- User프로필2 -->
                         <div class="user1Profile">
-                            <img class="talkProfileImages" src="/banana/bin/src/main/webapp/resources/images/banana-logo.png">
+                            <img class="talkProfileImages" src="/resources/images/banana-logo.png">
                             <div class="name">진짜 끝!!</div>
                             <div class="talkClockAlarm">
                                 <div class="talkClock">오후 09:10</div>
@@ -233,7 +238,7 @@
 
                                 <!-- 상대채팅 -->
                                 <div class="friend-chat">
-                                    <img class="profile-img" src="/banana/src/main/webapp/resources/images/user.png" alt="상대방프로필사진">
+                                    <img class="profile-img" src="/resources/images/user.png" alt="상대방프로필사진">
                                     <div class="friend-chat-col">
                                         <span class="profile-name">바나나</span>
                                         <span class="balloon">저 바닫으로~~</span>
@@ -256,7 +261,7 @@
 
                                 <!-- 상대채팅 -->
                                 <div class="friend-chat">
-                                    <img class="profile-img" src="/banana/src/main/webapp/resources/images/banana-logo.png" alt="상대방프로필사진">
+                                    <img class="profile-img" src="/resources/images/banana-logo.png" alt="상대방프로필사진">
                                     <div class="friend-chat-col">
                                         <span class="profile-name">바나나</span>
                                         <span class="balloon">가자미 처럼</span>
@@ -277,7 +282,7 @@
 
                                 <!-- 상대채팅 -->
                                 <div class="friend-chat">
-                                    <img class="profile-img" src="/banana/src/main/webapp/resources/images/banana-logo.png" alt="상대방프로필사진">
+                                    <img class="profile-img" src="/resources/images/banana-logo.png" alt="상대방프로필사진">
                                     <div class="friend-chat-col">
                                         <span class="profile-name">바나나</span>
                                         <span class="balloon">저 바닫으로~~</span>
@@ -300,7 +305,7 @@
 
                                 <!-- 상대채팅 -->
                                 <div class="friend-chat">
-                                    <img class="profile-img" src="/banana/src/main/webapp/resources/images/banana-logo.png" alt="상대방프로필사진">
+                                    <img class="profile-img" src="/resources/images/banana-logo.png" alt="상대방프로필사진">
                                     <div class="friend-chat-col">
                                         <span class="profile-name">바나나</span>
                                         <span class="balloon">가자미 처럼</span>
@@ -335,25 +340,6 @@
                 </div>
             </div>
     </main>
-
-<!-- footer 시작----------------------------------------------------------------------------------------- -->
-
-    <footer>
-        <p>
-            Copyright &copy; KH Information Educational Institute A-Class 중고거래 프로젝트 팀
-        </p>
-        <article>
-            <a href="#">프로젝트 소개</a>
-            <span> | </span>
-            <a href="#">이용약관</a>
-            <span> | </span>
-            <a href="#">개인정보취급방침</a>
-            <span> | </span>
-            <a href="#">고객센터</a>
-        </article>
-    </footer>
-<!-- footer 끝----------------------------------------------------------------------------------------- -->
-
-
+    <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 </body>
 </html>

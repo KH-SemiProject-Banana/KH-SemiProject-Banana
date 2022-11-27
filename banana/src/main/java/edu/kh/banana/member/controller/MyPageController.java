@@ -107,7 +107,7 @@ public class MyPageController {
 		ra.addFlashAttribute("message", message);
 		return "redirect:updateInfo";
 	}
-	
+
 
 //	@PostMapping("/sendingReview")
 //	public int sendingReview(

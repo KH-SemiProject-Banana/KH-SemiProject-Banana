@@ -1,5 +1,8 @@
 package edu.kh.banana.member.model.vo;
 
+import java.util.List;
+
+import edu.kh.banana.goods.model.vo.GoodsSell;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -31,6 +34,10 @@ public class Member {
 	// 카테고리(CATEGORY)테이블
 //	private int categoryNo;
 //	private String categoryName;
+	
+	// GoodsSell 테이블
+	private List<GoodsSell> goodsList;
+	private int goodsNo;
 	
 	
 	// ERD의 찜했따(GOODS_LIKE) 테이블

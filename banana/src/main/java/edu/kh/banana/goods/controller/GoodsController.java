@@ -23,7 +23,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.google.gson.Gson;
 
 import edu.kh.banana.goods.model.service.GoodsService;
-import edu.kh.banana.goods.model.vo.Goods;
+import edu.kh.banana.goods.model.vo.GoodsSell;
 import edu.kh.banana.member.model.vo.Member;
 
 @Controller
@@ -58,7 +58,7 @@ public class GoodsController {
 	@PostMapping("/registerGoods")
 	public String registerGoods(
 			@SessionAttribute("loginMember") Member loginMember,
-			Goods inputGoods,	
+			GoodsSell inputGoods,	
 			RedirectAttributes ra,
 			@RequestParam(value="imagePath", required = false) List<MultipartFile> imagePath,
 			HttpServletRequest req,
@@ -112,7 +112,7 @@ public class GoodsController {
 			Model model) {
 		
 
-		Goods goods = service.selectGoods(goodsNo);
+		GoodsSell goods = service.selectGoods(goodsNo);
 		
 		model.addAttribute("goods", goods);
 		

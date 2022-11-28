@@ -3,7 +3,7 @@
 <mapper namespace = "goodsMapper">
   
   
-  	<resultMap type="Goods" id="goods_rm">
+  	<resultMap type="GoodsSell" id="goods_rm">
    
    		<id property="goodsNo" column="GOODS_NO"/>
    		
@@ -43,7 +43,7 @@
  	 
  	 
  	 <!-- 상품등록 -->
- 	 <insert id="registerGoods" parameterType="Goods">
+ 	 <insert id="registerGoods" parameterType="GoodsSell">
  	 	INSERT INTO GOODS_SELL	
 		VALUES(SEQ_GOODS_NO.NEXTVAL, #{sellerNo}, NULL, #{categoryNo}, #{title}, 
 		#{sellPrice}, DEFAULT, #{description}, NULL, DEFAULT, DEFAULT)
@@ -73,7 +73,7 @@
  	 </select>
  	 
  	 
- 	 <select id="selectGoods" parameterType="_int" resultType="Goods">
+ 	 <select id="selectGoods" parameterType="_int" resultType="GoodsSell">
  	 	SELECT * FROM GOODS_SELL
  	 	WHERE GOODS_NO = #{goodsNo}
  	 </select>

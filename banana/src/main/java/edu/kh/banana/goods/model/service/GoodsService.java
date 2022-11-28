@@ -6,7 +6,8 @@ import java.util.Map;
 
 import org.springframework.web.multipart.MultipartFile;
 
-import edu.kh.banana.goods.model.vo.Goods;
+
+import edu.kh.banana.goods.model.vo.GoodsSell;
 import edu.kh.banana.member.model.vo.Member;
 
 public interface GoodsService {
@@ -20,7 +21,7 @@ public interface GoodsService {
 	 * @throws IOException 
 	 * @throws IllegalStateException 
 	 */
-	int registerGoods(String webPath, String filePath, List<MultipartFile> imagePath, Goods inputGoods) throws Exception;
+	int registerGoods(String webPath, String filePath, List<MultipartFile> imagePath, GoodsSell inputGoods) throws Exception;
 
 	
 	
@@ -29,7 +30,7 @@ public interface GoodsService {
 	 * @param goodsNo
 	 * @return goods
 	 */
-	Goods selectGoods(int goodsNo);
+	GoodsSell selectGoods(int goodsNo);
 
 	
 	
@@ -37,7 +38,7 @@ public interface GoodsService {
 	/** 메인페이지 인기상품
 	 * @return List<Goods> favoriteGoodsList
 	 */
-	List<Goods> favoriteGoods(int memberNo);
+	List<GoodsSell> favoriteGoods(int memberNo);
 
 
 
@@ -45,7 +46,7 @@ public interface GoodsService {
 	/** 메인페이지 최근글
 	 * @return List<Goods> newGoodsList
 	 */
-	List<Goods> newGoods(int memberNo);
+	List<GoodsSell> newGoods(int memberNo);
 
 
 

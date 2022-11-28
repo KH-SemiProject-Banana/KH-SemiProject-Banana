@@ -12,8 +12,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import edu.kh.banana.common.Util;
 import edu.kh.banana.goods.model.dao.GoodsDAO;
-import edu.kh.banana.goods.model.vo.Goods;
 import edu.kh.banana.goods.model.vo.GoodsImage;
+import edu.kh.banana.goods.model.vo.GoodsSell;
 import edu.kh.banana.member.model.vo.Member;
 
 @Service
@@ -24,7 +24,7 @@ public class GoodsServiceImpl implements GoodsService {
 
 	@Override
 	@Transactional(rollbackFor = Exception.class)
-	public int registerGoods(String webPath, String filePath, List<MultipartFile> imagePath, Goods inputGoods)
+	public int registerGoods(String webPath, String filePath, List<MultipartFile> imagePath, GoodsSell inputGoods)
 			throws Exception {
 
 		// 상품사진 제외한 나머지 등록
@@ -97,9 +97,9 @@ public class GoodsServiceImpl implements GoodsService {
 	 * 내가 등록한 상품 1개 조회
 	 */
 	@Override
-	public Goods selectGoods(int goodsNo) {
+	public GoodsSell selectGoods(int goodsNo) {
 		
-		Goods goods = dao.selectGoods(goodsNo);
+		GoodsSell goods = dao.selectGoods(goodsNo);
 		
 
 		
@@ -113,9 +113,9 @@ public class GoodsServiceImpl implements GoodsService {
 	 */
 	@Override
 	@Transactional(rollbackFor= Exception.class)
-	public List<Goods> favoriteGoods(int memberNo) {
+	public List<GoodsSell> favoriteGoods(int memberNo) {
 		
-		List<Goods> favoriteGoodsList = dao.favoriteGoods(memberNo);
+		List<GoodsSell> favoriteGoodsList = dao.favoriteGoods(memberNo);
 		
 		
 		return favoriteGoodsList;
@@ -126,9 +126,9 @@ public class GoodsServiceImpl implements GoodsService {
 	 */
 	@Override
 	@Transactional(rollbackFor = Exception.class)
-	public List<Goods> newGoods(int memberNo) {
+	public List<GoodsSell> newGoods(int memberNo) {
 		
-		List<Goods> newGoodsList = dao.newGoods(memberNo);
+		List<GoodsSell> newGoodsList = dao.newGoods(memberNo);
 		
 		
 		

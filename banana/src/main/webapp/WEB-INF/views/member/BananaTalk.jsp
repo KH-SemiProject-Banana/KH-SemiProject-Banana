@@ -24,8 +24,6 @@
     <main>
         <!-- header 시작----------------------------------------------------------------------------------------- -->
         <header>
-            <!-- <section class="section-topmenu">
-            </section> -->
             <section class="section-query">
                 <!-- 바나나 로고 -->
                 <div class="query__area">
@@ -82,7 +80,6 @@
                     <!-- User프로필2 -->
                     <div class="user1Profile">
                         <img class="talkProfileImages" src="/resources/images/hyodongProfile/emoticon_4.gif">
-
                         <div class="name">모코코화난다!!</div>
                         <div class="talkClockAlarm">
                             <div class="talkClock">오후 09:10</div>
@@ -93,18 +90,16 @@
                     <!-- User프로필2 -->
                     <div class="user1Profile">
                         <img class="talkProfileImages" src="/resources/images/hyodongProfile/emoticon_6.gif">
-
                         <div class="name">모코코신난다</div>
                         <div class="talkClockAlarm">
                             <div class="talkClock">오후 09:10</div>
-                            <div class="talkAlarm"> 112</div>
+                            <div class="talkAlarm"> 999</div>
                         </div>
                     </div>
 
                     <!-- User프로필2 -->
                     <div class="user1Profile">
                         <img class="talkProfileImages" src="/resources/images/hyodongProfile/emoticon_7.gif">
-
                         <div class="name">모코코파이팅</div>
                         <div class="talkClockAlarm">
                             <div class="talkClock">오후 09:10</div>
@@ -115,7 +110,6 @@
                     <!-- User프로필2 -->
                     <div class="user1Profile">
                         <img class="talkProfileImages" src="/resources/images/hyodongProfile/emoticon_8.gif">
-
                         <div class="name">모코코OTL</div>
                         <div class="talkClockAlarm">
                             <div class="talkClock">오후 09:10</div>
@@ -126,7 +120,6 @@
                     <!-- User프로필2 -->
                     <div class="user1Profile">
                         <img class="talkProfileImages" src="/resources/images/hyodongProfile/emoticon_9.gif">
-
                         <div class="name">모코코씨앗</div>
                         <div class="talkClockAlarm">
                             <div class="talkClock">오후 09:10</div>
@@ -137,7 +130,6 @@
                     <!-- User프로필2 -->
                     <div class="user1Profile">
                         <img class="talkProfileImages" src="/resources/images/hyodongProfile/emoticon_10.gif">
-
                         <div class="name">모코코몰루?</div>
                         <div class="talkClockAlarm">
                             <div class="talkClock">오후 09:10</div>
@@ -148,7 +140,6 @@
                     <!-- User프로필2 -->
                     <div class="user1Profile">
                         <img class="talkProfileImages" src="/resources/images/hyodongProfile/emoticon_11.gif">
-
                         <div class="name">모코코우왕</div>
                         <div class="talkClockAlarm">
                             <div class="talkClock">오후 09:10</div>
@@ -202,12 +193,12 @@
                     <!-- 채팅박스 상단 상품  -->
                     <div id="productInforBox">
                         <div class="productImgBox">
-                            <img class="productImgBox1"src="\banana\src\main\webapp\resources\images\hydong-test-RTX4090.jpg">
+                            <img class="productImgBox1"src="\resources\images\hydong-test-RTX4090.jpg">
                         </div>
                         <div class="productNamePrice">
                             <div class="productNameArea">
                                 <div class="productStatus">거래완료</div>
-                                <div class="productName">RTX4090 누가좀 사주세요 제발 가지고싶다111</div>
+                                <div class="productName">RTX4090 누가좀 사주세요 제발 가지고싶다</div>
                             </div>
                             <div class="productPrice">2,500,000 원</div>
                         </div>

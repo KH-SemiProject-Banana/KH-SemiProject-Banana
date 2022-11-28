@@ -99,7 +99,7 @@
 }
 
 .favorite__pack > div:nth-child(1){
-    padding: 10px;
+    padding: 10px 10px 0;
 }
 
 /* .favorite__title, .new__title{
@@ -185,9 +185,7 @@ label[for="heart"]{
 
 
 
-.favorite__price-heart {
-    padding-left: 10px;
-}
+
 
 
 
@@ -315,3 +313,5 @@ label[for="heart"]{
   .first {
     margin-top: 50px;
   }
+
+

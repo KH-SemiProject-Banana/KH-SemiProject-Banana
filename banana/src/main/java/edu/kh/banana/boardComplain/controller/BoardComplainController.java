@@ -26,9 +26,9 @@ public class BoardComplainController {
 	
 	@PostMapping("/reportsubmit")
 	public String reportsubmit(@RequestParam Map<String, Object> submit,
-								@SessionAttribute("loginMember")Member loginMember) {
-							
-		
+								@SessionAttribute("loginMember") Member loginMember) {
+								
+		// int complained 사용하기
 		int report = service.reportsubmit(submit);
 		
 		

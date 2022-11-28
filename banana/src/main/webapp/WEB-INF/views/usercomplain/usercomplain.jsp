@@ -29,13 +29,13 @@
         
         <section class="content"> 
             
-            <a href="javascript:openPop()">
+        <%--     <a href="javascript:openPop()">
                 <div>
                     팝업오픈!
                 </div>
             </a>
 
-
+ --%>
             <div class="popup_layer" id="popup_layer" style="display: none;">
                 <div class="popup_box">
                     <div style="height: 10px; width: 375px; float: top;">

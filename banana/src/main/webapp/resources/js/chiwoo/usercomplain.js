@@ -22,7 +22,7 @@ reportsubmit = document.getElementById("reportsubmit");
 
 
 
-(function openPop(){
+function openPop(){
     //document.getElementById("popup_layer").style.display = "block";
     document.getElementById("popup_layer").style.display = "block";
     // document.getElementById("popup_box").style.display = "block";
@@ -40,7 +40,7 @@ reportsubmit = document.getElementById("reportsubmit");
             frame.style.display = "none";
         }
     
-})();
+};
     
 
 

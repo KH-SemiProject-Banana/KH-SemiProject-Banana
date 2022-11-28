@@ -6,10 +6,10 @@
         <header>
             <section class="section-topmenu">
                 <div>
-                    <a href="/board/1" class="fa-regular fa-file-lines boardListLink"> 게시판</a>
+                    <%-- <a href="/board/1" class="fa-regular fa-file-lines boardListLink"> 게시판</a> --%>
                 </div>
                 <div class="talkAndlogin">
-                    <a href="#" class="topmenu__talk fa-regular fa-comment">바나나톡</a>
+                    <a href="/member/bananaTalk" class="topmenu__talk fa-regular fa-comment">바나나톡</a>
                     
                     <div id="header-top-menu">
                     <c:choose>
@@ -21,7 +21,12 @@
                         <c:otherwise>
                             <label for="header-menu-toggle">
                                 <div class="profileImgArea">
-                                    <img src="/resources/images/banana-logo.png"  id="profileImg">
+                                    <c:if test="${empty loginMember.profileImage}">
+                                        <img src="/resources/images/banana-logo.png"  id="profileImg">
+                                    </c:if>
+                                    <c:if test="${not empty loginMember.profileImage}">
+                                        <img src="${loginMember.profileImage}" id="profileImg">
+                                    </c:if>
                                 </div>
                                 ${loginMember.memberNickname}
                                 <i class="fa-solid fa-caret-down"></i>
@@ -29,7 +34,7 @@
                                     <input type="checkbox" id="header-menu-toggle">
 
                                     <div id="header-menu">
-                                        <a href="#">내 정보</a>
+                                        <a href="/member/myPage/main">내 정보</a>
                                         <a href="/member/logout">로그아웃</a>
                                     </div>
                                 </div>
@@ -76,7 +81,4 @@
                     <div>내 물건<br>판매하기</div>
                 </a>
             </section>
-            
         </header>
-
-        

@@ -22,12 +22,15 @@
 	
 		<!-- 값이 있는 것 -->
 		<typeAlias type="edu.kh.banana.member.model.vo.Member" alias="Member"/>
-		<typeAlias type="edu.kh.banana.goods.model.vo.Goods" alias="Goods"/>
+		<typeAlias type="edu.kh.banana.goods.model.vo.GoodsSell" alias="GoodsSell"/>
 		<typeAlias type="edu.kh.banana.goods.model.vo.GoodsImage" alias="GoodsImage"/>
 		
 		<typeAlias type="edu.kh.banana.board.model.vo.Board" alias="Board"/>
 		<typeAlias type="edu.kh.banana.board.model.vo.Comment" alias="Comment"/>
 		<typeAlias type="edu.kh.banana.board.model.vo.BoardImage" alias="BoardImage"/>
+		<typeAlias type="edu.kh.banana.customer.model.vo.Customer" alias="Customer"/>
+		
+		
 		
 		
 		
@@ -47,14 +50,18 @@
 	<mappers>
  		<mapper resource="/mappers/member-mapper.xml"/>
 		<mapper resource="/mappers/myPage-mapper.xml"/>
+		<mapper resource="/mappers/customer-mapper.xml"/>
 		<mapper resource="/mappers/boardComplain-mapper.xml"/>
 		<mapper resource="/mappers/chat-mapper.xml"/>
 		<mapper resource="/mappers/goods-mapper.xml"/>
 		<mapper resource="/mappers/pay-mapper.xml"/>
 		<mapper resource="/mappers/review-mapper.xml"/>
 		<mapper resource="/mappers/userComplain-mapper.xml"/>
-		
+		<mapper resource="/mappers/ajax-mapper.xml"/>
 		<mapper resource="/mappers/board-mapper.xml"/>
+		<mapper resource="/mappers/comment-mapper.xml"/>
+		<mapper resource="/mappers/category-mapper.xml"/>
+
 	</mappers>
 
 

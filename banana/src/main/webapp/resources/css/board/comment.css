@@ -1,4 +1,15 @@
 /*댓글*/
+
+.nicknameLink {
+	color: black;
+	text-decoration: none;
+	margin-left: 5px;
+}
+
+.comment-list-area {
+
+	padding: 20px;
+}
 .comment-write-area {
 	display: flex;
 	min-height: 85px;

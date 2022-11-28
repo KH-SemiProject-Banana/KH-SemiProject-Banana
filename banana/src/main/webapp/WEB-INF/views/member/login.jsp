@@ -40,14 +40,21 @@
                     <div>
                         <!-- 아이디(이메일) -->
                         <div class="signUp-input-Email textbox">
-                            <input type="text" name="memberEmail" id="memberEmail" class="inputBox" placeholder="아이디 (이메일)"
-                                maxlength="20" autocomplete="off" value=${cookie.saveId.value}>
+                            <input type="text" 
+                            name="memberEmail" 
+                            id="memberEmail" 
+                            class="inputBox" 
+                            placeholder="아이디 (이메일)"
+                            maxlength="20" 
+                            autocomplete="off" 
+                            value="${cookie.saveId.value}">
                         </div>
 
+                        <%-- 쿠키에 saveId가 있는 경우 변수 생성--%>
                         <c:if test="${!empty cookie.saveId.value}">
                             <c:set var="temp" value="checked"/>
                         </c:if>
-                        
+
                         <!-- 아이디 저장 -->
                         <div class="saveId-area">
                             <input type="checkbox" name="saveId" id="saveId" ${temp}>
@@ -64,7 +71,7 @@
                     </div>
             
                     <div class="text-area">
-                        <a href="#">ID/PW 찾기</a>
+                        <a href="/member/infoFind">ID/PW 찾기</a>
                         <a href="/member/signUp/agreement">회원가입</a>
                     </div>
             

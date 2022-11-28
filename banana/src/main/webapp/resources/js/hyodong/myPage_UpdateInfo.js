@@ -1,10 +1,3 @@
-/* 나중에 수정 할꺼
-input 태그 hidden으로 기존 로그인 값 가져오기 말고 
-
-어차피 처음 수정페이지 들어오면 값들이 다 있으니 그것들을 
-스크립트 맨 위에 변수만들어줘서 미리 세팅 해준다음 비교하기
-*/
-
 const checkObj = {
     "memberPw"      : true,
     "memberPwConfirm" : true,
@@ -146,7 +139,6 @@ memberPwConfirm.addEventListener("input",()=>{
 /*************************** 닉네임 확인 유효성 검사 ***************************/
 const memberNickname = document.getElementById("memberNickname");
 const nickMessage = document.getElementById("nickMessage");
-const memberNicknameBefore = document.getElementById("memberNicknameBefore");
 
 memberNickname.addEventListener("input",()=>{
     checkObj.memberNickname= false;
@@ -159,7 +151,7 @@ memberNickname.addEventListener("input",()=>{
         return;
     }
 
-    if(memberNicknameBefore.value == memberNickname.value ){ // 기존 닉네임과 입력 닉네임이 같다면
+    if(existingMemberNickname == memberNickname.value ){ // 기존 닉네임과 입력 닉네임이 같다면
         nickMessage.innerText="한글,영어,숫자로만 2~10글자 사이로 입력해주세요.";
         nickMessage.classList.remove("confirm","error");
         checkObj.memberNickname= true;
@@ -211,7 +203,6 @@ memberNickname.addEventListener("input",()=>{
 /*************************** 전화번호 유효성 검사 ***************************/
 const memberTel = document.getElementById("memberTel");
 const temlMessage = document.getElementById("temlMessage");
-const memberTelBefore =document.getElementById("memberTelBefore");
 
 memberTel.addEventListener("input",()=>{
     checkObj.memberTel = false;
@@ -224,7 +215,7 @@ memberTel.addEventListener("input",()=>{
         return;
     } 
 
-    if(memberTelBefore.value == memberTel.value ){ // 기존 전화번호와 입력 전화번호가 같다면
+    if(existingMemberTel == memberTel.value ){ // 기존 전화번호와 입력 전화번호가 같다면
         temlMessage.innerText="전화번호를 입력해 주세요.(-제외)";
         temlMessage.classList.remove("confirm","error");
         checkObj.memberTel= true;

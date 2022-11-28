@@ -4,7 +4,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -12,21 +12,23 @@
     <link rel="shortcut icon"  sizes="16x16 32x32 64x64" href="https://i.ibb.co/4tCGZqD/Banana.png">
     <title>바꾸고 나누자 나랑: 바나나 마켓</title>
 
+    <%--폰트 어썸  https://fontawesome.com/ key --%>
     <script src="https://kit.fontawesome.com/f7459b8054.js"crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/1023652dd4.js" crossorigin="anonymous"></script>
 
-
     <link rel="stylesheet" href="/resources/css/style.css">
     <link rel="stylesheet" href="/resources/css/hyodong/SignUpInfo.css">
+
   </head>
   <body>
     <main>
-        <jsp:include page="/WEB-INF/views/common/header.jsp" />
+      <jsp:include page="/WEB-INF/views/common/header.jsp" />
 
       <div class="signUpInfoClass">
         <div class="SignUpAgreement1">
           <div>회원가입</div>
         </div>
+        <%--------------------- 회원 가입 진행도 시작 ---------------------%>
         <div class="SignUpAgreement2">
           <div class="one">
             <div id="lineBreak">
@@ -59,6 +61,7 @@
             </div>
           </div>
         </div>
+        <%--------------------- 회원 가입 진행도 끝 ---------------------%>
         <div class="SignUpAgreement3">
           <div id="SignUpAgreement3-1">개인 정보입력</div>
           <div id="SignUpAgreement3-2">
@@ -66,7 +69,7 @@
           </div>
         </div>
 
-        <!------------------------------------------->
+        <!--------------------- 회원 정보 입력 시작  --------------------->
         <form action="/member/signUp/info" method="POST" name="signUp-frm" id="signUp-frm">
 
           <div>
@@ -191,7 +194,9 @@
 
             <%-- 주소 문자열 -> 배열로 쪼개기 --%>
             <c:set var="addr" value="${fn:split(tempMember.memberAddress,',,')}" />
+
             <!-- 우편 번호/주소/상세주소 -->
+            <%-- 우편번호 --%>
             <div class="signUp-input-area textbox">
               <input
                 type="text"
@@ -204,7 +209,7 @@
               />
               <button type="button" class="checkButton" onclick="sample6_execDaumPostcode()">검색</button>
             </div>
-
+            <%-- 도로명/지번 주소 --%>
             <div class="signUp-input-area textbox">
               <input
                 auto
@@ -216,7 +221,7 @@
                 value="${addr[1]}"
               />
             </div>
-
+            <%-- 상세주소 --%>
             <div class="signUp-input-area textbox">
               <input
                 type="text"
@@ -231,12 +236,14 @@
           <div class="firstBox">
             <span class="signUp-message" id="addMessage">검색을 눌러 주소를 입력해 주세요.</span>
           </div>
-          <!--------------------------->
 
+          <!--------------------- 회원 정보 입력 끝  --------------------->
+          <%-- 회원 가입 다음 단계 --%>
           <div class="SignUpAgreement6">
             <button class="SignUp">회원 가입하기</button>
           </div>
         </form>
+      </div>
     </main>
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 

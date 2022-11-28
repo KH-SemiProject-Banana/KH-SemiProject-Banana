@@ -115,7 +115,7 @@
 
                             <c:choose>
                                 <c:when test="${goods.imagePath == null}">
-                                    <a href="/detailed"><img src="../../resources/images/noImage.png"></a>
+                                    <a href="/detailed"><img src="/resources/images/noImage.png"></a>
                                 </c:when>
 
                                 <c:otherwise>

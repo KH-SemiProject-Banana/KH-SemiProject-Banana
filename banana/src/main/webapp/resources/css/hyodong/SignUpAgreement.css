@@ -1,4 +1,4 @@
-/* 테이블 설정 */
+/* 최상위 div */
 .signUpClass  *{ 
     /* border: 1px solid black; */
     justify-content: center;
@@ -13,7 +13,7 @@
 
 }
 /*************************************************/
-/* 회원가입 */
+/* 상단 회원가입 텍스트 설정 */
 .SignUpAgreement1{ 
     display: flex;
     height: 250px;
@@ -27,7 +27,7 @@
 
 /*************************************************/
 
- /* 약관동의  */
+ /* 약관동의 텍스트 설정  */
 .SignUpAgreement3{
     display: flex;
     width: 100%;
@@ -124,7 +124,7 @@
 
 
 
-/*회원가입하기 다음페이지 이동 버튼 */
+/*회원가입하기 다음페이지 이동 감싼 div */
 .SignUpAgreement6{ 
     display: flex;
     justify-content: center;
@@ -153,8 +153,8 @@
     transform: scale(0.9);
 }
 /*************************************************/
-
-.SignUpAgreement5{ /* 회원약관동의  */
+/* 회원약관동의  */
+.SignUpAgreement5{ 
     display: flex;
     justify-content: center;
     align-items: center;
@@ -174,19 +174,13 @@
     display:  flex;
     justify-content: center;
     align-items: center;
-
     width: 38px;
     height: 38px;
     border: 1px solid white;
-
     border-radius: 20%;
     color: white;
     background-color: #ddd;
-
     font-size: 35px;
-
-    /* font-size: 1.05em; */
-
     margin-right: 10px;
 }
 
@@ -198,13 +192,10 @@
 
 /*************************************************/
 
-/* 약관내용 */
+/* 약관동의 내용 감싼 div */
 .SignUpAgreement4{ 
     background-color: #FDF6BB;
-    /* display: flex; */
     justify-content: center;
-    /* align-items: center; */
-    /* max-height: 600px; */
     width: 920px;
     height: 430px;
     border-radius: 15px;

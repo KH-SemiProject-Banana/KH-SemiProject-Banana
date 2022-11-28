@@ -80,8 +80,6 @@
     display: flex;
     align-items: center;
 }
-/* 문제있다ㅏㅏ
-마지막 애를선택해서  */
 #chatProfile > div:last-child{
     border-bottom: none;
 }
@@ -133,10 +131,12 @@
     font-weight: bold;
     font-size: 11px;
     border-radius: 50%;
-    width: 16px;
-    height: 16px;
+    width: 18px;
+    height: 18px;
     color: white;
     display: flex;
+    justify-content: center;
+    align-items: center;
 }
 /*************************************************/
 

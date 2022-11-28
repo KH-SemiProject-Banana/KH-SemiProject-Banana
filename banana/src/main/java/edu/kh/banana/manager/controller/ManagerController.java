@@ -53,5 +53,13 @@ public class ManagerController {
 	public String managerMain() {
 		return "manager/manager-main";
 	}
+	
+	/** 관리자 페이지 상품 메뉴 이동
+	 * @return
+	 */
+	@GetMapping("/goods")
+	public String menuGoods() {
+		return "manager/manager-goods";
+	}
 
 }

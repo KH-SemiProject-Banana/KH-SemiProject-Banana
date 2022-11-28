@@ -13,9 +13,9 @@ document.getElementById("findForm").addEventListener("submit",function(event){
         if(!checkObj[key]){
 
             switch(key){
-                case "memberName" : str = "이름이 유효하지 않습니다."; break;
-                case "memberTel"                : str = "전화번호가 유효하지 않습니다.";      break;
-                case "memberNewEmail"           : str = "이메일이 유효하지 않습니다.";        break;
+                case "memberName"     : str = "이름이 유효하지 않습니다.";     break;
+                case "memberTel"      : str = "전화번호가 유효하지 않습니다."; break;
+                case "memberNewEmail" : str = "이메일이 유효하지 않습니다.";   break;
             }
             alert(str);
             document.getElementById(key).focus();
@@ -176,33 +176,3 @@ findID.addEventListener("click",()=>{
      // 폼태그 속성 변경
     findForm.setAttribute("action","/member/findId");
 });
-
-
-
-/***************************** 제출시 메일전송 *****************************/
-
-// btn_id.addEventListener("click", ()=>{
-
-//     const resultFind = {"memberName":memberName.value,"memberTel":memberTel.value,"memberNewEmail":memberNewEmail.value};
-//     $.ajax({
-//         url : "/sendEmail/member/findEmailId",
-//         data : resultFind,
-//         type : "GET",
-//         success : (result) => {
-
-//             if(result > 0){
-//                 console.log("인증 번호가 발송되었습니다.")
-//             }else{
-//                 console.log("인증번호 발송 실패")
-//             }
-//         }, error : () => {
-//             console.log("이메일 ajax 중복검사 실패");
-//         },
-//         complete : () => {
-//             console.log("이메일 ajax 중복검사 완료");
-//         }
-//     });
-//     alert("인증번호가 발송 되었습니다.");
-
-
-// });

@@ -111,7 +111,7 @@ public class MyPageController {
 		ra.addFlashAttribute("message", message);
 		return "redirect:updateInfo";
 	}
-	
+
 
 	@GetMapping("/sendingReview")
 	@ResponseBody

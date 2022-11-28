@@ -1,5 +1,7 @@
 package edu.kh.banana.email.model.service;
 
+import java.util.Map;
+
 public interface EmailService {
 
     String createAuthKey();
@@ -7,7 +9,17 @@ public interface EmailService {
     String signUp(String email);
 
     
-    
-	String findEmailId(String result);
+	/** 아이디 찾기 이메일 발송
+	 * @param result
+	 * @param paramMap
+	 * @return
+	 */
+	String findEmailId(String result, Map<String, Object> paramMap);
+
+	/** 비밀번호 찾기 이메일 발송
+	 * @param result
+	 * @param paramMap
+	 */
+	int findEmailPw(String result, Map<String, Object> paramMap);
     
 }

@@ -14,7 +14,7 @@
 }
 
 /*************************************************/
-/* 바나나텍스트 */
+/* 바나나 이미 및 로고 텍스트 최상위 div 설정 */
 .loginHeader{ 
     margin-top: 200px;
     height: 200px;
@@ -26,13 +26,14 @@
     position: relative;
     font-weight: bold;
 }
+/* 로고 텍스트 설정 */
 .loginHeader > div:nth-child(3){
         font-size: 30px;
 }
 .loginHeader > div:nth-child(2){
     font-size: 25px;
 }
-
+/* 바나나 이미지 설정*/
 .banana {
     width: 200px;
     position: absolute;
@@ -41,7 +42,7 @@
 }
 
 /*************************************************/
- /* LOGIN 텍스트 밖 div  */
+ /* 상단 LOGIN 텍스트 밖 div  */
 .SignUpAgreement3{
     display: flex;
     width: 100%;
@@ -50,7 +51,7 @@
     align-items: center;
     justify-content: center;
 }
-/* LOGIN 텍스트 */
+/* 상단 LOGIN 텍스트 설정 */
 #SignUpAgreement3-1{
     font-size: 30px;
     text-align: center;
@@ -77,15 +78,11 @@
     display:  flex;
     justify-content: center;
     align-items: center;
-
     width: 25px;
     height: 25px;
     border: 1px solid #ccc;
-
     border-radius: 50%;
     color: #ccc;
-
-
     margin-right: 10px;
 }
 
@@ -94,10 +91,6 @@
     display: inline-flex;
     align-items: center;
 }
-
-
-
-
 
 /* 체크박스 체크 시 아이콘 스타일 지정 */
 #saveId:checked + label > i{
@@ -134,8 +127,6 @@
 .inputBox:focus{
     border: 2px solid #e53095;
 }
-
-
 
 input:-webkit-autofill,
 input:-webkit-autofill:hover, 

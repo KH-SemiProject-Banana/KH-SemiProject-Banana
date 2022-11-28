@@ -13,8 +13,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>${boardName}</title>
+    <title>바꾸고 나누자 나랑: 바나나 마켓</title>
 
+    <link rel="shortcut icon" sizes="16x16 32x32 64x64" href="https://i.ibb.co/4tCGZqD/Banana.png">
     <link rel="stylesheet" href="/resources/css/style.css">
     <link rel="stylesheet" href="/resources/css/board/boardList.css">
 
@@ -44,9 +45,6 @@
                             </c:choose>
 
                             
-                            <%-- <a class= "<c:if test="${boardType.BOARD_CODE == boardCode}">selected</c:if>" 
-                             href="${boardType.BOARD_CODE}">${boardType.BOARD_NAME}</a> --%>
-
                         </c:forEach>
                     </div>
                 </div>
@@ -58,9 +56,9 @@
             
             <section class="board-list">
 
-                <div class="notice__title">
+                <%-- <div class="notice__title">
                     <p>고객센터</p>
-                </div>
+                </div> --%>
 
                 <h1 class="board-name">${boardName}</h1>
 
@@ -75,7 +73,6 @@
                                 <th>작성자</th>
                                 <th>작성일</th>
                                 <th>조회수</th>
-                                <th>좋아요</th>
                             </tr>
                         </thead>
 
@@ -92,16 +89,12 @@
                                         <tr>
                                             <td>${board.boardNo}</td>
                                             <td> 
-                                                <c:if test="${not empty board.thumbnail}">
-                                                    <img class="list-thumbnail" src="${board.thumbnail}">
-                                                </c:if>
                                                 <a href="/board/${boardCode}/${board.boardNo}">${board.boardTitle}</a>   
                                                 [${board.commentCount}]                        
                                             </td>
                                             <td>${board.memberNickname}</td>
                                             <td>${board.boardCreateDate}</td>
                                             <td>${board.viewCount}</td>
-                                            <td>${board.commentCount}</td>
                                         </tr>
                                     </c:forEach>
 
@@ -113,12 +106,16 @@
                 </div>
 
 
-                <div class="btn-area">
+                <%-- <div class="btn-area">
 
                     <!-- 로그인 상태일 경우 글쓰기 버튼 노출 -->
-                    <button id="insertBtn">글쓰기</button>                     
+                    <c:if test="${not empty loginMember}">
+                        <c:if test="${boardCode == 3}">
+                            <button id="insertBtn">문의하기</button>                     
+                        </c:if>
+                    </c:if>
 
-                </div>
+                </div> --%>
 
 
                 <div class="pagination-area">
@@ -184,6 +181,14 @@
 
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+
+
+    <script>
+        const boardCode = "${boardCode}";
+        const loginMember = "${loginMember}"
+    </script>
+
+    <script src="/resources/js/board/boardList.js"></script>
 
 
 </body>

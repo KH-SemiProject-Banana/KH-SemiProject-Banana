@@ -11,15 +11,15 @@
 function loadFile(input) {
 
 
-    var files = input.files;	
+    var files = input.files;
 
     console.log(files);
 
 
-    for(let file of files){
+    for (let file of files) {
         const temp = document.querySelectorAll("#image-show > img");
 
-        if( temp.length == 10){
+        if (temp.length == 10) {
             alert("최대 10개의 파일을 등록할 수 있습니다");
             return false;
         }
@@ -28,8 +28,8 @@ function loadFile(input) {
         var newImage = document.createElement("img");
         newImage.setAttribute("class", 'img');
 
-    
-        newImage.src = URL.createObjectURL(file);   
+
+        newImage.src = URL.createObjectURL(file);
 
         newImage.style.width = "140px";
         newImage.style.height = "140px";
@@ -39,9 +39,21 @@ function loadFile(input) {
         newImage.style.borderRadius = "8px";
         newImage.style.objectFit = "contain";
 
+        //--------------------------------------
+        
+        // 이미지 삭제 구현
+        newImage.addEventListener("click", (e)=>{
+           e.target.remove();
+
+           console.log(files.indexOf(file));
+           return;
+        });
+
+
+        //--------------------------------------
 
         var container = document.getElementById('image-show');
-        
+
         // var del = document.createTextNode('삭제');
 
 
@@ -49,8 +61,8 @@ function loadFile(input) {
 
 
         const count = container.childElementCount;
-        document.getElementsByClassName("img__pic-count")[0].innerText = "("+count+"/10)";
-        
+        document.getElementsByClassName("img__pic-count")[0].innerText = "(" + count + "/10)";
+
     }
     return true;
 };
@@ -66,32 +78,37 @@ function loadFile(input) {
 
 
 const checkObj = {
-    "goodsTitle" : false,
-    "goodsCategory" : false,
-    "goodsContent" : false,
-    "goodsPrice" : false
+    "goodsImage": false,
+    "goodsTitle": false,
+    "goodsCategory": false,
+    "goodsContent": false,
+    "goodsPrice": false
 };
 
-function submitChk(){
-    
+
+
+function submitChk() {
+
     // 카테고리 유효성검사
-    if(document.getElementById("goodsCategory").value == ""){
+    if (document.getElementById("goodsCategory").value == "") {
         checkObj.goodsCategory = false;
-    } else{
+    } else {
         checkObj.goodsCategory = true;
     }
 
 
-    for(let key in checkObj){
+    for (let key in checkObj) {
 
         let str;
 
-        if(!checkObj[key]){
-            switch(key){
-                case "goodsTitle" : str="상품 제목을 입력해주세요"; break;
-                case "goodsCategory" : str="카테고리를 설정해주세요"; break;
-                case "goodsContent" : str="상품 설명을 입력해주세요"; break;
-                case "goodsPrice" : str="상품 가격을 입력해주세요"; break;
+        if (!checkObj[key]) {
+            switch (key) {
+
+                case "goodsImage": str = "이미지를 등록해주세요"; break;
+                case "goodsTitle": str = "상품 제목을 입력해주세요"; break;
+                case "goodsCategory": str = "카테고리를 설정해주세요"; break;
+                case "goodsContent": str = "상품 설명을 입력해주세요"; break;
+                case "goodsPrice": str = "상품 가격을 입력해주세요"; break;
             }
             alert(str);
             document.getElementById(key).focus();
@@ -105,18 +122,32 @@ function submitChk(){
 
 }
 
-    
 
 
 
+// 상품 이미지 유효성검사
+const chooseFile = document.getElementById("chooseFile");
+chooseFile.addEventListener("change", () =>{
+
+    if(chooseFile.value == ''){
+
+        goodsImage = false;
+
+    } else {
+        goodsImage = true;
+    }
+
+
+
+});
 
 
 // 상품제목 유효성검사
 const goodsTitle = document.getElementById("goodsTitle");
-goodsTitle.addEventListener("input", function(){
+goodsTitle.addEventListener("input", function () {
     const titleMessage = document.getElementById("titleMessage");
 
-    if(goodsTitle.value.trim().length == 0){
+    if (goodsTitle.value.trim().length == 0) {
         titleMessage.innerText = "공백문자는 입력할 수 없습니다";
         goodsTitle.value = "";
         titleMessage.classList.remove("confirm");
@@ -132,16 +163,16 @@ goodsTitle.addEventListener("input", function(){
 
         checkObj.goodsTitle = true;
 
-    } 
+    }
 });
 
 
 // 상품설명 유효성검사
 const goodsContent = document.getElementById("goodsContent");
-goodsContent.addEventListener("input", function(){
+goodsContent.addEventListener("input", function () {
     const contentMessage = document.getElementById("contentMessage");
 
-    if(goodsContent.value.trim().length == 0){
+    if (goodsContent.value.trim().length == 0) {
         contentMessage.innerText = "공백문자는 입력할 수 없습니다";
         goodsContent.value = "";
         contentMessage.classList.remove("confirm");
@@ -157,16 +188,16 @@ goodsContent.addEventListener("input", function(){
 
         checkObj.goodsContent = true;
 
-    } 
+    }
 });
 
 
 // 판매금액 유효성 검사
 const goodsPrice = document.getElementById("goodsPrice");
-goodsPrice.addEventListener("input", function(e){
+goodsPrice.addEventListener("input", function (e) {
     const priceMessage = document.getElementById("priceMessage");
 
-    if(goodsPrice.value.trim().length == 0){
+    if (goodsPrice.value.trim().length == 0) {
         priceMessage.innerText = "숫자만 입력해주세요";
         goodsPrice.value = "";
         priceMessage.classList.remove("error", "confirm");
@@ -175,7 +206,7 @@ goodsPrice.addEventListener("input", function(e){
         return;
     }
 
-    const regEx = /^[0-9]{1,10}$/;
+    const regEx = /^[0-9]{1,9}$/;
 
     let value = e.target.value;
     // value = Number(value.replaceAll(',', ''));
@@ -183,21 +214,21 @@ goodsPrice.addEventListener("input", function(e){
     // goodsPrice.value = formatValue;
 
     // if(regEx.test(goodsPrice.value.replaceAll(',', ''))){ // 유효한 경우
-    if(regEx.test(goodsPrice.value)){ // 유효한 경우
+    if (regEx.test(goodsPrice.value)) { // 유효한 경우
         priceMessage.innerText = "유효한 형식입니다(숫자)";
         priceMessage.classList.remove("error");
         priceMessage.classList.add("confirm");
 
         checkObj.goodsPrice = true;
 
-        
+
     } else {
 
-        if(goodsPrice.value.length > 12){
+        if (goodsPrice.value.length > 12) {
             priceMessage.innerText = "입력한 금액이 너무 큽니다";
             priceMessage.classList.add("error");
             priceMessage.classList.remove("confirm");
-    
+
             checkObj.goodsPrice = false;
             return;
 
@@ -207,7 +238,7 @@ goodsPrice.addEventListener("input", function(e){
             priceMessage.innerText = "숫자만 입력해주세요";
             priceMessage.classList.add("error");
             priceMessage.classList.remove("confirm");
-    
+
             checkObj.goodsPrice = false;
             return;
         }
@@ -216,6 +247,9 @@ goodsPrice.addEventListener("input", function(e){
 });
 
 
-    
+
+
+
+
 
 

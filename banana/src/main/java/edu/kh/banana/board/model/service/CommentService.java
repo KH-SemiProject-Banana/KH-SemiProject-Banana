@@ -30,4 +30,12 @@ public interface CommentService {
 	 */
 	int deleteComment(int commentNo);
 
+
+
+	/** 댓글 수정
+	 * @param comment
+	 * @return
+	 */
+	int updateComment(Comment comment);
+
 }

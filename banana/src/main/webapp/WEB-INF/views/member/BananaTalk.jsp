@@ -63,7 +63,7 @@
                         <div class="name">모코코안녕</div>
                         <div class="talkClockAlarm">
                             <div class="talkClock">오후 09:10</div>
-                            <div class="talkAlarm"> 5</div>
+                            <div class="talkAlarm">5</div>
                         </div>
                     </div>
 
@@ -73,7 +73,7 @@
                         <div class="name">모코코하트</div>
                         <div class="talkClockAlarm">
                             <div class="talkClock">오후 09:10</div>
-                            <div class="talkAlarm"> 8</div>
+                            <div class="talkAlarm">8</div>
                         </div>
                     </div>
 
@@ -204,7 +204,7 @@
                         </div>
                         <div class="Declaration">
                             <!-- 신고버튼 -->
-                            <a href="">
+                            <a href="javascript:openPop()">
                                 <i class="fa-regular fa-bell-slash"></i>
                             </a>
                         </div>

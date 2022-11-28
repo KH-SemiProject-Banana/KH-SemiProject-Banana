@@ -30,7 +30,7 @@
                         <a href="/board/1" class="fa-regular fa-file-lines boardListLink"> 게시판</a>
                     </div>
                     <div class="talkAndlogin">
-                        <a href="#" class="topmenu__talk fa-regular fa-comment">바나나톡</a>
+                        <a href="/member/bananaTalk" class="topmenu__talk fa-regular fa-comment">바나나톡</a>
                         
                         <div id="header-top-menu">
                         <c:choose>
@@ -56,7 +56,7 @@
                                         <input type="checkbox" id="header-menu-toggle">
 
                                         <div id="header-menu">
-                                            <a href="#">내 정보</a>
+                                            <a href="/member/myPage/main">내 정보</a>
                                             <a href="/member/logout">로그아웃</a>
                                         </div>
                                     </div>

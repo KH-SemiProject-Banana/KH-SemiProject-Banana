@@ -49,7 +49,7 @@ public class ManagerController {
 		
 	}
 	
-	@GetMapping("/manager-main")
+	@GetMapping("/main")
 	public String managerMain() {
 		return "manager/manager-main";
 	}
@@ -58,8 +58,16 @@ public class ManagerController {
 	 * @return
 	 */
 	@GetMapping("/goods")
-	public String menuGoods() {
+	public String managerGoods() {
 		return "manager/manager-goods";
 	}
+	/** 관리자 페이지 상품 메뉴 이동
+	 * @return
+	 */
+	@GetMapping("/board")
+	public String managerBoard() {
+		return "manager/manager-board";
+	}
+
 
 }

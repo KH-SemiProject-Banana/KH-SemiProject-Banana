@@ -77,7 +77,7 @@
                         </fieldset>
                     </form>
                 </article>
-                <a href="/goods/registerGoods" class="sellingMy">
+                <a href="/goods/registerGoods" class="sellingMy" id=sellingMy>
                     <div>내 물건<br>판매하기</div>
                 </a>
             </section>

@@ -15,12 +15,13 @@
 
     <link rel="stylesheet" href="/resources/css/style.css">
     <link rel="stylesheet" href="/resources/css/hyodong/memberFindIdPw.css">
+
 </head>
 
 <body>
     <main>
         <div class="findClass">
-            <!-- 바나나 텍스트 -->
+            <!-- 바나나 이미 및 로고 텍스트 -->
             <div class="findHeader">
                 <img class="banana" src="/resources/images/banana-logo.png"/>
                 <div>
@@ -32,8 +33,9 @@
             <div class="findMainBox">
                 <div id="findMainBoxText">아이디 찾기</div>
             </div>
-
+            
             <form action="/member/findId" method="post" id="findForm" name="findForm">
+                <%--------------------- 회원 정보 입력 시작 ---------------------%>
                 <div>
                     <!-- 가입한 이름 -->
                     <div class="find-input-name textbox">
@@ -75,24 +77,22 @@
                         <span class="newEmai-message"id="newEmaiMessage">메일을 받을 수 있는 새 메일을 정확하게 입력해주세요.</span>
                     </div>
                 </div>
-
+                <%--------------------- 회원 정보 입력 끝 ---------------------%>
                 <div class="findBtnDiv">
                     <button class="find-btn" id="btn_id">아이디 찾기</button>
                 </div>
             </form>
-
+            <%-- 회원 아이디 찾기 / 비번찾기 변경 버튼 --%>
             <div class="findBox">
                 <div class="findID activate" id="findID">아이디 찾기</div>
                 <div class="findPW" id="findPW">비밀번호 찾기</div>
             </div>
-
             
     </main>
-        <c:if test="${!empty message}">
+    <c:if test="${!empty message}">
         <script>
             alert("${message}")
         </script>
-
         <c:remove var="message"></c:remove>
     </c:if>
     <script src="/resources/js/hyodong/memberFindIdPw.js"></script>

@@ -11,12 +11,14 @@
     <link rel="shortcut icon"  sizes="16x16 32x32 64x64" href="https://i.ibb.co/4tCGZqD/Banana.png">
     <title>바꾸고 나누자 나랑: 바나나 마켓</title>
 
+    <%--폰트 어썸  https://fontawesome.com/ key --%>
     <script src="https://kit.fontawesome.com/f7459b8054.js" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/1023652dd4.js" crossorigin="anonymous"></script>
     
     
     <link rel="stylesheet" href="/resources/css/style.css">
     <link rel="stylesheet" href="/resources/css/hyodong/SignUpAgreement.css">
+
 </head>
 <body>
     <main>
@@ -25,8 +27,9 @@
         <div class="signUpClass">
             <div class="SignUpAgreement1">
                 <div>회원가입</div>
-
             </div>
+
+            <%--------------------- 회원 가입 진행도 시작 ---------------------%>
             <div class="SignUpAgreement2" >
                 <div class="one">
                     <div id="lineBreak">
@@ -54,14 +57,13 @@
                         <p>가입완료</p> 
                     </div>
                 </div>
-
-
             </div>
+            <%--------------------- 회원 가입 진행도 끝 ---------------------%>
             <div class="SignUpAgreement3">
                 <th>약관동의</th>
-                
-                
             </div>
+
+            <!--------------------- 회원 약관동의 내용 시작  --------------------->
             <div class="SignUpAgreement4 Scroll">
                 <p class="ag_text mt">제 1 장 총칙</p><br>
                 <p class="ag_text">제 1 조 (목적)</p>
@@ -74,8 +76,10 @@
                 <p class="ag_text">제 3 조 (약관 외 준칙)</p>
                 <p class="ag_text mt">본 약관에 명시되지 아니한 사항에 대해서는 전기통신기본법, 전기통신사업법, 정보통신망 이용촉진등에 관한 법률 및 기타 관련 법령의 규정에 따릅니다.</p>
             </div>
-
+            <!--------------------- 회원 약관동의 내용 끝  --------------------->
+            
             <form action="/member/signUp/info" method="GET" onsubmit="return memberSignUpAgreement()">
+                <%-- 회원 약관동의 체크박스 관련 --%>
                 <div class="SignUpAgreement5">
                     <div>
                         <input type="checkbox" name="nextSignUp" id="nextSignUp">
@@ -84,7 +88,7 @@
                         </label>
                     </div>
                 </div>
-
+                <%-- 회원 가입 다음 단계 --%>
                 <div class="SignUpAgreement6">
                     <button class="SignUp">회원 가입하기</button>
                 </div>

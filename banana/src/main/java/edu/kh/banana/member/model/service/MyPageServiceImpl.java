@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import edu.kh.banana.goods.model.vo.GoodsSell;
 import edu.kh.banana.member.model.dao.MyPageDAO;
 import edu.kh.banana.member.model.vo.Member;
+import edu.kh.banana.review.model.vo.Review;
 
 @Service
 public class MyPageServiceImpl implements MyPageService{
@@ -58,12 +59,42 @@ public class MyPageServiceImpl implements MyPageService{
 		//int listCount = dao.getListCount(memberNo);
 		
 		List<GoodsSell> soldList = dao.selectGoodsSoldList(memberNo);
-		System.out.println(soldList);
+		//System.out.println(soldList);
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("soldList", soldList);
 		
 		return map;
 
 	
+	}
+
+	//reviewDB에 인서트하기
+	
+
+
+
+	//REVIEW_RATING DB에 인서트하기
+	@Transactional
+	@Override
+	public int sendingMannerReview(List<String> checkedArr, String reviewText, 
+			Member loginMember, int reviewGoodsNo, int reviewBuyerNo) {
+		
+		Review review = new Review();
+		review.setMemberNo(loginMember.getMemberNo());
+		review.setGoodsNo(reviewGoodsNo);
+		review.setReceiverNo(reviewBuyerNo);
+		review.setMessage(reviewText);
+		
+		int reviewNo = dao.insertReview(review);
+		
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("checkedArr", checkedArr);
+		map.put("reviewNo", reviewNo);
+		
+		System.out.println(map);
+		int result = dao.insertManner(map);
+		
+		return result;
 	}
 }

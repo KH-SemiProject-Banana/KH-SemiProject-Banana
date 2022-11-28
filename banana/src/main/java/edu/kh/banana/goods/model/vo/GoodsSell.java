@@ -13,7 +13,7 @@ import lombok.ToString;
 
 		private int goodsNo;
 		private int sellerNo;
-		private int buyverNo; //LSY : 없어서 추가
+		private int buyerNo; //LSY : 없어서 추가
 		private int categoryNo;
 		private String categoryName;
 		private String title;

@@ -1,6 +1,7 @@
 package edu.kh.banana.member.model.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import edu.kh.banana.goods.model.vo.GoodsSell;
 import edu.kh.banana.member.model.vo.Member;
+import edu.kh.banana.review.model.vo.Review;
 
 @Repository
 public class MyPageDAO {
@@ -59,6 +61,22 @@ public class MyPageDAO {
 		
 		return sqlSession.selectList("myPageMapper.selectGoodsSoldList",memberNo);
 	}
+
+	/** 
+	 * @param review
+	 * @return
+	 */
+	public int insertReview(Review review) {
+		
+		return sqlSession.insert("myPageMapper.insertReview",review);
+	}
+
+	public int insertManner(Map<String, Object> map) {
+		
+		return sqlSession.insert("myPageMapper.insertManner",map);
+	}
+
+	
 
 
 	

@@ -43,7 +43,7 @@
 	      WHEN SYSDATE - G.CREATED_AT < 30
 	      THEN FLOOR( (SYSDATE - G.CREATED_AT)  ) || '일 전'
 	      ELSE TO_CHAR(G.CREATED_AT, 'YYYY-MM-DD')
-	   END CREATED_AT, ]]> RATING_NO,
+	   END CREATED_AT, ]]> RATING_NO, BUYER_NO,
 	(SELECT MEMBER_NICKNAME FROM "MEMBER" WHERE MEMBER_NO = BUYER_NO) BUYER_NICKNAME, IMAGE_NO, IMAGE_PATH
 	FROM GOODS_SELL G
 	LEFT JOIN REVIEW R ON(G.GOODS_NO = R.GOODS_NO)
@@ -89,6 +89,29 @@
 		MEMBER_ADDRESS = #{memberAddress}
 		WHERE MEMBER_NO = #{memberNo}
 </update>
+
+<insert id="insertReview" parameterType = "Review" useGeneratedKeys = "true">
+
+<selectKey keyProperty = "ratingNo" resultType= "_int" order = "BEFORE">
+	SELECT SEQ_RATING_NO.NEXTVAL FROM DUAL
+</selectKey>
+
+INSERT INTO REVIEW
+VALUES (#{ratingNo}, #{memberNo},#{goodsNo},#{receiverNo},#{message}, DEFAULT )
+</insert>
+
+<insert id="insertManner"  parameterType = "map">
+INSERT INTO REVIEW_RATING
+SELECT #{reviewNo} REVIEW_NO, A.* FROM
+ 	<foreach collection = "map" item = "num" open="(" close = ") A"
+		separator = "UNION ALL">
+ 	SELECT #{num.checkedArr} MANNER_NO FROM DUAL 
+ 	</foreach>
+</insert>
+
+
+
+
 
 
 </mapper>

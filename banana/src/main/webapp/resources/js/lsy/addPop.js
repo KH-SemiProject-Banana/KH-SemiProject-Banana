@@ -1,11 +1,31 @@
 //팝업 띄우기
-function openPop() {
-    document.getElementById("popup_layer").style.display = "block";
+//const popupLayerList = document.getElementsByClassName("popup_layer"); //추가
+let reviewGoodsNo;
+let reviewBuyerNo;
 
+function openPop(goodsNo, buyerNo, buyerNickname) {
+    $("input[class='good']").attr("checked",false);
+    $("input[class='bad']").attr("checked",false);
+    reviewGoodsNo = goodsNo;
+    reviewBuyerNo = buyerNo;
+    document.getElementById("buyerNickname").innerText = buyerNickname;
+    
+    document.getElementById("popup_layer").style.display = "block";
+    // for(let popupLayer of popupLayerList){
+
+    //     popupLayer.style.display = "block";
+    //     const nickName = document.createElement("p");
+    //     nickName.innerHTML = ""
+    //     //닉네임이 일단 각각 보여야 하고,
+    //     //key:value도 각각 있어야해.
+
+    // }
 
 
     
 }
+
+
 
 //클릭이벤트로 클릭 시에 다른 쪽에 있는 체크박스 전부해제하는 코드
 const badChoice = document.getElementById("badchoice");
@@ -26,7 +46,7 @@ goodChoice.addEventListener("click",()=>{
 const submitBtn = document.getElementById("submitButton");
 
 const checkedArr = [];
-
+const reviewText = document.getElementById("reviewText");
 submitBtn.addEventListener("click", function(){
     const checkArr = document.querySelectorAll("input[name ='rev']:checked"); 
     console.log(checkArr);
@@ -34,10 +54,13 @@ submitBtn.addEventListener("click", function(){
         checkedArr.push(checkArr[i].value);
     }
     console.log(checkedArr);
-
+    console.log(reviewText.value);
+    console.log(reviewGoodsNo);
+    console.log(reviewBuyerNo);
     $.ajax({
         url: "/member/myPage/sendingReview",
-        data : {"checkedArr":checkedArr},
+        data : {"checked":checkedArr.join(),"reviewText":reviewText.value,
+        "reviewGoodsNo":reviewGoodsNo,"reviewBuyerNo":reviewBuyerNo},
         success:(result) => {
     
             if(result > 0){ //성공
@@ -63,6 +86,11 @@ submitBtn.addEventListener("click", function(){
 //팝업 닫기
 function closePop() {
     document.getElementById("popup_layer").style.display = "none";
+//    for(let popupLayer of popupLayerList){
+
+//     popupLayer.style.display = "none";
+// }
+
 }
 
 //////////////////////////////////////////////////////////////////////////////

@@ -1,5 +1,7 @@
 package edu.kh.banana.member.controller;
 
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -111,13 +113,20 @@ public class MyPageController {
 	}
 	
 
-	@PostMapping("/sendingReview")
+	@GetMapping("/sendingReview")
+	@ResponseBody
 	public int sendingReview(
-			List<String> checkedArr, String 
-			
+			String checked, String reviewText, 
+			@SessionAttribute("loginMember") Member loginMember,
+			int reviewGoodsNo, int reviewBuyerNo
 			) {
 		
-		int result = 0;
+		String[] arr = checked.split(",");
+		List<String> checkedArr = Arrays.asList(arr);
+
+		int result = service.sendingMannerReview(checkedArr,reviewText,
+				loginMember,reviewGoodsNo,reviewBuyerNo);
+		//int result = service.sendingReview();
 		return result;
 	}
 	

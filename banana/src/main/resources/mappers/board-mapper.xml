@@ -243,4 +243,23 @@
   	WHERE BOARD_NO = #{boardNo}
   </update>
   
+  
+  <!-- 게시글 이미지만 수정 -->
+  <update id="boardImageUpdate">
+  	UPDATE BOARD_IMG SET
+  	IMG_RENAME = #{imageRename},
+  	IMG_ORIGINAL = #{imageOriginal}
+  	WHERE BOARD_NO = #{boardNo}
+  	AND IMG_ORDER = #{imageOrder}
+  </update>
+  
+  
+  <!-- 게시글 이미지 수정-새 이미지 삽입 -->
+  <insert id="boardImageInsert">
+  	INSERT INTO BOARD_IMG VALUES(
+  		SEQ_IMG_NO.NEXTVAL, #{boardNo}, #{imagePath}, #{imageRename},
+  		#{imageOriginal}, #{imageOrder}
+  	)
+  </insert>
+  
 </mapper>

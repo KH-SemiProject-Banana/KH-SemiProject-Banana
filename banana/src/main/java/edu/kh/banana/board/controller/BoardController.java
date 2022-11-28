@@ -261,7 +261,7 @@ public class BoardController {
 			@RequestHeader("referer") String referer,
 			HttpSession session,
 			RedirectAttributes ra
-		) {
+		) throws IOException {
 		
 		// 1. board 객체에 boardCode 셋팅
 		board.setBoardNo(boardNo);
@@ -280,7 +280,7 @@ public class BoardController {
 		if(result > 0) {
 			
 			message = "게시글이 수정되었습니다";
-			path = "/board/" + boardCode + "/" + boardNo + "/cp=" + cp; 
+			path = "/board/" + boardCode + "/" + boardNo + "?cp=" + cp; 
 			
 		} else {
 			

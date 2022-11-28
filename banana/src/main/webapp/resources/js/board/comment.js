@@ -256,8 +256,58 @@ function showUpdateComment(commentNo, btn){ // 댓글번호, 이벤트발생요�
     commentRow.append(textarea);
 
     // 7. 버튼 영역 + 수정/취소 버튼 생성
+    const commentBtnArea = document.createElement("div");
+    commentBtnArea.classList.add("comment-btn-area");
 
+    const updateBtn = document.createElement("button");
+    updateBtn.innerText = "수정";
+    updateBtn.setAttribute("onclick", "updateComment(" + commentNo + ", this)");
 
+    const cancelBtn = document.createElement("button");
+    cancelBtn.innerText("취소");
+    cancelBtn.setAttribute("onclick", "updateCancel(this)")
 
-
+    // 8. 버튼영역에 버튼 추가 후 commentRow에 버튼영역 추가
+    commentBtnArea.append(updateBtn, cancelBtn);
+    commentRow.append(commentBtnArea);
 }
+
+
+
+/// 댓글 수정 취소
+function updateCancel(btn){
+
+    if(confirm("댓글 수정을 취소하겠습니까?")){
+        btn.parentElement.parentElement.innerHTML = beforeCommentRow;
+    }
+}
+
+
+// 댓글 수정(ajax)
+function updateComment(commentNo, btn){
+
+    // 새로 작성된 댓글 내용 얻어오기
+    const commentContent = btn.parentElement.previousElementSibling.value;
+
+    $.ajax({
+
+        url : "/comment/update",
+        data : {"commentNo" : commentNo, "commentContent" : commentContent},
+        type : "POST",
+        success : (result) => {
+            if(result > 0) {
+                alert("댓글이 수정되었습니다");
+                selectCommentList();
+            } else {
+                console.log("댓글 수정 실패");
+            }
+        },
+        error : (req) => {
+            console.log("댓글 수정 중 에러 발생");
+            console.log(req.responseText);
+        }
+    });
+}
+
+
+//

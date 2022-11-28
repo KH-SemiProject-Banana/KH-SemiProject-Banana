@@ -137,7 +137,7 @@ public class BoardDAO {
 	 */
 	public int boardUpdate(Board board) {
 
-		return sqlSession.update("boardMapper.boardUpdate");
+		return sqlSession.update("boardMapper.boardUpdate", board);
 		
 	}
 
@@ -157,5 +157,23 @@ public class BoardDAO {
 	public int boardDelete(int boardNo) {
 		
 		return sqlSession.update("boardMapper.boardDelete", boardNo);
+	}
+
+	/** 게시글 이미지만 수정
+	 * @param img
+	 * @return
+	 */
+	public int boardImageUpdate(BoardImage img) {
+		
+		return sqlSession.update("boardMapper.boardImageUpdate", img);
+	}
+
+	/** 게시글 이미지 수정-새 이미지 삽입
+	 * @param img
+	 * @return
+	 */
+	public int boardImageInsert(BoardImage img) {
+		
+		return sqlSession.insert("boardMapper.boardImageInsert", img);
 	}
 }

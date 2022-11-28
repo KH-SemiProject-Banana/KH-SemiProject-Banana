@@ -17,7 +17,7 @@
                         </c:if>
                         <c:if test="${not empty comment.profileImage}">
                             <img src="${comment.profileImage}"/>
-                             <%-- <img src="/resources/images/user.png"> --%>
+                            <%-- <img src="/resources/images/user.png"> --%>
                         </c:if>
 
                         <%-- 닉네임 --%>

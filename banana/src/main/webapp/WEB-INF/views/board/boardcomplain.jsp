@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,9 +10,9 @@
     <link rel="shortcut icon"  sizes="16x16 32x32 64x64" href="https://i.ibb.co/4tCGZqD/Banana.png">
     <title>신고하기 페이지</title>
 
-    <link rel="stylesheet" href="/banana/src/main/webapp/resources/css/chiwoo/bananaPay.css">
-    <link rel="stylesheet" href="/banana/src/main/webapp/resources/css/chiwoo/report.css">
-    <link rel="stylesheet" href="/banana/src/main/webapp/resources/css/style.css">
+    <link rel="stylesheet" href="/resources/css/chiwoo/bananaPay.css">
+    <link rel="stylesheet" href="/resources/css/chiwoo/report.css">
+    <link rel="stylesheet" href="/resources/css/style.css">
 
     <script src="https://kit.fontawesome.com/f7459b8054.js" crossorigin="anonymous"></script>
 
@@ -19,7 +22,7 @@
 
     <main>
         <!-- header 시작----------------------------------------------------------------------------------------- -->
-
+     
 <!-- header 끝----------------------------------------------------------------------------------------- -->
 
         
@@ -52,7 +55,7 @@
                             </p>
                         </div>
                     
-                    <div id="click1">
+                    <div id="click">
                         <div class="report-reason abc" id = "abc1">
                             <div>판매 금지 물품이에요 <i class="fa-solid fa-chevron-right"></i></div>
                         </div>
@@ -231,22 +234,26 @@
                                 <p>혹시'유저닉네임'님을 신고하고싶으신가요?</p>
                             </div>
                             <div class="report-reason">
-                                <a href="#">
+                                <a href="/usercomplain">
                                     <div class="user-doreport">사용자 신고하러 가기 <i class="fa-solid fa-chevron-right"></i></div>
                                 </a>
+                            </div>
+
+                            <div>
+                              
                             </div>
                         </div>
                         
                         
                         
-                        <form id="reportsubmit">
+                        <form id="reportsubmit" action = "/reportsubmit" method = "POST">
                             <div class="frame">
                                 <div class="report-confirm">
                                     <a href="#">'신고목록'에서 선택한 이유</a>
                                 </div>
                         
                                 <div class="content-block">
-                                    <input type="checkbox">이 사람과 글을 보고싶지 않아요
+                                    <input type="checkbox" name = "block">이 사람과 글을 보고싶지 않아요
                                 </div>
                         
                                 <div class="report-notice">
@@ -267,8 +274,8 @@
                                     <button type="submit">바나나 팀에게 보내기</button>
                                 </div>
                             </div>
-                            <input type="hidden" name="ctg1" value="">
-                            <input type="hidden" name="ctg2" value="">
+                            <input id= "input1" type="hidden" name="ctg1" value="">
+                            <input id= "input2" type="hidden" name="ctg2" value="">
                         </form>
                     <!--팝업 버튼 영역-->
                     <!-- <div class="popup_btn" style="float: bottom; margin-top: 300px;">
@@ -287,9 +294,12 @@
 
     
 <!-- footer 시작----------------------------------------------------------------------------------------- -->
+
+
     <!-- footer 끝----------------------------------------------------------------------------------------- -->
 
     
-    <script src="/banana/src/main/webapp/resources/js/chiwoo/popup.js"></script>
+    <script src="/resources/js/chiwoo/popup.js"></script>
+    <%-- <script src="/resources/js/chiwoo/usercomplain.js"></script> --%>
 </body>
 </html>

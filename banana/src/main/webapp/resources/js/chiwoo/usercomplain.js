@@ -1,21 +1,28 @@
 const click =  document.getElementById("click");
 const click1 = document.getElementById("click1");
 const click2 = document.getElementById("click2");
-const click3 = document.getElementById("click3");
-const click4 = document.getElementById("click4");
-const click5 = document.getElementById("click5");
-const reportsubmit = document.getElementById("reportsubmit");
+const click6 = document.getElementById("click6");
+const click7 = document.getElementById("click7");
+
+
 const abc1 = document.getElementById("abc1");
 const abc2 = document.getElementById("abc2");
 const abc3 = document.getElementById("abc3");
 const abc4 = document.getElementById("abc4");
 const abc5 = document.getElementById("abc5");
-const fin = document.getElementById("fin");
+const abc6 = document.getElementById("abc6");
+const abc7 = document.getElementById("abc7");
+const abc8 = document.getElementById("abc8");
+
+reportsubmit = document.getElementById("reportsubmit");
+
+
+
 // const ctg = document.getElementsByClassName("ctg")
-reportsubmit.style.display = "none";
 
 
-function openPop(){
+
+(function openPop(){
     //document.getElementById("popup_layer").style.display = "block";
     document.getElementById("popup_layer").style.display = "block";
     // document.getElementById("popup_box").style.display = "block";
@@ -23,10 +30,17 @@ function openPop(){
         click1.style.display = "none";
         //click1.style.backgroundColor = "red";
         click2.style.display = "none";
-        click3.style.display = "none";
-        click4.style.display = "none";
-        click5.style.display = "none";
+        click6.style.display = "none";
+        click7.style.display = "none";
+
+        reportsubmit = document.getElementById("frame");
+
+        if(reportsubmit != null) {
+
+            frame.style.display = "none";
+        }
     
+})();
     
 
 
@@ -48,14 +62,11 @@ function openPop(){
 
     abc1.addEventListener("click",function(){
     
-       
+    
         if(click1.style.display == "none"){
             click.style.display = "none";
             click1.style.display = "block";
-            fin.style.display="none";
-        
-        
-
+            
         }
         
     })
@@ -65,19 +76,17 @@ function openPop(){
         if(click2.style.display == "none") {
             click.style.display = "none";
             click2.style.display = "block"
-            fin.style.display="none";
+            
         }
 
     })
 
     abc3.addEventListener("click",function(){
     
-        if(click3.style.display == "none"){
+        if(reportsubmit.style.display == "none"){
             click.style.display = "none";
-            click3.style.display = "block";
-            fin.style.display="none";
-        
-
+            reportsubmit.style.display = "block";
+            
         }
         
     })
@@ -85,11 +94,9 @@ function openPop(){
 
     abc4.addEventListener("click",function(){
     
-        if(click4.style.display == "none"){
+        if(reportsubmit.style.display == "none"){
             click.style.display = "none";
-            click4.style.display = "block";
-            fin.style.display="none";
-        
+            reportsubmit.style.display = "block";
 
         }
         
@@ -98,15 +105,48 @@ function openPop(){
 
     abc5.addEventListener("click",function(){
     
-        if(click5.style.display == "none"){
+        if(reportsubmit.style.display == "none"){
             click.style.display = "none";
-            click5.style.display = "block";
-            fin.style.display="none";
-        
+            reportsubmit.style.display = "block";
 
         }
         
     })
+
+    abc6.addEventListener("click",function(){
+    
+        if(click6.style.display == "none"){
+            click.style.display = "none";
+            click6.style.display = "block";
+
+        }
+        
+    })
+
+    abc7.addEventListener("click",function(){
+    
+        if(click7.style.display == "none"){
+            click.style.display = "none";
+            click7.style.display = "block";
+
+        }
+        
+    })
+    
+    
+    abc8.addEventListener("click",function(){
+    
+        if(reportsubmit.style.display == "none"){
+            click.style.display = "none";
+            reportsubmit.style.display = "block";
+
+        }
+        
+    })
+
+
+
+
 
 
     click1.addEventListener("click", () => {
@@ -150,32 +190,25 @@ function openPop(){
 
     })
 
-    click3.addEventListener("click", () => {
+    click6.addEventListener("click", () => {
         if(reportsubmit.style.display == "none") {
-            click3.style.display = "none";
+            click6.style.display = "none";
             reportsubmit.style.display = "block";
 
         }
 
     })
 
-    click4.addEventListener("click", () => {
+    click7.addEventListener("click", () => {
         if(reportsubmit.style.display == "none") {
-            click4.style.display = "none";
+            click7.style.display = "none";
             reportsubmit.style.display = "block";
 
         }
 
     })
 
-    click5.addEventListener("click", () => {
-        if(reportsubmit.style.display == "none") {
-            click5.style.display = "none";
-            reportsubmit.style.display = "block";
 
-        }
-
-    })
 
     // abc 클래스 친구들 다 데려오기
     const abc = document.getElementsByClassName("abc");
@@ -188,7 +221,7 @@ function openPop(){
             // 0번부터 눌리니깐 +1
             ctg1.value = i + 1;
             console.log(ctg1);
-            document.getElementById("input1").setAttribute("value",ctg1.value);
+    
             // ctg2 설명을 담을 껍데기 변수 선언
             let ctg2dsc;
 
@@ -203,18 +236,29 @@ function openPop(){
                     ctg2dsc = document.getElementById("click2").children;
                     // 클릭 2 자식요소(세부카테고리) 가져오기
                     break;
-        
                 case 3:
-                    ctg2dsc = document.getElementById("click3").children;
+                    ctg2dsc = 0;
                     break;
-        
+
                 case 4:
-                    ctg2dsc = document.getElementById("click4").children;
+                    ctg2dsc = 0;
+                break;
+
+                case 5:
+                    ctg2dsc = 0;
+                break;
+
+                case 6:
+                    ctg2dsc = document.getElementById("click6").children;
                     break;
         
-                case 5:
-                    ctg2dsc = document.getElementById("click5").children;
+                case 7:
+                    ctg2dsc = document.getElementById("click7").children;
                     break;
+                case 8:
+                    ctg2dsc = 0;
+                break;
+
             }
 
             // 위에서 가져온 세부카테고리 배열 반복문으로 검사
@@ -222,16 +266,24 @@ function openPop(){
                 // 몇번째 인덱스가 클릭되었을때 이벤트 발생
                 ctg2dsc[i].addEventListener("click", () => {
                     // 0번째 인덱스는 디비에 없으니 +1
-                    ctg2.value = i + 1;
+                    
+                    if(i == 2 || i ==3 || i== 4 ||  i== 7){
+                        
+                        ctg2.value = "null";
+                    } else{
+                        ctg2.value = i + 1;
+
+                    }
+                    
                     console.log(ctg2);
-                    document.getElementById("input2").setAttribute("value",ctg2.value);
+                
                     
                 })
             }
         })
     }
 
-}
+
 
         
 

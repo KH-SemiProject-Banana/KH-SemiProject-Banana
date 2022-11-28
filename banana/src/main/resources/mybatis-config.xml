@@ -36,7 +36,7 @@
 		
 		<!-- 값 넣어야할 것 -->
 		<typeAlias type="edu.kh.banana.member.model.vo.MyPage" alias="MyPage"/>
-		<typeAlias type="edu.kh.banana.boardComplain.model.vo.BoardComplain" alias="BoardComplain"/>
+		<typeAlias type="edu.kh.banana.boardcomplain.model.vo.BoardComplain" alias="BoardComplain"/>
 		<typeAlias type="edu.kh.banana.chat.model.vo.Chat" alias="Chat"/>
 		<typeAlias type="edu.kh.banana.pay.model.vo.BananaPay" alias="BananaPay"/>
 		<typeAlias type="edu.kh.banana.review.model.vo.Review" alias="Review"/>
@@ -51,7 +51,7 @@
  		<mapper resource="/mappers/member-mapper.xml"/>
 		<mapper resource="/mappers/myPage-mapper.xml"/>
 		<mapper resource="/mappers/customer-mapper.xml"/>
-		<mapper resource="/mappers/boardComplain-mapper.xml"/>
+		<mapper resource="/mappers/boardcomplain-mapper.xml"/>
 		<mapper resource="/mappers/chat-mapper.xml"/>
 		<mapper resource="/mappers/goods-mapper.xml"/>
 		<mapper resource="/mappers/pay-mapper.xml"/>

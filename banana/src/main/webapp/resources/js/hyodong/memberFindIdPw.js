@@ -13,9 +13,9 @@ document.getElementById("findForm").addEventListener("submit",function(event){
         if(!checkObj[key]){
 
             switch(key){
-                case "memberName" : str = "이름이 유효하지 않습니다."; break;
-                case "memberTel"                : str = "전화번호가 유효하지 않습니다.";      break;
-                case "memberNewEmail"           : str = "이메일이 유효하지 않습니다.";        break;
+                case "memberName"     : str = "이름이 유효하지 않습니다.";     break;
+                case "memberTel"      : str = "전화번호가 유효하지 않습니다."; break;
+                case "memberNewEmail" : str = "이메일이 유효하지 않습니다.";   break;
             }
             alert(str);
             document.getElementById(key).focus();
@@ -176,4 +176,3 @@ findID.addEventListener("click",()=>{
      // 폼태그 속성 변경
     findForm.setAttribute("action","/member/findId");
 });
-

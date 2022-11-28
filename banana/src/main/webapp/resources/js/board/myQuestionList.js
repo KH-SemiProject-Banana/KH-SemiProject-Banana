@@ -1,19 +1,30 @@
-(() =>{
 
-    const myQuestionList = document.getElementById("myQuesionList");
-    
-    if(myQuestionList != null){
-    
-        myQuestionList.addEventListener("click", e => {
-        
-            if(loginMember.length == 0){
-                alert("로그인 후 이용해주세요");
-                return;
+// 문의하기
+(() => {
+
+    const insertBtn = document.getElementById("insertBtn");
+
+    if (insertBtn != null) {
+
+
+        (insertBtn.addEventListener("click", e => {
+
+            if (loginMember != '') {
+
+                
+
+                location.href = "/write/" + boardCode;
+
             } else {
-                alert("로그인상태");
+
+                alert("로그인 후 이용해주세요");
             }
-        });
+        }));
+
     }
+
+
+
 })();
 
 

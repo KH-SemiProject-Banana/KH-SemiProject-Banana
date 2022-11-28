@@ -60,3 +60,15 @@
         });
     }
 })();
+
+
+
+// board1 - 모두 접기
+const foldAll = document.getElementById("foldAll");
+foldAll.addEventListener("click", ()=>{
+
+    const area = document.getElementsByClassName("area");
+    for(let content of area){
+        content.style.display = "none";
+    }
+});

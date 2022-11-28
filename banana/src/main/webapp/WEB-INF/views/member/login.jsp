@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -24,7 +24,7 @@
         <jsp:include page="/WEB-INF/views/common/nav.jsp" />
 
         <div class="loginClass">
-            <!-- 바나나 텍스트 -->
+            <!-- 바나나 이미 및 로고 텍스트 -->
             <div class="loginHeader">
                 <img class="banana" src="/resources/images/banana-logo.png" />
                 <div>바꾸고 나누자 나랑</div>
@@ -74,19 +74,20 @@
                         maxlength="20">
                     </div>
                 </div>
-        
+
+                <%-- 회원 가입 /찾기 버튼 --%>
                 <div class="text-area">
                     <a href="/member/infoFind">ID/PW 찾기</a>
                     <a href="/member/signUp/agreement">회원가입</a>
                 </div>
-        
+
+                <%-- 로그인 버튼 --%>
                 <div class="loginFooter">
                     <button class="login-btn">로그인</button>
                 </div>
             </form>
         </div>
     </main>
-
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 </body>
 </html>

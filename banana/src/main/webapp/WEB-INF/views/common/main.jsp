@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -62,114 +66,37 @@
 
 
             <section class="content-favorite" id="favorite">
-                <div class="favorite__pack">
-                    <div>
-                        <div class="favorite__img">
-                            <a href="">
-                                <img src="/resources/images/sampleGoods.jpg" class="favorite__img">
-                            </a>
-                        </div>
-                        <div class="favorite__price-heart">
-                            <div class="favorite__price">00원(가격)</div>
-                            <div class="favorite__heart">
-                                <input type="checkbox" name="heart" class="favorite__heart">
-                                <label for="heart1">
-                                    <i class="fa-solid fa-heart-circle-plus"></i>
-                                </label>
+                <c:forEach var="favorite" items="${favoriteGoodsList}">
+                    <%-- 로그인상태인 경우 회원번호 가져와 like list 가져와 goods테이블에 대입(-) --%>
+                    <c:if test="${favorite.isLike == 1}">
+                        <c:set var="isLike" value="choose"/>
+                    </c:if>
+
+                    <div class="favorite__pack">
+                        <div>
+                            <div class="favorite__img">
+                                <%-- <a href="/goods/goodsList/${favorite.goodsNo}"> --%>
+                                <a href="">
+                                    <img src="${favorite.thumbnail}" class="favorite__img">
+                                </a>
+                            </div>
+                            <div class="favorite__price-heart">
+                                <div class="favorite__price">${favorite.sellPrice}</div>
+                                <div class="favorite__heart">
+                                    <input type="checkbox" name="heart" class="favorite__heart">
+                                    <label for="heart1">
+                                        <i class="fa-solid fa-heart-circle-plus ${isLike}"></i>
+                                        <input type="hidden" value="${newGoods.goodsNo}">
+                                    </label>
+                                </div>
                             </div>
                         </div>
+                    
+                        <div class="favorite__title">${favorite.title}</div>
                     </div>
-                
-                    <div class="favorite__title">상품 이름</div>
-                </div>
 
-                <div class="favorite__pack">
-                    <div>
-                        <div class="favorite__img">
-                            <a href="">
-                                <img src="/resources/images/sampleGoods.jpg" class="favorite__img">
-                            </a>
-                        </div>
-                        <div class="favorite__price-heart">
-                            <div class="favorite__price">00원(가격)</div>
-                            <div class="favorite__heart">
-                                <input type="checkbox" name="heart" class="favorite__heart">
-                                <label for="heart2">
-                                    <i class="fa-solid fa-heart-circle-plus"></i>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                
-                    <div class="favorite__title">상품 이름</div>
-                </div>
-
-                <div class="favorite__pack">
-                    <div>
-                        <div class="favorite__img">
-                            <a href="">
-                                <img src="/resources/images/sampleGoods.jpg" class="favorite__img">
-                            </a>
-                        </div>
-                        <div class="favorite__price-heart">
-                            <div class="favorite__price">00원(가격)</div>
-                            <div class="favorite__heart">
-                                <input type="checkbox" name="heart" class="favorite__heart">
-                                <label for="heart3">
-                                    <i class="fa-solid fa-heart-circle-plus"></i>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="favorite__title">상품 이름</div>
-                </div>
-
-                <div class="favorite__pack">
-                    <div>
-                        <div class="favorite__img">
-                            <a href="">
-                                <img src="/resources/images/sampleGoods.jpg" class="favorite__img">
-                            </a>
-                        </div>
-                        <div class="favorite__price-heart">
-                            <div class="favorite__price">00원(가격)</div>
-                            <div class="favorite__heart">
-                                <input type="checkbox" name="heart" class="favorite__heart">
-                                <label for="heart4">
-                                    <i class="fa-solid fa-heart-circle-plus"></i>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                
-                    <div class="favorite__title">상품 이름</div>
-                </div>
-
-                <div class="favorite__pack">
-                    <div>
-                        <div class="favorite__img">
-                            <a href="">
-                                <img src="/resources/images/sampleGoods.jpg" class="favorite__img">
-                            </a>
-                        </div>
-                        <div class="favorite__price-heart">
-                            <div class="favorite__price">00원(가격)</div>
-                            <div class="favorite__heart">
-                                <input type="checkbox" name="heart" class="favorite__heart">
-                                <label for="heart5">
-                                    <i class="fa-solid fa-heart-circle-plus"></i>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                
-                    <div class="favorite__title">상품 이름</div>
-                </div>
-                
-                
-
-                
-                
+                    <c:remove var="isLike"/>
+                </c:forEach>
             </section>
             
 
@@ -187,118 +114,44 @@
 
 
             <section class="content-favorite">
-                <div class="favorite__pack">
-                    <div>
-                        <div class="favorite__img">
-                            <a href="">
-                                <img src="/resources/images/sampleGoods.jpg" class="new__img">
-                            </a>
-                        </div>
-                        <div class="favorite__price-heart">
-                            <div class="new__price">00원(가격)</div>
-                            <div class="favorite__heart">
-                                <input type="checkbox" name="heart" class="new__heart">
-                                <label for="heart6">
-                                    <i class="fa-solid fa-heart-circle-plus"></i>
-                                </label>
+                <c:forEach var="newGoods" items="${newGoodsList}">
+                    <c:if test="${newGoods.isLike == 1}">
+                        <c:set var="isLike" value="choose"/>
+                    </c:if>
+                    <div class="favorite__pack">
+                        <div>
+                            <div class="favorite__img">
+                                <a href="">
+                                    <img src="${newGoods.thumbnail}" class="new__img">
+                                </a>
+                            </div>
+                            <div class="favorite__price-heart">
+                                <div class="new__price">${newGoods.sellPrice}</div>
+                                <div class="favorite__heart">
+                                    <input type="checkbox" name="heart" class="new__heart">
+                                    <label for="heart6">
+                                        <i class="fa-solid fa-heart-circle-plus"></i>
+                                        <input type="hidden" value="${newGoods.goodsNo}">
+                                    </label>
+                                </div>
                             </div>
                         </div>
+                    
+                        <div class="new__title">${newGoods.title}</div>
                     </div>
-                
-                    <div class="new__title">상품 이름</div>
-                </div>
-
-                <div class="favorite__pack">
-                    <div>
-                        <div class="favorite__img">
-                            <a href="">
-                                <img src="/resources/images/sampleGoods.jpg" class="new__img">
-                            </a>
-                        </div>
-                        <div class="favorite__price-heart">
-                            <div class="new__price">00원(가격)</div>
-                            <div class="favorite__heart">
-                                <input type="checkbox" name="heart" class="new__heart">
-                                <label for="heart7">
-                                    <i class="fa-solid fa-heart-circle-plus"></i>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="new__title">상품 이름</div>
-                </div>
-
-                <div class="favorite__pack">
-                    <div>
-                        <div class="favorite__img">
-                            <a href="">
-                                <img src="/resources/images/sampleGoods.jpg" class="new__img">
-                            </a>
-                        </div>
-                        <div class="favorite__price-heart">
-                            <div class="new__price">00원(가격)</div>
-                            <div class="favorite__heart">
-                                <input type="checkbox" name="heart" class="new__heart">
-                                <label for="heart8">
-                                    <i class="fa-solid fa-heart-circle-plus"></i>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                
-                    <div class="new__title">상품 이름</div>
-                </div>
-
-                <div class="favorite__pack">
-                    <div>
-                        <div class="favorite__img">
-                            <a href="">
-                                <img src="/resources/images/sampleGoods.jpg" class="new__img">
-                            </a>
-                        </div>
-                        <div class="favorite__price-heart">
-                            <div class="new__price">00원(가격)</div>
-                            <div class="favorite__heart">
-                                <input type="checkbox" name="heart" class="new__heart">
-                                <label for="heart9">
-                                    <i class="fa-solid fa-heart-circle-plus"></i>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                
-                    <div class="new__title">상품 이름</div>
-                </div>
-
-                <div class="favorite__pack">
-                    <div>
-                        <div class="favorite__img">
-                            <a href="">
-                                <img src="/resources/images/sampleGoods.jpg" class="new__img">
-                            </a>
-                        </div>
-                        <div class="favorite__price-heart">
-                            <div class="new__price">00원(가격)</div>
-                            <div class="favorite__heart">
-                                <input type="checkbox" name="heart" class="new__heart">
-                                <label for="heart10">
-                                    <i class="fa-solid fa-heart-circle-plus"></i>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="new__title">상품 이름</div>
-                </div>
-                
-                
-                
-
-                
-                
+                </c:forEach>
             </section>
 
         </section>
     </main>
+
+
+    <script>
+        const loginMember = "${loginMember}"
+        const memberNo = "${loginMember.memberNo}";
+        // const goodsNo = "${loginMember.goodsNo}";
+    
+    </script>
 
 
     <!-- jQuery CDN 방식으로 추가-->

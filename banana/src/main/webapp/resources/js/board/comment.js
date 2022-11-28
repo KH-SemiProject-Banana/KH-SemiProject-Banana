@@ -202,3 +202,62 @@ function deleteComment(commentNo) {
 
 //-----------------------------------------------------------------------
 // 댓글 수정 화면 전환
+
+let beforeCommentRow; // 수정 전 원래 행의 상태를 저장할 변수
+
+function showUpdateComment(commentNo, btn){ // 댓글번호, 이벤트발생요소(수정버튼)
+
+    // 댓글 수정이 한 개만 열릴 수 있도록 만들기
+    const temp = document.getElementsByClassName("update-textarea");
+
+    if(temp.length > 0) { // 수정이 한 개 이상 열려 있는 경우
+
+        if(confirm("다른 댓글이 수정 중입니다. 현재 댓글을 수정하시겠습니까?")){
+
+            temp[0].parentElement.innerHTML = beforeCommentRow;
+            // 백업 내용으로 덮어씌워지면서 textarea 사라짐
+        } else {
+            return;
+        }
+    }
+
+
+    // 1. 댓글 수정이 클릭된 행을 선택
+    const commentRow = btn.parentElement.parentElement; // <div class="comment-btn-area">
+
+    // 2. 행 내용 삭제 전 현재 상태를 저장(백업)
+    // 전역변수 사용
+    beforeCommentRow = commentRow.innerHTML;
+
+    // 3. 댓글에 작성되어있던 내용만 얻어오기 -> 새롭게 생성된 textarea 추가될 예정
+    let beforeContent = commentRow.children[1].innerHTML;
+
+    // 4. 댓글 행 내부 내용을 모두 삭제
+    commentRow.innerHTML = "";
+
+    // 5. textArea 요소 생성 + 클래스 추가 + 내용 추가
+    const textarea = document.createElement("textarea");
+    textarea.classList.add("update-textarea");
+
+    // XSS 방지 처리 해제
+    beforeContent = beforeContent.replaceAll("&amp;", "&");
+    beforeContent = beforeContent.replaceAll("&lt;", "<");
+    beforeContent = beforeContent.replaceAll("gt;", ">");
+    beforeContent = beforeContent.replaceAll("&quot;", "\"");
+
+    // 개행문자 처리 해제
+    beforeContent = beforeContent.replaceAll("<br>", "\n");
+
+    // 내용 추가
+    textarea.value = beforeContent;
+
+
+    // 6. commentRow에 생성된 textarea 추가
+    commentRow.append(textarea);
+
+    // 7. 버튼 영역 + 수정/취소 버튼 생성
+
+
+
+
+}

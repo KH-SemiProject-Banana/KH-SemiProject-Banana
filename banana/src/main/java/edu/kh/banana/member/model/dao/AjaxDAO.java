@@ -11,7 +11,7 @@ public class AjaxDAO {
 	private SqlSessionTemplate sqlSession;
 	
 	
-	/** 회원가입 이메일 중복 검사
+	/** 이메일 중복 검사
 	 * @param memberEmail
 	 * @return result
 	 */
@@ -20,8 +20,21 @@ public class AjaxDAO {
 	}
 
 
+	/** 닉네임 중복 검사
+	 * @param memberNickname
+	 * @return
+	 */
 	public int nicknameDupCheck(String memberNickname) {
 		return sqlSession.selectOne("ajaxMapper.nicknameDupCheck", memberNickname);
+	}
+
+
+	/** 전화번호 중복 검사
+	 * @param memberTel
+	 * @return
+	 */
+	public int telDupCheck(String memberTel) {
+		return sqlSession.selectOne("ajaxMapper.telDupCheck",memberTel);
 	}
 	
 

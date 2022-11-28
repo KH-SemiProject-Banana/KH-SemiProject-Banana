@@ -10,16 +10,22 @@ public class AjaxServiceImpl implements AjaxService {
 	@Autowired
 	private AjaxDAO dao;
 
-	// 회원가입 이메일 중복 검사
+	// 이메일 중복 검사
 	@Override
 	public int emailDupCheck(String memberEmail) {
 		return dao.emailDupcheck(memberEmail);
 	}
 
-	// 회원가입 닉네임 중복 검사
+	// 닉네임 중복 검사
 	@Override
 	public int nicknameDupCheck(String memberNickname) {
 		return dao.nicknameDupCheck(memberNickname);
+	}
+
+	// 전화번호 중복 검사
+	@Override
+	public int telDupCheck(String memberTel) {
+		return dao.telDupCheck(memberTel);
 	}
 	
 }

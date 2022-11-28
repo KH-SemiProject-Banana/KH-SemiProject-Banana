@@ -207,13 +207,13 @@
                             <div>나에게 구매 후 비싸게 재판매 <i class="fa-solid fa-chevron-right"></i></div>
                         </div>
                         <div class="report-reason">
-                            <div div>거래/환불 분쟁 <i class="fa-solid fa-chevron-right"></i></div>
+                            <div>거래/환불 분쟁 <i class="fa-solid fa-chevron-right"></i></div>
                         </div>
                         <div class="report-reason">
-                            <div div>신고 항목 제안 <i class="fa-solid fa-chevron-right"></i></div>
+                            <div>신고 항목 제안 <i class="fa-solid fa-chevron-right"></i></div>
                         </div>
                         <div class="report-reason">
-                            <div div>무료나눔 / 금전 요구 글<i class="fa-solid fa-chevron-right"></i></div>
+                            <div>무료나눔 / 금전 요구 글<i class="fa-solid fa-chevron-right"></i></div>
                         </div>
                     </div>   
                     
@@ -233,9 +233,10 @@
                             <div class="report-user">
                                 <p>혹시'유저닉네임'님을 신고하고싶으신가요?</p>
                             </div>
-                            <div class="report-reason">
-                                <a href="/usercomplain">
-                                    <div class="user-doreport">사용자 신고하러 가기 <i class="fa-solid fa-chevron-right"></i></div>
+
+                            <div class="report-reason" id=click6>
+                                <a href="/usercomplain"> 
+                                    사용자 신고하러 가기 <i class="fa-solid fa-chevron-right"></i>
                                 </a>
                             </div>
 

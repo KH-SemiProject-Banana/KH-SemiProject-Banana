@@ -103,9 +103,9 @@ VALUES (#{ratingNo}, #{memberNo},#{goodsNo},#{receiverNo},#{message}, DEFAULT )
 <insert id="insertManner"  parameterType = "map">
 INSERT INTO REVIEW_RATING
 SELECT #{reviewNo} REVIEW_NO, A.* FROM
- 	<foreach collection = "map" item = "num" open="(" close = ") A"
+ 	<foreach collection = "checkedArr" item = "i" open="(" close = ") A"
 		separator = "UNION ALL">
- 	SELECT #{num.checkedArr} MANNER_NO FROM DUAL 
+ 	SELECT #{i} MANNER_NO FROM DUAL 
  	</foreach>
 </insert>
 

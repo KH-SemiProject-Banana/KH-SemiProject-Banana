@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import edu.kh.banana.goods.model.service.GoodsService;
-import edu.kh.banana.goods.model.vo.Goods;
+import edu.kh.banana.goods.model.vo.GoodsSell;
 import edu.kh.banana.member.model.vo.Member;
 
 
@@ -47,10 +47,10 @@ public class MainController {
 		
 		
 		// 메인페이지 인기상품
-		List<Goods> favoriteGoodsList = service.favoriteGoods(memberNo);
+		List<GoodsSell> favoriteGoodsList = service.favoriteGoods(memberNo);
 		
 		// 메인페이지 최근글
-		List<Goods> newGoodsList = service.newGoods(memberNo);
+		List<GoodsSell> newGoodsList = service.newGoods(memberNo);
 		
 		
 		

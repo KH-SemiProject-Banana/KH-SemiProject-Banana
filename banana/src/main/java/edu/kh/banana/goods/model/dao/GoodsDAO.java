@@ -7,8 +7,9 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import edu.kh.banana.goods.model.vo.Goods;
+
 import edu.kh.banana.goods.model.vo.GoodsImage;
+import edu.kh.banana.goods.model.vo.GoodsSell;
 
 @Repository
 public class GoodsDAO {
@@ -20,7 +21,7 @@ public class GoodsDAO {
 	 * @param inputGoods
 	 * @return result
 	 */
-	public int registerGoods(Goods inputGoods) {
+	public int registerGoods(GoodsSell inputGoods) {
 		
 		int result =  sqlSession.insert("goodsMapper.registerGoods", inputGoods);
 	
@@ -48,7 +49,7 @@ public class GoodsDAO {
 		return sqlSession.update("goodsMapper.registerImage", goodsImage);
 	}
 
-	public Goods selectGoods(int goodsNo) {
+	public GoodsSell selectGoods(int goodsNo) {
 		
 		return sqlSession.selectOne("goodsMapper.selectGoods", goodsNo);
 	}
@@ -56,7 +57,7 @@ public class GoodsDAO {
 	/** 메인페이지 인기상품
 	 * @return List<Goods> favoriteGoodsList
 	 */
-	public List<Goods> favoriteGoods(int memberNo) {
+	public List<GoodsSell> favoriteGoods(int memberNo) {
 		
 		return sqlSession.selectList("goodsMapper.favoriteGoods", memberNo);
 	}
@@ -75,7 +76,7 @@ public class GoodsDAO {
 	/** 메인페이지 최근상품
 	 * @return List<Goods> newGoodsList
 	 */
-	public List<Goods> newGoods(int memberNo) {
+	public List<GoodsSell> newGoods(int memberNo) {
 		
 		return sqlSession.selectList("goodsMapper.newGoods", memberNo);
 	}

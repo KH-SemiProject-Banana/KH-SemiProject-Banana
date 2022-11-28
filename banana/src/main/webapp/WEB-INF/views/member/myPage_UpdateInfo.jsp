@@ -90,7 +90,9 @@
                 maxlength="10"
                 value="${loginMember.memberNickname}"
               />
-              <input type = "hidden" id= "memberNicknameBefore" value="${loginMember.memberNickname}"/>
+              <%-- <input type = "hidden" id= "memberNicknameBefore" value="${loginMember.memberNickname}"/>
+              ${loginMember.memberNickname} 값을 아래 선언해서 외부스크립트에서 사용가능
+              --%>
             </div>
             <div class="firstBox">
               <span class="signUp-message" id="nickMessage">한글,영어,숫자로만 2~10글자 사이로 입력해주세요.</span>
@@ -134,7 +136,6 @@
                 maxlength="11"
                 value="${loginMember.memberTel}"
               />
-              <input type = "hidden" id= "memberTelBefore" value="${loginMember.memberTel}"/>
             </div>
             <div class="firstBox">
               <span class="signUp-message" id="temlMessage">전화번호를 입력해 주세요.(-제외)</span>
@@ -191,13 +192,16 @@
         </form>
       </div>
     </main>
+
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
+    <script>
+      const existingMemberNickname="${loginMember.memberNickname}";
+      const existingMemberTel="${loginMember.memberTel}";
+    </script>
     <!-- jQuery 라이브러리(.js 파일) 추가(CDN 방식) -->
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
-
     <script src="/resources/js/hyodong/myPage_UpdateInfo.js"></script>
-
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
   </body>
 </html>

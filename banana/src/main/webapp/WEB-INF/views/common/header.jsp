@@ -9,7 +9,7 @@
                     <%-- <a href="/board/1" class="fa-regular fa-file-lines boardListLink"> 게시판</a> --%>
                 </div>
                 <div class="talkAndlogin">
-                    <a href="/boardcomplain" class="topmenu__talk fa-regular fa-comment">바나나톡</a>
+                    <a href="/member/bananaTalk" class="topmenu__talk fa-regular fa-comment">바나나톡</a>
                     
                     <div id="header-top-menu">
                     <c:choose>
@@ -77,11 +77,8 @@
                         </fieldset>
                     </form>
                 </article>
-                <a href="/goods/registerGoods" class="sellingMy">
+                <a href="/goods/registerGoods" class="sellingMy" id=sellingMy>
                     <div>내 물건<br>판매하기</div>
                 </a>
             </section>
-            
         </header>
-
-        

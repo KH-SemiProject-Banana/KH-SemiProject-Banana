@@ -3,6 +3,7 @@ package edu.kh.banana.goods.model.service;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,8 +12,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import edu.kh.banana.common.Util;
 import edu.kh.banana.goods.model.dao.GoodsDAO;
-import edu.kh.banana.goods.model.vo.Goods;
 import edu.kh.banana.goods.model.vo.GoodsImage;
+import edu.kh.banana.goods.model.vo.GoodsSell;
 import edu.kh.banana.member.model.vo.Member;
 
 @Service
@@ -23,7 +24,7 @@ public class GoodsServiceImpl implements GoodsService {
 
 	@Override
 	@Transactional(rollbackFor = Exception.class)
-	public int registerGoods(String webPath, String filePath, List<MultipartFile> imagePath, Goods inputGoods)
+	public int registerGoods(String webPath, String filePath, List<MultipartFile> imagePath, GoodsSell inputGoods)
 			throws Exception {
 
 		// 상품사진 제외한 나머지 등록
@@ -44,6 +45,8 @@ public class GoodsServiceImpl implements GoodsService {
 			
 			if(imagePath != null) {
 				
+				int i = 0;
+				
 				for (MultipartFile item : imagePath) {
 					
 					
@@ -55,6 +58,9 @@ public class GoodsServiceImpl implements GoodsService {
 						rename = Util.fileRename(item.getOriginalFilename());
 
 						goodsImage.setImagePath(webPath + rename);
+						goodsImage.setImageOrder(i++);
+						
+						System.out.println(goodsImage);
 
 					} else { // ??? 써줘야하나??
 
@@ -88,13 +94,68 @@ public class GoodsServiceImpl implements GoodsService {
 	}
 
 	/**
-	 * 메인페이지 상품조회
+	 * 내가 등록한 상품 1개 조회
 	 */
 	@Override
-	public List<Goods> selectFavorite() {
+	public GoodsSell selectGoods(int goodsNo) {
 		
+		GoodsSell goods = dao.selectGoods(goodsNo);
 		
-		return dao.selectFavorite();
+
+		
+
+		
+		return goods;
 	}
+
+	/**
+	 * 메인페이지 인기상품
+	 */
+	@Override
+	@Transactional(rollbackFor= Exception.class)
+	public List<GoodsSell> favoriteGoods(int memberNo) {
+		
+		List<GoodsSell> favoriteGoodsList = dao.favoriteGoods(memberNo);
+		
+		
+		return favoriteGoodsList;
+	}
+
+	/**
+	 * 메인페이지 최근글
+	 */
+	@Override
+	@Transactional(rollbackFor = Exception.class)
+	public List<GoodsSell> newGoods(int memberNo) {
+		
+		List<GoodsSell> newGoodsList = dao.newGoods(memberNo);
+		
+		
+		
+		
+		return newGoodsList;
+	}
+
+	/**
+	 * 좋아요 수 증가
+	 */
+	@Override
+	public int goodsLikeUp(Map<String, Object> paramMap) {
+		
+		return dao.goodsLikeUp(paramMap);
+	}
+
+	/**
+	 * 좋아요 수 감소
+	 */
+	@Override
+	public int goodsLikeDown(Map<String, Object> paramMap) {
+		
+		return dao.goodsLikeDown(paramMap);
+	}
+
+
+
+
 
 }

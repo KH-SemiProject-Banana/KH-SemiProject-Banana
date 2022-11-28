@@ -1,6 +1,7 @@
 package edu.kh.banana.goods.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,7 +23,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.google.gson.Gson;
 
 import edu.kh.banana.goods.model.service.GoodsService;
-import edu.kh.banana.goods.model.vo.Goods;
+import edu.kh.banana.goods.model.vo.GoodsSell;
 import edu.kh.banana.member.model.vo.Member;
 
 @Controller
@@ -33,22 +34,31 @@ public class GoodsController {
 	@Autowired
 	private GoodsService service;
 	
+	/** 상품 등록 페이지로 이동
+	 * @return
+	 */
 	@GetMapping("/registerGoods")
 	public String registerGoods() {
+		
 		return "goods/registerGoods";
 	}
 	
 	
 	
+	/** 상품 등록 페이지
+	 * @param loginMember
+	 * @param inputGoods
+	 * @param ra
+	 * @param imagePath
+	 * @param req
+	 * @param referer
+	 * @return
+	 * @throws Exception
+	 */
 	@PostMapping("/registerGoods")
 	public String registerGoods(
 			@SessionAttribute("loginMember") Member loginMember,
-//			@RequestParam(name="title", required = false) String title,
-//			@RequestParam(name="categoryNo", required = false) int categoryNo,
-//			@RequestParam(name="description", required = false) String description,
-//			@RequestParam(name="sellPrice", required = false) int sellPrice,
-			Goods inputGoods,
-			
+			GoodsSell inputGoods,	
 			RedirectAttributes ra,
 			@RequestParam(value="imagePath", required = false) List<MultipartFile> imagePath,
 			HttpServletRequest req,
@@ -90,17 +100,52 @@ public class GoodsController {
 		
 	}
 	
-	/** 메인페이지 상품조회
-	 * @param loginMember
-	 * @return List<Goods> favoriteGoods
-	 */
-//	@PostMapping("/selectFavorite")
-	@ResponseBody
-	public String selectFavorite() {
+
+	
+	
+
+	
+	
+	// 내 상품 수정하기
+	@GetMapping("/updateGoods")
+	public String updateGoods(@RequestParam(value="goodsNo") int goodsNo,
+			Model model) {
 		
-		List<Goods> favoriteGoods = service.selectFavorite();
+
+		GoodsSell goods = service.selectGoods(goodsNo);
 		
-		return new Gson().toJson(favoriteGoods);
+		model.addAttribute("goods", goods);
+		
+		return "goods/goods-update";
+		
 	}
+
+	
+	
+	/** 좋아요 수 증가
+	 * @param paramMap
+	 * @return result
+	 */
+	@GetMapping("/like/up")
+	@ResponseBody
+	public int goodsLikeUp(@RequestParam Map<String, Object> paramMap) {
+		
+		
+		return service.goodsLikeUp(paramMap);
+	}
+	
+	
+	/** 좋아요 수 감소
+	 * @param paramMap
+	 * @return result
+	 */
+	@GetMapping("/like/down")
+	@ResponseBody
+	public int goodsLikeDown(@RequestParam Map<String, Object> paramMap) {
+		
+		
+		return service.goodsLikeDown(paramMap);
+	}
+
 
 }

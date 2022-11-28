@@ -2,5 +2,41 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace = "myPageMapper">
   
-  
+ <update id="changeIntroduce">
+  UPDATE "MEMBER" SET INTRODUCE = #{introduce}
+	WHERE MEMBER_NO = #{memberNo}
+</update>
+
+ <!-- 내 회원 정보 수정 (비밀번호 포함) -->
+ <update id="updateInfoPw" parameterType="Member">
+	 	UPDATE "MEMBER" SET
+		MEMBER_NICKNAME = #{memberNickname},
+		MEMBER_TEL= #{memberTel},
+		MEMBER_ADDRESS = #{memberAddress},
+		MEMBER_PW = #{memberPw}
+		WHERE MEMBER_NO = #{memberNo}
+</update>
+
+
+<select id = "getListCount" parameterType = "_int" resultType = "_int">
+	SELECT COUNT(*) FROM(
+	SELECT RATING_NO 
+	FROM GOODS_SELL 
+	LEFT JOIN REVIEW  USING(GOODS_NO)
+	WHERE GOODS_DEL_FL = 'N' AND SELLER_NO = #{memberNo}
+	AND (RECEIVER_NO != SELLER_NO  OR RECEIVER_NO IS NULL)
+	AND BUYER_NO IS NOT NULL)
+</select>
+
+
+ <!-- 내 회원 정보 수정 (비밀번호 제외) -->
+ <update id="updateInfoNoPw" parameterType="Member">
+	 	UPDATE "MEMBER" SET
+		MEMBER_NICKNAME = #{memberNickname},
+		MEMBER_TEL= #{memberTel},
+		MEMBER_ADDRESS = #{memberAddress}
+		WHERE MEMBER_NO = #{memberNo}
+</update>
+
+
 </mapper>

@@ -11,7 +11,7 @@ import lombok.ToString;
 @NoArgsConstructor
 public class MyPage {
 
-	private int memberNo;
+	private int memberNo;  
 	private String memberEmail;
 	private String memberPw;
 	private String memberNickname;

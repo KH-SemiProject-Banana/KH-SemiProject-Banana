@@ -1,13 +1,14 @@
 package edu.kh.banana.goods.model.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import edu.kh.banana.goods.model.vo.Goods;
 import edu.kh.banana.goods.model.vo.GoodsImage;
+import edu.kh.banana.goods.model.vo.GoodsSell;
 
 @Repository
 public class GoodsDAO {
@@ -19,7 +20,7 @@ public class GoodsDAO {
 	 * @param inputGoods
 	 * @return result
 	 */
-	public int registerGoods(Goods inputGoods) {
+	public int registerGoods(GoodsSell inputGoods) {
 		
 		int result =  sqlSession.insert("goodsMapper.registerGoods", inputGoods);
 	
@@ -47,16 +48,59 @@ public class GoodsDAO {
 		return sqlSession.update("goodsMapper.registerImage", goodsImage);
 	}
 
-	/** 메인페이지 상품조회
-	 * @param memberNo
-	 * @return
-	 */
-	public List<Goods> selectFavorite() {
-		// TODO Auto-generated method stub
+	public GoodsSell selectGoods(int goodsNo) {
 		
-		// 여기서 goods 5개 조회해오고, mypage-mapper에서 내가 좋아요한 여부를 조회해와서 합치기
-		return sqlSession.selectList("goodsMapper.selectFavorite");
+		return sqlSession.selectOne("goodsMapper.selectGoods", goodsNo);
 	}
+
+	/** 메인페이지 인기상품
+	 * @return List<Goods> favoriteGoodsList
+	 */
+	public List<GoodsSell> favoriteGoods(int memberNo) {
+		
+		return sqlSession.selectList("goodsMapper.favoriteGoods", memberNo);
+	}
+
+	
+//	/** 메인화면 상품의 썸네일 구하기
+////	 * @param goodsNo
+////	 * @return
+////	 */
+//	public String selectGoodsThumbnail(int goodsNo) {
+//		
+//		return sqlSession.selectOne("goodsMapper.selectGoodsThumbnail", goodsNo);
+//	}
+
+	
+	/** 메인페이지 최근상품
+	 * @return List<Goods> newGoodsList
+	 */
+	public List<GoodsSell> newGoods(int memberNo) {
+		
+		return sqlSession.selectList("goodsMapper.newGoods", memberNo);
+	}
+
+	/** 좋아요 수 증가
+	 * @param paramMap
+	 * @return result
+	 */
+	public int goodsLikeUp(Map<String, Object> paramMap) {
+		
+		return sqlSession.insert("goodsMapper.goodsLikeUp", paramMap);
+	}
+
+	/** 좋아요 수 감소
+	 * @param paramMap
+	 * @return result
+	 */
+	public int goodsLikeDown(Map<String, Object> paramMap) {
+		
+		return sqlSession.delete("goodsMapper.goodsLikeDown", paramMap);
+	}
+
+
+
+
 
 
 

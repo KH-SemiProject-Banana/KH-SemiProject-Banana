@@ -1,5 +1,7 @@
 package edu.kh.banana.member.model.service;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -51,7 +53,26 @@ public class MemberServiceImpl  implements MemberService{
 		
 		return result;
 	}
-	
+
+	/**
+	 * 회원 ID/PW 찾기 회원조회
+	 */
+	@Override
+	public String infoFindSelect(Map<String, Object> paramMap) {
+		return dao.infoFindSelect(paramMap);
+	}
+
+	/**
+	 * 임시 비밀번호 생성 및 저장
+	 */
+	@Override
+	public int findEmailPw(String authKey,String result) {
+		
+		String encPw = bcrypt.encode(authKey);
+		
+		return dao.findEmailPw(encPw,result);
+	}
+
 	
 	
 	

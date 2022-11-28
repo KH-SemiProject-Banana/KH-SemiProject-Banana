@@ -2,7 +2,47 @@
 function openPop() {
     document.getElementById("popup_layer").style.display = "block";
 
+
+
+    
 }
+
+const submitBtn = document.getElementById("submitButton");
+
+const checkedArr = [];
+
+submitBtn.addEventListener("click", function(){
+    const checkArr = document.querySelectorAll("input[name ='rev']:checked"); 
+    console.log(checkArr);
+    for(let i = 0; i<checkArr.length ; i++){
+        checkedArr.push(checkArr[i].value);
+    }
+    console.log(checkedArr);
+
+    $.ajax({
+        url: "/member/myPage/sendingReview",
+        data : {"checkedArr":checkedArr},
+        success:(result) => {
+    
+            if(result > 0){ //성공
+
+                
+                alert("db에 제출 완료된 듯?");
+
+            } else { //실패
+                console.log("서버에 저장 실패");
+            }
+
+        },
+        error : () => {console.log("동작에러남");},
+
+        complete : () => { //success, error 수행여부 관계없이 무조건 수행
+            console.log("아무때나 나타나는 친구");
+        }
+
+
+    })
+})
 
 //팝업 닫기
 function closePop() {
@@ -233,25 +273,87 @@ document.getElementById("fourth-category").addEventListener("click",function(){
 // })
 
 const introUpdateBtn2 = document.getElementById("introUpdateBtn2");
+const pIntro = document.getElementById("p_intro");
 
 introUpdateBtn2.addEventListener("click", e => {
     // e.preventDefault();
     // console.log(e.target);
-    const pIntro = document.getElementById("p_intro");
     const input = document.createElement("input");
-    
+    input.style.display = "block";
     input.value = pIntro.innerText;
+
+    const changedBtn = document.createElement("p");
+    changedBtn.setAttribute("id", "changedBtn");
+    changedBtn.classList.add("changedBtn");
+    changedBtn.innerText = "수정하기";
+
+
     pIntro.after(input); //after():선택한요소뒤에 컨텐츠삽입 - pIntro뒤에 input삽입
-    pIntro.remove();
+    introUpdateBtn2.after(changedBtn);
+    pIntro.style.display = "none";
+    
+
     
     input.classList.add("changed");
+    introUpdateBtn2.style.display = "none";
+    if(changedBtn.style.display == "none"){
+        changedBtn.style.display = "block";
+    }
 
-})
+const introduce =
 
-document.getElementById("changedBtn").addEventListener("click",function(){
-
+    changedBtn.addEventListener("click",function(e){
+        console.log(input.value);
+        $.ajax({
+            url : "/member/myPage/changeIntroduce",
+            data : {"introduce":input.value},
+            success:(result) => {
     
+                if(result > 0){ //성공
+    
+                    // changedBtn.style.display = "none";
+                    // if( introUpdateBtn2.style.display == "none"){
+                    //     introUpdateBtn2.style.display= "block";
+                    // }
+                    changedBtn.remove();
+                    input.remove();
+
+                    pIntro.innerText = input.value;
+                    pIntro.style.display = "block";
+                    introUpdateBtn2.style.display = "block";
+                    
+                    alert("수정 완료된 듯?");
+    
+                } else { //실패
+                    console.log("서버에 저장 실패");
+                }
+    
+            },
+            error : () => {console.log("동작에러남");},
+            complete : () => { //success, error 수행여부 관계없이 무조건 수행
+                console.log("아무때나 나타나는 친구");
+            }
+        });
+    })
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

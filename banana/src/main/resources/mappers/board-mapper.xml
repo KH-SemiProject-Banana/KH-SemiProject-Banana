@@ -128,11 +128,119 @@
 			BOARD_NO, MEMBER_NO, MEMBER_NICKNAME, PROFILE_IMG, PARENT_NO, COMMENT_DEL_FL
 			FROM "COMMENT" 
 			JOIN "MEMBER" USING(MEMBER_NO)
-			WHERE COMMENT_DEL_FL = 'N'
-			AND BOARD_NO = 124) C
+			WHERE BOARD_NO = #{boardNo}) C
 		START WITH PARENT_NO IS NULL
 		CONNECT BY PRIOR COMMENT_NO = PARENT_NO
 		ORDER SIBLINGS BY COMMENT_NO
   </select> 
+  
+  
+  
+  <!-- 게시글만 삽입 -->
+  <insert id="boardWrite" parameterType="Board" useGeneratedKeys="true">
+  	
+  		<selectKey keyProperty="boardNo" resultType="_int" order="BEFORE">
+  			SELECT SEQ_BOARD_NO.NEXTVAL FROM DUAL
+  		</selectKey>
+  		
+  		<!-- 시퀀스를 board에 담아놓은 boardNo로 바꿔줌 -->
+  		INSERT INTO "BOARD" VALUES(
+  			#{boardNo}, #{boardCode}, #{memberNo}, #{boardTitle}, 
+  			#{boardContent}, DEFAULT, DEFAULT, DEFAULT, DEFAULT
+  		)
+  </insert>
+  
+  
+  <!-- 동적 sql(foreach)
+  	
+  	- collection : 반복할 객체의 타입(list, set, map, array, ...)
+  	- item : collection 객체에서 하나씩 순서대로 꺼낸 요소
+  	- index : 현재 인덱스를 나타내는 변수
+  	- open : 반복 전 출력할 구문
+  	- close : 반복이 끝난 후 출력할 구문
+  	- seperator : 분리기호(반복 사이 구분자)
+   -->
+  <insert id="insertBoardImageList" parameterType="list">
+  	INSERT INTO BOARD_IMG
+  	SELECT SEQ_IMG_NO.NEXTVAL IMG_NO, A.* FROM
+  	
+  	<foreach collection="list" item="img" open="(" close=") A"
+  	separator="UNION ALL">
+  		SELECT 
+  		#{img.boardNo} BOARD_NO,
+  		#{img.imagePath} IMG_PATH,
+  		#{img.imageRename} IMG_RENAME,
+  		#{img.imageOriginal} IMG_ORIGINAL,
+  		#{img.imageOrder} IMG_ORDER
+  		FROM DUAL
+  	</foreach>
+  </insert>
+  
+  
+  <!-- 나의 문의/안내내역 게시판의 게시글 수 조회 -->
+  <select id="getMyQuestionListCount" parameterType="_int" resultType="_int">
+  	SELECT COUNT(*) FROM BOARD
+  	WHERE BOARD_CODE = 3
+  	AND MEMBER_NO = #{memberNo}
+  </select>
+  
+  
+  <select id="selectMyQuestionList" parameterType="_int" resultMap="board_rm">
+  	SELECT BOARD_NO, BOARD_TITLE, MEMBER_NICKNAME, VIEW_COUNT, 
+		CASE  <![CDATA[
+      WHEN SYSDATE - B_CREATED_AT < 1/24/60
+      THEN FLOOR( (SYSDATE - B_CREATED_AT) * 24 * 60 * 60 ) || '초 전'
+      WHEN SYSDATE - B_CREATED_AT < 1/24
+      THEN FLOOR( (SYSDATE - B_CREATED_AT) * 24 * 60) || '분 전'
+      WHEN SYSDATE - B_CREATED_AT < 1
+      THEN FLOOR( (SYSDATE - B_CREATED_AT) * 24) || '시간 전'
+      ELSE TO_CHAR(B_CREATED_AT, 'YYYY-MM-DD')
+   	END B_CREATED_AT,  ]]>
+	(SELECT COUNT(*) FROM "COMMENT" C
+	WHERE BOARD_NO = B.BOARD_NO) COMMENT_COUNT,
+	(SELECT IMG_PATH ||IMG_RENAME FROM BOARD_IMG
+	WHERE IMG_ORDER = 0
+	AND BOARD_NO = B.BOARD_NO) THUMBNAIL
+	FROM BOARD B 
+	JOIN MEMBER USING(MEMBER_NO)
+	WHERE BOARD_CODE = 3
+	AND MEMBER_NO = #{memberNo}
+	AND BOARD_DEL_FL = 'N'
+	ORDER BY BOARD_NO DESC
+  </select>
+  
+  
+  <!-- 게시글 상세조회 좋아요 수 증가 -->
+  <update id="updateReadCount" parameterType="_int">
+  	UPDATE BOARD SET
+	VIEW_COUNT  = VIEW_COUNT  + 1
+	WHERE BOARD_NO = #{boardNo}
+  </update>
+  
+  
+  <!-- 게시글 내용만 수정 -->
+ 	<update id="boardUpdate" parameterType="Board">
+ 		UPDATE BOARD SET
+ 		BOARD_TITLE = #{boardTitle},
+ 		BOARD_CONTENT = #{boardContent}
+ 		WHERE BOARD_NO = #{boardNo}
+ 	</update>
+  
+  
+  
+  <!-- 게시글 이미지만 삭제 -->
+  <delete id="boardImageDelete">
+  	DELETE FROM BOARD_IMG
+  	${condition}
+  </delete>
+  
+  
+  
+  <!-- 게시글 삭제 -->
+  <update id="boardDelete">
+  	UPDATE BOARD SET
+  	BOARD_DEL_FL = 'Y'
+  	WHERE BOARD_NO = #{boardNo}
+  </update>
   
 </mapper>

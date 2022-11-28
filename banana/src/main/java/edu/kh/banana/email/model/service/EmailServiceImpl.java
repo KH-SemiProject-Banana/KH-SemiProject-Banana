@@ -1,5 +1,7 @@
 package edu.kh.banana.email.model.service;
 
+import java.util.Map;
+
 import javax.mail.Message;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
@@ -9,11 +11,16 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import edu.kh.banana.member.model.service.MemberService;
+
 @Service
 public class EmailServiceImpl implements EmailService {
 
     @Autowired
     private JavaMailSender mailSender; // email-context.xml에서 생성한 bean
+    
+	@Autowired
+	public MemberService mService;
     
     private String fromEmail = "khadbanan@gmail.com";
     private String fromUsername = "바나나마켓";
@@ -73,9 +80,9 @@ public class EmailServiceImpl implements EmailService {
             
             // 송신자(보내는 사람) 지정
             mail.setFrom(new InternetAddress(fromEmail, fromUsername));
-            mail.addRecipient(Message.RecipientType.TO, new InternetAddress(email));
             
             // 수신자(받는사람) 지정
+            mail.addRecipient(Message.RecipientType.TO, new InternetAddress(email));
             
             // 이메일 제목 세팅
             mail.setSubject(subject, charset);
@@ -90,6 +97,109 @@ public class EmailServiceImpl implements EmailService {
         }
 
         return authKey;
+    }
+
+    
+    
+    /**
+     * 아이디 찾기 이메일 발송
+     */
+    @Transactional
+	@Override
+	public String findEmailId(String result, Map<String, Object> paramMap) {
+    	
+    	String inputEmail = (String) paramMap.get("memberNewEmail");
+        
+		try {
+
+            //인증메일 보내기
+            MimeMessage mail = mailSender.createMimeMessage();
+            
+            // 제목
+            String subject = "[Semi Project] 중고 거래 바나나 마켓 회원 ID 찾기";
+            
+            // 문자 인코딩
+            String charset = "UTF-8";
+            
+            // 메일 내용
+            String mailContent 
+                = "<p>바나나 마켓 회원 가입한 아이디입니다.</p>"
+                + "<h3 style='color:blue'>" + result + "</h3>"
+                + "<p> 로그인 페이지로 이동 : http://localhost/member/login </p>";
+            
+            // 송신자(보내는 사람) 지정
+            mail.setFrom(new InternetAddress(fromEmail, fromUsername));
+            
+            // 수신자(받는사람) 지정
+            mail.addRecipient(Message.RecipientType.TO, new InternetAddress(inputEmail));
+            
+            // 이메일 제목 세팅
+            mail.setSubject(subject, charset);
+            
+            // 내용 세팅
+            mail.setText(mailContent, charset, "html"); //"html" 추가 시 HTML 태그가 해석됨
+            
+            mailSender.send(mail); // 메일 발송
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+
+        return null;
+	}
+
+    
+    
+    @Transactional
+	@Override
+	public int findEmailPw(String result, Map<String, Object> paramMap) {
+        //6자리 난수 인증번호 생성
+        String authKey = createAuthKey();
+        String inputEmail = (String) paramMap.get("memberNewEmail");
+        int result1 = -1;
+        
+        try {
+
+            //인증메일 보내기
+            MimeMessage mail = mailSender.createMimeMessage();
+            
+            // 제목
+            String subject = "[Semi Project] 중고 거래 바나나 마켓 회원 PW 찾기";
+            
+            // 문자 인코딩
+            String charset = "UTF-8";
+            
+            // 메일 내용
+            String mailContent 
+            = "<p>바나나 마켓 회원 임시 비밀번호 입니다.</p>"
+            + "<h3 style='color:blue'>" + authKey + "</h3>"
+            + "<p> 내정보 수정에서 비밀번호를 꼭 변경해 주세요. </p>"
+            + "<p> 로그인 페이지로 이동 : http://localhost/member/login </p>";
+            
+            
+            // 송신자(보내는 사람) 지정
+            mail.setFrom(new InternetAddress(fromEmail, fromUsername));
+            
+            // 수신자(받는사람) 지정
+            mail.addRecipient(Message.RecipientType.TO, new InternetAddress(inputEmail));
+            
+            // 이메일 제목 세팅
+            mail.setSubject(subject, charset);
+            
+            // 내용 세팅
+            mail.setText(mailContent, charset, "html"); //"html" 추가 시 HTML 태그가 해석됨
+            
+            mailSender.send(mail); // 메일 발송
+            
+            //  암호화 ->디비에 보내기 
+            result1 =mService.findEmailPw(authKey,result);
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+            return -1;
+        }
+        return result1;
     }
     
     

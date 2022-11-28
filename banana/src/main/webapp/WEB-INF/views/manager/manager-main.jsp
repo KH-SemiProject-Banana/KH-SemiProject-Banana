@@ -124,7 +124,7 @@
                                     <option value="nickNm">닉네임</option>
                                     <option value="cellphone">휴대폰번호</option>
                                 </select>
-                                <input type="text" name="keyword" value class="form-control">
+                                <input type="text" name="keyword" value="" class="form-control">
                             </div>
                         </div>
 

@@ -103,7 +103,7 @@ input, select, .introduce{
     font-weight: bold;
 }
 
-.content-image, .content-title, .content-category, .content-discription,  .content-finish{
+.img-container, .content-title, .content-category, .content-discription,  .content-finish{
     display: flex;
 
     padding: 60px 0;
@@ -267,7 +267,7 @@ input, select, .introduce{
 
 .content-image__content {
     width: 980px;
-    padding-top: 60px;
+    /* padding-top: 60px; */
 }
 
 .confirm{
@@ -275,4 +275,40 @@ input, select, .introduce{
 }
 .error{
     color: red;
+}
+
+
+.img{
+    width: 170px;
+    height: 170px;
+    padding: 0;
+    margin: 10px;
+    border : 1px solid rgba(0,0,0,0.1);
+    border-radius: 8px;
+    object-fit: contain;
+}
+
+
+
+/* ------------------------------- */
+.inputImage{
+    display: none;
+}
+
+.boardImg {
+    width: 230px;
+    height: 230px;
+    display: inline-block;
+    text-align: center;
+}
+
+.boardImg  img {
+    height: 90%;
+    width: 90%;
+}
+
+.browse-btn {
+    width: 170px;
+    height: 170px;
+    margin-top: 10px;
 }

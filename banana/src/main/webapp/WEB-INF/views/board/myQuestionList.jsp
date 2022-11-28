@@ -1,59 +1,70 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <c:set var="boardList" value="${map.boardList}"></c:set>
 <c:set var="pagination" value="${map.pagination}"></c:set>
 <c:set var="boardName" value="${boardTypeList[boardCode-1].BOARD_NAME}" />
-<c:set var="boardCode" value="${boardTypeList[boardCode-1].BOARD_CODE}" />
-
+<c:set var="boardCode" value="3" />
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" sizes="16x16 32x32 64x64" href="https://i.ibb.co/4tCGZqD/Banana.png">
     <title>바꾸고 나누자 나랑: 바나나 마켓</title>
 
-    <link rel="shortcut icon" sizes="16x16 32x32 64x64" href="https://i.ibb.co/4tCGZqD/Banana.png">
     <link rel="stylesheet" href="/resources/css/style.css">
     <link rel="stylesheet" href="/resources/css/board/boardList.css">
-
     <script src="https://kit.fontawesome.com/f7459b8054.js" crossorigin="anonymous"></script>
-</head>
-<body>
-    <main>
-        <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 
+</head>
+
+<body>
+
+
+    <main>
+        <jsp:include page="/WEB-INF/views/common/header.jsp" />
     </main>
 
-        <div class="longMain">
-            <div class="sidebar">
-                <div>
-                    <div class="sidebar__title">바나나센터</div>
-                    <div class="sidebar__content">
-                        <c:forEach var="boardType" items="${boardTypeList}">
+    <div class="longMain">
+
+        <div class="sidebar">
+            <div>
+                <div class="sidebar__title">바나나센터</div>
+                <div class="sidebar__content">
+
+                    <c:forEach var="boardType" items="${boardTypeList}">
 
                             <c:choose>
                                 <c:when test="${boardType.BOARD_CODE == boardCode}">
-                                    <a class="selected" href="${boardType.BOARD_CODE}">${boardType.BOARD_NAME}</a>
+                                    <a class="selected" href="/board/${boardType.BOARD_CODE}">${boardType.BOARD_NAME}</a>
                                 </c:when>
                                 <c:otherwise>
-                                    <a href="${boardType.BOARD_CODE}">${boardType.BOARD_NAME}</a>
+                                    <a href="/board/${boardType.BOARD_CODE}">${boardType.BOARD_NAME}</a>
                                 </c:otherwise>
                             
                             </c:choose>
 
                             
                         </c:forEach>
-                    </div>
                 </div>
-
-
             </div>
 
 
-            
+        </div>
+
+        <section class="question-section">
+
+
+            <div class="make-question">
+                <button href="/board/${boardCode}" id="questionList">전체보기</button>
+                <button href="/question/myQuestion" id="myQuestionList">나의 문의/안내 내역</button>
+            </div>
+
+           
             <section class="board-list">
 
                 <%-- <div class="notice__title">
@@ -106,16 +117,11 @@
                 </div>
 
 
-                <%-- <div class="btn-area">
+                <div class="btn-area">
 
-                    <!-- 로그인 상태일 경우 글쓰기 버튼 노출 -->
-                    <c:if test="${not empty loginMember}">
-                        <c:if test="${boardCode == 3}">
-                            <button id="insertBtn">문의하기</button>                     
-                        </c:if>
-                    </c:if>
-
-                </div> --%>
+                    
+                    <button id="insertBtn">문의하기</button>                     
+                </div>
 
 
                 <div class="pagination-area">
@@ -124,10 +130,10 @@
                     <ul class="pagination">
                     
                         <!-- 첫 페이지로 이동( <<) -->
-                        <li><a href="/board/${boardCode}">&lt;&lt;</a></li>
+                        <li><a href="/question/myQuestion">&lt;&lt;</a></li>
 
                         <!-- 이전 목록 마지막 번호로 이동 ( < ) -->
-                        <li><a href="/board/${boardCode}?cp=${pagination.prevPage}">&lt;</a></li>
+                        <li><a href="/question/myQuestion?cp=${pagination.prevPage}">&lt;</a></li>
 
                         
                         <!-- 특정 페이지로 이동 -->
@@ -139,16 +145,16 @@
                                 </c:when>
                                 <c:otherwise>
                                     <%-- 현재 페이지를 제외한 나머지 --%>
-                                    <li><a href="/board/${boardCode}?cp=${i}">${i}</a></li>
+                                    <li><a href="/question/myQuestion?cp=${i}">${i}</a></li>
                                 </c:otherwise>
                             </c:choose>
                         </c:forEach>
                         
                         <!-- 다음 목록 시작 번호로 이동 ( > )-->
-                        <li><a href="/board/${boardCode}?cp=${pagination.nextPage}">&gt;</a></li>
+                        <li><a href="/question/myQuestion?cp=${pagination.nextPage}">&gt;</a></li>
 
                         <!-- 끝 페이지로 이동 ( >> ) -->
-                        <li><a href="/board/${boardCode}?cp=${pagination.maxPage}">&gt;&gt;</a></li>
+                        <li><a href="/question/myQuestion?cp=${pagination.maxPage}">&gt;&gt;</a></li>
 
                     </ul>
                 </div>
@@ -170,17 +176,16 @@
                 </form>
 
             </section>
-        </div>
-    
-    
-    <%-- <!-- 썸네일 클릭 시 모달창 출력 -->
-    <div class="modal">
-        <span id="modal-close">&times;</span>
-        <img id="modal-image" src="/resources/images/board/20221116105843_00001.gif">
-    </div> --%>
 
 
-    <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+
+
+            
+            
+
+        </section>
+    
+    </div>
 
 
     <script>
@@ -188,8 +193,13 @@
         const loginMember = "${loginMember}"
     </script>
 
-    <script src="/resources/js/board/boardList.js"></script>
 
 
+   
+
+
+   <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+   <script src="/resources/js/board/myQuestionList.js"></script>
 </body>
+
 </html>

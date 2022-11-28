@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<c:set var="boardList" value="${map.boardList}"></c:set>
 <c:set var="boardName" value="${boardTypeList[boardCode-1].BOARD_NAME}"/>
 
 <!DOCTYPE html>
@@ -26,7 +25,6 @@
 
     <main>
        <jsp:include page="/WEB-INF/views/common/header.jsp" />
-       <jsp:include page="/WEB-INF/views/common/nav.jsp" />
         </main>
 
     <div class="longMain">
@@ -252,8 +250,8 @@
                     </div>
 
                     <div class="alarm-or-question">
-                        <a href="" class="notice__alarm">신고하기</a>
-                        <a href="question.html" class="notice__question">문의하기</a>
+                        <a href="#" class="notice__alarm">신고하기</a>
+                        <a  class="notice__question" id="insertBtn">문의하기</a>
                     </div>
                 </div>
             </section>
@@ -263,6 +261,13 @@
 
 
   	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+
+    <script>
+        const boardCode = "${boardCode}";
+        const loginMember = "${loginMember}";
+    </script>
+
+    <script src="/resources/js/board/boardList.js"></script>
 
 </body>
 

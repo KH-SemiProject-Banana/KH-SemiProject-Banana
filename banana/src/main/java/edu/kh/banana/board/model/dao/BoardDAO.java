@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import edu.kh.banana.board.model.vo.Board;
+import edu.kh.banana.board.model.vo.BoardImage;
 import edu.kh.banana.board.model.vo.Pagination;
 
 @Repository
@@ -71,5 +72,90 @@ public class BoardDAO {
 	public Board selectBoardDetail(int boardNo) {
 		
 		return sqlSession.selectOne("boardMapper.selectBoardDetail", boardNo);
+	}
+
+	/** 게시글만 삽입
+	 * @param board
+	 * @return
+	 */
+	public int boardWrite(Board board) {
+		
+		int result = sqlSession.insert("boardMapper.boardWrite", board);
+		
+		if(result > 0) {
+			result = board.getBoardNo();
+		}
+		
+		return result;
+	}
+
+	/** 이미지만 삽입
+	 * @param boardImageList
+	 * @return result(삽입된 행의 갯수)
+	 */
+	public int insertBoardImageList(List<BoardImage> boardImageList) {
+		
+		return sqlSession.insert("boardMapper.insertBoardImageList", boardImageList);
+	}
+
+	/** 나의 문의/안내내역 게시판의 게시글 수 조회
+	 * @param memberNo
+	 * @param cp
+	 * @return
+	 */
+	public int getMyQuestionListCount(int memberNo) {
+		
+		return sqlSession.selectOne("boardMapper.getMyQuestionListCount", memberNo);
+	}
+	
+	
+
+	/**나의 문의/안내내역 게시판의 게시글 리스트 조회
+	 * @param pagination
+	 * @param memberNo
+	 * @return
+	 */
+	public List<Board> selectMyQuestionList(Pagination pagination, int memberNo) {
+		
+		int offset = (pagination.getCurrentPage() -1) * pagination.getLimit();
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+		
+		return sqlSession.selectList("boardMapper.selectMyQuestionList", memberNo, rowBounds);
+	}
+
+	/** 게시글 상세페이지 조회수 증가
+	 * @param boardNo
+	 * @return
+	 */
+	public int updateReadCount(int boardNo) {
+		
+		return sqlSession.update("boardMapper.updateReadCount", boardNo);
+	}
+
+	/** 게시글 내용만 수정
+	 * @param board
+	 */
+	public int boardUpdate(Board board) {
+
+		return sqlSession.update("boardMapper.boardUpdate");
+		
+	}
+
+	/** 게시글 이미지만 삭제
+	 * @param condition
+	 * @return
+	 */
+	public int boardImageDelete(String condition) {
+		
+		return sqlSession.delete("boardMapper.boardImageDelete", condition);
+	}
+
+	/** 게시글 삭제
+	 * @param boardNo
+	 * @return
+	 */
+	public int boardDelete(int boardNo) {
+		
+		return sqlSession.update("boardMapper.boardDelete", boardNo);
 	}
 }

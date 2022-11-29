@@ -167,4 +167,27 @@ public class BoardDAO {
 		return sqlSession.selectList("boardMapper.selectImageRenameList");
 				
 	}
+ 
+	/** 검색조건이 일치하는 전체 게시글 수
+	 * @param paramMap
+	 * @return
+	 */
+	public int getListCount(Map<String, Object> paramMap) {
+		
+		return sqlSession.selectOne("boardMapper.getListCount_search", paramMap);
+	}
+
+	/** 검색조건이 일치하는 게시글 리스트 
+	 * @param pagination
+	 * @param paramMap
+	 * @return boardList
+	 */
+	public List<Board> selectBoardList(Pagination pagination, Map<String, Object> paramMap) {
+		
+		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
+		
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+		
+		return sqlSession.selectList("boardMapper.selectBoardList_search", paramMap, rowBounds);
+	}
 }

@@ -45,11 +45,21 @@ public class BoardController {
 	@GetMapping("/board/{boardCode}")
 	public String selectBoardList(Model model,
 			@PathVariable("boardCode") int boardCode,
-			@RequestParam(value="cp", required=false, defaultValue="1") int cp
+			@RequestParam(value="cp", required=false, defaultValue="1") int cp,
+			@RequestParam Map<String, Object> paramMap
 			) {
-		Map<String, Object> map = service.selectBoardList(boardCode, cp);
 		
-		model.addAttribute("map", map);
+		if(paramMap.get("key") == null) { // '검색'이 아닌 경우
+			
+			Map<String, Object> map = service.selectBoardList(boardCode, cp);
+			model.addAttribute("map", map);
+		} else {
+			
+			paramMap.put("boardCode", boardCode); // boardCode, key, query, cp 담겨있음
+			Map<String, Object> map = service.selectBoardList(paramMap, cp);
+			model.addAttribute("map", map);
+		}
+		
 		
 		String path = null;
 		if(boardCode == 1) {

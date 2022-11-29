@@ -259,17 +259,17 @@
 	
 	<if test='query != NULL and query != ""'>
 		<choose>
-			<when test='key="t"'> <!-- 제목 -->
+			<when test='key=="t"'> <!-- 제목 -->
 				AND  BOARD_TITLE LIKE '%${query}%'
 			</when>
-			<when test='key="c"'> <!-- 내용 -->
+			<when test='key=="c"'> <!-- 내용 -->
 				AND  BOARD_CONTENT LIKE '%${query}%'
 			</when>
-			<when test='key="tc"'> <!-- 제목+내용 -->
+			<when test='key=="tc"'> <!-- 제목+내용 -->
 				AND  (BOARD_TITLE LIKE '%${query}%'
 				OR BOARD_CONTENT LIKE '%${query}%')
 			</when>
-			<when test='key="w"'> <!-- 작성자(w) -->
+			<when test='key=="w"'> <!-- 작성자(w) -->
 				AND  MEMBER_NICKNAME LIKE '%${query}%'
 			</when>
 		</choose>
@@ -296,23 +296,22 @@
 	AND BOARD_NO = B.BOARD_NO) THUMBNAIL
 	FROM BOARD B 
 	JOIN MEMBER USING(MEMBER_NO)
-	WHERE BOARD_CODE = 3
-	AND MEMBER_NO = #{memberNo}
+	WHERE BOARD_CODE = #{boardCode}
 	AND BOARD_DEL_FL = 'N'
 	
 	<if test='query != NULL and query != ""'>
 		<choose>
-			<when test='key="t"'> <!-- 제목 -->
+			<when test='key=="t"'> <!-- 제목 -->
 				AND  BOARD_TITLE LIKE '%${query}%'
 			</when>
-			<when test='key="c"'> <!-- 내용 -->
+			<when test='key=="c"'> <!-- 내용 -->
 				AND  BOARD_CONTENT LIKE '%${query}%'
 			</when>
-			<when test='key="tc"'> <!-- 제목+내용 -->
+			<when test='key=="tc"'> <!-- 제목+내용 -->
 				AND  (BOARD_TITLE LIKE '%${query}%'
 				OR BOARD_CONTENT LIKE '%${query}%')
 			</when>
-			<when test='key="w"'> <!-- 작성자(w) -->
+			<when test='key=="w"'> <!-- 작성자(w) -->
 				AND  MEMBER_NICKNAME LIKE '%${query}%'
 			</when>
 		</choose>

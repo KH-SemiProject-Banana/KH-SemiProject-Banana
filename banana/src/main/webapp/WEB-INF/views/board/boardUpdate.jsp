@@ -93,7 +93,7 @@
                 <c:forEach items="${board.imageList}" var="img">
                     <c:choose>
                         <c:when test="${img.imageOrder == 0}">
-                            <c:set var="thumbnail" value="${img.imagePath}${img.imageRename}"/>
+                            <c:set var="img0" value="${img.imagePath}${img.imageRename}"/>
                         </c:when>
 
                         <c:when test="${img.imageOrder == 1}">

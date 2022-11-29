@@ -48,7 +48,9 @@ const submitBtn = document.getElementById("submitButton");
 const checkedArr = [];
 const reviewText = document.getElementById("reviewText");
 submitBtn.addEventListener("click", function(){
-    const checkArr = document.querySelectorAll("input[name ='rev']:checked"); 
+    const goodCheckArr = document.querySelectorAll("input[name ='good']:checked"); 
+    const badCheckArr = document.querySelectorAll("input[name ='bad']:checked"); 
+
     console.log(checkArr);
     for(let i = 0; i<checkArr.length ; i++){
         checkedArr.push(checkArr[i].value);
@@ -59,7 +61,7 @@ submitBtn.addEventListener("click", function(){
     console.log(reviewBuyerNo);
     $.ajax({
         url: "/member/myPage/sendingReview",
-        data : {"checked":checkedArr.join(),"reviewText":reviewText.value,
+        data : {"goodChecked":goodCheckArr.join(),"badChecked":badCheckArr.join(),"reviewText":reviewText.value,
         "reviewGoodsNo":reviewGoodsNo,"reviewBuyerNo":reviewBuyerNo},
         success:(result) => {
     
@@ -326,6 +328,8 @@ introUpdateBtn2.addEventListener("click", e => {
     // e.preventDefault();
     // console.log(e.target);
     const input = document.createElement("input");
+    input.setAttribute("maxlength","40");
+    input.setAttribute("placeholder","자기소개를 작성해주세요.");
     input.style.display = "block";
     input.value = pIntro.innerText;
 

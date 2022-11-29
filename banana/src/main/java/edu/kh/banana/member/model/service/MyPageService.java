@@ -32,7 +32,7 @@ public interface MyPageService {
 
 
 
-	int sendingMannerReview(List<String> checkedArr, String reviewText, Member loginMember, int reviewGoodsNo,
+	int sendingMannerReview(List<String> goodCheckedArr,List<String> badCheckedArr, String reviewText, Member loginMember, int reviewGoodsNo,
 			int reviewBuyerNo);
 
 	

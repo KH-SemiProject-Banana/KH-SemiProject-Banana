@@ -76,7 +76,7 @@ public class MyPageServiceImpl implements MyPageService{
 	//REVIEW_RATING DB에 인서트하기
 	@Transactional
 	@Override
-	public int sendingMannerReview(List<String> checkedArr, String reviewText, 
+	public int sendingMannerReview(List<String> goodCheckedArr, List<String> badCheckedArr, String reviewText, 
 			Member loginMember, int reviewGoodsNo, int reviewBuyerNo) {
 		
 		Review review = new Review();
@@ -90,11 +90,26 @@ public class MyPageServiceImpl implements MyPageService{
 		
 		
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("checkedArr", checkedArr);
+		map.put("goodCheckedArr", goodCheckedArr);
+		map.put("badCheckedArr", badCheckedArr);
 		map.put("reviewNo", reviewNo);
 		
 		System.out.println(map);
-		int result = dao.insertManner(map);
+		int goodResult = dao.insertgoodManner(map);
+		int badResult = dao.insertbadManner(map);
+		System.out.println("좋은 후기 인서트된 개수" + goodResult);
+		System.out.println("나쁜 후기 인서트된 개수" + badResult);
+		
+		if(goodResult > 0) {
+			int result2 = dao.updateGood(goodResult,reviewBuyerNo); //구매후기 받은 사람이 들어가야겠지....?
+		}
+		if (badResult > 0) {
+			int result3 = dao.updateBad(badResult,reviewBuyerNo);
+		}
+		
+		if (result2>0 || result3>0 ) {
+			result = 1;
+		}
 		
 		return result;
 	}

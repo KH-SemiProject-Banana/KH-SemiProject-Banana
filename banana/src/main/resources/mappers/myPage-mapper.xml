@@ -123,10 +123,19 @@ INSERT INTO REVIEW
 VALUES (#{ratingNo}, #{memberNo},#{goodsNo},#{receiverNo},#{message}, DEFAULT )
 </insert>
 
-<insert id="insertManner"  parameterType = "map">
+<insert id="insertgoodManner"  parameterType = "map">
 INSERT INTO REVIEW_RATING
 SELECT #{reviewNo} REVIEW_NO, A.* FROM
- 	<foreach collection = "checkedArr" item = "i" open="(" close = ") A"
+ 	<foreach collection = "goodCheckedArr" item = "i" open="(" close = ") A"
+		separator = "UNION ALL">
+ 	SELECT #{i} MANNER_NO FROM DUAL 
+ 	</foreach>
+</insert>
+
+<insert id="insertbadManner"  parameterType = "map">
+INSERT INTO REVIEW_RATING
+SELECT #{reviewNo} REVIEW_NO, A.* FROM
+ 	<foreach collection = "badCheckedArr" item = "i" open="(" close = ") A"
 		separator = "UNION ALL">
  	SELECT #{i} MANNER_NO FROM DUAL 
  	</foreach>

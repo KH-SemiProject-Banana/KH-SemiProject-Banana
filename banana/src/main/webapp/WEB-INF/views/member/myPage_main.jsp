@@ -56,7 +56,7 @@
 						<div class="myBanana-address">${address}</div>
 						<div class="myBanana-changeInfo">
 							<a href="/member/myPage/updateInfo">
-								<p id="introUpdateBtn1" class="introUpdateBtn1">수정</p>
+								<p id="introUpdateBtn1" class="introUpdateBtn1">수정하기</p>
 							</a>
 						</div>
 					</div>
@@ -69,7 +69,7 @@
 
 						<p id="p_intro" class="p_intro">${loginMember.introduce}</p>
 
-						<p id="introUpdateBtn2" class="introUpdateBtn2">수정</p>
+						<p id="introUpdateBtn2" class="introUpdateBtn2">수정하기</p>
 						<%--  <p id = "changedBtn" class = "changedBtn">수정하기</p> --%>
 
 					</div>
@@ -205,25 +205,25 @@
                                                 <!-- 섹선4(1)------------------------------------------------------------->
                                                 <section class="goodAnswer" id="goodAnswer">
                                                     <div>
-                                                        <input type="checkbox" name="rev" id="good1" value="1" class="good"> <label for="good1">나눔을 해주셨어요</label>
+                                                        <input type="checkbox" name="good" id="good1" value="1" class="good"> <label for="good1">나눔을 해주셨어요</label>
                                                     </div>
                                                     <div>
-                                                        <input type="checkbox" name="rev" id="good2" value="2" class="good"> <label for="good2">상품상태가 설명한것과 같아요</label>
+                                                        <input type="checkbox" name="good" id="good2" value="2" class="good"> <label for="good2">상품상태가 설명한것과 같아요</label>
                                                     </div>
                                                     <div>
-                                                        <input type="checkbox" name="rev" id="good3" value="3" class="good"> <label for="good3">상품설명이 자세해요</label>
+                                                        <input type="checkbox" name="good" id="good3" value="3" class="good"> <label for="good3">상품설명이 자세해요</label>
                                                     </div>
                                                     <div>
-                                                        <input type="checkbox" name="rev" id="good4" value="4" class="good"> <label for="good4">좋은 상품을 저렴하게 판매해요</label>
+                                                        <input type="checkbox" name="good" id="good4" value="4" class="good"> <label for="good4">좋은 상품을 저렴하게 판매해요</label>
                                                     </div>
                                                     <div>
-                                                        <input type="checkbox" name="rev" id="good5" value="5" class="good"> <label for="good5">시간약속을 잘 지켜요</label>
+                                                        <input type="checkbox" name="good" id="good5" value="5" class="good"> <label for="good5">시간약속을 잘 지켜요</label>
                                                     </div>
                                                     <div>
-                                                        <input type="checkbox" name="rev" id="good6" value="6" class="good"> <label for="good6">응답이 빨라요</label>
+                                                        <input type="checkbox" name="good" id="good6" value="6" class="good"> <label for="good6">응답이 빨라요</label>
                                                     </div>
                                                     <div>
-                                                        <input type="checkbox" name="rev" id="good7" value="7" class="good"> <label for="good7">친절하고 매너가 좋아요</label>
+                                                        <input type="checkbox" name="good" id="good7" value="7" class="good"> <label for="good7">친절하고 매너가 좋아요</label>
                                                     </div>
                                                 </section>
                                             </section>
@@ -239,31 +239,31 @@
                                                 <section class="badAnswer" id="badAnswer">
                                                     <!-- 원래 id :  -->
                                                     <div>
-                                                        <input type="checkbox" name="rev" id="bad1" value="8" class="bad" checked> <label for="bad1">원하지 않는 가격을 계속 요구해요</label>
+                                                        <input type="checkbox" name="bad" id="bad1" value="8" class="bad" checked> <label for="bad1">원하지 않는 가격을 계속 요구해요</label>
                                                     </div>
                                                     <div>
-                                                        <input type="checkbox" name="rev" id="bad2" value="9" class="bad"> <label for="bad2">시간약속을 안 지켜요</label>
+                                                        <input type="checkbox" name="bad" id="bad2" value="9" class="bad"> <label for="bad2">시간약속을 안 지켜요</label>
                                                     </div>
                                                     <div>
-                                                        <input type="checkbox" name="rev" id="bad3" value="10" class="bad"> <label for="bad3">예약만 하고 거래 시간을 명확하게 알려주지 않아요</label>
+                                                        <input type="checkbox" name="bad" id="bad3" value="10" class="bad"> <label for="bad3">예약만 하고 거래 시간을 명확하게 알려주지 않아요</label>
                                                     </div>
                                                     <div>
-                                                        <input type="checkbox" name="rev" id="bad4" value="11" class="bad"> <label for="bad4">거래 시간과 장소를 정한 후 거래 직전 취소했어요</label>
+                                                        <input type="checkbox" name="bad" id="bad4" value="11" class="bad"> <label for="bad4">거래 시간과 장소를 정한 후 거래 직전 취소했어요</label>
                                                     </div>
                                                     <div>
-                                                        <input type="checkbox" name="rev" id="bad5" value="12" class="bad"> <label for="bad5">거래 시간과 장소를 정한 후 연락이 안돼요</label>
+                                                        <input type="checkbox" name="bad" id="bad5" value="12" class="bad"> <label for="bad5">거래 시간과 장소를 정한 후 연락이 안돼요</label>
                                                     </div>
                                                     <div>
-                                                        <input type="checkbox" name="rev" id="bad6" value="13" class="bad"> <label for="bad6">약속 장소에 나타나지 않았어요</label>
+                                                        <input type="checkbox" name="bad" id="bad6" value="13" class="bad"> <label for="bad6">약속 장소에 나타나지 않았어요</label>
                                                     </div>
                                                     <div>
-                                                        <input type="checkbox" name="rev" id="bad7" value="14" class="bad"> <label for="bad7">상품 상태가 설명과 달라요</label>
+                                                        <input type="checkbox" name="bad" id="bad7" value="14" class="bad"> <label for="bad7">상품 상태가 설명과 달라요</label>
                                                     </div>
                                                     <div>
-                                                        <input type="checkbox" name="rev" id="bad7" value="15" class="bad"> <label for="bad7">반말을 사용해요</label>
+                                                        <input type="checkbox" name="bad" id="bad7" value="15" class="bad"> <label for="bad7">반말을 사용해요</label>
                                                     </div>
                                                     <div>
-                                                        <input type="checkbox" name="rev" id="bad7" value="16" class="bad"> <label for="bad7">불친절해요</label>
+                                                        <input type="checkbox" name="bad" id="bad7" value="16" class="bad"> <label for="bad7">불친절해요</label>
                                                     </div>
                                                 </section>
                                             </section>

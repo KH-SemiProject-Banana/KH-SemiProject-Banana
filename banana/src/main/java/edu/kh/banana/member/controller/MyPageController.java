@@ -116,15 +116,17 @@ public class MyPageController {
 	@GetMapping("/sendingReview")
 	@ResponseBody
 	public int sendingReview(
-			String checked, String reviewText, 
+			String goodChecked,String badChecked, String reviewText, 
 			@SessionAttribute("loginMember") Member loginMember,
 			int reviewGoodsNo, int reviewBuyerNo
 			) {
 		
-		String[] arr = checked.split(",");
-		List<String> checkedArr = Arrays.asList(arr);
+		String[] goodArr = goodChecked.split(",");
+		List<String> goodCheckedArr = Arrays.asList(goodArr);
+		String[] badArr = goodChecked.split(",");
+		List<String> badCheckedArr = Arrays.asList(badArr);
 
-		int result = service.sendingMannerReview(checkedArr,reviewText,
+		int result = service.sendingMannerReview(goodCheckedArr,badCheckedArr,reviewText,
 				loginMember,reviewGoodsNo,reviewBuyerNo);
 		//int result = service.sendingReview();
 		return result;

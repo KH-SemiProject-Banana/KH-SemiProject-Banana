@@ -77,9 +77,24 @@ public class MyPageDAO {
 		return result; //0또는 삽입된 ratingNo;
 	}
 
-	public int insertManner(Map<String, Object> map) {
+	public int insertgoodManner(Map<String, Object> map) {
 		
-		return sqlSession.insert("myPageMapper.insertManner",map);
+		return sqlSession.insert("myPageMapper.insertgoodManner",map);
+	}
+
+	public int insertbadManner(Map<String, Object> map) {
+		
+		return sqlSession.insert("myPageMapper.insertbadManner",map);
+	}
+
+	public int updateGood(int goodResult, int reviewBuyerNo) {
+		
+		return sqlSession.update("myPageMapper.updateGood",);
+	}
+
+	public int updateBad(int badResult, int reviewBuyerNo) {
+		
+		return 0;
 	}
 
 	

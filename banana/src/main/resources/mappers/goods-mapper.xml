@@ -167,6 +167,11 @@
 	</delete>
   
   
+  <!-- db~서버 이미지 동기화를 위해 renameList 조회 -->
+  <select id="selectImageList" resultType="string">
+  	SELECT IMAGE_PATH FROM GOODS_IMAGE
+  </select>
+  
 
   
 </mapper>

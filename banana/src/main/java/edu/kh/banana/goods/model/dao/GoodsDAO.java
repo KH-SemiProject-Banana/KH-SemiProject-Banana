@@ -99,6 +99,14 @@ public class GoodsDAO {
 		return sqlSession.delete("goodsMapper.goodsLikeDown", paramMap);
 	}
 
+	/** db~서버 이미지 동기화를 위해 renameList 조회
+	 * @return dbGoodsList
+	 */
+	public List<String> selectImageList() {
+		
+		return sqlSession.selectList("goodsMapper.selectImageList");
+	}
+
 
 
 

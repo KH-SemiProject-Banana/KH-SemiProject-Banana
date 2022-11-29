@@ -158,4 +158,13 @@ public class BoardDAO {
 		
 		return sqlSession.update("boardMapper.boardDelete", boardNo);
 	}
+
+	/** 이미지 변경명 조회
+	 * @return dbList
+	 */
+	public List<String> selectImageList() {
+		
+		return sqlSession.selectList("boardMapper.selectImageRenameList");
+				
+	}
 }

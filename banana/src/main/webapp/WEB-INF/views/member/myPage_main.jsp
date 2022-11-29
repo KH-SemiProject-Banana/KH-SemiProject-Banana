@@ -263,7 +263,7 @@
                                                         <input type="checkbox" name="rev" id="bad7" value="15" class="bad"> <label for="bad7">반말을 사용해요</label>
                                                     </div>
                                                     <div>
-                                                        <input type="checkbox" name="rev" id="bad7" value="16"> <label for="bad7">불친절해요</label>
+                                                        <input type="checkbox" name="rev" id="bad7" value="16" class="bad"> <label for="bad7">불친절해요</label>
                                                     </div>
                                                 </section>
                                             </section>

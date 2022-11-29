@@ -87,7 +87,7 @@
                             <div class = "date">11달 전</div>
                         </div>
                     </div>
-
+                </div>
                 <div class = "content">
                     <div class = "row3">
                         <pre class = "message Scroll">

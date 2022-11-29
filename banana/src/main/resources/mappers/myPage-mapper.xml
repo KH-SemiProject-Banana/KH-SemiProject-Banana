@@ -52,6 +52,7 @@
 	WHERE GOODS_DEL_FL = 'N' AND SELLER_NO = #{memberNo}
 	AND (RECEIVER_NO != SELLER_NO  OR RECEIVER_NO IS NULL)
 	AND BUYER_NO IS NOT NULL
+	ORDER BY GOODS_NO DESC
 </select>
   
  <update id="changeIntroduce">
@@ -108,6 +109,26 @@ SELECT #{reviewNo} REVIEW_NO, A.* FROM
  	SELECT #{i} MANNER_NO FROM DUAL 
  	</foreach>
 </insert>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -13,21 +13,21 @@ function loadFile(input) {
 
     const files = input.files;
 
-    
-    
 
-   
+
+
+
 
     // console.log(files);
-    
+
     // console.log(temp);
 
     let i = 0;
     for (let file of files) {
 
-        
-        
-        
+
+
+
 
         const temp = document.querySelectorAll("#image-show > img");
 
@@ -66,7 +66,7 @@ function loadFile(input) {
         const count = container.childElementCount;
         document.getElementsByClassName("img__pic-count")[0].innerText = "(" + count + "/5)";
 
-        
+
         i++;
     }
 
@@ -84,20 +84,20 @@ function loadFile(input) {
 
 
 
-function deleteFile(img)  {
-    
+function deleteFile(img) {
+
     let fileNum = -1;
-    for(let i = 0 ; i<list.length ; i++){
-        if(list[i] == img){
+    for (let i = 0; i < list.length; i++) {
+        if (list[i] == img) {
             fileNum = i;
             break;
         }
     }
 
-    if(fileNum > -1){
+    if (fileNum > -1) {
         const dataTransfer = new DataTransfer();
         let fileCount = document.getElementById("chooseFile");
-        
+
         let files = fileCount.files;	//사용자가 입력한 파일을 변수에 할당
 
         let fileArray = Array.from(files);
@@ -169,77 +169,64 @@ questionContent.addEventListener("input", function () {
 });
 
 
-document.getElementById("question-form").addEventListener("submit", e=>{
+document.getElementById("question-form").addEventListener("submit", e => {
 
-    
-    
-        for (let key in checkObj) {
-    
-            let str;
-    
-            if (!checkObj[key]) {
-                switch (key) {
-                    case "questionImage": str = "이미지를 최소 1개 등록해주세요"; break;
-                    case "questionTitle": str = "글 제목을 입력해주세요"; break;
-                    case "questionContent": str = "글 내용을 입력해주세요"; break;
-                }
-                alert(str);
-                
-                e.preventDefault();
-                return;
+
+
+    for (let key in checkObj) {
+
+        let str;
+
+        if (!checkObj[key]) {
+            switch (key) {
+                case "questionImage": str = "이미지를 최소 1개 등록해주세요"; break;
+                case "questionTitle": str = "글 제목을 입력해주세요"; break;
+                case "questionContent": str = "글 내용을 입력해주세요"; break;
             }
+            alert(str);
+
+            e.preventDefault();
+            return;
         }
-    
+    }
+
 
 });
 
 
 
 // 전체보기
-(() => {
+const questionList = document.getElementById("questionList");
 
-    const questionList = document.getElementById("questionList");
 
-    if(questionList != null){
 
-        if(confirm("현재 문의글을 작성중입니다. 현재 페이지를 벗어나시겠습니까?")){
-    
-            questionList.addEventListener("click", () =>{
-                location.href = "/board/3";
-            });
+    questionList.addEventListener("click", () => {
+
+        if (confirm("현재 문의글을 작성중입니다. 현재 페이지를 벗어나시겠습니까?")) {
+            location.href = "/board/3";
+        } else {
+            return;
+        }
+    });
+
+
+
+
+
+
+
+// 나의 문의/안내 내역
+const myQuestionList = document.getElementById("myQuestionList");
+
+
+    myQuestionList.addEventListener("click", () => {
+
+        if (confirm("현재 문의글을 작성중입니다. 현재 페이지를 벗어나시겠습니까?")) {
+                location.href = "/question/myQuestion";
 
         } else {
             return;
         }
-    
-    } 
-
-})();
+    });
 
 
-// 나의 문의/안내 내역
-(() => {
-
-
-    const myQuestionList = document.getElementById("myQuestionList");
-    if(myQuestionList != null){
-
-        myQuestionList.addEventListener("click", () =>{
-
-            if(confirm("현재 문의글을 작성중입니다. 현재 페이지를 벗어나시겠습니까?")){
-
-                if(loginMember != ""){
-                    
-                    location.href = "/question/myQuestion";
-                } else {
-                    alert("로그인 후 이용해주세요");
-                    return;
-                }
-
-            } else {
-                return;
-            }
-        });
-    
-    } 
-})();

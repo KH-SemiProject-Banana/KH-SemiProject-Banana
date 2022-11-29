@@ -4,8 +4,8 @@ let reviewGoodsNo;
 let reviewBuyerNo;
 
 function openPop(goodsNo, buyerNo, buyerNickname) {
-    $("input[class='good']").attr("checked",false);
-    $("input[class='bad']").attr("checked",false);
+    $("input[class='good']").prop("checked",false);
+    $("input[class='bad']").prop("checked",false);
     reviewGoodsNo = goodsNo;
     reviewBuyerNo = buyerNo;
     document.getElementById("buyerNickname").innerText = buyerNickname;
@@ -34,11 +34,11 @@ const badArr = document.getElementsByClassName("bad");
 const goodArr = document.getElementsByClassName("good");
 
 badChoice.addEventListener("click",()=>{
-    $("input[class='good']").attr("checked",false);
+    $("input[class='good']").prop("checked",false);
 })
 
 goodChoice.addEventListener("click",()=>{
-    $("input[class='bad']").attr("checked",false);
+    $("input[class='bad']").prop("checked",false);
 })
 
 

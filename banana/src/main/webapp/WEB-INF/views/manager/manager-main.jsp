@@ -216,6 +216,11 @@
                         <div class="search-content">0건</div>
                         <div class="search-content">0건</div>
                     </div>
+                    <div class="search-result-div" id="signDate">
+                        <div class="search-result-tab">회원 가입일</div>
+                        <div class="search-content">여기수정해야함</div>
+                        <div class="search-content">2021-11-25</div>
+                    </div>
                     <div class="search-result-div" id="delFlag">
                         <div class="search-result-tab">탈퇴여부</div>
                         <div class="search-content">활동중</div>

@@ -1,6 +1,7 @@
 package edu.kh.banana.common.scheduling;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -13,12 +14,16 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import edu.kh.banana.board.model.service.BoardService;
+import edu.kh.banana.goods.model.service.GoodsService;
 
 @Component
 public class ImageDeleteScheduling {
 	
 	@Autowired
-	private BoardService service;
+	private BoardService boardservice;
+	
+	@Autowired
+	private GoodsService goodsService;
 	
 	@Autowired
 	private ServletContext application;
@@ -27,11 +32,11 @@ public class ImageDeleteScheduling {
 	private Logger logger = LoggerFactory.getLogger(ImageDeleteScheduling.class);
 
 	
-	@Scheduled(cron = "* * 0/1 * * *") // 1시간마다 실행
+	@Scheduled(cron = "0 0 0/1 * * *") // 1시간마다 실행
 	public void deleteBoardImageFile() {
 		
-		// 1. DB에서 BOARD_IMG 테이블의 모든 이미지 변경명을 조회
-		List<String> dbList = service.selectImageList();
+		// 1. DB에서 BOARD_IMG 테이블의 모든 이미지 변경명.을 조회
+		List<String> dbBoardList = boardservice.selectImageList();
 		
 		// 2. server에 저장된 모든 이미지 파일 조회
 		String folderPath = application.getRealPath("/resources/images/board");
@@ -50,7 +55,7 @@ public class ImageDeleteScheduling {
 				file.toString();
 				
 				String fileName = file.getName();
-				if(dbList.indexOf(fileName) == -1) { // dbList에서 fileName과 일치하는 파일명이 없다면
+				if(dbBoardList.indexOf(fileName) == -1) { // dbList에서 fileName과 일치하는 파일명이 없다면
 					
 					// ==  서버에는 있는데 DB에는 없는 파일
 					logger.info(fileName + " 삭제");
@@ -60,8 +65,47 @@ public class ImageDeleteScheduling {
 				}
 			}
 		}
-		logger.info("이미지 파일 삭제 스케줄링 완료");
+		logger.info("게시판(board) 이미지 파일 삭제 스케줄링 완료");
 	}
 	
+	
+	@Scheduled(cron = "0 0 0/1 * * *") // 1시간마다 실행
+	public void deleteGoodsImageFile() {
+		
+		
+		List<String> temp = goodsService.selectImageList();
+		
+		List<String> dbGoodsList = new ArrayList<>();
+		
+		for(String dbGoods : temp) {
+			
+			int idx = dbGoods.lastIndexOf("/");
+			
+			dbGoodsList.add(dbGoods.substring(idx + 1));
+		}
+		
+		String folderPath = application.getRealPath("/resources/images/goodsImage");
+		File[] arr = new File(folderPath).listFiles();
+		List<File> fileList = Arrays.asList(arr);
+		
+		
+		if(!fileList.isEmpty()) {
+			
+			for(File file : fileList) {
+				
+				file.toString();
+				String fileName = file.getName();
+				
+				if(dbGoodsList.indexOf(fileName) == -1) {
+					
+					logger.info(fileName + " 삭제"); 
+				}
+			}
+		}
+		
+		logger.info("상품(goods)이미지 파일 삭제 스케줄링 완료");
+		
+		
+	}
 	
 }

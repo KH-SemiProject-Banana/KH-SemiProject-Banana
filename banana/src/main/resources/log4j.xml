@@ -20,7 +20,7 @@
    
    <!-- //날짜별 로그 파일 생성 하기 -->
    <appender name="dailyRollingFile" class="org.apache.log4j.DailyRollingFileAppender">
-       <param name="File" value="/Users/User/eclipse-workspace/6_framework/project2/logs/runtime.log" />
+       <param name="File" value="/Users/User/eclipse-workspace/KH-SemiProject-Banana/banana/logs/runtime.log" />
        <param name="Append" value="true" />
        <param name="encoding" value="UTF-8" />
        <param name="DatePattern" value="'.'yyyy-MM-dd" />
@@ -30,7 +30,7 @@
    </appender>
    
    <!-- Application Loggers -->
-   <logger name="edu.kh.project">
+   <logger name="edu.kh.banana">
       <level value="debug" />
       <appender-ref ref="dailyRollingFile" />
    </logger>
@@ -91,3 +91,7 @@
    </root>
    
 </log4j:configuration>
+
+
+
+

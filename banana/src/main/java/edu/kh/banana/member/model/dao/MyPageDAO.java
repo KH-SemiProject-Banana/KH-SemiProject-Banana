@@ -1,10 +1,15 @@
 package edu.kh.banana.member.model.dao;
 
+import java.util.List;
+import java.util.Map;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import edu.kh.banana.goods.model.vo.GoodsSell;
 import edu.kh.banana.member.model.vo.Member;
+import edu.kh.banana.review.model.vo.Review;
 
 @Repository
 public class MyPageDAO {
@@ -48,6 +53,36 @@ public class MyPageDAO {
 		return sqlSession.selectOne("myPageMapper.getListCount", memberNo);
 	}
 
+	/**판매완료한 내 게시글의 목록 조회
+	 * @param memberNo
+	 * @return
+	 */
+	public List<GoodsSell> selectGoodsSoldList(int memberNo) {
+		
+		return sqlSession.selectList("myPageMapper.selectGoodsSoldList",memberNo);
+	}
+
+	/** 
+	 * @param review
+	 * @return
+	 */
+	public int insertReview(Review review) {
+		
+		int result = sqlSession.insert("myPageMapper.insertReview",review);
+		
+		if(result>0) {
+			result = review.getRatingNo();
+		}
+		
+		return result; //0또는 삽입된 ratingNo;
+	}
+
+	public int insertManner(Map<String, Object> map) {
+		
+		return sqlSession.insert("myPageMapper.insertManner",map);
+	}
+
+	
 
 
 	

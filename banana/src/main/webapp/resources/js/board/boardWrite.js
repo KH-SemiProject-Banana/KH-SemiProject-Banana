@@ -195,3 +195,51 @@ document.getElementById("question-form").addEventListener("submit", e=>{
 
 
 
+// 전체보기
+(() => {
+
+    const questionList = document.getElementById("questionList");
+
+    if(questionList != null){
+
+        if(confirm("현재 문의글을 작성중입니다. 현재 페이지를 벗어나시겠습니까?")){
+    
+            questionList.addEventListener("click", () =>{
+                location.href = "/board/3";
+            });
+
+        } else {
+            return;
+        }
+    
+    } 
+
+})();
+
+
+// 나의 문의/안내 내역
+(() => {
+
+
+    const myQuestionList = document.getElementById("myQuestionList");
+    if(myQuestionList != null){
+
+        myQuestionList.addEventListener("click", () =>{
+
+            if(confirm("현재 문의글을 작성중입니다. 현재 페이지를 벗어나시겠습니까?")){
+
+                if(loginMember != ""){
+                    
+                    location.href = "/question/myQuestion";
+                } else {
+                    alert("로그인 후 이용해주세요");
+                    return;
+                }
+
+            } else {
+                return;
+            }
+        });
+    
+    } 
+})();

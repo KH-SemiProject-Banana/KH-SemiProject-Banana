@@ -88,6 +88,7 @@ public class MyPageServiceImpl implements MyPageService{
 		int reviewNo = dao.insertReview(review);
 		System.out.println("첫번째 인서트"+reviewNo);
 		
+		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("checkedArr", checkedArr);
 		map.put("reviewNo", reviewNo);

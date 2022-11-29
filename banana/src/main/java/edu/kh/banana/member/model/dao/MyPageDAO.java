@@ -68,7 +68,13 @@ public class MyPageDAO {
 	 */
 	public int insertReview(Review review) {
 		
-		return sqlSession.insert("myPageMapper.insertReview",review);
+		int result = sqlSession.insert("myPageMapper.insertReview",review);
+		
+		if(result>0) {
+			result = review.getRatingNo();
+		}
+		
+		return result; //0또는 삽입된 ratingNo;
 	}
 
 	public int insertManner(Map<String, Object> map) {

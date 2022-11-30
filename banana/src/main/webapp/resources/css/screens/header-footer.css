@@ -476,3 +476,10 @@ label[for="header-menu-toggle"]:hover {
     border: 1px solid #eee;
     border-radius: 5px;
 }
+
+
+
+/* 하트 좋아요 누른 상태 */
+.choose{
+    color: hotpink;
+}

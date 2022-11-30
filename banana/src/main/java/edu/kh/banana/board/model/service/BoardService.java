@@ -78,4 +78,9 @@ public interface BoardService {
 	 */
 	int boardDelete(int boardNo);
 
+	/** 이미지 변경명 조회
+	 * @return dbList
+	 */
+	List<String> selectImageList();
+
 }

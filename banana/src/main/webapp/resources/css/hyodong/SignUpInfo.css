@@ -1,4 +1,4 @@
-/* 테이블 설정 */
+/* 최상위 div */
 .signUpInfoClass  *{ 
     /* border: 1px solid black; */
     justify-content: center;
@@ -13,7 +13,7 @@
 }
 
 /*************************************************/
-/* 회원가입 */
+/* 상단 회원가입 텍스트 설정 */
 .SignUpAgreement1{ 
     display: flex;
     height: 250px;
@@ -25,7 +25,7 @@
 
 
 /*************************************************/
- /* 개인정보 입력 및 필수입력사항  */
+/* 개인정보 입력 및 필수입력사항  텍스트 설정 */
 .SignUpAgreement3{
     display: flex;
     width: 100%;
@@ -43,6 +43,7 @@
     padding: 0 0 25px;
     font-weight : bolder;
 }
+/* 아래 입력사항은 필수입력 사항입니다. */
 #SignUpAgreement3-2{
     font-size: 16px;
     text-align: center;
@@ -59,17 +60,11 @@
     width: 700px;
     justify-content: space-between;
     align-items: center;
-    /* flex-direction: column; */
 }
-
 
 /* 노란색원 */
 .SignUpAgreement2 > div:nth-child(2n+1){ 
-    /* padding: 8px 0 8px; */
     flex-basis: 30%;
-    /* border-radius: 50%; */
-    /* width: 200px;
-    height: 200px; */
     display: flex;
 }
 /* 노란색원 이미지 폰트 크기 */
@@ -131,13 +126,9 @@
     color: #A4A4A4;
 }
 
-/* .fa-file-pen{
-    color: #e53095;
-} */
-
 /*************************************************/
 
-/*  텍스트 박스 감싼 div 박스 설정 */
+/*  회원 정보 입력 텍스트 박스 감싼 div 박스 설정 */
 .textbox{
     display: flex;
     align-items: center;
@@ -146,7 +137,7 @@
     padding: 0 0 10px 0;
     position: relative;  
 }
-/* 텍스트 입력 박스 설정 */
+/* 회원 정보 입력 텍스트 입력 박스 설정 */
 .inputBox{
     display: flex;
     width: 500px;
@@ -182,7 +173,6 @@
     letter-spacing: -1px;
     position: relative;
     left: 20px;
-    /* top: 100px; */
 }
 .confirm{ color: green;}
 .error{ color: red;}

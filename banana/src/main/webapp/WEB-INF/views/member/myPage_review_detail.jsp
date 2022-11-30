@@ -79,18 +79,17 @@
                 </div>
                 <div class="memberInfoBox">
                     <div class="memberInfo">
-                        <div class = "row2_1">
+                        <div class = "row1">
                             <div class = "name">바나나</div>
                         </div>
-                        <div class = "row2_2">
+                        <div class = "row2">
                             <div class = "address">아현동</div>
                             <div class = "date">11달 전</div>
                         </div>
                     </div>
                 </div>
-
                 <div class = "content">
-                    <div class = "row2_3">
+                    <div class = "row3">
                         <pre class = "message Scroll">
 감사해용
                         </pre>

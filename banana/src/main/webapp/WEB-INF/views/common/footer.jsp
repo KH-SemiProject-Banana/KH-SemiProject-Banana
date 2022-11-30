@@ -16,7 +16,7 @@
 
             <a href="/board/1">고객센터</a>
             <span> | </span>
-            <a href="/manager/login">관리자</a>
+            <a href="/manager/login">Intranet</a>
 
         </article>
     </footer>

@@ -286,4 +286,13 @@ public class BoardServiceImpl implements BoardService{
 		
 		return dao.boardDelete(boardNo);
 	}
+
+	/**
+	 * 이미지 변경명 조회
+	 */
+	@Override
+	public List<String> selectImageList() {
+		
+		return dao.selectImageList();
+	}
 }

@@ -175,5 +175,12 @@ public class BoardDAO {
 	public int boardImageInsert(BoardImage img) {
 		
 		return sqlSession.insert("boardMapper.boardImageInsert", img);
+	/** 이미지 변경명 조회
+	 * @return dbList
+	 */
+	public List<String> selectImageList() {
+		
+		return sqlSession.selectList("boardMapper.selectImageRenameList");
+				
 	}
 }

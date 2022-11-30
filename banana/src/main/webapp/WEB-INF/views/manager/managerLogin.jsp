@@ -11,68 +11,76 @@
     <link rel="shortcut icon"  sizes="16x16 32x32 64x64" href="https://i.ibb.co/4tCGZqD/Banana.png">
     <title>바꾸고 나누자 나랑: 바나나 마켓</title>
 
-    <link rel="stylesheet" href="/resources/css/style.css">
+    <%--폰트 어썸  https://fontawesome.com/ key --%>
     <script src="https://kit.fontawesome.com/f7459b8054.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/1023652dd4.js" crossorigin="anonymous"></script>
 
-
-<%-- <script>
-    $(document).ready(function(){
-        $("#btnLogin").click(function(){
-            // 태크.val() : 태그에 입력된 값
-            // 태크.val("값") : 태그의 값을 변경 
-            var memberEmail = $("#memberEmail").val();
-            var memberPw = $("#memberPw").val();
-            if(memberEmail == ""){
-                alert("아이디를 입력하세요.");
-                $("#memberEmail").focus(); // 입력포커스 이동
-                return; // 함수 종료
-            }
-            if(memberPw == ""){
-                alert("비밀번호를 입력하세요.");
-                $("#memberPw").focus();
-                return;
-            }
-
-        });
-    });
-</script> --%>
+    <link rel="stylesheet" href="/resources/css/style.css">
+    <link rel="stylesheet" href="/resources/css/hyodong/Login.css">
 
 </head>
 <body>
-    
-
     <main>
-
-    
     <jsp:include page="/WEB-INF/views/common/header.jsp" />    
 
-    <h2>관리자 로그인</h2>
-    <form name="form1" method="post" action="/manager/login">
-        <table border="1" width="400px">
-            <tr>
-                <td>아이디</td>
-                <td><input name="memberEmail" id="memberEmail"></td>
-            </tr>
-            <tr>
-                <td>비밀번호</td>
-                <td><input type="password" name="memberPw" id="memberPw"></td>
-            </tr>
-            <tr>
-                <td colspan="2" align="center">
-                    <button id="btnLogin">로그인</button>
-                
-               
-                </td>
-            </tr>
-        </table>
-    </form>
-        
+        <div class="loginClass">
+            <!-- 바나나 이미 및 로고 텍스트 -->
+            <div class="loginHeader">
+                <img class="banana" src="/resources/images/banana-logo.png" />
+                <div>바꾸고 나누자 나랑</div>
+                <div>Banana Market</div>
+            </div>
 
+            <div class="SignUpAgreement3">
+                <div id="SignUpAgreement3-1">ADMIN LOGIN</div>
+            </div>
+
+            <form name="form1" method="post" action="/manager/login">
+                <div>
+                    <!-- 아이디(이메일) -->
+                    <div class="signUp-input-Email textbox">
+                        <input type="memberEmail" 
+                        name="memberEmail" 
+                        id="memberEmail" 
+                        class="inputBox" 
+                        placeholder="아이디 (이메일)"
+                        maxlength="20" 
+                        autocomplete="off" 
+                        value="${cookie.saveId.value}">
+                    </div>
+                    <%-- 쿠키에 saveId가 있는 경우 변수 생성--%>
+                    <c:if test="${!empty cookie.saveId.value}">
+                        <c:set var="temp" value="checked"/>
+                    </c:if>
+
+                    <!-- 아이디 저장 -->
+                    <div class="saveId-area">
+                        <input type="checkbox" name="saveId" id="saveId" ${temp}>
+                        <label for="saveId">
+                            <i class="fas fa-check"></i>
+                            <div>아이디 저장</div>
+                        </label>
+                    </div>
+                    <!-- 비밀번호 -->
+                    <div class="signUp-input-password textbox">
+                        <input 
+                        type="password" 
+                        name="memberPw" 
+                        class="inputBox" 
+                        id="memberPw" 
+                        placeholder="비밀번호" 
+                        maxlength="20">
+                    </div>
+                </div>
+
+                <%-- 로그인 버튼 --%>
+                <div class="loginFooter">
+                    <button class="login-btn"> 관리자 로그인</button>
+                </div>
+            </form>
+        </div>
 
     </main>
-
-    
-<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
-
+    <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 </body>
 </html>

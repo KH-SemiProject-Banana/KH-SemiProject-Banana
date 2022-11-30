@@ -148,7 +148,7 @@
 
     <script>
         const boardCode = "${boardCode}";
-        const loginMEmber = "${loginMember}"
+        const loginMember = "${loginMember}"
     </script>
 
 

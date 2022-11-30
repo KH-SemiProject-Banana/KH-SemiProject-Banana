@@ -74,13 +74,13 @@
 		<url-pattern>/write/*</url-pattern>
 	</filter-mapping>
 	
-<!-- 	<filter-mapping>
+ 	<filter-mapping>
 		<filter-name>adminFilter</filter-name>
 		<url-pattern>/write/1</url-pattern>
 		<url-pattern>/write/2</url-pattern>
 		<url-pattern>/write/4</url-pattern>
 		<url-pattern>/manager/manager-main</url-pattern>
 		<url-pattern>/manager/goods</url-pattern>
-	</filter-mapping> -->
+	</filter-mapping> 
 
 </web-app>

@@ -1,109 +1,70 @@
 /* 테이블 설정 */
 
-/* .loginClass  *{ 
+/* *{ 
     border: 1px solid black;
 } */
 
-.loginClass{
+main{
+    height: 1500px;
     align-items: center;
     justify-content: center;
     display: flex;
-    width: 100%;
-    height: 100%;
+    width: 1000px;
+    height:800px;
+}
+.findClass{
+    align-items: center;
+    display: flex;
+    width: 550px;
+    height: 715px;
     flex-direction: column;
+    border: 1px solid black;
+    box-shadow: 5px 5px 5px 5px rgba(221, 221, 221, 0.747); /* 박스그림자 */
+
 }
 
 /*************************************************/
-/* 바나나텍스트 */
-.loginHeader{ 
-    margin-top: 200px;
-    height: 200px;
-    width: 700px;
+/* 바나나 이미 및 로고 텍스트 설정 */
+.findHeader{ 
+    height: 180px;
+    width: 100%;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
-    position: relative;
     font-weight: bold;
+    margin-left: 100px;
+    padding-top: 20px;
 }
-.loginHeader > div:nth-child(3){
-        font-size: 30px;
+/* 로고 글자 설정 */
+.findHeader > div>div:nth-child(3){
+        font-size: 40px;
 }
-.loginHeader > div:nth-child(2){
-    font-size: 25px;
+.findHeader > div>div:nth-child(2){
+    font-size: 35px;
 }
 
+/* 바나나 이미지 설정*/
 .banana {
-    width: 200px;
-    position: absolute;
-    right: 438px;
-    bottom: 50px;
+    width: 150px;
+    margin-right: 10px;
 }
 
 /*************************************************/
- /* LOGIN 텍스트 밖 div  */
-.SignUpAgreement3{
+ /* 상단 찾기  텍스트 밖 div  */
+.findMainBox{
     display: flex;
     width: 100%;
-    height: 60px;
-    text-align: center;
+    height: 100px;
     align-items: center;
     justify-content: center;
 }
-/* LOGIN 텍스트 */
-#SignUpAgreement3-1{
+/* 상단 찾기 테스트 텍스트 설정 */
+#findMainBoxText{
     font-size: 30px;
     text-align: center;
     align-items: center;
     color: gray;
     font-weight : bolder;
     margin-bottom: 50px;
-}
-/*************************************************/
-
-/* 아이디 저장  */
-#saveId{display: none;} /* 체크박스 숨기기 */
-
-.saveId-area{
-    margin-bottom:  20px;
-}
-#saveId + label{
-    display: flex;
-    cursor: pointer;
-    margin-left: 30px;
-}
-
-#saveId + label > i{
-    display:  flex;
-    justify-content: center;
-    align-items: center;
-
-    width: 25px;
-    height: 25px;
-    border: 1px solid #ccc;
-
-    border-radius: 50%;
-    color: #ccc;
-
-
-    margin-right: 10px;
-}
-
-#saveId + label > div{
-    color: gray;
-    display: inline-flex;
-    align-items: center;
-}
-
-
-
-
-
-/* 체크박스 체크 시 아이콘 스타일 지정 */
-#saveId:checked + label > i{
-    background-color: white;
-    border-color: #e53095;
-    color: #e53095;
 }
 
 /*************************************************/
@@ -113,8 +74,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 500px;
-    padding: 0 0 10px 0;
+    width: 400px;
+    padding: 0 0 20px 0;
     position: relative;  
 }
 /* 텍스트 입력 박스 설정 */
@@ -145,33 +106,17 @@ input:-webkit-autofill:active  {
 }
 
 /*************************************************/
-/* id/pw 찾기 회원가입 버튼 설정*/
-.text-area > a {
-    text-decoration: none;
-    color: gray;
-    margin: 15px;
-}
-.text-area{
-    margin-top: 40px;
-    display: flex;
-    justify-content: center;
-    
-}
-
-/*************************************************/
 /*로그인버튼 감싼 div */
-.loginFooter{ 
+.findBtnDiv{ 
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100px;
+    height: 150px;
     font-size: 15px;
-    margin-bottom: 200px;
-    margin-top: 90px;
 }
 
 /* 로그인 버튼 */
-.login-btn{ 
+.find-btn{ 
     width: 300px;
     height: 50px;
     display: flex;
@@ -183,9 +128,41 @@ input:-webkit-autofill:active  {
     cursor: pointer;
     font-weight: bold;
     border: none;
+    font-size: 14px;
 }
 
-.login-btn:hover{
+.find-btn:hover{
     transform: scale(0.9);
 }
 /*************************************************/
+/* 아이디 찾기/ 비번찾기 변경 설정 */
+.findBox{
+    display: flex;
+    width: 100%;
+    height: 50px;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.findID, .findPW {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 50%;
+    font-weight: bold;
+    cursor: pointer;
+}
+/* 활성화된 버튼 */
+.activate{
+    background-color: rgb(253, 253, 137);
+}
+
+/* 이메일 유효성 검사 메세지 설정 */
+.newEmai-message{
+    font-size: 14px;
+    letter-spacing: -1px;
+    left: 20px;
+}
+.confirm{ color: green;}
+.error{ color: red;}

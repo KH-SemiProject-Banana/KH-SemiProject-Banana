@@ -261,6 +261,7 @@ a { text-decoration:none }
     display: flex;
     margin-top:50px;
     height: 800px;
+    overflow:scroll;
     /* align-items: center; */
     flex-wrap: wrap;
     align-content: space-between;
@@ -292,7 +293,7 @@ a { text-decoration:none }
     position :relative;
 }
 .fa-ellipsis-vertical {
-    z-index: 1002;
+    z-index: 100;
     position: absolute;
     right : 10px;
     top : 10px;

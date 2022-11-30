@@ -1,4 +1,4 @@
-/* 테이블 설정 */
+/* 최상위 div */
 .signUpInfoClass  *{ 
     /* border: 1px solid black; */
     justify-content: center;
@@ -13,20 +13,19 @@
 }
 
 /*************************************************/
-/* 내 정보 수정 */
+/* 상단 내 정보 수정 텍스트 설정 */
 .SignUpAgreement1{ 
     display: flex;
-    height: 200px;
+    height: 250px;
     font-size: 45px;
     align-items: center;
     color: #333;
     font-weight : bolder;
 }
 
-
 /*************************************************/
- /* 회색 부분은 수정이 불가능 합니다.  */
- .SignUpAgreement3{
+ /* 개인정보 입력 및 회색 부분은 수정이 불가능 합니다. 텍스트 설정 */
+.SignUpAgreement3{
     display: flex;
     width: 100%;
     height: 200px;
@@ -34,7 +33,7 @@
     align-items: center;
     flex-direction: column;
 }
-/* 개인 정보 수정 */
+/* 개인정보 입력 텍스트 설정 */
 #SignUpAgreement3-1{
     font-size: 25px;
     text-align: center;
@@ -43,6 +42,7 @@
     padding: 0 0 25px;
     font-weight : bolder;
 }
+/* 회색 부분은 수정이 불가능 합니다. 텍스트 설정 */
 #SignUpAgreement3-2{
     font-size: 16px;
     text-align: center;
@@ -53,7 +53,7 @@
 
 
 /*************************************************/
-/* 수정 불가능 아이디/ 이름 / 생년월일 */
+/* 수정 불가능 부분 설정 : 아이디 / 이름 / 생년월일 */
 
 .textboxNo{
     display: flex;
@@ -78,7 +78,7 @@
 }
 /*************************************************/
 
-/*  텍스트 박스 감싼 div 박스 설정 */
+/*  회원 정보 입력 텍스트 박스 감싼 div 박스 설정 */
 .textbox{
     display: flex;
     align-items: center;
@@ -87,7 +87,8 @@
     padding: 0 0 10px 0;
     position: relative;  
 }
-/* 텍스트 입력 박스 설정 */
+
+/* 회원 정보 입력 텍스트 입력 박스 설정 */
 .inputBox{
     display: flex;
     width: 500px;
@@ -129,11 +130,14 @@
 .error{ color: red;}
 
 /* 입력관련 메세지 바로아래 박스 */
-.firstBox {
+.firstBox  {
     height: 50px;
     padding: 0 0 35px 0;
 }
-
+.emailMessageBox{
+    height: 35px;
+    padding: 0 0 10px 0;
+}
 
 input:-webkit-autofill,
 input:-webkit-autofill:hover, 
@@ -143,7 +147,7 @@ input:-webkit-autofill:active  {
 }
 
 /*************************************************/
-/*회원가입하기 다음페이지 이동 버튼 */
+/*내정보 수정 완료 버튼 */
 .SignUpAgreement6{ 
     display: flex;
     justify-content: center;
@@ -152,7 +156,7 @@ input:-webkit-autofill:active  {
     font-size: 15px;
 }
 
-/*회원가입하기 다음페이지 이동 버튼 */
+/*내정보 수정 완료 버튼 */
 .SignUp{ 
     width: 300px;
     height: 50px;
@@ -164,6 +168,7 @@ input:-webkit-autofill:active  {
     color: black;
     cursor: pointer;
     font-weight: bold;
+    border: none;
 }
 
 .SignUp:hover{

@@ -8,39 +8,54 @@
         <ul id="comment-list">
 
             <c:forEach var="comment" items="${board.commentList}">
-                <%-- comment.parentNo => int형변수는 nul == 0이 됨 --%>
-                <li class="comment-row <c:if test="${comment.parentNo != 0}"> child-comment </c:if>">
-                    <p class="comment-writer">
-                        <%-- 프로필 이미지가 없는 경우 --%>
-                        <c:if test="${empty comment.profileImage}">
-                            <img src="/resources/images/user.png">
-                        </c:if>
-                        <c:if test="${not empty comment.profileImage}">
-                            <img src="${comment.profileImage}"/>
-                             <%-- <img src="/resources/images/user.png"> --%>
-                        </c:if>
 
-                        <%-- 닉네임 --%>
-                        <span>${comment.memberNickname}</span>
-                        <%-- 작성일 --%>
-                        <span>(${comment.commentCreateDate})</span>
-                    </p>
+                <%-- 삭제된 댓글인 경우 --%>
+                <c:if test="${comment.commentDeleteFlag == 'Y'}">
+                    <li class="comment-row <c:if test="${comment.parentNo != 0}"> child-comment </c:if>">
+                        <p class="delete-content">삭제된 댓글입니다</p>
+                    </li>
+                </c:if>
 
-                    <p class="comment-content">${comment.commentContent}</p>
+                <%-- 삭제된 댓글이 아닌 경우 --%>
+                <c:if test="${comment.commentDeleteFlag == 'N'}">
+                    <%-- comment.parentNo => int형변수는 nul == 0이 됨 --%>
                     
-                    <c:if test="${not empty loginMember}">
-                        <div class="comment-btn-area">
-                            <button>답글</button>   
+                    <li class="comment-row <c:if test="${comment.parentNo != 0}"> child-comment </c:if>">
+                        <p class="comment-writer">
+                            <%-- 프로필 이미지가 없는 경우 --%>
+                            <c:if test="${empty comment.profileImage}">
+                                <img src="/resources/images/banana-logo.png">
+                            </c:if>
+                            <c:if test="${not empty comment.profileImage}">
+                                <img src="${comment.profileImage}"/>
+                                <%-- <img src="/resources/images/user.png"> --%>
+                            </c:if>
 
-                        <%-- 로그인 회원과 댓글 작성자가 같을 경우 --%>
-                        <c:if test="${loginMember.memberNo == comment.memberNo}">
-                            <button>수정</button>     
-                            <button>삭제</button>
+                            <%-- 닉네임 --%>
+                            <a href="#" class="nicknameLink">
+                                <span>${comment.memberNickname}</span>
+                            </a>
+                            <%-- 작성일 --%>
+                            <span>(${comment.commentCreateDate})</span>
+                        </p>
+
+                        <p class="comment-content">${comment.commentContent}</p>
+                        
+                        <c:if test="${not empty loginMember}">
+                            <div class="comment-btn-area">
+                                <button onclick="showInsertComment(${comment.commentNo}, this)">답글</button>   
+
+                            <%-- 로그인 회원과 댓글 작성자가 같을 경우 --%>
+                            <c:if test="${loginMember.memberNo == comment.memberNo}">
+                                <button onclick="showUpdateComment(${comment.commentNo}, this)">수정</button>     
+                                <button onclick="deleteComment(${comment.commentNo})">삭제</button>
+                            </c:if>
+                            </div>
+
                         </c:if>
-                        </div>
+                    </li>
+                </c:if>
 
-                    </c:if>
-                </li>
             </c:forEach>
 
         </ul>

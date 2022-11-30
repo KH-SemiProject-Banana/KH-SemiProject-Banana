@@ -3,8 +3,6 @@
 
 
 
-
-
 .make-question {
     display: flex;
     /* padding-bottom: 20px; */
@@ -13,22 +11,28 @@
     
 }
 
-.make-question > a{
+.make-question > *{
     flex-basis: 50%;
     height: 80px;
-
+    background-color: white;
+    border : none;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 20px;
     text-decoration: none;
     color: rgba(0,0,0,0.7);
+    cursor: pointer;
 
 }
 
+.make-question > *:hover{
+    background-color: var(--lightYellow);
+    font-weight: bold;
+}
 
 
-.make-question > a:nth-child(2) {
+.make-question > *:nth-child(2) {
     background-color: var(--yellow);
     font-weight: bold;
 }
@@ -103,7 +107,7 @@ input, select, .introduce{
     font-weight: bold;
 }
 
-.content-image, .content-title, .content-category, .content-discription,  .content-finish{
+.img-container, .content-title, .content-category, .content-discription,  .content-finish{
     display: flex;
 
     padding: 60px 0;
@@ -234,9 +238,7 @@ input, select, .introduce{
     z-index: 1;
 }
 
-#image-show>*:hover{
-    opacity: 0.5;
-}
+
 
 
 /* content-status */
@@ -267,7 +269,7 @@ input, select, .introduce{
 
 .content-image__content {
     width: 980px;
-    padding-top: 60px;
+    /* padding-top: 60px; */
 }
 
 .confirm{
@@ -275,4 +277,61 @@ input, select, .introduce{
 }
 .error{
     color: red;
+}
+
+
+.img{
+    width: 170px;
+    height: 170px;
+    padding: 0;
+    margin: 10px;
+    border : 1px solid rgba(0,0,0,0.1);
+    border-radius: 8px;
+    object-fit: contain;
+}
+
+
+
+/* ------------------------------- */
+.inputImage{
+    display: none;
+}
+
+.boardImg {
+    width: 230px;
+    height: 230px;
+    display: inline-block;
+    text-align: center;
+
+    position:relative;
+}
+
+.boardImg  img {
+    height: 90%;
+    width: 90%;
+}
+
+.browse-btn {
+    width: 170px;
+    height: 170px;
+    margin-top: 10px;
+}
+
+
+/* 삭제 버튼 */
+.delete-image{
+    position: absolute;
+    top: 3px;
+    right: 15px;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: white;
+    padding: 0 5px;
+    border : 2px solid #eee;
+    border-radius: 50%;
+}
+
+.delete-image:hover{
+    font-weight: bold;
+    background-color: rgba(0,0,0,0.3);
 }

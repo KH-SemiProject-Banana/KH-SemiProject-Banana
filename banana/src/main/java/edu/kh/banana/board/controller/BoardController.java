@@ -184,6 +184,9 @@ public class BoardController {
 			) throws IOException {
 		
 		// 1. boardCode를 board객체에 셋팅
+		if(boardCode == 1) {
+			boardCode = 3;
+		}
 		board.setBoardCode(boardCode);
 		
 		// 2. 로그인한 회원의 번호를 board객체에 셋팅

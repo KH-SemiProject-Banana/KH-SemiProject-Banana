@@ -299,11 +299,13 @@ for(let i = 0; i < inputImage.length; i++) {
 
 
     // 삭제 버튼
-    deleteImage[i].addEventListener("click", () => {
+    deleteImage[i].addEventListener("click", (e) => {
 
         if(preview[i].getAttribute("src") != "/resources/images/image-upload.png") {
             preview[i].setAttribute("src", "/resources/images/image-upload.png");
             inputImage[i].value = "";
+
+            e.target.delete;
 
             deleteSet.add(i);
         }

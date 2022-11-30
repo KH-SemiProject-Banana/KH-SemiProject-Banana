@@ -139,13 +139,15 @@
                                     <label for="img0">
                                     <c:if test="${empty img0}">
                                         <img class="preview" src="/resources/images/image-upload.png">
+                                        </label>
+                                        <input type="file" name="images" class="inputImage" id="img0" accept="image/*">
                                     </c:if>
                                     <c:if test="${not empty img0}">
                                         <img class="preview" src="${img0}">
+                                        </label>
+                                        <input type="file" name="images" class="inputImage" id="img0" accept="image/*">
+                                        <span class="delete-image">&times;</span>
                                     </c:if>
-                                    </label>
-                                    <input type="file" name="images" class="inputImage" id="img0" accept="image/*">
-                                    <span class="delete-image">&times;</span>
                                 </div>
                                 <%-- </c:if> --%>
 

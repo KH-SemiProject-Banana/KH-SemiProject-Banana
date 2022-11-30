@@ -28,14 +28,6 @@ public class ChattingController {
 	@Autowired
 	private ChattingService service;
 	
-	/** 바나나톡
-	 * @return
-	 */
-//	@GetMapping("/member/bananaTalk") 
-	public String bananaTalk() {
-		return "chatting/BananaTalk"; 
-	}
-	
 	
 	// 채팅방 입장
     @GetMapping("/chatting/enter")
@@ -72,7 +64,8 @@ public class ChattingController {
         
         List<ChattingRoom> roomList = service.selectRoomList(loginMember.getMemberNo());
         model.addAttribute("roomList", roomList);
-        return "chatting/chatting";
+//        return "chatting/chatting";
+		return "chatting/BananaTalk"; 
     }
     
     // 메세지 목록을 비동기 조회

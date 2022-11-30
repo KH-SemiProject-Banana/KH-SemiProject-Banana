@@ -120,6 +120,7 @@
                         </div>
                         <!-- 채팅내용 -->
                         <div class="main-chat">
+                        
                             <!-- 내채팅 -->
                             <div class="me-chat">        
                                 <div class="me-chat-col">

@@ -1,5 +1,6 @@
 package edu.kh.banana.member.controller;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -116,15 +117,32 @@ public class MyPageController {
 	@GetMapping("/sendingReview")
 	@ResponseBody
 	public int sendingReview(
-			String goodChecked,String badChecked, String reviewText, 
+			@RequestParam(value = "goodChecked", required = false) String goodChecked,
+			@RequestParam(value = "badChecked", required = false) String badChecked, 
+			String reviewText, 
 			@SessionAttribute("loginMember") Member loginMember,
 			int reviewGoodsNo, int reviewBuyerNo
 			) {
 		System.out.println("컨트롤러에 입성");
-		String[] goodArr = goodChecked.split(",");
-		List<String> goodCheckedArr = Arrays.asList(goodArr);
-		String[] badArr = badChecked.split(",");
-		List<String> badCheckedArr = Arrays.asList(badArr);
+		
+		//good값 세팅
+		List<String> goodCheckedArr = null;
+		if(!goodChecked.equals("")) {
+			String[] goodArr = goodChecked.split(",");
+			goodCheckedArr = Arrays.asList(goodArr);
+			
+		} else {
+			goodCheckedArr = new ArrayList<String>();
+		}
+		//bad값 세팅
+		List<String> badCheckedArr = null;
+		if(!badChecked.equals("")) {
+			String[] badArr = badChecked.split(",");
+			badCheckedArr= Arrays.asList(badArr);
+		}else {
+			badCheckedArr = new ArrayList<String>();
+		}
+		//System.out.println("badCheckedArr : " + badCheckedArr);
 
 		int result = service.sendingMannerReview(goodCheckedArr,badCheckedArr,reviewText,
 				loginMember,reviewGoodsNo,reviewBuyerNo);

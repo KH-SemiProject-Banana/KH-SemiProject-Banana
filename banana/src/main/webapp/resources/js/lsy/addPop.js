@@ -60,14 +60,18 @@ submitBtn.addEventListener("click", function(){
     for(let i = 0; i<badCheckArr.length ; i++){
         badCheckedArr.push(badCheckArr[i].value);
     }
-    console.log(goodCheckedArr);
-    console.log(badCheckedArr);
-    console.log(reviewText.value);
+    console.log(goodCheckedArr); // [1, 2]
+    console.log(badCheckedArr); // []
+    console.log(reviewText.value); 
     console.log(reviewGoodsNo);
     console.log(reviewBuyerNo);
+
+    const goodCheckeJoin = (goodCheckedArr.length == 0) ? null : goodCheckedArr.join();
+    const badCheckeJoin = (badCheckedArr.length == 0) ? null : badCheckedArr.join();
+    console.log(badCheckeJoin);
     $.ajax({
         url: "/member/myPage/sendingReview",
-        data : {"goodChecked":goodCheckedArr.join(),"badChecked":badCheckedArr.join(),"reviewText":reviewText.value,
+        data : {"goodChecked":goodCheckeJoin,"badChecked":badCheckeJoin,"reviewText":reviewText.value,
         "reviewGoodsNo":reviewGoodsNo,"reviewBuyerNo":reviewBuyerNo},
         success:(result) => {
     
@@ -104,7 +108,7 @@ function closePop() {
 //////////////////////////////////////////////////////////////////////////////
 
 //팝업 띄우기 
-function openPop2() {
+function openPop2(buyerNickname) {
     document.getElementById("popup_layer2").style.display = "block";
     
 

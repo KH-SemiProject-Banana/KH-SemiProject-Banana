@@ -113,6 +113,7 @@
 		WHERE MEMBER_NO = #{memberNo}
 </update>
 
+<!-- 거래 후기 인서트  -->
 <insert id="insertReview" parameterType = "Review" useGeneratedKeys = "true">
 
 <selectKey keyProperty = "ratingNo" resultType= "_int" order = "BEFORE">
@@ -123,6 +124,7 @@ INSERT INTO REVIEW
 VALUES (#{ratingNo}, #{memberNo},#{goodsNo},#{receiverNo},#{message}, DEFAULT )
 </insert>
 
+<!-- 거래 후기 중 GOOD매너평가 인서트 -->
 <insert id="insertgoodManner"  parameterType = "map">
 INSERT INTO REVIEW_RATING
 SELECT #{reviewNo} REVIEW_NO, A.* FROM
@@ -132,6 +134,7 @@ SELECT #{reviewNo} REVIEW_NO, A.* FROM
  	</foreach>
 </insert>
 
+<!-- 거래 후기 중 BAD매너평가 인서트 -->
 <insert id="insertbadManner"  parameterType = "map">
 INSERT INTO REVIEW_RATING
 SELECT #{reviewNo} REVIEW_NO, A.* FROM
@@ -141,15 +144,17 @@ SELECT #{reviewNo} REVIEW_NO, A.* FROM
  	</foreach>
 </insert>
 
+<!-- 매너온도 올리기 -->
 <update id = "updateGood" parameterType = "map">
 UPDATE "MEMBER" SET
 MANNER = MANNER + (0.2 * #{goodResult})
 WHERE MEMBER_NO = #{reviewBuyerNo}
 </update>
 
+<!-- 매너온도 내리기 -->
 <update id = "updateBad" parameterType = "map">
 UPDATE "MEMBER" SET
-MANNER = MANNER - (0.2 * #{goodResult})
+MANNER = MANNER - (0.2 * #{badResult})
 WHERE MEMBER_NO = #{reviewBuyerNo}
 </update>
 

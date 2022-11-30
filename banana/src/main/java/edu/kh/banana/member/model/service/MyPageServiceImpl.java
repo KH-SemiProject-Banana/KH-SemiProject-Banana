@@ -85,7 +85,7 @@ public class MyPageServiceImpl implements MyPageService{
 		review.setReceiverNo(reviewBuyerNo);
 		review.setMessage(reviewText);
 		
-		int reviewNo = dao.insertReview(review);
+		int reviewNo = dao.insertReview(review); //여기서 reviewNo가 가져오는거구나
 		System.out.println("첫번째 인서트"+reviewNo);
 		
 		int result = 0;
@@ -111,7 +111,7 @@ public class MyPageServiceImpl implements MyPageService{
 			goodResult = dao.insertgoodManner(map);
 			
 		}
-		if(badCheckedArr.size() == 0){
+		if(badCheckedArr.isEmpty()){
 			System.out.println("나쁜 후기가 없다.");
 		} else {
 			

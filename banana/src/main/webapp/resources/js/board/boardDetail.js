@@ -6,8 +6,14 @@
     if(goToListBtn != null){
     
         goToListBtn.addEventListener("click", ()=>{
-        
-            location.href= document.referrer;
+
+            const pathname = location.pathname; //   /board/1/1500
+            const queryString = location.search; // ?cp=7
+
+            const url = pathname.substring(0, pathname.lastIndexOf("/")) + queryString; // /board/1?cp=7
+
+
+            location.href= url;
         });
     }
 

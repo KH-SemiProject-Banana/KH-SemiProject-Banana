@@ -34,7 +34,6 @@
  	 	FROM "MEMBER"
  	 	WHERE MEMBER_DEL_FL = 'N'
  	 	AND BLOCK_FL = 'N'
- 	 	AND AUTHORITY = 1
  	 	AND MEMBER_EMAIL = #{memberEmail}
  	 </select>
  	 

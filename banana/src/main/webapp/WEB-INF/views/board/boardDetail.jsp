@@ -65,7 +65,7 @@
                 <!-- 버튼 영역-->
                 <div class="board-btn-area">
 
-                    <c:if test="${board.memberNo == loginMember.memberNo}">
+                    <c:if test="${board.memberNo == loginMember.memberNo || loginMember.authority == 2}">
                         <button id="updateBtn">수정</button>
                         <button id="deleteBtn">삭제</button>
                     </c:if>

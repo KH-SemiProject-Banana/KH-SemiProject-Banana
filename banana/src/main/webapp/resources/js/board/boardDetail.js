@@ -79,23 +79,31 @@
 // 수정하기
 const updateBtn = document.getElementById("updateBtn");
 
-updateBtn.addEventListener("click", () =>{
+if(updateBtn != null) {
 
-    // 상세조회 : /board/{boardCode}/{boardNo}/update/?cp=10
+    updateBtn.addEventListener("click", () =>{
+    
+        // 상세조회 : /board/{boardCode}/{boardNo}/update/?cp=10
+    
+        location.href = location.pathname + "/update" + location.search;
+    
+    });
+}
 
-    location.href = location.pathname + "/update" + location.search;
-
-});
 
 
 
 
 // 삭제하기
 const deleteBtn = document.getElementById("deleteBtn");
-deleteBtn.addEventListener("click", () =>{
 
-    if(confirm("정말 삭제하시겠습니까?")){
+if(deleteBtn != null) {
 
-        location.href = location.pathname + "/delete";
-    }
-});
+    deleteBtn.addEventListener("click", () =>{
+    
+        if(confirm("정말 삭제하시겠습니까?")){
+    
+            location.href = location.pathname + "/delete";
+        }
+    });
+}

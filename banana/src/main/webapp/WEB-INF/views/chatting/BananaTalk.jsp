@@ -45,11 +45,11 @@
         <!-- header 끝----------------------------------------------------------------------------------------- -->
         <div class="bananaTalk">
             <div id="mainBox">
-                <!--------------------- 채팅 프로필 --------------------->
-                <div id="chatProfile">
+                <!--------------------- 채팅 리스트 --------------------->
+                <div id="chatting-list">
                     
                     <!-- User프로필1 -->
-                    <div class="user1Profile">
+                    <div class="userProfile"><%-- class＝“chatting-item” --%>
                         <img class="talkProfileImages" src="/resources/images/banana-logo.png">
                         <div class="name">바나나</div>
                         <div class="talkClockAlarm">
@@ -57,135 +57,66 @@
                             <div class="talkAlarm"> 1</div>
                         </div>
                     </div>
-                    <!-- User프로필2 -->
-                    <div class="user1Profile">
-                        <img class="talkProfileImages" src="/resources/images/hyodongProfile/emoticon_1.gif">
-                        <div class="name">모코코안녕</div>
-                        <div class="talkClockAlarm">
-                            <div class="talkClock">오후 09:10</div>
-                            <div class="talkAlarm">5</div>
-                        </div>
-                    </div>
 
-                    <!-- User프로필2 -->
-                    <div class="user1Profile">
-                        <img class="talkProfileImages" src="/resources/images/hyodongProfile/emoticon_2.gif">
-                        <div class="name">모코코하트</div>
-                        <div class="talkClockAlarm">
-                            <div class="talkClock">오후 09:10</div>
-                            <div class="talkAlarm">8</div>
+                    <%--  id == 채팅방 번호 --%>
+                    <li class="chatting-item" id="${room.chattingNo}-${room.targetNo}">
+                                <%-- 프로필이미지 --%>
+                        <div class="item-header">
+                            <c:if test="${not empty room.targetProfile}">
+                                <img class="list-profile" src="${room.targetProfile}">
+                            </c:if>
+                            <c:if test="${empty room.targetProfile}">
+                                <img class="list-profile" src="/resources/images/user.png">
+                            </c:if>
                         </div>
-                    </div>
+                        <div class="item-body">
+                            <p>
+                                <span class="target-name">${room.targetNickName}</span>
+                                <span class="recent-send-time">${room.sendTime}</span>
+                            </p>
+                            <div>
+                                <p class="recent-message">${room.lastMessage}</p>
 
-                    <!-- User프로필2 -->
-                    <div class="user1Profile">
-                        <img class="talkProfileImages" src="/resources/images/hyodongProfile/emoticon_4.gif">
-                        <div class="name">모코코화난다!!</div>
-                        <div class="talkClockAlarm">
-                            <div class="talkClock">오후 09:10</div>
-                            <div class="talkAlarm"> 12</div>
+                                <c:if test="${room.notReadCount > 0}">
+                                    <p class="not-read-count">${room.notReadCount}</p>
+                                </c:if>
+                            </div>
                         </div>
-                    </div>
+                    </li>
 
-                    <!-- User프로필2 -->
-                    <div class="user1Profile">
-                        <img class="talkProfileImages" src="/resources/images/hyodongProfile/emoticon_6.gif">
-                        <div class="name">모코코신난다</div>
-                        <div class="talkClockAlarm">
-                            <div class="talkClock">오후 09:10</div>
-                            <div class="talkAlarm"> 999</div>
-                        </div>
-                    </div>
 
-                    <!-- User프로필2 -->
-                    <div class="user1Profile">
-                        <img class="talkProfileImages" src="/resources/images/hyodongProfile/emoticon_7.gif">
-                        <div class="name">모코코파이팅</div>
-                        <div class="talkClockAlarm">
-                            <div class="talkClock">오후 09:10</div>
-                            <div class="talkAlarm"> 2</div>
-                        </div>
-                    </div>
 
-                    <!-- User프로필2 -->
-                    <div class="user1Profile">
-                        <img class="talkProfileImages" src="/resources/images/hyodongProfile/emoticon_8.gif">
-                        <div class="name">모코코OTL</div>
-                        <div class="talkClockAlarm">
-                            <div class="talkClock">오후 09:10</div>
-                            <div class="talkAlarm"> 1</div>
-                        </div>
-                    </div>
 
-                    <!-- User프로필2 -->
-                    <div class="user1Profile">
-                        <img class="talkProfileImages" src="/resources/images/hyodongProfile/emoticon_9.gif">
-                        <div class="name">모코코씨앗</div>
-                        <div class="talkClockAlarm">
-                            <div class="talkClock">오후 09:10</div>
-                            <div class="talkAlarm"> 12</div>
-                        </div>
-                    </div>
 
-                    <!-- User프로필2 -->
-                    <div class="user1Profile">
-                        <img class="talkProfileImages" src="/resources/images/hyodongProfile/emoticon_10.gif">
-                        <div class="name">모코코몰루?</div>
-                        <div class="talkClockAlarm">
-                            <div class="talkClock">오후 09:10</div>
-                            <div class="talkAlarm"> 12</div>
-                        </div>
-                    </div>
+                    <c:forEach var="room" items="${roomList}">
+                        <%--  id == 채팅방 번호 --%>
+                        <li class="chatting-item" id="${room.chattingNo}-${room.targetNo}">
+                                    <%-- 프로필이미지 --%>
+                            <div class="item-header">
+                                <c:if test="${not empty room.targetProfile}">
+                                    <img class="list-profile" src="${room.targetProfile}">
+                                </c:if>
+                                <c:if test="${empty room.targetProfile}">
+                                    <img class="list-profile" src="/resources/images/user.png">
+                                </c:if>
+                            </div>
+                            <div class="item-body">
+                                <p>
+                                    <span class="target-name">${room.targetNickName}</span>
+                                    <span class="recent-send-time">${room.sendTime}</span>
+                                </p>
+                                <div>
+                                    <p class="recent-message">${room.lastMessage}</p>
 
-                    <!-- User프로필2 -->
-                    <div class="user1Profile">
-                        <img class="talkProfileImages" src="/resources/images/hyodongProfile/emoticon_11.gif">
-                        <div class="name">모코코우왕</div>
-                        <div class="talkClockAlarm">
-                            <div class="talkClock">오후 09:10</div>
-                            <div class="talkAlarm"> 12</div>
-                        </div>
-                    </div>
+                                    <c:if test="${room.notReadCount > 0}">
+                                        <p class="not-read-count">${room.notReadCount}</p>
+                                    </c:if>
+                                </div>
+                            </div>
+                        </li>
+                    </c:forEach>
 
-                    <!-- User프로필2 -->
-                    <div class="user1Profile">
-                        <img class="talkProfileImages" src="/resources/images/banana-logo.png">
-                        <div class="name">내려간다~~</div>
-                        <div class="talkClockAlarm">
-                            <div class="talkClock">오후 09:10</div>
-                            <div class="talkAlarm"> 12</div>
-                        </div>
-                    </div>
 
-                    <!-- User프로필2 -->
-                    <div class="user1Profile">
-                        <img class="talkProfileImages" src="/resources/images/banana-logo.png">
-                        <div class="name">내주식처럼</div>
-                        <div class="talkClockAlarm">
-                            <div class="talkClock">오후 09:10</div>
-                            <div class="talkAlarm"> 12</div>
-                        </div>
-                    </div>
-
-                    <!-- User프로필2 -->
-                    <div class="user1Profile">
-                        <img class="talkProfileImages" src="/resources/images/banana-logo.png">
-                        <div class="name">내려간다ㅏㅏ</div>
-                        <div class="talkClockAlarm">
-                            <div class="talkClock">오후 09:10</div>
-                            <div class="talkAlarm"> 12</div>
-                        </div>
-                    </div>
-
-                    <!-- User프로필2 -->
-                    <div class="user1Profile">
-                        <img class="talkProfileImages" src="/resources/images/banana-logo.png">
-                        <div class="name">진짜 끝!!</div>
-                        <div class="talkClockAlarm">
-                            <div class="talkClock">오후 09:10</div>
-                            <div class="talkAlarm"> 12</div>
-                        </div>
-                    </div>
 
                 </div>
                 <!--------------------- 채팅 내용박스 --------------------->
@@ -325,5 +256,18 @@
         </div>
     </main>
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+    <!--------------------------------------- sockjs를 이용한 WebSocket 구현을 위해 라이브러리 추가 ---------------------------------------------->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	
+	<!-- https://github.com/sockjs/sockjs-client -->
+	<script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+	<script>
+		// 로그인한 회원 번호
+		const loginMemberNo = "${loginMember.memberNo}";
+
+		// 게시판에서 사용자 닉네임을 눌러서 채팅 화면으로 넘어온 경우 
+		// 그 때 전달 된 채팅방 번호를 저장하는 변수
+		const tempNo = "${chattingNo}"; 
+	</script>
 </body>
 </html>

@@ -59,7 +59,7 @@
 /* 채팅 프로필 */
 
 /* 채팅 프로필 박스 */
-#chatProfile{
+#chatting-list{
     width: 250px;
     height: 100%;
     margin-right: 50px;
@@ -68,23 +68,23 @@
     text-overflow: hidden;
 }
 /* 스크롤바 투명 */
-#chatProfile::-webkit-scrollbar{
+#chatting-list::-webkit-scrollbar{
     display: none;
 }
 
 /* 채팅 User프로필 BOX */
-.user1Profile{
+.userProfile{
     width: 248px;
     height: 80px;
     border-bottom: 1px solid black;
     display: flex;
     align-items: center;
 }
-#chatProfile > div:last-child{
+#chatting-list > div:last-child{
     border-bottom: none;
 }
 /* 마우스 클릭시 색 유지 js으로 해야함-------------- */
-.user1Profile:hover{
+.userProfile:hover{
     background-color: #FFF597;
     cursor: pointer;
 }
@@ -138,6 +138,10 @@
     justify-content: center;
     align-items: center;
 }
+
+
+
+
 /*************************************************/
 
 #chatBoxMain{
@@ -428,4 +432,89 @@
     background-color: rgba(88, 88, 88, 0.3);
     font-size: 0px;
     line-height: 0px;
+}
+
+
+
+/* ******************************강사님******************************* */
+
+
+/*  채팅 목록 */
+.chatting-list{
+	width: 30%;
+	border : 1px solid black;
+	list-style: none;
+	overflow: auto;
+}
+
+.chatting-item{
+	height: 12%;
+	display: flex;
+	padding: 5px 0;
+	border-bottom: 1px solid black;
+	cursor: pointer;
+}
+
+.chatting-item * {
+	pointer-events: none;
+}
+
+.chatting-item > div{ height: 100%; }
+.item-header{ width : 25%; }
+.item-body{ 
+	width : 75%; 
+	padding : 2px 0;
+}
+.item-body> p{ 
+	display: flex;
+	justify-content: space-between;
+}
+
+.chatting-item.select{
+	background-color: #ddd;
+}
+
+
+.list-profile{ width: 65px;}
+
+.target-name{
+	font-size: 1.2em;
+	font-weight: bold;
+}
+
+.recent-send-time{
+	margin-right: 5px;
+}
+
+
+.item-body > div{
+	display: flex;
+	justify-content: space-between;
+}
+
+.recent-message{
+	width: 180px;
+
+	/* 여러 줄 말줄임 처리 */
+	white-space: normal;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+
+	/*  줄바꿈 처리 */
+	word-break: break-all;
+}
+
+.not-read-count{
+	width: 25px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: red;
+    color: white;
+    font-size: 12px;
+    margin: 10px 10px 0 0;
 }

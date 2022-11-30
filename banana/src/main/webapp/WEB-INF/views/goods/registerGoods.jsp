@@ -31,7 +31,7 @@
                 <p>상품 등록</p>
                 <p><span class="required">* 필수 항목</span>은 꼭 입력해주세요</p>
             </div>
-            <form name="register__content" id="register__content"  action="/goods/registerGoods" method="post"  enctype="multipart/form-data" onsubmit="return submitChk()">
+            <form name="register__content" id="register__form"  action="/goods/registerGoods" method="post"  enctype="multipart/form-data">
 
                 <div class="content-image">
                     <div class="content-image__title left-bar">
@@ -46,20 +46,16 @@
                         <div class="container">
                             <div class="image-upload" id="image-upload">
 
-                                <!-- <form  method="POST" onsubmit="return false;" enctype="multipart/form-data"> -->
-                                    <div class="button">
-                                        <label for="chooseFile">
-                                            <img src="/resources/images/image-upload.png" class="browse-btn">
-                                        </label>
-                                    </div>
-                                    <input type="file" id="chooseFile" name="imagePath" accept="image/*"
-                                        onchange="return loadFile(this)" multiple/>
-                                        <div class="file-list" id="image-show"></div>
-                                <!-- </form> -->
+                                <div class="button">
+                                    <label for="chooseFile">
+                                        <img src="/resources/images/image-upload.png" class="browse-btn">
+                                    </label>
+                                </div>
+                                <input type="file" id="chooseFile" name="imagePath" accept="image/*"
+                                    onchange="return loadFile(this)" multiple/>
+                                    <div class="file-list" id="image-show"></div>
+                               
                             </div>
-
-
-
 
                             </div>
                         </div>

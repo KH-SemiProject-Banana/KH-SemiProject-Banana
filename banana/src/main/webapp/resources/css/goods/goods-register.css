@@ -26,7 +26,7 @@ input, select, .introduce{
     padding: 20px 80px;
 }
 
-#register__content {
+#register__form {
     width: 100%;
 }
 
@@ -244,4 +244,15 @@ input, select, .introduce{
     right:15px;
     top: 35px;
     position: absolute;
+}
+
+
+.img {
+    width: 140px;
+    height: 140px;
+    padding: 0;
+    margin: 10px;
+    border : 1px solid rgba(0,0,0,0.1);
+    border-radius: 8px;
+    object-fit: contain;
 }

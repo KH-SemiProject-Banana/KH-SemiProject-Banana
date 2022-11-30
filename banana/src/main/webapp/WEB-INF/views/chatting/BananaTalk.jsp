@@ -58,41 +58,11 @@
                         </div>
                     </div>
 
-                    <%--  id == 채팅방 번호 --%>
-                    <li class="chatting-item" id="${room.chattingNo}-${room.targetNo}">
-                                <%-- 프로필이미지 --%>
-                        <div class="item-header">
-                            <c:if test="${not empty room.targetProfile}">
-                                <img class="list-profile" src="${room.targetProfile}">
-                            </c:if>
-                            <c:if test="${empty room.targetProfile}">
-                                <img class="list-profile" src="/resources/images/user.png">
-                            </c:if>
-                        </div>
-                        <div class="item-body">
-                            <p>
-                                <span class="target-name">${room.targetNickName}</span>
-                                <span class="recent-send-time">${room.sendTime}</span>
-                            </p>
-                            <div>
-                                <p class="recent-message">${room.lastMessage}</p>
-
-                                <c:if test="${room.notReadCount > 0}">
-                                    <p class="not-read-count">${room.notReadCount}</p>
-                                </c:if>
-                            </div>
-                        </div>
-                    </li>
-
-
-
-
-
                     <c:forEach var="room" items="${roomList}">
                         <%--  id == 채팅방 번호 --%>
                         <li class="chatting-item" id="${room.chattingNo}-${room.targetNo}">
-                                    <%-- 프로필이미지 --%>
-                            <div class="item-header">
+                            
+                            <div class="item-header">  <%-- 프로필이미지 --%>
                                 <c:if test="${not empty room.targetProfile}">
                                     <img class="list-profile" src="${room.targetProfile}">
                                 </c:if>
@@ -100,19 +70,20 @@
                                     <img class="list-profile" src="/resources/images/user.png">
                                 </c:if>
                             </div>
+                            <%-- 선!!! --%>
                             <div class="item-body">
                                 <p>
-                                    <span class="target-name">${room.targetNickName}</span>
-                                    <span class="recent-send-time">${room.sendTime}</span>
+                                    <span class="target-name">${room.targetNickName}</span><%-- 닉네임 --%>
+                                    <span class="recent-send-time">${room.sendTime}</span><%-- 채팅시간 --%>
                                 </p>
                                 <div>
-                                    <p class="recent-message">${room.lastMessage}</p>
-
-                                    <c:if test="${room.notReadCount > 0}">
+                                    <p class="recent-message">${room.lastMessage}</p><%-- 채팅메세지 --%>
+                                    <c:if test="${room.notReadCount > 0}"> <%-- 메세지 왔을때 카운트 --%>
                                         <p class="not-read-count">${room.notReadCount}</p>
                                     </c:if>
                                 </div>
                             </div>
+
                         </li>
                     </c:forEach>
 
@@ -269,5 +240,7 @@
 		// 그 때 전달 된 채팅방 번호를 저장하는 변수
 		const tempNo = "${chattingNo}"; 
 	</script>
+    <script src="/resources/js/hyodong/chatting//chatting.js"></script>
+
 </body>
 </html>

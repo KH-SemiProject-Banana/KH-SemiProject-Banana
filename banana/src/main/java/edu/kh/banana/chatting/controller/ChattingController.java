@@ -31,7 +31,7 @@ public class ChattingController {
 	/** 바나나톡
 	 * @return
 	 */
-	@GetMapping("/member/bananaTalk") 
+//	@GetMapping("/member/bananaTalk") 
 	public String bananaTalk() {
 		return "chatting/BananaTalk"; 
 	}

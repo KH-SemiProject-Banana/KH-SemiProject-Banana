@@ -518,3 +518,98 @@
     font-size: 12px;
     margin: 10px 10px 0 0;
 }
+
+
+
+
+
+
+/* 채팅 내용 */
+.chatting-content{
+	width: 70%;
+}
+
+.display-chatting {
+	width: 100%;
+	height: 570px;
+	border: 1px solid black;
+	overflow: auto;
+	list-style: none;
+	padding: 10px 10px;
+}
+
+.display-chatting > li{
+	margin: 10px 0;
+}
+
+.target-chat{
+	display: flex;
+	align-items: flex-start;
+}
+.target-chat > img{
+	width: 50px;
+	margin-right: 5px;
+}
+
+.chat {
+	display: inline-block;
+	border-radius: 5px;
+	padding: 5px;
+	background-color: #eee;
+	text-align: left;
+	max-width: 500px;
+	word-break: break-all;
+	white-space: pre-wrap;
+}
+
+
+.input-area {
+	height: 80px;
+	width: 100%;
+	display: flex;
+}
+
+#inputChatting {
+	padding: 3px;
+	font-size: 1.3em;
+	width: 80%;
+	resize: none;
+}
+
+#send {
+	width: 20%;
+}
+
+.my-chat {
+	text-align: right;
+}
+
+.my-chat>p {
+	background-color: yellow;
+}
+
+.chatDate {
+	font-size: 9px;
+}
+
+#exit-area {
+	text-align: right;
+	margin-bottom: 10px;
+}
+
+
+.exit {
+	text-align: center;
+}
+
+.exit>p {
+	background-color: rgba(0, 0, 0, 0.3);
+}
+
+
+.chat-exit {
+	width: 100%;
+	text-align: center;
+	background-color: black;
+	color: white;
+}

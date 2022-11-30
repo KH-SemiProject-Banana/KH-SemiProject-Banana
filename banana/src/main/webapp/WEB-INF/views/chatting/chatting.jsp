@@ -59,7 +59,7 @@
 				</c:forEach>
 
 			</ul>
-
+			<!-- 채팅박스 -->
 			<div class="chatting-content">
 				<ul class="display-chatting">
 					<%-- <li class="my-chat">

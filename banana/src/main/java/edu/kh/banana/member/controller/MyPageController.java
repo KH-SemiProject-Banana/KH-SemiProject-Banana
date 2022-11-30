@@ -120,10 +120,10 @@ public class MyPageController {
 			@SessionAttribute("loginMember") Member loginMember,
 			int reviewGoodsNo, int reviewBuyerNo
 			) {
-		
+		System.out.println("컨트롤러에 입성");
 		String[] goodArr = goodChecked.split(",");
 		List<String> goodCheckedArr = Arrays.asList(goodArr);
-		String[] badArr = goodChecked.split(",");
+		String[] badArr = badChecked.split(",");
 		List<String> badCheckedArr = Arrays.asList(badArr);
 
 		int result = service.sendingMannerReview(goodCheckedArr,badCheckedArr,reviewText,

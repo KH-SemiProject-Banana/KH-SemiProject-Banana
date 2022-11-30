@@ -45,23 +45,29 @@ goodChoice.addEventListener("click",()=>{
 
 const submitBtn = document.getElementById("submitButton");
 
-const checkedArr = [];
+const goodCheckedArr = [];
+const badCheckedArr = [];
 const reviewText = document.getElementById("reviewText");
 submitBtn.addEventListener("click", function(){
     const goodCheckArr = document.querySelectorAll("input[name ='good']:checked"); 
     const badCheckArr = document.querySelectorAll("input[name ='bad']:checked"); 
 
-    console.log(checkArr);
-    for(let i = 0; i<checkArr.length ; i++){
-        checkedArr.push(checkArr[i].value);
+    console.log(goodCheckArr);
+    for(let i = 0; i<goodCheckArr.length ; i++){
+        goodCheckedArr.push(goodCheckArr[i].value);
     }
-    console.log(checkedArr);
+    console.log(badCheckArr);
+    for(let i = 0; i<badCheckArr.length ; i++){
+        badCheckedArr.push(badCheckArr[i].value);
+    }
+    console.log(goodCheckedArr);
+    console.log(badCheckedArr);
     console.log(reviewText.value);
     console.log(reviewGoodsNo);
     console.log(reviewBuyerNo);
     $.ajax({
         url: "/member/myPage/sendingReview",
-        data : {"goodChecked":goodCheckArr.join(),"badChecked":badCheckArr.join(),"reviewText":reviewText.value,
+        data : {"goodChecked":goodCheckedArr.join(),"badChecked":badCheckedArr.join(),"reviewText":reviewText.value,
         "reviewGoodsNo":reviewGoodsNo,"reviewBuyerNo":reviewBuyerNo},
         success:(result) => {
     

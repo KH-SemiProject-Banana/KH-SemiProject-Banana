@@ -141,11 +141,17 @@ SELECT #{reviewNo} REVIEW_NO, A.* FROM
  	</foreach>
 </insert>
 
+<update id = "updateGood" parameterType = "map">
+UPDATE "MEMBER" SET
+MANNER = MANNER + (0.2 * #{goodResult})
+WHERE MEMBER_NO = #{reviewBuyerNo}
+</update>
 
-
-
-
-
+<update id = "updateBad" parameterType = "map">
+UPDATE "MEMBER" SET
+MANNER = MANNER - (0.2 * #{goodResult})
+WHERE MEMBER_NO = #{reviewBuyerNo}
+</update>
 
 
 

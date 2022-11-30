@@ -88,26 +88,46 @@ public class MyPageServiceImpl implements MyPageService{
 		int reviewNo = dao.insertReview(review);
 		System.out.println("첫번째 인서트"+reviewNo);
 		
-		
+		int result = 0;
+		int result2 = 0;
+		int result3 = 0;
+		int goodResult = -1;
+		int badResult = -1;
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("goodCheckedArr", goodCheckedArr);
 		map.put("badCheckedArr", badCheckedArr);
 		map.put("reviewNo", reviewNo);
 		
 		System.out.println(map);
-		int goodResult = dao.insertgoodManner(map);
-		int badResult = dao.insertbadManner(map);
+		System.out.println(goodCheckedArr.toString());
+		System.out.println(badCheckedArr.toString());
+		System.out.println(goodCheckedArr.isEmpty());
+		System.out.println(badCheckedArr.isEmpty());
+		System.out.println(goodCheckedArr.size());
+		System.out.println(badCheckedArr.size());
+		if(goodCheckedArr.isEmpty()) {
+			System.out.println("좋은 후기가 없다.");
+		} else {
+			goodResult = dao.insertgoodManner(map);
+			
+		}
+		if(badCheckedArr.size() == 0){
+			System.out.println("나쁜 후기가 없다.");
+		} else {
+			
+			badResult = dao.insertbadManner(map);
+		}
 		System.out.println("좋은 후기 인서트된 개수" + goodResult);
 		System.out.println("나쁜 후기 인서트된 개수" + badResult);
 		
 		if(goodResult > 0) {
-			int result2 = dao.updateGood(goodResult,reviewBuyerNo); //구매후기 받은 사람이 들어가야겠지....?
+			result2 = dao.updateGood(goodResult,reviewBuyerNo); //구매후기 받은 사람이 들어가야겠지....?
 		}
 		if (badResult > 0) {
-			int result3 = dao.updateBad(badResult,reviewBuyerNo);
+			result3 = dao.updateBad(badResult,reviewBuyerNo);
 		}
 		
-		if (result2>0 || result3>0 ) {
+		if (result2 > 0 || result3 > 0 ) {
 			result = 1;
 		}
 		

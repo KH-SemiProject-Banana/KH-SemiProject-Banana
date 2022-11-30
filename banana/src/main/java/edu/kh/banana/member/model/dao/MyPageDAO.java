@@ -1,5 +1,6 @@
 package edu.kh.banana.member.model.dao;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -88,13 +89,18 @@ public class MyPageDAO {
 	}
 
 	public int updateGood(int goodResult, int reviewBuyerNo) {
+		Map<String, Object> map = new HashMap<String, Object>();
 		
-		return sqlSession.update("myPageMapper.updateGood",);
+		map.put("goodResult", goodResult);
+		map.put("reviewBuyerNo", reviewBuyerNo);
+		return sqlSession.update("myPageMapper.updateGood", map);
 	}
 
 	public int updateBad(int badResult, int reviewBuyerNo) {
-		
-		return 0;
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("badResult", badResult);
+		map.put("reviewBuyerNo", reviewBuyerNo);
+		return sqlSession.update("myPageMapper.updateBad", map);
 	}
 
 	

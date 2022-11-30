@@ -81,8 +81,8 @@
 
 /* 이미지를 감싸는 div */
 .boardImg{
-    width: 230px;
-    height: 230px;
+    width: 210px;
+    height: 210px;
     display: inline-block;
     text-align: center;
 }

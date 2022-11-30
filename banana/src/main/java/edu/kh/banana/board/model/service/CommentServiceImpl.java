@@ -42,4 +42,13 @@ public class CommentServiceImpl implements CommentService{
 		return dao.deleteComment(commentNo);
 	}
 
+	/**
+	 * 댓글 수정
+	 */
+	@Override
+	public int updateComment(Comment comment) {
+		
+		return dao.updateComment(comment);
+	}
+
 }

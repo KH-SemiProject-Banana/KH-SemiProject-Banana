@@ -65,9 +65,10 @@
                 <!-- 버튼 영역-->
                 <div class="board-btn-area">
 
-                    <!-- 로그인한 회원과 게시글 작성자 번호가 같은 경우-->
-                    <button id="updateBtn">수정</button>
-                    <button id="deleteBtn">삭제</button>
+                    <c:if test="${board.memberNo == loginMember.memberNo || loginMember.authority == 2}">
+                        <button id="updateBtn">수정</button>
+                        <button id="deleteBtn">삭제</button>
+                    </c:if>
 
 
                     <button id="goToListBtn">목록으로</button>

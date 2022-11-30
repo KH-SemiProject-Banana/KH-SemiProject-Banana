@@ -41,4 +41,13 @@ public class CommentDAO {
 		
 		return sqlSession.update("commentMapper.deleteComment", commentNo);
 	}
+
+	/** 댓글 수정
+	 * @param comment
+	 * @return
+	 */
+	public int updateComment(Comment comment) {
+		
+		return sqlSession.update("commentMapper.updateComment", comment);
+	}
 }

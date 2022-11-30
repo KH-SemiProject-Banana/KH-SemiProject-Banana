@@ -27,4 +27,8 @@
 	</update>
 	
   
+  	<!-- 댓글 등록 -->
+  	<update id="updateComment">
+  	
+  	</update>
 </mapper>

@@ -244,6 +244,23 @@
   </update>
   
   
+  <!-- 게시글 이미지만 수정 -->
+  <update id="boardImageUpdate">
+  	UPDATE BOARD_IMG SET
+  	IMG_RENAME = #{imageRename},
+  	IMG_ORIGINAL = #{imageOriginal}
+  	WHERE BOARD_NO = #{boardNo}
+  	AND IMG_ORDER = #{imageOrder}
+  </update>
+  
+  
+  <!-- 게시글 이미지 수정-새 이미지 삽입 -->
+  <insert id="boardImageInsert">
+  	INSERT INTO BOARD_IMG VALUES(
+  		SEQ_IMG_NO.NEXTVAL, #{boardNo}, #{imagePath}, #{imageRename},
+  		#{imageOriginal}, #{imageOrder}
+  	)
+  </insert>
   <!-- db~서버 비교후 삭제를 위한 이미지 변경명 조회 -->
   <select id="selectImageRenameList" resultType="string">
   	SELECT IMG_RENAME FROM BOARD_IMG

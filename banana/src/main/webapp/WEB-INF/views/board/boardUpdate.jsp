@@ -40,7 +40,7 @@
                 <a href="#">문의하기</a>
             </div>
             <form action="update" method="POST" 
-            enctype="multipart/form-data" id="question-form" onsubmit="return updateValidate()">
+            enctype="multipart/form-data" id="question-form">
                 
 
                 
@@ -124,7 +124,7 @@
                             </div>
         
                             <div class="img__pic-count">(0/5)</div>
-                            <img src="/resources/images/image-upload.png" class="browse-btn">
+                            <%-- <img src="/resources/images/image-upload.png" class="browse-btn"> --%>
                         </div>
                     </div>
         
@@ -137,45 +137,77 @@
                                 <%-- <c:if test="${not empty img0}"> --%>
                                 <div class="boardImg">
                                     <label for="img0">
+                                    <c:if test="${empty img0}">
+                                        <img class="preview" src="/resources/images/image-upload.png">
+                                        </label>
+                                        <input type="file" name="images" class="inputImage" id="img0" accept="image/*">
+                                    </c:if>
+                                    <c:if test="${not empty img0}">
                                         <img class="preview" src="${img0}">
-                                    </label>
-                                    <input type="file" name="images" class="inputImage" id="img0" accept="image/*">
+                                        </label>
+                                        <input type="file" name="images" class="inputImage" id="img0" accept="image/*">
+                                        <span class="delete-image">&times;</span>
+                                    </c:if>
                                 </div>
                                 <%-- </c:if> --%>
 
                                 <%-- <c:if test="${not empty img1}"> --%>
                                 <div class="boardImg">
                                     <label for="img1">
+                                    <c:if test="${empty img1}">
+                                        <img class="preview" src="/resources/images/image-upload.png">
+                                    </c:if>
+                                    <c:if test="${not empty img1}">
                                         <img class="preview" src="${img1}">
+                                    </c:if>
                                     </label>
                                     <input type="file" name="images" class="inputImage" id="img1" accept="image/*">
+                                    <span class="delete-image">&times;</span>
                                 </div>
                                 <%-- </c:if> --%>
 
                                 <%-- <c:if test="${not empty img2}"> --%>
                                 <div class="boardImg">
                                     <label for="img2">
+                                    <c:if test="${empty img2}">
+                                        <img class="preview" src="/resources/images/image-upload.png">
+                                    </c:if>
+                                    <c:if test="${not empty img2}">
                                         <img class="preview" src="${img2}">
+                                    </c:if>
                                     </label>
                                     <input type="file" name="images" class="inputImage" id="img2" accept="image/*">
+                                    <span class="delete-image">&times;</span>
                                 </div>
                                 <%-- </c:if> --%>
 
                                 <%-- <c:if test="${not empty img3}"> --%>
                                 <div class="boardImg">
                                     <label for="img3">
+                                    <c:if test="${empty img3}">
+                                        <img class="preview" src="/resources/images/image-upload.png">
+                                    </c:if>
+                                    <c:if test="${not empty img3}">
                                         <img class="preview" src="${img3}">
+                                    </c:if>
                                     </label>
                                     <input type="file" name="images" class="inputImage" id="img3" accept="image/*">
+                                    <span class="delete-image">&times;</span>
                                 </div>
                                 <%-- </c:if> --%>
 
                                 <%-- <c:if test="${not empty img4}"> --%>
                                 <div class="boardImg">
                                     <label for="img4">
+                                    <c:if test="${empty img4}">
+                                        <img class="preview" src="/resources/images/image-upload.png">
+                                    </c:if>
+                                    <c:if test="${not empty img4}">
                                         <img class="preview" src="${img4}">
+                                    </c:if>
                                     </label>
                                     <input type="file" name="images" class="inputImage" id="img4" accept="image/*">
+                                    <span class="delete-image">&times;</span>
                                 </div>
                                 <%-- </c:if> --%>
         
@@ -188,6 +220,11 @@
                 <div class="content-finish">
                     <button type="submit" id="insertBtn">내 문의 수정 완료</button>
                 </div>
+            <%-- 삭제될 이미지 순서를 저장한 input 태그 --%>
+            <input type="hidden" name="deleteList" id="deleteList" value="">
+
+            <%-- 수정 완료 후 리다이렉트시 사용 예정 --%>
+            <input type="hidden" name="cp"  value="${param.cp}">
             </form>
 
 
@@ -198,12 +235,7 @@
 
 
 
-            <%-- 삭제될 이미지 순서를 저장한 input 태그 --%>
-            <input type="hidden" name="deleteList" id="deleteList" value="">
-
-            <%-- 수정 완료 후 리다이렉트시 사용 예정 --%>
-            <input type="hidden" name="cp"  value="${param.cp}">
-        </form>
+        
 
     </main>
 

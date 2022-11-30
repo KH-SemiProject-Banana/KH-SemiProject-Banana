@@ -238,9 +238,7 @@ input, select, .introduce{
     z-index: 1;
 }
 
-#image-show>*:hover{
-    opacity: 0.5;
-}
+
 
 
 /* content-status */
@@ -304,6 +302,8 @@ input, select, .introduce{
     height: 230px;
     display: inline-block;
     text-align: center;
+
+    position:relative;
 }
 
 .boardImg  img {
@@ -315,4 +315,23 @@ input, select, .introduce{
     width: 170px;
     height: 170px;
     margin-top: 10px;
+}
+
+
+/* 삭제 버튼 */
+.delete-image{
+    position: absolute;
+    top: 3px;
+    right: 15px;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: white;
+    padding: 0 5px;
+    border : 2px solid #eee;
+    border-radius: 50%;
+}
+
+.delete-image:hover{
+    font-weight: bold;
+    background-color: rgba(0,0,0,0.3);
 }

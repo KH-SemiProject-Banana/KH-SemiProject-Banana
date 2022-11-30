@@ -10,94 +10,93 @@
         <link rel="shortcut icon"  sizes="16x16 32x32 64x64" href="https://i.ibb.co/4tCGZqD/Banana.png">
         <title>바꾸고 나누자 나랑: 바나나 마켓</title>
 
-        <link rel="stylesheet" href="/resources/css/style.css">
-        <link rel="stylesheet" href="/resources/css/manager/manager.css">
-        <script src="https://kit.fontawesome.com/f7459b8054.js" crossorigin="anonymous"></script>
+    <%--폰트 어썸  https://fontawesome.com/ key --%>
+    <script src="https://kit.fontawesome.com/f7459b8054.js"crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/1023652dd4.js" crossorigin="anonymous"></script>
 
-
-
+    <link rel="stylesheet" href="/resources/css/style.css">
+    <link rel="stylesheet" href="/resources/css/manager/manager.css">
 
     </head>
     <body>
         <main>
             <!-- header 시작----------------------------------------------------------------------------------------- -->
-    <header>
-            <section class="section-topmenu">
-                <div>
-                    <a href="/board/1" class="fa-regular fa-file-lines boardListLink"> 게시판</a>
-                </div>
-                <div class="talkAndlogin">
-                    <a href="#" class="topmenu__talk fa-regular fa-comment">바나나톡</a>
-                    
-                    <div id="header-top-menu">
-                    <c:choose>
-                        <%-- 로그인 X 경우 --%>
-                        <c:when test="${empty sessionScope.loginManager}">
-                            <a href="/member/login" class="topmenu__login">로그인/회원가입</a>
-                        </c:when>
-                        <%-- 로그인 O인 경우 --%>
-                        <c:otherwise>
-                            <label for="header-menu-toggle">
-                                <div class="profileImgArea">
-                                    <c:if test="${empty loginManager.profileImage}">
-                                        <img src="/resources/images/banana-logo.png"  id="profileImg">
-                                    </c:if>
-                                    <c:if test="${not empty loginManager.profileImage}">
-                                        <img src="${loginManager.profileImage}" id="profileImg">
-                                    </c:if>
-                                </div>
-                                ${loginManager.memberNickname}
-                                <i class="fa-solid fa-caret-down"></i>
-                                <div>
-                                    <input type="checkbox" id="header-menu-toggle">
-                                    <div id="header-menu">
-                                        <a href="#">내 정보</a>
-                                        <a href="/member/logout">로그아웃</a>
-                                    </div>
-                                </div>
-                            </label>
-                        </c:otherwise>
-                    </c:choose>
-                </div>
-            </section>
-            <section class="section-query">
-                <div class="query__area">
-                    <a href="/">
-                        <img src="/resources/images/banana-logo.png" id="logo-img"/>
-                    </a>
-                    <div class="query__logo">
-                        <p>바꾸고 나누자 나랑</p>
-                        <p id="query__banana">Banana Market</p>
+            <header>
+                <section class="section-topmenu">
+                    <div>
                     </div>
-                </div>
+                    <div class="talkAndlogin">
+                        <a href="/member/bananaTalk" class="topmenu__talk fa-regular fa-comment">바나나톡</a>
+                        
+                        <div id="header-top-menu">
+                        <c:choose>
+                            <%-- 로그인 X 경우 --%>
+                            <c:when test="${empty sessionScope.loginManager}">
+                                <a href="/member/login" class="topmenu__login">로그인/회원가입</a>
+                            </c:when>
+                            <%-- 로그인 O인 경우 --%>
+                            <c:otherwise>
+                                <label for="header-menu-toggle">
+                                    <div class="profileImgArea">
+                                        <c:if test="${empty loginManager.profileImage}">
+                                            <img src="/resources/images/banana-logo.png"  id="profileImg">
+                                        </c:if>
+                                        <c:if test="${not empty loginManager.profileImage}">
+                                            <img src="${loginManager.profileImage}" id="profileImg">
+                                        </c:if>
+                                    </div>
+                                    ${loginManager.memberNickname}
+                                    <i class="fa-solid fa-caret-down"></i>
+                                    <div>
+                                        <input type="checkbox" id="header-menu-toggle">
+                                        <div id="header-menu">
+                                            <a href="/member/myPage/main">내 정보</a>
+                                            <a href="/member/logout">로그아웃</a>
+                                        </div>
+                                    </div>
+                                </label>
+                            </c:otherwise>
+                        </c:choose>
+                    </div>
+                </section>
+                <section class="section-query">
+                    <div class="query__area">
+                        <a href="/">
+                            <img src="/resources/images/banana-logo.png" id="logo-img"/>
+                        </a>
+                        <div class="query__logo">
+                            <p>바꾸고 나누자 나랑</p>
+                            <p id="query__banana">Banana Market</p>
+                        </div>
+                    </div>
+                    
+                    <article class="search-area">
                 
-                <article class="search-area">
-            
-                    <!-- form : 내부 input태그의 값을 서버 또는 페이지로 전달(제출) -->
-                    <form action="#">
-                        <fieldset>
-                            <input type="search" id="query" name="query" placeholder="검색어를 입력해주세요">
-                            <button type="submit" id="search-btn" class="fa-solid fa-magnifying-glass">
-                            </button>
-                        </fieldset>
-                    </form>
-                </article>
-                <a href="/goods/registerGoods" class="sellingMy">
-                    <div>내 물건<br>판매하기</div>
-                </a>
-            </section>
-            
-        </header>
+                        <!-- form : 내부 input태그의 값을 서버 또는 페이지로 전달(제출) -->
+                        <form action="#">
+                            <fieldset>
+                                <input type="search" id="query" name="query" placeholder="검색어를 입력해주세요">
+                                <button type="submit" id="search-btn" class="fa-solid fa-magnifying-glass">
+                                </button>
+                            </fieldset>
+                        </form>
+                    </article>
+                    <a href="/goods/registerGoods" class="sellingMy">
+                        <div>내 물건<br>판매하기</div>
+                    </a>
+                </section>
+                
+            </header>
             <!-- header 끝----------------------------------------------------------------------------------------- -->
 
-        
             <section class="category-lists">
-                <a href = "manager-main.html" class="detail link-member">회원</a>
-                <a href = "javascript:Getshow()" class="detail link-basic">기본설정</a>
-                <a href = "#" class="detail link-product">상품</a>
-                <a href = "manager-board.html" class="detail link-board">게시판</a>
-                <a href = "javascript:Getshow()" class="detail link-service">service</a>
+            <a href = "/manager/main" class="detail link-member">회원</a>
+            <a href = "javascript:Getshow()" class="detail link-basic">기본설정</a>
+            <a href = "/manager/goods" class="detail link-product activate">상품</a>
+            <a href = "/manager/board" class="detail link-board">게시판</a>
+            <a href = "javascript:Getshow()" class="detail link-service">service</a>
             </section>
+
             
             <section class="main-class">
                 <div class="member-title">

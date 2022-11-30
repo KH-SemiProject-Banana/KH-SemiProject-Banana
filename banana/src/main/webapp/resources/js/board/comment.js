@@ -365,6 +365,8 @@ function showInsertComment(parentNo, btn){
 
 
 
+/// 댓글 수정 취소
+function updateCancel(btn){
 
 // 답글 취소
 function insertCancel(btn){

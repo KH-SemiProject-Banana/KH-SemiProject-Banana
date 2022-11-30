@@ -6,7 +6,6 @@ import java.util.Map;
 
 import org.springframework.web.multipart.MultipartFile;
 
-
 import edu.kh.banana.goods.model.vo.GoodsSell;
 import edu.kh.banana.member.model.vo.Member;
 
@@ -65,6 +64,14 @@ public interface GoodsService {
 	 * @return
 	 */
 	int goodsLikeDown(Map<String, Object> paramMap);
+
+
+
+
+	/** db~서버 이미지 동기화를 위해 renameList 조회
+	 * @return dbGoodsList
+	 */
+	List<String> selectImageList();
 
 	
 	

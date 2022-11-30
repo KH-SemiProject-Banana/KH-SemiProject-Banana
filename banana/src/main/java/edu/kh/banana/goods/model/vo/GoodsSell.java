@@ -16,6 +16,7 @@ import lombok.ToString;
 
 		private int goodsNo;
 		private int sellerNo;
+		private int buyerNo; //LSY : 없어서 추가
 		private int categoryNo;
 		private String categoryName;
 		private String title;
@@ -25,7 +26,7 @@ import lombok.ToString;
 		private String refreshedAt;
 		private String createdAt;
 		private String goodsDelFlag;
-		private String sellStatus;
+		private String sellStatus; // LSY : 필요있나?
 		private int imageNo;
 		private String imagePath;
 		private int likeCount;
@@ -49,7 +50,15 @@ import lombok.ToString;
 		
 		
 		//페이이용내역(REQUEST_PAY)
+
+		private int orderNo; // 페이 주문번호	
+		
+		//LSY : 거래 후기 관련 추가
+		private int ratingNo;
+		private String sellerNickname;
+		private String buyerNickname;
 		private List<BananaPay> payList;
 		
 	
 }
+

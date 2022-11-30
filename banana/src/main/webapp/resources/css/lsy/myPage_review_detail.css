@@ -4,6 +4,7 @@
 
 a { text-decoration:none }
 
+/* 상단 후기 상세 설정 */
 .title{
     border-bottom: 1px solid #ddd;
     display: flex;
@@ -19,6 +20,7 @@ a { text-decoration:none }
     
 }
 
+/* 탭메뉴 설정 */
 .total {
     min-height: 1000px;
 }
@@ -33,16 +35,15 @@ a { text-decoration:none }
     font-size: 20px;
     padding-right: 30px;
 }
-
+/* 전체후기 div 설정 */
 .both {
-
     font-weight: bold;
 
 }
 
+/************************************************/
 
-
-.review_1 {
+.review_1 ,.review_2 ,.review_3 {
     border: 1px solid black;
     display: flex;
     margin: 100px 0px 30px 30px;
@@ -52,11 +53,7 @@ a { text-decoration:none }
     box-shadow: 5px 5px 10px 0 #ccc;
 }
 
-
-
-
-
-.review_2 {
+/* .review_2 {
     border: 1px solid black;
     display: flex;
     margin: 100px 0px 30px 30px;
@@ -74,8 +71,9 @@ a { text-decoration:none }
     height: 197px;
     width: 900px;
     box-shadow: 5px 5px 10px 0 #ccc;
-}
+} */
 
+/* 프로필 설정 */
 .photo{
     display: flex;
     align-items: center;
@@ -93,30 +91,23 @@ a { text-decoration:none }
     
 }
 
+/* 이름 설정 */
 .row1 {
     display: flex;
     justify-content: space-between;
-
 }
 
-
-
+/* 지역 및 메세지 박스 */
 .row2, .row3 {
     display: flex;
 }
-
-
+/* 지역 텍스트 설정 */
 .row2 > * {
     font-size: 15px;
-    /* padding-left: 10px;
-    padding-bottom: 10px; */
     margin: 0 5px 0 5px
 }
 
-
-
-
-
+/* 이름설정 */
 .name {
     font-size : 25px;
     padding: 10px;

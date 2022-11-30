@@ -1,5 +1,8 @@
 package edu.kh.banana.member.controller;
 
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -36,7 +39,8 @@ public class MyPageController {
 		
 		int memberNo = loginMember.getMemberNo();
 		
-		Map<String, Object> map = service.selectGoodsSoldLsit(memberNo);
+		Map<String, Object> map = service.selectGoodsSoldList(memberNo);
+		model.addAttribute("map", map);
 		
 		return "member/myPage_main";
 	}
@@ -109,14 +113,21 @@ public class MyPageController {
 	}
 
 
-//	@PostMapping("/sendingReview")
-//	public int sendingReview(
-//			List<String> checkedArr
-//			
-//			) {
-//		
-//		int result = 0;
-//		return result;
-//	}
+	@GetMapping("/sendingReview")
+	@ResponseBody
+	public int sendingReview(
+			String checked, String reviewText, 
+			@SessionAttribute("loginMember") Member loginMember,
+			int reviewGoodsNo, int reviewBuyerNo
+			) {
+		
+		String[] arr = checked.split(",");
+		List<String> checkedArr = Arrays.asList(arr);
+
+		int result = service.sendingMannerReview(checkedArr,reviewText,
+				loginMember,reviewGoodsNo,reviewBuyerNo);
+		//int result = service.sendingReview();
+		return result;
+	}
 	
 }

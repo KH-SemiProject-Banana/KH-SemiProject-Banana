@@ -83,4 +83,11 @@ public interface BoardService {
 	 */
 	List<String> selectImageList();
 
+	/** 검색조건이 있는 게시글 목록 조회
+	 * @param paramMap
+	 * @param cp
+	 * @return boardList
+	 */
+	Map<String, Object> selectBoardList(Map<String, Object> paramMap, int cp);
+
 }

@@ -1,19 +1,30 @@
-(() =>{
 
-    const myQuestionList = document.getElementById("myQuesionList");
-    
-    if(myQuestionList != null){
-    
-        myQuestionList.addEventListener("click", e => {
-        
-            if(loginMember.length == 0){
-                alert("로그인 후 이용해주세요");
-                return;
+// 문의하기
+(() => {
+
+    const insertBtn = document.getElementById("insertBtn");
+
+    if (insertBtn != null) {
+
+
+        (insertBtn.addEventListener("click", e => {
+
+            if (loginMember != '') {
+
+                
+
+                location.href = "/write/" + boardCode;
+
             } else {
-                alert("로그인상태");
+
+                alert("로그인 후 이용해주세요");
             }
-        });
+        }));
+
     }
+
+
+
 })();
 
 
@@ -49,3 +60,23 @@
         });
     }
 })();
+
+
+// 검색한 후 검색창에 key, query 남겨놓기
+// (()=>{
+
+//     const select = document.getElementById("select-key");
+//     const input = document.getElementById("search-key");
+
+//     const option = document.querySelector("#search-key > option");
+
+//     if(select != null){ // 검색창이 존재할때
+
+//         // 주소에서 queryString만 분리한 객체 
+//         const param = new URL(location.href).searchParams;
+
+//         const key = 
+
+        
+//     }
+// })();

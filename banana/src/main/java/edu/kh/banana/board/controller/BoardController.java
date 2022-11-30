@@ -45,11 +45,21 @@ public class BoardController {
 	@GetMapping("/board/{boardCode}")
 	public String selectBoardList(Model model,
 			@PathVariable("boardCode") int boardCode,
-			@RequestParam(value="cp", required=false, defaultValue="1") int cp
+			@RequestParam(value="cp", required=false, defaultValue="1") int cp,
+			@RequestParam Map<String, Object> paramMap
 			) {
-		Map<String, Object> map = service.selectBoardList(boardCode, cp);
 		
-		model.addAttribute("map", map);
+		if(paramMap.get("key") == null) { // '검색'이 아닌 경우
+			
+			Map<String, Object> map = service.selectBoardList(boardCode, cp);
+			model.addAttribute("map", map);
+		} else {
+			
+			paramMap.put("boardCode", boardCode); // boardCode, key, query, cp 담겨있음
+			Map<String, Object> map = service.selectBoardList(paramMap, cp);
+			model.addAttribute("map", map);
+		}
+		
 		
 		String path = null;
 		if(boardCode == 1) {
@@ -174,6 +184,9 @@ public class BoardController {
 			) throws IOException {
 		
 		// 1. boardCode를 board객체에 셋팅
+		if(boardCode == 1) {
+			boardCode = 3;
+		}
 		board.setBoardCode(boardCode);
 		
 		// 2. 로그인한 회원의 번호를 board객체에 셋팅

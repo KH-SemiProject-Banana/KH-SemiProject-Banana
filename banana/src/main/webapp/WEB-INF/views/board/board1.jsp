@@ -49,6 +49,7 @@
                 
                 <div class ="frequent-question__title">
                     <p>${boardName}</p>
+                    <button type="button" id="foldAll">모두 접기</button>
                 </div>
                 
     

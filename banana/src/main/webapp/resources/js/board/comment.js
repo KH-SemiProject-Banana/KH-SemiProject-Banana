@@ -22,8 +22,12 @@ function selectCommentList() {
                         commentRow.classList.add("child-comment");
                     }
 
+
+                    
+
+
                     const commentContent = document.createElement("p");
-                    commentContent.classList.add("comment-content");
+                    commentContent.classList.add("delete-content");
                     commentContent.innerText = "삭제된 댓글입니다";
 
                     commentRow.append(commentContent);
@@ -240,10 +244,10 @@ function showUpdateComment(commentNo, btn){ // 댓글번호, 이벤트발생요�
     textarea.classList.add("update-textarea");
 
     // XSS 방지 처리 해제
-    beforeContent = beforeContent.replaceAll("&amp;", "&");
-    beforeContent = beforeContent.replaceAll("&lt;", "<");
-    beforeContent = beforeContent.replaceAll("gt;", ">");
-    beforeContent = beforeContent.replaceAll("&quot;", "\"");
+    beforeContent =  beforeContent.replaceAll("&amp;", "&");
+    beforeContent =  beforeContent.replaceAll("&lt;", "<");
+    beforeContent =  beforeContent.replaceAll("&gt;", ">");
+    beforeContent =  beforeContent.replaceAll("&quot;", "\"");
 
     // 개행문자 처리 해제
     beforeContent = beforeContent.replaceAll("<br>", "\n");
@@ -259,17 +263,104 @@ function showUpdateComment(commentNo, btn){ // 댓글번호, 이벤트발생요�
     const commentBtnArea = document.createElement("div");
     commentBtnArea.classList.add("comment-btn-area");
 
-    const updateBtn = document.createElement("button");
-    updateBtn.innerText = "수정";
-    updateBtn.setAttribute("onclick", "updateComment(" + commentNo + ", this)");
+    const insertBtn = document.createElement("button");
+    insertBtn.innerText = "수정";
+    insertBtn.setAttribute("onclick", "updateComment("+ commentNo + ", this)");
 
     const cancelBtn = document.createElement("button");
-    cancelBtn.innerText("취소");
-    cancelBtn.setAttribute("onclick", "updateCancel(this)")
+    cancelBtn.innerText  = "취소";
+    cancelBtn.setAttribute("onclick", "updateCancel(this)");
 
-    // 8. 버튼영역에 버튼 추가 후 commentRow에 버튼영역 추가
-    commentBtnArea.append(updateBtn, cancelBtn);
+    commentBtnArea.append(insertBtn, cancelBtn);
     commentRow.append(commentBtnArea);
+
+
+
+}
+
+// ---------------------------------------------------
+// 댓글 수정 취소
+function updateCancel(btn) {
+
+    if(confirm("댓글 수정을 취소하시겠습니까?")){
+        btn.parentElement.parentElement.innerHTML = beforeCommentRow;
+    }
+}
+
+
+// 댓글 수정
+function updateComment(commentNo, btn){
+
+    const commentContent = btn.parentElement.previousElementSibling.value;
+
+    $.ajax({
+        
+        url : "/comment/update",
+        data : {"commentNo" : commentNo, "commentContent" : commentContent},
+        type : "post",
+        success : (result) => {
+
+            if(result > 0) {
+                alert("댓글이 수정되었습니다.");
+                selectCommentList();
+            } else {
+                alert("댓글 수정 실패");
+            }
+        },
+        
+        error : (req) => {
+            alert("댓글 수정 중 에러 발생");
+            alert(req.responseText);
+        }
+    });
+}
+
+
+//------------------------------------------------
+//------------------------------------------------
+
+// 답글 작성 화면 추가
+function showInsertComment(parentNo, btn){
+
+    const temp = document.getElementsByClassName("commentInsertContent");
+
+    if(temp.length > 0) { // 답글작성 textArea가 이미 화면에 존재하는 경우
+
+        if(confirm("다른 답글을 작성 중입니다. 현재 댓글에 답글을 작성하시겠습니까?")){
+            temp[0].nextElementSibling.remove(); // 버튼 영역 삭제
+            temp[0].remove(); // textArea 삭제
+
+        } else {
+            return;
+        }
+
+    }
+
+    // 답글을 작성할 textAtra 생성
+    const textarea = document.createElement("textarea");
+    textarea.classList.add("commentInsertContent");
+
+    // 답글 버튼의 부모의 뒤쪽에 textarea 추가
+    btn.parentElement.after(textarea);
+    
+    // 답글 버튼 영역 + 등록/취소 버튼 생성 및 추가
+    const commentBtnArea = document.createElement("div");
+    commentBtnArea.classList.add("comment-btn-area");
+
+    const insertBtn = document.createElement("button");
+    insertBtn.innerText = "등록";
+    insertBtn.setAttribute("onclick", "insertChildComment(" + parentNo + ", this)");
+
+    const cancelBtn = document.createElement("button");
+    cancelBtn.innerText = "취소";
+    cancelBtn.setAttribute("onclick", "insertCancel(this)");
+
+    // 답글 버튼 영역의 자식으로 등록/취소 버튼 추가
+    commentBtnArea.append(insertBtn, cancelBtn);
+
+    // 답글 버튼 영역을 textarea 뒤쪽에 추가
+    textarea.after(commentBtnArea);
+
 }
 
 
@@ -277,37 +368,44 @@ function showUpdateComment(commentNo, btn){ // 댓글번호, 이벤트발생요�
 /// 댓글 수정 취소
 function updateCancel(btn){
 
-    if(confirm("댓글 수정을 취소하겠습니까?")){
-        btn.parentElement.parentElement.innerHTML = beforeCommentRow;
-    }
+// 답글 취소
+function insertCancel(btn){
+
+    btn.parentElement.previousElementSibling.remove(); // textarea 제거
+    btn.parentElement.remove(); // comment-btn-area 제거
 }
 
+// 답글 등록
+function insertChildComment(parentNo, btn){
 
-// 댓글 수정(ajax)
-function updateComment(commentNo, btn){
-
-    // 새로 작성된 댓글 내용 얻어오기
     const commentContent = btn.parentElement.previousElementSibling.value;
 
-    $.ajax({
+    if(commentContent.trim().length == 0) { // 답글이 작성되지 않은경우
 
-        url : "/comment/update",
-        data : {"commentNo" : commentNo, "commentContent" : commentContent},
-        type : "POST",
+        alert("답글 작성 후 등록 버튼을 클릭해주세요");
+        commentContent.value = "";
+        commentContent.focus();
+        return;
+    }
+
+
+    $.ajax({
+        
+        url : "/comment/insert",
+        data : {"memberNo" : memberNo, "parentNo" : parentNo,
+            "boardNo" : boardNo, "commentContent" : commentContent},
+        type : "post",
         success : (result) => {
-            if(result > 0) {
-                alert("댓글이 수정되었습니다");
+            if(result > 0) { 
+                alert("답글이 등록되었습니다");
                 selectCommentList();
             } else {
-                console.log("댓글 수정 실패");
+                alert("답글 등록 실패");
             }
         },
         error : (req) => {
-            console.log("댓글 수정 중 에러 발생");
+            console.log("답글 등록 중 오류 발생");
             console.log(req.responseText);
         }
-    });
+    })
 }
-
-
-//

@@ -3,8 +3,6 @@
 
 
 
-
-
 .make-question {
     display: flex;
     /* padding-bottom: 20px; */
@@ -13,22 +11,28 @@
     
 }
 
-.make-question > a{
+.make-question > *{
     flex-basis: 50%;
     height: 80px;
-
+    background-color: white;
+    border : none;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 20px;
     text-decoration: none;
     color: rgba(0,0,0,0.7);
+    cursor: pointer;
 
 }
 
+.make-question > *:hover{
+    background-color: var(--lightYellow);
+    font-weight: bold;
+}
 
 
-.make-question > a:nth-child(2) {
+.make-question > *:nth-child(2) {
     background-color: var(--yellow);
     font-weight: bold;
 }

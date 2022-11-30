@@ -13,10 +13,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-// urlPattern에 "/member/myPage/*" 추가하기-->( )
-@WebFilter(  filterName = "loginFilter")
+import edu.kh.banana.member.model.vo.Member;
 
-public class LoginFilter extends HttpFilter implements Filter{
+// 관리자가 아니면 사용할 수 없는 기능 제한
+@WebFilter(filterName = "adminFilter")
+public class AdminFilter extends HttpFilter implements Filter{
 	
 
 
@@ -38,11 +39,11 @@ public class LoginFilter extends HttpFilter implements Filter{
 		
 		HttpSession session = req.getSession();
 		
-		//로그인 상태인 경우
-		if(session.getAttribute("loginMember") == null) {
-			session.setAttribute("message", "로그아웃 상태로는 이용할 수 없습니다");
+		
+		if(((Member)session.getAttribute("loginMember")).getAuthority() == 1) { // 일반 회원
+			session.setAttribute("message", "관리자만 이용할 수 있는 기능입니다");
 			resp.sendRedirect("/");
-		} else { // 로그아웃 상태
+		} else { // 관리자
 			chain.doFilter(request, response);
 		}
 		

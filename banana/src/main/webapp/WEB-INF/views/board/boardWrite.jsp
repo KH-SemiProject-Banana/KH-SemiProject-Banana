@@ -34,8 +34,8 @@
 
         <section class="question-section">
             <div class="make-question">
-                <a href="#">문의/안내 내역</a>
-                <a href="#">문의하기</a>
+                <button href="/board/${boardCode}" id="questionList">전체보기</button>
+                <button href="/question/myQuestion" id="myQuestionList">나의 문의/안내 내역</button>
             </div>
             <form action="/write/${boardCode}" method="POST" enctype="multipart/form-data" id="question-form">
                 

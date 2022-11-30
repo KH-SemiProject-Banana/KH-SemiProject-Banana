@@ -54,12 +54,13 @@ public class CommentController {
 		return result;
 	}
 	
+	
 	// 댓글 수정
 	@PostMapping("/update")
 	public int updateComment(Comment comment) {
 		
 		int result = service.updateComment(comment);
-		
 		return result;
 	}
+
 }

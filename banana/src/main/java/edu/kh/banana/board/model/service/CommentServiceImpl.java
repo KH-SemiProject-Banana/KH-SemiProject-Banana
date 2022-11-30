@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import edu.kh.banana.board.model.dao.CommentDAO;
 import edu.kh.banana.board.model.vo.Comment;
+import edu.kh.banana.common.Util;
 
 @Service
 public class CommentServiceImpl implements CommentService{
@@ -30,6 +31,10 @@ public class CommentServiceImpl implements CommentService{
 	@Override
 	public int insertComment(Comment comment) {
 		
+		// xss 방지 처리, 개행문자 처리
+		comment.setCommentContent(Util.XSSHandling(comment.getCommentContent()));
+		comment.setCommentContent(Util.newLineHandling(comment.getCommentContent()));
+		
 		return dao.insertComment(comment);
 	}
 
@@ -47,6 +52,10 @@ public class CommentServiceImpl implements CommentService{
 	 */
 	@Override
 	public int updateComment(Comment comment) {
+		
+		// xss 방지 처리, 개행문자 처리
+		comment.setCommentContent(Util.XSSHandling(comment.getCommentContent()));
+		comment.setCommentContent(Util.newLineHandling(comment.getCommentContent()));
 		
 		return dao.updateComment(comment);
 	}

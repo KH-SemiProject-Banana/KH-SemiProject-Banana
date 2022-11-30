@@ -18,12 +18,6 @@
 
     <link rel="stylesheet" href="/resources/css/hyodong/BananaTalk_Header-footer.css">
     <link rel="stylesheet" href="/resources/css/hyodong/BananaTalk.css">
-    <style>
-    .poppingThing{
-        position:fixed;
-        z-index: 100;
-    }
-    </style>
 
 </head>
 <body> 
@@ -208,16 +202,11 @@
                             </div>
                             <div class="productPrice">2,500,000 원</div>
                         </div>
-
-
                         <div class="Declaration">
                             <!-- 신고버튼 -->
                             <a href="javascript:openPop()">
                                 <i class="fa-regular fa-bell-slash"></i>
                             </a>
-                                <div id = "poppingThing" class = "poppingThing"> 
-                                <jsp:include page="/WEB-INF/views/usercomplain/usercomplain.jsp"></jsp:include>
-                                </div>
                         </div>
                     </div> 
 
@@ -336,7 +325,6 @@
         </div>
     </main>
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
-    
 </body>
 </html>
 </html>

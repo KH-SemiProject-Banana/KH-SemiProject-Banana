@@ -14,20 +14,17 @@ const abc6 = document.getElementById("abc6");
 const abc7 = document.getElementById("abc7");
 const abc8 = document.getElementById("abc8");
 
- const userreportsubmit = document.getElementById("userreportsubmit");
+reportsubmit = document.getElementById("reportsubmit");
 
- userreportsubmit.style.display = "none";
 
 
 // const ctg = document.getElementsByClassName("ctg")
 
 
-document.getElementById("poppingThing").style.display = "none";
+
 function openPop(){
     //document.getElementById("popup_layer").style.display = "block";
-    
     document.getElementById("popup_layer").style.display = "block";
-    document.getElementById("poppingThing").style.display = "block";
     // document.getElementById("popup_box").style.display = "block";
 
         click1.style.display = "none";
@@ -36,7 +33,13 @@ function openPop(){
         click6.style.display = "none";
         click7.style.display = "none";
 
-       
+        reportsubmit = document.getElementById("reportsubmit");
+
+        if(reportsubmit != null) {
+
+            reportsubmit.style.display = "none";
+        }
+    
 };
     
 
@@ -80,9 +83,9 @@ function openPop(){
 
     abc3.addEventListener("click",function(){
     
-        if(userreportsubmit.style.display == "none"){
+        if(reportsubmit.style.display == "none"){
             click.style.display = "none";
-            userreportsubmit.style.display = "block";
+            reportsubmit.style.display = "block";
             
         }
         
@@ -91,9 +94,9 @@ function openPop(){
 
     abc4.addEventListener("click",function(){
     
-        if(userreportsubmit.style.display == "none"){
+        if(reportsubmit.style.display == "none"){
             click.style.display = "none";
-            userreportsubmit.style.display = "block";
+            reportsubmit.style.display = "block";
 
         }
         
@@ -102,9 +105,9 @@ function openPop(){
 
     abc5.addEventListener("click",function(){
     
-        if(userreportsubmit.style.display == "none"){
+        if(reportsubmit.style.display == "none"){
             click.style.display = "none";
-            userreportsubmit.style.display = "block";
+            reportsubmit.style.display = "block";
 
         }
         
@@ -133,9 +136,9 @@ function openPop(){
     
     abc8.addEventListener("click",function(){
     
-        if(userreportsubmit.style.display == "none"){
+        if(reportsubmit.style.display == "none"){
             click.style.display = "none";
-            userreportsubmit.style.display = "block";
+            reportsubmit.style.display = "block";
 
         }
         
@@ -147,9 +150,9 @@ function openPop(){
 
 
     click1.addEventListener("click", () => {
-        if(userreportsubmit.style.display == "none") {
+        if(reportsubmit.style.display == "none") {
             click1.style.display = "none";
-            userreportsubmit.style.display = "block";
+            reportsubmit.style.display = "block";
 
 
 
@@ -179,27 +182,27 @@ function openPop(){
 
 })
     click2.addEventListener("click", () => {
-        if(userreportsubmit.style.display == "none") {
+        if(reportsubmit.style.display == "none") {
             click2.style.display = "none";
-            userreportsubmit.style.display = "block";
+            reportsubmit.style.display = "block";
 
         }
 
     })
 
     click6.addEventListener("click", () => {
-        if(userreportsubmit.style.display == "none") {
+        if(reportsubmit.style.display == "none") {
             click6.style.display = "none";
-            userreportsubmit.style.display = "block";
+            reportsubmit.style.display = "block";
 
         }
 
     })
 
     click7.addEventListener("click", () => {
-        if(userreportsubmit.style.display == "none") {
+        if(reportsubmit.style.display == "none") {
             click7.style.display = "none";
-            userreportsubmit.style.display = "block";
+            reportsubmit.style.display = "block";
 
         }
 

@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +24,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.google.gson.Gson;
 
+import edu.kh.banana.common.Util;
 import edu.kh.banana.goods.model.service.GoodsService;
 import edu.kh.banana.goods.model.vo.GoodsSell;
 import edu.kh.banana.member.model.vo.Member;
@@ -157,6 +159,29 @@ public class GoodsController {
 	public int goodsDelete(int goodsNo) {
 		
 		return service.goodsDelete(goodsNo);
+	}
+	
+	
+	/** 상품 수정
+	 * @param goodsNo
+	 * @param loginMember
+	 * @param model
+	 * @return
+	 */
+	@GetMapping("/update/{goodsNo}")
+	public String goodsUpdate(
+			@PathVariable("goodsNo") int goodsNo,
+			Model model) {
+		
+		GoodsSell registerGoods = service.selectGoods(goodsNo);
+		
+		// 개행문자 처리 해제
+		registerGoods.setDescription(Util.newLineClear(registerGoods.getDescription()));
+		
+		model.addAttribute("registerGoods", registerGoods);
+		
+		
+		return "goods/registerGoods";
 	}
 
 }

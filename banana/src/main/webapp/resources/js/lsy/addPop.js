@@ -158,11 +158,18 @@ for(let dot of dotList){
         
         container.classList.add("anotherPop");
 
+
+        container.append(div1, div2, div3);
+
+        dot.after(container);
+
+        
         div1.classList.add("anotherPop1" , "babo");
         div1.innerText = "글 수정하기";
         div1.addEventListener("click", function(){
-            location.href = "/goods/update";
+            location.href = "/goods/update/{goodsNo}";
         })
+
 
         div2.classList.add("anotherPop1" , "babo");
         div2.innerText = "글 삭제하기";
@@ -190,9 +197,7 @@ for(let dot of dotList){
             
         })
 
-        container.append(div1, div2, div3);
-
-        dot.after(container);
+        
 
 
     });

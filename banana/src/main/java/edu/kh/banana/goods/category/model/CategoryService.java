@@ -40,4 +40,12 @@ public interface CategoryService {
 	 * @return result
 	 */
 	int goodsLikeDown(Map<String, Object> paramMap);
+
+	/**
+	 * 상품 상세 페이지 이동
+	 * @param goodsInfo
+	 * @param goodsNo
+	 * @return map
+	 */
+	Map<String, Object> detailedPage(GoodsSell goodsInfo, int goodsNo);
 }

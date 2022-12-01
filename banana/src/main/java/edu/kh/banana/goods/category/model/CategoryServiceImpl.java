@@ -67,4 +67,16 @@ public class CategoryServiceImpl implements CategoryService {
 	public int goodsLikeDown(Map<String, Object> paramMap) {
 		return dao.goodsLikeDown(paramMap);
 	}
+
+	// 상품 상세 페이지 이동
+	@Override
+	public Map<String, Object> detailedPage(GoodsSell goodsInfo, int goodsNo) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		goodsInfo = dao.goodsInfo(goodsInfo);
+		
+		List<>
+		
+		return map;
+	}
 }

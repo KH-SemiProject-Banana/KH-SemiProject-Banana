@@ -139,16 +139,16 @@
 
                         <c:choose>
                             <c:when test="${goods.imagePath == null}">
-                                <a href="/detailed"><img src="../../resources/images/noImage.png"></a>
+                                <a href="/goods/${goods.goodsNo}"><img src="../../resources/images/noImage.png"></a>
                             </c:when>
 
                             <c:otherwise>
-                                <a href="/detailed"><img src="${goods.imagePath}"></a>
+                                <a href="/goods/${goods.goodsNo}"><img src="${goods.imagePath}"></a>
                             </c:otherwise>
                         </c:choose>
 
-                        <span><h2><a href="/detailed" class="title">${goods.title}</a></h2></span>
-                        <span><h3><a href="/detailed"><fmt:formatNumber value="${goods.sellPrice}" pattern="#,###"/></a></h3></span>
+                        <span><h2><a href="/goods/${goods.goodsNo}" class="title">${goods.title}</a></h2></span>
+                        <span><h3><a href="/goods/${goods.goodsNo}"><fmt:formatNumber value="${goods.sellPrice}" pattern="#,###"/></a></h3></span>
                     </div>
 
                     <c:if test="${i%4 == 0}">

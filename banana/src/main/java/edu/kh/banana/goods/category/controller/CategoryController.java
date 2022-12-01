@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
@@ -69,8 +70,21 @@ public class CategoryController {
     }
 	
 	// 상품 상세 페이지 이동
-	@GetMapping("/detailed")
-	public String detailedPage() {
+	@GetMapping("/goods/{goodsNo}")
+	public String detailedPage(@PathVariable("goodsNo") int goodsNo,
+			   				   @SessionAttribute(value="loginMember", required=false) Member loginMember,
+							   Model model) {
+		
+		GoodsSell goodsInfo = null;
+		
+		goodsInfo.setGoodsNo(goodsNo);
+		
+		if(loginMember != null) {
+			goodsInfo.setLoginMemberNo(loginMember.getMemberNo());
+		}
+		
+		Map<String, Object> map = service.detailedPage(goodsInfo, goodsNo);
+		
 		return "goods/detailedPage";
 	}
 }

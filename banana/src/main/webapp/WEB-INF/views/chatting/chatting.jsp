@@ -61,7 +61,9 @@
 			</ul>
 			<!-- 채팅박스 -->
 			<div class="chatting-content">
+				<!-- 채팅내용 -->
 				<ul class="display-chatting">
+
 					<li class="my-chat">
 						<span class="chatDate">14:01</span>
 						<p class="chat">가나다라마바사</p>

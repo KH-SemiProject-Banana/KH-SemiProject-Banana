@@ -79,7 +79,7 @@ public class ChattingWebsocketHandler extends TextWebSocketHandler{
 			
 			// 보낸 시간에 DB에 있고 msg 객체에는 없는 상태
 			// -> 보낸 시간 생성
-			SimpleDateFormat sdf =new SimpleDateFormat("yyyy.MM.dd hh:mm");
+			SimpleDateFormat sdf =new SimpleDateFormat("aa hh:mm");
 			msg.setSendTime( sdf.format(new Date()));
 										// java.util.Date;
 			

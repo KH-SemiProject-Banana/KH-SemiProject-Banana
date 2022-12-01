@@ -127,34 +127,34 @@
                     <!-- 채팅박스 -->
                     <div  class="chatting-content">
                         <!-- 채팅내용 -->
-                        <div class="display-chatting">
+                        <ul class="display-chatting">
                         
                             <!-- 메시지 시작 날짜 -->
-                            <div class="date-line">
+                            <li class="date-line">
                                 <day datetime="2021-03-29">2021년 3월 29일 월요일</day>
-                            </div>
+                            </li>
 
                             <!-- 내채팅 -->
-                            <div class="my-chat">        
+                            <li class="my-chat">        
                                 <div class="my-chat-col">
-                                    <span class="chat">더 내려간다</span>
-                                    <span class="chat">바닷속으로</span>
-                                    <span class="chat">납작하게</span>
-                                    <span class="chat">엎드려있는ㅇㅇㅇㅇㅇㅇ</span>
+                                    <p class="chat">더 내려간다</p>
+                                    <p class="chat">바닷속으로</p>
+                                    <p class="chat">납작하게</p>
+                                    <p class="chat">엎드려있는ㅇㅇㅇㅇㅇㅇ</p>
                                 </div>
                                 <time class="chatDate">오전 10:30</time>
-                            </div>
+                            </li>
 
                             <!-- 상대채팅 -->
-                            <div class="target-chat">
+                            <li class="target-chat">
                                 <img class="profile-img" src="/resources/images/user.png" alt="상대방프로필사진"> 
                                 <div class="target-chat-col">
-                                    <span class="profile-name">바나나</span>
-                                    <span class="chat">가자미 처럼</span>
-                                    <span class="chat">내려간다</span>
-                                    <span class="chat">답이없다..</span>
-                                    <span class="chat">떨어지는 내 주식처럼</span>
-                                    <span class="chat">떨어지는 내 주식처럼</span>
+                                    <b class="profile-name">바나나</b>
+                                    <p class="chat">가자미 처럼</p>
+                                    <p class="chat">내려간다</p>
+                                    <p class="chat">답이없다..</p>
+                                    <p class="chat">떨어지는 내 주식처럼</p>
+                                    <p class="chat">떨어지는 내 주식처럼</p>
                                     <span class="chat">떨어지는 내 주식처럼</span>
                                     <span class="chat">떨어지는 내 주식처럼</span>
                                     <span class="chat">떨어지는 내 주식처럼</span>
@@ -166,9 +166,9 @@
                                     <span class="chat">ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ</span>
                                 </div>
                                 <time class="chatDate">오전 10:35</time>
-                            </div>
+                            </li>
 
-                        </div>
+                        </ul>
 
                         <!-- 채팅 내용 입력 박스 -->
                         <div id="input-area">

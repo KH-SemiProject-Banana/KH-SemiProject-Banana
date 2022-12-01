@@ -336,7 +336,7 @@
 
 
 /* 상대방 프로필 사진 스타일 */
-.profile-img{
+.target-chat > img{
     width: 50px;
     margin: 0 10px 0 10px;
     border-radius: 10px;
@@ -366,7 +366,7 @@
     margin-top: 0.3125rem;
     margin-bottom: 0.3125rem;
 }
-.target-chat > .profile-img{
+.target-chat > img{
     align-self: flex-start;
 }
 .target-chat-col > .chat{

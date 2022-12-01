@@ -94,50 +94,55 @@ const selectChattingFn = () => {
 			console.log(messageList);
 
 			// <ul class="display-chatting">
-			const div = document.querySelector(".display-chatting");
+			const ul = document.querySelector(".display-chatting");
 
-			div.innerHTML = ""; // 이전 내용 지우기
+			ul.innerHTML = ""; // 이전 내용 지우기
 
 			// 메세지 만들어서 출력하기
 			for(let msg of messageList){
-				//<div>,  <div class="my-chat">   
-				const div = document.createElement("div");
+				//<li>,  <li class="my-chat">
+				const li = document.createElement("li");
+				//<div class="my-chat-col"></div>
+				const div = document.createElement("div")
 
+				// 메세지 내용
+				const p = document.createElement("p");
+				p.classList.add("chat");
+				p.innerHTML = msg.messageContent; // br태그 해석을 위해 innerHTML
+				
 				// 보낸 시간
 				const time = document.createElement("time");
 				time.classList.add("chatDate");
 				time.innerText = msg.sendTime;
 
-				// 메세지 내용
-				const span = document.createElement("span");
-				span.classList.add("chat");
-				span.innerHTML = msg.messageContent; // br태그 해석을 위해 innerHTML
-
 				// 내가 작성한 메세지인 경우
 				if(loginMemberNo == msg.senderNo){ 
-					div.classList.add("my-chat");
+					li.classList.add("my-chat");
+					div.classList.add("my-chat-col");
 					
-					div.append(span,time);
+					div.append(p);
 					
 				}else{ // 상대가 작성한 메세지인 경우
-					div.classList.add("target-chat");
+					li.classList.add("target-chat");
 
 					// 상대 프로필
 					// <img src="/resources/images/user.png">
 					const img = document.createElement("img");
+					img.classList.add("profile-name"); //안됨
 					img.setAttribute("src", selectTargetProfile);
 					
+
 					const div = document.createElement("div");
+					div.classList.add("target-chat-col");
 
 					// 상대 이름
-					const span = document.createElement("span");
-					span.innerText = selectTargetName; // 전역변수
-					span.classList.add("profile-name");
+					const b = document.createElement("b");
+					b.innerText = selectTargetName; // 전역변수
 
-					const br = document.createElement("br");
+					//const br = document.createElement("br");
 
-					div.append(b, br, p, span);
-					li.append(img,div);
+					div.append(b, p);
+					li.append(img,div, time);
 
 				}
 
@@ -304,41 +309,49 @@ chattingSock.onmessage = function(e) {
 		// 메세지 만들어서 출력하기
 		//<li>,  <li class="my-chat">
 		const li = document.createElement("li");
-	
-		// 보낸 시간
-		const span = document.createElement("span");
-		span.classList.add("chatDate");
-		span.innerText = msg.sendTime;
-	
+		//<div class="my-chat-col"></div>
+		const div = document.createElement("div")
+		
 		// 메세지 내용
 		const p = document.createElement("p");
 		p.classList.add("chat");
 		p.innerHTML = msg.messageContent; // br태그 해석을 위해 innerHTML
-	
+
+		// 보낸 시간
+		const time = document.createElement("time");
+		time.classList.add("chatDate");
+		time.innerText = msg.sendTime;
+		
 		// 내가 작성한 메세지인 경우
 		if(loginMemberNo == msg.senderNo){ 
 			li.classList.add("my-chat");
-			
-			li.append(span, p);
-			
+			div.classList.add("my-chat-col");
+
+			li.append(div,time);
+			div.append(p);
+
+
 		}else{ // 상대가 작성한 메세지인 경우
 			li.classList.add("target-chat");
 	
 			// 상대 프로필
 			// <img src="/resources/images/user.png">
 			const img = document.createElement("img");
+			img.classList.add("profile-name"); //안됨
 			img.setAttribute("src", selectTargetProfile);
+
 			
 			const div = document.createElement("div");
-	
+			div.classList.add("target-chat-col");
+
 			// 상대 이름
 			const b = document.createElement("b");
 			b.innerText = selectTargetName; // 전역변수
 	
-			const br = document.createElement("br");
+			//const br = document.createElement("br");
 	
-			div.append(b, br, p, span);
-			li.append(img,div);
+			div.append(b, p);
+			li.append(img,div, time);
 	
 		}
 	

@@ -111,6 +111,15 @@ public class GoodsDAO {
 		return sqlSession.selectList("goodsMapper.selectImageList");
 	}
 
+	/** 상품 삭제
+	 * @param goodsNo
+	 * @return
+	 */
+	public int goodsDelete(int goodsNo) {
+		
+		return sqlSession.update("goodsMapper.goodsDelete", goodsNo);
+	}
+
 
 
 

@@ -147,5 +147,16 @@ public class GoodsController {
 		return service.goodsLikeDown(paramMap);
 	}
 
+	
+	/** 상품 삭제
+	 * @param boardNo
+	 * @return
+	 */
+	@GetMapping("/delete")
+	@ResponseBody
+	public int goodsDelete(int goodsNo) {
+		
+		return service.goodsDelete(goodsNo);
+	}
 
 }

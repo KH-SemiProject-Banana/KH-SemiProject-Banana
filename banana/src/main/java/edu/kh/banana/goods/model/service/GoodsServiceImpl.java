@@ -84,6 +84,9 @@ public class GoodsServiceImpl implements GoodsService {
 	/**
 	 * 내가 등록한 상품 1개 조회
 	 */
+	/**
+	 *
+	 */
 	@Override
 	public GoodsSell selectGoods(int goodsNo) {
 		
@@ -146,6 +149,15 @@ public class GoodsServiceImpl implements GoodsService {
 	public List<String> selectImageList() {
 		
 		return dao.selectImageList();
+	}
+
+	/**
+	 * 상품 삭제
+	 */
+	@Override
+	public int goodsDelete(int goodsNo) {
+		
+		return dao.goodsDelete(goodsNo);
 	}
 
 

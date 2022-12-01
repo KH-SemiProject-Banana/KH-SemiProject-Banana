@@ -73,6 +73,15 @@ public interface GoodsService {
 	 */
 	List<String> selectImageList();
 
+
+
+
+	/** 상품 삭제
+	 * @param boardNo
+	 * @return
+	 */
+	int goodsDelete(int goodsNo);
+
 	
 	
 	

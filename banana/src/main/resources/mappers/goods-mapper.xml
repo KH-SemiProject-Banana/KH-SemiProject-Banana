@@ -183,6 +183,14 @@
   	</foreach>
   	
   </insert>
+  
+  
+  <!-- 상품 삭제 -->
+  <update id="goodsDelete" parameterType="_int">
+  	UPDATE  GOODS_SELL gs  SET
+	GOODS_DEL_FL = 'Y'
+	WHERE GOODS_NO = #{goodsNo}
+  </update>
 
   
 </mapper>

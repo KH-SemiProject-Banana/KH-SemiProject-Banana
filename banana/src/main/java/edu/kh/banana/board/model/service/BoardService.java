@@ -67,8 +67,9 @@ public interface BoardService {
 	 * @param imageList
 	 * @param deleteList
 	 * @return
+	 * @throws IOException 
 	 */
-	int boardUpdate(String webPath, String folderPath, Board board, List<MultipartFile> imageList, String deleteList);
+	int boardUpdate(String webPath, String folderPath, Board board, List<MultipartFile> imageList, String deleteList) throws IOException;
 
 	
 	/** 게시글 삭제
@@ -76,5 +77,17 @@ public interface BoardService {
 	 * @return
 	 */
 	int boardDelete(int boardNo);
+
+	/** 이미지 변경명 조회
+	 * @return dbList
+	 */
+	List<String> selectImageList();
+
+	/** 검색조건이 있는 게시글 목록 조회
+	 * @param paramMap
+	 * @param cp
+	 * @return boardList
+	 */
+	Map<String, Object> selectBoardList(Map<String, Object> paramMap, int cp);
 
 }

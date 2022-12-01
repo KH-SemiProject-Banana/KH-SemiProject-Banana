@@ -31,6 +31,14 @@ import lombok.ToString;
 		private String imagePath;
 		private int likeCount;
 		
+		// 검색 + 페이징
+		private int cp = 1;
+		private int order = 1;
+		private String[] location;
+		
+		// 좋아요
+		private int loginMemberNo = 0;
+		private int memberNo;
 		
 		
 		// 메인페이지에 보여질 이미지중 썸네일(img_order == 0)

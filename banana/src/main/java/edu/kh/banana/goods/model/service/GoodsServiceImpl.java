@@ -154,6 +154,15 @@ public class GoodsServiceImpl implements GoodsService {
 		return dao.goodsLikeDown(paramMap);
 	}
 
+	/**
+	 * db~서버 이미지 동기화를 위해 renameList 조회
+	 */
+	@Override
+	public List<String> selectImageList() {
+		
+		return dao.selectImageList();
+	}
+
 
 
 

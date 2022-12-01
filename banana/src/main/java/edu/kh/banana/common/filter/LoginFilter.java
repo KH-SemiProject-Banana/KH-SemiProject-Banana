@@ -14,7 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 // urlPattern에 "/member/myPage/*" 추가하기-->( )
-@WebFilter(filterName = "loginFilter", urlPatterns = {"/goods/*", "/member/logout"})
+@WebFilter(  filterName = "loginFilter")
+
 public class LoginFilter extends HttpFilter implements Filter{
 	
 

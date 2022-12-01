@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
+import edu.kh.banana.board.model.BoardUpdateException;
 import edu.kh.banana.board.model.dao.BoardDAO;
 import edu.kh.banana.board.model.vo.Board;
 import edu.kh.banana.board.model.vo.BoardImage;
@@ -181,10 +182,13 @@ public class BoardServiceImpl implements BoardService{
 
 	/**
 	 * 게시글 수정
+	 * @throws IOException 
+	 * @throws IllegalStateException 
 	 */
 	@Override
+	@Transactional(rollbackFor = Exception.class)
 	public int boardUpdate(String webPath, String folderPath, Board board, List<MultipartFile> imageList,
-			String deleteList) {
+			String deleteList) throws IOException {
 		
 		// 1. 게시글 부분만 수정
 		
@@ -207,15 +211,71 @@ public class BoardServiceImpl implements BoardService{
 					+ " AND IMG_ORDER IN(" + deleteList + ")";
 				
 				result = dao.boardImageDelete(condition);
+				
+				if(result == 0) {
+					throw new BoardUpdateException("이미지 삭제 실패");
+				}
 			}
 			
 			
-			// 2) DAO 호출
+			// 2) imageList에서 실제 업로드된 파일을 찾아 분류하는 작업
+			
+			// imageList : 실제 파일이 담겨있는 리스트
+			// boardImageList : DB에 삽입할 이미지 정보만 담겨있는 리스트
+			// renameList : 변경된 파일명만 담겨있는 리스트
+			
+			List<BoardImage> boardImageList = new ArrayList<BoardImage>();
+			List<String> renameList = new ArrayList<String>();
+			
+			for(int i = 0; i < imageList.size(); i++) {
+				
+				if(imageList.get(i).getSize() > 0) {
+					
+					BoardImage img = new BoardImage();
+					
+					img.setImagePath(webPath);
+					
+					// 원본 파일명 -> 변경된 파일명 저장
+					String rename = Util.fileRename(imageList.get(i).getOriginalFilename());
+					img.setImageRename(rename);
+					renameList.add(rename);
+					
+					// 원본 파일명
+					img.setImageOriginal(imageList.get(i).getOriginalFilename());
+					img.setBoardNo(board.getBoardNo());
+					img.setImageOrder(i);
+					
+					
+					
+					boardImageList.add(img);
+					
+					result = dao.boardImageUpdate(img);
+					
+					if(result == 0) { // 새 이미지 삽입
+						result = dao.boardImageInsert(img);
+						
+						if(result == 0) {
+							throw new BoardUpdateException("이미지 수정/삽입 예외");
+						}
+					}
+					
+				}
+			}
+			
+			if(!boardImageList.isEmpty()) {
+				
+				for(int i = 0; i < boardImageList.size(); i++) {
+					int index = boardImageList.get(i).getImageOrder();
+					imageList.get(index).transferTo(new File(folderPath + renameList.get(i)));
+				}
+			}
+		
+			
 		}
 		
 		
 		
-		return 0;
+		return result;
 	}
 
 	/**
@@ -225,5 +285,40 @@ public class BoardServiceImpl implements BoardService{
 	public int boardDelete(int boardNo) {
 		
 		return dao.boardDelete(boardNo);
+	}
+
+	/**
+	 * 이미지 변경명 조회
+	 */
+	@Override
+	public List<String> selectImageList() {
+		
+		return dao.selectImageList();
+	}
+
+	
+	
+	/**
+	 * 검색조건이 있는 게시글 검색
+	 */
+	@Override
+	public Map<String, Object> selectBoardList(Map<String, Object> paramMap, int cp) {
+		
+		// 1. 검색조건이 일치하는 전체 게시글 수
+		int listCount = dao.getListCount(paramMap);
+		
+		// 2. 전체 게시글수 + cp를 이용해 페이징 처리
+		Pagination pagination = new Pagination(listCount, cp);
+		
+		// 3. 페이징처리 객체를 이용해 게시글 목록 조회
+		List<Board> boardList = dao.selectBoardList(pagination, paramMap);
+		
+		Map<String, Object> map = new HashMap<>();
+		map.put("boardList", boardList);
+		map.put("pagination", pagination);
+		
+		
+		
+		return map;
 	}
 }

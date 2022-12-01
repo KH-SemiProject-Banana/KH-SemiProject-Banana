@@ -1,9 +1,5 @@
-const chkBox = document.getElementsByName("location");
-const Gu = document.getElementById("Gu");
-
-Gu.innerHTML = "";
-
 // 체크박스 값 가져오기
+const chkBox = document.getElementsByName("location");
 const params = new URL(location.href).searchParams;
 const arr = params.getAll("location");
 
@@ -14,10 +10,23 @@ for(let i = 0; i < chkBox.length; i++){
 }
 
 // 체크한 구 표시
+const Gu = document.getElementById("Gu");
+Gu.innerHTML = "";
+
 for(let i = 0; i < chkBox.length; i++){
     if(chkBox[i].checked){
         Gu.innerHTML += "<div class='checkGu'><span class='remove'>×</span><span>" + chkBox[i].value + "</span></div>";
     }
+}
+
+// 최신순, 저가순, 고가순 표시
+const orderSelect = document.querySelectorAll("select > option");
+const order = params.get("order");
+
+switch(order) {
+    case "1": orderSelect[0].selected = true; break;
+    case "2": orderSelect[1].selected = true; break;
+    case "3": orderSelect[2].selected = true; break;
 }
 
 // 체크박스 개수 제한
@@ -49,48 +58,97 @@ for(let item of remove){
     })
 }
 
-// 1페이지(초기화면)
-const selectPage = document.getElementsByClassName("selectPage");
-const pageNo = document.getElementsByClassName("pageNo");
+// 좋아요
+const likeChk = document.getElementsByClassName("likeChk");
 
-if(selectPage.length == 0){
-    pageNo[0].classList.add("selectPage");
+for(let i = 0; i < likeChk.length; i++) {
+    likeChk[i].addEventListener("change", () => {
+        if(memberNo == "") {
+            alert("로그인 후 이용해주세요.");
+            likeChk[i].checked = false;
+            location.href = "/member/login";
+            return;
+        }
+        
+        const goodsNo = likeChk[i].value;
+
+        if(likeChk[i].checked) {
+            $.ajax({
+                url : "/goodsLikeUp",
+                data : {"goodsNo" : goodsNo, "memberNo" : memberNo},
+                type : "GET",
+                success : (result) => {
+                    if (result > 0) {
+                        alert("찜 목록에 추가되었습니다.");
+                    } else {
+                        console.log("좋아요 실패");
+                    }
+                },
+                error : () => { console.log("좋아요 에러");}
+            });
+
+        } else {
+            $.ajax({
+                url : "/goodsLikeDown",
+                data : {"goodsNo" : goodsNo, "memberNo" : memberNo},
+                type : "GET",
+                success : (result) => {
+                    if (result > 0) {
+                        alert("찜 목록에서 삭제되었습니다.");
+                    } else {
+                        console.log("취소 실패");
+                    }
+                },
+                error : () => {console.log("취소 에러");}
+            });
+        }
+    })
 }
 
-// 페이지 번호
-for(let i = 0; i < pageNo.length; i++){
-    pageNo[i].addEventListener('click', function(){
+// 시행착오 코드
 
-        for(let j = 0; j < pageNo.length; j++){
-            pageNo[j].classList.remove("selectPage");
-        }
+// // 1페이지(초기화면)
+// const selectPage = document.getElementsByClassName("selectPage");
+// const pageNo = document.getElementsByClassName("pageNo");
 
-        pageNo[i].classList.add("selectPage");
-    });
-};
+// if(selectPage.length == 0){
+//     pageNo[0].classList.add("selectPage");
+// }
 
-// 페이지 이동 - 왼쪽 화살표
-document.getElementById("leftArrow").addEventListener("click", function(){
-    const selectPage = document.getElementsByClassName("selectPage")[0].innerText;
-    let href;
+// // 페이지 번호
+// for(let i = 0; i < pageNo.length; i++){
+//     pageNo[i].addEventListener('click', function(){
 
-    if(pageNo != 1){
-        pageNo[selectPage-2].classList.add("selectPage");
-        pageNo[selectPage-1].classList.remove("selectPage");
-        href = pageNo[selectPage-2].href;
-        location.href = href;
-    }
-});
+//         for(let j = 0; j < pageNo.length; j++){
+//             pageNo[j].classList.remove("selectPage");
+//         }
 
-// 페이지 이동 - 오른쪽 화살표
-document.getElementById("rightArrow").addEventListener("click", function(){
-    const selectPage = document.getElementsByClassName("selectPage")[0].innerText;
-    let href;
+//         pageNo[i].classList.add("selectPage");
+//     });
+// };
 
-    if(pageNo != 10){
-        pageNo[selectPage].classList.add("selectPage");
-        pageNo[selectPage-1].classList.remove("selectPage");
-        href = pageNo[selectPage].href;
-        location.href = href;
-    }
-});
+// // 페이지 이동 - 왼쪽 화살표
+// document.getElementById("leftArrow").addEventListener("click", function(){
+//     const selectPage = document.getElementsByClassName("selectPage")[0].innerText;
+//     let href;
+
+//     if(pageNo != 1){
+//         pageNo[selectPage-2].classList.add("selectPage");
+//         pageNo[selectPage-1].classList.remove("selectPage");
+//         href = pageNo[selectPage-2].href;
+//         location.href = href;
+//     }
+// });
+
+// // 페이지 이동 - 오른쪽 화살표
+// document.getElementById("rightArrow").addEventListener("click", function(){
+//     const selectPage = document.getElementsByClassName("selectPage")[0].innerText;
+//     let href;
+
+//     if(pageNo != 10){
+//         pageNo[selectPage].classList.add("selectPage");
+//         pageNo[selectPage-1].classList.remove("selectPage");
+//         href = pageNo[selectPage].href;
+//         location.href = href;
+//     }
+// });

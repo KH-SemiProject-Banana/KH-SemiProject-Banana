@@ -62,23 +62,23 @@
 			<!-- 채팅박스 -->
 			<div class="chatting-content">
 				<ul class="display-chatting">
-					<%-- <li class="my-chat">
+					<li class="my-chat">
 						<span class="chatDate">14:01</span>
 						<p class="chat">가나다라마바사</p>
 					</li>
 
 					<li class="target-chat">
 						<img src="/resources/images/user.png">
-
 						<div>
-							<b>이번유저</b>	<br>
+							<b>이번유저</b>
+							<br>
 							<p class="chat">
 								안녕하세요?? 반갑습니다.<br>
 								ㅎㅎㅎㅎㅎ
 							</p>
 							<span class="chatDate">14:05</span>
 						</div>
-					</li> --%>
+					</li>
 				</ul>	
 			
 				<div class="input-area">

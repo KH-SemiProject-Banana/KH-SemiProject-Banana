@@ -94,33 +94,33 @@ const selectChattingFn = () => {
 			console.log(messageList);
 
 			// <ul class="display-chatting">
-			const ul = document.querySelector(".display-chatting");
+			const div = document.querySelector(".display-chatting");
 
-			ul.innerHTML = ""; // 이전 내용 지우기
+			div.innerHTML = ""; // 이전 내용 지우기
 
 			// 메세지 만들어서 출력하기
 			for(let msg of messageList){
-				//<li>,  <li class="my-chat">
-				const li = document.createElement("li");
+				//<div>,  <div class="my-chat">   
+				const div = document.createElement("div");
 
 				// 보낸 시간
-				const span = document.createElement("span");
-				span.classList.add("chatDate");
-				span.innerText = msg.sendTime;
+				const time = document.createElement("time");
+				time.classList.add("chatDate");
+				time.innerText = msg.sendTime;
 
 				// 메세지 내용
-				const p = document.createElement("p");
-				p.classList.add("chat");
-				p.innerHTML = msg.messageContent; // br태그 해석을 위해 innerHTML
+				const span = document.createElement("span");
+				span.classList.add("chat");
+				span.innerHTML = msg.messageContent; // br태그 해석을 위해 innerHTML
 
 				// 내가 작성한 메세지인 경우
 				if(loginMemberNo == msg.senderNo){ 
-					li.classList.add("my-chat");
+					div.classList.add("my-chat");
 					
-					li.append(span, p);
+					div.append(span,time);
 					
 				}else{ // 상대가 작성한 메세지인 경우
-					li.classList.add("target-chat");
+					div.classList.add("target-chat");
 
 					// 상대 프로필
 					// <img src="/resources/images/user.png">
@@ -130,8 +130,9 @@ const selectChattingFn = () => {
 					const div = document.createElement("div");
 
 					// 상대 이름
-					const b = document.createElement("b");
-					b.innerText = selectTargetName; // 전역변수
+					const span = document.createElement("span");
+					span.innerText = selectTargetName; // 전역변수
+					span.classList.add("profile-name");
 
 					const br = document.createElement("br");
 

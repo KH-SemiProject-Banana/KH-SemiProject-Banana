@@ -47,16 +47,15 @@
             <div id="mainBox">
                 <!--------------------- 채팅 리스트 --------------------->
                 <div id="chatting-list">
-                    
                     <!-- User프로필1 -->
-                    <div class="userProfile"><%-- class＝“chatting-item” --%>
+                    <%-- <div class="userProfile">
                         <img class="talkProfileImages" src="/resources/images/banana-logo.png">
                         <div class="name">바나나</div>
                         <div class="talkClockAlarm">
                             <div class="talkClock">오후 09:10</div>
                             <div class="talkAlarm"> 1</div>
                         </div>
-                    </div>
+                    </div> --%>
 
                     <c:forEach var="room" items="${roomList}">
                         <%--  id == 채팅방 번호 --%>
@@ -78,21 +77,24 @@
                                 </p>
                                 <div>
                                     <p class="recent-message">${room.lastMessage}</p><%-- 채팅메세지 --%>
-                                    <c:if test="${room.notReadCount > 0}"> <%-- 메세지 왔을때 카운트 --%>
-                                        <p class="not-read-count">${room.notReadCount}</p>
+                                    <c:if test="${room.notReadCount > 0}"> 
+                                        <p class="not-read-count">${room.notReadCount}</p><%-- 메세지 왔을때 카운트 --%>
                                     </c:if>
                                 </div>
                             </div>
-
                         </li>
                     </c:forEach>
+
+
+
+
 
 
 
                 </div>
                 <!--------------------- 채팅 내용박스 --------------------->
                 <div id="chatBoxMain">
-                    <!-- 채팅박스 상단 상품  -->
+                    <!--------- 채팅박스 상단 상품 시작 --------->
                     <div id="productInforBox">
                         <div class="productImgBox">
                             <img class="productImgBox1"src="\resources\images\hydong-test-RTX4090.jpg">
@@ -111,117 +113,60 @@
                             </a>
                         </div>
                     </div> 
+                    <!--------- 채팅박스 상단 상품 시작 끝--------->
+
 
                     <!-- 채팅박스 -->
-                    <div id="chatBox">
-                    <!-- 메시지 시작 날짜 -->
-                        <div class="date-line">
-                            <time datetime="2021-03-29">2021년 3월 29일 월요일</time>
-                        </div>
+                    <div  class="chatting-content">
                         <!-- 채팅내용 -->
-                        <div class="main-chat">
+                        <div class="display-chatting">
                         
-                            <!-- 내채팅 -->
-                            <div class="me-chat">        
-                                <div class="me-chat-col">
-                                    <span class="balloon">내려간다~~</span>
-                                </div>
-                                <time datetime="09:30:00+09:00">오전 9:30</time>
-                            </div>
-
-                            <!-- 상대채팅 -->
-                            <div class="friend-chat">
-                                <img class="profile-img" src="/resources/images/user.png" alt="상대방프로필사진">
-                                <div class="friend-chat-col">
-                                    <span class="profile-name">바나나</span>
-                                    <span class="balloon">저 바닫으로~~</span>
-                                    <span class="balloon">떨어지는 별똥별마냥</span>
-                                    <span class="balloon">땅에 추락한다</span>
-                                </div>
-                                <time datetime="10:15:00+09:00">오전 10:15</time>
+                            <!-- 메시지 시작 날짜 -->
+                            <div class="date-line">
+                                <day datetime="2021-03-29">2021년 3월 29일 월요일</day>
                             </div>
 
                             <!-- 내채팅 -->
-                            <div class="me-chat">        
-                                <div class="me-chat-col">
-                                    <span class="balloon">더 내려간다</span>
-                                    <span class="balloon">바닷속으로</span>
-                                    <span class="balloon">납작하게</span>
-                                    <span class="balloon">엎드려있는</span>
+                            <div class="my-chat">        
+                                <div class="my-chat-col">
+                                    <span class="chat">더 내려간다</span>
+                                    <span class="chat">바닷속으로</span>
+                                    <span class="chat">납작하게</span>
+                                    <span class="chat">엎드려있는ㅇㅇㅇㅇㅇㅇ</span>
                                 </div>
-                                <time datetime="10:30:00+09:00">오전 10:30</time>
+                                <time class="chatDate">오전 10:30</time>
                             </div>
 
                             <!-- 상대채팅 -->
-                            <div class="friend-chat">
-                                <img class="profile-img" src="/resources/images/banana-logo.png" alt="상대방프로필사진">
-                                <div class="friend-chat-col">
+                            <div class="target-chat">
+                                <img class="profile-img" src="/resources/images/user.png" alt="상대방프로필사진"> 
+                                <div class="target-chat-col">
                                     <span class="profile-name">바나나</span>
-                                    <span class="balloon">가자미 처럼</span>
-                                    <span class="balloon">내려간다</span>
-                                    <span class="balloon">답이없다..</span>
-                                    <span class="balloon">떨어지는 내 주식처럼</span>
-                                    <span class="balloon">ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ</span>
+                                    <span class="chat">가자미 처럼</span>
+                                    <span class="chat">내려간다</span>
+                                    <span class="chat">답이없다..</span>
+                                    <span class="chat">떨어지는 내 주식처럼</span>
+                                    <span class="chat">떨어지는 내 주식처럼</span>
+                                    <span class="chat">떨어지는 내 주식처럼</span>
+                                    <span class="chat">떨어지는 내 주식처럼</span>
+                                    <span class="chat">떨어지는 내 주식처럼</span>
+                                    <span class="chat">떨어지는 내 주식처럼</span>
+                                    <span class="chat">떨어지는 내 주식처럼</span>
+                                    <span class="chat">떨어지는 내 주식처럼</span>
+                                    <span class="chat">떨어지는 내 주식처럼</span>
+                                    <span class="chat">떨어지는 내 주식처럼</span>
+                                    <span class="chat">ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ</span>
                                 </div>
-                                <time datetime="10:35:00+09:00">오전 10:35</time>
+                                <time class="chatDate">오전 10:35</time>
                             </div>
-                            <!-- 내채팅 -->
-                            <div class="me-chat">        
-                                <div class="me-chat-col">
-                                    <span class="balloon">내려간다~~</span>
-                                </div>
-                                <time datetime="09:30:00+09:00">오전 9:30</time>
-                            </div>
-
-                            <!-- 상대채팅 -->
-                            <div class="friend-chat">
-                                <img class="profile-img" src="/resources/images/banana-logo.png" alt="상대방프로필사진">
-                                <div class="friend-chat-col">
-                                    <span class="profile-name">바나나</span>
-                                    <span class="balloon">저 바닫으로~~</span>
-                                    <span class="balloon">떨어지는 별똥별마냥</span>
-                                    <span class="balloon">땅에 추락한다</span>
-                                </div>
-                                <time datetime="10:15:00+09:00">오전 10:15</time>
-                            </div>
-
-                            <!-- 내채팅 -->
-                            <div class="me-chat">        
-                                <div class="me-chat-col">
-                                    <span class="balloon">더 내려간다</span>
-                                    <span class="balloon">바닷속으로</span>
-                                    <span class="balloon">납작하게</span>
-                                    <span class="balloon">엎드려있는</span>
-                                </div>
-                                <time datetime="10:30:00+09:00">오전 10:30</time>
-                            </div>
-
-                            <!-- 상대채팅 -->
-                            <div class="friend-chat">
-                                <img class="profile-img" src="/resources/images/banana-logo.png" alt="상대방프로필사진">
-                                <div class="friend-chat-col">
-                                    <span class="profile-name">바나나</span>
-                                    <span class="balloon">가자미 처럼</span>
-                                    <span class="balloon">내려간다</span>
-                                    <span class="balloon">답이없다..</span>
-                                    <span class="balloon">떨어지는 내 주식처럼</span>
-                                    <span class="balloon">ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ</span>
-                                </div>
-                                <time datetime="10:35:00+09:00">오전 10:35</time>
-                            </div>
-
 
                         </div>
-                    </div>
-                    <!-- 채팅 내용 입력 박스 -->
-                    <div id="chattingBox">
-                        <form name="chatform" action="#" method="post"  class="chatForm">
-                            <textarea id="chattingInput" name="chat-insert"placeholder="메세지를 입력하세요." required></textarea>
-                            <input type="submit" class="chat-submit" id="chat-submit" value="전송">
-                            <label for="chat-submit">
-                                <div class="chatSubmit" >전송</div>
-                            </label>
-                        </form>
+
+                        <!-- 채팅 내용 입력 박스 -->
+                        <div id="input-area">
+                            <textarea id="inputChatting" name="chat-insert"placeholder="메세지를 입력하세요." required></textarea>
+                            <button id="send" >전송</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -241,7 +186,7 @@
 		// 그 때 전달 된 채팅방 번호를 저장하는 변수
 		const tempNo = "${chattingNo}"; 
 	</script>
-    <script src="/resources/js/hyodong/chatting//chatting.js"></script>
+    <script src="/resources/js/hyodong/chatting/chatting.js"></script>
 
 </body>
 </html>

@@ -89,7 +89,11 @@
  
  }
 
-
+ .btn-area > button:hover{
+    background-color: var(--darkYellow);
+    color: white;
+    transition-duration: 0.3s;
+ }
 
 
 

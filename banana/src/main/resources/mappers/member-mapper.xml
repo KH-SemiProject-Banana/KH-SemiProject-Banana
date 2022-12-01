@@ -25,16 +25,15 @@
  	 </resultMap>
  	 
  	 
- 	 
+ 	 <!-- 로그인 기능 -->
  	 <select id="login" parameterType="string" resultMap="member_rm">
  	 	SELECT MEMBER_NO, MEMBER_EMAIL, MEMBER_PW, MEMBER_NICKNAME, INTRODUCE, MEMBER_TEL,MEMBER_NAME,
- 	 	MEMBER_ADDRESS, PROFILE_IMG, 
+ 	 	MEMBER_ADDRESS, PROFILE_IMG, AUTHORITY,
  	 	TO_CHAR(ENROLL_DATE, 'YYYY"년" MM"월" DD"일" HH24"시" MI"분" SS"초"') AS ENROLL_DATE,
- 	 	BIRTHDAY, MANNER
+ 	 	BIRTHDAY, MANNER, AUTHORITY
  	 	FROM "MEMBER"
  	 	WHERE MEMBER_DEL_FL = 'N'
  	 	AND BLOCK_FL = 'N'
- 	 	AND AUTHORITY = 1
  	 	AND MEMBER_EMAIL = #{memberEmail}
  	 </select>
  	 

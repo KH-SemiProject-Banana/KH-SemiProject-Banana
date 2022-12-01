@@ -37,7 +37,15 @@
                 </div>
                 <!-- 프로필관련 -->
                 <div class="profil">
-                    <img class="profilImages" src="/resources/images/user.png" >
+                    <%-- <img class="profilImages" src="/resources/images/user.png" > --%>
+                    <div class="profileImgArea">
+                        <c:if test="${empty loginMember.profileImage}">
+                            <img  class="profilImages"src="/resources/images/banana-logo.png"  id="profileImg">
+                        </c:if>
+                        <c:if test="${not empty loginMember.profileImage}">
+                            <img  class="profilImages"src="${loginMember.profileImage}" id="profileImg">
+                        </c:if>
+                    </div>
                     <div class="profilName">${loginMember.memberNickname}</div>
                 </div>
             </section>

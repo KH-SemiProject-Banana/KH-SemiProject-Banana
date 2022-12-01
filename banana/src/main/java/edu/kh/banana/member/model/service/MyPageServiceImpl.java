@@ -133,4 +133,11 @@ public class MyPageServiceImpl implements MyPageService{
 		
 		return result;
 	}
+
+	//내가 쓴 후기 조회
+	@Override
+	public List<Review> selectSendingReview(int ratingNo) {
+		
+		return dao.selectSendingReview(ratingNo);
+	}
 }

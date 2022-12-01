@@ -31,6 +31,27 @@
 			<!-- 없는 애도 있을 텐데 (ex)MEMBER_DEL_FL 그럼 걔는 걍 안담겨서 null로 나옴... -->
 </resultMap>
 
+<resultMap type="Review" id="Review_rm">
+   	
+   		<!-- DB에서 PK에 해당하는 필드, 컬럼을 작성하는 태그이다........ -->
+   		<id property = "ratingNo" column = "RATING_NO" />
+   		
+   		<!-- 나머지 일반 컬럼...!!!! -->
+   			<result property="memberNo" column="MEMBER_NO" />
+			<result property="goodsNo" column="GOODS_NO" />
+			<result property="receiverNo" column="RECEIVER_NO" />
+			<result property="message" column="MESSAGE" />
+			<result property="createdAt" column="CREATED_AT" />
+			<result property="title" column="TITLE" />
+			<result property="memberNickname" column="MEMBER_NICKNAME" />
+			<result property="mannerDescription" column="MANNER_DESCRIPTION" />
+			
+			
+			<!-- 없는 애도 있을 텐데 (ex)MEMBER_DEL_FL 그럼 걔는 걍 안담겨서 null로 나옴... -->
+</resultMap>
+
+
+
 <select id="selectGoodsSoldList" resultMap = "goodsSell_rm">
 	SELECT G.GOODS_NO, SELLER_NO, TITLE,
 	<![CDATA[
@@ -159,7 +180,17 @@ WHERE MEMBER_NO = #{reviewBuyerNo}
 </update>
 
 
-
+<select id = "selectSendingReview" resultMap = "Review_rm">
+SELECT  TITLE, RATING_NO, 
+(SELECT MEMBER_NICKNAME FROM MEMBER M WHERE R.RECEIVER_NO  = M.MEMBER_NO) MEMBER_NICKNAME , MANNER_DESCRIPTION
+FROM REVIEW R
+JOIN GOODS_SELL G ON (G.GOODS_NO = R.GOODS_NO)
+JOIN "MEMBER" M ON (R.MEMBER_NO  = M.MEMBER_NO)
+JOIN REVIEW_RATING RV ON (RATING_NO = REVIEW_NO)
+JOIN REVIEW_DESCRIPTION D ON (RV.MANNER_NO = D.MANNER_NO)
+WHERE RATING_NO = #{ratingNo}
+ORDER BY D.MANNER_NO
+</select>
 
 
 

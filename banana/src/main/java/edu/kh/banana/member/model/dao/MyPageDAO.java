@@ -103,6 +103,15 @@ public class MyPageDAO {
 		return sqlSession.update("myPageMapper.updateBad", map);
 	}
 
+	/**내가 쓴 후기 조회
+	 * @param ratingNo
+	 * @return
+	 */
+	public List<Review> selectSendingReview(int ratingNo) {
+		
+		return sqlSession.selectList("myPageMapper.selectSendingReview",ratingNo);
+	}
+
 	
 
 

@@ -3,46 +3,40 @@
 let reviewGoodsNo;
 let reviewBuyerNo;
 
+//첫번째 팝업 띄우기
 function openPop(goodsNo, buyerNo, buyerNickname) {
-    $("input[class='good']").prop("checked",false);
-    $("input[class='bad']").prop("checked",false);
+    $("input[name ='good']").prop("checked",false);
+    $("input[name ='bad']").prop("checked",false);
     reviewGoodsNo = goodsNo;
     reviewBuyerNo = buyerNo;
     document.getElementById("buyerNickname").innerText = buyerNickname;
     
     document.getElementById("popup_layer").style.display = "block";
-    // for(let popupLayer of popupLayerList){
-
-    //     popupLayer.style.display = "block";
-    //     const nickName = document.createElement("p");
-    //     nickName.innerHTML = ""
-    //     //닉네임이 일단 각각 보여야 하고,
-    //     //key:value도 각각 있어야해.
-
-    // }
-
+ 
+   
 
     
 }
 
 
-
-//클릭이벤트로 클릭 시에 다른 쪽에 있는 체크박스 전부해제하는 코드
+//(첫번째 팝업 내부) 클릭이벤트로 클릭 시에 다른 쪽에 있는 체크박스 전부해제하는 코드
 const badChoice = document.getElementById("badchoice");
 const goodChoice = document.getElementById("goodchoice");
 const badArr = document.getElementsByClassName("bad");
 const goodArr = document.getElementsByClassName("good");
 
 badChoice.addEventListener("click",()=>{
-    $("input[class='good']").prop("checked",false);
+    
+    $("input[name ='good']").prop("checked",false);
 })
 
 goodChoice.addEventListener("click",()=>{
-    $("input[class='bad']").prop("checked",false);
+   
+    $("input[name ='bad']").prop("checked",false);
 })
 
 
-
+//첫번째 팝업의 [제출하기] 버튼
 const submitBtn = document.getElementById("submitButton");
 
 const goodCheckedArr = [];
@@ -93,6 +87,10 @@ submitBtn.addEventListener("click", function(){
 
 
     })
+
+    goodCheckedArr.length = 0;
+    badCheckedArr.length = 0;
+
 })
 
 //팝업 닫기
@@ -107,12 +105,14 @@ function closePop() {
 
 //////////////////////////////////////////////////////////////////////////////
 
+//document.querySelectorAll("[name='good']:checked")[0].nextElementSibling.innerText
+
 //팝업 띄우기 
-function openPop2(buyerNickname) {
-    document.getElementById("popup_layer2").style.display = "block";
+// function openPop2() {
+//     document.getElementById("popup_layer2").style.display = "block";
     
 
-}
+// }
 
 //팝업 닫기
 function closePop2() {
@@ -127,26 +127,85 @@ function closePop2() {
     
 }
 
+//2번째 팝업 열리는 기능
 document.getElementById("submitButton").addEventListener("click",function(){
 
     document.getElementById("popup_layer2").style.display = "block";
     document.getElementById("popup_layer").style.display = "none";
 
+    //document.querySelectorAll("[name='good']:checked")[0].nextElementSibling.innerText
+
+    //기존 꺼 삭제(누적 방지)
+    document.querySelector("#messageList").innerHTML = "";
+    
+    
+    const chkArr = document.querySelectorAll(".chk:checked");
+
+    for(let i = 0; i < chkArr.length;i++){
+        let li1 = document.createElement("li")
+        li1.innerText= chkArr[i].nextElementSibling.innerText;
+        document.querySelector("#messageList").append(li1);
+
+    }
+
+    
+
+    
 })
 
+//[보낸 후기 보기]를 할 때, 팝업 열리기!
+function openReview(ratingNo,buyerNickname,title) {
+
+    //2번째 팝업페이지가 block되게 한다!
+    document.getElementById("popup_layer2").style.display = "block";
+
+    //매개변수로 가져온 값을 집어넣었음.
+    document.getElementById("nickName1").innerText = buyerNickname;
+    document.getElementById("nickName2").innerText = buyerNickname;
+    document.getElementById("goodsTitle").innerText = title;
+
+    // //기존 꺼 삭제(누적 방지)
+    document.querySelector("#messageList").innerHTML = "";
+    
+    //수업용 ajax 참고하려고 가져옴!!
+    $.ajax({
+        url:"/member/myPage/selectSendingReview",
+        data:{"ratingNo":ratingNo},
+        type:"POST",
+        dataType : "JSON", // 응답데이터의 형식이 JSON이다. -> 자동으로 JS객체로 변환해줌...
+        success : (reviewList) => {
+            console.log(reviewList); //레알 reviewList가 나오는지 console로 찍어볼게용
+
+            // 1) JSON 형태의 문자열로 반환된 경우(JSON -> JS 객체)
+            // 방법 1) JSON.parse(문자열)
+            //console.log(JSON.parse(member));
+
+            // 방법 2) dataType : "JSON" 추가
+
+            // 2. Jackson라이브러리를 이용하면 걍 그 자체가 옴...js객체로...
+
+            //----------------------------------------------------
+            
+            for(let review of reviewList){
+
+                const li1 = document.createElement("li");
+                li1.innerText = review.mannerDescription;
+                document.querySelector("#messageList").append(li1);
+
+            }
+
+        },
+        error : () => {
+
+            console.log("받은/매너후기/목록 실패");
+
+        }
+    });
+}
 
 
 
-
-
-// document.getElementById("anotherPop").style.display="none";
-// document.getElementById("dot").addEventListener("click", function(){
-
-//     document.getElementById("anotherPop").style.display = "block";
-
-// })
-
-
+//글 안에 (dot) 누를 때 1. 열리고 / 2. 아무데나 누르면(dot제외) 닫히는 기능
 const dotList = document.getElementsByClassName("dot");
 
 for(let dot of dotList){
@@ -223,51 +282,11 @@ document.addEventListener("click",function(e){
 
 
 })
-// const intro = document.getElementById("p_intro");
-// document.getElementById("pen_intro").addEventListener("click",function(){
-
-//     const introChangeForm = document.createElement("form");
 
 
 
-// })
 
 
-
-/*
-document.getElementById("fourth-category").addEventListener("click",function(){
-    alert("안녕");
-    // document.getElementById("popup_layer2").style.display = "block";
-    console.log(document.getElementById("myBanana-sellList"));
-    document.getElementById("myBanana-sellList").style.display = "none";
-    document.getElementById("reviewsss").style.display = "block";
-})
-*/
-// document.getElementById("first-category").addEventListener("click",function(){
-//     alert("안녕");
-//     // document.getElementById("popup_layer2").style.display = "block";
-//     console.log(document.getElementById("myBanana-sellList"));
-//     document.getElementById("myBanana-sellList").style.display = "block";
-//     document.getElementById("reviewsss").style.display = "none";
-// })
-
-
-
-// const fourth = document.querySelector("#changeJsp");
-// const ms = document.getElementById("myBanana-sellList");
-
-
-// document.getElementById("fourth-category").addEventListener("click",function(){
-//     alert("안녕");
-
-//     console.log(document.querySelector("#changeJsp"));
-
-//     fourth.innerHTML="<jsp:include page='/WEB-INF/views/member/myPage_review.jsp'/>";
-//     ms.style.display = "none";
-    
-
-    
-// })
 
 const first = document.getElementById("myBanana-sellList");
 const fourth = document.querySelector("#changeJsp");
@@ -361,8 +380,8 @@ introUpdateBtn2.addEventListener("click", e => {
         changedBtn.style.display = "block";
     }
 
-
-
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+//자기소개 db에 수정된 거 넘기는 기능
     changedBtn.addEventListener("click",function(e){
         console.log(input.value);
         $.ajax({

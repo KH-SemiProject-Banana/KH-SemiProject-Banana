@@ -15,8 +15,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import com.google.gson.Gson;
+
 import edu.kh.banana.member.model.service.MyPageService;
 import edu.kh.banana.member.model.vo.Member;
+import edu.kh.banana.review.model.vo.Review;
 
 @RequestMapping("/member/myPage")
 @Controller
@@ -148,6 +152,20 @@ public class MyPageController {
 				loginMember,reviewGoodsNo,reviewBuyerNo);
 		//int result = service.sendingReview();
 		return result;
+	}
+	
+	/**내가 쓴 후기 조회
+	 * @param ratingNo
+	 * @return
+	 */
+	@PostMapping("/selectSendingReview")
+	@ResponseBody
+	public String selectSendingReview(int ratingNo) {
+		
+		List<Review> reviewList = service.selectSendingReview(ratingNo);
+		
+		System.out.println(reviewList);
+		return new Gson().toJson(reviewList);
 	}
 	
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import edu.kh.banana.member.model.vo.Member;
+import edu.kh.banana.review.model.vo.Review;
 
 public interface MyPageService {
 
@@ -34,6 +35,12 @@ public interface MyPageService {
 
 	int sendingMannerReview(List<String> goodCheckedArr,List<String> badCheckedArr, String reviewText, Member loginMember, int reviewGoodsNo,
 			int reviewBuyerNo);
+
+	/**내가 쓴 후기 조회
+	 * @param ratingNo
+	 * @return
+	 */
+	List<Review> selectSendingReview(int ratingNo);
 
 	
 }

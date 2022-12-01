@@ -25,8 +25,8 @@ function loadFile(input) {
     for (let file of files) {
         const temp = document.querySelectorAll("#image-show > img");
 
-        if (temp.length == 10) {
-            alert("최대 10개의 파일을 등록할 수 있습니다");
+        if (temp.length == 5) {
+            alert("최대 5개의 파일을 등록할 수 있습니다");
             return false;
         }
 
@@ -61,7 +61,7 @@ function loadFile(input) {
 
 
         const count = container.childElementCount;
-        document.getElementsByClassName("img__pic-count")[0].innerText = "(" + count + "/10)";
+        document.getElementsByClassName("img__pic-count")[0].innerText = "(" + count + "/5)";
 
     }
 

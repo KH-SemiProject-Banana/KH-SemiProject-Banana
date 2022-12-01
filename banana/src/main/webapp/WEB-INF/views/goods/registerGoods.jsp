@@ -40,7 +40,7 @@
                             <div class="required">*</div>
                         </div>
 
-                        <div class="img__pic-count">(0/10)</div>
+                        <div class="img__pic-count">(0/5)</div>
                     </div>
                     <div class="content-image__content right-bar">
                         <div class="container">

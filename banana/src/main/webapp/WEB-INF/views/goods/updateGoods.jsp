@@ -27,6 +27,33 @@
        <jsp:include page="/WEB-INF/views/common/header.jsp" />
        <jsp:include page="/WEB-INF/views/common/nav.jsp" />
 
+
+       <%-- imageList에 존재하는 이미지 순서에 따라 변수 선언 --%>
+        <c:forEach items="${registerGoods.imageList}" var="img">
+            <c:choose>
+                <c:when test="${img.imageOrder == 0}">
+                    <c:set var="img0" value="${img.imagePath}" />
+                </c:when>
+            
+                <c:when test="${img.imageOrder == 1}">
+                    <c:set var="img1" value="${img.imagePath}" />
+                </c:when>
+            
+                <c:when test="${img.imageOrder == 2}">
+                    <c:set var="img2" value="${img.imagePath}" />
+                </c:when>
+            
+                <c:when test="${img.imageOrder == 3}">
+                    <c:set var="img3" value="${img.imagePath}" />
+                </c:when>
+            
+                <c:when test="${img.imageOrder == 4}">
+                    <c:set var="img4" value="${img.imagePath}" />
+                </c:when>
+            
+            </c:choose>
+        </c:forEach>
+
         <section class="goods-register">
             <div class="register__title">
                 <p>상품 등록</p>
@@ -100,10 +127,10 @@
                             <div class="required">*</div>
                         </div>
 
-                        <div class="img__pic-count">(0/10)</div>
+                        <div class="img__pic-count">(0/5)</div>
                     </div>
                     <div class="content-image__content right-bar">
-                        <div class="container">
+                        <%-- <div class="container">
                             <div class="image-upload" id="image-upload">
 
                                 <div class="button">
@@ -118,11 +145,87 @@
                             </div>
 
                             </div>
+                        </div> --%>
+
+                        <div class="goodsImg">
+                            <label for="img0">
+                            <c:if test="${empty img0}">
+                                <img class="preview" src="/resources/images/image-upload.png">
+                            </label>
+                            <input type="file" name="images" class="inputImage" id="img0" accept="image/*">
+                            </c:if>
+                            <c:if test="${not empty img0}">
+                                <img class="preview" src="${img0}">
+                            </label>
+                            <input type="file" name="images" class="inputImage" id="img0" accept="image/*">
+                            <span class="delete-image">&times;</span>
+                            </c:if>
+                        </div>
+
+                        <div class="goodsImg">
+                            <label for="img0">
+                            <c:if test="${empty img1}">
+                                <img class="preview" src="/resources/images/image-upload.png">
+                            </label>
+                            <input type="file" name="images" class="inputImage" id="img0" accept="image/*">
+                            </c:if>
+                            <c:if test="${not empty img1}">
+                                <img class="preview" src="${img1}">
+                            </label>
+                            <input type="file" name="images" class="inputImage" id="img0" accept="image/*">
+                            <span class="delete-image">&times;</span>
+                            </c:if>
+                        </div>
+
+                        <div class="goodsImg">
+                            <label for="img0">
+                            <c:if test="${empty img2}">
+                                <img class="preview" src="/resources/images/image-upload.png">
+                            </label>
+                            <input type="file" name="images" class="inputImage" id="img0" accept="image/*">
+                            </c:if>
+                            <c:if test="${not empty img2}">
+                                <img class="preview" src="${img2}">
+                            </label>
+                            <input type="file" name="images" class="inputImage" id="img0" accept="image/*">
+                            <span class="delete-image">&times;</span>
+                            </c:if>
+                        </div>
+
+                        <div class="goodsImg">
+                            <label for="img0">
+                            <c:if test="${empty img3}">
+                                <img class="preview" src="/resources/images/image-upload.png">
+                            </label>
+                            <input type="file" name="images" class="inputImage" id="img0" accept="image/*">
+                            </c:if>
+                            <c:if test="${not empty img3}">
+                                <img class="preview" src="${img3}">
+                            </label>
+                            <input type="file" name="images" class="inputImage" id="img0" accept="image/*">
+                            <span class="delete-image">&times;</span>
+                            </c:if>
+                        </div>
+
+                        <div class="goodsImg">
+                            <label for="img0">
+                            <c:if test="${empty img4}">
+                                <img class="preview" src="/resources/images/image-upload.png">
+                            </label>
+                            <input type="file" name="images" class="inputImage" id="img0" accept="image/*">
+                            </c:if>
+                            <c:if test="${not empty img4}">
+                                <img class="preview" src="${img4}">
+                            </label>
+                            <input type="file" name="images" class="inputImage" id="img0" accept="image/*">
+                            <span class="delete-image">&times;</span>
+                            </c:if>
                         </div>
 
                     </div>
                 </div>
                 
+
                 <div class="content-title">
                     <div class="content-title__title left-bar">
                         <div class="title">상품 제목</div>
@@ -208,7 +311,7 @@
 
   	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
-    <script src="/resources/js/goods/goods-register.js"></script>
+    <script src="/resources/js/goods/goods-update.js"></script>
 </body>
 
 </html>

@@ -192,6 +192,37 @@
 	GOODS_DEL_FL = 'Y'
 	WHERE GOODS_NO = #{goodsNo}
   </update>
+  
+  
+  <!-- 상품 내용만 수정 -->
+  <update id="updateGoodsContent" parameterType="GoodsSell">
+  	 UPDATE GOODS_SELL SET
+  	 TITLE = #{title},
+  	 DESCRIPTION = #{description}
+  	 WHERE GOODS_NO = #{goodsNo}
+  	 AND SELLER_NO = #{sellerNo}
+  </update>
+  
+  
+  <!-- 상품 이미지 삭제 -->
+  <delete id="deleteGoodsImage">
+  	DELETE FROM GOODS_IMAGE ${condition}
+  </delete>
+  
+  
+  <!-- 상품 이미지만 수정 -->
+  <update id="goodsImageUpdate">
+  	UPDATE GOODS_IMAGE SET
+  	IMAGE_PATH = #{imagePath}
+  	WHERE GOODS_NO = #{goodsNo}
+  </update>
+  
+  
+  <!-- 상품이미지 삽입 -->
+  <insert id="goodsImageInsert">
+  	INSERT INTO GOODS_IMG VALUES(
+  	SEQ_IMAGE_NO.NEXTVAL, #{goodsNo}, #{imagePath}, #{imageOrder})
+  </insert>
 
   
 </mapper>

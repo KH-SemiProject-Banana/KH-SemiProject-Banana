@@ -1,5 +1,6 @@
 package edu.kh.banana.goods.controller;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -108,19 +109,6 @@ public class GoodsController {
 
 	
 	
-	// 내 상품 수정하기
-	@GetMapping("/updateGoods")
-	public String updateGoods(@RequestParam(value="goodsNo") int goodsNo,
-			Model model) {
-		
-
-		GoodsSell goods = service.selectGoods(goodsNo);
-		
-		model.addAttribute("goods", goods);
-		
-		return "goods/goods-update";
-		
-	}
 
 	
 	
@@ -162,7 +150,10 @@ public class GoodsController {
 	}
 	
 	
-	/** 상품 수정
+	
+
+	
+	/** 상품 수정 페이지로 이동
 	 * @param goodsNo
 	 * @param loginMember
 	 * @param model
@@ -181,7 +172,47 @@ public class GoodsController {
 		model.addAttribute("registerGoods", registerGoods);
 		
 		
-		return "goods/registerGoods";
+		return "goods/updateGoods";
+	}
+	
+	
+	/** 상품 수정
+	 * @param loginMember
+	 * @param ra
+	 * @param goodsNo
+	 * @param registerGoods
+	 * @param referer
+	 * @param deleteList
+	 * @param imageList
+	 * @param session
+	 * @return
+	 * @throws IOException
+	 */
+	@PostMapping("/update/{goodsNo}")
+	public String goodsUpdate(@SessionAttribute("loginMember") Member loginMember,
+			RedirectAttributes ra,
+			@PathVariable("goodsNo") int goodsNo,
+			GoodsSell registerGoods,
+			@RequestHeader("referer") String referer,
+			@RequestParam(value="deleteList", required=false) String deleteList, // 삭제된 이미지번호(imageNo) 리스트
+			@RequestParam(value="images", required=false) List<MultipartFile> imageList, // 업로드한 이미지
+			HttpSession session
+			) throws IOException{
+		
+		String webPath = "/resources/images/goods/";
+		String folderPath = session.getServletContext().getRealPath(webPath);
+		registerGoods.setSellerNo(loginMember.getMemberNo());
+		
+		int result = service.updateGoods(webPath, folderPath, registerGoods, imageList, deleteList);
+		
+		String message = null;
+		if(result > 0) message = "상품글이 수정되었습니다";
+		else message = "상품글 수정 실패";
+		
+		ra.addFlashAttribute("message", message);
+	
+		
+		return "redirect:/" + referer;
 	}
 
 }

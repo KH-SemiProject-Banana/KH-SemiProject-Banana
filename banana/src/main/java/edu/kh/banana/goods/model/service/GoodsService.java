@@ -82,17 +82,24 @@ public interface GoodsService {
 	 */
 	int goodsDelete(int goodsNo);
 
-	
-	
-	
-	/** 내 상품 수정
+
+
+
+	/** 상품 수정
 	 * @param webPath
-	 * @param filePath
-	 * @param imagePath
-	 * @param inputGoods
+	 * @param folderPath
+	 * @param registerGoods
+	 * @param imageList
+	 * @param deleteList
 	 * @return
+	 * @throws IOException 
 	 */
-//	int updateGoods(String webPath, String filePath, List<MultipartFile> imagePath, Goods inputGoods);
+	int updateGoods(String webPath, String folderPath, GoodsSell registerGoods, List<MultipartFile> imageList,
+			String deleteList) throws IOException;
+
+	
+	
+	
 
 
 

@@ -120,6 +120,42 @@ public class GoodsDAO {
 		return sqlSession.update("goodsMapper.goodsDelete", goodsNo);
 	}
 
+	/** 상품 내용만 수정
+	 * @param registerGoods
+	 * @return
+	 */
+	public int updateGoodsContent(GoodsSell registerGoods) {
+		
+		return sqlSession.update("goodsMapper.updateGoodsContent", registerGoods);
+	}
+
+	/** 상품 이미지 삭제
+	 * @param condition
+	 * @return
+	 */
+	public int deleteGoodsImage(String condition) {
+		
+		return sqlSession.delete("goodsMapper.deleteGoodsImage", condition);
+	}
+
+	/** 상품 이미지만 수정
+	 * @param img
+	 * @return
+	 */
+	public int goodsImageUpdate(GoodsImage img) {
+		
+		return sqlSession.update("goodsMapper.goodsImageUpdate", img);
+	}
+
+	/** 상품이미지 삽입
+	 * @param img
+	 * @return
+	 */
+	public int goodsImageInsert(GoodsImage img) {
+		
+		return sqlSession.insert("goodsMapper.goodsImageInsert", img);
+	}
+
 
 
 

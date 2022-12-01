@@ -1,9 +1,67 @@
-// 첨부파일 추가
+const checkObj = {
+    "goodsImage": false,
+    "goodsTitle": false,
+    "goodsCategory": false,
+    "goodsContent": false,
+    "goodsPrice": false
+};
 
-// const realUpload = document.querySelector('.real-upload');
-// const upload = document.querySelector('.upload');
 
-// upload.addEventListener('click', () => realUpload.click());
+// 이미지 미리보기
+const inputImage = document.getElementsByClassName("inputImage"); // input
+const preview = document.getElementsByClassName("preview"); // img태그
+const deleteImage = documenet.getElementsByClassName("delete-image");
+
+const deleteSet = new Set();
+
+
+(()=>{
+    for(let i = 0; i < inputImage.length; i++) {
+    
+        inputImage[i].addEventListener("change", (e) => { // 이미지 삽입하겠다고 클릭
+    
+            if(e.target.files[0] != undefined) {
+    
+                const reader = new FileReader();
+                reader.readAsDataURL(e.target.files[0]);
+    
+                reader.onload = e => {
+    
+                    preview[i].setAttribute("src", e.target.result);
+                    deleteSet.delete(i);
+                }
+    
+    
+    
+            } else { // 취소
+                return; // 아무일도 일어나지 않음
+            }
+        });
+    
+        // 삭제버튼
+        deleteImage[i].addEventListener("click", (e) => {
+    
+            if(preview[i].getAttribute("src") != "/resources/images/image-upload.png") { // 기본이미지가 아닐 경우
+    
+                preview[i].setAttribute("src", "/resources/images/image-upload.png");
+                inputImage[i].value = "";
+    
+                e.target.delete;
+    
+                deleteSet.add(i);
+            }
+        });
+    }
+    
+    imageCount = deleteImage.length; // 전역변수
+    document.getElementsByClassName("img__pic-count")[0].innerText = "(" + imageCount + "/5)";
+    
+})();
+
+
+
+
+
 
 
 
@@ -61,7 +119,7 @@ function loadFile(input) {
 
 
         const count = container.childElementCount;
-        document.getElementsByClassName("img__pic-count")[0].innerText = "(" + count + "/10)";
+        document.getElementsByClassName("img__pic-count")[0].innerText = "(" + count + "/5)";
 
     }
     return true;
@@ -74,20 +132,8 @@ function loadFile(input) {
 
 
 
-
-
-
-const checkObj = {
-    "goodsImage": false,
-    "goodsTitle": false,
-    "goodsCategory": false,
-    "goodsContent": false,
-    "goodsPrice": false
-};
-
-
-
-function submitChk() {
+// form태그 제출시 유효성검사 후 실행
+document.getElementById("register__form").addEventListener("submit", e => {
 
     // 카테고리 유효성검사
     if (document.getElementById("goodsCategory").value == "") {
@@ -95,6 +141,23 @@ function submitChk() {
     } else {
         checkObj.goodsCategory = true;
     }
+
+    // 상품 이미지 유효성검사(deleteSet == 5이면 이미지 없음->false)
+    if(deleteSet.size == 5) {checkObj.goodsImage = false}
+    else {checkObj.goodsImage = true}
+
+
+    // 상품 제목 유효성 검사
+    if(goodsTitle.value.trim().length == 0) {checkObj.goodsTitle = false}
+    else {checkObj.goodsTitle = true}
+
+    // 상품 설명 유효성 검사
+    if(goodsContent.value.trim().length == 0) {checkObj.goodsContent = false}
+    else {checkObj.goodsContent = true}
+
+    // 상품 가격 유효성 검사
+    if(goodsContent.value.trim().length == 0) {checkObj.goodsContent = false}
+    else {checkObj.goodsContent = true}
 
 
     for (let key in checkObj) {
@@ -111,35 +174,18 @@ function submitChk() {
                 case "goodsPrice": str = "상품 가격을 입력해주세요"; break;
             }
             alert(str);
-            document.getElementById(key).focus();
-            return false;
+
+            e.preventDefault();
+            return;
         }
     }
-    // let goodsPriceValue = document.getElementById("goods-price");
-    // goodsPriceValue.value = Number(goodsPriceValue.value.replaceAll(',', ''));
-
-    return true;
-
-}
-
-
-
-
-// 상품 이미지 유효성검사
-const chooseFile = document.getElementById("chooseFile");
-chooseFile.addEventListener("change", () =>{
-
-    if(chooseFile.value == ''){
-
-        goodsImage = false;
-
-    } else {
-        goodsImage = true;
-    }
-
-
 
 });
+
+
+
+
+
 
 
 // 상품제목 유효성검사

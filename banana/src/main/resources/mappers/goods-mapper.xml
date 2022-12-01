@@ -42,28 +42,23 @@
 
  	 
  	 
- 	 <!-- 상품등록 -->
- 	 <insert id="registerGoods" parameterType="GoodsSell">
+ 	 <!-- 상품 내용만 등록 -->
+ 	 <insert id="registerGoods" parameterType="GoodsSell" useGeneratedKeys="true">
+ 	 
+ 	 	<selectKey keyProperty="goodsNo" resultType="_int" order="BEFORE">
+ 	 		SELECT SEQ_GOODS_NO.NEXTVAL FROM DUAL
+ 	 	</selectKey>
+ 	 
  	 	INSERT INTO GOODS_SELL	
-		VALUES(SEQ_GOODS_NO.NEXTVAL, #{sellerNo}, NULL, #{categoryNo}, #{title}, 
+		VALUES(#{goodsNo}, #{sellerNo}, NULL, #{categoryNo}, #{title}, 
 		#{sellPrice}, DEFAULT, #{description}, NULL, DEFAULT, DEFAULT)
  	 </insert>
  	 
  	 
- 	 <!-- 방금 등록된 상품번호 조회 -->
- 	 <select id="selectMyGoods" resultType="_int">
- 	 	SELECT GOODS_NO FROM(
-		SELECT GOODS_NO FROM GOODS_SELL
-		ORDER BY CREATED_AT DESC)
-		WHERE ROWNUM <![CDATA[<= 1]]>
- 	 </select>
+
  	 
  	 
- 	 <!-- registerImage -->
- 	 <insert id="registerImage" parameterType="GoodsImage">
- 	 	INSERT INTO GOODS_IMAGE
- 	 	VALUES(SEQ_IMAGE_NO.NEXTVAL, #{goodsNo}, #{imagePath}, #{imageOrder})
- 	 </insert>
+
  	 
  	 
  	 <select id="selectList">
@@ -172,6 +167,22 @@
   	SELECT IMAGE_PATH FROM GOODS_IMAGE
   </select>
   
+  
+  <!-- 상품 이미지 등록 -->
+  <insert id="insertGoodsImageList">
+  	INSERT INTO GOODS_IMAGE 
+	SELECT SEQ_IMAGE_NO.NEXTVAL IMAGE_NO, A.* FROM
+		
+  	<foreach collection="list" item="img" open="(" close=") A"
+  	separator="UNION ALL">
+  		SELECT 
+		#{img.goodsNo} GOODS_NO,
+		#{img.imagePath} IMAGE_PATH,
+		#{img.imageOrder} IMG_ORDER
+		FROM DUAL
+  	</foreach>
+  	
+  </insert>
 
   
 </mapper>

@@ -2,6 +2,7 @@ package edu.kh.banana.goods.model.service;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -11,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import edu.kh.banana.common.Util;
+import edu.kh.banana.goods.GoodsWriteException;
 import edu.kh.banana.goods.model.dao.GoodsDAO;
 import edu.kh.banana.goods.model.vo.GoodsImage;
 import edu.kh.banana.goods.model.vo.GoodsSell;
@@ -24,73 +26,59 @@ public class GoodsServiceImpl implements GoodsService {
 
 	@Override
 	@Transactional(rollbackFor = Exception.class)
-	public int registerGoods(String webPath, String filePath, List<MultipartFile> imagePath, GoodsSell inputGoods)
+	public int registerGoods(String webPath, String folderPath, List<MultipartFile> inputImageList, GoodsSell inputGoods)
 			throws Exception {
 
 		// 상품사진 제외한 나머지 등록
-		int registerResult = dao.registerGoods(inputGoods);
+		inputGoods.setTitle(Util.XSSHandling(inputGoods.getTitle()));
+		inputGoods.setDescription(Util.XSSHandling(inputGoods.getDescription()));
+		inputGoods.setDescription(Util.newLineHandling(inputGoods.getDescription()));
 		
-		System.out.println("registerResult :" + registerResult);
+		int goodsNo = dao.registerGoods(inputGoods);
+		
+		
 
-		if (registerResult > 0) {
+		if (goodsNo > 0) {
 
-			int goodsNo = dao.selectMyGoods();
+			// inputImageList : 실제 파일이 담겨있는 리스트(가공 필요)
+			// goodsImageList : DB에 삽입할 이미지 정보만 담겨있는 리스트 => DB에 삽입하기 위함
+			// renameList : 변경된 파일명만 담겨있는 리스트==> 실제 파일로 변환해 저장하기 위함
 			
-			System.out.println(goodsNo);
-
-			GoodsImage goodsImage = new GoodsImage();
-			goodsImage.setGoodsNo(goodsNo);
+			List<GoodsImage> goodsImageList = new ArrayList<>();
+			List<String> renameList = new ArrayList<>();
 			
 			
 			
-			if(imagePath != null) {
+			if(inputImageList != null) {
 				
-				int i = 0;
-				
-				for (MultipartFile item : imagePath) {
+				for (int i = 0; i < inputImageList.size(); i++) {
 					
+					GoodsImage img = new GoodsImage();
+					img.setGoodsNo(goodsNo);
 					
-
-					String rename = null;
-
-					if (item.getSize() != 0) {
-
-						rename = Util.fileRename(item.getOriginalFilename());
-
-						goodsImage.setImagePath(webPath + rename);
-						goodsImage.setImageOrder(i++);
+					String rename = Util.fileRename(inputImageList.get(i).getOriginalFilename());
+					renameList.add(rename);
+					img.setImagePath(webPath + rename);
+					img.setImageOrder(i);
+					
+					goodsImageList.add(img);
 						
-						System.out.println(goodsImage);
-
-					} else { // ??? 써줘야하나??
-
-					}
-
-					int result = dao.registerImage(goodsImage);
-					if (result > 0) {
-
-						if (rename != null) {
-							item.transferTo(new File(filePath + rename));
-						} else {
-
-							throw new Exception("상품 등록 중 오류가 발생했습니다");
-						}
-					}
-
 				}
-				
 			} else {
 				
 				throw new Exception("상품 등록 중 오류가 발생했습니다");
 			}
-
 			
-
-			return 1;
-
+			int result = dao.insertGoodsImageList(goodsImageList);
+			if(result == goodsImageList.size()) {
+				
+				for(int i = 0; i < inputImageList.size(); i++) {
+					
+					inputImageList.get(i).transferTo(new File(folderPath + renameList.get(i)));
+				}
+			}
 		}
-		
-		return 0;
+		return goodsNo;
 	}
 
 	/**
@@ -102,9 +90,6 @@ public class GoodsServiceImpl implements GoodsService {
 		GoodsSell goods = dao.selectGoods(goodsNo);
 		
 
-		
-
-		
 		return goods;
 	}
 

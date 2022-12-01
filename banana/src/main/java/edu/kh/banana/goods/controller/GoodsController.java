@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -60,24 +61,23 @@ public class GoodsController {
 			@SessionAttribute("loginMember") Member loginMember,
 			GoodsSell inputGoods,	
 			RedirectAttributes ra,
-			@RequestParam(value="imagePath", required = false) List<MultipartFile> imagePath,
+			@RequestParam(value="inputImage", required = false) List<MultipartFile> inputImageList,
 			HttpServletRequest req,
+			HttpSession session,
 			@RequestHeader("referer") String referer) throws Exception{
 			
-				
-//		inputGoods만 전달하면 되는가?? String[] imagePath는???
-	
-		System.out.println(inputGoods);
-		System.out.println("imagePath : " + imagePath);
-		
+
+		// 1. 로그인한 회원번호를 goodsSell에 셋팅
+		// 2. 업로드된 파일의 웹 접근 경로/서버 내부 경로 준비
+		// 3. 상품 삽입 서비스 호출
 		
 		
 		String webPath = "/resources/images/goodsImage/";
-		String filePath = req.getSession().getServletContext().getRealPath(webPath);
+		String folderPath = session.getServletContext().getRealPath(webPath);
 		
 
 		inputGoods.setSellerNo(loginMember.getMemberNo());
-		int result = service.registerGoods(webPath, filePath, imagePath, inputGoods);
+		int result = service.registerGoods(webPath, folderPath, inputImageList, inputGoods);
 		
 		String path = null;
 		String message = null;

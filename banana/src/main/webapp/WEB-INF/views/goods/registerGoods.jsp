@@ -51,7 +51,7 @@
                                         <img src="/resources/images/image-upload.png" class="browse-btn">
                                     </label>
                                 </div>
-                                <input type="file" id="chooseFile" name="imagePath" accept="image/*"
+                                <input type="file" id="chooseFile" name="inputImage" accept="image/*"
                                     onchange="return loadFile(this)" multiple/>
                                     <div class="file-list" id="image-show"></div>
                                

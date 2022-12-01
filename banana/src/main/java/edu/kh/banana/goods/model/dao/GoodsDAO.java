@@ -17,7 +17,7 @@ public class GoodsDAO {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
-	/** 상품등록 dao
+	/** 상품 글만 등록 dao
 	 * @param inputGoods
 	 * @return result
 	 */
@@ -26,11 +26,22 @@ public class GoodsDAO {
 		int result =  sqlSession.insert("goodsMapper.registerGoods", inputGoods);
 	
 		if(result > 0) {
-			return sqlSession.selectOne("goodsMapper.selectMyGoods");
+			result = inputGoods.getGoodsNo();
 		}
 		
 		return result;
 	}
+	
+	/** 상품 이미지 등록
+	 * @param goodsImageList
+	 * @return
+	 */
+	public int insertGoodsImageList(List<GoodsImage> goodsImageList) {
+		
+		return sqlSession.insert("goodsMapper.insertGoodsImageList", goodsImageList);
+	}
+	
+	
 	
 	/** 방금 등록된 상품번호 조회 DAO
 	 * @return goodsNo
@@ -40,14 +51,7 @@ public class GoodsDAO {
 		return sqlSession.selectOne("goodsMapper.selectMyGoods");
 	}
 
-	/** 상품 이미지 등록 dao
-	 * @param goodsImage
-	 * @return
-	 */
-	public int registerImage(GoodsImage goodsImage) {
 
-		return sqlSession.update("goodsMapper.registerImage", goodsImage);
-	}
 
 	public GoodsSell selectGoods(int goodsNo) {
 		
@@ -106,6 +110,8 @@ public class GoodsDAO {
 		
 		return sqlSession.selectList("goodsMapper.selectImageList");
 	}
+
+
 
 
 

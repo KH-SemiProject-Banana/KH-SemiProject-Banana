@@ -24,24 +24,24 @@ public class CategoryServiceImpl implements CategoryService {
 
 	// 특정 카테고리 게시글 목록 조회
 	@Override
-	public Map<String, Object> selectGoodsList(int categoryNo, int cp) {	
-		int listCount = dao.getListCount(categoryNo);
+	public Map<String, Object> selectGoodsList(GoodsSell category) {	
+		int listCount = dao.getListCount(category);
 		
-		CategoryPagination categoryPagination = new CategoryPagination(listCount, cp);
+		CategoryPagination categoryPagination = new CategoryPagination(listCount, category.getCp());
 		
-		List<GoodsSell> goodsList = dao.selectGoodsList(categoryPagination, categoryNo);
+		List<GoodsSell> goodsList = dao.selectGoodsList(categoryPagination, category);
 		
 		return map(categoryPagination, goodsList);
 	}
 
 	// 인기매물 게시글 목록 조회
 	@Override
-	public Map<String, Object> selectLikeGoodsList(int cp) {
-		int allListCount = dao.getAllListCount();
+	public Map<String, Object> selectLikeGoodsList(GoodsSell category) {
+		int allListCount = dao.getAllListCount(category);
 		
-		CategoryPagination categoryPagination = new CategoryPagination(allListCount, cp);
+		CategoryPagination categoryPagination = new CategoryPagination(allListCount, category.getCp());
 		
-		List<GoodsSell> allGoodsList = dao.selectAllGoodsList(categoryPagination);
+		List<GoodsSell> allGoodsList = dao.selectAllGoodsList(categoryPagination, category);
 		
 		return map(categoryPagination, allGoodsList);
 	}
@@ -54,5 +54,17 @@ public class CategoryServiceImpl implements CategoryService {
         map.put("goodsList", list);
         
         return map;
+	}
+
+	// 좋아요 O
+	@Override
+	public int goodsLikeUp(Map<String, Object> paramMap) {
+		return dao.goodsLikeUp(paramMap);
+	}
+
+	// 좋아요 X
+	@Override
+	public int goodsLikeDown(Map<String, Object> paramMap) {
+		return dao.goodsLikeDown(paramMap);
 	}
 }

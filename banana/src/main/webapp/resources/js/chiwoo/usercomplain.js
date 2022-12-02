@@ -240,9 +240,9 @@ function openPop(){
                     break;
                 case 8:
                     ctg2dsc = 0;
-                 break;
+                break;
                         
-                    }
+            }
                     
                     // 위에서 가져온 세부카테고리 배열 반복문으로 검사
                     for(let i = 0; i < ctg2dsc.length; i++){

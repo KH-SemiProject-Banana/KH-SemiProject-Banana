@@ -110,9 +110,6 @@
     margin-bottom: 20px;
 }
 
-.content-block > checkbox{
-
-}
 
 .report-notice{
     color: gray;
@@ -140,24 +137,6 @@
     border: 1px solid black;
 }
 
-
-
-.noneVisible {
-    display: none !important;
-}
-
-
-.ctg1:last-child, .ctg2:last-child, .ctg3:last-child, .ctg4:last-child, .ctg5:last-child {
-    display: none !important;
-}
-
-/* div[class*="ctg"]{
-    display: none;
-} */
-
-/* #click1 {
-    height: 800px;
-} */
 
 
 /* 팝업 상단 뒤로가기 + 제목 스타일 */

@@ -57,7 +57,7 @@
                         </div>
                     <div>
                         <div class="report-why">
-                            <div> ${memberNickname} </div>
+                            <div><input type = "hidden" name="complained" value = "${memberNickname}></div>
                             <p>
                                 ${memberNickname} 사용자를 신고하는 이유를 선택해주세요
                             </p>
@@ -180,7 +180,7 @@
                                     <textarea name="reportbox" id="reportbox" cols="90" rows="5" placeholder="혹시 불쾌한 일을 겪으셨나요? 사유를 남겨주세요" ></textarea>
                                         
                                 </div>
-                                    <button type="submit" id = "reportsubmit">바나나 팀에게 보내기</button>
+                                    <button type="submit" id = "reportsubmit" >바나나 팀에게 보내기</button>
                                 </div>
                             </div>
                             <input type="hidden" name="ctg1" value="">

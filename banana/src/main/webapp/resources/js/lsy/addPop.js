@@ -88,8 +88,8 @@ submitBtn.addEventListener("click", function(){
 
     })
 
-    goodCheckedArr.length = 0;
-    badCheckedArr.length = 0;
+    goodCheckedArr.length = 0;//배열 비우기(누적방지용)
+    badCheckedArr.length = 0;//배열 비우기(누적방지용)
 
 })
 

@@ -3,23 +3,23 @@
 <log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
 
    <!-- Appenders -->
-<!--    <appender name="console" class="org.apache.log4j.ConsoleAppender">
+    <appender name="console" class="org.apache.log4j.ConsoleAppender">
       <param name="Target" value="System.out" />
       <layout class="org.apache.log4j.PatternLayout">
          <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} [%p] %m%n" />
       </layout>
    </appender>
    
-   Appenders
+   <!-- Appenders -->
    <appender name="sql-console" class="org.apache.log4j.ConsoleAppender">
       <param name="Target" value="System.out" />
       <layout class="org.apache.log4j.PatternLayout">
          <param name="ConversionPattern" value="%m%n" />
       </layout>
-   </appender> -->
+   </appender> 
    
    <!-- //날짜별 로그 파일 생성 하기 -->
-<!--    <appender name="dailyRollingFile" class="org.apache.log4j.DailyRollingFileAppender">
+   <appender name="dailyRollingFile" class="org.apache.log4j.DailyRollingFileAppender">
        <param name="File" value="/Users/User/eclipse-workspace/KH-SemiProject-Banana/banana/logs/runtime.log" />
        <param name="Append" value="true" />
        <param name="encoding" value="UTF-8" />
@@ -27,7 +27,7 @@
        <layout class="org.apache.log4j.PatternLayout">
          <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} [%p] %m%n" />
       </layout>
-   </appender> -->
+   </appender> 
    
    <!-- Application Loggers -->
    <logger name="edu.kh.banana">

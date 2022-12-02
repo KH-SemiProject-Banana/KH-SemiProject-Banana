@@ -262,6 +262,15 @@ public class GoodsServiceImpl implements GoodsService {
 		return result;
 	}
 
+	/**
+	 * 상품 끌어올리기
+	 */
+	@Override
+	public int goodsRefresh(int goodsNo) {
+		
+		return dao.goodsRefresh(goodsNo);
+	}
+
 
 
 

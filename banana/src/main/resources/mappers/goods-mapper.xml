@@ -233,6 +233,14 @@
   	INSERT INTO GOODS_IMAGE VALUES(
   	SEQ_IMAGE_NO.NEXTVAL, #{goodsNo}, #{imagePath}, #{imageOrder})
   </insert>
+  
+  
+  <!-- 상품 끌어올리기 -->
+  <update id="goodsRefresh">
+  	UPDATE GOODS_SELL SET
+	REFRESHED_AT  = SYSDATE 
+	WHERE GOODS_NO = #{goodsNo}
+  </update>
 
   
 </mapper>

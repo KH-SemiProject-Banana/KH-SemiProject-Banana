@@ -165,6 +165,15 @@ public class GoodsDAO {
 		return sqlSession.selectList("goodsMapper.selectGoodsImgList", goodsNo);
 	}
 
+	/** 상품 끌어올리기
+	 * @param goodsNo
+	 * @return
+	 */
+	public int goodsRefresh(int goodsNo) {
+		
+		return sqlSession.update("goodsMapper.goodsRefresh", goodsNo);
+	}
+
 
 
 

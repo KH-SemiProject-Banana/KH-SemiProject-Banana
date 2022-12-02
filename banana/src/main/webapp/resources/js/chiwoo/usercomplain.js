@@ -18,7 +18,9 @@ const userreportsubmit = document.getElementById("userreportsubmit");
 
 userreportsubmit.style.display = "none";
 
-const back = document.getElementById("back");
+const back1 = document.getElementById("back1");
+const back2 = document.getElementById("back2");
+const back3 = document.getElementById("back3");
 
 
 
@@ -61,7 +63,7 @@ function openPop(){
         if(click1.style.display == "none"){
         click.style.display = "none";
         click1.style.display = "block";
-            
+        back1.style.display = "block";
             
         }
         
@@ -73,6 +75,8 @@ function openPop(){
         if(click2.style.display == "none") {
             click.style.display = "none";
             click2.style.display = "block"
+            back1.style.display = "block";
+
             
         }
         
@@ -83,7 +87,7 @@ function openPop(){
         if(userreportsubmit.style.display == "none"){
             click.style.display = "none";
             userreportsubmit.style.display = "block";
-            
+            back3.style.display = "block";
         }
         
     })
@@ -94,7 +98,7 @@ function openPop(){
         if(userreportsubmit.style.display == "none"){
             click.style.display = "none";
             userreportsubmit.style.display = "block";
-            
+            back3.style.display = "block";
         }
         
     })
@@ -105,6 +109,7 @@ function openPop(){
         if(userreportsubmit.style.display == "none"){
             click.style.display = "none";
             userreportsubmit.style.display = "block";
+            back3.style.display = "block";
             
         }
         
@@ -115,7 +120,7 @@ function openPop(){
         if(click6.style.display == "none"){
             click.style.display = "none";
             click6.style.display = "block";
-            
+            back1.style.display = "block";
         }
         
     })
@@ -125,7 +130,7 @@ function openPop(){
         if(click7.style.display == "none"){
             click.style.display = "none";
             click7.style.display = "block";
-            
+            back1.style.display = "block";
         }
         
     })
@@ -136,7 +141,7 @@ function openPop(){
         if(userreportsubmit.style.display == "none"){
             click.style.display = "none";
             userreportsubmit.style.display = "block";
-            
+            back3.style.display = "block";
         }
         
     })
@@ -150,48 +155,24 @@ function openPop(){
         if(userreportsubmit.style.display == "none") {
             click1.style.display = "none";
             userreportsubmit.style.display = "block";
-        
-            
-            
-            
-            //     abc[i].addEventListener("click", () => {
-                //         click[i].style.display="block";
-                //         click1.style.display="none";
-                
-                //     })
-                
-                //     break;
-                // }
-                
-                
-                //     for(let i = 0; i < abc.length; i++){
-                    //         abc[i].addEventListener("click", () => {
-                        //             click[i].style.display="block";
-                        //             click1.style.display="none";
+            back2.style.display = "block";
                         
-                        //         })
-                        
-                        //         break;
-                        //     }
-                        
-            }
-                    
-                    
-        })
-                click2.addEventListener("click", () => {
-                    if(userreportsubmit.style.display == "none") {
-                        click2.style.display = "none";
-                        userreportsubmit.style.display = "block";
-                        
-                    }
-                    
-                })
+        }                
+    })
+
+    click2.addEventListener("click", () => {
+        if(userreportsubmit.style.display == "none") {
+            click2.style.display = "none";
+            userreportsubmit.style.display = "block";
+            back2.style.display = "block";
+        }
+    })
                 
-                click6.addEventListener("click", () => {
-                    if(userreportsubmit.style.display == "none") {
+    click6.addEventListener("click", () => {
+            if(userreportsubmit.style.display == "none") {
                         click6.style.display = "none";
                         userreportsubmit.style.display = "block";
-                        
+                        back2.style.display = "block";
         }
         
     })
@@ -200,10 +181,11 @@ function openPop(){
         if(userreportsubmit.style.display == "none") {
             click7.style.display = "none";
             userreportsubmit.style.display = "block";
-            
+            back2.style.display = "block";
         }
         
     })
+
 
     
     
@@ -211,6 +193,10 @@ function openPop(){
     const abc = document.getElementsByClassName("abc");
     const ctg1 = document.getElementsByName("ctg1");
     const ctg2 = document.getElementsByName("ctg2");
+
+
+
+
 
     for(let i = 0; i < abc.length; i++) {
         // abc의 i번째 친구가 눌렸을 때 
@@ -229,16 +215,16 @@ function openPop(){
                     // 클릭1 자식요소 가져오기
                     break;
                     
-                    case 2:
-                        ctg2dsc = document.getElementById("click2").children;
+                case 2:
+                    ctg2dsc = document.getElementById("click2").children;
                         // 클릭 2 자식요소(세부카테고리) 가져오기
-                        break;
-                        case 3:
-                            ctg2dsc = 0;
-                            break;
+                    break;
+                case 3:
+                    ctg2dsc = 0;
+                    break;
                             
-                            case 4:
-                                ctg2dsc = 0;
+                case 4:
+                    ctg2dsc = 0;
                 break;
 
                 case 5:
@@ -252,21 +238,23 @@ function openPop(){
                 case 7:
                     ctg2dsc = document.getElementById("click7").children;
                     break;
-                    case 8:
-                        ctg2dsc = 0;
-                        break;
+                case 8:
+                    ctg2dsc = 0;
+                 break;
                         
                     }
                     
                     // 위에서 가져온 세부카테고리 배열 반복문으로 검사
                     for(let i = 0; i < ctg2dsc.length; i++){
                         // 몇번째 인덱스가 클릭되었을때 이벤트 발생
+
                 ctg2dsc[i].addEventListener("click", () => {
                     // 0번째 인덱스는 디비에 없으니 +1
                     
                     if(i == 2 || i ==3 || i== 4 ||  i== 7){
                         
-                        ctg2.value = "null";
+                        ctg2.value = i;
+                        
                     } else{
                         ctg2.value = i + 1;
                         
@@ -280,96 +268,74 @@ function openPop(){
         })
     }
     
+        back3.addEventListener("click", () => {
+            userreportsubmit.style.display = "none";
+            click.style.display = "block";
+            back3.style.display = "none";
+        });
     
-    
 
     
 
-    const back2 = document.getElementById("back2");
-    back2.style.display = "none";
 
-    back.addEventListener("click",() => {
+    // back2.style.display = "none";
 
+    back1.addEventListener("click",() => {
         switch (ctg1.value) {
-            
             case 1:
-                click1.style.display = "block";
-                userreportsubmit.style.display = "none";
-                ctg2.value ="";
-                back.style.display = "none";
-                back2.style.display = "block";
-            
-                break;
+                click1.style.display = "none";
+            break;
                 
             case 2:
-                click2.style.display = "block";
-                userreportsubmit.style.display = "none";
-                ctg2.value ="";
-                back.style.display = "none";
-                back2.style.display = "block";
-            break;
-            
-            case 3:
-                click.style.display = "block";
-                userreportsubmit.style.display = "none";
-                ctg2.value ="";
-                back.style.display = "block";
-            break;
-                        
-            case 4:
-                click.style.display = "block";
-                userreportsubmit.style.display = "none";
-                ctg2.value ="";
-                back.style.display = "block";
+                click2.style.display = "none";
             break;
 
-            case 5:
-                click.style.display = "block";
-                userreportsubmit.style.display = "none";
-                ctg2.value ="";
-                back.style.display = "block";
-            break;
                             
             case 6:
-                click6.style.display = "block";
-                userreportsubmit.style.display = "none";
-                ctg2.value ="";
-                back.style.display = "none";
-                back2.style.display = "block";    
+                click6.style.display = "none";
             break;
     
             case 7:
-                click7.style.display = "block";
-                userreportsubmit.style.display = "none";
-                ctg2.value ="";
-                back.style.display = "none";
-                back2.style.display = "block";   
-            break;
-                case 8:
-                    click.style.display = "block";
-                    userreportsubmit.style.display = "none";
-                    ctg2.value ="";
-                    back.style.display = "block";
-            break;
-                    
-                    
-                    
-                    
-                    
-                }
-                
-                
+                click7.style.display = "none";   
+            break;          
+            }
 
-  /*       click.style.display = "block";
-        ctg1.value =""; */
+            click.style.display = "block";
+            back1.style.display = "none";
     })
 
-    back2.addEventListener("click", () => {
+
+    back2.addEventListener("click",() => {
+        userreportsubmit.style.display = "none";
+
+        switch (ctg1.value) {
+            case 1:
+                click1.style.display = "block";
+            break;
+                
+            case 2:
+                click2.style.display = "block";
+            break;
+
+                            
+            case 6:
+                click6.style.display = "block";
+            break;
+    
+            case 7:
+                click7.style.display = "block";   
+            break;          
+            }
+
+            back2.style.display = "none";
+    })
+
+    // back2.addEventListener("click", () => {
         
-        click.style.display = "block";
-        ctg1.value ="";
+    //     click.style.display = "block";
+       
 
-    })
+    // })
 
    /*  back2.addEventListener("click", () => {
 

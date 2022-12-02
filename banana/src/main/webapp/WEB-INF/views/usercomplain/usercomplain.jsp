@@ -42,16 +42,24 @@
                     <a href="javascript:closePop();"><i class="fa-solid fa-x"></i></a>
                     </div>
                     <!--팝업 컨텐츠 영역-->
-                    <div class="report-total">
                         <div class="report-top">
-                            <a href="#"> <i class="fa-solid fa-arrow-left-long" id="back"></i> <i class="fa-solid fa-arrow-left-long" id="back2"></i> 사용자 신고</a>
+
+                            <%-- ctg1이 1, 2, 6, 7일 경우 2페이지에서 1페이지로 가는 뒤로가기 --%>
+                            <i class="fa-solid fa-arrow-left-long" id="back1"></i>
+
+                            <%-- ctg1이 1, 2, 6, 7일 경우 3페이지에서 2페이지로 가는 뒤로가기 --%>
+                            <i class="fa-solid fa-arrow-left-long" id="back2"></i>
+
+                            <%-- ctg1이 3, 4, 5, 8일 경우 3페이지에서 1페이지로 가는 뒤로가기 --%>
+                            <i class="fa-solid fa-arrow-left-long" id="back3"></i>
+
+                            <span id="user-com">사용자 신고</span>
                         </div>
-                    </div>
                     <div>
                         <div class="report-why">
                             <div> ${memberNickname} </div>
                             <p>
-                               ${memberNickname} 사용자를 신고하는 이유를 선택해주세요
+                                ${memberNickname} 사용자를 신고하는 이유를 선택해주세요
                             </p>
                         </div>
                     
@@ -154,7 +162,7 @@
                                 </div>
                         
                                 <div class="content-block">
-                                    <input type="checkbox">이 사람과 글을 보고싶지 않아요
+                                    <input type="checkbox" >이 사람과 글을 보고싶지 않아요
                                 </div>
                         
                                 <div class="report-notice">

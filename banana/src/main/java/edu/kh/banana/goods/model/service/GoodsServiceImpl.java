@@ -91,7 +91,12 @@ public class GoodsServiceImpl implements GoodsService {
 	@Override
 	public GoodsSell selectGoods(int goodsNo) {
 		
-		return dao.selectGoods(goodsNo);
+		List<GoodsImage> imageList = dao.selectGoodsImgList(goodsNo);
+			
+		GoodsSell registerGoods =  dao.selectGoods(goodsNo);
+		registerGoods.setImageList(imageList);
+		
+		return registerGoods;
 		
 	}
 
@@ -160,11 +165,12 @@ public class GoodsServiceImpl implements GoodsService {
 	}
 
 	/**
-	 * 상품 등록
+	 * 상품 수정
 	 * @throws IOException 
 	 * @throws IllegalStateException 
 	 */
 	@Override
+	@Transactional(rollbackFor = Exception.class)
 	public int updateGoods(String webPath, String folderPath, GoodsSell registerGoods, List<MultipartFile> imageList,
 			String deleteList) throws IOException {
 		
@@ -193,8 +199,8 @@ public class GoodsServiceImpl implements GoodsService {
 			if(!deleteList.equals("")) {
 				
 				// WHERE GOODS_NO = 35 AND IMAGE_NO = IN(241, 242, 243)
-				String condition = "WHERE GOODS_NO = " + registerGoods.getSellerNo()
-					 + " AND IMAGE_NO IN(" + deleteList + ")";
+				String condition = "WHERE GOODS_NO = " + registerGoods.getGoodsNo()
+					 + " AND IMG_ORDER IN(" + deleteList + ")";
 				
 				result = dao.deleteGoodsImage(condition);
 				

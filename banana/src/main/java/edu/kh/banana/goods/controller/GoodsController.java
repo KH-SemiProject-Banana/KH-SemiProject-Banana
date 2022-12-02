@@ -199,20 +199,30 @@ public class GoodsController {
 			HttpSession session
 			) throws IOException{
 		
-		String webPath = "/resources/images/goods/";
+		String webPath = "/resources/images/goodsImage/";
 		String folderPath = session.getServletContext().getRealPath(webPath);
 		registerGoods.setSellerNo(loginMember.getMemberNo());
 		
 		int result = service.updateGoods(webPath, folderPath, registerGoods, imageList, deleteList);
 		
 		String message = null;
-		if(result > 0) message = "상품글이 수정되었습니다";
-		else message = "상품글 수정 실패";
+		String path = null;
+		if (result > 0) {
+			
+			message = "상품글이 수정되었습니다";
+			path = "/member/myPage/main";
+			
+		} else {
+			
+			message = "상품글 수정 실패";
+			path = referer;
+			
+		}
 		
 		ra.addFlashAttribute("message", message);
 	
 		
-		return "redirect:/" + referer;
+		return "redirect:" + path;
 	}
 
 }

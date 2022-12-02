@@ -18,7 +18,7 @@ const deleteSet = new Set();
 
 (()=>{
 
-    document.getElementById("goodsCategory").children[3].setAttribute("selected", true);
+    document.getElementById("goodsCategory").children[Number(categoryNo)].setAttribute("selected", true);
 
 
 
@@ -44,17 +44,20 @@ const deleteSet = new Set();
                 inputImage[i].after(xButton);
 
 
+                const count = deleteImage.length;
+                    document.getElementsByClassName("img__pic-count")[0].innerText = "(" + count + "/5)";
+
                 // xButton에 삭제기능 추가
                 xButton.addEventListener("click", (e) => {
         
-                    if(preview[i].getAttribute("src") != "/resources/images/image-upload.png") { // 기본이미지가 아닐 경우
+                    if(inputImage[i].previousElementSibling.children[0].getAttribute("src") != "/resources/images/image-upload.png") { // 기본이미지가 아닐 경우
             
                         e.target.remove();
 
-                        preview[i].setAttribute("src", "/resources/images/image-upload.png");
+                        inputImage[i].previousElementSibling.children[0].setAttribute("src", "/resources/images/image-upload.png");
                         inputImage[i].value = "";
             
-                        e.target.delete;
+                        // e.target.delete;
             
                         deleteSet.add(i);
 
@@ -73,6 +76,31 @@ const deleteSet = new Set();
             document.getElementsByClassName("img__pic-count")[0].innerText = "(" + imageCount + "/5)";
 
         });
+
+
+        // xButton에 삭제기능 추가
+        //const deleteImage = document.getElementsByClassName("delete-image");
+        if(inputImage[i].nextElementSibling != null){
+
+            
+            inputImage[i].nextElementSibling.addEventListener("click", (e) => {
+                console.log(i);
+            
+                if(inputImage[i].previousElementSibling.children[0].getAttribute("src") != "/resources/images/image-upload.png") { // 기본이미지가 아닐 경우
+        
+                    e.target.remove();
+    
+                    inputImage[i].previousElementSibling.children[0].setAttribute("src", "/resources/images/image-upload.png");
+                    inputImage[i].value = "";
+        
+        
+                    deleteSet.add(i);
+    
+                    const count = deleteImage.length;
+                    document.getElementsByClassName("img__pic-count")[0].innerText = "(" + count + "/5)";
+                }
+            });
+        }
     
         
     }
@@ -154,7 +182,8 @@ function loadFile(input) {
 document.getElementById("register__form").addEventListener("submit", e => {
 
 
-    // dk
+    // deleteSet을 배열로 반환("0,1,2"의 형태로 변환)
+    document.getElementById("deleteList").value = Array.from(deleteSet);
 
     // 카테고리 유효성검사
     if (document.getElementById("goodsCategory").value == "") {
@@ -166,6 +195,12 @@ document.getElementById("register__form").addEventListener("submit", e => {
     // 상품 이미지 유효성검사(deleteSet == 5이면 이미지 없음->false)
     if(deleteSet.size == 5) {checkObj.goodsImage = false}
     else {checkObj.goodsImage = true}
+    if(deleteSet.has(0)) {
+        checkObj.goodsImage = false;
+        alert("썸네일(첫 번째 이미지)을 삭제할 수 없습니다");
+        e.preventDefault();
+        return;
+    }
 
     // 상품 제목 유효성 검사
     if(goodsTitle.value.trim().length == 0) {checkObj.goodsTitle = false}
@@ -176,8 +211,8 @@ document.getElementById("register__form").addEventListener("submit", e => {
     else {checkObj.goodsContent = true}
 
     // 상품 가격 유효성 검사
-    if(goodsContent.value.trim().length == 0) {checkObj.goodsContent = false}
-    else {checkObj.goodsContent = true}
+    if(sellPrice.value.trim().length == 0) {checkObj.goodsPrice = false}
+    else {checkObj.goodsPrice = true}
 
 
     for (let key in checkObj) {
@@ -315,7 +350,18 @@ goodsPrice.addEventListener("input", function (e) {
 
 
 
+// 카테고리 변경시 유효성검사
+const goodsCategory = document.getElementById("goodsCategory");
+goodsCategory.addEventListener("input", function () {
 
+    const goodsCategory = document.getElementById("goodsCategory");
+    goodsCategory.children[Number(categoryNo)].removeAttribute("selected");
+
+    const categoryValue = goodsCategory.value;
+    
+    goodsCategory.children[Number(categoryValue)].setAttribute("selected", true);
+    
+});
 
 
 

@@ -85,7 +85,7 @@
                             <option value="">옵션을 선택하세요</option>
                             <option value="1">전자기기</option>
                             <option value="2">가구/인테리어</option>
-                            <option value="3">셍활/주방</option>
+                            <option value="3">생활/주방</option>
                             <option value="4">유아용품</option>
                             <option value="5">의류/잡화</option>
                             <option value="6">뷰티/미용</option>

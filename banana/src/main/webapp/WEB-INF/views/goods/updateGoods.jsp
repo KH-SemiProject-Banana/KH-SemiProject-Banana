@@ -54,12 +54,14 @@
             </c:choose>
         </c:forEach>
 
+
+
         <section class="goods-register">
             <div class="register__title">
-                <p>상품 등록</p>
+                <p>상품 수정</p>
                 <p><span class="required">* 필수 항목</span>은 꼭 입력해주세요</p>
             </div>
-            <form name="register__content" id="register__form"  action="/goods/registerGoods" method="post"  enctype="multipart/form-data">
+            <form name="register__content" id="register__form"  action="/goods/update/${registerGoods.goodsNo}"  method="post"  enctype="multipart/form-data">
 
                 <div class="content-image">
                     <div class="content-image__title left-bar">
@@ -189,7 +191,7 @@
                             <option value="">옵션을 선택하세요</option>
                             <option value="1">전자기기</option>
                             <option value="2">가구/인테리어</option>
-                            <option value="3">셍활/주방</option>
+                            <option value="3">생활/주방</option>
                             <option value="4">유아용품</option>
                             <option value="5">의류/잡화</option>
                             <option value="6">뷰티/미용</option>
@@ -239,6 +241,8 @@
                         </select>
                     </div>
                 </div> --%>
+
+                <input type="hidden" name="deleteList" id="deleteList" value="">
 
 
                 <div class="content-finish">

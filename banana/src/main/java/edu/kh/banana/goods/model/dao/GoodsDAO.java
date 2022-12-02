@@ -156,6 +156,15 @@ public class GoodsDAO {
 		return sqlSession.insert("goodsMapper.goodsImageInsert", img);
 	}
 
+	/** 한 상품의 이미지리스트 얻어오기
+	 * @param goodsNo
+	 * @return
+	 */
+	public List<GoodsImage> selectGoodsImgList(int goodsNo) {
+		
+		return sqlSession.selectList("goodsMapper.selectGoodsImgList", goodsNo);
+	}
+
 
 
 

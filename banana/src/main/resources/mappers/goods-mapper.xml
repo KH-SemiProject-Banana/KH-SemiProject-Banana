@@ -34,7 +34,7 @@
    		
    		<result property="imageNo" column="IMAGE_NO"></result>
    		<result property="imagePath" column="IMAGE_PATH"></result>
-   		<result property="ImageOrder" column="IMG_ORDER"></result>
+   		<result property="imageOrder" column="IMG_ORDER"></result>
 	</resultMap>
 	
 	
@@ -60,7 +60,7 @@
  	 
 
  	 
- 	 
+ 	 <!-- 상품글 리스트 조회 -->
  	 <select id="selectList">
  	 	SELECT * FROM GOODS_SELL
 		WHERE GOODS_DEL_FL = 'N' AND (BUYER_NO IS NULL)
@@ -77,7 +77,12 @@
  	 </select>
   
 
-
+	<!-- 한 상품의 이미지리스트 얻어오기 -->
+	<select id="selectGoodsImgList" resultMap="goodsImage_rm">
+		SELECT IMAGE_NO, IMAGE_PATH, IMG_ORDER
+		FROM GOODS_IMAGE gi 
+		WHERE GOODS_NO = #{goodsNo}
+	</select>
 
 
 
@@ -200,7 +205,9 @@
   <update id="updateGoodsContent" parameterType="GoodsSell">
   	 UPDATE GOODS_SELL SET
   	 TITLE = #{title},
-  	 DESCRIPTION = #{description}
+  	 DESCRIPTION = #{description},
+  	 SELL_PRICE = #{sellPrice},
+  	 CATEGORY_NO = #{categoryNo}
   	 WHERE GOODS_NO = #{goodsNo}
   	 AND SELLER_NO = #{sellerNo}
   </update>
@@ -217,12 +224,13 @@
   	UPDATE GOODS_IMAGE SET
   	IMAGE_PATH = #{imagePath}
   	WHERE GOODS_NO = #{goodsNo}
+  	AND IMG_ORDER = #{imageOrder}
   </update>
   
   
   <!-- 상품이미지 삽입 -->
   <insert id="goodsImageInsert">
-  	INSERT INTO GOODS_IMG VALUES(
+  	INSERT INTO GOODS_IMAGE VALUES(
   	SEQ_IMAGE_NO.NEXTVAL, #{goodsNo}, #{imagePath}, #{imageOrder})
   </insert>
 

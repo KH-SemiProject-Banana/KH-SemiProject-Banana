@@ -23,9 +23,6 @@ function selectCommentList() {
                     }
 
 
-                    
-
-
                     const commentContent = document.createElement("p");
                     commentContent.classList.add("delete-content");
                     commentContent.innerText = "삭제된 댓글입니다";
@@ -100,21 +97,14 @@ function selectCommentList() {
     
                             commentBtnArea.append(updateBtn, deleteBtn);
                         }
-    
                         // 행에 버튼목록 추가
                         commentRow.append(commentBtnArea);
                     }
-    
                     // 댓글목록(ul)에 행 추가
                     commentList.append(commentRow);
-
                 }
-
-
-
             }
         },
-
         error : (req) => {
             console.log("에러 발생");
             console.log(req.responseText);
@@ -255,7 +245,6 @@ function showUpdateComment(commentNo, btn){ // 댓글번호, 이벤트발생요�
     // 내용 추가
     textarea.value = beforeContent;
 
-
     // 6. commentRow에 생성된 textarea 추가
     commentRow.append(textarea);
 
@@ -274,8 +263,6 @@ function showUpdateComment(commentNo, btn){ // 댓글번호, 이벤트발생요�
     commentBtnArea.append(insertBtn, cancelBtn);
     commentRow.append(commentBtnArea);
 
-
-
 }
 
 // ---------------------------------------------------
@@ -286,7 +273,6 @@ function updateCancel(btn) {
         btn.parentElement.parentElement.innerHTML = beforeCommentRow;
     }
 }
-
 
 // 댓글 수정
 function updateComment(commentNo, btn){
@@ -315,7 +301,6 @@ function updateComment(commentNo, btn){
     });
 }
 
-
 //------------------------------------------------
 //------------------------------------------------
 
@@ -333,7 +318,6 @@ function showInsertComment(parentNo, btn){
         } else {
             return;
         }
-
     }
 
     // 답글을 작성할 textAtra 생성
@@ -360,13 +344,10 @@ function showInsertComment(parentNo, btn){
 
     // 답글 버튼 영역을 textarea 뒤쪽에 추가
     textarea.after(commentBtnArea);
-
 }
 
-
-
 /// 댓글 수정 취소
-function updateCancel(btn){
+// function updateCancel(btn){
 
 // 답글 취소
 function insertCancel(btn){
@@ -387,7 +368,6 @@ function insertChildComment(parentNo, btn){
         commentContent.focus();
         return;
     }
-
 
     $.ajax({
         

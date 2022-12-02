@@ -78,7 +78,7 @@
 		<choose>
 			<when test='myPageCt == "1"'>
 	WHERE GOODS_DEL_FL = 'N' AND SELLER_NO = #{memberNo}
-	AND (RECEIVER_NO != SELLER_NO  OR RECEIVER_NO IS NULL)
+	AND (RECEIVER_NO != SELLER_NO  OR RECEIVER_NO IS NULL)	
 	AND BUYER_NO IS NOT NULL
 			</when>
 			<when test='myPageCt == "2"'>

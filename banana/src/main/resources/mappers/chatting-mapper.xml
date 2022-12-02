@@ -103,7 +103,7 @@
    <!-- 채팅방 메세지 조회 -->
    <select id="selectMessageList" resultMap="message_rm">
       SELECT MESSAGE_NO, MESSAGE_CONTENT, READ_FL, SENDER_NO, CHATTING_NO,
-      TO_CHAR(SEND_TIME, 'YYYY.MM.DD HH24:MI') SEND_TIME 
+      TO_CHAR(SEND_TIME, 'am HH24:MI') SEND_TIME 
       FROM MESSAGE
       WHERE CHATTING_NO  = #{chattingNo}
       ORDER BY MESSAGE_NO

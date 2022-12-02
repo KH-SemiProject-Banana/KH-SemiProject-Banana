@@ -1,4 +1,3 @@
-
 // 선택한 채팅방 번호를 저장하기 위한 전역 변수
 let selectChattingNo;
 let selectTargetNo;
@@ -24,7 +23,6 @@ document.addEventListener("DOMContentLoaded", ()=>{
 	// 메세지 버튼에 이벤트 추가
 	send.addEventListener("click", sendMessage);
 
-
 	if(tempNo != ""){
 		//selectChattingNo = tempNo;
 
@@ -42,10 +40,50 @@ document.addEventListener("DOMContentLoaded", ()=>{
 			}
 		}
 	}
+	// 채팅 목록에서 8개 이상일시 borderBottom 1픽셀 오류해결
+	// 부모 요소
+	const chattinglist =document.getElementById("chatting-list");
+	// 마지막 요소 
+	const lastchild=chattinglist.lastElementChild;
+	
+	// 채팅 리스트가 8개 이상 일 경우 css 추가
+	if(document.getElementsByClassName("chatting-item").length >7 ){
+		//console.log("8개 이상!");
+		//console.log(document.getElementsByClassName("chatting-item").length);
+		lastchild.style.borderBottom="none";
+		
+	} else{
+		//console.log("7개 이하~~");
+		//console.log(document.getElementsByClassName("chatting-item").length);
+		lastchild.style.borderBottom="border";
+	}
+
+	// 수정 중 테스트
+    const date  = new Date();
+	const year = date .getFullYear();
+	const month = date .getMonth() + 1;
+	const day = date .getDate();
+
+	console.log('date: ' + date .toLocaleDateString('ko-kr'));
+	console.log('년: ' + year);
+	console.log('월: ' + month);
+	console.log('일: ' + day);
+
+    var nowDay = "";
+    switch(date .getDay()){
+        case 0: nowDay =year+"년 "+month+"월 "+day+"일 "+"일요일"; break;
+        case 1: nowDay =year+"년 "+month+"월 "+day+"일 "+ "월요일"; break;
+        case 2:nowDay = year+"년 "+month+"월 "+day+"일 "+"화요일"; break;
+        case 3:nowDay =year+"년 "+month+"월 "+day+"일 "+ "수요일"; break;
+        case 4: nowDay =year+"년 "+month+"월 "+day+"일 "+ "목요일"; break;
+        case 5:nowDay =year+"년 "+month+"월 "+day+"일 "+ "금요일"; break;
+        case 6:nowDay =year+"년 "+month+"월 "+day+"일 "+ "토요일"; break;
+        default : nowDay = "알수없는요일"; break;
+    }
+	console.log(nowDay);
+
+
 })
-
-
-
 
 // 채팅 메세지 영역
 const display = document.getElementsByClassName("display-chatting")[0];
@@ -70,7 +108,6 @@ const roomListAddEvent = () => {
 			if(item.children[1].children[1].children[1] != undefined){
 				item.children[1].children[1].children[1].remove();
 			}
-
 	
 			// 모든 채팅방에서 select 클래스를 제거
 			for(let it of chattingItemList) it.classList.remove("select")
@@ -104,7 +141,11 @@ const selectChattingFn = () => {
 				const li = document.createElement("li");
 				//<div class="my-chat-col"></div>
 				const div = document.createElement("div")
-
+				
+				
+				const lid = document.createElement("li");// 메세지 시작 날짜
+				lid.classList.add("date-line");// 메세지 시작 날짜
+				
 				// 메세지 내용
 				const p = document.createElement("p");
 				p.classList.add("chat");
@@ -115,20 +156,22 @@ const selectChattingFn = () => {
 				time.classList.add("chatDate");
 				time.innerText = msg.sendTime;
 
+
 				// 내가 작성한 메세지인 경우
 				if(loginMemberNo == msg.senderNo){ 
 					li.classList.add("my-chat");
 					div.classList.add("my-chat-col");
 					
+			
+					li.append(div,time);
 					div.append(p);
 					
 				}else{ // 상대가 작성한 메세지인 경우
 					li.classList.add("target-chat");
 
 					// 상대 프로필
-					// <img src="/resources/images/user.png">
 					const img = document.createElement("img");
-					img.classList.add("profile-name"); //안됨
+					img.classList.add("profile-name");
 					img.setAttribute("src", selectTargetProfile);
 					
 
@@ -136,28 +179,23 @@ const selectChattingFn = () => {
 					div.classList.add("target-chat-col");
 
 					// 상대 이름
-					const b = document.createElement("b");
-					b.innerText = selectTargetName; // 전역변수
+					const name = document.createElement("name");
+					name.classList.add("target-name");
+					name.innerText = selectTargetName; // 전역변수
 
-					//const br = document.createElement("br");
 
-					div.append(b, p);
+					div.append(name, p);
 					li.append(img,div, time);
-
 				}
-
 				ul.append(li);
+				lid.append(div) // 메세지 시작 날짜
+
 				display.scrollTop = display.scrollHeight; // 스크롤 제일 밑으로
 			}
-
-
-
 		},
 		error : () => {console.log("에러");}
 	})
 }
-
-
 
 // 비동기로 채팅방 목록 조회
 const selectRoomList = () => {
@@ -190,7 +228,7 @@ const selectRoomList = () => {
 				listProfile.classList.add("list-profile");
 
 				if(room.targetProfile == undefined)	
-					listProfile.setAttribute("src", "/resources/images/user.png");
+					listProfile.setAttribute("src", "/resources/images/banana-logo.png");
 				else								
 					listProfile.setAttribute("src", room.targetProfile);
 
@@ -245,12 +283,9 @@ const selectRoomList = () => {
 						}
 					})
 				}
-				
-
 				li.append(itemHeader, itemBody);
 				chattingList.append(li);
 			}
-
 			roomListAddEvent();
 		}
 	})
@@ -263,7 +298,7 @@ const send = document.getElementById("send");
 const sendMessage = () => {
 	const inputChatting = document.getElementById("inputChatting");
 
-	if (inputChatting.value.trim().length == 0) {
+	if (inputChatting.value.trim().length == 0) { // 입력창에 글이 없을 시
 		alert("채팅을 입력해주세요.");
 		inputChatting.value = "";
 	} else {
@@ -311,6 +346,10 @@ chattingSock.onmessage = function(e) {
 		const li = document.createElement("li");
 		//<div class="my-chat-col"></div>
 		const div = document.createElement("div")
+
+		
+		const lid = document.createElement("li");// 메세지 시작 날짜
+		lid.classList.add("date-line");// 메세지 시작 날짜
 		
 		// 메세지 내용
 		const p = document.createElement("p");
@@ -322,6 +361,7 @@ chattingSock.onmessage = function(e) {
 		time.classList.add("chatDate");
 		time.innerText = msg.sendTime;
 		
+
 		// 내가 작성한 메세지인 경우
 		if(loginMemberNo == msg.senderNo){ 
 			li.classList.add("my-chat");
@@ -335,9 +375,8 @@ chattingSock.onmessage = function(e) {
 			li.classList.add("target-chat");
 	
 			// 상대 프로필
-			// <img src="/resources/images/user.png">
 			const img = document.createElement("img");
-			img.classList.add("profile-name"); //안됨
+			img.classList.add("profile-name"); 
 			img.setAttribute("src", selectTargetProfile);
 
 			
@@ -345,13 +384,14 @@ chattingSock.onmessage = function(e) {
 			div.classList.add("target-chat-col");
 
 			// 상대 이름
-			const b = document.createElement("b");
-			b.innerText = selectTargetName; // 전역변수
+			const name = document.createElement("name");
+			name.classList.add("target-name");
+			name.innerText = selectTargetName; // 전역변수
 	
-			//const br = document.createElement("br");
 	
-			div.append(b, p);
+			div.append(name, p);
 			li.append(img,div, time);
+			lid.append(div) // 메세지 시작 날짜
 	
 		}
 	

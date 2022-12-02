@@ -74,7 +74,7 @@
                                     <img class="list-profile" src="${room.targetProfile}">
                                 </c:if>
                                 <c:if test="${empty room.targetProfile}">
-                                    <img class="list-profile" src="/resources/images/user.png">
+                                    <img class="list-profile" src="/resources/images/banana-logo.png">
                                 </c:if>
                             </div>
                             <%-- 선!!! --%>
@@ -131,7 +131,7 @@
                         
                             <!-- 메시지 시작 날짜 -->
                             <li class="date-line">
-                                <day datetime="2021-03-29">2021년 3월 29일 월요일</day>
+                                <day >2021년 3월 29일 월요일</day>
                             </li>
 
                             <!-- 내채팅 -->
@@ -149,21 +149,21 @@
                             <li class="target-chat">
                                 <img class="profile-img" src="/resources/images/user.png" alt="상대방프로필사진"> 
                                 <div class="target-chat-col">
-                                    <b class="profile-name">바나나</b>
+                                    <name class="target-name">바나나</name>
                                     <p class="chat">가자미 처럼</p>
                                     <p class="chat">내려간다</p>
                                     <p class="chat">답이없다..</p>
                                     <p class="chat">떨어지는 내 주식처럼</p>
                                     <p class="chat">떨어지는 내 주식처럼</p>
-                                    <span class="chat">떨어지는 내 주식처럼</span>
-                                    <span class="chat">떨어지는 내 주식처럼</span>
-                                    <span class="chat">떨어지는 내 주식처럼</span>
-                                    <span class="chat">떨어지는 내 주식처럼</span>
-                                    <span class="chat">떨어지는 내 주식처럼</span>
-                                    <span class="chat">떨어지는 내 주식처럼</span>
-                                    <span class="chat">떨어지는 내 주식처럼</span>
-                                    <span class="chat">떨어지는 내 주식처럼</span>
-                                    <span class="chat">ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ</span>
+                                    <p class="chat">떨어지는 내 주식처럼</p>
+                                    <p class="chat">떨어지는 내 주식처럼</p>
+                                    <p class="chat">떨어지는 내 주식처럼</p>
+                                    <p class="chat">떨어지는 내 주식처럼</p>
+                                    <p class="chat">떨어지는 내 주식처럼</p>
+                                    <p class="chat">떨어지는 내 주식처럼</p>
+                                    <p class="chat">떨어지는 내 주식처럼</p>
+                                    <p class="chat">떨어지는 내 주식처럼</p>
+                                    <p class="chat">ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ</p>
                                 </div>
                                 <time class="chatDate">오전 10:35</time>
                             </li>
@@ -194,7 +194,7 @@
 		// 그 때 전달 된 채팅방 번호를 저장하는 변수
 		const tempNo = "${chattingNo}"; 
 	</script>
-    <script src="/resources/js/hyodong/chatting/chatting.js"></script>
+    <script src="/resources/js/hyodong/chatting/BananaTalk.js"></script>
 
 </body>
 </html>

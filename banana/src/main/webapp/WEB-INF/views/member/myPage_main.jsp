@@ -50,7 +50,12 @@
 			<!--섹션3********************************************************************************************************섹션1-->
 			<section class="myBanana-detail">
 				<div class="myBanana-photo">
-					<img class="photo" src="/resources/images/banana-logo.png" alt=""> <i class="fa-solid fa-camera-retro fa-2x pen"></i>
+                    <c:if test = "${not empty loginMember.profileImage}">
+                        <img class="photo" src="${loginMember.profileImage}" alt=""> <i class="fa-solid fa-camera-retro fa-2x pen"></i>
+                    </c:if>
+                    <c:if test = "${empty loginMember.profileImage}">
+                        <img class="photo" src="/resources/images/banana-logo.png" alt=""> <i class="fa-solid fa-camera-retro fa-2x pen"></i>
+                    </c:if>
 				</div>
 
 				<div class="myBanana-content">
@@ -73,7 +78,7 @@
 						<p id="p_intro" class="p_intro">${loginMember.introduce}</p>
 
 						<p id="introUpdateBtn2" class="introUpdateBtn2">수정하기</p>
-						<%--  <p id = "changedBtn" class = "changedBtn">수정하기</p> --%>
+						
 
 					</div>
 					<div class="myBanana-temp">
@@ -110,8 +115,8 @@
                     <%-- c:if test = param.myPageCt=1 --%>
 
                     <div id= "second-category" class = "category"><a href="/member/myPage/main?myPageCt=2">구매내역</a></div>
-                    <div id= "third-category" class = "category"><a href="/member/myPage/main?myPageCt=3">관심목록</a></div>
-                    <div id= "fourth-category" class = "category"><a href="/member/myPage/main?myPageCt=4">후기</a></div>
+                    <div id= "third-category" class = "category">관심목록</a></div>
+                    <div id= "fourth-category" class = "category">후기</a></div>
                     
                     
               
@@ -167,7 +172,8 @@
                                         <c:if test = "${sold.buyerNo != 0}">
                                             <c:choose>
                                                 <c:when test="${sold.ratingNo == 0}">
-                                                    <a href="javascript:openPop(${sold.goodsNo},${sold.buyerNo},'${sold.buyerNickname}')" id="popopen">
+                                                    <a href="javascript:openPop(${sold.goodsNo},${sold.buyerNo},'${sold.buyerNickname}'
+                                                                                ${sold.sellerNo},'${sold.sellerNickname}')" id="popopen">
                                                         <div class="testcolor">거래 후기 보내기</div>
                                                     </a>
                                                 </c:when>
@@ -372,6 +378,10 @@
         } else {
             myPageCt = 1;
         }
+
+        let loginMemberNo
+
+        loginMemberNo = ${loginMember.memberNo};
     </script>
     <!-- jQuery 라이브러리(.js 파일) 추가(CDN 방식) -->
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>

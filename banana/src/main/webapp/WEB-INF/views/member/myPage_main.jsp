@@ -2,7 +2,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <%-- map에 저장된 값을 꺼내어 각각 변수에 저장 --%>
+
 <c:set var="soldList" value="${map.soldList}" />
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -99,10 +102,28 @@
 			</section>
 			<!--섹션4********************************************************************************************************섹션1-->
 			<section class="myBanana-category">
-				<div id=first-category>판매내역</div>
-				<div id=second-category>구매내역</div>
-				<div id=third-category>관심목록</div>
-				<div id=fourth-category>후기</div>
+                   
+                     <div id= "first-category" class = "category">
+                        <a href="/member/myPage/main?myPageCt=1">판매내역</a>
+                     </div>
+
+                    <%-- c:if test = param.myPageCt=1 --%>
+
+                    <div id= "second-category" class = "category"><a href="/member/myPage/main?myPageCt=2">구매내역</a></div>
+                    <div id= "third-category" class = "category"><a href="/member/myPage/main?myPageCt=3">관심목록</a></div>
+                    <div id= "fourth-category" class = "category"><a href="/member/myPage/main?myPageCt=4">후기</a></div>
+                    
+                    
+              
+
+            <%-- 판매내역 클랙->js에서 1을 input에 넣고
+                button을 클릭하도록 함
+                document.getElementById("first-category").addEventListener("click", ()=>{
+                    document.getElementbyId("status").value = 1;
+                    document.getElementById("button").click();
+                })
+             --%>
+
 			</section>
 			<!--섹션5********************************************************************************************************섹션1-->
 			<div id=changeJsp>
@@ -110,8 +131,8 @@
 			</div>
 			<section class="myBanana-sellList" id="myBanana-sellList">
 				<div class="myBanana-sell">
-					<div id="selling">판매중</div>
-					<div id="sold">판매완료</div>
+					<div id="selling"><a href="/member/myPage/main?myPageCt=5">판매중</a></div>
+					<div id="sold"><a href="/member/myPage/main?myPageCt=1">판매완료</a></div>
 				</div>
 
 				<section class="content-favorite">
@@ -119,6 +140,7 @@
 					<!-- 게시글 목록 조회 결과가 비어있다면 -->
 
 					<%-- choose 내에서는 jsp주석 적어야 해 --%>
+                   
 					<c:choose>
 						<c:when test="${empty soldList}">
 							<%-- 게시글 목록 조회 결과가 비어있다면 --%>
@@ -140,18 +162,22 @@
 										</div>
 									</div>
 									<div class="favorite__content">${sold.createdAt}</div>
-									<c:choose>
-										<c:when test="${sold.ratingNo == 0}">
-											<a href="javascript:openPop(${sold.goodsNo},${sold.buyerNo},'${sold.buyerNickname}')" id="popopen">
-												<div class="testcolor">거래 후기 보내기</div>
-											</a>
-										</c:when>
-										<c:otherwise>
-                                            <a href="javascript:openReview(${sold.ratingNo},'${sold.buyerNickname}','${sold.title}');">
-											<div class="testcolor2">보낸 후기 보기</div>
-                                            </a>
-										</c:otherwise>
-									</c:choose>
+                                     
+                                        <c:if test = "${sold.buyerNo != 0}">
+                                            <c:choose>
+                                                <c:when test="${sold.ratingNo == 0}">
+                                                    <a href="javascript:openPop(${sold.goodsNo},${sold.buyerNo},'${sold.buyerNickname}')" id="popopen">
+                                                        <div class="testcolor">거래 후기 보내기</div>
+                                                    </a>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <a href="javascript:openReview(${sold.ratingNo},'${sold.buyerNickname}','${sold.title}')">
+                                                    <div class="testcolor2">보낸 후기 보기</div>
+                                                    </a>
+                                                </c:otherwise>
+                                            </c:choose>
+                                        </c:if>
+                                        
 								</div>
                             </c:forEach>
 						</c:otherwise>
@@ -338,7 +364,13 @@
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
     <script>
-        
+        let myPageCt
+
+        if(${param.myPageCt != null}) {
+            myPageCt = ${param.myPageCt};
+        } else {
+            myPageCt = 1;
+        }
     </script>
     <!-- jQuery 라이브러리(.js 파일) 추가(CDN 방식) -->
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>

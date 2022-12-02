@@ -55,12 +55,31 @@ public class MyPageDAO {
 	}
 
 	/**판매완료한 내 게시글의 목록 조회
+	 * @param map1
+	 * @return
+	 */
+	public List<GoodsSell> selectGoodsSoldList(Map<String, Object> map1) {
+		
+		return sqlSession.selectList("myPageMapper.selectGoodsSoldList",map1);
+	}
+	
+	
+	/**판매중인 내 게시글의 목록 조회
 	 * @param memberNo
 	 * @return
 	 */
-	public List<GoodsSell> selectGoodsSoldList(int memberNo) {
+	public List<GoodsSell> selectGoodsSellList(int memberNo) {
 		
-		return sqlSession.selectList("myPageMapper.selectGoodsSoldList",memberNo);
+		return sqlSession.selectList("myPageMapper.selectGoodsSellList",memberNo);
+	}
+
+	/**구매완료한 내 게시글의 목록 조회
+	 * @param memberNo
+	 * @return
+	 */
+	public List<GoodsSell> selectGoodsBuyList(int memberNo) {
+		
+		return sqlSession.selectList("myPageMapper.selectGoodsBuyList",memberNo);
 	}
 
 	/** 
@@ -111,6 +130,10 @@ public class MyPageDAO {
 		
 		return sqlSession.selectList("myPageMapper.selectSendingReview",ratingNo);
 	}
+
+	
+
+
 
 	
 

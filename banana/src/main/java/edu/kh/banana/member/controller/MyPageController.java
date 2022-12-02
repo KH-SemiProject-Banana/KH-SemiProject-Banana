@@ -8,6 +8,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,24 +29,31 @@ public class MyPageController {
 	
 	@Autowired
 	private MyPageService service;
-	
-
 
 	// 마이페이지 이동 
 	@GetMapping("/main") // 나머지 주소 작성
 	public String main(@SessionAttribute("loginMember") Member loginMember, 
-						Model model) {
+						Model model,
+						@RequestParam(value="myPageCt", required=false, defaultValue = "1") int myPageCt
+						) {
+		
 		
 		System.out.println(loginMember);
+		Map<String, Object> map1 = new HashMap<String, Object>(); //새로 추가
+//		map1.put("sell",sell); //새로 추가
+//		map1.put("buy", buy); //새로 추가
+		int memberNo = loginMember.getMemberNo();
+		map1.put("memberNo", memberNo); //새로 추가
+		map1.put("myPageCt", myPageCt);
+		System.out.println(map1);
 		model.addAttribute("loginMember",loginMember);
-		
 		String address = loginMember.getMemberAddress();
 		model.addAttribute("address", address.substring(10,13));
 		
-		int memberNo = loginMember.getMemberNo();
-		
-		Map<String, Object> map = service.selectGoodsSoldList(memberNo);
+		//Map<String, Object> map = service.selectGoodsList(memberNo); //기존 구문
+		Map<String, Object> map = service.selectGoodsList(map1); 
 		model.addAttribute("map", map);
+		System.out.println(map);
 		
 		return "member/myPage_main";
 	}

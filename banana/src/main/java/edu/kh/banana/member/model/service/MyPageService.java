@@ -25,12 +25,13 @@ public interface MyPageService {
 
 	
 
-	/**
+	/** 판매완료/판매중/구매완료 목록 조회
 	 * @param memberNo
 	 * @return
 	 */
-	Map<String, Object> selectGoodsSoldList(int memberNo);
+	//Map<String, Object> selectGoodsList(int memberNo); //기존 구문
 
+	Map<String, Object> selectGoodsList(Map<String, Object> map1); //새로 만든 구문
 
 
 	int sendingMannerReview(List<String> goodCheckedArr,List<String> badCheckedArr, String reviewText, Member loginMember, int reviewGoodsNo,
@@ -41,6 +42,7 @@ public interface MyPageService {
 	 * @return
 	 */
 	List<Review> selectSendingReview(int ratingNo);
+
 
 	
 }

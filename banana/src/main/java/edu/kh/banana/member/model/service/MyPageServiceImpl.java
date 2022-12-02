@@ -51,21 +51,34 @@ public class MyPageServiceImpl implements MyPageService{
 		return result;
 	}
 
-	// 판매완료한 내 게시글 목록 조회
+	// 판매완료/판매중/구매완료 목록 조회
+//	@Override
+//	public Map<String, Object> selectGoodsList(int memberNo) {
+//		
+//		// 1단계 : 특정 게시판의 전체 게시글 수를 조회한다(단, 삭제된 글 제외)
+//		//int listCount = dao.getListCount(memberNo);
+//		
+//		List<GoodsSell> soldList = dao.selectGoodsSoldList(memberNo);
+//		List<GoodsSell> sellList = dao.selectGoodsSellList(memberNo);
+//		List<GoodsSell> buyList =  dao.selectGoodsBuyList(memberNo);		
+//		//System.out.println(soldList);
+//		Map<String, Object> map = new HashMap<String, Object>();
+//		map.put("soldList", soldList);
+//		map.put("sellList", sellList);
+//		map.put("buyList", buyList);
+//		
+//		return map;
+//
+//	
+//	}
+	
 	@Override
-	public Map<String, Object> selectGoodsSoldList(int memberNo) {
+	public Map<String, Object> selectGoodsList(Map<String, Object> map1) {
 		
-		// 1단계 : 특정 게시판의 전체 게시글 수를 조회한다(단, 삭제된 글 제외)
-		//int listCount = dao.getListCount(memberNo);
-		
-		List<GoodsSell> soldList = dao.selectGoodsSoldList(memberNo);
-		//System.out.println(soldList);
+		List<GoodsSell> soldList = dao.selectGoodsSoldList(map1);
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("soldList", soldList);
-		
 		return map;
-
-	
 	}
 
 	//reviewDB에 인서트하기
@@ -140,4 +153,7 @@ public class MyPageServiceImpl implements MyPageService{
 		
 		return dao.selectSendingReview(ratingNo);
 	}
+
+
+	
 }

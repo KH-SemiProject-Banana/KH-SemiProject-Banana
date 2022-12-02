@@ -1,5 +1,73 @@
 //팝업 띄우기
 //const popupLayerList = document.getElementsByClassName("popup_layer"); //추가
+
+// function clickBtn(){
+//     const btn1Value = document.getElementById("first-category");
+//     document.getElementById("btn1ValueSave").value= btn1Value.value;
+//     document.getElementById("frm").submit();
+// }
+
+switch(myPageCt){
+    case 1: document.getElementById("first-category").style.fontWeight = "bold"; 
+    document.getElementById("sold").style.fontWeight = "bold";
+    break;
+    case 2: document.getElementById("second-category").style.fontWeight = "bold"; break;
+    case 5: 
+    document.getElementById("first-category").style.fontWeight = "bold";
+    document.getElementById("selling").style.fontWeight = "bold"; break;
+}
+
+
+const first = document.getElementById("myBanana-sellList");
+const fourth = document.querySelector("#changeJsp");
+
+fourth.style.display = "none";
+
+// (1)판매목록 카테고리 클릭 시 오픈
+document.getElementById("first-category").addEventListener("click",function(e){
+    alert("첫번째 카테고리 open");
+
+    
+    fourth.style.display = "none";
+    if(first.style.display == "none"){
+        first.style.display = "block";
+        fourth.style.display = "none";
+    } else {
+        fourth.style.display = "none";  
+    }
+    
+    const firstValue = e.target.getAttribute("value"); // 1
+    
+
+    
+})
+
+
+// document.getElementById("first-category").addEventListener("click", ()=>{
+
+//     document.getElementbyId("status").setAttribute("value","sell");
+//     document.getElementById("status").setAttribute("name","sell");
+//     document.getElementById("button").click();
+// })
+
+
+// (2)후기 카테고리 클릭 시 오픈
+document.getElementById("fourth-category").addEventListener("click",function(){
+    alert("네번째 오픈");
+
+    //first.style.display == "none";
+    // console.log(document.querySelector("#changeJsp"));
+    if(fourth.style.display == "none"){
+        fourth.style.display = "block";
+        first.style.display = "none";
+     } else {
+        first.style.display = "none";
+    }
+    
+       
+    
+})
+
 let reviewGoodsNo;
 let reviewBuyerNo;
 
@@ -9,15 +77,12 @@ function openPop(goodsNo, buyerNo, buyerNickname) {
     $("input[name ='bad']").prop("checked",false);
     reviewGoodsNo = goodsNo;
     reviewBuyerNo = buyerNo;
+    
     document.getElementById("buyerNickname").innerText = buyerNickname;
     
     document.getElementById("popup_layer").style.display = "block";
- 
-   
 
-    
 }
-
 
 //(첫번째 팝업 내부) 클릭이벤트로 클릭 시에 다른 쪽에 있는 체크박스 전부해제하는 코드
 const badChoice = document.getElementById("badchoice");
@@ -119,7 +184,7 @@ function closePop2() {
     document.getElementById("popup_layer2").style.display = "none";
     const popopen = document.getElementById("popopen");
 
-    // popopen.innerText= "<div class='testcolor2'>보낸 후기 보기</div>";
+    
     popopen.innerText = "보낸 후기 보기"
     popopen.classList.add("testcolor2");
 
@@ -285,51 +350,6 @@ document.addEventListener("click",function(e){
 
 
 
-
-
-
-const first = document.getElementById("myBanana-sellList");
-const fourth = document.querySelector("#changeJsp");
-
-fourth.style.display = "none";
-
-// 판매목록 카테고리 클릭 시 오픈
-document.getElementById("first-category").addEventListener("click",function(){
-    alert("첫번째 카테고리 open");
-
-    
-    fourth.style.display = "none";
-    if(first.style.display == "none"){
-        first.style.display = "block";
-        fourth.style.display = "none";
-    } else {
-        fourth.style.display = "none";  
-    }
-    
-    
-
-    
-})
-
-
-// 후기 카테고리 클릭 시 오픈
-document.getElementById("fourth-category").addEventListener("click",function(){
-    alert("네번째 오픈");
-
-    //first.style.display == "none";
-    // console.log(document.querySelector("#changeJsp"));
-    if(fourth.style.display == "none"){
-        fourth.style.display = "block";
-        first.style.display = "none";
-     } else {
-        first.style.display = "none";
-    }
-    
-       
-    
-})
-
-
 //강사님과 함께...
 
 // const introUpdateBtn = document.getElementById("introUpdateBtn");
@@ -390,7 +410,6 @@ introUpdateBtn2.addEventListener("click", e => {
             success:(result) => {
     
                 if(result > 0){ //성공
-    
                     // changedBtn.style.display = "none";
                     // if( introUpdateBtn2.style.display == "none"){
                     //     introUpdateBtn2.style.display= "block";
@@ -417,6 +436,7 @@ introUpdateBtn2.addEventListener("click", e => {
     })
 })
 
+// 판매중/ 구매완료일 경우, 바뀌게 하자!
 
 
 
@@ -444,130 +464,3 @@ introUpdateBtn2.addEventListener("click", e => {
 
 
 
-
-
-
-
-
-
-
-// const introUpdateBtn = document.getElementById("introUpdateBtn");
-
-// introUpdateBtn.addEventListener("click", () => {
-//     //e.preventDefault();
-//     //console.log(e.target);
-//     const pIntro = document.getElementById("p_intro");
-//     const input = document.createElement("input");
-//     input.value = pIntro.innerText;
-    
-//     pIntro.after(input);
-//     pIntro.remove();
-//     input.classList.add("changed");
-//     introUpdateBtn.innerText = "수정하기";
-//     introUpdateBtn.classList.add("changedBtn");
-//     introUpdateBtn.classList.remove("introUpdateBtn");
-
-    
-
-//     if(introUpdateBtn.classList.contains("changedBtn")){
-
-//         $.ajax({
-//             url : "/changeInfo",
-//             data : {"changedInfo" : input.value},
-//             success:(result) => {
-
-//                 if(result > 0){ //성공
-
-//                     pIntro.innerText = input.value;
-//                     input.classList.remove("changed");
-//                     introUpdateBtn.classList.add("introUpdateBtn");
-//                     introUpdateBtn.classList.add("changedBtn");
-
-
-                    
-                
-
-//                 } else { //실패
-//                     console.log("서버에 저장 실패");
-//                 }
-
-//             },
-//             error : () => {console.log("동작 에러난듯?");
-//             pIntro.innerText = input.value;
-//                     input.classList.remove("changed");
-//                     introUpdateBtn.classList.add("introUpdateBtn");
-//                     introUpdateBtn.classList.add("changedBtn");
-        
-//             }
-
-
-//         })
-
-//     }
-
-
-// })
-
-// //좋아요 버튼 클릭 시 동작
-// //(전역변수 memberNo,boardNo 사용(boardDetail.jsp))
-// const boardLike = document.getElementById("boardLike");
-
-// boardLike.addEventListener("click", e => {
-
-   
-
-    
-
-
-//     // 로그인 상태이면서 + 좋아요 상태가 아닌 경우
-//     if(e.target.classList.contains('fa-regular')){//빈 하트인 경우
-
-//         $.ajax({
-//             url : "/boardLikeUp",
-//             data : {"boardNo":boardNo , "memberNo":memberNo},
-//             type : "GET",
-//             success : (result) => {
-
-//                 if(result > 0){ //성공
-//                     e.target.classList.remove('fa-regular'); //빈 하트 클래스 삭제
-//                     e.target.classList.add('fa-solid'); //채워진 하트 클래스 추가
-            
-                
-
-//                 } else { //실패
-//                     console.log("증가 실패");
-//                 }
-
-//             },
-
-//             error : () => {console.log("증가 에러");}
-//         });
-
-//     }
-//     // 로그인 상태이면서 + 좋아요 상태인 경우
-//     else{ //채워진 하트인 경우
-        
-
-//         $.ajax({
-//             url : "/boardLikeDown",
-//             data : {"boardNo":boardNo , "memberNo":memberNo},
-//             type : "GET",
-//             success : (result) => {
-
-//                 if(result > 0){ //성공
-//                     e.target.classList.add('fa-regular'); //채워진 하트 삭제
-//                     e.target.classList.remove('fa-solid'); //빈 하트 클래스  추가
-                    
-
-//                 } else { //실패
-//                     console.log("감소 실패");
-//                 }
-
-//             },
-
-//             error : () => {console.log("감소 에러");}
-//         });
-//     }
-
-
-// });

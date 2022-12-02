@@ -60,7 +60,7 @@
                     <p class="title">  인기 상품</p>
                 </div>
                 
-                <a href="#">더보기</a>
+                <a href="/category?categoryNo=0">더보기</a>
             </section>
 
 

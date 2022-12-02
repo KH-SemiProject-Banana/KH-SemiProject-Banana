@@ -146,18 +146,18 @@ input[name="heart"] + label{
 
 
     z-index: 3;
-    opacity: 0.7;
+    /* color: rgba(0,0,0,0.7); */
 
     cursor: pointer;
 
 }
 
-input[name="heart"]:checked + label>i {
+/* input[name="heart"]:checked + label>i {
     color: deeppink;
 
     justify-content: center;
     align-items: center;
-}
+} */
 
 .favorite__price-heart {
     margin-left: 5px;

@@ -70,20 +70,21 @@
 
                     <c:set var="i"  value="${i+1}"/>
 
-                    <%-- 로그인상태인 경우 회원번호 가져와 like list 가져와 goods테이블에 대입(-) --%>
-                    <c:if test="${favorite.isLike == 1}">
-                        <c:set var="isLike" value="choose"/>
-                    </c:if>
+
 
                     <div class="favorite__pack">
                         <div>
                             <div class="favorite__img">
-                                <%-- <a href="/goods/goodsList/${favorite.goodsNo}"> --%>
                                 <a href="">
                                     <img src="${favorite.thumbnail}" class="favorite__img">
                                 </a>
                                 <div class="favorite__heart">
-                                    <input type="checkbox" id="like${i}" class="favorite__heart likeChk" value="${favorite.goodsNo}">
+                                    <c:if test="${favorite.isLike == 0}"> <%-- 좋아요 상태가 아닌 경우 --%>
+                                        <input type="checkbox" id="like${i}" class="favorite__heart likeChk" value="${favorite.goodsNo}" >
+                                    </c:if>
+                                    <c:if test="${favorite.isLike == 1}"> <%-- 좋아요 상태인 경우 --%>
+                                        <input type="checkbox" id="like${i}" class="favorite__heart likeChk" value="${favorite.goodsNo}" checked>
+                                    </c:if>
                                     <label for="like${i}" class="like_yn">
                                         <i class="fa-solid fa-heart heart ${isLike}"></i>
                                     </label>
@@ -118,11 +119,11 @@
             <section class="content-favorite">
                 <c:forEach var="newGoods" items="${newGoodsList}">
 
+                <c:set var="i"  value="${i+1}"/>
+
+
                     <c:set var="i"  value="${i+1}"/>
                     
-                    <c:if test="${newGoods.isLike == 1}">
-                        <c:set var="isLike" value="choose"/>
-                    </c:if>
                     <div class="favorite__pack">
                         <div>
                             <div class="favorite__img">
@@ -130,7 +131,12 @@
                                     <img src="${newGoods.thumbnail}" class="new__img">
                                 </a>
                                 <div class="favorite__heart">
-                                    <input type="checkbox"  id="like${i}" class="new__heart likeChk" value="${newGoods.goodsNo}">
+                                    <c:if test="${newGoods.isLike == 0}"> <%-- 좋아요 상태가 아닌 경우 --%>
+                                        <input type="checkbox"  id="like${i}" class="new__heart likeChk" value="${newGoods.goodsNo}">
+                                    </c:if>
+                                    <c:if test="${newGoods.isLike == 1}"> <%-- 좋아요 상태인 경우 --%>
+                                        <input type="checkbox"  id="like${i}" class="new__heart likeChk" value="${newGoods.goodsNo}" checked>
+                                    </c:if>
                                     <label for="like${i}" class="like_yn">
                                         <i class="fa-solid fa-heart heart"></i>
                                     </label>

@@ -307,7 +307,7 @@ a { text-decoration:none }
 /*자슥 글3개*/
 .anotherPop{
     position : absolute;
-    z-index: 1002;
+    z-index: 100;
     right : 18px;
     top : 10px;
     cursor: pointer;
@@ -387,3 +387,37 @@ a { text-decoration:none }
 }
 
 
+/* dot */
+
+.favorite__img {
+    position: relative;
+}
+
+
+
+.myGoodsDetail {
+    display: flex;
+    flex-direction: column;
+    position : absolute;
+
+    top: 20px;
+    right: 20px;
+    
+    margin-top: 5px;
+    border: 1px solid black;
+    background-color: white;
+
+    z-index: 5000;
+    height: 80px;
+    width: 100px;
+}
+
+.myGoodsDetail * {
+    color: rgba(0, 0, 0, 0.6);
+    height: 100px;
+}
+
+
+.hidden{
+    display: none;
+}

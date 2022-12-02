@@ -224,5 +224,14 @@ public class GoodsController {
 		
 		return "redirect:" + path;
 	}
+	
+	
+//	상품 끌어올리기
+	@GetMapping("/refresh/{goodsNo}")
+	@ResponseBody
+	public int goodsRefresh(@PathVariable("goodsNo") int goodsNo) {
+		
+		return service.goodsRefresh(goodsNo);
+	}
 
 }

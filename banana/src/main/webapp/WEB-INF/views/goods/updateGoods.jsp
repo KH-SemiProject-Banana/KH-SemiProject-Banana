@@ -61,65 +61,6 @@
             </div>
             <form name="register__content" id="register__form"  action="/goods/registerGoods" method="post"  enctype="multipart/form-data">
 
-                
-                <%-- 
-                    <js>
-                    0. 만들것 : inputImage, preview, deleteImage(x버튼), deleteSet(imageOrder 저장), originalCount(기존 이미지 갯수)
-                    1. forEach구문으로 기존에 등록된 상품정보를 가져다 label태그 안의 img-src에 집어넣음
-                    2. 총 갯수 카운트
-                    3. 기존의 이미지를 삭제할때-> deleteSet에 추가, imageCount--;
-                    4. 기존 이미지 변경 
-                        변경성공-> deleteSet에 넣음 / preview에 추가
-                        변경취소-> 아무일도 일어나지 않음
-
-                    5. 유효성 검사 : count 갯수가 0일 경우 checkObj.goodsImage = false
-
-                    ------
-                    <sts>
-                    1. 글 수정(xss, newLineHandling)
-                    2. 이미지 수정을 위한 webPath, folderpath 준비
-                    3. service로 보냄
-                    4. 
-                        1) 삭제(deleteSet.size > 0) : in(deleteSet)구문 이용해 기존이미지 삭제
-                        2) goodsNo이용해 이미지 몇개인지 확인(이미지 갯수 == 새로 등록할 이미지의 imageOrder 시작번호)
-                        2) 변경 + 새로 등록할 이미지 : 추가(imageOrder = originalCount)
-                        
-
-                 --%>
-
-
-                <%-- imageOrder 없앤다면?
-
-                    <js>
-                    0. 만들것 : inputImage, preview, deleteImage(x버튼), deleteSet(imageNo 저장), originalCount(기존 이미지 갯수)
-                    1. forEach구문으로 기존에 등록된 상품정보를 가져다 label태그 안의 img-src에 집어넣음
-                    2. 총 갯수 카운트
-                    3. 기존의 이미지를 삭제할때-> deleteSet에 추가, imageCount--;
-                    4. 기존 이미지 변경 
-                        변경성공-> deleteSet에 넣음 / preview에 추가
-                        변경취소-> 아무일도 일어나지 않음
-                    5. 새로 추가 : preview에 추가
-
-                    6. 유효성 검사 : count 갯수가 0일 경우 checkObj.goodsImage = false
-
-                    ------
-                    <sts>
-                    1. 글 수정(xss, newLineHandling)
-                    2. 이미지 수정을 위한 webPath, folderpath 준비
-                    3. service로 보냄
-                    4. 이미지 수정
-                        1) 삭제(deleteSet.size > 0) : in(deleteSet)구문 이용해 기존이미지 삭제
-                        2) 변경/추가(preview.size > 0) : preview에 추가된 이미지 새로 추가
-                        3. 검사 : 각각의 result == 0이라면 throw new Exception
-                    5. 커밋 : (글 수정 == 1) && (이미지 삭제 or 이미지 삽입 > 0)이라면 커밋, 아니면 롤백
-                        
-
-                 --%>
-
-
-
-
-
                 <div class="content-image">
                     <div class="content-image__title left-bar">
                         <div>
@@ -163,61 +104,61 @@
                         </div>
 
                         <div class="goodsImg">
-                            <label for="img0">
+                            <label for="img1">
                             <c:if test="${empty img1}">
                                 <img class="preview" src="/resources/images/image-upload.png">
                             </label>
-                            <input type="file" name="images" class="inputImage" id="img0" accept="image/*">
+                            <input type="file" name="images" class="inputImage" id="img1" accept="image/*">
                             </c:if>
                             <c:if test="${not empty img1}">
                                 <img class="preview" src="${img1}">
                             </label>
-                            <input type="file" name="images" class="inputImage" id="img0" accept="image/*">
+                            <input type="file" name="images" class="inputImage" id="img1" accept="image/*">
                             <span class="delete-image">&times;</span>
                             </c:if>
                         </div>
 
                         <div class="goodsImg">
-                            <label for="img0">
+                            <label for="img2">
                             <c:if test="${empty img2}">
                                 <img class="preview" src="/resources/images/image-upload.png">
                             </label>
-                            <input type="file" name="images" class="inputImage" id="img0" accept="image/*">
+                            <input type="file" name="images" class="inputImage" id="img2" accept="image/*">
                             </c:if>
                             <c:if test="${not empty img2}">
                                 <img class="preview" src="${img2}">
                             </label>
-                            <input type="file" name="images" class="inputImage" id="img0" accept="image/*">
+                            <input type="file" name="images" class="inputImage" id="img2" accept="image/*">
                             <span class="delete-image">&times;</span>
                             </c:if>
                         </div>
 
                         <div class="goodsImg">
-                            <label for="img0">
+                            <label for="img3">
                             <c:if test="${empty img3}">
                                 <img class="preview" src="/resources/images/image-upload.png">
                             </label>
-                            <input type="file" name="images" class="inputImage" id="img0" accept="image/*">
+                            <input type="file" name="images" class="inputImage" id="img3" accept="image/*">
                             </c:if>
                             <c:if test="${not empty img3}">
                                 <img class="preview" src="${img3}">
                             </label>
-                            <input type="file" name="images" class="inputImage" id="img0" accept="image/*">
+                            <input type="file" name="images" class="inputImage" id="img3" accept="image/*">
                             <span class="delete-image">&times;</span>
                             </c:if>
                         </div>
 
                         <div class="goodsImg">
-                            <label for="img0">
+                            <label for="img4">
                             <c:if test="${empty img4}">
                                 <img class="preview" src="/resources/images/image-upload.png">
                             </label>
-                            <input type="file" name="images" class="inputImage" id="img0" accept="image/*">
+                            <input type="file" name="images" class="inputImage" id="img4" accept="image/*">
                             </c:if>
                             <c:if test="${not empty img4}">
                                 <img class="preview" src="${img4}">
                             </label>
-                            <input type="file" name="images" class="inputImage" id="img0" accept="image/*">
+                            <input type="file" name="images" class="inputImage" id="img4" accept="image/*">
                             <span class="delete-image">&times;</span>
                             </c:if>
                         </div>
@@ -243,7 +184,7 @@
                         <div class="required">*</div>
                     </div>
                     <div class="content-category__content right-bar">
-                        <select name="categoryNo" id="goodsCategory" value="${registerGoods.category}">
+                        <select name="categoryNo" id="goodsCategory" >
 
                             <option value="">옵션을 선택하세요</option>
                             <option value="1">전자기기</option>
@@ -268,8 +209,8 @@
                         <div class="required">*</div>
                     </div>
                     <div class="content-discription__content right-bar">
-                        <textarea row="5" col="30" class="introduce" id="goodsContent" name="description" value="${registerGoods.description}"
-                            placeholder="상품의 상태를 정확하게 알 수 있는 여러 장의 상품  사진과 구입 연도, 브랜드, 사용감, 하자 유무 등 구매자에게 필요한 정보를 꼭 포함해 주세요! 문의를 줄이고 더 쉽게 판매할 수 있어요."></textarea>
+                        <textarea row="5" col="30" class="introduce" id="goodsContent" name="description" 
+                            placeholder="상품의 상태를 정확하게 알 수 있는 여러 장의 상품  사진과 구입 연도, 브랜드, 사용감, 하자 유무 등 구매자에게 필요한 정보를 꼭 포함해 주세요! 문의를 줄이고 더 쉽게 판매할 수 있어요.">${registerGoods.description}</textarea>
                         <div id="contentMessage"></div>
                     </div>
                 </div>
@@ -286,7 +227,7 @@
                     </div>
                 </div>
 
-                <div class="content-status">
+                <%-- <div class="content-status">
                     <div class="content-status__title  left-bar">
                         <div class="title">판매 상태</div>
                         <div class="required">*</div>
@@ -297,7 +238,7 @@
                             <option value="N">판매완료</option>
                         </select>
                     </div>
-                </div>
+                </div> --%>
 
 
                 <div class="content-finish">
@@ -310,6 +251,10 @@
 
 
   	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+
+    <script>
+        const categoryNo = "${registerGoods.categoryNo}";
+    </script>
 
     <script src="/resources/js/goods/goods-update.js"></script>
 </body>

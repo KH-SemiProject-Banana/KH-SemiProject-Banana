@@ -91,10 +91,8 @@ public class GoodsServiceImpl implements GoodsService {
 	@Override
 	public GoodsSell selectGoods(int goodsNo) {
 		
-		GoodsSell goods = dao.selectGoods(goodsNo);
+		return dao.selectGoods(goodsNo);
 		
-
-		return goods;
 	}
 
 	/**

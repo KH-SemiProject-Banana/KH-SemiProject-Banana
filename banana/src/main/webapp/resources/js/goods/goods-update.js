@@ -7,16 +7,23 @@ const checkObj = {
 };
 
 
+
 // 이미지 미리보기
 const inputImage = document.getElementsByClassName("inputImage"); // input
 const preview = document.getElementsByClassName("preview"); // img태그
-const deleteImage = documenet.getElementsByClassName("delete-image");
+const deleteImage = document.getElementsByClassName("delete-image");
 
 const deleteSet = new Set();
 
 
 (()=>{
-    for(let i = 0; i < inputImage.length; i++) {
+
+    document.getElementById("goodsCategory").children[3].setAttribute("selected", true);
+
+
+
+    
+    for(let i = 0; i < 5; i++) {
     
         inputImage[i].addEventListener("change", (e) => { // 이미지 삽입하겠다고 클릭
     
@@ -31,38 +38,49 @@ const deleteSet = new Set();
                     deleteSet.delete(i);
                 }
     
+                const xButton = document.createElement("span");
+                xButton.innerHTML = "&times;";
+                xButton.classList.add("delete-image");
+                inputImage[i].after(xButton);
+
+
+                // xButton에 삭제기능 추가
+                xButton.addEventListener("click", (e) => {
+        
+                    if(preview[i].getAttribute("src") != "/resources/images/image-upload.png") { // 기본이미지가 아닐 경우
+            
+                        e.target.remove();
+
+                        preview[i].setAttribute("src", "/resources/images/image-upload.png");
+                        inputImage[i].value = "";
+            
+                        e.target.delete;
+            
+                        deleteSet.add(i);
+
+                    }
+                });
+
+                
     
     
             } else { // 취소
                 return; // 아무일도 일어나지 않음
             }
+
+
+            imageCount = deleteImage.length; // 전역변수
+            document.getElementsByClassName("img__pic-count")[0].innerText = "(" + imageCount + "/5)";
+
         });
     
-        // 삭제버튼
-        deleteImage[i].addEventListener("click", (e) => {
-    
-            if(preview[i].getAttribute("src") != "/resources/images/image-upload.png") { // 기본이미지가 아닐 경우
-    
-                preview[i].setAttribute("src", "/resources/images/image-upload.png");
-                inputImage[i].value = "";
-    
-                e.target.delete;
-    
-                deleteSet.add(i);
-            }
-        });
+        
     }
     
     imageCount = deleteImage.length; // 전역변수
     document.getElementsByClassName("img__pic-count")[0].innerText = "(" + imageCount + "/5)";
     
 })();
-
-
-
-
-
-
 
 
 
@@ -135,6 +153,9 @@ function loadFile(input) {
 // form태그 제출시 유효성검사 후 실행
 document.getElementById("register__form").addEventListener("submit", e => {
 
+
+    // dk
+
     // 카테고리 유효성검사
     if (document.getElementById("goodsCategory").value == "") {
         checkObj.goodsCategory = false;
@@ -145,7 +166,6 @@ document.getElementById("register__form").addEventListener("submit", e => {
     // 상품 이미지 유효성검사(deleteSet == 5이면 이미지 없음->false)
     if(deleteSet.size == 5) {checkObj.goodsImage = false}
     else {checkObj.goodsImage = true}
-
 
     // 상품 제목 유효성 검사
     if(goodsTitle.value.trim().length == 0) {checkObj.goodsTitle = false}

@@ -69,9 +69,11 @@
  	 
  	 
  	 <!-- 한 상품의 상세정보 얻어오기 -->
- 	 <select id="selectGoods" parameterType="_int" resultType="GoodsSell">
- 	 	SELECT * FROM GOODS_SELL
- 	 	WHERE GOODS_NO = #{goodsNo}
+ 	 <select id="selectGoods" parameterType="_int" resultMap="goods_rm">
+ 	 	SELECT GOODS_NO, CATEGORY_NO, TITLE, SELL_PRICE, DESCRIPTION,
+		SELLER_NO
+		FROM GOODS_SELL S
+		WHERE GOODS_NO= #{goodsNo}
  	 </select>
   
 

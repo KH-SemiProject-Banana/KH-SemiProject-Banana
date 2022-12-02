@@ -5,6 +5,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
@@ -25,7 +26,7 @@ public class BoardComplainController {
 	}
 	
 	@PostMapping("/reportsubmit")
-	public String reportsubmit(@RequestParam Map<String, Object> submit,
+	public String reportSubmit(@RequestParam Map<String, Object> submit,
 								@SessionAttribute("loginMember") Member loginMember) {
 								
 		// int complained 사용하기
@@ -36,7 +37,7 @@ public class BoardComplainController {
 	}
 	
 	@GetMapping("/usercomplain")
-	public String userreport() {
+	public String userReport(/*@PathVariable("otherUserNo") int otherUserNo*/) {
 		
 		return "usercomplain/usercomplain";
 	}

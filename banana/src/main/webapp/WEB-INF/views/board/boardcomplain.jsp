@@ -10,7 +10,7 @@
     <link rel="shortcut icon"  sizes="16x16 32x32 64x64" href="https://i.ibb.co/4tCGZqD/Banana.png">
     <title>신고하기 페이지</title>
 
-    <link rel="stylesheet" href="/resources/css/chiwoo/bananaPay.css">
+    <link rel="stylesheet" href="/resources/css/chiwoo/popup.css">
     <link rel="stylesheet" href="/resources/css/chiwoo/report.css">
     <link rel="stylesheet" href="/resources/css/style.css">
 

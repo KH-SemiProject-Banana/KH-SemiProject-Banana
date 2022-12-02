@@ -11,12 +11,12 @@
     <link rel="shortcut icon"  sizes="16x16 32x32 64x64" href="https://i.ibb.co/4tCGZqD/Banana.png">
     <title>신고하기 페이지</title>
 
-    <link rel="stylesheet" href="/resources/css/chiwoo/bananaPay.css">
+    <link rel="stylesheet" href="/resources/css/chiwoo/popup.css">
     <link rel="stylesheet" href="/resources/css/chiwoo/report.css">
     <link rel="stylesheet" href="/resources/css/style.css">
 
     <script src="https://kit.fontawesome.com/f7459b8054.js" crossorigin="anonymous"></script>
-
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 </head>
 <body>
     
@@ -44,15 +44,14 @@
                     <!--팝업 컨텐츠 영역-->
                     <div class="report-total">
                         <div class="report-top">
-                            <a href="#"> <i class="fa-solid fa-arrow-left-long"></i> 사용자 신고</a>
-                    
+                            <a href="#"> <i class="fa-solid fa-arrow-left-long" id="back"></i> <i class="fa-solid fa-arrow-left-long" id="back2"></i> 사용자 신고</a>
                         </div>
                     </div>
                     <div>
                         <div class="report-why">
-                            <div>'유저닉네임'</div>
+                            <div> ${memberNickname} </div>
                             <p>
-                                '유저닉네임' 사용자를 신고하는 이유를 선택해주세요
+                               ${memberNickname} 사용자를 신고하는 이유를 선택해주세요
                             </p>
                         </div>
                     
@@ -173,7 +172,7 @@
                                     <textarea name="reportbox" id="reportbox" cols="90" rows="5" placeholder="혹시 불쾌한 일을 겪으셨나요? 사유를 남겨주세요" ></textarea>
                                         
                                 </div>
-                                    <button type="submit">바나나 팀에게 보내기</button>
+                                    <button type="submit" id = "reportsubmit">바나나 팀에게 보내기</button>
                                 </div>
                             </div>
                             <input type="hidden" name="ctg1" value="">

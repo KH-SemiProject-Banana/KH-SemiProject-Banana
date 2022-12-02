@@ -56,7 +56,7 @@
 		<mapper resource="/mappers/goods-mapper.xml"/>
 		<mapper resource="/mappers/pay-mapper.xml"/>
 		<mapper resource="/mappers/review-mapper.xml"/>
-		<mapper resource="/mappers/userComplain-mapper.xml"/>
+		<mapper resource="/mappers/usercomplain-mapper.xml"/>
 		<mapper resource="/mappers/ajax-mapper.xml"/>
 		<mapper resource="/mappers/board-mapper.xml"/>
 		<mapper resource="/mappers/comment-mapper.xml"/>

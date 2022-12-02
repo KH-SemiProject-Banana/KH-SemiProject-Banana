@@ -143,8 +143,8 @@ const selectChattingFn = () => {
 				const div = document.createElement("div")
 				
 				
-				const lid = document.createElement("li");// 메세지 시작 날짜
-				lid.classList.add("date-line");// 메세지 시작 날짜
+				//const lid = document.createElement("li");// 메세지 시작 날짜
+				//lid.classList.add("date-line");// 메세지 시작 날짜
 				
 				// 메세지 내용
 				const p = document.createElement("p");
@@ -188,7 +188,7 @@ const selectChattingFn = () => {
 					li.append(img,div, time);
 				}
 				ul.append(li);
-				lid.append(div) // 메세지 시작 날짜
+				//lid.append(div) // 메세지 시작 날짜
 
 				display.scrollTop = display.scrollHeight; // 스크롤 제일 밑으로
 			}
@@ -348,8 +348,8 @@ chattingSock.onmessage = function(e) {
 		const div = document.createElement("div")
 
 		
-		const lid = document.createElement("li");// 메세지 시작 날짜
-		lid.classList.add("date-line");// 메세지 시작 날짜
+		//const lid = document.createElement("li");// 메세지 시작 날짜
+		//lid.classList.add("date-line");// 메세지 시작 날짜
 		
 		// 메세지 내용
 		const p = document.createElement("p");
@@ -391,7 +391,7 @@ chattingSock.onmessage = function(e) {
 	
 			div.append(name, p);
 			li.append(img,div, time);
-			lid.append(div) // 메세지 시작 날짜
+			//lid.append(div) // 메세지 시작 날짜
 	
 		}
 	

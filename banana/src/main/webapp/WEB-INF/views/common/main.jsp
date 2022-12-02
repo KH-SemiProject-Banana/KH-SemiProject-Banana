@@ -67,6 +67,9 @@
 
             <section class="content-favorite" id="favorite">
                 <c:forEach var="favorite" items="${favoriteGoodsList}">
+
+                    <c:set var="i"  value="${i+1}"/>
+
                     <%-- 로그인상태인 경우 회원번호 가져와 like list 가져와 goods테이블에 대입(-) --%>
                     <c:if test="${favorite.isLike == 1}">
                         <c:set var="isLike" value="choose"/>
@@ -79,16 +82,15 @@
                                 <a href="">
                                     <img src="${favorite.thumbnail}" class="favorite__img">
                                 </a>
+                                <div class="favorite__heart">
+                                    <input type="checkbox" id="like${i}" class="favorite__heart likeChk" value="${favorite.goodsNo}">
+                                    <label for="like${i}" class="like_yn">
+                                        <i class="fa-solid fa-heart heart ${isLike}"></i>
+                                    </label>
+                                </div>
                             </div>
                             <div class="favorite__price-heart">
                                 <div class="favorite__price">${favorite.sellPrice}</div>
-                                <div class="favorite__heart">
-                                    <input type="checkbox" name="heart" class="favorite__heart">
-                                    <label for="heart1">
-                                        <i class="fa-solid fa-heart-circle-plus ${isLike}"></i>
-                                        <input type="hidden" value="${newGoods.goodsNo}">
-                                    </label>
-                                </div>
                             </div>
                         </div>
                     
@@ -115,6 +117,9 @@
 
             <section class="content-favorite">
                 <c:forEach var="newGoods" items="${newGoodsList}">
+
+                    <c:set var="i"  value="${i+1}"/>
+                    
                     <c:if test="${newGoods.isLike == 1}">
                         <c:set var="isLike" value="choose"/>
                     </c:if>
@@ -124,16 +129,16 @@
                                 <a href="">
                                     <img src="${newGoods.thumbnail}" class="new__img">
                                 </a>
+                                <div class="favorite__heart">
+                                    <input type="checkbox"  id="like${i}" class="new__heart likeChk" value="${newGoods.goodsNo}">
+                                    <label for="like${i}" class="like_yn">
+                                        <i class="fa-solid fa-heart heart"></i>
+                                    </label>
+                                </div>
                             </div>
                             <div class="favorite__price-heart">
                                 <div class="new__price">${newGoods.sellPrice}</div>
-                                <div class="favorite__heart">
-                                    <input type="checkbox" name="heart" class="new__heart">
-                                    <label for="heart6">
-                                        <i class="fa-solid fa-heart-circle-plus"></i>
-                                        <input type="hidden" value="${newGoods.goodsNo}">
-                                    </label>
-                                </div>
+                                
                             </div>
                         </div>
                     
@@ -163,6 +168,8 @@
 
 
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+
+    <script src="/resources/js/main.js"></script>
 
 </body>
 </html>

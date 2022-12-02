@@ -9,24 +9,13 @@ const checkObj = {
 
 
 function loadFile(input) {
-    let fileCount = document.getElementById("chooseFile");
+    // let fileCount = document.getElementById("chooseFile");
 
     const files = input.files;
 
 
 
-
-
-
-    // console.log(files);
-
-    // console.log(temp);
-
-    let i = 0;
     for (let file of files) {
-
-
-
 
 
         const temp = document.querySelectorAll("#image-show > img");
@@ -55,6 +44,7 @@ function loadFile(input) {
 
         container.appendChild(newImage);
 
+        // 이미지 삭제
         newImage.addEventListener("click", (e) => {
 
             container.removeChild(e.target);
@@ -67,10 +57,10 @@ function loadFile(input) {
         document.getElementsByClassName("img__pic-count")[0].innerText = "(" + count + "/5)";
 
 
-        i++;
+
     }
 
-    const list = document.getElementsByClassName("img");
+    list = document.getElementsByClassName("img");
     console.log(list.length);
     if (list.length > 0) {
         checkObj.questionImage = true;

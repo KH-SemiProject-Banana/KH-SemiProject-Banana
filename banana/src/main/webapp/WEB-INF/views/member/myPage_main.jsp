@@ -155,7 +155,8 @@
 								<div class="favorite__pack">
 									<div>
 										<div class="favorite__img">
-											<img src="${sold.imagePath}"> <i class="fa-solid fa-ellipsis-vertical dot"></i>
+											<img src="${sold.imagePath}"> 
+                                            <i class="fa-solid fa-ellipsis-vertical dot" id="${sold.goodsNo}"></i>
 										</div>
 										<div class="favorite__price-heart">
 											<div class="favorite__price">${sold.title}</div>

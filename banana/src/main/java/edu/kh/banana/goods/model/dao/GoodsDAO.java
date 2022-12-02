@@ -17,7 +17,7 @@ public class GoodsDAO {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
-	/** 상품등록 dao
+	/** 상품 글만 등록 dao
 	 * @param inputGoods
 	 * @return result
 	 */
@@ -26,11 +26,22 @@ public class GoodsDAO {
 		int result =  sqlSession.insert("goodsMapper.registerGoods", inputGoods);
 	
 		if(result > 0) {
-			return sqlSession.selectOne("goodsMapper.selectMyGoods");
+			result = inputGoods.getGoodsNo();
 		}
 		
 		return result;
 	}
+	
+	/** 상품 이미지 등록
+	 * @param goodsImageList
+	 * @return
+	 */
+	public int insertGoodsImageList(List<GoodsImage> goodsImageList) {
+		
+		return sqlSession.insert("goodsMapper.insertGoodsImageList", goodsImageList);
+	}
+	
+	
 	
 	/** 방금 등록된 상품번호 조회 DAO
 	 * @return goodsNo
@@ -40,14 +51,7 @@ public class GoodsDAO {
 		return sqlSession.selectOne("goodsMapper.selectMyGoods");
 	}
 
-	/** 상품 이미지 등록 dao
-	 * @param goodsImage
-	 * @return
-	 */
-	public int registerImage(GoodsImage goodsImage) {
 
-		return sqlSession.update("goodsMapper.registerImage", goodsImage);
-	}
 
 	public GoodsSell selectGoods(int goodsNo) {
 		
@@ -106,6 +110,62 @@ public class GoodsDAO {
 		
 		return sqlSession.selectList("goodsMapper.selectImageList");
 	}
+
+	/** 상품 삭제
+	 * @param goodsNo
+	 * @return
+	 */
+	public int goodsDelete(int goodsNo) {
+		
+		return sqlSession.update("goodsMapper.goodsDelete", goodsNo);
+	}
+
+	/** 상품 내용만 수정
+	 * @param registerGoods
+	 * @return
+	 */
+	public int updateGoodsContent(GoodsSell registerGoods) {
+		
+		return sqlSession.update("goodsMapper.updateGoodsContent", registerGoods);
+	}
+
+	/** 상품 이미지 삭제
+	 * @param condition
+	 * @return
+	 */
+	public int deleteGoodsImage(String condition) {
+		
+		return sqlSession.delete("goodsMapper.deleteGoodsImage", condition);
+	}
+
+	/** 상품 이미지만 수정
+	 * @param img
+	 * @return
+	 */
+	public int goodsImageUpdate(GoodsImage img) {
+		
+		return sqlSession.update("goodsMapper.goodsImageUpdate", img);
+	}
+
+	/** 상품이미지 삽입
+	 * @param img
+	 * @return
+	 */
+	public int goodsImageInsert(GoodsImage img) {
+		
+		return sqlSession.insert("goodsMapper.goodsImageInsert", img);
+	}
+
+	/** 한 상품의 이미지리스트 얻어오기
+	 * @param goodsNo
+	 * @return
+	 */
+	public List<GoodsImage> selectGoodsImgList(int goodsNo) {
+		
+		return sqlSession.selectList("goodsMapper.selectGoodsImgList", goodsNo);
+	}
+
+
 
 
 

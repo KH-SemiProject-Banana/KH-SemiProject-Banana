@@ -31,7 +31,7 @@
                 <p>상품 등록</p>
                 <p><span class="required">* 필수 항목</span>은 꼭 입력해주세요</p>
             </div>
-            <form name="register__content" id="register__content"  action="/goods/registerGoods" method="post"  enctype="multipart/form-data" onsubmit="return submitChk()">
+            <form name="register__content" id="register__form"  action="/goods/registerGoods" method="post"  enctype="multipart/form-data">
 
                 <div class="content-image">
                     <div class="content-image__title left-bar">
@@ -40,26 +40,22 @@
                             <div class="required">*</div>
                         </div>
 
-                        <div class="img__pic-count">(0/10)</div>
+                        <div class="img__pic-count">(0/5)</div>
                     </div>
                     <div class="content-image__content right-bar">
                         <div class="container">
                             <div class="image-upload" id="image-upload">
 
-                                <!-- <form  method="POST" onsubmit="return false;" enctype="multipart/form-data"> -->
-                                    <div class="button">
-                                        <label for="chooseFile">
-                                            <img src="/resources/images/image-upload.png" class="browse-btn">
-                                        </label>
-                                    </div>
-                                    <input type="file" id="chooseFile" name="imagePath" accept="image/*"
-                                        onchange="return loadFile(this)" multiple/>
-                                        <div class="file-list" id="image-show"></div>
-                                <!-- </form> -->
+                                <div class="button">
+                                    <label for="chooseFile">
+                                        <img src="/resources/images/image-upload.png" class="browse-btn">
+                                    </label>
+                                </div>
+                                <input type="file" id="chooseFile" name="inputImage" accept="image/*"
+                                    onchange="return loadFile(this)" multiple/>
+                                    <div class="file-list" id="image-show"></div>
+                               
                             </div>
-
-
-
 
                             </div>
                         </div>
@@ -89,7 +85,7 @@
                             <option value="">옵션을 선택하세요</option>
                             <option value="1">전자기기</option>
                             <option value="2">가구/인테리어</option>
-                            <option value="3">셍활/주방</option>
+                            <option value="3">생활/주방</option>
                             <option value="4">유아용품</option>
                             <option value="5">의류/잡화</option>
                             <option value="6">뷰티/미용</option>

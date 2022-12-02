@@ -5,78 +5,6 @@
 
 // upload.addEventListener('click', () => realUpload.click());
 
-
-
-
-function loadFile(input) {
-
-
-    var files = input.files;
-
-    console.log(files);
-
-
-    for (let file of files) {
-        const temp = document.querySelectorAll("#image-show > img");
-
-        if (temp.length == 10) {
-            alert("최대 10개의 파일을 등록할 수 있습니다");
-            return false;
-        }
-
-
-        var newImage = document.createElement("img");
-        newImage.setAttribute("class", 'img');
-
-
-        newImage.src = URL.createObjectURL(file);
-
-        newImage.style.width = "140px";
-        newImage.style.height = "140px";
-        newImage.style.padding = "0";
-        newImage.style.margin = "10px";
-        newImage.style.border = "1px solid rgba(0,0,0,0.1)";
-        newImage.style.borderRadius = "8px";
-        newImage.style.objectFit = "contain";
-
-        //--------------------------------------
-        
-        // 이미지 삭제 구현
-        newImage.addEventListener("click", (e)=>{
-           e.target.remove();
-
-           console.log(files.indexOf(file));
-           return;
-        });
-
-
-        //--------------------------------------
-
-        var container = document.getElementById('image-show');
-
-        // var del = document.createTextNode('삭제');
-
-
-        container.appendChild(newImage);
-
-
-        const count = container.childElementCount;
-        document.getElementsByClassName("img__pic-count")[0].innerText = "(" + count + "/10)";
-
-    }
-    return true;
-};
-
-
-
-
-
-
-
-
-
-
-
 const checkObj = {
     "goodsImage": false,
     "goodsTitle": false,
@@ -87,11 +15,114 @@ const checkObj = {
 
 
 
-function submitChk() {
+
+function loadFile(input) {
+
+
+    const files = input.files;
+
+
+    for (let file of files) {
+        const temp = document.querySelectorAll("#image-show > img");
+
+        if (temp.length == 5) {
+            alert("최대 5개의 파일을 등록할 수 있습니다");
+            return false;
+        }
+
+
+        var newImage = document.createElement("img");
+        newImage.classList.add("img");
+
+        newImage.src = URL.createObjectURL(file);
+
+
+
+
+
+        var container = document.getElementById('image-show');
+
+        // var del = document.createTextNode('삭제');
+
+
+        container.appendChild(newImage);
+
+               
+        
+        // 이미지 삭제 구현
+        newImage.addEventListener("click", (e)=>{
+
+            container.removeChild(e.target);
+            deleteFile(e.target);
+         });
+ 
+ 
+
+
+
+        const count = container.childElementCount;
+        document.getElementsByClassName("img__pic-count")[0].innerText = "(" + count + "/5)";
+
+    }
+
+    list = document.getElementsByClassName("img");
+    console.log(list.length);
+    if (list.length > 0) {
+        checkObj.goodsImage = true;
+    } else {
+        checkObj.goodsImage = false;
+    }
+
+    return true;
+
+};
+
+
+
+function deleteFile(img){
+
+    let fileNum = -1;
+    for(let i = 0; i < list.length; i++){
+        if(list[i] == img){
+            fileNum = i;
+            break;
+        }
+    }
+
+    if(fileNum > -1) {
+
+        const dataTransfer = new DataTransfer();
+        let fileCount = document.getElementById("chooseFile"); // label
+
+        let files = fileCount.files; // 사용자가 입력한 파일을 변수에 할당
+
+        let fileArray = Array.from(files); // 배열로 변환
+        console.log(fileNum);
+        console.log(fileArray);
+        fileArray.splice(fileNum, 1);
+
+        fileArray.forEach(file => {dataTransfer.items.add(file)});
+        console.log(dataTransfer.files);
+        fileCount.files = dataTransfer.files;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+document.getElementById("register__form").addEventListener("submit", e => {
 
     // 카테고리 유효성검사
     if (document.getElementById("goodsCategory").value == "") {
         checkObj.goodsCategory = false;
+
     } else {
         checkObj.goodsCategory = true;
     }
@@ -111,16 +142,13 @@ function submitChk() {
                 case "goodsPrice": str = "상품 가격을 입력해주세요"; break;
             }
             alert(str);
-            document.getElementById(key).focus();
-            return false;
+
+            e.preventDefault();
+            return;
         }
+        
     }
-    // let goodsPriceValue = document.getElementById("goods-price");
-    // goodsPriceValue.value = Number(goodsPriceValue.value.replaceAll(',', ''));
-
-    return true;
-
-}
+});
 
 
 

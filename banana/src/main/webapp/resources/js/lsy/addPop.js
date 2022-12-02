@@ -140,6 +140,9 @@ const dotList = document.getElementsByClassName("dot");
 for(let dot of dotList){
     dot.addEventListener("click", function(e){
 
+        const goodsNo = e.target.getAttribute("id");
+        console.log("goodsNo : " + goodsNo);
+
 
         // .anotherPop 있는지 검사
         const anotherPop = document.getElementsByClassName("anotherPop")[0];
@@ -155,17 +158,38 @@ for(let dot of dotList){
         
         container.classList.add("anotherPop");
 
+
+        container.append(div1, div2, div3);
+
+        dot.after(container);
+
+        
         div1.classList.add("anotherPop1" , "babo");
         div1.innerText = "글 수정하기";
         div1.addEventListener("click", function(){
-            location.href = "http://192.168.10.76:5500/html/myPage_review_good.html";
+            location.href = "/goods/update/" + goodsNo;
         })
+
 
         div2.classList.add("anotherPop1" , "babo");
         div2.innerText = "글 삭제하기";
-        div2.addEventListener("click", function(){
-            
-        })
+        // div2.addEventListener("click", $.ajax({
+
+        //     url : "/goods/delete",
+        //     data : {"goodsNo" : goodsNo},
+        //     type : "GET",
+        //     success : (result) => {
+        //         if(result > 0) {
+        //             // 상품태그 메인에서 지우기
+        //             e.target.parentElement.parentElement.parentElement.remove();
+        //         } else {
+        //             console.log("상품글 삭제 실패");
+        //         }
+        //     },
+        //     error : () => {
+        //         console.log("상품글 삭제 중 오류 발생");
+        //     }
+        // }))
 
         div3.classList.add("anotherPop1");
         div3.innerText = "끌어올리기";
@@ -173,9 +197,7 @@ for(let dot of dotList){
             
         })
 
-        container.append(div1, div2, div3);
-
-        dot.after(container);
+        
 
 
     });

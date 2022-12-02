@@ -1,15 +1,18 @@
 package edu.kh.banana.goods.controller;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +25,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.google.gson.Gson;
 
+import edu.kh.banana.common.Util;
 import edu.kh.banana.goods.model.service.GoodsService;
 import edu.kh.banana.goods.model.vo.GoodsSell;
 import edu.kh.banana.member.model.vo.Member;
@@ -60,24 +64,23 @@ public class GoodsController {
 			@SessionAttribute("loginMember") Member loginMember,
 			GoodsSell inputGoods,	
 			RedirectAttributes ra,
-			@RequestParam(value="imagePath", required = false) List<MultipartFile> imagePath,
+			@RequestParam(value="inputImage", required = false) List<MultipartFile> inputImageList,
 			HttpServletRequest req,
+			HttpSession session,
 			@RequestHeader("referer") String referer) throws Exception{
 			
-				
-//		inputGoods만 전달하면 되는가?? String[] imagePath는???
-	
-		System.out.println(inputGoods);
-		System.out.println("imagePath : " + imagePath);
-		
+
+		// 1. 로그인한 회원번호를 goodsSell에 셋팅
+		// 2. 업로드된 파일의 웹 접근 경로/서버 내부 경로 준비
+		// 3. 상품 삽입 서비스 호출
 		
 		
 		String webPath = "/resources/images/goodsImage/";
-		String filePath = req.getSession().getServletContext().getRealPath(webPath);
+		String folderPath = session.getServletContext().getRealPath(webPath);
 		
 
 		inputGoods.setSellerNo(loginMember.getMemberNo());
-		int result = service.registerGoods(webPath, filePath, imagePath, inputGoods);
+		int result = service.registerGoods(webPath, folderPath, inputImageList, inputGoods);
 		
 		String path = null;
 		String message = null;
@@ -106,19 +109,6 @@ public class GoodsController {
 
 	
 	
-	// 내 상품 수정하기
-	@GetMapping("/updateGoods")
-	public String updateGoods(@RequestParam(value="goodsNo") int goodsNo,
-			Model model) {
-		
-
-		GoodsSell goods = service.selectGoods(goodsNo);
-		
-		model.addAttribute("goods", goods);
-		
-		return "goods/goods-update";
-		
-	}
 
 	
 	
@@ -147,5 +137,92 @@ public class GoodsController {
 		return service.goodsLikeDown(paramMap);
 	}
 
+	
+	/** 상품 삭제
+	 * @param boardNo
+	 * @return
+	 */
+	@GetMapping("/delete")
+	@ResponseBody
+	public int goodsDelete(int goodsNo) {
+		
+		return service.goodsDelete(goodsNo);
+	}
+	
+	
+	
+
+	
+	/** 상품 수정 페이지로 이동
+	 * @param goodsNo
+	 * @param loginMember
+	 * @param model
+	 * @return
+	 */
+	@GetMapping("/update/{goodsNo}")
+	public String goodsUpdate(
+			@PathVariable("goodsNo") int goodsNo,
+			Model model) {
+		
+		GoodsSell registerGoods = service.selectGoods(goodsNo);
+		
+		// 개행문자 처리 해제
+		registerGoods.setDescription(Util.newLineClear(registerGoods.getDescription()));
+		
+		model.addAttribute("registerGoods", registerGoods);
+		
+		
+		return "goods/updateGoods";
+	}
+	
+	
+	/** 상품 수정
+	 * @param loginMember
+	 * @param ra
+	 * @param goodsNo
+	 * @param registerGoods
+	 * @param referer
+	 * @param deleteList
+	 * @param imageList
+	 * @param session
+	 * @return
+	 * @throws IOException
+	 */
+	@PostMapping("/update/{goodsNo}")
+	public String goodsUpdate(@SessionAttribute("loginMember") Member loginMember,
+			RedirectAttributes ra,
+			@PathVariable("goodsNo") int goodsNo,
+			GoodsSell registerGoods,
+			@RequestHeader("referer") String referer,
+			@RequestParam(value="deleteList", required=false) String deleteList, // 삭제된 이미지번호(imageNo) 리스트
+			@RequestParam(value="images", required=false) List<MultipartFile> imageList, // 업로드한 이미지
+			HttpSession session
+			) throws IOException{
+		
+		String webPath = "/resources/images/goodsImage/";
+		String folderPath = session.getServletContext().getRealPath(webPath);
+		registerGoods.setSellerNo(loginMember.getMemberNo());
+		
+		int result = service.updateGoods(webPath, folderPath, registerGoods, imageList, deleteList);
+		
+		String message = null;
+		String path = null;
+		if (result > 0) {
+			
+			message = "상품글이 수정되었습니다";
+			path = "/member/myPage/main";
+			
+		} else {
+			
+			message = "상품글 수정 실패";
+			path = referer;
+			
+		}
+		
+		ra.addFlashAttribute("message", message);
+	
+		
+		return "redirect:" + path;
+	}
 
 }

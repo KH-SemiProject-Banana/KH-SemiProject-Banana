@@ -18,4 +18,6 @@ public class BananaPay {
 	private int usePoint;
 	private int buyStatus;
 	private int remainPoint;
+	
+	// 추가할거 있으면 추가하세요
 }

@@ -1,0 +1,557 @@
+#bananaPay {
+    display: none;
+}
+
+
+.content {
+    width: 1140px;
+    min-height: 500px;
+}
+
+.confirm {
+    color: green !important;
+}
+
+.error {
+    color: red !important;
+}
+
+/*popup*/
+.popup_layer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10000;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+/*팝업 박스*/
+.popup_box {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    overflow: scroll;
+    overflow-x: hidden;
+    height: 650px;
+    width: 600px;
+    transform: translate(-50%, -50%);
+    z-index: 1002;
+    box-sizing: border-box;
+    background: #fff;
+    box-shadow: 2px 5px 10px 0px rgba(0, 0, 0, 0.35);
+    -webkit-box-shadow: 2px 5px 10px 0px rgba(0, 0, 0, 0.35);
+    -moz-box-shadow: 2px 5px 10px 0px rgba(0, 0, 0, 0.35);
+}
+
+
+
+/* 팝업박스 스크롤 */
+.scroll::-webkit-scrollbar{
+    width: 15px;
+}
+
+/* 스크롤바 막대 설정*/
+.scroll::-webkit-scrollbar-thumb{
+    height: 17%;
+    background-color: var(--yellow);
+    /* border-radius: 10px;   */
+}
+
+
+
+
+
+
+/*컨텐츠 영역*/
+.popup_box .popup_cont {
+    padding: 30px;
+    /* line-height: 3rem; */
+    font-size: 14px;
+
+}
+
+.popup_box .popup_cont h2 {
+    padding: 15px 0;
+    color: #333;
+    margin: 0;
+}
+
+.popup_cont {
+    position: absolute;
+    width: 100%;
+
+}
+
+
+
+/*버튼영역*/
+.popup_box .popup_btn {
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+    height: 70px;
+    background: #ECECEC;
+    word-break: break-word;
+}
+
+.popup_box .popup_btn a {
+    position: relative;
+    display: table-cell;
+
+    font-size: 17px;
+    text-align: center;
+    vertical-align: middle;
+    text-decoration: none;
+    background: #ECECEC;
+}
+
+.popup_box .popup_btn a:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 26px;
+    right: 29px;
+    width: 1px;
+    height: 21px;
+    background: #fff;
+    -moz-transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+
+.popup_box .popup_btn a:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 26px;
+    right: 29px;
+    width: 1px;
+    height: 21px;
+    background: #fff;
+    -moz-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.popup_box .popup_btn a.close_day {
+    background: #5d5d5d;
+}
+
+.popup_box .popup_btn a.close_day:before,
+.popup_box .popup_btn a.close_day:after {
+    display: none;
+}
+
+/*오버레이 뒷배경*/
+.popup_overlay {
+    position: fixed;
+    top: 0px;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1001;
+    ;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+/*popup*/
+
+.fa-x {
+    padding: 5px 15px 15px;
+    cursor: pointer;
+}
+
+.allClose {
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 15px;
+    z-index: 10;
+    color: black;
+}
+
+
+.payRemainArea {
+    padding: 15px;
+    background-color: var(--yellow);
+    border-radius: 10px;
+}
+
+.payButton {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.fa-store,
+.fa-database {
+    margin-right: 10px;
+}
+
+
+.fa-store,
+.fa-rotate-right,
+.fa-database {
+    margin-top: 10px;
+    width: 70px;
+    padding: 10px;
+    background-color: var(--lightYellow);
+    border-radius: 5px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fa-database {
+    width: 150px;
+}
+
+.payButton>button {
+    color: rgba(0, 0, 0, 0.7);
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+
+}
+
+#chargeBtn:active,
+#refundBtn:active,
+#logBtn:active {
+    box-shadow: 3px 3px 3px #ddd;
+    transition-duration: 0.3s;
+}
+
+
+
+
+/* 충전 */
+.chargeHeader {
+    padding-top: 10px;
+    padding-left: 15px;
+    padding-right: 5px;
+    background-color: #eee;
+
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.chargeHeader>p:first-child {
+    font-size: 18px;
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.chargeMain {
+    display: flex;
+    flex-direction: column;
+}
+
+.chargeMain>p,
+.chargeMain>div {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #eee;
+
+    /* background-color: aqua; */
+}
+
+.chargeMain>p,
+.chargeMain>div:first-of-type {
+    cursor: pointer;
+}
+
+#bananaPay {
+    /* background-color: aqua; */
+    border: 2px solid #eee;
+    border-radius: 10px;
+    margin-top: 20px;
+    /* padding: 10px; */
+    height: 400px;
+
+    position: relative;
+}
+
+.payBtnArea {
+    height: 40px;
+    margin-top: 120px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    /* background-color: aqua; */
+}
+
+#chargeSubmitBtn,
+#refundSubmitBtn {
+    /* height: 100%; */
+    width: 570px;
+    height: 60px;
+    /* font-weight: bold; */
+    font-size: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    border: none;
+    position: fixed;
+    bottom: 20px;
+    left: 15px;
+}
+
+
+
+#chargeSubmitBtn:hover,
+#refundSubmitBtn:hover {
+    background-color: var(--yellow);
+}
+
+#inputSelf {
+    height: 100%;
+}
+
+.close {
+    cursor: pointer;
+}
+
+
+.resetPrice {
+    background-color: antiquewhite;
+}
+
+#chargePrice,
+#refundPrice {
+    text-align: right;
+}
+
+#payCharge, #payRefund {
+    height: 450px;
+}
+
+
+#chargeMessage,
+#refundMessage {
+    margin-left: 30px;
+    color: #aaa;
+    /* right: 10px; */
+}
+
+
+/* #payRefund {
+    height: 250px;
+} */
+
+
+/* -------------------------------------------------------------------- */
+/* // 내 페이 사용내역 */
+
+
+.useDetailArea {
+    color: black;
+    text-decoration: none;
+}
+
+/* .payCtg1{
+    border-bottom: 1px solid #eee;
+    padding: 10px;
+}
+
+
+.payCtg1__div {
+    border: none;
+    background-color: white;
+    cursor: pointer;
+    font-weight: bold;
+    padding-right: 10px;
+    font-size: 15px;
+} */
+
+
+
+.payCtg2 {
+    display: flex;
+    align-items: center;
+
+    padding: 10px;
+    /* margin-bottom: 30px; */
+}
+
+.payCtg2__div {
+    padding: 5px 10px;
+    margin-right: 10px;
+    border-radius: 5px;
+}
+
+
+.payCtg2__div {
+    background-color: #eee;
+    font-weight: bold;
+    color: #aaa;
+    cursor: pointer;
+    ;
+}
+
+.ctgChecked {
+    font-weight: bold;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+}
+
+.useDetailArea {
+    padding: 5px 10px;
+}
+
+
+
+.selectDataArea {
+    display: flex;
+    justify-content: center;
+}
+
+.selectDataBar {
+    padding: 10px 20px;
+    height: 50px;
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 25px;
+
+    background-color: white;
+    box-shadow: 2px 2px 2px 2px #eee;
+
+
+}
+
+.selectDate {
+    display: flex;
+    align-items: center;
+}
+
+.fa-caret-down {
+    margin-left: 5px;
+}
+
+.monthDate {
+    font-size: 12px;
+    color: #aaa;
+}
+
+.useDetail {
+    height: 55px;
+    width: 100%;
+    /* background-color: yellow; */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+}
+
+.useDetail>div:nth-child(1) {
+    flex-basis: 10%;
+    height: 100%;
+    /* background-color: red; */
+}
+
+.useDetail>div:nth-child(2) {
+    flex-basis: 60%;
+    height: 100%;
+    padding-top: 10px;
+    /* background-color: aqua; */
+}
+
+.useDetail>div:nth-child(3) {
+    flex-basis: 30%;
+    height: 100%;
+    padding-top: 10px;
+    padding-right: 10px;
+    /* background-color: green; */
+    text-align: end;
+}
+
+
+.useDetail__img>img {
+    height: 45px;
+    border-radius: 40%;
+    border: 2px solid #eee;
+}
+
+
+
+.useDetail__title>p:nth-child(2) {
+    font-size: 11px;
+    color: #aaa;
+}
+
+
+.monthDateArea {
+    margin: 10px 0;
+    font-size: 13px;
+    color: rgba(0, 0, 0, 0.7);
+    font-weight: bold;
+}
+
+.useDetail__money {
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.moneyPlus {
+    color: rgb(0, 109, 241);
+
+}
+
+
+
+
+/* 달력------------------------------------------ */
+#selectYear {
+    margin-right: 10px;
+}
+
+.dropdown1,
+.dropdown2 {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content1,
+.dropdown-content2 {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 100;
+}
+
+.dropdown-content1 div,
+.dropdown-content2 div {
+    color: black;
+    padding: 12px 5px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content1 div:hover {
+    background-color: #ddd;
+}
+
+.dropdown-content2 div:hover {
+    background-color: #ddd;
+}
+
+/* .dropdown:hover .dropdown-content {display: block;} */
+
+.fa-chevron-left,
+.fa-chevron-right {
+    cursor: pointer;
+    /* background-color: red; */
+    padding: 5px 10px;
+}

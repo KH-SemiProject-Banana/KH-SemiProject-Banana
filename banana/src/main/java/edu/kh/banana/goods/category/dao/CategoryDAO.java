@@ -93,4 +93,25 @@ public class CategoryDAO {
 	public int goodsLikeDown(Map<String, Object> paramMap) {
 		return sqlSession.delete("categoryMapper.goodsLikeDown", paramMap);
 	}
+
+	/** 검색시 게시글 수 조회
+	 * @param query
+	 * @return
+	 */
+	public int getQueryListCount(GoodsSell category) {
+		
+		return sqlSession.selectOne("categoryMapper.getQueryListCount", category);
+	}
+
+	/** 검색시 게시글 목록 조회
+	 * @param categoryPagination
+	 * @param category
+	 * @return
+	 */
+	public List<GoodsSell> selectQueryGoodsList(CategoryPagination categoryPagination, GoodsSell category) {
+		
+		return sqlSession.selectList("categoryMapper.selectQueryGoodsList", category, rowBounds(categoryPagination));
+	}
+
+	
 }

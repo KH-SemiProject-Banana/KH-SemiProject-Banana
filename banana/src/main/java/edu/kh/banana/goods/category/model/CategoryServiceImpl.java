@@ -67,4 +67,19 @@ public class CategoryServiceImpl implements CategoryService {
 	public int goodsLikeDown(Map<String, Object> paramMap) {
 		return dao.goodsLikeDown(paramMap);
 	}
+
+	/**
+	 *  카테고리 없이 검색시 게시글 목록 조회
+	 */
+	@Override
+	public Map<String, Object> selectQueryGoodsList(GoodsSell category) {
+		
+		int listCount = dao.getQueryListCount(category);
+		
+		CategoryPagination categoryPagination = new CategoryPagination(listCount, category.getCp());
+		
+		List<GoodsSell> goodsList = dao.selectQueryGoodsList(categoryPagination, category);
+	
+		return map(categoryPagination, goodsList);
+	}
 }

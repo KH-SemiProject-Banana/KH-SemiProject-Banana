@@ -6,6 +6,7 @@
 <c:set var="categoryPagination" value="${map.categoryPagination}" />
 <c:set var="locAddress" value="" />
 <c:set var="order" value="" />
+<c:set var="query" value="${category.query}"/>
 
 <c:forEach var="i" items="${paramValues.location}">
     <c:set var="locAddress" value="${locAddress}${'&location='}${i}" />
@@ -36,15 +37,23 @@
         <div class="mainContent">
             <div class="category">
                 <a href="/">HOME</a>
+            <c:if test='${category.categoryNo != -1}'>
                 <a href="#">> ${category.categoryName}</a>
+            </c:if>
+
+
             </div>
 
             <div class="category_title">
-                <h1>${category.categoryName}</h1>
+                <c:if test='${category.categoryNo != -1}'>
+                    <h1>${category.categoryName}</h1>
+                </c:if>     
+                
             </div>
             
-            <form id="searchGu" action="/category?categoryNo=${category.categoryNo}">
+            <form id="searchGu" action="/category?categoryNo=${category.categoryNo}&query=${category.query}">
                 <input type="hidden" name="categoryNo" value="${category.categoryNo}">
+                <input type="hidden" name="query" value="${category.query}">
 
                 <div><h2>우리 동네에서 찾기</h2></div>
             
@@ -165,7 +174,7 @@
             </div>
 
             <div class="pageList">
-                <a href="/category?categoryNo=${category.categoryNo}${locAddress}${order}&cp=${categoryPagination.prevPage}" class="page" id="leftArrow">&lt;</a>
+                <a href="/category?categoryNo=${category.categoryNo}${locAddress}${order}&cp=${categoryPagination.prevPage}&query=${category.query}" class="page" id="leftArrow">&lt;</a>
 
                 <c:forEach var="i" begin="${categoryPagination.startPage}" end="${categoryPagination.endPage}" step="1">
                     <c:choose>
@@ -174,12 +183,12 @@
                         </c:when>
 
                         <c:otherwise>
-                            <a href="/category?categoryNo=${category.categoryNo}${locAddress}${order}&cp=${i}" class="page otherPage">${i}</a>
+                            <a href="/category?categoryNo=${category.categoryNo}${locAddress}${order}&cp=${i}&query=${category.query}" class="page otherPage">${i}</a>
                         </c:otherwise>
                     </c:choose>
                 </c:forEach>
 
-                <a href="/category?categoryNo=${category.categoryNo}${locAddress}${order}&cp=${categoryPagination.nextPage}" class="page" id="rightArrow">&gt;</a>
+                <a href="/category?categoryNo=${category.categoryNo}${locAddress}${order}&cp=${categoryPagination.nextPage}&query=${category.query}" class="page" id="rightArrow">&gt;</a>
             </div>
         </div>
     </main>

@@ -40,4 +40,12 @@ public interface CategoryService {
 	 * @return result
 	 */
 	int goodsLikeDown(Map<String, Object> paramMap);
+
+	
+	
+	/** 카테고리 없이 검색시 게시글 목록 조회
+	 * @param query
+	 * @return map
+	 */
+	Map<String, Object> selectQueryGoodsList(GoodsSell category);
 }

@@ -84,19 +84,16 @@
                                 </p>
                                 <div>
                                     <p class="recent-message">${room.lastMessage}</p><%-- 채팅메세지 --%>
-                                    <%-- <c:if test="${room.notReadCount > 0}"> 
-                                        <p class="not-read-count">${room.notReadCount}</p>
-                                    </c:if> --%>
-
-                                    <%-- 수정하자 만약 0보다 크고 100보다 작으면 카운트 100보다 크면 99+ --%>
+                                    <%-- 만약 0보다 크고 100보다 작으면 카운트 100보다 크면 99+ --%>
                                     <c:choose>
                                         <c:when test="${room.notReadCount > 0 && room.notReadCount <100}">
                                             <p class="not-read-count">${room.notReadCount}</p><%-- 메세지 왔을때 카운트 --%>
                                         </c:when>
-                                        <%-- 안먹음 여기.. --%>
-                                        <c:when test="${room.notReadCount > 0 && room.notReadCount>100}">
+                                        <c:when test="${room.notReadCount>= 100}">
                                             <p class="not-read-count">99+</p><%-- 메세지 왔을때 카운트 --%>
                                         </c:when>
+                                        <c:otherwise>
+                                        </c:otherwise>
                                     </c:choose>
                                 </div>
                             </div>

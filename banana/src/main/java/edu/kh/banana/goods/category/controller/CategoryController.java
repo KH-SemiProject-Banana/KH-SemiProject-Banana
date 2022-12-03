@@ -28,17 +28,10 @@ public class CategoryController {
 						   @RequestParam(value="location", required=false) String[] location,
 						   @RequestParam(value="query", required=false) String query,
 						   @SessionAttribute(value="loginMember", required=false) Member loginMember,
-						   @RequestParam(value="categoryNo", required=false) String categoryNoString,
 					       Model model) {
 		
 		
-		int categoryNo = 0;
-		
-		if(categoryNoString != null) {
-			categoryNo = Integer.parseInt(categoryNoString);
-			category.setCategoryNo(categoryNo);
-		} 
-		
+
 		if(loginMember != null) {
 			category.setLoginMemberNo(loginMember.getMemberNo());
 		}
@@ -49,27 +42,22 @@ public class CategoryController {
 		
 		Map<String, Object> map = null;
 		
-		// '인기검색'
-		if(query == null && category.getCategoryNo() == 0) {
-			category.setCategoryName("인기매물");
-			map = service.selectLikeGoodsList(category);
-		}
 		
-		// 카테고리 없이 일반 겁색만 했을때
-		else if(query != null && category.getCategoryNo() <= 0) {
-			category.setCategoryNo(-1);
+		// 검색어가 있을 때
+		if(query != null) {
 			category.setCategoryName(query);
 			category.setQuery(query);
 			map = service.selectQueryGoodsList(category);
 		}
 		
-		// 카테고리 선택 중 일반검색 했을때
-		else if(query != null && category.getCategoryNo() > 0) {
-			
-			category.setQuery(query);
-			map = service.selectGoodsList(category);
+		
+		// '인기검색'
+		else if(category.getCategoryNo() == 0) {
+			category.setCategoryName("인기매물");
+			map = service.selectLikeGoodsList(category);
 		}
 		
+
 		else {
 			category.setCategoryName(service.categoryPage(category.getCategoryNo()));
 			map = service.selectGoodsList(category);

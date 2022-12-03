@@ -37,17 +37,22 @@
         <div class="mainContent">
             <div class="category">
                 <a href="/">HOME</a>
-            <c:if test='${category.categoryNo != -1}'>
+            <c:if test='${category.query == null}'>
                 <a href="#">> ${category.categoryName}</a>
             </c:if>
+
 
 
             </div>
 
             <div class="category_title">
-                <c:if test='${category.categoryNo != -1}'>
+                <c:if test='${category.query == null}'>
                     <h1>${category.categoryName}</h1>
-                </c:if>     
+                </c:if>  
+                <c:if test='${category.query != null}'>
+                    <h1>"${category.categoryName}" 검색 결과</h1>
+                </c:if>  
+                   
                 
             </div>
             

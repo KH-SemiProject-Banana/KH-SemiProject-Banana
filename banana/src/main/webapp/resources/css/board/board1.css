@@ -119,17 +119,21 @@
     font-weight: bold;
 
     display: flex;
+    justify-content: space-between;
 }
 
-.frequent-question__title > *:nth-child(1){
+/* .frequent-question__title > *:nth-child(1){
     flex-basis: 92%;
 }
 .frequent-question__title > *:nth-child(2){
     flex-basis: 8%;
+} */
+
+.foldBtnArea{
+    display: flex;
 }
 
-#foldAll{
-    margin-right: 50px;
+#foldAll, #editBoard1{
     width: 80px;
     height: 40px;
     background-color: white;
@@ -140,7 +144,11 @@
     cursor: pointer;
 }
 
-#foldAll:hover{
+#foldAll {
+    margin-right: 50px;
+}
+
+#foldAll:hover, #editBoard1:hover{
     background-color: var(--darkYellow);
     color: white;
     transition-duration: 0.3s;

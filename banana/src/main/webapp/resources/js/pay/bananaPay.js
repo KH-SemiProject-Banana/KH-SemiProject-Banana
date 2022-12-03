@@ -157,6 +157,12 @@ refundPrice.addEventListener("input", function(){
 }
 );
 
+chargePrice.addEventListener("focusin", ()=>{
+    if(chargePrice.value == 0) {
+        chargePrice.value = "";
+    }
+});
+
 
 
 chargePrice.addEventListener("input", function(){
@@ -266,6 +272,151 @@ document.getElementById("refundSubmitBtn").addEventListener("click", function(e)
 
 
 
-/* -------------------------------------------------------------------- */
-// 내 페이 사용내역
 
+/* 내 페이 사용내역--------------------------------------------------------- */
+const dropdownContent2 = document.querySelectorAll(".dropdown-content2 > div");
+const selectMonth = document.getElementById("selectMonth");
+const dropdownContent1 = document.querySelectorAll(".dropdown-content1 > div");
+const selectYear = document.getElementById("selectYear");
+
+
+
+for(let month of dropdownContent2){
+    if(Number(month.innerText.substring(0,2)) == new Date().getMonth()+1){
+        month.classList.add("selected");
+        selectMonth.innerText = month.innerText;
+    }
+}
+
+
+
+
+for(let year of dropdownContent1){
+    if(Number(year.innerText.substring(0,4)) == new Date().getFullYear()){
+        year.classList.add("selectedYear");
+        selectYear.innerText = year.innerText;
+    }
+}
+
+
+
+
+
+document.querySelector(".dropdown-content2").addEventListener("mouseover",()=>{
+    selectMonth.nextElementSibling.style.display = "block";
+    selectYear.nextElementSibling.style.display = "none";
+});
+
+selectMonth.addEventListener("mouseenter",()=>{
+    selectMonth.nextElementSibling.style.display = "block";
+    selectYear.nextElementSibling.style.display = "none";
+});
+
+for(let month of dropdownContent2){
+    month.addEventListener("mouseleave",()=>{
+        selectYear.nextElementSibling.style.display = "none";
+        selectMonth.nextElementSibling.style.display = "none";
+    })
+    month.addEventListener("click", ()=>{
+        selectMonth.innerText = month.innerText;
+        selectMonth.nextElementSibling.style.display = "none";
+
+        document.querySelector(".selected").classList.remove("selected");
+        month.classList.toggle("selected");
+    });
+
+};
+
+
+
+
+
+document.querySelector(".dropdown-content1").addEventListener("mouseover",()=>{
+    selectYear.nextElementSibling.style.display = "block";
+    selectMonth.nextElementSibling.style.display = "none";
+})
+
+selectYear.addEventListener("mouseenter",()=>{
+    selectYear.nextElementSibling.style.display = "block";
+    selectMonth.nextElementSibling.style.display = "none";
+})
+
+for(let year of dropdownContent1){
+    year.addEventListener("mouseleave",()=>{
+        selectYear.nextElementSibling.style.display = "none";
+        selectMonth.nextElementSibling.style.display = "none";
+    })
+    year.addEventListener("click", ()=>{
+        selectYear.innerText = year.innerText;
+        selectYear.nextElementSibling.style.display = "none";
+    });
+
+}
+
+
+document.getElementById("monthBefore").addEventListener("click", ()=>{
+    const selectMonth = document.getElementById("selectMonth");
+    if(selectMonth.innerText == "01월"){
+        if(selectYear.innerText == "2022년"){
+            alert("바나나마켓이 출시한 연도보다 이전 날짜를 조회할 수 없어요~ ^^*");
+        } else {
+            selectYear.innerText = (Number(selectYear.innerText.substring(0,4))-1) + "년";
+            selectMonth.classList.remove("selected");
+            document.getElementById("month12").classList.add("selected");
+            selectMonth.innerText = "12월";
+        }
+    } else {
+        const el = document.getElementsByClassName("selected")[0];
+        el.classList.toggle("selected");
+        el.previousElementSibling.classList.toggle("selected");
+        selectMonth.innerText = el.previousElementSibling.innerText;
+        
+    }
+
+});
+
+document.getElementById("monthAfter").addEventListener("click", ()=>{
+    const selectMonth = document.getElementById("selectMonth");
+    if(selectMonth.innerText == "12월"){
+        if(selectYear.innerText == "2024년"){
+            alert("조회할 수 없습니다");
+        } else {
+            selectYear.innerText = (Number(selectYear.innerText.substring(0,4))+1) + "년";
+            selectMonth.classList.remove("selected");
+            document.getElementById("month1").classList.add("selected");
+            selectMonth.innerText = "01월";
+        }
+    } else {
+        const el = document.getElementsByClassName("selected")[0];
+        el.classList.toggle("selected");
+        el.nextElementSibling.classList.toggle("selected");
+        selectMonth.innerText = el.nextElementSibling.innerText;
+        
+    }
+
+});
+
+
+
+/* 전체, 입금, 출금----------------------------------------------- */
+const selectPayCtg = document.getElementsByClassName("payCtg2__div");
+
+selectPayCtg[0].classList.add("ctgChecked");
+
+selectPayCtg[0].addEventListener("click", ()=>{
+    selectPayCtg[0].classList.add("ctgChecked");
+    selectPayCtg[1].classList.remove("ctgChecked");
+    selectPayCtg[2].classList.remove("ctgChecked");
+});
+
+selectPayCtg[1].addEventListener("click", ()=>{
+    selectPayCtg[0].classList.remove("ctgChecked");
+    selectPayCtg[1].classList.add("ctgChecked");
+    selectPayCtg[2].classList.remove("ctgChecked");
+});
+
+selectPayCtg[2].addEventListener("click", ()=>{
+    selectPayCtg[0].classList.remove("ctgChecked");
+    selectPayCtg[1].classList.remove("ctgChecked");
+    selectPayCtg[2].classList.add("ctgChecked");
+});

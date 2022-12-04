@@ -94,6 +94,10 @@ if(editBoard1 != null) {
 
         const questionContent = document.createElement("form");
         questionContent.classList.add("frequent-question__content");
+        // questionContent.setAttribute("method", "post");
+        // questionContent.setAttribute("action", "/manager/editBoard1");
+
+
 
 
 
@@ -165,11 +169,13 @@ if(editBoard1 != null) {
 
         button.addEventListener("click", () => {
 
+
+
             $.ajax({
                 url : "/manager/editBoard1",
                 data : {"memberNo" : loginMember.memberNo, "boardCode" : boardCode,
                     "boardTitle" : boardTitle,  "boardContent" : boardContent},
-                type : "GET",
+                type : "get",
                 success : (result) => {
                     if(result > 0) {
                         alert(result);

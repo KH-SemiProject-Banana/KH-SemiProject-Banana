@@ -1,4 +1,5 @@
 package edu.kh.banana.member.model.service;
+import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -7,10 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
+import edu.kh.banana.common.Util;
 import edu.kh.banana.goods.model.vo.GoodsSell;
 import edu.kh.banana.member.model.dao.MyPageDAO;
 import edu.kh.banana.member.model.vo.Member;
+import edu.kh.banana.member.model.vo.MypagePagination;
 import edu.kh.banana.review.model.vo.Review;
 
 @Service
@@ -51,32 +55,19 @@ public class MyPageServiceImpl implements MyPageService{
 		return result;
 	}
 
-	// 판매완료/판매중/구매완료 목록 조회
-//	@Override
-//	public Map<String, Object> selectGoodsList(int memberNo) {
-//		
-//		// 1단계 : 특정 게시판의 전체 게시글 수를 조회한다(단, 삭제된 글 제외)
-//		//int listCount = dao.getListCount(memberNo);
-//		
-//		List<GoodsSell> soldList = dao.selectGoodsSoldList(memberNo);
-//		List<GoodsSell> sellList = dao.selectGoodsSellList(memberNo);
-//		List<GoodsSell> buyList =  dao.selectGoodsBuyList(memberNo);		
-//		//System.out.println(soldList);
-//		Map<String, Object> map = new HashMap<String, Object>();
-//		map.put("soldList", soldList);
-//		map.put("sellList", sellList);
-//		map.put("buyList", buyList);
-//		
-//		return map;
-//
-//	
-//	}
 	
 	@Override
-	public Map<String, Object> selectGoodsList(Map<String, Object> map1) {
+	public Map<String, Object> selectGoodsList(Map<String, Object> map1, int cp) {
 		
-		List<GoodsSell> soldList = dao.selectGoodsSoldList(map1);
+		//1. 전체 게시글 수 조회하기(판매중일때/판매완료일때/구매완료일때)
+		int listCount = dao.getListCount(map1);
+		//2. 전체 게시글 수 + cp(현재페이지)를 이용해서 페이징 처리 객체를 생성한다.
+		MypagePagination pagination = new MypagePagination(listCount,cp);
+		
+		//
+		List<GoodsSell> soldList = dao.selectGoodsSoldList(map1,pagination);
 		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("pagination", pagination);
 		map.put("soldList", soldList);
 		return map;
 	}
@@ -90,12 +81,20 @@ public class MyPageServiceImpl implements MyPageService{
 	@Transactional
 	@Override
 	public int sendingMannerReview(List<String> goodCheckedArr, List<String> badCheckedArr, String reviewText, 
-			Member loginMember, int reviewGoodsNo, int reviewBuyerNo) {
+			Member loginMember, int reviewGoodsNo, int reviewBuyerNo, int reviewSellerNo) {
 		
 		Review review = new Review();
+		
 		review.setMemberNo(loginMember.getMemberNo());
 		review.setGoodsNo(reviewGoodsNo);
-		review.setReceiverNo(reviewBuyerNo);
+		//만약 로그인한 애가 구매자라면
+		if(loginMember.getMemberNo() == reviewBuyerNo) {
+			review.setReceiverNo(reviewSellerNo);
+		}
+		//만약 로그인한 애가 판매자라면
+		if(loginMember.getMemberNo() == reviewSellerNo) {
+			review.setReceiverNo(reviewBuyerNo);
+		}
 		review.setMessage(reviewText);
 		
 		int reviewNo = dao.insertReview(review); //여기서 reviewNo가 가져오는거구나
@@ -153,6 +152,59 @@ public class MyPageServiceImpl implements MyPageService{
 		
 		return dao.selectSendingReview(ratingNo);
 	}
+	
+	// 프로필 이미지 수정
+		@Transactional(rollbackFor = Exception.class) //예외가 발생하면 롤백
+		@Override
+		public int updateProfile(String webPath, String filePath, MultipartFile profileImage, Member loginMember) 
+				throws Exception {
+			
+			// (1) 이미지 바꿀 때, 실패를 대비해서 보험 들어놓기
+			// 이전 이미지 경로를 저장할 거임...
+			String temp = loginMember.getProfileImage();
+			
+			// (2) 중복 파일명 업로드를 대비하기 위해서 파일명 변경하자.
+			String rename = null;
+			
+			if(profileImage.getSize() == 0) { //의미: 업로드된 파일이 없는 경우
+											//getSize() 보면 : the size of the file, or 0 if empty : 비어있는 경우 0이라고 나온다고 써있음 ㅋㅋ
+				
+				loginMember.setProfileImage(null);
+				
+			} else { // 업로드된 파일이 있을 경우
+				
+				//원본파일명을 이용해서 새로운 파일명을 생성한다!!!
+				rename = Util.fileRename(profileImage.getOriginalFilename());
+				
+				loginMember.setProfileImage(webPath + rename);
+				// /resources/images/memberProfile/변경된 파일명
+			}
+			
+			int result = dao.updateProfile(loginMember); // 0 또는 1이 담겨 있겠죠
+			
+//			result = 0; 
+			
+			if (result > 0) { //DB 수정 성공 시 -> 실제로 서버에 파일을 저장할 것임...
+				
+				if (rename != null) {
+					
+					// 변경된 이미지명이 있다 == 새로운 파일이 업로드 되었다.
+					
+					profileImage.transferTo(new File(filePath + rename));
+					//메모리에 임시 저장된 파일을, 지정된 경로에 파일형태로 변환시키라는 뜻...!
+					// == '서버 파일 업로드'라고 함...
+				} 
+				
+				
+			} else {
+				
+				//실패시 다시 이전 이미지를 세팅
+				loginMember.setProfileImage(temp);
+				throw new Exception("파일 업로드 실패"); //예외를 강제 발생시킨다.
+			}
+			
+			return result;
+		}
 
 
 	

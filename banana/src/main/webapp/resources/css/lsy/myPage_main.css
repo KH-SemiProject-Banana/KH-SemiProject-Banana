@@ -11,6 +11,33 @@
 
 */
 
+.pagination{
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+}
+
+.pagination li{
+    width: 20px;
+    margin: 0 5px;
+    text-align: center;
+}
+
+.pagination a{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.current{
+    font-weight: bold;
+    background-color: #455ba8;
+    border-radius: 50%;
+    color: white !important;
+    letter-spacing: 0 !important;
+}
+
 a { text-decoration:none }
 
 .myBanana{
@@ -84,6 +111,7 @@ a { text-decoration:none }
     bottom: 30px;
     left: 155px;
     color :#333;
+    cursor: pointer;
     
 
 }
@@ -230,7 +258,7 @@ a { text-decoration:none }
     display: flex;
     margin-top:50px;
     height: 800px;
-    overflow:scroll;
+    /* overflow:scroll; */
     flex-wrap: wrap;
     align-content: space-between;
 
@@ -350,6 +378,69 @@ a { text-decoration:none }
     align-items: center;
     font-size: 13px;
     text-decoration: none;
+}
+
+/* **************************************************** */
+
+/***************프로필 화면 *********************/
+.profile-image-area {
+    width : 150px;
+    height: 150px;
+    border: 3px solid #ccc;
+    border-radius:  50%;
+    position: relative;
+
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#profile-image {
+    
+    height: 100%;
+
+}
+
+form[name = 'myPage-frm']{position:relative;}
+
+/* 삭제버튼 */
+#delete-image {
+    
+    position: absolute;
+    top: -2px;
+    right :240px;
+    cursor: pointer;
+}
+
+/* 이미지 버튼 영역 */
+.profile-btn-area {
+    width: 230px;
+    margin: 20px 0;
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-btn-area > * {
+    width: 110px;
+    height: 30px;
+    padding : 5px 10px;
+    font-size: 14px;
+
+    border: 1px solid black;
+    background-color: white;
+    cursor: pointer;
+    text-align: center;
+}
+
+#image-input {display: none;}
+
+.profile-btn-area > button {
+    background-color: #455ba8;
+    color: white;
+    margin-left : 2px;
 }
 
 

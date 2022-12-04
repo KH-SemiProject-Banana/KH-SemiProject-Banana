@@ -4,6 +4,7 @@
 <%-- map에 저장된 값을 꺼내어 각각 변수에 저장 --%>
 
 <c:set var="soldList" value="${map.soldList}" />
+<c:set var = "pagination" value = "${map.pagination}" />
 
 
 
@@ -51,12 +52,71 @@
 			<section class="myBanana-detail">
 				<div class="myBanana-photo">
                     <c:if test = "${not empty loginMember.profileImage}">
-                        <img class="photo" src="${loginMember.profileImage}" alt=""> <i class="fa-solid fa-camera-retro fa-2x pen"></i>
+                        <img class="photo" src="${loginMember.profileImage}" alt=""> <i class="fa-solid fa-camera-retro fa-2x pen" id = "profilePop"></i>
                     </c:if>
                     <c:if test = "${empty loginMember.profileImage}">
-                        <img class="photo" src="/resources/images/banana-logo.png" alt=""> <i class="fa-solid fa-camera-retro fa-2x pen"></i>
+                        <img class="photo" src="/resources/images/banana-logo.png" alt=""> <i class="fa-solid fa-camera-retro fa-2x pen" id = "profilePop"></i>
                     </c:if>
 				</div>
+                    <div class="popup_layer4" id="popup_layer4" style="display: none;">
+                        <div class="popup_box4  ">
+                            <!-- <div  style="height: 10px; width: 375px; float: top;"> -->
+                            <a href="javascript:closePop4();"><i class="fa-solid fa-x" id = "fa-x"></i></a>
+                            <!-- </div> -->
+                            <!--팝업 컨텐츠 영역-->
+                            <div class="popup_cont4 " id = "popup_con3">
+                                <form action = "/member/myPage/updateProfile" method = "POST" 
+                                        name = "myPage-frm" enctype = "multipart/form-data"
+                                        onsubmit = "return profileValidate()">
+
+                                    <div class = "profile-image-area">
+
+                                        <c:if test = "${empty loginMember.profileImage}"> <%-- 비어있다면, 기본이미지 보여주겠다. --%>
+
+                                            <img id = "profile-image" src="/resources/images/banana.png" alt="">
+
+                                        </c:if>
+                                        <c:if test = "${not empty loginMember.profileImage}"> <%-- 안 비어있다면, . --%>
+
+                                            <img id = "profile-image" src="${loginMember.profileImage}" alt="">
+
+                                        </c:if>
+                                    </div>
+                                    <span id = "delete-image">&times;</span>
+
+                                    <div class = "profile-btn-area">
+                                        <label for="image-input">이미지 선택</label>
+
+                                        <!-- accept= 속성 : 업로드 가능한 파일의 타입을 제한하는 속성 -->
+                                        <input type="file" name = "profileImage" id = "image-input" accept="image/*">
+
+                                        <button>변경하기</button>
+
+                                    </div>
+
+                                    <div class = "myPage-row">
+                                        <label >이메일</label>
+                                        <span>${loginMember.memberEmail}</span>
+                                    </div>
+
+                                    <div class = "myPage-row">
+                                        <label >가입일</label>
+                                        <span>${loginMember.enrollDate}</span>
+                                    </div>
+
+                                    
+                                    
+
+                                    
+
+                                </form>
+                            </div>
+                            <!--팝업 버튼 영역-->
+                            <!-- <div class="popup_btn" style="float: bottom; margin-top: 100px;">
+                            <a href="javascript:closePop();">닫기</a>
+                            </div> -->
+                        </div>
+                    </div>
 
 				<div class="myBanana-content">
 					<div class="myBanana-info">
@@ -172,13 +232,13 @@
                                         <c:if test = "${sold.buyerNo != 0}">
                                             <c:choose>
                                                 <c:when test="${sold.ratingNo == 0}">
-                                                    <a href="javascript:openPop(${sold.goodsNo},${sold.buyerNo},'${sold.buyerNickname}'
+                                                    <a href="javascript:openPop(${sold.goodsNo},${sold.buyerNo},'${sold.buyerNickname}',
                                                                                 ${sold.sellerNo},'${sold.sellerNickname}')" id="popopen">
                                                         <div class="testcolor">거래 후기 보내기</div>
                                                     </a>
                                                 </c:when>
                                                 <c:otherwise>
-                                                    <a href="javascript:openReview(${sold.ratingNo},'${sold.buyerNickname}','${sold.title}')">
+                                                    <a id="popopen2" href="javascript:openReview(${sold.ratingNo},${sold.buyerNo},'${sold.buyerNickname}','${sold.title}',${sold.sellerNo},'${sold.sellerNickname}')">
                                                     <div class="testcolor2">보낸 후기 보기</div>
                                                     </a>
                                                 </c:otherwise>
@@ -189,6 +249,8 @@
                             </c:forEach>
 						</c:otherwise>
 					</c:choose>
+
+                    
                                 <%-- 기존위치 --%>
 
                                 <div class="popup_layer" id="popup_layer" style="display: none;">
@@ -331,9 +393,9 @@
                                 </div>
                                 <div class="popup_layer2" id="popup_layer2" style="display: none;">
                                     <div class="popup_box2  ">
-                                        <!-- <div  style="height: 10px; width: 375px; float: top;">
-                                        <a href="javascript:closePop();"><i class="fa-solid fa-x" id = "fa-x"></i></a>
-                                        </div> -->
+                                        <!-- <div  style="height: 10px; width: 375px; float: top;"> -->
+                                        <a href="javascript:closePop2();"><i class="fa-solid fa-x" id = "fa-x"></i></a>
+                                        <!-- </div> -->
                                         <!--팝업 컨텐츠 영역-->
                                         <div class="popup_cont2 " id = "popup_con2">
                                             <!-- ♥ 여기 안에다가 넣자 ♥-->
@@ -361,7 +423,50 @@
                                     </div>
                                 </div>
 							
-                </section>  
+                </section> 
+                <div class="pagination-area">
+
+                    <%-- 페이지네이션 목록 추가  --%>
+                    <ul class="pagination">
+                    
+                        <!-- 첫 페이지로 이동 -->
+                        
+                        <li><a href="/member/myPage/main?myPageCt=${param.myPageCt}&cp=1">&lt;&lt;</a></li>
+
+                        <!-- 이전 목록 마지막 번호로 이동 -->
+                        <li><a href="/member/myPage/main?myPageCt=${param.myPageCt}&cp=${pagination.prevPage}">&lt;</a></li>
+                        <%-- ?cp같은 쿼리스트링 형태로 적어야 함.....(이게 파라미터로 인식이 됨...) --%>
+                        
+                        <c:forEach var = "i" begin ="${pagination.startPage}" end = "${pagination.endPage}" step = "1" >
+
+                            <c:choose>
+                                <c:when test = "${i == pagination.currentPage}">
+                                <%-- 현재 페이지인 경우 --%>
+                                    <!-- 현재 보고있는 페이지 -->
+                                    <li><a class="current">${i}</a></li>
+                                </c:when>
+                                <c:otherwise>
+                                <!-- 현재 페이지를 제외한 나머지 -->
+                                <li><a href="/member/myPage/main?myPageCt=${param.myPageCt}&cp=${i}">${i}</a></li>
+                                </c:otherwise>
+                            </c:choose>
+
+                        </c:forEach>
+
+                        <!-- 특정 페이지로 이동 -->
+                        
+                        
+                        
+                        
+                        
+                        <!-- 다음 목록 시작 번호로 이동 -->
+                        <li><a href="/member/myPage/main?myPageCt=${param.myPageCt}&cp=${pagination.nextPage}">&gt;</a></li>
+
+                        <!-- 끝 페이지로 이동 -->
+                        <li><a href="/member/myPage/main?myPageCt=${param.myPageCt}&cp=${pagination.maxPage}">&gt;&gt;</a></li>
+
+                    </ul>
+                </div> 
             </section>    
 		</div>
 	</main>
@@ -379,7 +484,7 @@
             myPageCt = 1;
         }
 
-        let loginMemberNo
+        let loginMemberNo;
 
         loginMemberNo = ${loginMember.memberNo};
     </script>

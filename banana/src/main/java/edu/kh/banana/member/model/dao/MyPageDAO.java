@@ -4,12 +4,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import edu.kh.banana.goods.model.vo.GoodsSell;
 import edu.kh.banana.member.model.vo.Member;
+import edu.kh.banana.member.model.vo.MypagePagination;
 import edu.kh.banana.review.model.vo.Review;
 
 @Repository
@@ -45,42 +47,49 @@ public class MyPageDAO {
 	}
 
 	
-	/** 판매완료한 내 게시글의 수 조회
+	/** 판매완료/판매중/구매완료한 내 게시글의 수 조회
 	 * @param memberNo
 	 * @return
 	 */
-	public int getListCount(int memberNo) {
+	public int getListCount(Map<String, Object> map1) {
 		
-		return sqlSession.selectOne("myPageMapper.getListCount", memberNo);
+		return sqlSession.selectOne("myPageMapper.getListCount", map1);
 	}
+	
 
 	/**판매완료한 내 게시글의 목록 조회
 	 * @param map1
 	 * @return
 	 */
-	public List<GoodsSell> selectGoodsSoldList(Map<String, Object> map1) {
+	public List<GoodsSell> selectGoodsSoldList(Map<String, Object> map1, MypagePagination pagination) {
 		
-		return sqlSession.selectList("myPageMapper.selectGoodsSoldList",map1);
+		int offset = (pagination.getCurrentPage()-1) * pagination.getLimit();
+		
+		RowBounds rowBounds = new RowBounds(offset,pagination.getLimit());
+		
+		return sqlSession.selectList("myPageMapper.selectGoodsSoldList",map1,rowBounds);
 	}
 	
 	
-	/**판매중인 내 게시글의 목록 조회
-	 * @param memberNo
-	 * @return
-	 */
-	public List<GoodsSell> selectGoodsSellList(int memberNo) {
-		
-		return sqlSession.selectList("myPageMapper.selectGoodsSellList",memberNo);
-	}
-
-	/**구매완료한 내 게시글의 목록 조회
-	 * @param memberNo
-	 * @return
-	 */
-	public List<GoodsSell> selectGoodsBuyList(int memberNo) {
-		
-		return sqlSession.selectList("myPageMapper.selectGoodsBuyList",memberNo);
-	}
+	
+//필요없어이제	
+//	/**판매중인 내 게시글의 목록 조회
+//	 * @param memberNo
+//	 * @return
+//	 */
+//	public List<GoodsSell> selectGoodsSellList(int memberNo) {
+//		
+//		return sqlSession.selectList("myPageMapper.selectGoodsSellList",memberNo);
+//	}
+//
+//	/**구매완료한 내 게시글의 목록 조회
+//	 * @param memberNo
+//	 * @return
+//	 */
+//	public List<GoodsSell> selectGoodsBuyList(int memberNo) {
+//		
+//		return sqlSession.selectList("myPageMapper.selectGoodsBuyList",memberNo);
+//	}
 
 	/** 
 	 * @param review
@@ -131,6 +140,21 @@ public class MyPageDAO {
 		return sqlSession.selectList("myPageMapper.selectSendingReview",ratingNo);
 	}
 
+	/** 프로필 이미지를 수정하겠다!!
+	 * @param loginMember
+	 * @return
+	 */
+	public int updateProfile(Member loginMember) {
+		
+		
+		//마이바티스를 이용해서 update를 진행할겨
+		return sqlSession.update("myPageMapper.updateProfile", loginMember);
+		
+	}
+
+	
+
+	
 	
 
 

@@ -5,6 +5,9 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.google.gson.Gson;
@@ -33,7 +37,9 @@ public class MyPageController {
 	@GetMapping("/main") // 나머지 주소 작성
 	public String main(@SessionAttribute("loginMember") Member loginMember, 
 						Model model,
-						@RequestParam(value="myPageCt", required=false, defaultValue = "1") int myPageCt
+						@RequestParam(value="myPageCt", required=false, defaultValue = "1") int myPageCt,
+						@RequestParam(value="cp", required=false, defaultValue = "1") int cp
+						
 						) {
 		
 		
@@ -44,13 +50,14 @@ public class MyPageController {
 		int memberNo = loginMember.getMemberNo();
 		map1.put("memberNo", memberNo); //새로 추가
 		map1.put("myPageCt", myPageCt);
+		//map1.put("cp", cp);
 		System.out.println(map1);
 		model.addAttribute("loginMember",loginMember);
 		String address = loginMember.getMemberAddress();
 		model.addAttribute("address", address.substring(10,13));
 		
 		//Map<String, Object> map = service.selectGoodsList(memberNo); //기존 구문
-		Map<String, Object> map = service.selectGoodsList(map1); 
+		Map<String, Object> map = service.selectGoodsList(map1,cp); 
 		model.addAttribute("map", map);
 		System.out.println(map);
 		
@@ -132,7 +139,7 @@ public class MyPageController {
 			@RequestParam(value = "badChecked", required = false) String badChecked, 
 			String reviewText, 
 			@SessionAttribute("loginMember") Member loginMember,
-			int reviewGoodsNo, int reviewBuyerNo
+			int reviewGoodsNo, int reviewBuyerNo, int reviewSellerNo
 			) {
 		System.out.println("컨트롤러에 입성");
 		
@@ -154,9 +161,9 @@ public class MyPageController {
 			badCheckedArr = new ArrayList<String>();
 		}
 		//System.out.println("badCheckedArr : " + badCheckedArr);
-
+		
 		int result = service.sendingMannerReview(goodCheckedArr,badCheckedArr,reviewText,
-				loginMember,reviewGoodsNo,reviewBuyerNo);
+				loginMember,reviewGoodsNo,reviewBuyerNo,reviewSellerNo);
 		//int result = service.sendingReview();
 		return result;
 	}
@@ -174,5 +181,40 @@ public class MyPageController {
 		System.out.println(reviewList);
 		return new Gson().toJson(reviewList);
 	}
+	
+	// 프로필 이미지 수정
+	   @PostMapping("/updateProfile")
+	   public String updateProfile(
+			   @RequestParam(value = "profileImage") MultipartFile profileImage, /*업로드된 파일*/
+			   @SessionAttribute("loginMember") Member loginMember, /*로그인 회원 정보*/
+			   RedirectAttributes ra, /*메시지 전달용*/
+			   HttpServletRequest req /*저장할 서버 경로*/
+			   )throws Exception {
+		   
+		   // ** 업로드된 이미지를 프로젝트 폴더 내부에 저장하는 방법 **
+		   // 1) server -> 지정된 서버 설정 -> Server modules without publishing을 체크하기
+		   // 2) 파일을 저장할 폴더 생성하기
+		   // 3) HttpServletRequest를 이용해서 저장 폴더 절대 경로를 얻어오기
+		   // 4) MultipartFile.transferTo()를 이용해서 지정된 경로에 파일을 저장한다.
+		   
+		   // 인터넷 주소로 접근할 수 있는 경로
+		   String webPath = "/resources/images/memberProfile/"; //이 주소 쓰면 이제 여기로 들어올 수 있는 거야...
+		   
+		   // 실제 파일이 저장된 (컴퓨터상의) 절대 경로
+		   String filePath = req.getSession().getServletContext().getRealPath(webPath);
+		   
+		   int result = service.updateProfile(webPath, filePath, profileImage, loginMember); //4개를 전달할꺼!
+		   
+		   String message = null;
+		   if (result > 0 ) message = "프로필 이미지가 변경되었습니다.";
+		   else				message = "프로필 이미지 변경 실패";
+		   
+		   ra.addFlashAttribute("message", message);
+		   
+		   
+		   
+		   
+	      return "/member/myPage";
+	   }
 	
 }

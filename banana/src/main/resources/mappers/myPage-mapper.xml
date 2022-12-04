@@ -50,6 +50,52 @@
 			<!-- 없는 애도 있을 텐데 (ex)MEMBER_DEL_FL 그럼 걔는 걍 안담겨서 null로 나옴... -->
 </resultMap>
 
+<!-- 판매완료/판매중/구매완료 목록의 게시글 조회 -->
+<select id = "getListCount" parameterType = "_int" resultType = "_int">
+	SELECT COUNT(*) FROM(
+	SELECT G.GOODS_NO, SELLER_NO, TITLE,
+	<![CDATA[
+	CASE  
+	  WHEN SYSDATE - G.CREATED_AT < 1/24/60
+	  THEN FLOOR( (SYSDATE - G.CREATED_AT) * 24 * 60 * 60 ) || '초 전'
+	  WHEN SYSDATE - G.CREATED_AT < 1/24
+	  THEN FLOOR( (SYSDATE - G.CREATED_AT) * 24 * 60) || '분 전'
+	  WHEN SYSDATE - G.CREATED_AT < 1
+	  THEN FLOOR( (SYSDATE - G.CREATED_AT) * 24) || '시간 전'
+	  WHEN SYSDATE - G.CREATED_AT < 30
+	  THEN FLOOR(SYSDATE - G.CREATED_AT) || '일 전'
+	  WHEN SYSDATE - G.CREATED_AT < 365
+	  THEN FLOOR((SYSDATE-G.CREATED_AT)/30) || '달 전'
+	  ELSE TO_CHAR(G.CREATED_AT, 'YYYY-MM-DD')
+	END CREATED_AT, ]]> RATING_NO, BUYER_NO,
+	(SELECT MEMBER_NICKNAME FROM "MEMBER" WHERE MEMBER_NO = BUYER_NO) BUYER_NICKNAME,
+	(SELECT MEMBER_NICKNAME FROM "MEMBER" WHERE MEMBER_NO = SELLER_NO) SELLER_NICKNAME,
+	IMAGE_NO, IMAGE_PATH
+	FROM GOODS_SELL G
+	LEFT JOIN REVIEW R ON(G.GOODS_NO = R.GOODS_NO)
+	LEFT JOIN "MEMBER" M ON (M.MEMBER_NO = G.SELLER_NO)
+	LEFT JOIN "GOODS_IMAGE" I ON(G.GOODS_NO = I.GOODS_NO)
+		<choose>
+			<when test='myPageCt == "1"'>
+	WHERE GOODS_DEL_FL = 'N' AND SELLER_NO = #{memberNo}
+	AND (RECEIVER_NO != SELLER_NO  OR RECEIVER_NO IS NULL)	
+	AND BUYER_NO IS NOT NULL
+			</when>
+			<when test='myPageCt == "2"'>
+	WHERE GOODS_DEL_FL = 'N' AND BUYER_NO = #{memberNo}
+	AND (RECEIVER_NO != BUYER_NO  OR RECEIVER_NO IS NULL)
+			</when>
+			<otherwise>
+	WHERE GOODS_DEL_FL = 'N' AND SELLER_NO = #{memberNo}
+	AND (RECEIVER_NO != SELLER_NO  OR RECEIVER_NO IS NULL)
+	AND BUYER_NO IS NULL
+			</otherwise>
+		</choose>
+	AND I.IMG_ORDER = 0
+	ORDER BY GOODS_NO DESC
+	)
+</select>
+
 
 <!-- 조회 : 판매완료 -->
 <select id="selectGoodsSoldList" resultMap = "goodsSell_rm">
@@ -84,7 +130,6 @@
 			<when test='myPageCt == "2"'>
 	WHERE GOODS_DEL_FL = 'N' AND BUYER_NO = #{memberNo}
 	AND (RECEIVER_NO != BUYER_NO  OR RECEIVER_NO IS NULL)
-	AND I.IMG_ORDER = 0	
 			</when>
 			<otherwise>
 	WHERE GOODS_DEL_FL = 'N' AND SELLER_NO = #{memberNo}
@@ -97,7 +142,7 @@
 </select>
 
 <!-- 조회 : 판매중 -->
-<select id="selectGoodsSellList" resultMap = "goodsSell_rm">
+<!-- <select id="selectGoodsSellList" resultMap = "goodsSell_rm">
 	SELECT G.GOODS_NO, SELLER_NO, TITLE,
 	<![CDATA[
 	CASE  
@@ -125,10 +170,10 @@
 	AND BUYER_NO IS NULL
 	AND I.IMG_ORDER = 0
 	ORDER BY GOODS_NO DESC
-</select>
+</select> -->
 
 <!-- 조회 : 구매완료 -->
-<select id="selectGoodsBuyList" resultMap = "goodsSell_rm">
+<!-- <select id="selectGoodsBuyList" resultMap = "goodsSell_rm">
 	SELECT G.GOODS_NO, SELLER_NO, TITLE,
 	<![CDATA[
 	CASE  
@@ -155,7 +200,7 @@
 	AND (RECEIVER_NO != BUYER_NO  OR RECEIVER_NO IS NULL)
 	AND I.IMG_ORDER = 0
 	ORDER BY GOODS_NO DESC
-</select>
+</select> -->
   
  <update id="changeIntroduce">
   UPDATE "MEMBER" SET INTRODUCE = #{introduce}
@@ -173,15 +218,7 @@
 </update>
 
 
-<select id = "getListCount" parameterType = "_int" resultType = "_int">
-	SELECT COUNT(*) FROM(
-	SELECT RATING_NO 
-	FROM GOODS_SELL 
-	LEFT JOIN REVIEW  USING(GOODS_NO)
-	WHERE GOODS_DEL_FL = 'N' AND SELLER_NO = #{memberNo}
-	AND (RECEIVER_NO != SELLER_NO  OR RECEIVER_NO IS NULL)
-	AND BUYER_NO IS NOT NULL)
-</select>
+
 
 
  <!-- 내 회원 정보 수정 (비밀번호 제외) -->
@@ -250,6 +287,14 @@ JOIN REVIEW_DESCRIPTION D ON (RV.MANNER_NO = D.MANNER_NO)
 WHERE RATING_NO = #{ratingNo}
 ORDER BY D.MANNER_NO
 </select>
+
+<!-- 프로필 이미지 수정 -->
+<!-- mybatis config 보면 ....별칭이 적혀있단다.......근데 parameterType속성 적는건 선택이니까 걍 안적음. -->
+<update id="updateProfile">
+	UPDATE "MEMBER" SET
+	PROFILE_IMG = #{profileImage}
+	WHERE MEMBER_NO = #{memberNo}
+</update>
 
 
 

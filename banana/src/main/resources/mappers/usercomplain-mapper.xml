@@ -17,9 +17,9 @@
 
   
 <select id="userDuplication">
-	SELECT COUNT * FROM "BOARD_COMPLAIN"
-	WHERE B_COM1_CTG_NO = #{category1}
-	AND B_COM2_CTG_NO = #{category2}; 
+	SELECT COUNT * FROM "USER_COMPLAIN"
+	WHERE U_COM1_CTG_NO = #{category1}
+	AND U_COM2_CTG_NO = #{category2}; 
 </select>
 
   

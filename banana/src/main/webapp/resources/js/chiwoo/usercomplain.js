@@ -22,7 +22,9 @@ const back1 = document.getElementById("back1");
 const back2 = document.getElementById("back2");
 const back3 = document.getElementById("back3");
 
-
+//담을 전역변수
+let category1;
+let category2;
 
 document.getElementById("poppingThing").style.display = "none";
 function openPop(){
@@ -261,12 +263,44 @@ function openPop(){
                     }
                     
                     console.log(ctg2);
+
+                    //담기
+                    category1 = ctg1;
+                    category2 = ctg2;
+                    console.log(category1);
+                    console.log(category2);
                     
                     
                 })
             }
         })
     }
+
+    document.getElementById("reportsubmit").addEventListener("click",function(){
+
+        $.ajax({
+            url : "/duplicateCheck",
+            data:{"category1":category1,"category2":category2},
+            success:(result) => {
+                if(result>0){ //중복된 값이 있다.
+                    alert("중복된 신고 사유입니다.");
+                    document.getElementById("userreportsubmit").setAttribute("onsubmit","return false");
+                } else { //중복된 값이 없다.
+                    alert("중복검사 완료!")
+                }
+            },
+            error:() => {
+                console.log("동작 에러남")
+
+            },
+            complete:() =>{
+                console.log("아무때나 나타나는 신호")
+            }
+
+        })
+
+
+    })
     
         back3.addEventListener("click", () => {
             userreportsubmit.style.display = "none";
@@ -343,7 +377,7 @@ function openPop(){
 
     }) */
 
-    
+
 
     
 

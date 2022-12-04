@@ -22,5 +22,10 @@ public class BoardComplainDAO {
 		return sqlsession.insert("boardcomplainMapper.reportsubmit", submit);
 	}
 
+	public int boardDuplication(Map<String, Object> map) {
+		
+		return sqlsession.selectOne("boardcomplainMapper.boardDuplication",map);
+	}
+
 	
 }

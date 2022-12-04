@@ -3,10 +3,21 @@
 <mapper namespace = "boardcomplainMapper">
 
 <insert id="reportsubmit">
-  INSERT INTO "BOARD_COMPLAIN"
-  VALUES(B_COMPLAIN_NO)
-  
+  INSERT INTO "USER_COMPLAIN"
+  VALUES(#{b_complain_no}, 
+  		#{b_com1_ctg_no},
+  		#{b_com2_ctg_no},
+  		#{b_complainer},
+  		#{b_complained},
+  		#{b_com_content}
+  		DEFAULT)
 </insert>
+
+<select id="boardDuplication">
+	SELECT COUNT * FROM "BOARD_COMPLAIN"
+	WHERE B_COM1_CTG_NO = #{category1}
+	AND B_COM2_CTG_NO = #{category2}; 
+</select>
   
   
 </mapper>

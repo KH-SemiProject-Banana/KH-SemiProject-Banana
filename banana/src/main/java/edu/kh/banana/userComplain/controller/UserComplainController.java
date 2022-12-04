@@ -50,7 +50,7 @@ public class UserComplainController {
 	
 	@PostMapping("/userreportsubmit")
 	public String userReportSubmit(@RequestParam Map<String, Object> submit, 
-									@SessionAttribute("loquestParam Map<String, Object> submitginmember") Member loginmember,
+									@SessionAttribute("loginmember") Member loginmember,
 									RedirectAttributes ra,
 									@RequestHeader("referer") String referer
 									/*@PathVariable("complained) int complained*/

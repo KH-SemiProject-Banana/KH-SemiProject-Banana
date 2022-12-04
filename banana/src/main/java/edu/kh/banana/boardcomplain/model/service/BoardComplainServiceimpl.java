@@ -20,6 +20,13 @@ public class BoardComplainServiceimpl implements BoardComplainService {
 		return dao.reportsubmit(submit);
 	}
 
+	// 게시글 신고 중복성 검사
+	@Override
+	public int boardDuplication(Map<String, Object> map) {
+		
+		return dao.boardDuplication(map);
+	}
+
 
 	}
 

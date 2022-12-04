@@ -231,6 +231,30 @@ function openPop(){
         })
     }
 
+    
+    document.getElementById("reportsubmit").addEventListener("click",function(){
+
+        $.ajax({
+            url : "/duplicateCheck",
+            data:{"category1":category1,"category2":category2},
+            success:(result) => {
+                if(result>0){ //중복된 값이 있다.
+                    alert("중복된 신고 사유입니다.");
+                    document.getElementById("userreportsubmit").setAttribute("onsubmit","return false");
+                } else { //중복된 값이 없다.
+                    alert("중복검사 완료!")
+                }
+            },
+            error:() => {
+                console.log("동작 에러남")
+
+            },
+            complete:() =>{
+                console.log("아무때나 나타나는 신호")
+            }
+
+        })
+
 }
 
         

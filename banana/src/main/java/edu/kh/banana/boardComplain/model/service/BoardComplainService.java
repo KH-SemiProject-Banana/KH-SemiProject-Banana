@@ -14,5 +14,12 @@ public interface BoardComplainService {
 	 */
 	int reportsubmit(Map<String, Object> submit);
 
+	
+	/**게시글 신고 중복검사
+	 * @param map
+	 * @return
+	 */
+	int boardDuplication(Map<String, Object> map);
+
 
 }

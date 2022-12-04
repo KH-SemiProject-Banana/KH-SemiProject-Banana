@@ -21,7 +21,7 @@ public class UserComplainDAO {
 	// 카테고리 중복검사
 	public int userDuplication(Map<String, Object> map) {
 		
-		return sqlsession.selectOne("usercomplainMaooer.userDuplication");
+		return sqlsession.selectOne("usercomplainMapper.userDuplication",map);
 	}
 
 }

@@ -43,7 +43,7 @@
       </selectKey>
    
       INSERT INTO CHATTING_ROOM
-      VALUES(#{chattingNo}, DEFAULT, #{loginMemberNo}, #{targetNo})
+      VALUES(#{chattingNo}, DEFAULT, #{goodsNo},#{loginMemberNo}, #{targetNo})
    </insert>
 
 

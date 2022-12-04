@@ -57,7 +57,7 @@
                         </div>
                     <div>
                         <div class="report-why">
-                            <div><input type = "hidden" name="complained" value = "${memberNickname}></div>
+                            <div><input type = "hidden" name="complained" value = "${memberNickname}"></div>
                             <p>
                                 ${memberNickname} 사용자를 신고하는 이유를 선택해주세요
                             </p>

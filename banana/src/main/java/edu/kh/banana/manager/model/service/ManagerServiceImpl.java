@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import edu.kh.banana.board.model.vo.Board;
 import edu.kh.banana.manager.model.dao.ManagerDAO;
 import edu.kh.banana.member.model.vo.Member;
 
@@ -30,6 +31,15 @@ public class ManagerServiceImpl implements ManagerService{
 			}
 		}
 		return loginManager;
+	}
+
+	/**
+	 * 고객센터-자주묻는 질문 추가
+	 */
+	@Override
+	public int editBoard1(Board board) {
+		
+		return dao.editBoard1(board);
 	}
 
 }

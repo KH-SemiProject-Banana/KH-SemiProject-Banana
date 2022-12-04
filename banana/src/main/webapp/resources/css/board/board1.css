@@ -323,7 +323,7 @@
     color: rgba(0,0,0,0.5);
 }
 
-#user-content, #answer-content {
+.user-content, #answer-content {
 
     background-color: white;
     width: 100%;

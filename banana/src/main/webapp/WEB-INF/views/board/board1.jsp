@@ -79,7 +79,7 @@
                                 </div>
                             </div>
                             <div class="question-content">
-                                <p name="content" id="user-content" >
+                                <p name="content" class="user-content" >
                                     ${board.boardContent}<br>
                                 </p>
                             </div>

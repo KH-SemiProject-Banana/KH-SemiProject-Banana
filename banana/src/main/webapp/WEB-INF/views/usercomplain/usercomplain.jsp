@@ -62,6 +62,8 @@
                                 ${memberNickname} 사용자를 신고하는 이유를 선택해주세요
                             </p>
                         </div>
+
+                        
                     
                     <div id="click">
                         <div class="report-reason abc" id = "abc1">
@@ -183,8 +185,8 @@
                                     <button type="submit" id = "reportsubmit" >바나나 팀에게 보내기</button>
                                 </div>
                             </div>
-                            <input type="hidden" name="ctg1" value="">
-                            <input type="hidden" name="ctg2" value="">
+                            <input type="hidden" name="ctg1" value="" id ="ctg1">
+                            <input type="hidden" name="ctg2" value="" id ="ctg2">
                         </form>
                     <!--팝업 버튼 영역-->
                     <!-- <div class="popup_btn" style="float: bottom; margin-top: 300px;">

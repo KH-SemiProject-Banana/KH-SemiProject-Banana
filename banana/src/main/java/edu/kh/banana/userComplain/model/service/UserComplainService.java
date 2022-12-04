@@ -6,4 +6,6 @@ public interface UserComplainService {
 	
 	int userReportSubmit(Map<String, Object> submit);
 
+	int userDuplication(Map<String, Object> map);
+
 }

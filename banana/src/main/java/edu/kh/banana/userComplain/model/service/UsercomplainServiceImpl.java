@@ -19,4 +19,10 @@ public class UsercomplainServiceImpl implements UserComplainService {
 		return dao.userReportSubmit(submit);
 	}
 
+	@Override
+	public int userDuplication(Map<String, Object> map) {
+		
+		return dao.userDuplication(map);
+	}
+
 }

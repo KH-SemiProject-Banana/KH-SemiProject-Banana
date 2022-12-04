@@ -18,4 +18,10 @@ public class UserComplainDAO {
 		return sqlsession.insert("usercomplainMapper.userreportsubmit", submit);
 	}
 
+	// 카테고리 중복검사
+	public int userDuplication(Map<String, Object> map) {
+		
+		return sqlsession.selectOne("usercomplainMaooer.userDuplication");
+	}
+
 }

@@ -214,7 +214,7 @@ public class MyPageController {
 		   
 		   
 		   
-	      return "/member/myPage";
+	      return "member/myPage_main";
 	   }
 	
 }

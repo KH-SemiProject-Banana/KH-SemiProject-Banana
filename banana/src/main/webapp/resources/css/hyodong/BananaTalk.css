@@ -16,35 +16,6 @@
     flex-direction: column;
 }
 /*************************************************/
-/* header 프로필  */
-.profil{
-    display: flex;
-    height: 100%;
-    width: 100%;
-    justify-content: right;
-    align-items: center;
-}
-.profilImages{
-    display: flex;
-    height: 60px;
-    width: 60px;
-    border-radius: 50%;
-    border: 1px solid #ddd;
-    justify-content: center;
-    align-items: center;
-}
-.profilName{
-    display: flex;
-    height: 100%;
-    width: 100px;
-    background-color: white;
-    font-size: 20px;
-    justify-content: center;
-    align-items: center;
-}
-
-
-/*************************************************/
 /* 감싸고 있는 최상위 div 설정 */
 #mainBox{
     display: flex;
@@ -197,11 +168,6 @@
 #chatting-list::-webkit-scrollbar{
     display: none;
 }
-/* 문제해결 해야함 */
-/* #chatting-list > li:last-child{
-    border-bottom: none;
-} */
-
 
 /* 채팅 리스트 user  최상위 박스 설정  */
 .chatting-item{
@@ -343,6 +309,10 @@
 /* 상대방 닉네임 폰트 */
 .profile-name{
     font-size: 0.8125rem;
+}
+.chat {
+	word-break: break-all;
+	white-space: pre-wrap;
 }
 
 /* 말풍선 공통 */

@@ -302,7 +302,7 @@ a { text-decoration:none }
 /* 글 수정하기/ 글 삭제하기/ 끌어올리기 설정*/
 .anotherPop{
     position : absolute;
-    z-index: 1002;
+    z-index: 100;
     right : 18px;
     top : 10px;
     cursor: pointer;
@@ -444,3 +444,37 @@ form[name = 'myPage-frm']{position:relative;}
 }
 
 
+/* dot */
+
+.favorite__img {
+    position: relative;
+}
+
+
+
+.myGoodsDetail {
+    display: flex;
+    flex-direction: column;
+    position : absolute;
+
+    top: 20px;
+    right: 20px;
+    
+    margin-top: 5px;
+    border: 1px solid black;
+    background-color: white;
+
+    z-index: 5000;
+    height: 80px;
+    width: 100px;
+}
+
+.myGoodsDetail * {
+    color: rgba(0, 0, 0, 0.6);
+    height: 100px;
+}
+
+
+.hidden{
+    display: none;
+}

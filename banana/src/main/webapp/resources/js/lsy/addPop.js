@@ -158,12 +158,8 @@ submitBtn.addEventListener("click", function(){
             if(result > 0){ //성공
 
                 
-                alert("db에 제출 완료된 듯?");
-                /* 새로 바꾸는 중 */
-                //결과 : 전체가 바뀜.
-                // $("#popopen").attr("href","javascript:openReview(${sold.ratingNo},${sold.buyerNo},'${sold.buyerNickname}','${sold.title}',${sold.sellerNo},'${sold.sellerNickname}')")
-                // $(".testcolor").attr("class","testcolor2");
 
+                alert("거래 후기가 등록되었습니다");
 
 
             } else { //실패
@@ -319,6 +315,7 @@ function openReview(ratingNo,buyerNo,buyerNickname,title,sellerNo,sellerNickname
         }
     });
 }
+
 
 
 

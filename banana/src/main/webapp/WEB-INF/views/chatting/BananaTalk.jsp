@@ -25,28 +25,36 @@
         <!-- header 시작----------------------------------------------------------------------------------------- -->
         <header>
             <section class="section-query">
-                <!-- 바나나 로고 -->
                 <div class="query__area">
-                    <a href="/"> 
-                        <img src="/resources/images/banana-logo.png" id="logo-img">
-                    </a>
-                    <div class="query__logo">
-                        <p>바꾸고 나누자 나랑</p>
-                        <p id="query__banana">Banana Market</p>
+                    <div>
+                        <a href="/">
+                            <img src="/resources/images/banana-logo.png" id="logo-img"/>
+                        </a>
+                        <div class="query__logo">
+                            <p>바꾸고 나누자 나랑</p>
+                            <p id="query__banana">Banana Market</p>
+                        </div>
                     </div>
-                </div>
-                <!-- 프로필관련 -->
-                <div class="profil">
-                    <%-- <img class="profilImages" src="/resources/images/user.png" > --%>
-                    <div class="profileImgArea">
-                        <c:if test="${empty loginMember.profileImage}">
-                            <img  class="profilImages"src="/resources/images/banana-logo.png"  id="profileImg">
-                        </c:if>
-                        <c:if test="${not empty loginMember.profileImage}">
-                            <img  class="profilImages"src="${loginMember.profileImage}" id="profileImg">
-                        </c:if>
-                    </div>
-                    <div class="profilName">${loginMember.memberNickname}</div>
+                    <label for="header-menu-toggle">
+                        <div class="profileImgArea">
+                            <c:if test="${empty loginMember.profileImage}">
+                                <img src="/resources/images/banana-logo.png"  id="profileImg">
+                            </c:if>
+                            <c:if test="${not empty loginMember.profileImage}">
+                                <img src="${loginMember.profileImage}" id="profileImg">
+                            </c:if>
+                        </div>
+                        ${loginMember.memberNickname}
+                        <i class="fa-solid fa-caret-down"></i>
+                        <div>
+                            <input type="checkbox" id="header-menu-toggle">
+
+                            <div id="header-menu">
+                                <a href="/member/myPage/main">내 정보</a>
+                                <a href="/member/logout">로그아웃</a>
+                            </div>
+                        </div>
+                    </label>
                 </div>
             </section>
         </header>
@@ -55,15 +63,6 @@
             <div id="mainBox">
                 <!--------------------- 채팅 리스트 --------------------->
                 <div id="chatting-list">
-                    <!-- User프로필1 -->
-                    <%-- <div class="userProfile">
-                        <img class="talkProfileImages" src="/resources/images/banana-logo.png">
-                        <div class="name">바나나</div>
-                        <div class="talkClockAlarm">
-                            <div class="talkClock">오후 09:10</div>
-                            <div class="talkAlarm"> 1</div>
-                        </div>
-                    </div> --%>
 
                     <c:forEach var="room" items="${roomList}">
                         <%--  id == 채팅방 번호 --%>
@@ -85,19 +84,24 @@
                                 </p>
                                 <div>
                                     <p class="recent-message">${room.lastMessage}</p><%-- 채팅메세지 --%>
-                                    <c:if test="${room.notReadCount > 0}"> 
-                                        <p class="not-read-count">${room.notReadCount}</p><%-- 메세지 왔을때 카운트 --%>
-                                    </c:if>
+                                    <%-- <c:if test="${room.notReadCount > 0}"> 
+                                        <p class="not-read-count">${room.notReadCount}</p>
+                                    </c:if> --%>
+
+                                    <%-- 수정하자 만약 0보다 크고 100보다 작으면 카운트 100보다 크면 99+ --%>
+                                    <c:choose>
+                                        <c:when test="${room.notReadCount > 0 && room.notReadCount <100}">
+                                            <p class="not-read-count">${room.notReadCount}</p><%-- 메세지 왔을때 카운트 --%>
+                                        </c:when>
+                                        <%-- 안먹음 여기.. --%>
+                                        <c:when test="${room.notReadCount > 0 && room.notReadCount>100}">
+                                            <p class="not-read-count">99+</p><%-- 메세지 왔을때 카운트 --%>
+                                        </c:when>
+                                    </c:choose>
                                 </div>
                             </div>
                         </li>
                     </c:forEach>
-
-
-
-
-
-
 
                 </div>
                 <!--------------------- 채팅 내용박스 --------------------->

@@ -66,7 +66,7 @@ submitBtn.addEventListener("click", function(){
             if(result > 0){ //성공
 
                 
-                alert("db에 제출 완료된 듯?");
+                alert("거래 후기가 등록되었습니다");
 
             } else { //실패
                 console.log("서버에 저장 실패");
@@ -127,90 +127,119 @@ document.getElementById("submitButton").addEventListener("click",function(){
 
 
 
-// document.getElementById("anotherPop").style.display="none";
-// document.getElementById("dot").addEventListener("click", function(){
+const dotList = document.getElementsByClassName("dot");
 
-//     document.getElementById("anotherPop").style.display = "block";
+for(let i = 0; i < dotList.length; i++){
+    dotList[i].addEventListener("click", function(e){
+
+        
+        dotList[i].nextElementSibling.classList.toggle("hidden");
+
+
+        const goodsNo = dot[i].getAttribute("id");
+        
+
+        // 글 수정하기
+        updatGoods[i].addEventListener("click", () => {
+            location.href = "/goods/update/" + goodsNo;
+        });
+        
+        // 글 삭제하기
+        deleteGoods[i].addEventListener("click", () => {
+            console.log(1);
+            $.ajax({
+                url: "/goods/delete",
+                data: { "goodsNo": goodsNo },
+                type: "GET",
+                success: (result) => {
+                    if (result > 0) {
+                        // 상품태그 메인에서 지우기
+                        dot[i].parentElement.parentElement.parentElement.remove();
+                    } else {
+                        console.log("상품글 삭제 실패");
+                    }
+                },
+                error: () => {
+                    console.log("상품글 삭제 중 오류 발생");
+                }
+            })
+        })
+
+        // 끌어올리기
+        refreshGoods[i].addEventListener("click", () => {
+            $.ajax({
+
+                url: "/goods/refresh/" + goodsNo,
+                data: {"goodsNo" : goodsNo},
+                type: "GET",
+                success: (result) => {
+                    if(result > 0) {
+                        alert("상품 끌어올리기 완료");
+                    } else{
+                        console.log("상품 끌어올리기 실패");
+                    }
+                },
+                error : () => {
+                    console.log("상품 끌어올리기 중 오류 발생");
+                }
+            });
+        });
+
+
+
+        
+    });
+
+}
+
+
+
+const dot = document.getElementsByClassName("dot");
+const updatGoods = document.getElementsByClassName("updatGoods");
+const deleteGoods = document.getElementsByClassName("deleteGoods");
+const refreshGoods = document.getElementsByClassName("refreshGoods");
+
+// for (let i = 0; i < dot.length; i++) {
+    
+
+
+// }
+
+
+
+// // 화면 어디를 클릭하든
+// document.addEventListener("click",function(e){
+
+    
+//     if(e.target.classList.contains("dot")){
+//         return;
+//     }
+    
+
+//     // .anotherPop 있는지 검사
+//     const anotherPop = document.getElementsByClassName("anotherPop")[0];
+
+//     if( anotherPop != undefined){ // 기존에 열린게 있으면 지워라
+//         // anotherPop.remove();
+
+//         const temp = document.querySelectorAll(".anotherPop, .anotherPop > *");
+
+//         for(let t of temp){
+//             if(t == e.target){
+//                 return;
+//             }
+//         }
+
+//         anotherPop.remove();
+//     }
+
+
 
 // })
 
 
-const dotList = document.getElementsByClassName("dot");
-
-for(let dot of dotList){
-    dot.addEventListener("click", function(e){
 
 
-        // .anotherPop 있는지 검사
-        const anotherPop = document.getElementsByClassName("anotherPop")[0];
-
-        if(anotherPop != undefined){ // 기존에 열린게 있으면 지워라
-            anotherPop.remove();
-        }
-
-        const container = document.createElement("div");
-        const div1 = document.createElement("div");
-        const div2 = document.createElement("div");
-        const div3 = document.createElement("div");
-        
-        container.classList.add("anotherPop");
-
-        div1.classList.add("anotherPop1" , "babo");
-        div1.innerText = "글 수정하기";
-        div1.addEventListener("click", function(){
-            location.href = "http://192.168.10.76:5500/html/myPage_review_good.html";
-        })
-
-        div2.classList.add("anotherPop1" , "babo");
-        div2.innerText = "글 삭제하기";
-        div2.addEventListener("click", function(){
-            
-        })
-
-        div3.classList.add("anotherPop1");
-        div3.innerText = "끌어올리기";
-        div3.addEventListener("click", function(){
-            
-        })
-
-        container.append(div1, div2, div3);
-
-        dot.after(container);
-
-
-    });
-}
-
-
-// 화면 어디를 클릭하든
-document.addEventListener("click",function(e){
-
-    
-    if(e.target.classList.contains("dot")){
-        return;
-    }
-    
-
-    // .anotherPop 있는지 검사
-    const anotherPop = document.getElementsByClassName("anotherPop")[0];
-
-    if( anotherPop != undefined){ // 기존에 열린게 있으면 지워라
-        // anotherPop.remove();
-
-        const temp = document.querySelectorAll(".anotherPop, .anotherPop > *");
-
-        for(let t of temp){
-            if(t == e.target){
-                return;
-            }
-        }
-
-        anotherPop.remove();
-    }
-
-
-
-})
 // const intro = document.getElementById("p_intro");
 // document.getElementById("pen_intro").addEventListener("click",function(){
 

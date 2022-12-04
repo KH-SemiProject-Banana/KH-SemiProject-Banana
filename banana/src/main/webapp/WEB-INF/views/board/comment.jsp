@@ -12,13 +12,14 @@
                 <%-- 삭제된 댓글인 경우 --%>
                 <c:if test="${comment.commentDeleteFlag == 'Y'}">
                     <li class="comment-row <c:if test="${comment.parentNo != 0}"> child-comment </c:if>">
-                        <p class="comment-content">삭제된 댓글입니다</p>
+                        <p class="delete-content">삭제된 댓글입니다</p>
                     </li>
                 </c:if>
 
                 <%-- 삭제된 댓글이 아닌 경우 --%>
                 <c:if test="${comment.commentDeleteFlag == 'N'}">
                     <%-- comment.parentNo => int형변수는 nul == 0이 됨 --%>
+                    
                     <li class="comment-row <c:if test="${comment.parentNo != 0}"> child-comment </c:if>">
                         <p class="comment-writer">
                             <%-- 프로필 이미지가 없는 경우 --%>
@@ -42,7 +43,7 @@
                         
                         <c:if test="${not empty loginMember}">
                             <div class="comment-btn-area">
-                                <button>답글</button>   
+                                <button onclick="showInsertComment(${comment.commentNo}, this)">답글</button>   
 
                             <%-- 로그인 회원과 댓글 작성자가 같을 경우 --%>
                             <c:if test="${loginMember.memberNo == comment.memberNo}">

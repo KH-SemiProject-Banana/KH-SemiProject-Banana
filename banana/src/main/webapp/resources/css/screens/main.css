@@ -110,7 +110,7 @@
 .favorite__pack img{
     height: 208px;
     width: 208px;
-    border-radius: 15px;
+    border-radius: 5px;
 
     
 }
@@ -127,7 +127,7 @@ input[name="heart"] + label{
 
 
 
-.fa-heart-circle-plus{
+.heart{
 
     padding-right: 5px;
 
@@ -135,23 +135,29 @@ input[name="heart"] + label{
     align-items: center;
     justify-content: center;
 
-    width: 25px;
-    height: 25px;
-    font-size: 25px;
+
+    /* margin-right: 10px;
+    padding-top: 2px; */
 
 
-    color: #ccc;
-    margin-right: 10px;
-    padding-top: 2px;
+    width: 30px;
+    height: 30px;
+    font-size: 33px;
+
+
+    z-index: 3;
+    /* color: rgba(0,0,0,0.7); */
+
+    cursor: pointer;
 
 }
 
-input[name="heart"]:checked + label>i {
+/* input[name="heart"]:checked + label>i {
     color: deeppink;
 
     justify-content: center;
     align-items: center;
-}
+} */
 
 .favorite__price-heart {
     margin-left: 5px;
@@ -174,8 +180,9 @@ label[for="heart"]{
   
     display: flex;
     align-items: center;
+    font: 24px !important;
     font-weight: bold;
-    color: rgba(0,0,0,0.6);
+    /* color: rgba(0,0,0,0.6); */
 }
 
 .favorite__price, .new__price{
@@ -315,3 +322,27 @@ label[for="heart"]{
   }
 
 
+/* heart */
+.favorite__img {
+  position: relative;
+}
+
+.favorite__heart {
+  position:absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.like_yn:hover,
+input[id *= "like"]:checked + .like_yn{
+    opacity: 1;
+    color: rgb(255, 23, 66);
+}
+
+.like_yn:active,
+input[id *= "like"]:checked + .like_yn:active{
+    opacity: 1;
+    color: rgb(219, 16, 53);
+}
+
+input[id *= "like"]{display: none;}

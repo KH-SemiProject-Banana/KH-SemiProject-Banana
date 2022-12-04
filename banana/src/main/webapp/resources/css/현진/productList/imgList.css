@@ -1,24 +1,38 @@
 /* 상품 이미지 리스트 */
 section{
     display: flex;
-    justify-content: space-between;
 }
 
 .imgList_row{
-    width: 260px;
+    width: 22%;
     display: flex;
     flex-direction: column;
     margin-top: 15px;
+    margin-right: 4%;
     margin-bottom: 35px;
     position: relative;
 }
 
+.imgList_row_end{
+    margin-right: 0;
+}
+
 .imgList_row img{
     width: 100%;
+    height: 250px;
     border-radius: 5px;
 }
 
 .imgList_row span{margin-top: 5px;}
+
+/* 제목 길이 조절 */
+.title{
+    width: 100%;
+    display: inline-block;
+    white-space : nowrap;
+    overflow : hidden;
+    text-overflow: ellipsis;
+}
 
 /* 찜하기 버튼 */
 input[id *= "like"]{display: none;}

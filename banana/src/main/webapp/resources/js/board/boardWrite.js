@@ -9,25 +9,14 @@ const checkObj = {
 
 
 function loadFile(input) {
-    let fileCount = document.getElementById("chooseFile");
+    // let fileCount = document.getElementById("chooseFile");
 
     const files = input.files;
 
-    
-    
 
-   
 
-    // console.log(files);
-    
-    // console.log(temp);
-
-    let i = 0;
     for (let file of files) {
 
-        
-        
-        
 
         const temp = document.querySelectorAll("#image-show > img");
 
@@ -55,6 +44,7 @@ function loadFile(input) {
 
         container.appendChild(newImage);
 
+        // 이미지 삭제
         newImage.addEventListener("click", (e) => {
 
             container.removeChild(e.target);
@@ -66,11 +56,11 @@ function loadFile(input) {
         const count = container.childElementCount;
         document.getElementsByClassName("img__pic-count")[0].innerText = "(" + count + "/5)";
 
-        
-        i++;
+
+
     }
 
-    const list = document.getElementsByClassName("img");
+    list = document.getElementsByClassName("img");
     console.log(list.length);
     if (list.length > 0) {
         checkObj.questionImage = true;
@@ -84,20 +74,20 @@ function loadFile(input) {
 
 
 
-function deleteFile(img)  {
-    
+function deleteFile(img) {
+
     let fileNum = -1;
-    for(let i = 0 ; i<list.length ; i++){
-        if(list[i] == img){
+    for (let i = 0; i < list.length; i++) {
+        if (list[i] == img) {
             fileNum = i;
             break;
         }
     }
 
-    if(fileNum > -1){
+    if (fileNum > -1) {
         const dataTransfer = new DataTransfer();
         let fileCount = document.getElementById("chooseFile");
-        
+
         let files = fileCount.files;	//사용자가 입력한 파일을 변수에 할당
 
         let fileArray = Array.from(files);
@@ -169,29 +159,64 @@ questionContent.addEventListener("input", function () {
 });
 
 
-document.getElementById("question-form").addEventListener("submit", e=>{
+document.getElementById("question-form").addEventListener("submit", e => {
 
-    
-    
-        for (let key in checkObj) {
-    
-            let str;
-    
-            if (!checkObj[key]) {
-                switch (key) {
-                    case "questionImage": str = "이미지를 최소 1개 등록해주세요"; break;
-                    case "questionTitle": str = "글 제목을 입력해주세요"; break;
-                    case "questionContent": str = "글 내용을 입력해주세요"; break;
-                }
-                alert(str);
-                
-                e.preventDefault();
-                return;
+
+
+    for (let key in checkObj) {
+
+        let str;
+
+        if (!checkObj[key]) {
+            switch (key) {
+                case "questionImage": str = "이미지를 최소 1개 등록해주세요"; break;
+                case "questionTitle": str = "글 제목을 입력해주세요"; break;
+                case "questionContent": str = "글 내용을 입력해주세요"; break;
             }
+            alert(str);
+
+            e.preventDefault();
+            return;
         }
-    
+    }
+
 
 });
 
+
+
+// 전체보기
+const questionList = document.getElementById("questionList");
+
+
+
+    questionList.addEventListener("click", () => {
+
+        if (confirm("현재 문의글을 작성중입니다. 현재 페이지를 벗어나시겠습니까?")) {
+            location.href = "/board/3";
+        } else {
+            return;
+        }
+    });
+
+
+
+
+
+
+
+// 나의 문의/안내 내역
+const myQuestionList = document.getElementById("myQuestionList");
+
+
+    myQuestionList.addEventListener("click", () => {
+
+        if (confirm("현재 문의글을 작성중입니다. 현재 페이지를 벗어나시겠습니까?")) {
+                location.href = "/question/myQuestion";
+
+        } else {
+            return;
+        }
+    });
 
 

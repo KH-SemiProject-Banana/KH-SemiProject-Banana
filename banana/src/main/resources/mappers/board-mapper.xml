@@ -244,9 +244,97 @@
   </update>
   
   
+  <!-- 게시글 이미지만 수정 -->
+  <update id="boardImageUpdate">
+  	UPDATE BOARD_IMG SET
+  	IMG_RENAME = #{imageRename},
+  	IMG_ORIGINAL = #{imageOriginal}
+  	WHERE BOARD_NO = #{boardNo}
+  	AND IMG_ORDER = #{imageOrder}
+  </update>
+  
+  
+  <!-- 게시글 이미지 수정-새 이미지 삽입 -->
+  <insert id="boardImageInsert">
+  	INSERT INTO BOARD_IMG VALUES(
+  		SEQ_IMG_NO.NEXTVAL, #{boardNo}, #{imagePath}, #{imageRename},
+  		#{imageOriginal}, #{imageOrder}
+  	)
+  </insert>
   <!-- db~서버 비교후 삭제를 위한 이미지 변경명 조회 -->
   <select id="selectImageRenameList" resultType="string">
   	SELECT IMG_RENAME FROM BOARD_IMG
+  </select>
+  
+  
+  <!-- 검색조건이 일치하는 전체 게시글 수 -->
+  <select id="getListCount_search" resultType="_int">
+  	SELECT COUNT(*) FROM BOARD
+  	JOIN "MEMBER" USING(MEMBER_NO)
+  	WHERE BOARD_CODE  = #{boardCode}
+	AND BOARD_DEL_FL = 'N'
+	
+	<if test='query != NULL and query != ""'>
+		<choose>
+			<when test='key=="t"'> <!-- 제목 -->
+				AND  BOARD_TITLE LIKE '%${query}%'
+			</when>
+			<when test='key=="c"'> <!-- 내용 -->
+				AND  BOARD_CONTENT LIKE '%${query}%'
+			</when>
+			<when test='key=="tc"'> <!-- 제목+내용 -->
+				AND  (BOARD_TITLE LIKE '%${query}%'
+				OR BOARD_CONTENT LIKE '%${query}%')
+			</when>
+			<when test='key=="w"'> <!-- 작성자(w) -->
+				AND  MEMBER_NICKNAME LIKE '%${query}%'
+			</when>
+		</choose>
+	</if>
+  </select>
+  
+  
+  <!-- 검색조건이 일치하는 게시글 리스트  -->
+  <select id="selectBoardList_search" parameterType="map" resultMap="board_rm">
+  	SELECT BOARD_NO, BOARD_TITLE, MEMBER_NICKNAME, VIEW_COUNT, 
+		CASE  <![CDATA[
+      WHEN SYSDATE - B_CREATED_AT < 1/24/60
+      THEN FLOOR( (SYSDATE - B_CREATED_AT) * 24 * 60 * 60 ) || '초 전'
+      WHEN SYSDATE - B_CREATED_AT < 1/24
+      THEN FLOOR( (SYSDATE - B_CREATED_AT) * 24 * 60) || '분 전'
+      WHEN SYSDATE - B_CREATED_AT < 1
+      THEN FLOOR( (SYSDATE - B_CREATED_AT) * 24) || '시간 전'
+      ELSE TO_CHAR(B_CREATED_AT, 'YYYY-MM-DD')
+   	END B_CREATED_AT,  ]]>
+	(SELECT COUNT(*) FROM "COMMENT" C
+	WHERE BOARD_NO = B.BOARD_NO) COMMENT_COUNT,
+	(SELECT IMG_PATH ||IMG_RENAME FROM BOARD_IMG
+	WHERE IMG_ORDER = 0
+	AND BOARD_NO = B.BOARD_NO) THUMBNAIL
+	FROM BOARD B 
+	JOIN MEMBER USING(MEMBER_NO)
+	WHERE BOARD_CODE = #{boardCode}
+	AND BOARD_DEL_FL = 'N'
+	
+	<if test='query != NULL and query != ""'>
+		<choose>
+			<when test='key=="t"'> <!-- 제목 -->
+				AND  BOARD_TITLE LIKE '%${query}%'
+			</when>
+			<when test='key=="c"'> <!-- 내용 -->
+				AND  BOARD_CONTENT LIKE '%${query}%'
+			</when>
+			<when test='key=="tc"'> <!-- 제목+내용 -->
+				AND  (BOARD_TITLE LIKE '%${query}%'
+				OR BOARD_CONTENT LIKE '%${query}%')
+			</when>
+			<when test='key=="w"'> <!-- 작성자(w) -->
+				AND  MEMBER_NICKNAME LIKE '%${query}%'
+			</when>
+		</choose>
+	</if>
+	
+	ORDER BY BOARD_NO DESC
   </select>
   
 </mapper>

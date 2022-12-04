@@ -133,7 +133,13 @@
 								<div class="favorite__pack">
 									<div>
 										<div class="favorite__img">
-											<img src="${sold.imagePath}"> <i class="fa-solid fa-ellipsis-vertical dot"></i>
+											<img src="${sold.imagePath}"> 
+                                            <i class="fa-solid fa-ellipsis-vertical dot" id="${sold.goodsNo}"></i>
+                                            <div class="myGoodsDetail hidden">
+                                                <button class="updatGoods">상품 수정하기</button>
+                                                <button class="deleteGoods">상품 삭제하기</button>
+                                                <button class="refreshGoods">끌어올리기</button>
+                                            </div>
 										</div>
 										<div class="favorite__price-heart">
 											<div class="favorite__price">${sold.title}</div>

@@ -7,7 +7,7 @@
             Copyright &copy; KH Information Educational Institute A-Class 중고거래 프로젝트 팀
         </p>
         <article>
-            <a href="#">프로젝트 소개</a>
+            <a href="/pay/main">프로젝트 소개</a>
             <span> | </span>
             <a href="#">이용약관</a>
             <span> | </span>

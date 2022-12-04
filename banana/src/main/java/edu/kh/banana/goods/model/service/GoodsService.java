@@ -20,7 +20,7 @@ public interface GoodsService {
 	 * @throws IOException 
 	 * @throws IllegalStateException 
 	 */
-	int registerGoods(String webPath, String filePath, List<MultipartFile> imagePath, GoodsSell inputGoods) throws Exception;
+	int registerGoods(String webPath, String folderPath, List<MultipartFile> inputImageList, GoodsSell inputGoods) throws Exception;
 
 	
 	
@@ -73,17 +73,42 @@ public interface GoodsService {
 	 */
 	List<String> selectImageList();
 
-	
-	
-	
-	/** 내 상품 수정
-	 * @param webPath
-	 * @param filePath
-	 * @param imagePath
-	 * @param inputGoods
+
+
+
+	/** 상품 삭제
+	 * @param boardNo
 	 * @return
 	 */
-//	int updateGoods(String webPath, String filePath, List<MultipartFile> imagePath, Goods inputGoods);
+	int goodsDelete(int goodsNo);
+
+
+
+
+	/** 상품 수정
+	 * @param webPath
+	 * @param folderPath
+	 * @param registerGoods
+	 * @param imageList
+	 * @param deleteList
+	 * @return
+	 * @throws IOException 
+	 */
+	int updateGoods(String webPath, String folderPath, GoodsSell registerGoods, List<MultipartFile> imageList,
+			String deleteList) throws IOException;
+
+
+
+
+	/** 상품 끌어올리기
+	 * @param goodsNo
+	 * @return
+	 */
+	int goodsRefresh(int goodsNo);
+
+	
+	
+	
 
 
 

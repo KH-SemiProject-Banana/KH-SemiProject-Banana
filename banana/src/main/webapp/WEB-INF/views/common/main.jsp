@@ -60,35 +60,38 @@
                     <p class="title">  인기 상품</p>
                 </div>
                 
-                <a href="#">더보기</a>
+                <a href="/category?categoryNo=0">더보기</a>
             </section>
 
 
 
             <section class="content-favorite" id="favorite">
                 <c:forEach var="favorite" items="${favoriteGoodsList}">
-                    <%-- 로그인상태인 경우 회원번호 가져와 like list 가져와 goods테이블에 대입(-) --%>
-                    <c:if test="${favorite.isLike == 1}">
-                        <c:set var="isLike" value="choose"/>
-                    </c:if>
+
+                    <c:set var="i"  value="${i+1}"/>
+
+
 
                     <div class="favorite__pack">
                         <div>
                             <div class="favorite__img">
-                                <%-- <a href="/goods/goodsList/${favorite.goodsNo}"> --%>
                                 <a href="">
                                     <img src="${favorite.thumbnail}" class="favorite__img">
                                 </a>
+                                <div class="favorite__heart">
+                                    <c:if test="${favorite.isLike == 0}"> <%-- 좋아요 상태가 아닌 경우 --%>
+                                        <input type="checkbox" id="like${i}" class="favorite__heart likeChk" value="${favorite.goodsNo}" >
+                                    </c:if>
+                                    <c:if test="${favorite.isLike == 1}"> <%-- 좋아요 상태인 경우 --%>
+                                        <input type="checkbox" id="like${i}" class="favorite__heart likeChk" value="${favorite.goodsNo}" checked>
+                                    </c:if>
+                                    <label for="like${i}" class="like_yn">
+                                        <i class="fa-solid fa-heart heart ${isLike}"></i>
+                                    </label>
+                                </div>
                             </div>
                             <div class="favorite__price-heart">
                                 <div class="favorite__price">${favorite.sellPrice}</div>
-                                <div class="favorite__heart">
-                                    <input type="checkbox" name="heart" class="favorite__heart">
-                                    <label for="heart1">
-                                        <i class="fa-solid fa-heart-circle-plus ${isLike}"></i>
-                                        <input type="hidden" value="${newGoods.goodsNo}">
-                                    </label>
-                                </div>
                             </div>
                         </div>
                     
@@ -115,25 +118,33 @@
 
             <section class="content-favorite">
                 <c:forEach var="newGoods" items="${newGoodsList}">
-                    <c:if test="${newGoods.isLike == 1}">
-                        <c:set var="isLike" value="choose"/>
-                    </c:if>
+
+                <c:set var="i"  value="${i+1}"/>
+
+
+                    <c:set var="i"  value="${i+1}"/>
+                    
                     <div class="favorite__pack">
                         <div>
                             <div class="favorite__img">
                                 <a href="">
                                     <img src="${newGoods.thumbnail}" class="new__img">
                                 </a>
+                                <div class="favorite__heart">
+                                    <c:if test="${newGoods.isLike == 0}"> <%-- 좋아요 상태가 아닌 경우 --%>
+                                        <input type="checkbox"  id="like${i}" class="new__heart likeChk" value="${newGoods.goodsNo}">
+                                    </c:if>
+                                    <c:if test="${newGoods.isLike == 1}"> <%-- 좋아요 상태인 경우 --%>
+                                        <input type="checkbox"  id="like${i}" class="new__heart likeChk" value="${newGoods.goodsNo}" checked>
+                                    </c:if>
+                                    <label for="like${i}" class="like_yn">
+                                        <i class="fa-solid fa-heart heart"></i>
+                                    </label>
+                                </div>
                             </div>
                             <div class="favorite__price-heart">
                                 <div class="new__price">${newGoods.sellPrice}</div>
-                                <div class="favorite__heart">
-                                    <input type="checkbox" name="heart" class="new__heart">
-                                    <label for="heart6">
-                                        <i class="fa-solid fa-heart-circle-plus"></i>
-                                        <input type="hidden" value="${newGoods.goodsNo}">
-                                    </label>
-                                </div>
+                                
                             </div>
                         </div>
                     
@@ -163,6 +174,8 @@
 
 
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+
+    <script src="/resources/js/main.js"></script>
 
 </body>
 </html>

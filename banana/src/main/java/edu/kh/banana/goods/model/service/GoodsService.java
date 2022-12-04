@@ -97,6 +97,15 @@ public interface GoodsService {
 	int updateGoods(String webPath, String folderPath, GoodsSell registerGoods, List<MultipartFile> imageList,
 			String deleteList) throws IOException;
 
+
+
+
+	/** 상품 끌어올리기
+	 * @param goodsNo
+	 * @return
+	 */
+	int goodsRefresh(int goodsNo);
+
 	
 	
 	

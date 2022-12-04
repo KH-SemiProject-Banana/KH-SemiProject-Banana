@@ -81,13 +81,10 @@ document.addEventListener("DOMContentLoaded", ()=>{
         default : nowDay = "알수없는요일"; break;
     }
 	console.log(nowDay);
-
-
 })
 
 // 채팅 메세지 영역
 const display = document.getElementsByClassName("display-chatting")[0];
-
 
 // 채팅방 목록에 이벤트를 추가하는 함수 
 const roomListAddEvent = () => {
@@ -291,7 +288,6 @@ const selectRoomList = () => {
 	})
 }
 
-
 // 채팅 입력
 const send = document.getElementById("send");
 
@@ -326,9 +322,6 @@ inputChatting.addEventListener("keyup", e => {
 		}
 	}
 })
-
-
-
 
 // WebSocket 객체 chattingSock이 서버로 부터 메세지를 통지 받으면 자동으로 실행될 콜백 함수
 chattingSock.onmessage = function(e) {
@@ -398,8 +391,6 @@ chattingSock.onmessage = function(e) {
 		ul.append(li)
 		display.scrollTop = display.scrollHeight; // 스크롤 제일 밑으로
 	}
-
-
 
 	selectRoomList();
 }

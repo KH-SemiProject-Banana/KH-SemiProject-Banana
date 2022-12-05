@@ -184,7 +184,7 @@ public class MyPageController {
 	}
 	
 	// 프로필 이미지 수정
-	   @PostMapping("/updateProfile1")
+	   @PostMapping("/updateProfile")
 	   public String updateProfile(
 			   @RequestParam(value = "profileImage") MultipartFile profileImage, /*업로드된 파일*/
 			   @SessionAttribute("loginMember") Member loginMember, /*로그인 회원 정보*/
@@ -215,7 +215,7 @@ public class MyPageController {
 		   
 		   
 		   
-	      return "redirect:/member/myPage_main";
+	      return "redirect:/member/myPage/main";
 	   }
 	
 	 //받은 거래후기 최신순 3개

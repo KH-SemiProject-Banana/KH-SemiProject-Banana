@@ -97,7 +97,6 @@
                                     </c:choose>
                                 </div>
                             </div>
-                            <%-- <input type="hidden" id = "goodsNo" value = "${goodsNo}"> --%>
                         </li>
                     </c:forEach>
 

@@ -194,7 +194,6 @@ const productInfor = () => {
 
 	$.ajax({
 		url : "/chatting/selectProductInfor",
-		// data : {"goodsNo" : selectGoodsNo},
 		data : {"chattingNo" : selectChattingNo},
 		dataType : "JSON",
 		success : selectProductInfor => {
@@ -248,24 +247,6 @@ const productInfor = () => {
 		error : () => {console.log("상품 정보 조회 에러");}
 	})
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // 비동기로 채팅방 목록 조회
 const selectRoomList = () => {

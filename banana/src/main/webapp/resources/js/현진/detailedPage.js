@@ -93,7 +93,7 @@ document.getElementById("talk").addEventListener("click", () => {
     return;
   }
 
-  location.href = "/member/bananaTalk";
+  location.href = "/chatting";
 });
 
 // 검색어 남기기

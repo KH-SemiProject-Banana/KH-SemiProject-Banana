@@ -240,7 +240,7 @@
                             <div class = "content">
                                 <div class = "row2_3">
                                     <pre class = "message Scroll">
-                                    ${review.message}
+${review.message}
                                     </pre>
                                 </div>
                             </div>

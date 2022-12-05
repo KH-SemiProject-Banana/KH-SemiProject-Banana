@@ -196,9 +196,9 @@
 
 			</section>
 			<!--섹션5********************************************************************************************************섹션1-->
-			<div id=changeJsp>
+			<%-- <div id=changeJsp>
 				<jsp:include page="/WEB-INF/views/member/myPage_review.jsp"></jsp:include>
-			</div>
+			</div> --%>
 			<section class="myBanana-sellList" id="myBanana-sellList">
 				<div class="myBanana-sell">
 					<div id="selling"><a href="/member/myPage/main?myPageCt=5">판매중</a></div>

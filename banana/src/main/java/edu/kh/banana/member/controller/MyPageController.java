@@ -218,7 +218,8 @@ public class MyPageController {
 	      return "member/myPage_main";
 	   }
 	
-	
+	 //받은 거래후기 최신순 3개
+	 //받은 매너온도 탑5
 	@GetMapping("/selectAllReview")
 	public String selectAllReview(
 							@SessionAttribute("loginMember") Member loginMember,	
@@ -230,7 +231,7 @@ public class MyPageController {
 		model.addAttribute("map", map);
 		System.out.println(map);
 		
-		return "/member/myPage_main";
+		return "/member/myPage_review";
 	}
 	
 	// 리뷰 상세 페이지 이동 1

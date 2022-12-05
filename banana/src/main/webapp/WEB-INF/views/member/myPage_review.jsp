@@ -20,6 +20,8 @@
 </head>
 <body>
     <main>
+        <jsp:include page="/WEB-INF/views/common/header.jsp" />
+		<jsp:include page="/WEB-INF/views/common/nav.jsp" />
         <div class = "myBanana" id = "reviewss">
 			<!--섹션1********************************************************************************************************섹션1-->
 			<section class="my-rotten-banana">
@@ -248,6 +250,13 @@
             </section>
         </div>
     </main>
+
+    <%-- footer.jsp.include --%>
+	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
+
+    <!-- jQuery 라이브러리(.js 파일) 추가(CDN 방식) -->
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+	<script src="/resources/js/lsy/addPop.js"></script>
 </body>
 
 </html>

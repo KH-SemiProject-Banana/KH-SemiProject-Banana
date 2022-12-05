@@ -35,33 +35,33 @@
             </a>
  --%>
 
-            <div class="popup_layer" id="popup_layer" style="display: none;">
-                <div class="popup_box">
-                    <div style="height: 10px; width: 375px; float: top;">
+        <div class="popup_layer" id="popup_layer" style="display: none;">
+            <div class="popup_box">
+                <div style="height: 10px; width: 375px; float: top;">
                     <a href="javascript:closePop();"><i class="fa-solid fa-x"></i></a>
-                    </div>
-                    <!--팝업 컨텐츠 영역-->
+                </div>
+                <!--팝업 컨텐츠 영역-->
+            
+                <div class="report-top">
+
+                    <%--  2페이지에서 1페이지로 가는 뒤로가기 --%>
+                    <i class="fa-solid fa-arrow-left-long" id="back1"></i>
+
+                    <%-- 3페이지에서 2페이지로 가는 뒤로가기 --%>
+                    <i class="fa-solid fa-arrow-left-long" id="back2"></i>
+
+                    <span id="board-com">게시글 신고</span>
+                </div>
                 
-                        <div class="report-top">
-
-                            <%--  2페이지에서 1페이지로 가는 뒤로가기 --%>
-                            <i class="fa-solid fa-arrow-left-long" id="back1"></i>
-
-                            <%-- 3페이지에서 2페이지로 가는 뒤로가기 --%>
-                            <i class="fa-solid fa-arrow-left-long" id="back2"></i>
-
-                            <span id="board-com">게시글 신고</span>
-                        </div>
-                    
 
 
-                    <div>
-                        <div class="report-why">
-                            <div><input type = "hidden" name="complained" value = "${memberNickname}"></div>
-                            <p>
-                                ${memberNickname} 게시글을 신고하는 이유를 선택해주세요
-                            </p>
-                        </div>
+                <div>
+                    <div class="report-why">
+                        <div><input type = "hidden" name="complained" value = "${memberNickname}"></div>
+                        <p>
+                            ${memberNickname} 게시글을 신고하는 이유를 선택해주세요
+                        </p>
+                    </div>
 
                     
 
@@ -236,43 +236,41 @@
                             </a>
                         </div> -->
                         
-                    </div>
+                </div>
                     
                     
-                    <div>
-                        <div id="fin">
-                            <div class="report-user">
-                                <p>혹시'유저닉네임'님을 신고하고싶으신가요?</p>
-                            </div>
-
-                            <div class="report-reason" id=click6>
-                                <a href="/usercomplain"> 
-                                    사용자 신고하러 가기 <i class="fa-solid fa-chevron-right"></i>
-                                </a>
-                            </div>
-
-                            <div>
-                            
-                            </div>
+                <div>
+                    <div id="fin">
+                        <div class="report-user">
+                            <p>혹시'유저닉네임'님을 신고하고싶으신가요?</p>
                         </div>
+
+                        <div class="report-reason" id="click6">
+                            <a href="/usercomplain"> 
+                                사용자 신고하러 가기 <i class="fa-solid fa-chevron-right"></i>
+                            </a>
+                        </div>
+
+                    
+                    </div>
                         
                         
                         
-                        <form id="reportsubmit" action = "/reportsubmit" method = "POST">
-                            <div class="frame">
-                                <div class="report-confirm">
-                                    <a href="#">'신고목록'에서 선택한 이유</a>
-                                </div>
-                        
-                          <%--       <div class="content-block">
-                                    <input type="checkbox" name = "block">이 사람과 글을 보고싶지 않아요
-                                </div> --%>
-                        
-                                <div class="report-notice">
-                                    ('나의 바나나> 설정 > 게시글 미노출 > 사용자 관리' 에서 취소할 수 있습니다.)
-                                </div>
-                                <div class="report-submit">
-                                
+                    <form id="reportsubmit" action = "/reportsubmit" method = "POST">
+                        <div class="frame">
+                            <div class="report-confirm">
+                                <a href="#">'신고목록'에서 선택한 이유</a>
+                            </div>
+                    
+                        <%--       <div class="content-block">
+                                <input type="checkbox" name = "block">이 사람과 글을 보고싶지 않아요
+                            </div> --%>
+                    
+                            <div class="report-notice">
+                                ('나의 바나나> 설정 > 게시글 미노출 > 사용자 관리' 에서 취소할 수 있습니다.)
+                            </div>
+                            <div class="report-submit">
+                            
                                 <div class="notice">
                                         <p>
                                         신고 내용은 상대에게 노출되지 않아요. 
@@ -283,19 +281,19 @@
                                     <textarea name="reportbox" id="reportbox" cols="90" rows="5" placeholder="혹시 불쾌한 일을 겪으셨나요? 사유를 남겨주세요" ></textarea>
                                         
                                 </div>
-                                    <button type="submit" id = "reportsubmit" >바나나 팀에게 보내기</button>
-                                </div>
+                                <button type="submit" id = "reportsubmit" >바나나 팀에게 보내기</button>
                             </div>
-                            <input id= "input1" type="hidden" name="ctg1" value="">
-                            <input id= "input2" type="hidden" name="ctg2" value="">
-                        </form>
+                        </div>
+                        <input id= "input1" type="hidden" name="ctg1" value="">
+                        <input id= "input2" type="hidden" name="ctg2" value="">
+                    </form>
                     <!--팝업 버튼 영역-->
                     <!-- <div class="popup_btn" style="float: bottom; margin-top: 300px;">
                         <a href="javascript:closePop();">닫기</a>
-
-                    </div> -->
-                </div>
+                    -->
+                </div> 
             </div>
+        </div>
                 
             
 

@@ -194,7 +194,6 @@ function openPop(){
         if(reportsubmit.style.display == "none") {
             click5.style.display = "none";
             reportsubmit.style.display = "block";
-            back2.style.display = "block";
 
         }
 

@@ -102,6 +102,7 @@
 
                         <c:if test="${loginMember.memberNo != sellerInfo.memberNo}">
                             <div class="top_right"><span><a href="javascript:openPop()">신고</a></span></div>
+                            
                             <div class="top_right"><span>|</span></div>
                         </c:if>
 

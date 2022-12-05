@@ -35,127 +35,151 @@
                 </div>
             </a>
 
- --%>
-            <div class="popup_layer" id="popup_layer" style="display: none;">
+ --%>       
+            <%-- div0 --%>
+            <div class="popup_layer" id="popup_layer" style="display: block;">
+                <%-- div1 --%>
                 <div class="popup_box">
+                    <%-- div1_1 --%>
                     <div style="height: 10px; width: 375px; float: top;">
-                    <a href="javascript:closePop();"><i class="fa-solid fa-x"></i></a>
+                        <a href="javascript:closePop();"><i class="fa-solid fa-x"></i></a>
                     </div>
                     <!--팝업 컨텐츠 영역-->
-                        <div class="report-top">
+                    <%-- div1_2 --%>
+                    <div class="report-top">
 
-                            <%-- ctg1이 1, 2, 6, 7일 경우 2페이지에서 1페이지로 가는 뒤로가기 --%>
-                            <i class="fa-solid fa-arrow-left-long" id="back1"></i>
+                        <%-- ctg1이 1, 2, 6, 7일 경우 2페이지에서 1페이지로 가는 뒤로가기 --%>
+                        <i class="fa-solid fa-arrow-left-long" id="back1"></i>
 
-                            <%-- ctg1이 1, 2, 6, 7일 경우 3페이지에서 2페이지로 가는 뒤로가기 --%>
-                            <i class="fa-solid fa-arrow-left-long" id="back2"></i>
+                        <%-- ctg1이 1, 2, 6, 7일 경우 3페이지에서 2페이지로 가는 뒤로가기 --%>
+                        <i class="fa-solid fa-arrow-left-long" id="back2"></i>
 
-                            <%-- ctg1이 3, 4, 5, 8일 경우 3페이지에서 1페이지로 가는 뒤로가기 --%>
-                            <i class="fa-solid fa-arrow-left-long" id="back3"></i>
+                        <%-- ctg1이 3, 4, 5, 8일 경우 3페이지에서 1페이지로 가는 뒤로가기 --%>
+                        <i class="fa-solid fa-arrow-left-long" id="back3"></i>
 
-                            <span id="user-com">사용자 신고</span>
-                        </div>
-                        
+                        <span id="user-com">사용자 신고</span>
+                    </div>
+
+                    <%-- div1_3 --%>
                     <div>
+                        <%-- div1_3_1 --%>
                         <div class="report-why">
+                            <%-- div1_3_1_1 --%>
                             <div><input type = "hidden" name="complained" value = "${memberNickname}"></div>
                             <p>
                                 ${memberNickname} 사용자를 신고하는 이유를 선택해주세요
                             </p>
                         </div>
 
+                        <%-- div 1_3_2 --%>                   
+                        <div id="click">
+                            <%-- div 1_3_2_1 --%>
+                            <div class="report-reason" id = "abc1">
+                                <%-- div 1_3_2_1_1 --%>
+                                <div>전문 판매업자 같아요 <i class="fa-solid fa-chevron-right"></i></div>
+                            </div>
+                            <%-- div1_3_2_2 --%>
+                            <div class="report-reason" id = "abc2">
+                                <%-- div1_3_2_2_1 --%>
+                                <div>비매너 사용자에요 <i class="fa-solid fa-chevron-right"></i></div>
+                            </div>
+                            <%-- div1_3_2_3 --%>
+                            <div class="report-reason" id="abc3">
+                                <%-- div1_3_2_3_1 --%>
+                                <div> 욕설을 해요 <i class="fa-solid fa-chevron-right"></i></div>
+                            </div>
+                            <%-- div1_3_2_4 --%>
+                            <div class="report-reason"  id="abc4">
+                                <%-- div1_3_2_4_1 --%>
+                                <div>성희롱을 해요<i class="fa-solid fa-chevron-right"></i></div>
+                            </div>
+                            <%-- div1_3_2_5 --%>
+                            <div class="report-reason"  id="abc5">
+                                <%-- div1_3_2_5_1 --%>
+                                <div>거래/환불 분쟁신고<i class="fa-solid fa-chevron-right"></i></div>
+                            </div>
+                            <%-- div1_3_2_6 --%>
+                            <div class="report-reason"  id="abc6">
+                                <%-- div1_3_2_6_1 --%>
+                                <div>사기당했어요<i class="fa-solid fa-chevron-right"></i></div>
+                            </div>
+                            <%-- div1_3_2_7 --%>
+                            <div class="report-reason"  id="abc7">
+                                <%-- div1_3_2_7_1 --%>
+                                <div>다른 문제가 있어요<i class="fa-solid fa-chevron-right"></i></div>
+                            </div>
+                            <%-- div1_3_2_8 --%>
+                            <div class="report-reason"  id="abc8">
+                                <%-- div1_3_2_8_1 --%>
+                                <div>연애 목적의 대화를 시도해요<i class="fa-solid fa-chevron-right"></i></div>
+                            </div>
+                        </div>
+                        <%-- div 1_3_3 --%>   
+                        <div id="click1">
+                            <%-- div 1_3_3_1 --%>  
+                            <div class="report-reason">
+                                <%-- div1_3_3_1_1 --%>  
+                                <div>전문 판매업자 <i class="fa-solid fa-chevron-right"></i></div>
+                            </div>
+                            <div class="report-reason ">
+                                <div> 중고차 매매업자 <i class="fa-solid fa-chevron-right"></i></div>
+                            </div>
+                        </div>
+                        
+                        <div id="click2"> 
+                            <div class="report-reason" >
+                                <div>반말을 사용해요 <i class="fa-solid fa-chevron-right"></i></div>
+                            </div>
+                            <div class="report-reason">
+                                <div>불친절해요 <i class="fa-solid fa-chevron-right"></i></div>
+                            </div>
+                        </div>
+                        
+                        <div id="click6">
+                            <div class="report-reason" >
+                                <div>카톡/문자 등 당근채팅 밖에서 대화를 유도해요 <i class="fa-solid fa-chevron-right"></i></div>
+                            </div>
+                            <div class="report-reason">
+                                <div>가짜 안전결제/ 안전거래 사이트 링크를 보내요 <i class="fa-solid fa-chevron-right"></i></div>
+                            </div>
+                            <div class="report-reason">
+                                <div> 특수문자/ 사진 등 계좌/ 전화번호를 이상하게 보내요 <i class="fa-solid fa-chevron-right"></i></div>        
+                            </div>
+                            <div class="report-reason">
+                                <div> 입금했는데 판매자가 물건을 주지 않고 잠적했어요 <i class="fa-solid fa-chevron-right"></i></div>        
+                            </div>
+                            <div class="report-reason">
+                                <div> 물건을 보냈는데 구매자가 입금하지 않고 잠적했어요 <i class="fa-solid fa-chevron-right"></i></div>        
+                            </div>
+                        </div>
                         
                     
-                    <div id="click">
-                        <div class="report-reason abc" id = "abc1">
-                            <div>전문 판매업자 같아요 <i class="fa-solid fa-chevron-right"></i></div>
-                        </div>
-                        <div class="report-reason abc" id = "abc2">
-                            <div>비매너 사용자에요 <i class="fa-solid fa-chevron-right"></i></div>
-                        </div>
-                        <div class="report-reason abc" id="abc3">
-                            <div> 욕설을 해요 <i class="fa-solid fa-chevron-right"></i></div>
-                        </div>
-                        <div class="report-reason abc"  id="abc4">
-                            <div>성희롱을 해요<i class="fa-solid fa-chevron-right"></i></div>
-                        </div>
-                        <div class="report-reason abc"  id="abc5">
-                            <div>거래/환불 분쟁신고<i class="fa-solid fa-chevron-right"></i></div>
-                        </div>
-                        <div class="report-reason abc"  id="abc6">
-                            <div>사기당했어요<i class="fa-solid fa-chevron-right"></i></div>
-                        </div>
-                        <div class="report-reason abc"  id="abc7">
-                            <div>다른 문제가 있어요<i class="fa-solid fa-chevron-right"></i></div>
-                        </div>
-                        <div class="report-reason abc"  id="abc8">
-                            <div>연애 목적의 대화를 시도해요<i class="fa-solid fa-chevron-right"></i></div>
-                        </div>
-                    </div>
-                    
-                    <div id="click1">
-                        <div class="report-reason def">
-                            <div>전문 판매업자 <i class="fa-solid fa-chevron-right"></i></div>
-                        </div>
-                        <div class="report-reason def">
-                            <div> 중고차 매매업자 <i class="fa-solid fa-chevron-right"></i></div>
-                        </div>
-                    </div>
-                    
-                    <div id="click2"> 
-                        <div class="report-reason" >
-                            <div>반말을 사용해요 <i class="fa-solid fa-chevron-right"></i></div>
-                        </div>
-                        <div class="report-reason">
-                            <div>불친절해요 <i class="fa-solid fa-chevron-right"></i></div>
-                        </div>
-                    </div>
-                    
-                    <div id="click6">
-                        <div class="report-reason" >
-                            <div>카톡/문자 등 당근채팅 밖에서 대화를 유도해요 <i class="fa-solid fa-chevron-right"></i></div>
-                        </div>
-                        <div class="report-reason">
-                            <div>가짜 안전결제/ 안전거래 사이트 링크를 보내요 <i class="fa-solid fa-chevron-right"></i></div>
-                        </div>
-                        <div class="report-reason">
-                            <div> 특수문자/ 사진 등 계좌/ 전화번호를 이상하게 보내요 <i class="fa-solid fa-chevron-right"></i></div>        
-                        </div>
-                        <div class="report-reason">
-                            <div> 입금했는데 판매자가 물건을 주지 않고 잠적했어요 <i class="fa-solid fa-chevron-right"></i></div>        
-                        </div>
-                        <div class="report-reason">
-                            <div> 물건을 보냈는데 구매자가 입금하지 않고 잠적했어요 <i class="fa-solid fa-chevron-right"></i></div>        
-                        </div>
-                    </div>
-                    
-                
-                    
-                    <div id="click7">
-                        <div class="report-reason" >
-                            <div>불법 이용자 신고<i class="fa-solid fa-chevron-right"></i></div>
-                        </div>
-                        <div class="report-reason">
-                            <div>중복 게시글 <i class="fa-solid fa-chevron-right"></i></div>
-                        </div>
-                        <div class="report-reason">
-                            <div> 프로필 사진 신고<i class="fa-solid fa-chevron-right"></i></div>
-                        </div>
-                        <div class="report-reason">
-                            <div>불건전 닉네임 신고 <i class="fa-solid fa-chevron-right"></i></div>
-                        </div>
-                        <div class="report-reason">
-                            <div>채팅으로 정치/종교 대화를 시도해요 <i class="fa-solid fa-chevron-right"></i></div>
-                        </div>
-                    </div>   
+                        
+                        <div id="click7">
+                            <div class="report-reason" >
+                                <div>불법 이용자 신고<i class="fa-solid fa-chevron-right"></i></div>
+                            </div>
+                            <div class="report-reason">
+                                <div>중복 게시글 <i class="fa-solid fa-chevron-right"></i></div>
+                            </div>
+                            <div class="report-reason">
+                                <div> 프로필 사진 신고<i class="fa-solid fa-chevron-right"></i></div>
+                            </div>
+                            <div class="report-reason">
+                                <div>불건전 닉네임 신고 <i class="fa-solid fa-chevron-right"></i></div>
+                            </div>
+                            <div class="report-reason">
+                                <div>채팅으로 정치/종교 대화를 시도해요 <i class="fa-solid fa-chevron-right"></i></div>
+                            </div>
+                        </div>   
                     
                     
                     
-                    <!--  <div class="report-other">
-                            <a href="#">
-                                <div>기타 <i class="fa-solid fa-chevron-right"></i></div>
-                            </a>
-                        </div> -->
+                        <!--  <div class="report-other">
+                                <a href="#">
+                                    <div>기타 <i class="fa-solid fa-chevron-right"></i></div>
+                                </a>
+                            </div> -->
                         
                         
                         <form id="userreportsubmit" action = "/userreportsubmit" method="POST">
@@ -183,17 +207,12 @@
                                     <textarea name="reportbox" id="reportbox" cols="90" rows="5" placeholder="혹시 불쾌한 일을 겪으셨나요? 사유를 남겨주세요" ></textarea>
                                         
                                 </div>
-                                    <button type="submit" id = "reportsubmit" >바나나 팀에게 보내기</button>
-                                </div>
+                                <button type="submit" id = "reportsubmit" >바나나 팀에게 보내기</button>
                             </div>
                             <input type="hidden" name="ctg1" value="" id ="ctg1">
                             <input type="hidden" name="ctg2" value="" id ="ctg2">
                         </form>
-                    <!--팝업 버튼 영역-->
-                    <!-- <div class="popup_btn" style="float: bottom; margin-top: 300px;">
-                        <a href="javascript:closePop();">닫기</a>
-
-                    </div> -->
+                    </div>
                 </div>
             </div>
                 

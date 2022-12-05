@@ -26,6 +26,12 @@ const back3 = document.getElementById("back3");
 let category1;
 let category2;
 
+click1.style.display = "none";
+click2.style.display = "none";
+click6.style.display = "none";
+click7.style.display = "none";
+
+
 document.getElementById("poppingThing").style.display = "none";
 function openPop(){
     //document.getElementById("popup_layer").style.display = "block";

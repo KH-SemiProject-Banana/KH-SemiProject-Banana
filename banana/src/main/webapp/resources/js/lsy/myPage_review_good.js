@@ -85,7 +85,7 @@ switch(mannerCt){
     div0.append(div1);
     div1.append(div2);
     div2.append(div2_1,div2_2p,div2_3div);
-    div2_1.append(div2_1_i,);
+    div2_1.append(div2_1_i);
     div2_3div.append(div2_3div_i,div2_3div_div);
     div2_3div_div.append(div2_3div_div_div);
     div2_3div_div_div.append(p1,p2,p3,p4,p5,p6,p7,p8,p9,p10);
@@ -159,8 +159,8 @@ const mainBadOn=()=>{
 
     div0.append(div1);
     div1.append(div2);
-    div1.append(div2_1,div2_2p,div2_3div);
-    div2_1.append(div2_1_i,);
+    div2.append(div2_1,div2_2p,div2_3div);
+    div2_1.append(div2_1_i);
     div2_3div.append(div2_3div_i,div2_3div_div);
 
 

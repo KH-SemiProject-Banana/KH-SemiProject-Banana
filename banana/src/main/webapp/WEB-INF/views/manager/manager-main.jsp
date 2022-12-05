@@ -187,103 +187,105 @@
 
                 
                 
-                    <div class="search-result-area">
-                        <div class="search-result-div" id="number">
-                            <div class="search-result-tab">번호</div>
-                            <c:forEach var="member" items="${memberList}">
-                                <div class="search-content">${member.memberNo}</div>
-                            </c:forEach>
-                        </div>
-                        <div class="search-result-div"  id="email">
-                            <div class="search-result-tab">이메일</div>
-                            <c:forEach var="member" items="${memberList}">
-                                <div class="search-content">${member.memberEmail}</div>
-                            </c:forEach>
-                        </div>
-                        <div class="search-result-div" id="nickname">
-                            <div class="search-result-tab">닉네임</div>
-                            <c:forEach var="member" items="${memberList}">
-                                <div class="search-content">${member.memberNickname}</div>
-                            </c:forEach>
-                        </div>
-                        <div class="search-result-div" id="pay">
-                            <div class="search-result-tab">바나나페이</div>
-                            <c:forEach var="member" items="${memberList}">
-                                <div class="search-content">${member.remainPay}원</div>
-                            </c:forEach>
-                        </div>
-                        <div class="search-result-div" id="sellNo">
-                            <div class="search-result-tab">판매</div>
-                            <c:forEach var="member" items="${memberList}">
-                                <div class="search-content">${member.sellCount}건</div>
-                            </c:forEach>
-                        </div>
-                        <div class="search-result-div" id="buyNo">
-                            <div class="search-result-tab">구매</div>
-                            <c:forEach var="member" items="${memberList}">
-                                <div class="search-content">${member.buyCount}건</div>
-                            </c:forEach>
-                        </div>
-                        <div class="search-result-div" id="signDate">
-                            <div class="search-result-tab">회원 가입일</div>
-                            <c:forEach var="member" items="${memberList}">
-                                <div class="search-content">${member.enrollDate}</div>
-                            </c:forEach>
-                        </div>
-                        <div class="search-result-div" id="boardBlock">
-                            <div class="search-result-tab">게시글차단</div>
-                            <c:forEach var="member" items="${memberList}">
-                                <div class="search-content">${member.boardBlockCount}건</div>
-                            </c:forEach>
-                        </div>
-                        <div class="search-result-div" id="userBlock">
-                            <div class="search-result-tab">유저차단</div>
-                            <c:forEach var="member" items="${memberList}">
-                                <div class="search-content">${member.userBlockCount}건</div>
-                            </c:forEach>
-                        </div>
-                        <div class="search-result-div" id="blockFlag">
-                            <div class="search-result-tab">차단여부</div>
-                            <c:forEach var="member" items="${memberList}">
-                                <c:if test="${member.blockFlag == 'Y'}">
-                                    <div class="search-content">차단</div>
-                                </c:if>
-                                <c:if test="${member.blockFlag == 'N'}">
-                                    <div class="search-content">활동중</div>
-                                </c:if>
-                            </c:forEach>
-                            
-                        </div>
-                        <div class="search-result-div" id="delFlag">
-                            <div class="search-result-tab">탈퇴여부</div>
-                            <c:forEach var="member" items="${memberList}">
-                                <c:if test="${member.memberDeleteFlag == 'N'}">
-                                    <div class="search-content">활동중</div>
-                                </c:if>
-                                <c:if test="${member.memberDeleteFlag == 'Y'}">
-                                    <div class="search-content">탈퇴</div>
-                                </c:if>
-                            </c:forEach>
-
-                        </div>
-                        <div class="search-result-div"id="changeData">
-                            <div class="search-result-tab" >정보수정</div>
-                            <c:forEach var="member" items="${memberList}">
-                                <div class="search-content">
-                                    <button type="button" class="btn btn-white btn-sm btnModify">수정</button>
-                                </div>
-                            </c:forEach>
-                        </div>
-
-                        <div class="search-result-div"id="deleteData">
-                            <div class="search-result-tab" >정보삭제</div>
-                            <c:forEach var="member" items="${memberList}">
-                                <div class="search-content">
-                                    <button type="button" class="btn btn-white btn-sm btnDel">삭제</button>
-                                </div>
-                            </c:forEach>
-                        </div>
+                <div class="search-result-area">
+                    <div class="search-result-div" id="number">
+                        <div class="search-result-tab">번호</div>
+                        <c:forEach var="member" items="${memberList}">
+                            <div class="search-content">${member.memberNo}</div>
+                        </c:forEach>
                     </div>
+                    <div class="search-result-div"  id="email">
+                        <div class="search-result-tab">이메일</div>
+                        <c:forEach var="member" items="${memberList}">
+                            <div class="search-content">${member.memberEmail}</div>
+                        </c:forEach>
+                    </div>
+                    <div class="search-result-div" id="nickname">
+                        <div class="search-result-tab">닉네임</div>
+                        <c:forEach var="member" items="${memberList}">
+                            <div class="search-content">${member.memberNickname}</div>
+                        </c:forEach>
+                    </div>
+                    <div class="search-result-div" id="pay">
+                        <div class="search-result-tab">바나나페이</div>
+                        <c:forEach var="member" items="${memberList}">
+                            <div class="search-content">${member.remainPay}원</div>
+                        </c:forEach>
+                    </div>
+                    <div class="search-result-div" id="sellNo">
+                        <div class="search-result-tab">판매</div>
+                        <c:forEach var="member" items="${memberList}">
+                            <div class="search-content">${member.sellCount}건</div>
+                        </c:forEach>
+                    </div>
+                    <div class="search-result-div" id="buyNo">
+                        <div class="search-result-tab">구매</div>
+                        <c:forEach var="member" items="${memberList}">
+                            <div class="search-content">${member.buyCount}건</div>
+                        </c:forEach>
+                    </div>
+                    <div class="search-result-div" id="signDate">
+                        <div class="search-result-tab">회원 가입일</div>
+                        <c:forEach var="member" items="${memberList}">
+                            <div class="search-content">${member.enrollDate}</div>
+                        </c:forEach>
+                    </div>
+                    <div class="search-result-div" id="boardBlock">
+                        <div class="search-result-tab">게시글차단</div>
+                        <c:forEach var="member" items="${memberList}">
+                            <div class="search-content">${member.boardBlockCount}건</div>
+                        </c:forEach>
+                    </div>
+                    <div class="search-result-div" id="userBlock">
+                        <div class="search-result-tab">유저차단</div>
+                        <c:forEach var="member" items="${memberList}">
+                            <div class="search-content">${member.userBlockCount}건</div>
+                        </c:forEach>
+                    </div>
+                    <div class="search-result-div" id="blockFlag">
+                        <div class="search-result-tab">차단여부</div>
+                        <c:forEach var="member" items="${memberList}">
+                            <c:if test="${member.blockFlag == 'Y'}">
+                                <div class="search-content">차단</div>
+                            </c:if>
+                            <c:if test="${member.blockFlag == 'N'}">
+                                <div class="search-content">활동중</div>
+                            </c:if>
+                        </c:forEach>
+                        
+                    </div>
+                    <div class="search-result-div" id="delFlag">
+                        <div class="search-result-tab">탈퇴여부</div>
+                        <c:forEach var="member" items="${memberList}">
+                            <c:if test="${member.memberDeleteFlag == 'N'}">
+                                <div class="search-content">활동중</div>
+                            </c:if>
+                            <c:if test="${member.memberDeleteFlag == 'Y'}">
+                                <div class="search-content">탈퇴</div>
+                            </c:if>
+                        </c:forEach>
+
+                    </div>
+                    <div class="search-result-div"id="changeData">
+                        <div class="search-result-tab" >정보수정</div>
+                        <c:forEach var="member" items="${memberList}">
+                            <div class="search-content">
+                                <button type="button" class="btn btn-white btn-sm btnModify" id="${member.memberNo}">수정</button>
+                            </div>
+                        </c:forEach>
+                    </div>
+
+                    <div class="search-result-div"id="deleteData">
+                        <div class="search-result-tab" >정보삭제</div>
+                        <c:forEach var="member" items="${memberList}">
+                            <div class="search-content">
+                                <button type="button" class="btn btn-white btn-sm btnDel">삭제</button>
+                            </div>
+                        </c:forEach>
+                    </div>
+                </div>
+
+                
                 
                 <div class="pagination-area">
 

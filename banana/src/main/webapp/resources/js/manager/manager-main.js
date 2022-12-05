@@ -14,3 +14,13 @@ const orderBy = () => {
 };
 
 
+// const btnModify = document.getElementsByClassName("btnModify");
+
+// for(let btn of btnModify){
+
+//     btn.addEventListener("click", e => {
+
+//         const memberNo = e.target.getAttribute("id");
+
+//     });
+// }

@@ -16,11 +16,16 @@ reportsubmit.style.display = "none";
 const back1 = document.getElementById("back1");
 const back2 = document.getElementById("back2");
 
+document.getElementById("poppingThing").style.display = "none";
 
 function openPop(){
     //document.getElementById("popup_layer").style.display = "block";
     document.getElementById("popup_layer").style.display = "block";
     // document.getElementById("popup_box").style.display = "block";
+
+
+    document.getElementById("popup_layer").style.display = "block";
+    document.getElementById("poppingThing").style.display = "block";
 
         click1.style.display = "none";
         //click1.style.backgroundColor = "red";
@@ -55,6 +60,8 @@ function openPop(){
             click.style.display = "none";
             click1.style.display = "block";
             fin.style.display="none";
+
+            back1.style.display = "block";
         
         
 
@@ -68,6 +75,8 @@ function openPop(){
             click.style.display = "none";
             click2.style.display = "block"
             fin.style.display="none";
+
+            back1.style.display = "block";
         }
 
     })
@@ -78,6 +87,8 @@ function openPop(){
             click.style.display = "none";
             click3.style.display = "block";
             fin.style.display="none";
+
+            back1.style.display = "block";
         
 
         }
@@ -91,6 +102,8 @@ function openPop(){
             click.style.display = "none";
             click4.style.display = "block";
             fin.style.display="none";
+
+            back1.style.display = "block";
         
 
         }
@@ -104,6 +117,8 @@ function openPop(){
             click.style.display = "none";
             click5.style.display = "block";
             fin.style.display="none";
+
+            back1.style.display = "block";
         
 
         }
@@ -115,6 +130,8 @@ function openPop(){
         if(reportsubmit.style.display == "none") {
             click1.style.display = "none";
             reportsubmit.style.display = "block";
+
+            back2.style.display = "block";
 
 
 
@@ -147,6 +164,7 @@ function openPop(){
         if(reportsubmit.style.display == "none") {
             click2.style.display = "none";
             reportsubmit.style.display = "block";
+            back2.style.display = "block";
 
         }
 
@@ -156,6 +174,7 @@ function openPop(){
         if(reportsubmit.style.display == "none") {
             click3.style.display = "none";
             reportsubmit.style.display = "block";
+            back2.style.display = "block";
 
         }
 
@@ -165,6 +184,7 @@ function openPop(){
         if(reportsubmit.style.display == "none") {
             click4.style.display = "none";
             reportsubmit.style.display = "block";
+            back2.style.display = "block";
 
         }
 
@@ -174,6 +194,7 @@ function openPop(){
         if(reportsubmit.style.display == "none") {
             click5.style.display = "none";
             reportsubmit.style.display = "block";
+            back2.style.display = "block";
 
         }
 
@@ -261,14 +282,37 @@ function openPop(){
 
 
 
+    back2.addEventListener("click",() => {
+        reportsubmit.style.display = "none";
 
+        switch (ctg1.value) {
+            case 1:
+                click1.style.display = "block";
+            break;
+                
+            case 2:
+                click2.style.display = "block";
+            break;
 
+            case 3:
+                click3.style.display = "block";
+            break;
 
-
+                            
+            case 4:
+                click4.style.display = "block";
+            break;
     
+            case 5:
+                click5.style.display = "block";   
+            break;          
+            }
+
+            back2.style.display = "none";
+    })
 
     back1.addEventListener("click",() => {
-        userreportsubmit.style.display = "none";
+        /* reportsubmit.style.display = "none"; // 문제 생기면 지울것 */
         switch (ctg1.value) {
             case 1:
                 click1.style.display = "none";
@@ -277,31 +321,26 @@ function openPop(){
             case 2:
                 click2.style.display = "none";
             break;
-
-                            
+                    
+                    
             case 3:
                 click3.style.display = "none";
             break;
-
+                        
             case 4:
-                click4.style.display = "none";   
+                click3.style.display = "none";   
             break;
             
             case 5:
                 click5.style.display = "none";   
-            break;    
+            break; 
         }
-
-            click.style.display = "block";
-            back1.style.display = "none";
-    })
-
-
-    back2.addEventListener("click", () => {
-        userreportsubmit.style.display = "none";
+                        
         click.style.display = "block";
-        back2.style.display = "none";
-    });
+        back1.style.display = "none";
+        
+    })
+        
 }
 
         

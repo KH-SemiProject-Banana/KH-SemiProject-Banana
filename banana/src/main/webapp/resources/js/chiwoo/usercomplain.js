@@ -35,7 +35,6 @@ function openPop(){
     // document.getElementById("popup_box").style.display = "block";
     
     click1.style.display = "none";
-    //click1.style.backgroundColor = "red";
     click2.style.display = "none";
     click6.style.display = "none";
     click7.style.display = "none";

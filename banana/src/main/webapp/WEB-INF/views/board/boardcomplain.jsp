@@ -11,7 +11,7 @@
     <title>신고하기 페이지</title>
 
     <link rel="stylesheet" href="/resources/css/chiwoo/popup.css">
-    <link rel="stylesheet" href="/resources/css/chiwoo/report.css">
+    <link rel="stylesheet" href="/resources/css/chiwoo/board-com.css">
     <link rel="stylesheet" href="/resources/css/style.css">
 
     <script src="https://kit.fontawesome.com/f7459b8054.js" crossorigin="anonymous"></script>
@@ -28,12 +28,12 @@
         
         <section class="content"> 
             
-            <a href="javascript:openPop()">
+        <%--     <a href="javascript:openPop()">
                 <div>
                     팝업오픈!
                 </div>
             </a>
-
+ --%>
 
             <div class="popup_layer" id="popup_layer" style="display: none;">
                 <div class="popup_box">
@@ -41,9 +41,8 @@
                     <a href="javascript:closePop();"><i class="fa-solid fa-x"></i></a>
                     </div>
                     <!--팝업 컨텐츠 영역-->
-                    <div class="report-total">
+                
                         <div class="report-top">
-
 
                             <%--  2페이지에서 1페이지로 가는 뒤로가기 --%>
                             <i class="fa-solid fa-arrow-left-long" id="back1"></i>
@@ -51,19 +50,21 @@
                             <%-- 3페이지에서 2페이지로 가는 뒤로가기 --%>
                             <i class="fa-solid fa-arrow-left-long" id="back2"></i>
 
-                        
-
-                                <span id="board-com">게시글 신고</span>
-                
+                            <span id="board-com">게시글 신고</span>
                         </div>
-                    </div>
+                    
+
+
                     <div>
                         <div class="report-why">
-                            <div>'유저닉네임'</div>
+                            <div><input type = "hidden" name="complained" value = "${memberNickname}"></div>
                             <p>
-                                게시글을 신고하는 이유를 선택해주세요
+                                ${memberNickname} 게시글을 신고하는 이유를 선택해주세요
                             </p>
                         </div>
+
+                    
+
                     
                     <div id="click">
                         <div class="report-reason abc" id = "abc1">
@@ -263,9 +264,9 @@
                                     <a href="#">'신고목록'에서 선택한 이유</a>
                                 </div>
                         
-                                <div class="content-block">
+                          <%--       <div class="content-block">
                                     <input type="checkbox" name = "block">이 사람과 글을 보고싶지 않아요
-                                </div>
+                                </div> --%>
                         
                                 <div class="report-notice">
                                     ('나의 바나나> 설정 > 게시글 미노출 > 사용자 관리' 에서 취소할 수 있습니다.)
@@ -282,7 +283,7 @@
                                     <textarea name="reportbox" id="reportbox" cols="90" rows="5" placeholder="혹시 불쾌한 일을 겪으셨나요? 사유를 남겨주세요" ></textarea>
                                         
                                 </div>
-                                    <button type="submit">바나나 팀에게 보내기</button>
+                                    <button type="submit" id = "reportsubmit" >바나나 팀에게 보내기</button>
                                 </div>
                             </div>
                             <input id= "input1" type="hidden" name="ctg1" value="">

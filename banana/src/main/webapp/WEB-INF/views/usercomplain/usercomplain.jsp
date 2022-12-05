@@ -55,6 +55,7 @@
 
                             <span id="user-com">사용자 신고</span>
                         </div>
+                        
                     <div>
                         <div class="report-why">
                             <div><input type = "hidden" name="complained" value = "${memberNickname}"></div>
@@ -164,7 +165,7 @@
                                 </div>
                         
                                 <div class="content-block">
-                                    <input type="checkbox" name = "userblock" value = "${}">이 사람을 더이상 보고싶지 않아요
+                                    <input type="checkbox" name = "userblock" value = "${memberNo}">이 사람을 더이상 보고싶지 않아요
                                 </div>
                         
                                 <div class="report-notice">

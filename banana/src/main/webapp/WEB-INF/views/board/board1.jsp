@@ -228,7 +228,6 @@
 
                     <div class="frequent-question__content">
                         <a class="frequent-question__content-detail" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display=='none')?'block':'none';">                           
-                             <i class="fa-solid fa-circle-question"></i>
                             <div class="frequent-question__content">내 정보 수정은 어떻게 하나요?</div>
                         </a>
                         <div class="area" style="display:none">
@@ -252,6 +251,7 @@
 
                     <div class="alarm-or-question">
                         <a href="#" class="notice__alarm">신고하기</a>
+                            
                         <a  class="notice__question" id="insertBtn">문의하기</a>
                     </div>
                 </div>

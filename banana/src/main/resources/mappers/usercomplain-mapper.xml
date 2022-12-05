@@ -25,12 +25,7 @@
 <insert id="userBlock">
   INSERT INTO "USER_BLOCK"
   VALUES(#{memberNo}, 
-  		#{},
-  		#{},
-  		#{},
-  		#{},
-  		#{}
-  		DEFAULT)
+  		#{memberNo})
 </insert>
 
 

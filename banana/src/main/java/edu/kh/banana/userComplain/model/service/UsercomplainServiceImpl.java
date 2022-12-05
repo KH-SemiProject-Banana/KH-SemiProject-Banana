@@ -27,8 +27,8 @@ public class UsercomplainServiceImpl implements UserComplainService {
 
 	@Override
 	public int userBlock(int memberNo, int userBlocked) {
-		// TODO Auto-generated method stub
-		return 0;
+	
+		return dao.userBlock(memberNo, userBlocked);
 	}
 
 }

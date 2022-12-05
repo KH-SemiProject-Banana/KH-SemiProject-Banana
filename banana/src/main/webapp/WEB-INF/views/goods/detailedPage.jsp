@@ -19,7 +19,15 @@
     <link rel="stylesheet" href="/resources/css/style.css">
     <link rel="stylesheet" href="/resources/css/현진/detailedPage.css">
     <script src="https://kit.fontawesome.com/f7459b8054.js" crossorigin="anonymous"></script>
-    <style>nav{z-index: 5;}</style>
+    <style>nav{z-index: 5;} 
+
+            .poppingThing{
+            position:fixed;
+            z-index: 300;
+        }
+    </style>
+
+     
 </head>
 <body>
     <main>
@@ -93,7 +101,7 @@
                         </c:if>
 
                         <c:if test="${loginMember.memberNo != sellerInfo.memberNo}">
-                            <div class="top_right"><span><a href="#">신고</a></span></div>
+                            <div class="top_right"><span><a href="javascript:openPop()">신고</a></span></div>
                             <div class="top_right"><span>|</span></div>
                         </c:if>
 
@@ -101,6 +109,9 @@
                         <div class="top_right"><span>|</span></div>
                         <div class="top_right"><span>${goodsInfo.createdAt}</span></div>
                     </div>
+                                <div id = "poppingThing" class = "poppingThing"> 
+                                <jsp:include page="/WEB-INF/views/board/boardcomplain.jsp"></jsp:include>
+                                </div>
 
                     <div class="product_title">
                         <h2>${goodsInfo.title}</h2>

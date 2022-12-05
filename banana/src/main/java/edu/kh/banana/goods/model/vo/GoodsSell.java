@@ -30,7 +30,10 @@ import lombok.ToString;
 		private int imageNo;
 		private String imagePath;
 		
-		// 카테고리 페이지 검색 + 페이징
+		// 검색 쿼리
+		private String query;
+		
+		// 검색 + 페이징
 		private int cp = 1;
 		private int order = 1;
 		private String[] location;
@@ -43,14 +46,13 @@ import lombok.ToString;
 		// 상세 페이지 주소
 		private String address;
 
-		
 		// 메인페이지에 보여질 이미지중 썸네일(img_order == 0)
 		private String thumbnail;
 		
 		
 		
 		// 이 상품에 좋아요 누른 회원의 번호 정보
-//		private List<Integer> likeMemberNoList;
+		// private List<Integer> likeMemberNoList;
 		// 특정 로그인 회원의 상품 좋아요 여부
 		private int isLike;
 		
@@ -59,9 +61,9 @@ import lombok.ToString;
 		// 메인페이지에 상품을 넣기 위한 VO
 		private List<GoodsImage> imageList;
 		
+
 		
 		//페이이용내역(REQUEST_PAY)
-
 		private int orderNo; // 페이 주문번호	
 		
 		//LSY : 거래 후기 관련 추가
@@ -69,6 +71,4 @@ import lombok.ToString;
 		private String sellerNickname;
 		private String buyerNickname;
 		private List<BananaPay> payList;
-		
-	
 }

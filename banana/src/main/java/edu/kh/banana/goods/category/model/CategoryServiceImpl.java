@@ -47,6 +47,18 @@ public class CategoryServiceImpl implements CategoryService {
 		
 		return map(categoryPagination, allGoodsList);
 	}
+
+	// 카테고리 없이 검색 시 게시글 목록 조회
+	@Override
+	public Map<String, Object> selectQueryGoodsList(GoodsSell category) {
+		int listCount = dao.getQueryListCount(category);
+		
+		CategoryPagination categoryPagination = new CategoryPagination(listCount, category.getCp());
+		
+		List<GoodsSell> goodsList = dao.selectQueryGoodsList(categoryPagination, category);
+	
+		return map(categoryPagination, goodsList);
+	}
 	
 	// 맵 세팅 + 반환
 	public Map<String, Object> map(CategoryPagination pagination, List<GoodsSell> list) {
@@ -102,5 +114,4 @@ public class CategoryServiceImpl implements CategoryService {
 		map.put("sellerGoods", sellerGoods);
 
 		return map;
-	}
 }

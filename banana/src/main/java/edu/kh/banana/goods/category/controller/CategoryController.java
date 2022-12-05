@@ -27,6 +27,7 @@ public class CategoryController {
 	@GetMapping("/category")
 	public String category(GoodsSell category,
 						   @RequestParam(value="location", required=false) String[] location,
+						   @RequestParam(value="query", required=false) String query,
 						   @SessionAttribute(value="loginMember", required=false) Member loginMember,
 					       Model model) {
 		
@@ -37,8 +38,16 @@ public class CategoryController {
 		category.setLocation(location);
 		
 		Map<String, Object> map = null;
-		
-		if(category.getCategoryNo() == 0) {
+			
+		// 검색어가 있을 때
+		if(query != null) {
+			category.setCategoryName(query);
+			category.setQuery(query);
+			map = service.selectQueryGoodsList(category);
+		}
+				
+		// 인기검색
+		else if(category.getCategoryNo() == 0) {
 			category.setCategoryName("인기매물");
 			map = service.selectLikeGoodsList(category);
 		}

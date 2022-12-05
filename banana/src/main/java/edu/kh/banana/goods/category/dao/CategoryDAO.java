@@ -62,6 +62,25 @@ public class CategoryDAO {
 	public List<GoodsSell> selectAllGoodsList(CategoryPagination categoryPagination, GoodsSell category) {
 		return sqlSession.selectList("categoryMapper.selectAllGoodsList", category, rowBounds(categoryPagination));
 	}
+
+	/**
+	 * 검색 시 게시글 수 조회
+	 * @param query
+	 * @return listCount
+	 */
+	public int getQueryListCount(GoodsSell category) {
+		return sqlSession.selectOne("categoryMapper.getQueryListCount", category);
+	}
+
+	/**
+	 * 검색 시 게시글 목록 조회
+	 * @param categoryPagination
+	 * @param category
+	 * @return goodsList
+	 */
+	public List<GoodsSell> selectQueryGoodsList(CategoryPagination categoryPagination, GoodsSell category) {
+		return sqlSession.selectList("categoryMapper.selectQueryGoodsList", category, rowBounds(categoryPagination));
+	}
 	
 	/**
 	 * RowBounds 세팅 + 반환
@@ -146,5 +165,4 @@ public class CategoryDAO {
 	 */
 	public List<GoodsSell> selectSellerGoods(int goodsNo) {
 		return sqlSession.selectList("categoryMapper.selectSellerGoods", goodsNo);
-	}
 }

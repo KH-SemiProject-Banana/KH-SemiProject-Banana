@@ -34,7 +34,7 @@
    		
    		<result property="imageNo" column="IMAGE_NO"></result>
    		<result property="imagePath" column="IMAGE_PATH"></result>
-   		<result property="ImageOrder" column="IMG_ORDER"></result>
+   		<result property="imageOrder" column="IMG_ORDER"></result>
 	</resultMap>
 	
 	
@@ -42,30 +42,25 @@
 
  	 
  	 
- 	 <!-- 상품등록 -->
- 	 <insert id="registerGoods" parameterType="GoodsSell">
+ 	 <!-- 상품 내용만 등록 -->
+ 	 <insert id="registerGoods" parameterType="GoodsSell" useGeneratedKeys="true">
+ 	 
+ 	 	<selectKey keyProperty="goodsNo" resultType="_int" order="BEFORE">
+ 	 		SELECT SEQ_GOODS_NO.NEXTVAL FROM DUAL
+ 	 	</selectKey>
+ 	 
  	 	INSERT INTO GOODS_SELL	
-		VALUES(SEQ_GOODS_NO.NEXTVAL, #{sellerNo}, NULL, #{categoryNo}, #{title}, 
+		VALUES(#{goodsNo}, #{sellerNo}, NULL, #{categoryNo}, #{title}, 
 		#{sellPrice}, DEFAULT, #{description}, NULL, DEFAULT, DEFAULT)
  	 </insert>
  	 
  	 
- 	 <!-- 방금 등록된 상품번호 조회 -->
- 	 <select id="selectMyGoods" resultType="_int">
- 	 	SELECT GOODS_NO FROM(
-		SELECT GOODS_NO FROM GOODS_SELL
-		ORDER BY CREATED_AT DESC)
-		WHERE ROWNUM <![CDATA[<= 1]]>
- 	 </select>
+
  	 
  	 
- 	 <!-- registerImage -->
- 	 <insert id="registerImage" parameterType="GoodsImage">
- 	 	INSERT INTO GOODS_IMAGE
- 	 	VALUES(SEQ_IMAGE_NO.NEXTVAL, #{goodsNo}, #{imagePath}, #{imageOrder})
- 	 </insert>
+
  	 
- 	 
+ 	 <!-- 상품글 리스트 조회 -->
  	 <select id="selectList">
  	 	SELECT * FROM GOODS_SELL
 		WHERE GOODS_DEL_FL = 'N' AND (BUYER_NO IS NULL)
@@ -73,13 +68,21 @@
  	 </select>
  	 
  	 
- 	 <select id="selectGoods" parameterType="_int" resultType="GoodsSell">
- 	 	SELECT * FROM GOODS_SELL
- 	 	WHERE GOODS_NO = #{goodsNo}
+ 	 <!-- 한 상품의 상세정보 얻어오기 -->
+ 	 <select id="selectGoods" parameterType="_int" resultMap="goods_rm">
+ 	 	SELECT GOODS_NO, CATEGORY_NO, TITLE, SELL_PRICE, DESCRIPTION,
+		SELLER_NO
+		FROM GOODS_SELL S
+		WHERE GOODS_NO= #{goodsNo}
  	 </select>
   
 
-
+	<!-- 한 상품의 이미지리스트 얻어오기 -->
+	<select id="selectGoodsImgList" resultMap="goodsImage_rm">
+		SELECT IMAGE_NO, IMAGE_PATH, IMG_ORDER
+		FROM GOODS_IMAGE gi 
+		WHERE GOODS_NO = #{goodsNo}
+	</select>
 
 
 
@@ -172,6 +175,72 @@
   	SELECT IMAGE_PATH FROM GOODS_IMAGE
   </select>
   
+  
+  <!-- 상품 이미지 등록 -->
+  <insert id="insertGoodsImageList">
+  	INSERT INTO GOODS_IMAGE 
+	SELECT SEQ_IMAGE_NO.NEXTVAL IMAGE_NO, A.* FROM
+		
+  	<foreach collection="list" item="img" open="(" close=") A"
+  	separator="UNION ALL">
+  		SELECT 
+		#{img.goodsNo} GOODS_NO,
+		#{img.imagePath} IMAGE_PATH,
+		#{img.imageOrder} IMG_ORDER
+		FROM DUAL
+  	</foreach>
+  	
+  </insert>
+  
+  
+  <!-- 상품 삭제 -->
+  <update id="goodsDelete" parameterType="_int">
+  	UPDATE  GOODS_SELL gs  SET
+	GOODS_DEL_FL = 'Y'
+	WHERE GOODS_NO = #{goodsNo}
+  </update>
+  
+  
+  <!-- 상품 내용만 수정 -->
+  <update id="updateGoodsContent" parameterType="GoodsSell">
+  	 UPDATE GOODS_SELL SET
+  	 TITLE = #{title},
+  	 DESCRIPTION = #{description},
+  	 SELL_PRICE = #{sellPrice},
+  	 CATEGORY_NO = #{categoryNo}
+  	 WHERE GOODS_NO = #{goodsNo}
+  	 AND SELLER_NO = #{sellerNo}
+  </update>
+  
+  
+  <!-- 상품 이미지 삭제 -->
+  <delete id="deleteGoodsImage">
+  	DELETE FROM GOODS_IMAGE ${condition}
+  </delete>
+  
+  
+  <!-- 상품 이미지만 수정 -->
+  <update id="goodsImageUpdate">
+  	UPDATE GOODS_IMAGE SET
+  	IMAGE_PATH = #{imagePath}
+  	WHERE GOODS_NO = #{goodsNo}
+  	AND IMG_ORDER = #{imageOrder}
+  </update>
+  
+  
+  <!-- 상품이미지 삽입 -->
+  <insert id="goodsImageInsert">
+  	INSERT INTO GOODS_IMAGE VALUES(
+  	SEQ_IMAGE_NO.NEXTVAL, #{goodsNo}, #{imagePath}, #{imageOrder})
+  </insert>
+  
+  
+  <!-- 상품 끌어올리기 -->
+  <update id="goodsRefresh">
+  	UPDATE GOODS_SELL SET
+	REFRESHED_AT  = SYSDATE 
+	WHERE GOODS_NO = #{goodsNo}
+  </update>
 
   
 </mapper>

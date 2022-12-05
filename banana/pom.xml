@@ -138,6 +138,14 @@
 			<artifactId>spring-context-support</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
+		
+		<!-- Spring WebSocket (채팅만들기에 사용) -->
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-websocket -->
+		<dependency>
+	    <groupId>org.springframework</groupId>
+	    <artifactId>spring-websocket</artifactId>
+	    <version>${org.springframework-version}</version>
+		</dependency>
 
 		<!-- Spring -->
 		<dependency>

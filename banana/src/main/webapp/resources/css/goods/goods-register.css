@@ -26,7 +26,7 @@ input, select, .introduce{
     padding: 20px 80px;
 }
 
-#register__content {
+#register__form {
     width: 100%;
 }
 
@@ -244,4 +244,51 @@ input, select, .introduce{
     right:15px;
     top: 35px;
     position: absolute;
+}
+
+
+.img {
+    width: 140px;
+    height: 140px;
+    padding: 0;
+    margin: 10px;
+    border : 1px solid rgba(0,0,0,0.1);
+    border-radius: 8px;
+    object-fit: contain;
+}
+
+
+
+.goodsImg img{
+    width: 90%;
+    height: 90%;
+}
+
+
+.goodsImg {
+    width: 170px;
+    height: 170px;
+    position:relative;
+}
+
+.inputImage {
+    display: none;
+}
+
+.delete-image{
+    position: absolute;
+    top: 3px;
+    right: 15px;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: white;
+    padding: 0 5px;
+    border: 2px solid #eee;
+    border-radius: 50%;
+}
+
+
+.delete-image:hover{
+    font-weight: bold;
+    background-color: rgba(0,0,0,0.3);
 }

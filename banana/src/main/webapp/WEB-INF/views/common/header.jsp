@@ -8,12 +8,13 @@
                 <div>
                     <%-- <a href="/board/1" class="fa-regular fa-file-lines boardListLink"> 게시판</a> --%>
                 </div>
+                
                 <div class="talkAndlogin">
-                    <a href="/member/bananaTalk" class="topmenu__talk fa-regular fa-comment">바나나톡</a>
+                    <a href="/chatting" class="topmenu__talk fa-regular fa-comment">바나나톡</a>
                     
                     <div id="header-top-menu">
                     <c:choose>
-                        <%-- 로그인 X 경우 --%>
+                        <%-- 로그인 X 경우 --%> 
                         <c:when test="${empty sessionScope.loginMember}">
                             <a href="/member/login" class="topmenu__login">로그인/회원가입</a>
                         </c:when>
@@ -43,16 +44,6 @@
                         </c:otherwise>
                     </c:choose>
                 </div>
-
-
-                
-
-
-
-                
-           
-
-
 
             </section>
             <section class="section-query">

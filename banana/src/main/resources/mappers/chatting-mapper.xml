@@ -31,8 +31,8 @@
    <select id="checkChattingNo" resultType="_int">
       SELECT NVL(SUM(CHATTING_NO),0) CHATTING_NO
       FROM CHATTING_ROOM
-      WHERE (OPEN_MEMBER = #{loginMemberNo} AND PARTICIPANT = #{targetNo})
-      OR (OPEN_MEMBER = #{targetNo} AND PARTICIPANT = #{loginMemberNo})
+      WHERE (OPEN_MEMBER = #{loginMemberNo} AND PARTICIPANT = #{targetNo} AND GOODS_NO=#{goodsNo})
+			OR (OPEN_MEMBER = #{targetNo} AND PARTICIPANT = #{loginMemberNo} AND GOODS_NO=#{goodsNo})
    </select>
    
    

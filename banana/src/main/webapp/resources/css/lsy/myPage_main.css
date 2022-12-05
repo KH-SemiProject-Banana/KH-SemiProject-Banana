@@ -1,6 +1,8 @@
 /* *{
         border: 1px solid red;
 }   */
+
+
 /* /* 
 섹션 1 5
 섹션 2 10
@@ -11,31 +13,36 @@
 
 */
 
-.pagination{
-    list-style: none;
+.pagination-area{
     display: flex;
     justify-content: center;
-    padding: 0;
+    align-items: center;
+}
+.pagination{
+    list-style: none;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+    margin-bottom: 70px;
 }
 
 .pagination li{
-    width: 20px;
+    width: 30px;
+    /* height: 30px; */
     margin: 0 5px;
     text-align: center;
 }
 
-.pagination a{
-    display: block;
-    width: 100%;
-    height: 100%;
-}
-
 .current{
-    font-weight: bold;
-    background-color: #455ba8;
-    border-radius: 50%;
-    color: white !important;
-    letter-spacing: 0 !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(241, 189, 0);
+    border: 1px solid rgb(241, 189, 0);
+    width: 30px;
+    height: 30px;
 }
 
 a { text-decoration:none }
@@ -268,8 +275,8 @@ a { text-decoration:none }
 .favorite__pack{
     display: flex;
     flex-direction: column;
-    border: 1px solid #ddd;
-    margin: 0 5px;
+    /* border: 1px solid #ddd; */
+    margin: 0 6px;
 }
 
 .favorite__img{
@@ -357,7 +364,7 @@ a { text-decoration:none }
 .testcolor{
     color: black;
     font-weight: bold;
-    border-top: 1px solid #ddd;
+    border: 1px solid #ddd;
     margin-top: 10px;
     height: 50px;
     display: flex;
@@ -366,11 +373,12 @@ a { text-decoration:none }
     font-size: 13px;
     background-color: var(--menu);
     text-decoration: none;
+    border-radius: 15px;
 }
 .testcolor2{
     color: orangered;
     font-weight: bold;
-    border-top: 1px solid #ddd;
+    border: 1px solid #ddd;
     margin-top: 10px;
     height: 50px;
     display: flex;
@@ -378,6 +386,8 @@ a { text-decoration:none }
     align-items: center;
     font-size: 13px;
     text-decoration: none;
+    border-radius: 15px;
+
 }
 
 /* **************************************************** */

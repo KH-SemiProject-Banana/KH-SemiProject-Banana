@@ -441,8 +441,7 @@
                     
                         <!-- 첫 페이지로 이동 -->
                         
-                        <li><a href="/member/myPage/main?myPageCt=${param.myPageCt}&cp=1">&lt;&lt;</a></li>
-
+                        <%-- <li><a href="/member/myPage/main?myPageCt=${param.myPageCt}&cp=1">&lt;&lt;</a></li> --%>
                         <!-- 이전 목록 마지막 번호로 이동 -->
                         <li><a href="/member/myPage/main?myPageCt=${param.myPageCt}&cp=${pagination.prevPage}">&lt;</a></li>
                         <%-- ?cp같은 쿼리스트링 형태로 적어야 함.....(이게 파라미터로 인식이 됨...) --%>
@@ -473,7 +472,7 @@
                         <li><a href="/member/myPage/main?myPageCt=${param.myPageCt}&cp=${pagination.nextPage}">&gt;</a></li>
 
                         <!-- 끝 페이지로 이동 -->
-                        <li><a href="/member/myPage/main?myPageCt=${param.myPageCt}&cp=${pagination.maxPage}">&gt;&gt;</a></li>
+                        <%-- <li><a href="/member/myPage/main?myPageCt=${param.myPageCt}&cp=${pagination.maxPage}">&gt;&gt;</a></li> --%>
 
                     </ul>
                 </div> 

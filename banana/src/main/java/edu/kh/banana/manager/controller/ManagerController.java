@@ -106,13 +106,34 @@ public class ManagerController {
 	
 	/** 회원 정보 수정
 	 * @param member
-	 * @return
+	 * @return result
 	 */
 	@GetMapping("/managerEdit")
 	@ResponseBody
 	public int memberEdit(Member member) {
 		
 		return service.memberEdit(member);
+	}
+	
+	
+	/** 회원 정보 삭제
+	 * @param memberNo
+	 * @return result
+	 */
+	@GetMapping("/memberDelete")
+	@ResponseBody
+	public int memberDelete(int memberNo) {
+		return service.memberDelete(memberNo);
+	}
+	
+	/** 회원 정보 차단
+	 * @param memberNo
+	 * @return result
+	 */
+	@GetMapping("/memberBlock")
+	@ResponseBody
+	public int memberBlock(int memberNo) {
+		return service.memberBlock(memberNo);
 	}
 
 }

@@ -93,6 +93,25 @@ public class ManagerServiceImpl implements ManagerService{
 		return dao.memberEdit(member);
 	}
 
+	/**
+	 * 회원 정보 삭제
+	 */
+	@Override
+	public int memberDelete(int memberNo) {
+		
+		return dao.memberDelete(memberNo);
+	}
+	
+	
+	/**
+	 * 회원 차단
+	 */
+	@Override
+	public int memberBlock(int memberNo) {
+		
+		return dao.memberBlock(memberNo);
+	}
+
 
 
 

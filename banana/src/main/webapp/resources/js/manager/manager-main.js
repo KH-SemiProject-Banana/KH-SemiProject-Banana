@@ -14,6 +14,7 @@ const orderBy = () => {
 };
 
 
+// 회원정보 수정
 const btnModify = document.getElementsByClassName("btnModify");
 
 for(let btn of btnModify){
@@ -61,7 +62,7 @@ for(let btn of btnModify){
                         alert("회원 정보가 수정되었습니다");
                         closePop();
                         document.getElementById("frmSearchBase").submit();
-                        
+
                     } else {
                         alert("회원 정보 수정 실패");
                         closePop();
@@ -71,6 +72,69 @@ for(let btn of btnModify){
             })
         });
 
+        
+
+    });
+}
+
+
+// 회원정보 삭제
+const btnDel = document.getElementsByClassName("btnDel");
+for(let btn of btnDel) {
+
+    btn.addEventListener("click", e => {
+
+        const memberNo = e.target.getAttribute("id");
+        
+        if(confirm("정말 회원 정보를 삭제하시겠습니까?")){
+
+            $.ajax({
+
+                url : "/manager/memberDelete",
+                data : {"memberNo": memberNo},
+                type : "get",
+                success : (result) => {
+                    if(result > 0) {
+                        alert("회원 정보가 삭제되었습니다");
+                        document.getElementById("frmSearchBase").submit();
+                    } else {
+                        alert("회원 정보 삭제 실패");
+                    }
+                }, 
+                error : () => {console.log("회원 정보 삭제 중 에러 발생");}
+
+            })
+        }
+    });
+}
+
+// 회원정보 삭제
+const btnBlock = document.getElementsByClassName("btnBlock");
+for(let btn of btnBlock) {
+
+    btn.addEventListener("click", e => {
+
+        const memberNo = e.target.getAttribute("id");
+        
+        if(confirm("정말 회원을 차단하시겠습니까?")){
+
+            $.ajax({
+
+                url : "/manager/memberBlock",
+                data : {"memberNo": memberNo},
+                type : "get",
+                success : (result) => {
+                    if(result > 0) {
+                        alert("회원이 차단되었습니다");
+                        document.getElementById("frmSearchBase").submit();
+                    } else {
+                        alert("회원 차단 실패");
+                    }
+                }, 
+                error : () => {console.log("회원 차단 중 에러 발생");}
+
+            })
+        }
     });
 }
 

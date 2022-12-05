@@ -247,7 +247,7 @@
                         <div class="search-result-tab">차단여부</div>
                         <c:forEach var="member" items="${memberList}">
                             <c:if test="${member.blockFlag == 'Y'}">
-                                <div class="search-content">차단</div>
+                                <div class="search-content disabled">차단</div>
                             </c:if>
                             <c:if test="${member.blockFlag == 'N'}">
                                 <div class="search-content">활동중</div>
@@ -262,7 +262,7 @@
                                 <div class="search-content">활동중</div>
                             </c:if>
                             <c:if test="${member.memberDeleteFlag == 'Y'}">
-                                <div class="search-content">탈퇴</div>
+                                <div class="search-content disabled">탈퇴</div>
                             </c:if>
                         </c:forEach>
 
@@ -277,11 +277,22 @@
                         </c:forEach>
                     </div>
 
+                    <div class="search-result-div"id="blockData">
+                        <div class="search-result-tab" >차단</div>
+                        <c:forEach var="member" items="${memberList}">
+                            <div class="search-content">
+                                <button type="button" class="btn btn-white btn-sm btnBlock" 
+                                id="${member.memberNo}">차단</button>
+                            </div>
+                        </c:forEach>
+                    </div>
+
                     <div class="search-result-div"id="deleteData">
                         <div class="search-result-tab" >정보삭제</div>
                         <c:forEach var="member" items="${memberList}">
                             <div class="search-content">
-                                <button type="button" class="btn btn-white btn-sm btnDel">삭제</button>
+                                <button type="button" class="btn btn-white btn-sm btnDel"
+                                id="${member.memberNo}">삭제</button>
                             </div>
                         </c:forEach>
                     </div>

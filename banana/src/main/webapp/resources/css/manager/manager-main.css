@@ -401,3 +401,7 @@ input:-webkit-autofill:active  {
 .search-detail-select-box {
     position: absolute;
 } */
+
+.disabled {
+    background-color: #eee;
+}

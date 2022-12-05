@@ -62,4 +62,23 @@ public class ManagerDAO {
 		return sqlSession.update("memberMapper.memberEdit", member);
 	}
 
+	/** 회원 정보 삭제
+	 * @param memberNo
+	 * @return result
+	 */
+	public int memberDelete(int memberNo) {
+		
+		return sqlSession.update("memberMapper.memberDelete", memberNo);
+	}
+	
+	
+	/** 회원 차단
+	 * @param memberNo
+	 * @return result
+	 */
+	public int memberBlock(int memberNo) {
+		
+		return sqlSession.update("memberMapper.memberBlock", memberNo);
+	}
+
 }

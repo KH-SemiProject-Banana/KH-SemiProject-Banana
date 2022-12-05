@@ -55,14 +55,22 @@ public class CategoryController {
 		return "goods/productList";
 	}
 	
-    // 좋아요 O
+	// 자신의 게시글에 찜 불가능
+	@GetMapping("/goodsLikeSelf")
+    @ResponseBody
+    public int goodsLikeSelf(@RequestParam Map<String, Object> paramMap) {
+        int abc = service.goodsLikeSelf(paramMap);
+        return abc;
+	}
+	
+    // 찜 추가
     @GetMapping("/goodsLikeUp")
     @ResponseBody
     public int goodsLikeUp(@RequestParam Map<String, Object> paramMap) {
         return service.goodsLikeUp(paramMap);
     }
     
-    // 좋아요 X
+    // 찜 삭제
     @GetMapping("/goodsLikeDown")
     @ResponseBody
     public int goodsLikeDown(@RequestParam Map<String, Object> paramMap) {
@@ -73,9 +81,10 @@ public class CategoryController {
 	@GetMapping("/goods/{goodsNo}")
 	public String detailedPage(@PathVariable("goodsNo") int goodsNo,
 			   				   @SessionAttribute(value="loginMember", required=false) Member loginMember,
+			   				   @SessionAttribute(value="category", required=false) GoodsSell category,
 							   Model model) {
 		
-		GoodsSell goodsInfo = null;
+		GoodsSell goodsInfo = new GoodsSell();
 		
 		goodsInfo.setGoodsNo(goodsNo);
 		
@@ -84,6 +93,10 @@ public class CategoryController {
 		}
 		
 		Map<String, Object> map = service.detailedPage(goodsInfo, goodsNo);
+		
+		model.addAttribute("loginMember", loginMember);
+		model.addAttribute("category", category);
+		model.addAttribute("map", map);
 		
 		return "goods/detailedPage";
 	}

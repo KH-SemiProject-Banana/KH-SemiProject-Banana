@@ -9,7 +9,9 @@ import org.springframework.stereotype.Service;
 
 import edu.kh.banana.goods.category.dao.CategoryDAO;
 import edu.kh.banana.goods.category.vo.CategoryPagination;
+import edu.kh.banana.goods.model.vo.GoodsImage;
 import edu.kh.banana.goods.model.vo.GoodsSell;
+import edu.kh.banana.member.model.vo.Member;
 
 @Service
 public class CategoryServiceImpl implements CategoryService {
@@ -55,14 +57,20 @@ public class CategoryServiceImpl implements CategoryService {
         
         return map;
 	}
+	
+	// 자신의 게시글에 찜 불가능
+	@Override
+	public int goodsLikeSelf(Map<String, Object> paramMap) {
+		return dao.goodsLikeSelf(paramMap);
+	}
 
-	// 좋아요 O
+	// 찜 추가
 	@Override
 	public int goodsLikeUp(Map<String, Object> paramMap) {
 		return dao.goodsLikeUp(paramMap);
 	}
 
-	// 좋아요 X
+	// 찜 삭제
 	@Override
 	public int goodsLikeDown(Map<String, Object> paramMap) {
 		return dao.goodsLikeDown(paramMap);
@@ -73,10 +81,26 @@ public class CategoryServiceImpl implements CategoryService {
 	public Map<String, Object> detailedPage(GoodsSell goodsInfo, int goodsNo) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		
-		goodsInfo = dao.goodsInfo(goodsInfo);
+		goodsInfo = dao.selectGoodsInfo(goodsInfo);
 		
-		List<>
+		List<String> goodsImg = dao.selectGoodsImg(goodsNo);
 		
+		Member sellerInfo = dao.selectSellerInfo(goodsNo);
+		
+		List<GoodsSell> sellerGoods = dao.selectSellerGoods(goodsNo);
+		
+		if(goodsInfo.getBuyerNo() != 0) {
+			goodsInfo.setSellStatus("판매중");
+			
+		} else {
+			goodsInfo.setSellStatus("판매완료");
+		}
+
+		map.put("goodsInfo", goodsInfo);
+		map.put("goodsImg", goodsImg);
+		map.put("sellerInfo", sellerInfo);
+		map.put("sellerGoods", sellerGoods);
+
 		return map;
 	}
 }

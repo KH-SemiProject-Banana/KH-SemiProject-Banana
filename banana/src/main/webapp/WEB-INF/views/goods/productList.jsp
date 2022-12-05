@@ -36,7 +36,7 @@
         <div class="mainContent">
             <div class="category">
                 <a href="/">HOME</a>
-                <a href="#">> ${category.categoryName}</a>
+                <a href="/category/?categoryNo=${param.categoryNo}">> ${category.categoryName}</a>
             </div>
 
             <div class="category_title">

@@ -28,14 +28,21 @@ public interface CategoryService {
 	Map<String, Object> selectLikeGoodsList(GoodsSell category);
 
 	/**
-	 * 좋아요 O
+	 * 자신의 게시글에 찜 불가능
+	 * @param paramMap
+	 * @return sellerNo
+	 */
+	int goodsLikeSelf(Map<String, Object> paramMap);
+	
+	/**
+	 * 찜 추가
 	 * @param paramMap
 	 * @return result
 	 */
 	int goodsLikeUp(Map<String, Object> paramMap);
 
 	/**
-	 * 좋아요 X
+	 * 찜 삭제
 	 * @param paramMap
 	 * @return result
 	 */

@@ -29,17 +29,20 @@ import lombok.ToString;
 		private String sellStatus; // LSY : 필요있나?
 		private int imageNo;
 		private String imagePath;
-		private int likeCount;
 		
-		// 검색 + 페이징
+		// 카테고리 페이지 검색 + 페이징
 		private int cp = 1;
 		private int order = 1;
 		private String[] location;
 		
-		// 좋아요
+		// 찜
 		private int loginMemberNo = 0;
 		private int memberNo;
+		private int likeCount;
 		
+		// 상세 페이지 주소
+		private String address;
+
 		
 		// 메인페이지에 보여질 이미지중 썸네일(img_order == 0)
 		private String thumbnail;
@@ -69,4 +72,3 @@ import lombok.ToString;
 		
 	
 }
-

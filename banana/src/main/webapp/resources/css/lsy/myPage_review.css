@@ -61,7 +61,8 @@ a { text-decoration:none }
     position : relative;
 }
 .myBanana-photo > .photo {
-    height:75%;
+    height:175px;
+    width: 175px;
     border-radius: 50%;
     border :3px solid  rgb(139, 138, 138);
     background-color: white;
@@ -76,6 +77,10 @@ a { text-decoration:none }
 
 }
 
+a { 
+    text-decoration:none;
+    color: black;
+}
 
 .myBanana-content {
     width:70%;

@@ -111,7 +111,8 @@ a {
     position : relative;
 }
 .myBanana-photo > .photo {
-    height:75%;
+    height:175px;
+    width: 175px;
     border-radius: 50%;
     border :3px solid  rgb(139, 138, 138);
     background-color: white;

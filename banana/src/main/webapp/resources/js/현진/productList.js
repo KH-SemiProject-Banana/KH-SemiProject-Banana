@@ -123,36 +123,13 @@ for(let i = 0; i < likeChk.length; i++) {
     })
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// 검색어 남겨두기
+// 검색어 남기기
 if(query != null) {
     document.getElementById("query").value = query;
 }
 
 // 시행착오 코드
-
-// // 1페이지(초기화면)
+// 1페이지(초기화면)
 // const selectPage = document.getElementsByClassName("selectPage");
 // const pageNo = document.getElementsByClassName("pageNo");
 
@@ -160,7 +137,7 @@ if(query != null) {
 //     pageNo[0].classList.add("selectPage");
 // }
 
-// // 페이지 번호
+// 페이지 번호
 // for(let i = 0; i < pageNo.length; i++){
 //     pageNo[i].addEventListener('click', function(){
 
@@ -172,7 +149,7 @@ if(query != null) {
 //     });
 // };
 
-// // 페이지 이동 - 왼쪽 화살표
+// 페이지 이동 - 왼쪽 화살표
 // document.getElementById("leftArrow").addEventListener("click", function(){
 //     const selectPage = document.getElementsByClassName("selectPage")[0].innerText;
 //     let href;
@@ -185,7 +162,7 @@ if(query != null) {
 //     }
 // });
 
-// // 페이지 이동 - 오른쪽 화살표
+// 페이지 이동 - 오른쪽 화살표
 // document.getElementById("rightArrow").addEventListener("click", function(){
 //     const selectPage = document.getElementsByClassName("selectPage")[0].innerText;
 //     let href;

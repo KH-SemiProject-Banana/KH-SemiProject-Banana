@@ -4,8 +4,19 @@
 
 <c:set var="goodsList" value="${map.goodsList}" />
 <c:set var="categoryPagination" value="${map.categoryPagination}" />
+<c:set var="query" value="${category.query}" />
+<c:set var="ctgNo" value="" />
+<c:set var="searchQuery" value="" />
 <c:set var="locAddress" value="" />
 <c:set var="order" value="" />
+
+<c:if test="${category.query == null}">
+    <c:set var="ctgNo" value="${'categoryNo='}${category.categoryNo}" />
+</c:if>
+
+<c:if test="${category.query != null}">
+    <c:set var="searchQuery" value="${'query='}${query}" />
+</c:if>
 
 <c:forEach var="i" items="${paramValues.location}">
     <c:set var="locAddress" value="${locAddress}${'&location='}${i}" />
@@ -36,15 +47,30 @@
         <div class="mainContent">
             <div class="category">
                 <a href="/">HOME</a>
+
+            <c:if test='${category.query == null}'>
                 <a href="#">> ${category.categoryName}</a>
+            </c:if>
             </div>
 
             <div class="category_title">
-                <h1>${category.categoryName}</h1>
+                <c:if test='${category.query == null}'>
+                    <h1>${category.categoryName}</h1>
+                </c:if>
+
+                <c:if test='${category.query != null}'>
+                    <h1>"${category.categoryName}" 검색 결과</h1>
+                </c:if>
             </div>
             
-            <form id="searchGu" action="/category?categoryNo=${category.categoryNo}">
-                <input type="hidden" name="categoryNo" value="${category.categoryNo}">
+            <form id="searchGu" action="/category">
+                <c:if  test="${category.query == null}">
+                    <input type="hidden" name="categoryNo" value="${category.categoryNo}">
+                </c:if>
+
+                <c:if test="${category.query != null}">
+                    <input type="hidden" name="query" value="${category.query}">
+                </c:if>
 
                 <div><h2>우리 동네에서 찾기</h2></div>
             
@@ -98,9 +124,9 @@
 
                 <div class="selectBox">
                     <select onchange="window.open(value,'_self');">
-                        <option value="/category?categoryNo=${category.categoryNo}${locAddress}&order=1">최신순</option>
-                        <option value="/category?categoryNo=${category.categoryNo}${locAddress}&order=2">저가순</option>
-                        <option value="/category?categoryNo=${category.categoryNo}${locAddress}&order=3">고가순</option>
+                        <option value="/category?${ctgNo}${searchQuery}${locAddress}&order=1">최신순</option>
+                        <option value="/category?${ctgNo}${searchQuery}${locAddress}&order=2">저가순</option>
+                        <option value="/category?${ctgNo}${searchQuery}${locAddress}&order=3">고가순</option>
                     </select>
                 </div>
             </div>
@@ -165,7 +191,7 @@
             </div>
 
             <div class="pageList">
-                <a href="/category?categoryNo=${category.categoryNo}${locAddress}${order}&cp=${categoryPagination.prevPage}" class="page" id="leftArrow">&lt;</a>
+                <a href="/category?${ctgNo}${searchQuery}${locAddress}${order}&cp=${categoryPagination.prevPage}" class="page" id="leftArrow">&lt;</a>
 
                 <c:forEach var="i" begin="${categoryPagination.startPage}" end="${categoryPagination.endPage}" step="1">
                     <c:choose>
@@ -174,12 +200,12 @@
                         </c:when>
 
                         <c:otherwise>
-                            <a href="/category?categoryNo=${category.categoryNo}${locAddress}${order}&cp=${i}" class="page otherPage">${i}</a>
+                            <a href="/category?${ctgNo}${searchQuery}${locAddress}${order}&cp=${i}" class="page otherPage">${i}</a>
                         </c:otherwise>
                     </c:choose>
                 </c:forEach>
 
-                <a href="/category?categoryNo=${category.categoryNo}${locAddress}${order}&cp=${categoryPagination.nextPage}" class="page" id="rightArrow">&gt;</a>
+                <a href="/category?${ctgNo}${searchQuery}${locAddress}${order}&cp=${categoryPagination.nextPage}" class="page" id="rightArrow">&gt;</a>
             </div>
         </div>
     </main>
@@ -188,6 +214,8 @@
 
 <script>
     const memberNo = "${loginMember.memberNo}";
+
+    const query = "${query}";
 </script>
 
 <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>

@@ -31,6 +31,9 @@ import lombok.ToString;
 		private String imagePath;
 		private int likeCount;
 		
+		// 검색 쿼리
+		private String query;
+		
 		// 검색 + 페이징
 		private int cp = 1;
 		private int order = 1;

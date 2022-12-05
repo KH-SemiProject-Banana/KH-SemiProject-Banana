@@ -97,7 +97,7 @@
                             <div class="top_right"><span>|</span></div>
                         </c:if>
 
-                        <div class="top_right"><span>찜 ${goodsInfo.likeCount}</span></div>
+                        <div class="top_right"><span>찜&nbsp;</span><span id="likeCount">${goodsInfo.likeCount}</span></div>
                         <div class="top_right"><span>|</span></div>
                         <div class="top_right"><span>${goodsInfo.createdAt}</span></div>
                     </div>
@@ -130,7 +130,7 @@
                         <div>
                             <input type="hidden" name="targetNo" value="${sellerInfo.memberNo}">
                             <input type="hidden" name="goodsNo" value="${goodsInfo.goodsNo}">
-                            
+
                             <c:choose>
                                 <c:when test="${loginMember.memberNo == goodsInfo.memberNo}">
                                     <input type="checkbox" name="like" id="like" checked>

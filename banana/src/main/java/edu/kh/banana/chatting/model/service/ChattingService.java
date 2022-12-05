@@ -6,6 +6,7 @@ import java.util.Map;
 
 import edu.kh.banana.chatting.model.vo.ChattingRoom;
 import edu.kh.banana.chatting.model.vo.Message;
+import edu.kh.banana.goods.model.vo.GoodsSell;
 
 public interface ChattingService {
 
@@ -48,5 +49,11 @@ public interface ChattingService {
      * @return messageList
      */
     List<Message> selectMessageList( Map<String, Object> paramMap);
+
+	/** 상품정보을 비동기로 조회
+	 * @param goodsNo
+	 * @return  selectProductInfor
+	 */
+	GoodsSell selectProductInfor(int goodsNo);
 
 }

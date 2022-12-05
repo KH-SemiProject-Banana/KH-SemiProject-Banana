@@ -114,6 +114,9 @@ const roomListAddEvent = () => {
 	
 			// 비동기로 메세지 목록을 조회하는 함수 호출
 			selectChattingFn();
+
+			// 비동기로 상품 정보 조회하는 함수 호출
+			productInfor(); //수정 상품정보
 		});
 	}
 }
@@ -138,10 +141,6 @@ const selectChattingFn = () => {
 				const li = document.createElement("li");
 				//<div class="my-chat-col"></div>
 				const div = document.createElement("div")
-				
-				
-				//const lid = document.createElement("li");// 메세지 시작 날짜
-				//lid.classList.add("date-line");// 메세지 시작 날짜
 				
 				// 메세지 내용
 				const p = document.createElement("p");
@@ -185,14 +184,93 @@ const selectChattingFn = () => {
 					li.append(img,div, time);
 				}
 				ul.append(li);
-				//lid.append(div) // 메세지 시작 날짜
-
 				display.scrollTop = display.scrollHeight; // 스크롤 제일 밑으로
 			}
 		},
 		error : () => {console.log("에러");}
 	})
 }
+
+
+//수정 상품정보
+//// 비동기로 상품 정보 조회하는 함수
+const productInfor = () => {
+
+	$.ajax({
+		url : "/chatting/selectProductInfor",
+		data : {"goodsNo" : 9},
+		dataType : "JSON",
+		success : selectProductInfor => {
+			console.log(selectProductInfor);
+
+			// <ul id="productInforBox">
+			const ul = document.querySelector("#productInforBox");
+			ul.innerHTML = ""; // 이전 내용 지우기
+
+			const li1 = document.createElement("li");
+			li1.classList.add("productImgBox");
+
+			const img = document.createElement("img");
+			img.classList.add("productImgBox1");
+			img.setAttribute("src",selectProductInfor.imagePath)
+			console.log(selectProductInfor.imagePath);
+
+			const li2 = document.createElement("li");
+			li2.classList.add("productNamePrice");
+
+			const div1 = document.createElement("div");
+			div1.classList.add("productNameArea");
+			const div1_1 = document.createElement("div");
+			div1_1.classList.add("productStatus");
+			div1_1.innerText=selectProductInfor.sellStatus;
+			const div1_2 = document.createElement("div");
+			div1_2.classList.add("productName");
+			div1_2.innerText=selectProductInfor.title;
+
+			const div2 = document.createElement("div");
+			div2.classList.add("productPrice");
+			div2.innerText=selectProductInfor.sellPrice+"원"
+
+			const div0 = document.createElement("div");
+			div0.classList.add("Declaration");
+
+			const a = document.createElement("a");
+			a.setAttribute("href","javascript:openPop()")
+
+			const i = document.createElement("i");
+			i.classList.add("fa-regular","fa-bell-slash");
+
+
+			ul.append(li1,li2,div0);
+			li1.append(img);
+			li2.append(div1,div2);
+			div1.append(div1_1,div1_2);
+			div0.append(a);
+			a.append(i);
+
+			
+		},
+		error : () => {console.log("에러");}
+	})
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // 비동기로 채팅방 목록 조회
 const selectRoomList = () => {
@@ -340,10 +418,7 @@ chattingSock.onmessage = function(e) {
 		//<div class="my-chat-col"></div>
 		const div = document.createElement("div")
 
-		
-		//const lid = document.createElement("li");// 메세지 시작 날짜
-		//lid.classList.add("date-line");// 메세지 시작 날짜
-		
+			
 		// 메세지 내용
 		const p = document.createElement("p");
 		p.classList.add("chat");
@@ -384,7 +459,7 @@ chattingSock.onmessage = function(e) {
 	
 			div.append(name, p);
 			li.append(img,div, time);
-			//lid.append(div) // 메세지 시작 날짜
+
 	
 		}
 	

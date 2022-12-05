@@ -19,6 +19,7 @@ import com.google.gson.Gson;
 import edu.kh.banana.chatting.model.service.ChattingService;
 import edu.kh.banana.chatting.model.vo.ChattingRoom;
 import edu.kh.banana.chatting.model.vo.Message;
+import edu.kh.banana.goods.model.vo.GoodsSell;
 import edu.kh.banana.member.model.vo.Member;
 
 
@@ -74,8 +75,24 @@ public class ChattingController {
     public String selectMessageList(@RequestParam Map<String, Object> paramMap) {
         System.out.println(paramMap);
         List<Message> messageList = service.selectMessageList(paramMap);
+        //맵으로 조회 2개 가져가기 
         return new Gson().toJson(messageList);
     }
+    
+    // 수정중
+    // 상품정보을 비동기로 조회
+    @GetMapping("/chatting/selectProductInfor")
+    @ResponseBody
+    public String selectProductInfor(int goodsNo) {
+       
+    	//Map<String, Object> selectProductInfor = service.selectProductInfor(goodsNo);
+    	GoodsSell selectProductInfor = service.selectProductInfor(goodsNo);
+       
+        return new Gson().toJson(selectProductInfor);
+    }
+    
+    
+    
     
     // 채팅 방 목록을 비동기 조회
     @GetMapping("/chatting/roomList")

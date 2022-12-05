@@ -104,24 +104,23 @@
                 <!--------------------- 채팅 내용박스 --------------------->
                 <div id="chatBoxMain">
                     <!--------- 채팅박스 상단 상품 시작 --------->
-                    <div id="productInforBox">
-                        <div class="productImgBox">
+                    <ul id="productInforBox">
+                        <li class="productImgBox">
                             <img class="productImgBox1"src="\resources\images\hydong-test-RTX4090.jpg">
-                        </div>
-                        <div class="productNamePrice">
+                        </li>
+                        <li class="productNamePrice">
                             <div class="productNameArea">
                                 <div class="productStatus">거래완료</div>
                                 <div class="productName">RTX4090 누가좀 사주세요 제발 가지고싶다</div>
                             </div>
                             <div class="productPrice">2,500,000 원</div>
-                        </div>
+                        </li>
                         <div class="Declaration">
-                            <!-- 신고버튼 -->
-                            <a href="javascript:openPop()">
+                            <a href="javascript:openPop()"><!-- 신고버튼 -->
                                 <i class="fa-regular fa-bell-slash"></i>
                             </a>
                         </div>
-                    </div> 
+                    </ul> 
                     <!--------- 채팅박스 상단 상품 시작 끝--------->
 
 

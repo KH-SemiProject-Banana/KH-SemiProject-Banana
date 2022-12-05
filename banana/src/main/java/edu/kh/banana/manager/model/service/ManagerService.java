@@ -15,6 +15,12 @@ public interface ManagerService {
 	 */
 	Map<String, Object> memberSearch(Map<String, Object> paramMap, int cp);
 
+	/** 회원 정보 수정
+	 * @param member
+	 * @return
+	 */
+	int memberEdit(Member member);
+
 
 
 }

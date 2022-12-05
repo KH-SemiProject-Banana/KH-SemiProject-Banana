@@ -336,8 +336,8 @@ a {
 .current{
     padding: 4px;
     font-weight: bold;
-    background-color: var(--darkYellow);
-    border-radius: 50%;
+    background-color: rgba(0,0,0,0.3);
+    /* border-radius: 50%; */
     color: white !important;
     letter-spacing: 0 !important;
 
@@ -391,3 +391,5 @@ a {
     display: flex;
     justify-content: flex-end;
 }
+
+

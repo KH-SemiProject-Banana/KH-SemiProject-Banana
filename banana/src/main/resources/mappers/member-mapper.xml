@@ -84,7 +84,7 @@
  	 
  	 <!-- 관리자) 회원 목록 조회 -->
  	 <select id="admin-memberSearch" parameterType="map" resultMap="member_rm">
- 	 	SELECT MEMBER_NO, MEMBER_EMAIL, MEMBER_NICKNAME, 
+ 	 	SELECT MEMBER_NO, MEMBER_EMAIL, MEMBER_NICKNAME, MEMBER_NAME, BIRTHDAY, MEMBER_TEL,
 		NVL((SELECT REMAIN_POINT FROM REQUEST_PAY R1
 		WHERE ORDER_NO = ( SELECT MAX(ORDER_NO) FROM REQUEST_PAY R2
 							WHERE R2.TRADER_NO = M.MEMBER_NO)), 0) REMAIN_PAY,
@@ -198,6 +198,19 @@
 		</if>
 		
  	 </select>
+ 	 
+ 	 
+ 	 <!-- 관리자 기능) 회원 정보 수정 -->
+ 	 <update id="memberEdit">
+ 	 	UPDATE "MEMBER" SET
+ 	 	MEMBER_NICKNAME = #{memberNickname},
+ 	 	MEMBER_NAME = #{memberName},
+ 	 	BIRTHDAY = #{memberBirth},
+ 	 	MEMBER_TEL = #{memberTel}
+ 	 	WHERE MEMBER_NO = #{memberNo}
+ 	 </update>
+ 	 
+
  	 
   
 </mapper>

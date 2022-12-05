@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -84,7 +85,8 @@ public class ManagerController {
 	 */
 	@GetMapping("/memberSearch")
 	public String memberSearch(@RequestParam Map<String, Object> paramMap,
-			@RequestParam(value="cp", required=false, defaultValue="1") int cp,
+			@RequestParam(value="cp", required=false, defaultValue="1" ) int cp,
+			@RequestParam(value="sort", required=false, defaultValue="1") String sort,
 			Model model
 			) {
 		
@@ -100,6 +102,17 @@ public class ManagerController {
 		
 		
 		return "manager/manager-main";
+	}
+	
+	/** 회원 정보 수정
+	 * @param member
+	 * @return
+	 */
+	@GetMapping("/managerEdit")
+	@ResponseBody
+	public int memberEdit(Member member) {
+		
+		return service.memberEdit(member);
 	}
 
 }

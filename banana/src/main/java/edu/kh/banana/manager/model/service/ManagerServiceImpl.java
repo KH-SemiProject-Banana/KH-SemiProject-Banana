@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import edu.kh.banana.board.model.vo.Pagination;
 import edu.kh.banana.manager.model.dao.ManagerDAO;
@@ -81,6 +82,15 @@ public class ManagerServiceImpl implements ManagerService{
 		map.put("listCount", listCount);
 		
 		return map;
+	}
+
+	/**
+	 * 회원 정보 수정
+	 */
+	@Override
+	public int memberEdit(Member member) {
+		
+		return dao.memberEdit(member);
 	}
 
 

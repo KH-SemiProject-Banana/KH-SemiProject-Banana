@@ -50,5 +50,16 @@ public class ManagerDAO {
 		
 		return sqlSession.selectOne("memberMapper.getMemberListCount", paramMap);
 	}
+	
+	
+
+	/** 회원 정보 수정
+	 * @param member
+	 * @return
+	 */
+	public int memberEdit(Member member) {
+		
+		return sqlSession.update("memberMapper.memberEdit", member);
+	}
 
 }

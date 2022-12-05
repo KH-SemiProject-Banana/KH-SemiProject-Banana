@@ -28,6 +28,7 @@
 
         <link rel="stylesheet" href="/resources/css/style.css">
         <link rel="stylesheet" href="/resources/css/manager/manager.css">
+        <link rel="stylesheet" href="/resources/css/manager/manager-main.css">
 
     </head>
     <body>
@@ -73,7 +74,7 @@
                                         
                                         
                                 </select>
-                                    <input type="text" name="query" class="form-control" value="${param.query}">
+                                <input type="text" name="query" class="form-control" value="${param.query}">
                             </div>
                         </div>
 
@@ -270,7 +271,8 @@
                         <div class="search-result-tab" >정보수정</div>
                         <c:forEach var="member" items="${memberList}">
                             <div class="search-content">
-                                <button type="button" class="btn btn-white btn-sm btnModify" id="${member.memberNo}">수정</button>
+                                <button type="button" class="btn btn-white btn-sm btnModify" 
+                                id="${member.memberNo}||${member.memberNickname}||${member.memberName}||${member.memberBirth}||${member.memberTel}">수정</button>
                             </div>
                         </c:forEach>
                     </div>
@@ -285,7 +287,62 @@
                     </div>
                 </div>
 
-                
+                <%-- ------------------------------------------- --%>
+
+
+                <div class="popup_layer" id="popup_layer" style="display: none;">
+                    <div class="popup_box scroll">
+                        <div style="height: 10px; width: 500px; float: top;">
+                            <a href="javascript:closePop();"><i class="fa-solid fa-x allClose"></i></a>
+                        </div>
+                        <!--팝업 컨텐츠 영역-->
+                        <div class="popup_cont">
+                            <div class="payRemainArea">
+                                <h1><span>내 바나나페이 : </span><span id="payRemain">65000</span><span>원</span></h1>
+                            </div>
+
+                            <form  method="get" name="signUp-frm" id="signUp-frm" onsubmit="return false">
+                                <div>
+                                    <!-- 닉네임 -->
+                                    <div class="signUp-input-Nickname textbox">
+                                        <input type="text" name="memberNickname" class="inputBox" id="memberNickname" placeholder="닉네임" 
+                                        maxlength="10"  />
+                                    </div>
+                                    <div class="firstBox">
+                                        <span class="signUp-message" id="nickMessage">한글,영어,숫자로만 2~10글자 사이로 입력해주세요.</span>
+                                    </div>
+
+                                    <!-- 이름/생년월일/휴대번호 -->
+                                    <%-- 이름 --%>
+                                    <div class="signUp-input-Name textboxNo">
+                                        <input type="text" name="memberName" class="inputBoxNo" id="memberName"
+                                            placeholder="이름" maxlength="10"/>
+                                    </div>
+
+                                    <%-- 생년월일 --%>
+                                    <div class="signUp-input-Birth textboxNo">
+                                        <input type="text" name="memberBirth" class="inputBoxNo" id="memberBirth" placeholder="생년월일 ex)19910502" 
+                                            maxlength="8" />
+                                    </div>
+
+                                    <%-- 휴대번호 --%>
+                                    <div class="signUp-input-Tel textbox">
+                                        <input type="text"  name="memberTel" class="inputBox" id="memberTel" 
+                                            placeholder="휴대번호 ex)01045459986" maxlength="11" />
+                                    </div>
+                                    <div class="firstBox">
+                                        <span class="signUp-message" id="temlMessage">전화번호를 입력해 주세요.(-제외)</span>
+                                    </div>
+                                </div>
+                                <div class="SignUpAgreement6">
+                                    <button class="SignUp">내 정보 수정 완료</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <%-- ------------------------------------------- --%>
                 
                 <div class="pagination-area">
 
@@ -336,6 +393,10 @@
             </section>
             
         </main>
+
+        <!-- jQuery CDN 방식으로 추가-->
+        <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+
         <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
         <script src="/resources/js/manager/manager-main.js"></script>
     </body>

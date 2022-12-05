@@ -9,21 +9,15 @@
 섹션 5 55
 */
 
-.myBanana{
+/* .myBanana{
 
-    /* min-height: 1500px; */
     height :1500px;
     display: flex;
     flex-direction: column;
     
-}
-/* .myBanana > section:nth-child(1) {flex-basis: 10%;}
-.myBanana > section:nth-child(2) {flex-basis: 20%;}
-.myBanana > section:nth-child(3) {flex-basis: 10%;}
-.myBanana > section:nth-child(4) {flex-basis: 40%;} */
+} */
 /* 섹션1********************************************************************************************************섹션1 */
-.my-rotten-banana{
-    /* border :1px solid black; */
+/* .my-rotten-banana{
     height: 55px;
     display: flex;
     justify-content: flex-end;
@@ -31,7 +25,6 @@
     padding-right: 20px;
 
     font-size: 12px;
-    /* font-weight: bold; */
 }
 
 
@@ -42,14 +35,12 @@
 .my-rotten-banana > p:only-of-type{
     font-size: 18px;
     margin-top:16px;
-}
+} */
 /* 섹션2********************************************************************************************************섹션2 */
-.myBanana-title {
-    /* border :1px solid black; */
+/* .myBanana-title {
     height: 120px;
     width:100%;
     
-    /* background-color: cadetblue; */
     
     display: flex;
     justify-content: flex-start;
@@ -60,15 +51,12 @@
     margin-left: 10px;
     margin-bottom: 15px;
     
-}
+} */
 
 
 
 /* 섹션3********************************************************************************************************섹션3 */
-.myBanana-detail{
-    /* border :2px solid yellowgreen; */
-    /* background-color: rgb(235, 233, 233);
-    border : 5px solid #ddd; */
+/* .myBanana-detail{
     border: 5px solid #ddd;
     background-color: var(--yellow);
     border-radius: 3%;
@@ -78,7 +66,6 @@
     margin-bottom: 30px;
 }
 .myBanana-photo{
-    /* border :1px solid black; */
     width:20%;
     display: flex;
     justify-content: center;
@@ -86,7 +73,6 @@
     position : relative;
 }
 .myBanana-photo > #photo {
-    /* position: absolute; */
     height:60%;
     border-radius: 50%;
     border :3px solid black;
@@ -94,28 +80,21 @@
 }
 .myBanana-photo > #pen {
     position: absolute;
-    /* padding : 20px; */
-    /* width:100px;
-    height:100px; */
-    /* background-color: yellow; */
     bottom: 55px;
     left: 150px;
     
 
 }
 .myBanana-content {
-    /* border :1px solid black; */
     width:70%;
     
 }
 .myBanana-info{
-    /* border :1px solid black; */
     
     display: flex;
     
 }
 .myBanana-name{
-    /* font-size: 50px; */
     font-size: 25px;
     font-weight: bold;
     height: 25%;
@@ -127,8 +106,7 @@
     padding-top : 10px;
 }
 .myBanana-changeInfo{
-    /* width:50px;
-    height:50px; */
+   
     margin : 40px 15px 20px 0px;
     
 }
@@ -138,7 +116,7 @@
     height: 20%;
     padding: 0px 20px 20px 20px;
     display: flex;
-    /* border: 1px solid #ccc; */
+   
 }
 .myBanana-intro > p:only-of-type{
     margin-right: 15px;
@@ -162,11 +140,11 @@
     height: 20px;
     margin-top: 15px;
     background-color : green;
-}
+} */
 
 /*섹션4 ********************************************************************************************************섹션4 */
 .myBanana-category{
-    /* border :1px solid black; */
+    
     height: 70px;
     display: flex;
     flex-direction: row;
@@ -178,17 +156,13 @@
 
 .myBanana-category > *{
    margin: 10px;
-   /* background-color: #feffbc; */
-   /* border :1px solid #feffbc; */
+  
    border-radius: 5px;
    
    
 }
 
-.myBanana-category > #first-category{
-    font-weight: bold;
-    
-}
+
 /* 섹션5********************************************************************************************************섹션5 */
 /* .myBanana-reviewList{
     border :1px solid black;

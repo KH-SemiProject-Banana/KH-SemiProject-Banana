@@ -42,10 +42,20 @@
             </div>
         </div>
 
+        <div class="goodBadMain">
+            <div class="goodBadBox"><%-- div0 --%>
+                <div class = "mainGood" id = "mainGood"> <%-- divG1 --%>
+                    <div class = "main_title"><%-- divG2 --%>
+                        <div><%-- divG2_1div --%>
+                            <i class="fa-regular fa-face-smile-beam imo"></i><%-- divG2_1div_i --%>
+                        </div>
+                        <p>받은 매너 칭찬</p> <%-- divG2_2p --%>
+                    </div>
+                </div>
 
-        <div class="goodBadBox"><%-- div0 --%>
-            
-        </div>
+            </div>
+
+
             <div class = "main_content">
                 <c:forEach var = "review" items = "${reviewList}">
                 <div class = "review">
@@ -57,7 +67,7 @@
                 </div>
                 </c:forEach>
             </div>
-
+        </div>
     </section>
 </main>
 

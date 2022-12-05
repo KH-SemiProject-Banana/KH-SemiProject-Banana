@@ -17,11 +17,13 @@ a { text-decoration:none }
 
 
 
-
+/* 최상위 박스 */
 .content{
     display: flex;
+    width: 100%;
 }
 
+/* 사이드 텝 */
 .side{
     border-right: 1px solid #ddd;
     padding : 30px;
@@ -30,6 +32,7 @@ a { text-decoration:none }
     
 }
 
+/* 사이드 텝 설정 */
 .side1:hover, .side2:hover {
     background-color:var(--lightYellow);
     border-bottom: 1px solid #ddd;
@@ -42,12 +45,12 @@ a { text-decoration:none }
 }
 
 .side1 > * , .side2 > * , .main_title > * {
-    /* font-weight: bold; */
     margin-right: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
 
 .imo {
     font-size: 30px;
@@ -58,10 +61,11 @@ a { text-decoration:none }
 }
 
 
+/* 전구 아이콘 */
 .lightbulb {
     position: relative;
 }
-
+/* 전구 클릭시 뜨는 창 */
 .lightbulb_inner {
     position: absolute;
     border: 2px solid white;
@@ -79,23 +83,17 @@ a { text-decoration:none }
     
     
 }
-
+/* 전구 클릭시 뜨는 창 내용 설정 */
 .lightbulb_inner > div{
     position: absolute;
     top:3px;
     left:3px;
     z-index: 1002;
-    /* border: 5px solid yellow; */
     background-color: white;
     width: 350px;
     height: 300px;
     font-size: 13px;
     padding : 30px;
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
-   
-    
 }
 
 .lightbulb_inner > div > * {
@@ -103,8 +101,15 @@ a { text-decoration:none }
 }
 
 /* ************************************************************************* */
+.goodBadBox{
+    /* flex-direction: column; */
+    display: flex;
+    width: 100%;
+    /* height: 200px; */
+}
+
 .mainGood, .mainBad {
-    padding :30px;
+    padding :50px 30px 50px 30px;
     width : 70%;
 }
 
@@ -112,7 +117,7 @@ a { text-decoration:none }
 .main_title {
     display : flex;
     font-size: 18px;
-    padding : 30px;
+    /* padding : 30px; */
 }
 
 .main_content > div {
@@ -137,9 +142,8 @@ a { text-decoration:none }
 
 }
 
-.goodBadBox{
+
+.goodBadMain{
     flex-direction: column;
     width: 100%;
-
-
 }

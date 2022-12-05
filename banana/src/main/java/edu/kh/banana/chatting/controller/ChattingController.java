@@ -32,14 +32,15 @@ public class ChattingController {
 	
 	// 채팅방 입장
     @GetMapping("/chatting/enter")
-    public String chattingEnter(int targetNo, RedirectAttributes ra,
+    public String chattingEnter(int targetNo,int goodsNo, RedirectAttributes ra,
             @SessionAttribute("loginMember") Member loginMember) {
      
     	// targetNo : 상대방 회원 번호
     	// loginMemberNo : 현재 로그인한 회원 번호(본인)
     	
         Map<String, Integer> map = new HashMap<String, Integer>();
-        map.put("targetNo", targetNo);
+        map.put("targetNo", targetNo); //판매자 번호
+        map.put("goodsNo", goodsNo); // 상품
         map.put("loginMemberNo", loginMember.getMemberNo());
         
         // 기존 채팅방이 있는지 확인

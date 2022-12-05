@@ -67,7 +67,7 @@ public class ChattingServiceImpl implements ChattingService {
 
 	    // 상품정보을 비동기로 조회
 		@Override
-		public GoodsSell selectProductInfor(int goodsNo) {
-			return  dao.selectProductInfor(goodsNo);
+		public GoodsSell selectProductInfor(int chattingNo) {
+			return  dao.selectProductInfor(chattingNo);
 		}
 }

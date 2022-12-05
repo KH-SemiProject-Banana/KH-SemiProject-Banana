@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
@@ -31,7 +32,7 @@ public class ChattingController {
 	
 	
 	// 채팅방 입장
-    @GetMapping("/chatting/enter")
+    @RequestMapping("/chatting/enter")
     public String chattingEnter(int targetNo,int goodsNo, RedirectAttributes ra,
             @SessionAttribute("loginMember") Member loginMember) {
      
@@ -54,6 +55,7 @@ public class ChattingController {
         }
         
         ra.addFlashAttribute("chattingNo", chattingNo);
+//        ra.addFlashAttribute("goodsNo", goodsNo);
         
         return "redirect:/chatting";
     }
@@ -76,6 +78,7 @@ public class ChattingController {
     public String selectMessageList(@RequestParam Map<String, Object> paramMap) {
         System.out.println(paramMap);
         List<Message> messageList = service.selectMessageList(paramMap);
+        
         //맵으로 조회 2개 가져가기 
         return new Gson().toJson(messageList);
     }
@@ -84,10 +87,9 @@ public class ChattingController {
     // 상품정보을 비동기로 조회
     @GetMapping("/chatting/selectProductInfor")
     @ResponseBody
-    public String selectProductInfor(int goodsNo) {
+    public String selectProductInfor(int chattingNo) {
        
-    	//Map<String, Object> selectProductInfor = service.selectProductInfor(goodsNo);
-    	GoodsSell selectProductInfor = service.selectProductInfor(goodsNo);
+    	GoodsSell selectProductInfor = service.selectProductInfor(chattingNo);
        
         return new Gson().toJson(selectProductInfor);
     }

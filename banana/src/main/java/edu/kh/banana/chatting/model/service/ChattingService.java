@@ -51,9 +51,9 @@ public interface ChattingService {
     List<Message> selectMessageList( Map<String, Object> paramMap);
 
 	/** 상품정보을 비동기로 조회
-	 * @param goodsNo
+	 * @param chattingNo
 	 * @return  selectProductInfor
 	 */
-	GoodsSell selectProductInfor(int goodsNo);
+	GoodsSell selectProductInfor(int chattingNo);
 
 }

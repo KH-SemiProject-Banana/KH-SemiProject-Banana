@@ -48,13 +48,9 @@ document.addEventListener("DOMContentLoaded", ()=>{
 	
 	// 채팅 리스트가 8개 이상 일 경우 css 추가
 	if(document.getElementsByClassName("chatting-item").length >7 ){
-		//console.log("8개 이상!");
-		//console.log(document.getElementsByClassName("chatting-item").length);
 		lastchild.style.borderBottom="none";
 		
 	} else{
-		//console.log("7개 이하~~");
-		//console.log(document.getElementsByClassName("chatting-item").length);
 		lastchild.style.borderBottom="border";
 	}
 
@@ -101,7 +97,8 @@ const roomListAddEvent = () => {
 			selectTargetNo = arr[1];
 			selectTargetProfile = item.children[0].children[0].getAttribute("src");
 			selectTargetName = item.children[1].children[0].children[0].innerText;
-
+			// selectGoodsNo= item.children[2].value;
+			
 			if(item.children[1].children[1].children[1] != undefined){
 				item.children[1].children[1].children[1].remove();
 			}
@@ -128,7 +125,6 @@ const selectChattingFn = () => {
 		data : {"chattingNo" : selectChattingNo, "memberNo" : loginMemberNo},
 		dataType : "JSON",
 		success : messageList => {
-			console.log(messageList);
 
 			// <ul class="display-chatting">
 			const ul = document.querySelector(".display-chatting");
@@ -187,7 +183,7 @@ const selectChattingFn = () => {
 				display.scrollTop = display.scrollHeight; // 스크롤 제일 밑으로
 			}
 		},
-		error : () => {console.log("에러");}
+		error : () => {console.log(" 메세지 목록 조회 에러");}
 	})
 }
 
@@ -198,10 +194,10 @@ const productInfor = () => {
 
 	$.ajax({
 		url : "/chatting/selectProductInfor",
-		data : {"goodsNo" : goodsNo},
+		// data : {"goodsNo" : selectGoodsNo},
+		data : {"chattingNo" : selectChattingNo},
 		dataType : "JSON",
 		success : selectProductInfor => {
-			console.log(selectProductInfor);
 
 			// <ul id="productInforBox">
 			const ul = document.querySelector("#productInforBox");
@@ -213,7 +209,6 @@ const productInfor = () => {
 			const img = document.createElement("img");
 			img.classList.add("productImgBox1");
 			img.setAttribute("src",selectProductInfor.imagePath)
-			console.log(selectProductInfor.imagePath);
 
 			const li2 = document.createElement("li");
 			li2.classList.add("productNamePrice");
@@ -250,7 +245,7 @@ const productInfor = () => {
 
 			
 		},
-		error : () => {console.log("에러");}
+		error : () => {console.log("상품 정보 조회 에러");}
 	})
 }
 

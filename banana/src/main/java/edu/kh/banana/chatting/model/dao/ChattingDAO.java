@@ -74,8 +74,8 @@ public class ChattingDAO {
 	 * @param goodsNo
 	 * @return selectProductInfor
 	 */
-	public GoodsSell selectProductInfor(int goodsNo) {
-		return sqlSession.selectOne("goodsMapper.selectProductInfor",goodsNo);
+	public GoodsSell selectProductInfor(int chattingNo) {
+		return sqlSession.selectOne("goodsMapper.selectProductInfor",chattingNo);
 	}
     
     

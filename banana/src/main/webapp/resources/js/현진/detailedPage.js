@@ -86,14 +86,13 @@ like.addEventListener("change", () => {
   }
 })
 
-// 자신과 바나나톡 X
-document.getElementById("talk").addEventListener("click", () => {
+// 본인과 바나나톡 X
+document.getElementsByClassName("like_talk")[0].addEventListener("submit", event => {
   if(memberNo == sellerNo) {
-    alert("자신과 바나나톡을 할 수 없습니다.");
+    alert("본인과 바나나톡을 할 수 없습니다.");
+    event.preventDefault();
     return;
   }
-
-  location.href = "/chatting";
 });
 
 // 검색어 남기기

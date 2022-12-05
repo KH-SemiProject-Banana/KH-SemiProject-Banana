@@ -126,8 +126,11 @@
                         </span>
                     </div>
 
-                    <div class="like_talk">
+                    <form action="/chatting/enter" method="post" class="like_talk">
                         <div>
+                            <input type="hidden" name="targetNo" value="${sellerInfo.memberNo}">
+                            <input type="hidden" name="goodsNo" value="${goodsInfo.goodsNo}">
+                            
                             <c:choose>
                                 <c:when test="${loginMember.memberNo == goodsInfo.memberNo}">
                                     <input type="checkbox" name="like" id="like" checked>
@@ -140,8 +143,8 @@
                                 </c:otherwise>
                             </c:choose>
                         </div>
-                        <div><a id="talk">바나나톡</a></div>
-                    </div>
+                        <div><button>바나나톡</button></div>
+                    </form>
                 </section>
             </div>
 

@@ -82,20 +82,20 @@ public class ManagerController {
 	 * @param model
 	 * @return
 	 */
-	@PostMapping("/memberSearch")
+	@GetMapping("/memberSearch")
 	public String memberSearch(@RequestParam Map<String, Object> paramMap,
+			@RequestParam(value="cp", required=false, defaultValue="1") int cp,
 			Model model
 			) {
 		
 		// 조건이 있는 회원 목록 조회
-		List<Member> memberList = service.memberSearch(paramMap);
+		Map<String, Object> map = service.memberSearch(paramMap, cp);
 		
 		
-		// 전체 회원 목록 조회
-		int memberCount = service.memberCount();
+
 		
-		model.addAttribute("memberCount", memberCount);
-		model.addAttribute("memberList", memberList);
+		model.addAttribute("map", map);
+
 		
 		
 		

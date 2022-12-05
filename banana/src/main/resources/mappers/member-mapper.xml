@@ -99,10 +99,10 @@
 		<if test='query != null and query != ""'>
 			<choose>
 				<when test='key == "email"'>
-					AND MEMBER_EMAIL LIKE '%38%'
+					AND MEMBER_EMAIL LIKE '%${query}%'
 				</when>
 				<when test='key == "nickname"'>
-					AND MEMBER_NICKNAME LIKE '%닉%'
+					AND MEMBER_NICKNAME LIKE '%${query}%'
 				</when>
 			</choose>
 		</if>
@@ -138,14 +138,65 @@
 			]]>
 		</if>
 		
-		ORDER BY M.MEMBER_NO
+		ORDER BY ${order}
 		
  	 </select>
  	 
  	 
  	 <!-- 전체 회원 수 조회 -->
- 	 <select id="memberCount">
+ 	 <select id="memberCount" resultType="_int">
  	 	SELECT COUNT(*) FROM MEMBER
+ 	 </select>
+ 	 
+ 	 
+ 	 <!-- 특정 조건 회원 수 조회 -->
+ 	 <!-- 관리자) 회원 목록 조회 -->
+ 	 <select id="getMemberListCount" parameterType="map" resultType="_int">
+ 	 	SELECT COUNT(*) FROM MEMBER M
+		WHERE MEMBER_NO > 0
+		
+		<if test='query != null and query != ""'>
+			<choose>
+				<when test='key == "email"'>
+					AND MEMBER_EMAIL LIKE '%${query}%'
+				</when>
+				<when test='key == "nickname"'>
+					AND MEMBER_NICKNAME LIKE '%${query}%'
+				</when>
+			</choose>
+		</if>
+		
+		<if test='isDelete != null'>
+			<choose>
+				<when test='isDelete == "notDelete"'>
+					AND MEMBER_DEL_FL = 'N'
+				</when>
+				<when test='isDelete == "yesDelete"'>
+					AND MEMBER_DEL_FL = 'Y'
+				</when>
+			</choose>
+		</if>
+		
+		<if test='isBlock != null'>
+			<choose>
+				<when test='isBlock == "notBlock"'>
+					AND BLOCK_FL = 'N'
+				</when>
+				<when test='isBlock == "yesBlock"'>
+					AND BLOCK_FL = 'Y'
+				</when>
+			</choose>
+		</if>
+		
+		<if test='calanderBefore != ""'>
+			AND ENROLL_DATE >= TO_DATE(#{calanderBefore}, 'YYYY-MM-DD') 
+		</if>
+		<if test='calanderAfter != ""'>
+			<![CDATA[
+			AND ENROLL_DATE <= TO_DATE(#{calanderAfter}, 'YYYY-MM-DD') 
+			]]>
+		</if>
+		
  	 </select>
  	 
   

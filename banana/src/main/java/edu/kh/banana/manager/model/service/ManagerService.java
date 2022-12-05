@@ -13,11 +13,8 @@ public interface ManagerService {
 	 * @param paramMap
 	 * @return memberList
 	 */
-	List<Member> memberSearch(Map<String, Object> paramMap);
+	Map<String, Object> memberSearch(Map<String, Object> paramMap, int cp);
 
-	/** 전체 회원 수 조회
-	 * @return
-	 */
-	int memberCount();
+
 
 }

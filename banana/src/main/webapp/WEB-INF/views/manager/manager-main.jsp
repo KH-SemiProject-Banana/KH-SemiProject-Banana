@@ -2,6 +2,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
+<c:set var="pagination" value="${map.pagination}"/>
+<c:set var="memberList" value="${map.memberList}"/>
+<c:set var="allMemberCount" value="${map.allMemberCount}"/>
+<c:set var="listCount" value="${map.listCount}"/>
+
+<c:set var="sURL" value="sort=${param.sort}&key=${param.key}&query=${param.query}&isBlock=${param.isBlock}&isDelete=${param.isDelete}&calanderBefore=${param.calanderBefore}&calanderAfter=${param.calanderAfter}"/>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -24,78 +32,8 @@
     </head>
     <body>
         <main>
-            <!-- header 시작----------------------------------------------------------------------------------------- -->
-            <header>
-                <section class="section-topmenu">
-                    <div>
-                        <a href="/board/1" class="fa-regular fa-file-lines boardListLink"> 게시판</a>
-                    </div>
-                    <div class="talkAndlogin">
-                        <a href="/member/bananaTalk" class="topmenu__talk fa-regular fa-comment">바나나톡</a>
-                        
-                        <div id="header-top-menu">
-                        <c:choose>
-                            <%-- 로그인 X 경우 --%>
-                            <c:when test="${empty sessionScope.loginManager}">
-                                <a href="/member/login" class="topmenu__login">로그인/회원가입</a>
-                            </c:when>
-                            <%-- 로그인 O인 경우 --%>
-                            <c:otherwise>
-                                <label for="header-menu-toggle">
-                                    <div class="profileImgArea">
-                                        <c:if test="${empty loginManager.profileImage}">
-                                            <img src="/resources/images/banana-logo.png"  id="profileImg">
-                                        </c:if>
-                                        <c:if test="${not empty loginManager.profileImage}">
-                                            <img src="${loginManager.profileImage}" id="profileImg">
-                                        </c:if>
-
-                                    </div>
-                                    ${loginManager.memberNickname}
-                                    <i class="fa-solid fa-caret-down"></i>
-                                    <div>
-                                        <input type="checkbox" id="header-menu-toggle">
-
-                                        <div id="header-menu">
-                                            <a href="/member/myPage/main">내 정보</a>
-                                            <a href="/member/logout">로그아웃</a>
-                                        </div>
-                                    </div>
-                                </label>
-
-                            </c:otherwise>
-                        </c:choose>
-                    </div>
-                </section>
-
-                <section class="section-query">
-                    <div class="query__area">
-                        <a href="/">
-                            <img src="/resources/images/banana-logo.png" id="logo-img"/>
-                        </a>
-                        <div class="query__logo">
-                            <p>바꾸고 나누자 나랑</p>
-                            <p id="query__banana">Banana Market</p>
-                        </div>
-                    </div>
-                    
-                    <article class="search-area">
-                
-                        <!-- form : 내부 input태그의 값을 서버 또는 페이지로 전달(제출) -->
-                        <form action="#">
-                            <fieldset>
-                                <input type="search" id="query" name="query" placeholder="검색어를 입력해주세요">
-                                <button type="submit" id="search-btn" class="fa-solid fa-magnifying-glass">
-                                </button>
-                            </fieldset>
-                        </form>
-                    </article>
-                    <a href="/goods/registerGoods" class="sellingMy">
-                        <div>내 물건<br>판매하기</div>
-                    </a>
-                </section>
-            </header>
-            <!-- header 끝----------------------------------------------------------------------------------------- -->
+            
+            <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 
             <section class="category-lists">
                 <a href = "/manager/main" class="detail link-member activate">회원</a>
@@ -111,49 +49,83 @@
                     <button>+ 회원 등록</button>
                 </div>
 
-                <form id="frmSearchBase" method="post" class="member-search" action="/manager/memberSearch">
-                    <input type="hidden" name="sort" value="entryDt asc">
-                    <input type="hidden" name="sort" value="entryDt asc">
-                    <input type="hidden" name="sort" value="entryDt asc">
+
+                <form id="frmSearchBase" method="get" class="member-search" action="/manager/memberSearch">
+                    <input type="hidden" name="sort" id="order1" value="M.MEMBER_NO ASC">
                     <p class="search__title">회원 검색</p>
                     <div class="search-detail-box form-inline">
                         <div class="search-detail-div">
                             <div class="search-detail-keyword">검색어</div>
                             <div class="search-detail-select-box">
                                 <select name="key" id="key" class="form-control">
-                                    <option value="email">이메일</option>
-                                    <option value="nickname">닉네임</option>
+
+
+                                <c:if test="${param.key == 'email'}">
+                                    <c:set var="emailChk" value="selected"></c:set>
+                                </c:if>
+
+                                <c:if test="${param.key == 'nickname'}">
+                                    <c:set var="nicknameChk" value="selected"></c:set>
+                                </c:if>
+                                    
+                                <option value="email" ${emailChk} >이메일</option>
+                                <option value="nickname" ${nicknameChk}>닉네임</option>
+                                        
+                                        
                                 </select>
-                                <input type="text" name="query" class="form-control">
+                                    <input type="text" name="query" class="form-control" value="${param.query}">
                             </div>
                         </div>
 
                         <div  class="search-detail-div">
                             <div class="search-detail-keyword">차단여부</div>
                             <div>
+
+                                <c:set var="allBlockChk" value="checked"/>
+                                <c:if test="${param.isBlock == 'notBlock'}">
+                                    <c:set var="notBlockChk" value="checked"></c:set>
+                                    <c:set var="allBlockChk" value=""/>
+                                </c:if>
+
+                                <c:if test="${param.isBlock == 'yesBlock'}">
+                                    <c:set var="yesBlockChk" value="checked"></c:set>
+                                    <c:set var="allBlockChk" value=""/>
+                                </c:if>
+
                                 <label class="radio-inline">
-                                    <input type="radio" name="isBlock" value="allBlock" checked>전체
+                                    <input type="radio" name="isBlock" value="allBlock" ${allBlockChk}>전체
                                 </label>
                                 <label class="radio-inline">
-                                    <input type="radio" name="isBlock" value="notBlock">활동중
+                                    <input type="radio" name="isBlock" value="notBlock" ${notBlockChk}>활동중
                                 </label>
                                 <label class="radio-inline">
-                                    <input type="radio" name="isBlock" value="yesBlock">차단중
+                                    <input type="radio" name="isBlock" value="yesBlock" ${yesBlockChk}>차단중
                                 </label>
                             </div>
                         </div>
+
+                                <c:set var="allDeleteChk" value="checked"/>
+                                <c:if test="${param.isDelete == 'notDelete'}">
+                                    <c:set var="notDeleteChk" value="checked"></c:set>
+                                    <c:set var="allDeleteChk" value=""/>
+                                </c:if>
+
+                                <c:if test="${param.isDelete == 'yesDelete'}">
+                                    <c:set var="yesDeleteChk" value="checked"></c:set>
+                                    <c:set var="allDeleteChk" value=""/>
+                                </c:if>
 
                         <div  class="search-detail-div">
                             <div class="search-detail-keyword">탈퇴여부</div>
                             <div>
                                 <label class="radio-inline">
-                                    <input type="radio" name="isDelete" value="allDelete" checked>전체
+                                    <input type="radio" name="isDelete" value="allDelete" ${allDeleteChk}>전체
                                 </label>
                                 <label class="radio-inline">
-                                    <input type="radio" name="isDelete" value="notDelete">활동중
+                                    <input type="radio" name="isDelete" value="notDelete" ${notDeleteChk}>활동중
                                 </label>
                                 <label class="radio-inline">
-                                    <input type="radio" name="isDelete" value="yesDelete">탈퇴
+                                    <input type="radio" name="isDelete" value="yesDelete" ${yesDeleteChk}>탈퇴
                                 </label>
                             </div>
                         </div>
@@ -162,11 +134,11 @@
                             <div class="search-detail-keyword">회원가입일</div>
                             <div>
                                 <div class="input-group js-datepicker">
-                                    <input type="date" id="btn-icon-calander" name="calanderBefore">
+                                    <input type="date" id="btn-icon-calander" name="calanderBefore" value="${param.calanderBefore}">
                                 </div>
                                 ~
                                 <div class="input-group js-datepicker">
-                                    <input type="date" id="btn-icon-calander" name="calanderAfter">
+                                    <input type="date" id="btn-icon-calander" name="calanderAfter" value="${param.calanderAfter}">
                             </div>
                         
                             </div>
@@ -178,11 +150,38 @@
                     </div>
                 </form>
 
+                <div class="selectBox">
+
+                    <c:set var="order1" value="checked"/>
+                    <c:if test="${param.sort == '2'}">
+                        <c:set var="order2" value="checked"></c:set>
+                        <c:set var="order1" value=""/>
+                    </c:if>
+                    <c:if test="${param.sort == '3'}">
+                        <c:set var="order3" value="checked"></c:set>
+                        <c:set var="order1" value=""/>
+                    </c:if>
+                    <c:if test="${param.sort == '4'}">
+                        <c:set var="order4" value="checked"></c:set>
+                        <c:set var="order1" value=""/>
+                    </c:if>
+
+                    
+
+
+                    <select onchange="orderBy()" id="orderBy">
+                        <option value="order1" ${order1}>가입일순</option>
+                        <option value="order2" ${order2}>가입일 역순</option>
+                        <option value="order3" ${order3}>판매순</option>
+                        <option value="order4" ${order4}>구매순</option>
+                    </select>
+                </div>
+
                 <div class="pull-left">
                     검색
-                    <strong>${fn:length(memberList)}</strong>
+                    <strong>${listCount}</strong>
                     명 / 전체
-                    <strong>${memberCount}</strong>
+                    <strong>${allMemberCount}</strong>
                     명
                 </div>
 
@@ -286,8 +285,44 @@
                         </div>
                     </div>
                 
+                <div class="pagination-area">
 
-                <div class="center">
+
+                    <ul class="pagination">
+                    
+                        <!-- 첫 페이지로 이동( <<) -->
+                        <li><a href="/manager/memberSearch?${sURL}">&lt;&lt;</a></li>
+
+                        <!-- 이전 목록 마지막 번호로 이동 ( < ) -->
+                        <li><a href="/manager/memberSearch?cp=${pagination.prevPage}&${sURL}">&lt;</a></li>
+
+                        
+                        <!-- 특정 페이지로 이동 -->
+                        <c:forEach var="i" begin="${pagination.startPage}" end="${pagination.endPage}" step="1">
+                            <c:choose>
+                                <c:when test="${i == pagination.currentPage}">
+                                    <%-- 현재 보고있는 페이지 --%>
+                                    <li><a class="current">${i}</a></li>
+                                </c:when>
+                                <c:otherwise>
+                                    <%-- 현재 페이지를 제외한 나머지 --%>
+                                    <li><a href="/manager/memberSearch?cp=${i}&${sURL}">${i}</a></li>
+                                </c:otherwise>
+                            </c:choose>
+                        </c:forEach>
+                        
+                        <!-- 다음 목록 시작 번호로 이동 ( > )-->
+                        <li><a href="/manager/memberSearch?cp=${pagination.nextPage}&${sURL}">&gt;</a></li>
+
+                        <!-- 끝 페이지로 이동 ( >> ) -->
+                        <li><a href="/manager/memberSearch?cp=${pagination.maxPage}&${sURL}">&gt;&gt;</a></li>
+
+                    </ul>
+                </div>
+
+
+
+                <%-- <div class="center">
                     <nav>
                         <ul class="pagination pagination-sm">
                             <li class="active">
@@ -295,7 +330,7 @@
                             </li>
                         </ul>
                     </nav>
-                </div>
+                </div> --%>
             </section>
             
         </main>

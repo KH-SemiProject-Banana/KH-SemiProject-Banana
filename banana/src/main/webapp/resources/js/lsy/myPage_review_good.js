@@ -159,7 +159,7 @@ const mainBadOn=()=>{
 
     div0.append(div1);
     div1.append(div2);
-    div1.append(div2_1,div2_2p,div2_3div);
+    div2.append(div2_1,div2_2p,div2_3div);
     div2_1.append(div2_1_i,);
     div2_3div.append(div2_3div_i,div2_3div_div);
 

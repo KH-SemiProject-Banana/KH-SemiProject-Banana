@@ -198,7 +198,7 @@ const productInfor = () => {
 
 	$.ajax({
 		url : "/chatting/selectProductInfor",
-		data : {"goodsNo" : 9},
+		data : {"goodsNo" : goodsNo},
 		dataType : "JSON",
 		success : selectProductInfor => {
 			console.log(selectProductInfor);

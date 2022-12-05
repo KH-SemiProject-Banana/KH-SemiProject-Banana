@@ -64,7 +64,7 @@
                     <div class = "content">
                         <div class = "row3">
                             <pre class = "message Scroll">
-                            ${review.message}
+${review.message}
                             </pre>
                         </div>
                     </div>

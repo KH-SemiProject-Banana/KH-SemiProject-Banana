@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<c:set var="reviewNewestList" value="${map.reviewNewestList}" />
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -51,30 +53,32 @@
                 <a href="/member/myPage/review/detail">받은 거래 후기&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa-solid fa-angle-right"></i></a>
             </section>
             <section class = "review_section_2">
-                <div class = "review_2">
-                    <div class = "userphoto">
-                        <img  src="/resources/images/banana-logo.png" alt="">
-                    </div>
-                    <div class="memberInfoBox">     
-                        <div class="memberInfo">
-                            <div class = "row2_1">
-                                <div class = "name">바나나</div>
-                            </div>
-                            <div class = "row2_2">
-                                <div class = "address">아현동</div>
-                                <div class = "date">11달 전</div>
+                <c:forEach var = "review" items = "${reviewNewestList}">
+                    <div class = "review_2">
+                        <div class = "userphoto">
+                            <img  src="${review.profileImage}" alt="">
+                        </div>
+                        <div class="memberInfoBox">     
+                            <div class="memberInfo">
+                                <div class = "row2_1">
+                                    <div class = "name">${review.memberNickname}</div>
+                                </div>
+                                <div class = "row2_2">
+                                    <div class = "address">${review.address}</div>
+                                    <div class = "date">${review.createdAt}</div>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class = "content">
-                        <div class = "row2_3">
-                            <pre class = "message Scroll">
-                                감사해용
-                            </pre>
+                        <div class = "content">
+                            <div class = "row2_3">
+                                <pre class = "message Scroll">
+                                ${review.message}
+                                </pre>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </c:forEach>
             </section>
         </section>
     </div>

@@ -14,6 +14,7 @@ import edu.kh.banana.common.Util;
 import edu.kh.banana.goods.model.vo.GoodsSell;
 import edu.kh.banana.member.model.dao.MyPageDAO;
 import edu.kh.banana.member.model.vo.Member;
+import edu.kh.banana.member.model.vo.MypageDetailPagination;
 import edu.kh.banana.member.model.vo.MypagePagination;
 import edu.kh.banana.review.model.vo.Review;
 
@@ -77,7 +78,7 @@ public class MyPageServiceImpl implements MyPageService{
 
 
 
-	//REVIEW_RATING DB에 인서트하기
+	//거래후기(REVIEW DB에 인서트) 한 다음에 그걸 가지고 매너후기 (REVIEW_RATIGN DB에 인서트)
 	@Transactional
 	@Override
 	public int sendingMannerReview(List<String> goodCheckedArr, List<String> badCheckedArr, String reviewText, 
@@ -204,6 +205,36 @@ public class MyPageServiceImpl implements MyPageService{
 			}
 			
 			return result;
+		}
+
+		//받은 거래후기 최신순 3개
+		@Override
+		public Map<String, Object> selectNewestReviewList(Member loginMember) {
+			
+			List<Review> reviewNewestList = dao.selectNewestReviewList(loginMember);
+			
+			System.out.println(reviewNewestList);
+			
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("reviewNewestList", reviewNewestList);
+			return map;
+		}
+
+		//(거래후기 목록 조회)
+		@Override
+		public Map<String, Object> reviewDetailList(Map<String, Object> map1, int cp) {
+			
+			//1. 전체 게시글 수 조회하기(판매중일때/판매완료일때/구매완료일때)
+			int listCount = dao.getDetailListCount(map1);
+			//2. 전체 게시글 수 + cp(현재페이지)를 이용해서 페이징 처리 객체를 생성한다.
+			MypageDetailPagination pagination = new MypageDetailPagination(listCount,cp);
+			
+			//
+			List<Review> reviewDetailList = dao.reviewDetailList(map1,pagination);
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("pagination", pagination);
+			map.put("reviewDetailList", reviewDetailList);
+			return map;
 		}
 
 

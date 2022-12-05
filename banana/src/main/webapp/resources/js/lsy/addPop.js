@@ -44,20 +44,8 @@ document.getElementById("first-category").addEventListener("click",function(e){
     } else {
         fourth.style.display = "none";  
     }
-    
-    const firstValue = e.target.getAttribute("value"); // 1
-    
 
-    
 })
-
-
-// document.getElementById("first-category").addEventListener("click", ()=>{
-
-//     document.getElementbyId("status").setAttribute("value","sell");
-//     document.getElementById("status").setAttribute("name","sell");
-//     document.getElementById("button").click();
-// })
 
 
 // (2)후기 카테고리 클릭 시 오픈
@@ -73,7 +61,7 @@ document.getElementById("fourth-category").addEventListener("click",function(){
         first.style.display = "none";
     }
     
-       
+
     
 })
 

@@ -36,6 +36,16 @@ public interface MyPageService {
 	Map<String, Object> selectGoodsList(Map<String, Object> map1, int cp); //새로 만든 구문
 
 
+	/**거래후기(REVIEW DB에 인서트) 한 다음에 그걸 가지고 매너후기 (REVIEW_RATIGN DB에 인서트)
+	 * @param goodCheckedArr
+	 * @param badCheckedArr
+	 * @param reviewText
+	 * @param loginMember
+	 * @param reviewGoodsNo
+	 * @param reviewBuyerNo
+	 * @param reviewSellerNo
+	 * @return
+	 */
 	int sendingMannerReview(List<String> goodCheckedArr,List<String> badCheckedArr, String reviewText, Member loginMember, int reviewGoodsNo,
 			int reviewBuyerNo,int reviewSellerNo);
 
@@ -53,6 +63,19 @@ public interface MyPageService {
 	 * @return
 	 */
 	int updateProfile(String webPath, String filePath, MultipartFile profileImage, Member loginMember)throws Exception;
+
+	/**받은 거래후기 최신순3개를 조회하기
+	 * @param loginMember
+	 * @return
+	 */
+	Map<String, Object> selectNewestReviewList(Member loginMember);
+
+	/**(거래후기 목록 조회)
+	 * @param map1
+	 * @param cp
+	 * @return
+	 */
+	Map<String, Object> reviewDetailList(Map<String, Object> map1, int cp);
 	 
 
 	

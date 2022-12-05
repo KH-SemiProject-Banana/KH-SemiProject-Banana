@@ -167,19 +167,24 @@
 			</section>
 			<!--섹션4********************************************************************************************************섹션1-->
 			<section class="myBanana-category">
-                   
-                     <div id= "first-category" class = "category">
+            
+                    <div id= "first-category" class = "category">
                         <a href="/member/myPage/main?myPageCt=1">판매내역</a>
-                     </div>
+                    </div>
 
                     <%-- c:if test = param.myPageCt=1 --%>
 
-                    <div id= "second-category" class = "category"><a href="/member/myPage/main?myPageCt=2">구매내역</a></div>
-                    <div id= "third-category" class = "category">관심목록</a></div>
-                    <div id= "fourth-category" class = "category">후기</a></div>
+                    <div id= "second-category" class = "category">
+                        <a href="/member/myPage/main?myPageCt=2">구매내역</a>
+                    </div>
+                    <div id= "third-category" class = "category">관심목록
+                    </div>
+                    <div id= "fourth-category" class = "category">
+                        <a href="/member/myPage/selectAllReview">후기</a>
+                    </div>
                     
                     
-              
+
 
             <%-- 판매내역 클랙->js에서 1을 input에 넣고
                 button을 클릭하도록 함

@@ -259,8 +259,10 @@
     align-items: center;
 }
 
+
 .row > .row1col1{
-    width: 200px;
+    /* width: 200px; */
+    width: 250px;
     text-align: center;
 }
 
@@ -270,12 +272,14 @@
 }
 
 .row > .row1col3{
-    width: 200px;
+    /* width: 200px; */
+    width: 250px;
     text-align: center;
 }
 
 .row > .row1col4{
-    width: 200px;
+    /* width: 200px; */
+    width: 250px;
     text-align: center;
 }
 

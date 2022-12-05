@@ -64,16 +64,7 @@ public class MyPageController {
 		return "member/myPage_main";
 	}
 
-	// 리뷰 상세 페이지 이동 1
-	@GetMapping("/review/good")
-	public String reviewGood() {
-		return "member/myPage_review_good";
-	}
-	// 리뷰 상세 페이지 이동 2
-	@GetMapping("/review/detail")
-	public String reviewDetail() {
-		return "member/myPage_review_detail";
-	}
+	
 
 	// 마이페이지 자기소개 수정 
 	@GetMapping("/changeIntroduce")
@@ -132,6 +123,16 @@ public class MyPageController {
 	}
 
 
+	/**거래후기(REVIEW DB에 인서트) 한 다음에 그걸 가지고 매너후기 (REVIEW_RATIGN DB에 인서트)
+	 * @param goodChecked
+	 * @param badChecked
+	 * @param reviewText
+	 * @param loginMember
+	 * @param reviewGoodsNo
+	 * @param reviewBuyerNo
+	 * @param reviewSellerNo
+	 * @return
+	 */
 	@GetMapping("/sendingReview")
 	@ResponseBody
 	public int sendingReview(
@@ -216,5 +217,46 @@ public class MyPageController {
 		   
 	      return "member/myPage_main";
 	   }
+	   
+	@GetMapping("/selectAllReview")
+	public String selectAllReview(
+							@SessionAttribute("loginMember") Member loginMember,	
+							Model model
+			){
+		
+		//받은 거래후기 최신순 3개 조회하기
+		Map<String, Object> map = service.selectNewestReviewList(loginMember);
+		model.addAttribute("map", map);
+		System.out.println(map);
+		
+		return "/member/myPage_main";
+	}
+	
+	// 리뷰 상세 페이지 이동 1
+		@GetMapping("/review/good")
+		public String reviewGood() {
+			return "member/myPage_review_good";
+		}
+		
+		
+	// 리뷰 상세 페이지 이동 2 (거래후기 목록 조회)
+	@GetMapping("/review/detail")
+	public String reviewDetailList(
+			@SessionAttribute("loginMember") Member loginMember, 
+			Model model,
+			@RequestParam(value="detailCt", required=false, defaultValue = "1") int detailCt,
+			@RequestParam(value="cp", required=false, defaultValue = "1") int cp
+			) {
+		Map<String, Object> map1 = new HashMap<String, Object>(); 
+		int memberNo = loginMember.getMemberNo();
+		map1.put("memberNo", memberNo); 
+		map1.put("detailCt", detailCt);
+		System.out.println(map1); //service가기 전에 잘 담겼나 확인용
+		Map<String, Object> map = service.reviewDetailList(map1,cp); 
+		model.addAttribute("map", map);
+		System.out.println(map); //뷰 가기 전에 잘 담겼나 확인용
+		
+		return "member/myPage_review_detail";
+	}
 	
 }

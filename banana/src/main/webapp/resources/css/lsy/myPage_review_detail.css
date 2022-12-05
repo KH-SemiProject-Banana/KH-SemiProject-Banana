@@ -154,3 +154,32 @@ a { text-decoration:none }
 .Scroll::-webkit-scrollbar-track{
     opacity: 1;
 }
+
+/* ************************************** */
+
+.pagination{
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+}
+
+.pagination li{
+    width: 20px;
+    margin: 0 5px;
+    text-align: center;
+}
+
+.pagination a{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.current{
+    font-weight: bold;
+    background-color: #455ba8;
+    border-radius: 50%;
+    color: white !important;
+    letter-spacing: 0 !important;
+}

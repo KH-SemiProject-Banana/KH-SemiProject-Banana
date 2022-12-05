@@ -114,4 +114,5 @@ public class CategoryServiceImpl implements CategoryService {
 		map.put("sellerGoods", sellerGoods);
 
 		return map;
+	}
 }

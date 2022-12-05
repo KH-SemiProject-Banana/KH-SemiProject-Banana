@@ -29,8 +29,11 @@
 
         <div>
             <div class="category">
-                <a href="/">HOME</a> 
-                <a href="/category/?categoryNo=${category.categoryNo}">> ${category.categoryName}</a> 
+                <a href="/">HOME</a>
+
+                <c:if test='${category.query == null}'>
+                    <a href="/category/?categoryNo=${category.categoryNo}">> ${category.categoryName}</a>
+                </c:if>
             </div>
 
             <div class="product">
@@ -230,6 +233,7 @@
     const memberNo = "${loginMember.memberNo}";
     const goodsNo = "${goodsInfo.goodsNo}";
     const sellerNo = "${sellerInfo.memberNo}";
+    const query = "${category.query}";
 </script>
 
 <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>

@@ -1,3 +1,4 @@
+// 슬라이드
 let slideIndex = 1;
 showSlides(slideIndex);
 
@@ -30,6 +31,7 @@ function showSlides(n) {
   dots[slideIndex-1].className += " active";
 }
 
+// 찜
 const like = document.getElementById("like");
 
 like.addEventListener("change", () => {
@@ -84,6 +86,7 @@ like.addEventListener("change", () => {
   }
 })
 
+// 자신과 바나나톡 X
 document.getElementById("talk").addEventListener("click", () => {
   if(memberNo == sellerNo) {
     alert("자신과 바나나톡을 할 수 없습니다.");
@@ -92,3 +95,8 @@ document.getElementById("talk").addEventListener("click", () => {
 
   location.href = "/member/bananaTalk";
 });
+
+// 검색어 남기기
+if(query != null) {
+  document.getElementById("query").value = query;
+}

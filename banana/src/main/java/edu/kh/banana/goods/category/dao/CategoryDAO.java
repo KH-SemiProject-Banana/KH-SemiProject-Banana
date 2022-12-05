@@ -165,4 +165,5 @@ public class CategoryDAO {
 	 */
 	public List<GoodsSell> selectSellerGoods(int goodsNo) {
 		return sqlSession.selectList("categoryMapper.selectSellerGoods", goodsNo);
+	}
 }

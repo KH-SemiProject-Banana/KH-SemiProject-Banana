@@ -173,6 +173,7 @@ a{
     transition-duration: 0.5s;
 }
 
+/* 설명 */
 .precautions{
     background-color: rgb(255, 216, 76);
     height: 100px;

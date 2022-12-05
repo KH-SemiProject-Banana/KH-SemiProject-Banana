@@ -324,21 +324,22 @@ function openPop(){
             case 2:
                 click2.style.display = "none";
             break;
-
-                            
+                    
+                    
             case 6:
                 click6.style.display = "none";
             break;
-    
+                        
             case 7:
                 click7.style.display = "none";   
             break;          
-            }
-
-            click.style.display = "block";
-            back1.style.display = "none";
+        }
+                        
+        click.style.display = "block";
+        back1.style.display = "none";
     })
-
+                    
+                    
 
     back2.addEventListener("click",() => {
         userreportsubmit.style.display = "none";

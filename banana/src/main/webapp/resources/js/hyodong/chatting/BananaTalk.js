@@ -248,24 +248,6 @@ const productInfor = () => {
 	})
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // 비동기로 채팅방 목록 조회
 const selectRoomList = () => {
 	$.ajax({

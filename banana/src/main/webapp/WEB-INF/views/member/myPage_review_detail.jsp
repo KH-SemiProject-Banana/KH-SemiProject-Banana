@@ -80,7 +80,7 @@
                     
                         <!-- 첫 페이지로 이동 -->
                         
-                        <li><a href="/member/myPage/review/detail?detailCt=${param.detailCt}&cp=1">&lt;&lt;</a></li>
+                        <%-- <li><a href="/member/myPage/review/detail?detailCt=${param.detailCt}&cp=1">&lt;&lt;</a></li> --%>
 
                         <!-- 이전 목록 마지막 번호로 이동 -->
                         <li><a href="/member/myPage/review/detail?detailCt=${param.detailCt}&cp=${pagination.prevPage}">&lt;</a></li>
@@ -112,7 +112,7 @@
                         <li><a href="/member/myPage/review/detail?detailCt=${param.detailCt}&cp=${pagination.nextPage}">&gt;</a></li>
 
                         <!-- 끝 페이지로 이동 -->
-                        <li><a href="/member/myPage/review/detail?detailCt=${param.detailCt}&cp=${pagination.maxPage}">&gt;&gt;</a></li>
+                        <%-- <li><a href="/member/myPage/review/detail?detailCt=${param.detailCt}&cp=${pagination.maxPage}">&gt;&gt;</a></li> --%>
 
                     </ul>
                 </div> 

@@ -18,4 +18,8 @@ public class Review {
 	String message;
 	String createdAt;
 
+	//추가
+	String title;
+	String memberNickname;
+	String mannerDescription;
 }

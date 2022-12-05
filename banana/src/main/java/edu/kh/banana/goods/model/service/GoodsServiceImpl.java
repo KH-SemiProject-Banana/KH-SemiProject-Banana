@@ -13,7 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import edu.kh.banana.common.Util;
 import edu.kh.banana.goods.GoodsWriteException;
-import edu.kh.banana.goods.model.controller.GoodsUpdateException;
+import edu.kh.banana.goods.controller.GoodsUpdateException;
 import edu.kh.banana.goods.model.dao.GoodsDAO;
 import edu.kh.banana.goods.model.vo.GoodsImage;
 import edu.kh.banana.goods.model.vo.GoodsSell;

@@ -47,6 +47,8 @@
 			<result property="mannerDescription" column="MANNER_DESCRIPTION" />
 			<result property="profileImage" column="PROFILE_IMG" />
 			<result property="address" column="MEMBER_ADDRESS" />
+			<result property="mannerCount" column="MANNER_COUNT" />
+			<result property="mannerNo" column="MANNER_NO" />
 			
 			
 			<!-- 없는 애도 있을 텐데 (ex)MEMBER_DEL_FL 그럼 걔는 걍 안담겨서 null로 나옴... -->
@@ -339,6 +341,35 @@ SELECT A.* FROM
 	)
 </select>
 
+<select id="mannerTopList" resultMap="Review_rm">
+SELECT A.* FROM
+(SELECT D.MANNER_NO, COUNT(*) MANNER_COUNT, MANNER_DESCRIPTION
+FROM REVIEW
+JOIN REVIEW_RATING RV ON (RATING_NO = REVIEW_NO)
+JOIN REVIEW_DESCRIPTION D ON (RV.MANNER_NO = D.MANNER_NO)
+WHERE RECEIVER_NO = #{memberNo}
+GROUP BY D.MANNER_NO, MANNER_DESCRIPTION
+ORDER BY MANNER_COUNT DESC) A
+WHERE ROWNUM <![CDATA[<= 5]]>
+</select>
+
+<select id="selectMannerList" resultMap = "Review_rm">
+SELECT D.MANNER_NO, COUNT(*) MANNER_COUNT, MANNER_DESCRIPTION
+FROM REVIEW
+JOIN REVIEW_RATING RV ON (RATING_NO = REVIEW_NO)
+JOIN REVIEW_DESCRIPTION D ON (RV.MANNER_NO = D.MANNER_NO)
+WHERE RECEIVER_NO = #{memberNo} 
+<choose>
+	<when test='mannerCt == "1"'>
+	 AND D.MANNER_NO BETWEEN 1 AND 7
+	</when>
+	<otherwise>
+	AND D.MANNER_NO BETWEEN 8 AND 16
+	</otherwise>
+</choose>
+GROUP BY D.MANNER_NO, MANNER_DESCRIPTION
+ORDER BY MANNER_COUNT DESC
+</select>
 
 
 

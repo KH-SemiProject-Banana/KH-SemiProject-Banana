@@ -183,18 +183,20 @@ public class MyPageDAO {
 		return sqlSession.selectOne("myPageMapper.getDetailListCount", map1);
 	}
 
-	
+	/**받은 매너온도 탑5
+	 * @param loginMember
+	 * @return
+	 */
+	public List<Review> selectMannerTopList(Member loginMember) {
+		
+		return sqlSession.selectList("myPageMapper.mannerTopList",loginMember);
+	}
 
-	
-
-	
-	
-
-
-
-	
-
-
-	
-
-}
+	/**매너온도 목록 조회하기
+	 * @param map1
+	 * @return
+	 */
+	public List<Review> reviewList(Map<String, Object> map1) {
+		
+		return sqlSession.selectList("myPageMapper.selectMannerList",map1);
+	}}

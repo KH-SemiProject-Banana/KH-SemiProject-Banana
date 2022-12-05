@@ -208,15 +208,18 @@ public class MyPageServiceImpl implements MyPageService{
 		}
 
 		//받은 거래후기 최신순 3개
+		//받은 매너온도 탑5
 		@Override
 		public Map<String, Object> selectNewestReviewList(Member loginMember) {
 			
 			List<Review> reviewNewestList = dao.selectNewestReviewList(loginMember);
-			
+			List<Review> mannerTopList = dao.selectMannerTopList(loginMember);
 			System.out.println(reviewNewestList);
+			System.out.println(mannerTopList);
 			
 			Map<String, Object> map = new HashMap<String, Object>();
 			map.put("reviewNewestList", reviewNewestList);
+			map.put("mannerTopList", mannerTopList);
 			return map;
 		}
 
@@ -231,10 +234,32 @@ public class MyPageServiceImpl implements MyPageService{
 			
 			//
 			List<Review> reviewDetailList = dao.reviewDetailList(map1,pagination);
+			
+			
 			Map<String, Object> map = new HashMap<String, Object>();
 			map.put("pagination", pagination);
 			map.put("reviewDetailList", reviewDetailList);
 			return map;
+		}
+
+
+		/**거래후기 전체 조회하기
+		 *
+		 */
+		@Override
+		public List<Review> reviewList(Member loginMember, int mannerCt) {
+			
+			Map<String, Object> map1 = new HashMap<String, Object>();
+			map1.put("memberNo", loginMember.getMemberNo());
+			map1.put("mannerCt", mannerCt);
+			
+			//Map<String, Object> map2 = new HashMap<String, Object>();
+			
+			List<Review> reviewList = dao.reviewList(map1);
+			//map2.put("reviewList", reviewList);
+			
+			
+			return reviewList;
 		}
 
 

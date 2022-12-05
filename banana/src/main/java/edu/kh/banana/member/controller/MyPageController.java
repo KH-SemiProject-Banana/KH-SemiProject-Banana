@@ -234,7 +234,18 @@ public class MyPageController {
 	
 	// 리뷰 상세 페이지 이동 1
 		@GetMapping("/review/good")
-		public String reviewGood() {
+		public String reviewGood(
+				@SessionAttribute("loginMember") Member loginMember,	
+				Model model,
+				@RequestParam(value="mannerCt", required=false, defaultValue = "1") int mannerCt
+				) {
+			
+			List<Review> reviewList = service.reviewList(loginMember,mannerCt); 
+			model.addAttribute("reviewList", reviewList);
+			System.out.println(reviewList); //뷰 가기 전에 잘 담겼나 확인용
+			
+		
+			
 			return "member/myPage_review_good";
 		}
 		

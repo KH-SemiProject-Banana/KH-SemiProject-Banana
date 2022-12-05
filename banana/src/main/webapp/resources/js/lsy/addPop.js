@@ -249,7 +249,7 @@ function openReview(ratingNo,buyerNo,buyerNickname,title,sellerNo,sellerNickname
     console.log(title);
     console.log(sellerNo);
     console.log(sellerNickname);
-  
+
 
     //2번째 팝업페이지가 block되게 한다!
     document.getElementById("popup_layer2").style.display = "block";

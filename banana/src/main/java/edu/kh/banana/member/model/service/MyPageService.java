@@ -76,6 +76,13 @@ public interface MyPageService {
 	 * @return
 	 */
 	Map<String, Object> reviewDetailList(Map<String, Object> map1, int cp);
+
+	/**거래후기 전체 조회하기
+	 * @param loginMember
+	 * @param mannerCt
+	 * @return
+	 */
+	List<Review> reviewList(Member loginMember, int mannerCt);
 	 
 
 	

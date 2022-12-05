@@ -65,7 +65,7 @@
                             <!-- </div> -->
                             <!--팝업 컨텐츠 영역-->
                             <div class="popup_cont4 " id = "popup_con3">
-                                <form action = "/member/myPage/updateProfile" method = "POST" 
+                                <form action = "/member/myPage/updateProfile1" method = "POST" 
                                         name = "myPage-frm" enctype = "multipart/form-data"
                                         onsubmit = "return profileValidate()">
 

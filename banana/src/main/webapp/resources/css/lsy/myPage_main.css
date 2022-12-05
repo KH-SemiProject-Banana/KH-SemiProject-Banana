@@ -45,7 +45,10 @@
     height: 30px;
 }
 
-a { text-decoration:none }
+a { 
+    text-decoration:none;
+    color: black;
+}
 
 .myBanana{
     height :1500px;

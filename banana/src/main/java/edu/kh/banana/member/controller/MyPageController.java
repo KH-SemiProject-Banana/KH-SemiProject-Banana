@@ -217,7 +217,8 @@ public class MyPageController {
 		   
 	      return "member/myPage_main";
 	   }
-	   
+	
+	
 	@GetMapping("/selectAllReview")
 	public String selectAllReview(
 							@SessionAttribute("loginMember") Member loginMember,	

@@ -19,9 +19,14 @@ document.getElementById("profilePop").addEventListener("click",function(){
 switch(myPageCt){
     case 1: document.getElementById("first-category").style.fontWeight = "bold"; 
     document.getElementById("sold").style.fontWeight = "bold";
-    document.getElementById("popup_layer4").style.display = "none";
+    //document.getElementById("popup_layer4").style.display = "none";
+    //const changeJsp = document.querySelector("#changeJsp");
+    //changeJsp.innerHTML = "";
     break;
-    case 2: document.getElementById("second-category").style.fontWeight = "bold"; break;
+    case 2: document.getElementById("second-category").style.fontWeight = "bold"; 
+    // const sellList = document.getElementById("myBanana-sell");
+    // sellList.innerHTML = "";
+    break;
     case 5: 
     document.getElementById("first-category").style.fontWeight = "bold";
     document.getElementById("selling").style.fontWeight = "bold"; break;

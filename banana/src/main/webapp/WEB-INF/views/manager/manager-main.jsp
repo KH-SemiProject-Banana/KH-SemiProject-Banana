@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 
 <!DOCTYPE html>
@@ -110,7 +111,7 @@
                     <button>+ 회원 등록</button>
                 </div>
 
-                <form id="frmSearchBase" method="get" class="member-search">
+                <form id="frmSearchBase" method="post" class="member-search" action="/manager/memberSearch">
                     <input type="hidden" name="sort" value="entryDt asc">
                     <input type="hidden" name="sort" value="entryDt asc">
                     <input type="hidden" name="sort" value="entryDt asc">
@@ -121,10 +122,9 @@
                             <div class="search-detail-select-box">
                                 <select name="key" id="key" class="form-control">
                                     <option value="email">이메일</option>
-                                    <option value="nickNm">닉네임</option>
-                                    <option value="cellphone">휴대폰번호</option>
+                                    <option value="nickname">닉네임</option>
                                 </select>
-                                <input type="text" name="keyword" value="" class="form-control">
+                                <input type="text" name="query" class="form-control">
                             </div>
                         </div>
 
@@ -132,7 +132,7 @@
                             <div class="search-detail-keyword">차단여부</div>
                             <div>
                                 <label class="radio-inline">
-                                    <input type="radio" name="isBlock" value="blockAll"  checked>전체
+                                    <input type="radio" name="isBlock" value="allBlock" checked>전체
                                 </label>
                                 <label class="radio-inline">
                                     <input type="radio" name="isBlock" value="notBlock">활동중
@@ -147,7 +147,7 @@
                             <div class="search-detail-keyword">탈퇴여부</div>
                             <div>
                                 <label class="radio-inline">
-                                    <input type="radio" name="isDelete" value="deleteAll"  checked>전체
+                                    <input type="radio" name="isDelete" value="allDelete" checked>전체
                                 </label>
                                 <label class="radio-inline">
                                     <input type="radio" name="isDelete" value="notDelete">활동중
@@ -162,11 +162,11 @@
                             <div class="search-detail-keyword">회원가입일</div>
                             <div>
                                 <div class="input-group js-datepicker">
-                                    <input type="date" id="btn-icon-calander" name="calander">
+                                    <input type="date" id="btn-icon-calander" name="calanderBefore">
                                 </div>
                                 ~
                                 <div class="input-group js-datepicker">
-                                    <input type="date" id="btn-icon-calander" name="calander">
+                                    <input type="date" id="btn-icon-calander" name="calanderAfter">
                             </div>
                         
                             </div>
@@ -180,77 +180,112 @@
 
                 <div class="pull-left">
                     검색
-                    <strong>0</strong>
+                    <strong>${fn:length(memberList)}</strong>
                     명 / 전체
-                    <strong>6</strong>
+                    <strong>${memberCount}</strong>
                     명
                 </div>
-                <div class="search-result-area">
-                    <div class="search-result-div" id="number">
-                        <div class="search-result-tab">번호</div>
-                        <div class="search-content">2</div>
-                        <div  class="search-content">1</div>
-                    </div>
-                    <div class="search-result-div"  id="email">
-                        <div class="search-result-tab">이메일</div>
-                        <div class="search-content">ekdnjs113@naver.com</div>
-                        <div class="search-content">dlapdlfdlek@gmail.com</div>
-                    </div>
-                    <div class="search-result-div" id="nickname">
-                        <div class="search-result-tab">닉네임</div>
-                        <div class="search-content">내용</div>
-                        <div class="search-content">내용</div>
-                    </div>
-                    <div class="search-result-div" id="pay">
-                        <div class="search-result-tab">바나나페이</div>
-                        <div class="search-content">0원</div>
-                        <div class="search-content">0원</div>
-                    </div>
-                    <div class="search-result-div" id="sellNo">
-                        <div class="search-result-tab">판매</div>
-                        <div class="search-content">0건</div>
-                        <div class="search-content">0건</div>
-                    </div>
-                    <div class="search-result-div" id="buyNo">
-                        <div class="search-result-tab">구매</div>
-                        <div class="search-content">0건</div>
-                        <div class="search-content">0건</div>
-                    </div>
-                    <div class="search-result-div" id="signDate">
-                        <div class="search-result-tab">회원 가입일</div>
-                        <div class="search-content">여기수정해야함</div>
-                        <div class="search-content">2021-11-25</div>
-                    </div>
-                    <div class="search-result-div" id="delFlag">
-                        <div class="search-result-tab">탈퇴여부</div>
-                        <div class="search-content">활동중</div>
-                        <div class="search-content">탈퇴</div>
-                    </div>
-                    <div class="search-result-div" id="blockFlag">
-                        <div class="search-result-tab">차단여부</div>
-                        <div class="search-content">차단</div>
-                        <div class="search-content">활동중</div>
-                    </div>
-                    <div class="search-result-div"id="changeData">
-                        <div class="search-result-tab" >정보수정</div>
-                        <div class="search-content">
-                            <button type="button" class="btn btn-white btn-sm btnModify">수정</button>
-                        </div>
-                        <div class="search-content">
-                            <button type="button" class="btn btn-white btn-sm btnModify">수정</button>
-                        </div>
-                    </div>
 
-                    <div class="search-result-div"id="deleteData">
-                        <div class="search-result-tab" >정보삭제</div>
-                        <div class="search-content">
-                            <button type="button" class="btn btn-white btn-sm btnDel">삭제</button>
+                
+                
+                    <div class="search-result-area">
+                        <div class="search-result-div" id="number">
+                            <div class="search-result-tab">번호</div>
+                            <c:forEach var="member" items="${memberList}">
+                                <div class="search-content">${member.memberNo}</div>
+                            </c:forEach>
                         </div>
-                        <div class="search-content">
-                            <button type="button" class="btn btn-white btn-sm btnDel">삭제</button>
+                        <div class="search-result-div"  id="email">
+                            <div class="search-result-tab">이메일</div>
+                            <c:forEach var="member" items="${memberList}">
+                                <div class="search-content">${member.memberEmail}</div>
+                            </c:forEach>
+                        </div>
+                        <div class="search-result-div" id="nickname">
+                            <div class="search-result-tab">닉네임</div>
+                            <c:forEach var="member" items="${memberList}">
+                                <div class="search-content">${member.memberNickname}</div>
+                            </c:forEach>
+                        </div>
+                        <div class="search-result-div" id="pay">
+                            <div class="search-result-tab">바나나페이</div>
+                            <c:forEach var="member" items="${memberList}">
+                                <div class="search-content">${member.remainPay}원</div>
+                            </c:forEach>
+                        </div>
+                        <div class="search-result-div" id="sellNo">
+                            <div class="search-result-tab">판매</div>
+                            <c:forEach var="member" items="${memberList}">
+                                <div class="search-content">${member.sellCount}건</div>
+                            </c:forEach>
+                        </div>
+                        <div class="search-result-div" id="buyNo">
+                            <div class="search-result-tab">구매</div>
+                            <c:forEach var="member" items="${memberList}">
+                                <div class="search-content">${member.buyCount}건</div>
+                            </c:forEach>
+                        </div>
+                        <div class="search-result-div" id="signDate">
+                            <div class="search-result-tab">회원 가입일</div>
+                            <c:forEach var="member" items="${memberList}">
+                                <div class="search-content">${member.enrollDate}</div>
+                            </c:forEach>
+                        </div>
+                        <div class="search-result-div" id="boardBlock">
+                            <div class="search-result-tab">게시글차단</div>
+                            <c:forEach var="member" items="${memberList}">
+                                <div class="search-content">${member.boardBlockCount}건</div>
+                            </c:forEach>
+                        </div>
+                        <div class="search-result-div" id="userBlock">
+                            <div class="search-result-tab">유저차단</div>
+                            <c:forEach var="member" items="${memberList}">
+                                <div class="search-content">${member.userBlockCount}건</div>
+                            </c:forEach>
+                        </div>
+                        <div class="search-result-div" id="blockFlag">
+                            <div class="search-result-tab">차단여부</div>
+                            <c:forEach var="member" items="${memberList}">
+                                <c:if test="${member.blockFlag == 'Y'}">
+                                    <div class="search-content">차단</div>
+                                </c:if>
+                                <c:if test="${member.blockFlag == 'N'}">
+                                    <div class="search-content">활동중</div>
+                                </c:if>
+                            </c:forEach>
+                            
+                        </div>
+                        <div class="search-result-div" id="delFlag">
+                            <div class="search-result-tab">탈퇴여부</div>
+                            <c:forEach var="member" items="${memberList}">
+                                <c:if test="${member.memberDeleteFlag == 'N'}">
+                                    <div class="search-content">활동중</div>
+                                </c:if>
+                                <c:if test="${member.memberDeleteFlag == 'Y'}">
+                                    <div class="search-content">탈퇴</div>
+                                </c:if>
+                            </c:forEach>
+
+                        </div>
+                        <div class="search-result-div"id="changeData">
+                            <div class="search-result-tab" >정보수정</div>
+                            <c:forEach var="member" items="${memberList}">
+                                <div class="search-content">
+                                    <button type="button" class="btn btn-white btn-sm btnModify">수정</button>
+                                </div>
+                            </c:forEach>
+                        </div>
+
+                        <div class="search-result-div"id="deleteData">
+                            <div class="search-result-tab" >정보삭제</div>
+                            <c:forEach var="member" items="${memberList}">
+                                <div class="search-content">
+                                    <button type="button" class="btn btn-white btn-sm btnDel">삭제</button>
+                                </div>
+                            </c:forEach>
                         </div>
                     </div>
-                </div>
+                
 
                 <div class="center">
                     <nav>
@@ -265,5 +300,6 @@
             
         </main>
         <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+        <script src="/resources/js/manager/manager-main.js"></script>
     </body>
 </html>

@@ -1,11 +1,15 @@
 package edu.kh.banana.manager.controller;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -72,5 +76,30 @@ public class ManagerController {
 		return "manager/manager-board";
 	}
 
+	
+	/** 회원 목록 조회
+	 * @param paramMap
+	 * @param model
+	 * @return
+	 */
+	@PostMapping("/memberSearch")
+	public String memberSearch(@RequestParam Map<String, Object> paramMap,
+			Model model
+			) {
+		
+		// 조건이 있는 회원 목록 조회
+		List<Member> memberList = service.memberSearch(paramMap);
+		
+		
+		// 전체 회원 목록 조회
+		int memberCount = service.memberCount();
+		
+		model.addAttribute("memberCount", memberCount);
+		model.addAttribute("memberList", memberList);
+		
+		
+		
+		return "manager/manager-main";
+	}
 
 }

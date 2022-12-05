@@ -69,12 +69,6 @@
 			)
 		</if>
 		
-		<!-- <if test='query != null'>
-			AND (TITLE LIKE '%${query}%' 
-				OR DESCRIPTION  LIKE '%${query}%' )
-		</if> -->
-		
-		
 		<if test='order == 1'>
 			ORDER BY CREATED_AT DESC
 		</if>
@@ -154,9 +148,7 @@
 	 	DELETE FROM GOODS_LIKE WHERE MEMBER_NO = #{memberNo} AND GOODS_NO = #{goodsNo}
 	 </delete>
 	 
-	 
-	 
-	 <!-- 검색시 게시글 수 조회 -->
+	 <!-- 검색 시 게시글 수 조회 -->
 	 <select id="getQueryListCount" resultType="_int">
 	 	SELECT COUNT(*)
 		FROM GOODS_SELL 
@@ -166,8 +158,7 @@
 		AND GOODS_DEL_FL = 'N'
 	 </select>
 	 
-	 
-	 <!-- 검색시 게시글 목록 조회 -->
+	 <!-- 검색 시 게시글 목록 조회 -->
 	 <select id="selectQueryGoodsList" resultMap="goods_rm">
 	 	SELECT GS.GOODS_NO, TITLE, SELL_PRICE, CREATED_AT,
 		

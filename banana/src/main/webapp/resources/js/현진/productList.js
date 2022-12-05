@@ -105,6 +105,33 @@ for(let i = 0; i < likeChk.length; i++) {
     })
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 검색어 남겨두기
+if(query != null) {
+    document.getElementById("query").value = query;
+}
+
 // 시행착오 코드
 
 // // 1페이지(초기화면)

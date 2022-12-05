@@ -30,34 +30,27 @@ public class CategoryController {
 						   @SessionAttribute(value="loginMember", required=false) Member loginMember,
 					       Model model) {
 		
-		
-
 		if(loginMember != null) {
 			category.setLoginMemberNo(loginMember.getMemberNo());
 		}
 		
-
-		
 		category.setLocation(location);
 		
 		Map<String, Object> map = null;
-		
-		
+			
 		// 검색어가 있을 때
 		if(query != null) {
 			category.setCategoryName(query);
 			category.setQuery(query);
 			map = service.selectQueryGoodsList(category);
 		}
-		
-		
-		// '인기검색'
+				
+		// 인기검색
 		else if(category.getCategoryNo() == 0) {
 			category.setCategoryName("인기매물");
 			map = service.selectLikeGoodsList(category);
 		}
 		
-
 		else {
 			category.setCategoryName(service.categoryPage(category.getCategoryNo()));
 			map = service.selectGoodsList(category);

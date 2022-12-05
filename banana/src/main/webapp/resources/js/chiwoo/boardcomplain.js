@@ -13,6 +13,8 @@ const abc5 = document.getElementById("abc5");
 const fin = document.getElementById("fin");
 // const ctg = document.getElementsByClassName("ctg")
 reportsubmit.style.display = "none";
+const back1 = document.getElementById("back1");
+const back2 = document.getElementById("back2");
 
 
 function openPop(){
@@ -235,7 +237,7 @@ function openPop(){
     document.getElementById("reportsubmit").addEventListener("click",function(){
 
         $.ajax({
-            url : "/duplicateCheck",
+            url : "/duplicateCheck2",
             data:{"category1":category1,"category2":category2},
             success:(result) => {
                 if(result>0){ //중복된 값이 있다.
@@ -255,6 +257,51 @@ function openPop(){
 
         })
 
+    })    
+
+
+
+
+
+
+
+    
+
+    back1.addEventListener("click",() => {
+        userreportsubmit.style.display = "none";
+        switch (ctg1.value) {
+            case 1:
+                click1.style.display = "none";
+            break;
+                
+            case 2:
+                click2.style.display = "none";
+            break;
+
+                            
+            case 3:
+                click3.style.display = "none";
+            break;
+
+            case 4:
+                click4.style.display = "none";   
+            break;
+            
+            case 5:
+                click5.style.display = "none";   
+            break;    
+        }
+
+            click.style.display = "block";
+            back1.style.display = "none";
+    })
+
+
+    back2.addEventListener("click", () => {
+        userreportsubmit.style.display = "none";
+        click.style.display = "block";
+        back2.style.display = "none";
+    });
 }
 
         

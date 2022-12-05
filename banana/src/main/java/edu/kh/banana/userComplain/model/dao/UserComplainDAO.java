@@ -24,4 +24,9 @@ public class UserComplainDAO {
 		return sqlsession.selectOne("usercomplainMapper.userDuplication",map);
 	}
 
+	public int userBlock(int memberNo, int userBlocked) {
+		
+		return sqlsession.insert("usercomplainMapper.userBlock");
+	}
+
 }

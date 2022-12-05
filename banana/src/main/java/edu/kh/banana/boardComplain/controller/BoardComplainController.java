@@ -27,7 +27,7 @@ public class BoardComplainController {
 		return "board/boardcomplain";
 	}
 	
-	@GetMapping("/duplicateCheck")
+	@GetMapping("/duplicateCheck2")
 	@ResponseBody
 	public int duplicateCheck (int category1, int category2 ) {
 		

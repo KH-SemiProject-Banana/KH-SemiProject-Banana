@@ -315,6 +315,7 @@ function openPop(){
     // back2.style.display = "none";
 
     back1.addEventListener("click",() => {
+        userreportsubmit.style.display = "none"; // 문제 생기면 지울것
         switch (ctg1.value) {
             case 1:
                 click1.style.display = "none";

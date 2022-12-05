@@ -48,15 +48,17 @@ public class UserComplainController {
 	
 	
 	
-	@PostMapping("/userreportsubmit")
+	@PostMapping("/userreportsubmit/")
 	public String userReportSubmit(@RequestParam Map<String, Object> submit, 
 									@SessionAttribute("loginmember") Member loginmember,
 									RedirectAttributes ra,
-									@RequestHeader("referer") String referer
+									@RequestHeader("referer") String referer,
 									/*@PathVariable("complained) int complained*/
-									) {
+									@RequestParam(value = "userblock") int userBlocked
+																	) {
 		
 		
+		int blockedResult = service.userBlock(loginmember.getMemberNo(), userBlocked);
 		
 		int complained = 15; // 나중에 수정(@PathVariable)
 		

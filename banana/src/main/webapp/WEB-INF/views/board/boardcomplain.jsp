@@ -43,8 +43,18 @@
                     <!--팝업 컨텐츠 영역-->
                     <div class="report-total">
                         <div class="report-top">
-                            <a href="#"> <i class="fa-solid fa-arrow-left-long"></i> 게시글 신고</a>
-                    
+
+
+                            <%--  2페이지에서 1페이지로 가는 뒤로가기 --%>
+                            <i class="fa-solid fa-arrow-left-long" id="back1"></i>
+
+                            <%-- 3페이지에서 2페이지로 가는 뒤로가기 --%>
+                            <i class="fa-solid fa-arrow-left-long" id="back2"></i>
+
+                        
+
+                                <span id="board-com">게시글 신고</span>
+                
                         </div>
                     </div>
                     <div>
@@ -74,64 +84,64 @@
                     </div>
                     
                     <div id="click1">
-                        <div class="report-reason def">
+                        <div class="report-reason">
                             <div>생명 거래 : 식물 제외 <i class="fa-solid fa-chevron-right"></i></div>
                         </div>
-                        <div class="report-reason def">
+                        <div class="report-reason">
                             <div> 의약품, 의료기기, 건강기능식품 <i class="fa-solid fa-chevron-right"></i></div>
                         </div>
-                        <div class="report-reason def">
+                        <div class="report-reason">
                             <div>상표권 침해 : 가품, 이미테이션 <i class="fa-solid fa-chevron-right"></i></div>
                         </div>
-                        <div class="report-reason def">
+                        <div class="report-reason">
                             <div >청소년 유해 : 주류, 담배, 라이터 <i class="fa-solid fa-chevron-right"></i></div>
                         </div>
-                        <div class="report-reason def">
+                        <div class="report-reason">
                             <div >청소년 유해 : 음란물, 성인물, 성인용품 <i class="fa-solid fa-chevron-right"></i></div>
                         </div>
-                        <div class="report-reason def">
+                        <div class="report-reason">
                             <div >콘텍트 렌즈, 도수 있는 안경 <i class="fa-solid fa-chevron-right"></i></div>
                         </div>
-                        <div class="report-reason def">
+                        <div class="report-reason">
                             <div >개인정보 : 신분증, 통장, 계정 <i class="fa-solid fa-chevron-right"></i></div>
                         </div>
-                        <div class="report-reason def">
+                        <div class="report-reason">
                             <div >무허가 식품 : 수제, 음식, 개봉 식품 <i class="fa-solid fa-chevron-right"></i></div>
                         </div>
-                        <div class="report-reason def">
+                        <div class="report-reason">
                             <div >상업적인 핸드메이드<i class="fa-solid fa-chevron-right"></i></div>
                         </div>
-                        <div class="report-reason def">
+                        <div class="report-reason">
                             <div >불법 기기: 안전인증 누락, 불법 개조, 렌탈<i class="fa-solid fa-chevron-right"></i></div>
                         </div>
-                        <div class="report-reason def">
+                        <div class="report-reason">
                             <div >상업적인 핸드메이드<i class="fa-solid fa-chevron-right"></i></div>
                         </div>
-                        <div class="report-reason def">
+                        <div class="report-reason">
                             <div >불법 유사 의료 행위 : 반영구, 문신<i class="fa-solid fa-chevron-right"></i></div>
                         </div>
-                        <div class="report-reason def">
+                        <div class="report-reason">
                             <div >위험한 물품 : 총포, 도검, 전자충격기<i class="fa-solid fa-chevron-right"></i></div>
                         </div>
-                        <div class="report-reason def">
+                        <div class="report-reason">
                             <div >군용품 : 신형 군복, 군용장구, 군수품<i class="fa-solid fa-chevron-right"></i></div>
                         </div>
-                        <div class="report-reason def ">
+                        <div class="report-reason">
                             <div >유해 화학 물질 : 농약, 환각물질<i class="fa-solid fa-chevron-right"></i></div>
                         </div>
-                        <div class="report-reason def">
+                        <div class="report-reason">
                             <div div>유류 : 경유, LPG, 휘발유<i class="fa-solid fa-chevron-right"></i></div>
                         </div>
-                        <div class="report-reason def">
+                        <div class="report-reason">
                             <div div>정부 제공 : 재난지원금, 쌀 꾸러미, 지역상품권, 종량제봉투<i class="fa-solid fa-chevron-right"></i></div>
                         </div>
-                        <div class="report-reason def ">
+                        <div class="report-reason">
                             <div div>화장품 샘플<i class="fa-solid fa-chevron-right"></i></div>
                         </div>
-                        <div class="report-reason def">
+                        <div class="report-reason">
                             <div div>조건이 달린 무료나눔<i class="fa-solid fa-chevron-right"></i></div>
                         </div>
-                        <div class="report-reason def">
+                        <div class="report-reason">
                             <div div>기타 : 헌혈증, 초대권, 암표, 데이터, USD 1000 이상<i class="fa-solid fa-chevron-right"></i></div>
                         </div>
                     </div>
@@ -241,7 +251,7 @@
                             </div>
 
                             <div>
-                              
+                            
                             </div>
                         </div>
                         

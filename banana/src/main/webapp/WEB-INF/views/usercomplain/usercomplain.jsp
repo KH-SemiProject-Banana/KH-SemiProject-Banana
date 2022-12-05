@@ -164,13 +164,13 @@
                                 </div>
                         
                                 <div class="content-block">
-                                    <input type="checkbox" >이 사람과 글을 보고싶지 않아요
+                                    <input type="checkbox" name = "userblock" value = "${}">이 사람을 더이상 보고싶지 않아요
                                 </div>
                         
                                 <div class="report-notice">
                                     ('나의 바나나> 설정 > 게시글 미노출 > 사용자 관리' 에서 취소할 수 있습니다.)
                                 </div>
-                                <div class="report-submit">
+                                
                                 
                                 <div class="notice">
                                         <p>

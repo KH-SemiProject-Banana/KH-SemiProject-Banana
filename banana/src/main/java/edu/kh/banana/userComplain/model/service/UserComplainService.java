@@ -8,4 +8,11 @@ public interface UserComplainService {
 
 	int userDuplication(Map<String, Object> map);
 
+	/** 유저 블락
+	 * @param memberNo
+	 * @param userBlocked
+	 * @return result
+	 */
+	int userBlock(int memberNo, int userBlocked);
+
 }

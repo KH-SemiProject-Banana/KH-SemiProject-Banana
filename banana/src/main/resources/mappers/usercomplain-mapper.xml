@@ -22,6 +22,18 @@
 	AND U_COM2_CTG_NO = #{category2}; 
 </select>
 
+<insert id="userBlock">
+  INSERT INTO "USER_BLOCK"
+  VALUES(#{memberNo}, 
+  		#{},
+  		#{},
+  		#{},
+  		#{},
+  		#{}
+  		DEFAULT)
+</insert>
+
+
   
   
 </mapper>

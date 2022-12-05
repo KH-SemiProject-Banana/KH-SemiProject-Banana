@@ -25,4 +25,10 @@ public class UsercomplainServiceImpl implements UserComplainService {
 		return dao.userDuplication(map);
 	}
 
+	@Override
+	public int userBlock(int memberNo, int userBlocked) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

@@ -76,20 +76,21 @@
 .productStatus {
     height: 100%;
     width: 60px;
-    font-size: 14px;
+    font-size: 15px;
     text-align: left;
     font-weight: bold;
+    margin: 0 10px 0 0;
     
 }
 /* 상품 제목 */
 .productName{
-    font-size: 14px;
+    font-size: 15px;
     height: 100%;
     text-align: center;
 }
 /* 상품가격 부분 */
 .productPrice{
-    font-size: 14px;
+    font-size: 13px;
     font-weight: bold;
     text-align: center;
 }
@@ -222,7 +223,7 @@
 
 /* 닉네임 */
 .target-name{
-    font-size: 1em;
+    font-size: 0.8em;
 	font-weight: bold;
 }
 /* 채팅온 시간 */
@@ -449,7 +450,7 @@
 }
 
 
-/* 테스트 */
-/* .display-chatting:last-child > time {
-    color:  red;
-} */
+a{
+    color: black;
+    text-decoration:none 
+}

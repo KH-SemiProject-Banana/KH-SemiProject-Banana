@@ -157,21 +157,30 @@ input:-webkit-autofill:active  {
 }
 
 /*내정보 수정 완료 버튼 */
-.SignUp{ 
-    width: 300px;
+.SignUp, .secession{ 
+    width: 200px;
     height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 20px;
-    background-color: var(--yellow);
     color: black;
     cursor: pointer;
     font-weight: bold;
     border: none;
 }
 
-.SignUp:hover{
+.SignUp:hover,.secession:hover{
     transform: scale(0.9);
 }
+.SignUp{
+    margin: 0 0 0 20px;
+    background-color: var(--yellow);
+    
+}
+.secession{
+    text-decoration: none;
+    background-color: #ddd;
+}
 /*************************************************/
+

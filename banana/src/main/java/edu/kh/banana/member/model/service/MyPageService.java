@@ -53,6 +53,15 @@ public interface MyPageService {
 	 * @return
 	 */
 	int updateProfile(String webPath, String filePath, MultipartFile profileImage, Member loginMember)throws Exception;
+
+
+	/** 회원 탈퇴
+	 * @param memberNo
+	 * @return result
+	 */
+	int secessionSelect(int memberNo, Map<String, Object> parMap);
+
+
 	 
 
 	

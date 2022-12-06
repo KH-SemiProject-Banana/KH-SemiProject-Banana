@@ -206,6 +206,33 @@ public class MyPageServiceImpl implements MyPageService{
 			return result;
 		}
 
+		// 회원 탈퇴 
+		@Transactional
+		@Override
+		public int secessionSelect(int memberNo, Map<String, Object> parMap) {
+			
+			// 1. 회원탈퇴 회원 조회 (아이디/ 비밀번호/이름)
+	    	Member memeberInf = dao.secessionSelect(memberNo);
+ 
+	    	
+			// 2. 입력 값 과 조회된 값이 같은지 확인
+	    	// 비밀번호가 맞는지 먼저 확인
+			if (bcrypt.matches((CharSequence) parMap.get("memberPw"), memeberInf.getMemberPw())) {
+			
+				// map 에서 값 꺼내서 아이디 , 이름 같은지 조회
+				if ( parMap.get("memberNewEmail").equals(memeberInf.getMemberEmail()) &&
+					 parMap.get("memberName").equals(memeberInf.getMemberName())	) {
+					
+					// 같다면 탈퇴 처리 
+					int result = dao.secessionDelete(memberNo);
+					
+	               return result;
+				}
+			}
+			return 0;
+		}
+
+
 
 	
 }

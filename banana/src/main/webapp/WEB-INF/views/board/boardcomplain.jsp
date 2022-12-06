@@ -42,7 +42,7 @@
                 </div>
                 <!--팝업 컨텐츠 영역-->
             
-                <div class="report-top">
+                <div class="b-report-top">
 
                     <%--  2페이지에서 1페이지로 가는 뒤로가기 --%>
                     <i class="fa-solid fa-arrow-left-long" id="back1"></i>
@@ -226,7 +226,7 @@
                         <div class="report-reason">
                             <div>무료나눔 / 금전 요구 글<i class="fa-solid fa-chevron-right"></i></div>
                         </div>
-                    </div>   
+                    </div>
                     
                     
                     
@@ -246,9 +246,9 @@
                         </div>
 
                         <div class="report-reason" id="click6">
-                            <a href="/usercomplain"> 
+                            <div> 
                                 사용자 신고하러 가기 <i class="fa-solid fa-chevron-right"></i>
-                            </a>
+                            </div>
                         </div>
 
                     

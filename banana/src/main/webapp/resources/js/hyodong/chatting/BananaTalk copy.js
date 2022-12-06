@@ -339,6 +339,10 @@ chattingSock.onmessage = function(e) {
 
 	// 유저 신고로 바로가기
 	if(selectChattingNo == msg.chattingNo){
+
+
+
+
 		const div0 = document.querySelector(".popup_layer");
 	
 		const div1 = document.createElement("div");
@@ -357,8 +361,17 @@ chattingSock.onmessage = function(e) {
 	const div1_2 = document.createElement("div");
 	div1_2.classList.add("report-top");
 
-	const div1_2_i = document.createElement("i");
-	div1_2_i.classList.add("fa-soli","fa-arrow-left-long");
+	const div1_2_i1 = document.createElement("i");
+	div1_2_i1.classList.add("fa-soli","fa-arrow-left-long");
+	div1_2_i1.setAttribute("id","back1");
+
+	const div1_2_i2 = document.createElement("i");
+	div1_2_i2.classList.add("fa-soli","fa-arrow-left-long");
+	div1_2_i2.setAttribute("id","back2");
+
+	const div1_2_i3 = document.createElement("i");
+	div1_2_i3.classList.add("fa-soli","fa-arrow-left-long");
+	div1_2_i3.setAttribute("id","back3");
 
 	const div1_2_span = document.createElement("span");
 	div1_2_span.setAttribute("id","user-com");
@@ -376,12 +389,11 @@ chattingSock.onmessage = function(e) {
 	div1_3_1_1input.setAttribute("value","${memberNickname}");
 
 
-	const div1_3_1p = document.createElement("p");
-	div1_3_1p.innerText = " ${memberNickname} 사용자를 신고하는 이유를 선택해주세요";
+	const div1_3_1_2p = document.createElement("p");
+	div1_3_1_2p.innerText = " ${memberNickname} 사용자를 신고하는 이유를 선택해주세요";
 
 	const div1_3_2 = document.createElement("div");
 	div1_3_2.setAttribute("id","click");
-
 
 
 
@@ -499,105 +511,114 @@ chattingSock.onmessage = function(e) {
 	const div1_3_6_5_1 = document.createElement("div");
 	div1_3_6_5_1.innerText = "채팅으로 정치/종교 대화를 시도해요";
 
-	const form = document.createElement("form");
-	form.setAttribute("id", "userreportsubmit");
-	form.setAttribute("action", "/userreportsubmit");
-	form.setAttribute("method", "POST");
-
-	const div1_3_7 = document.createElement("div");
-	div1_3_7.setAttribute("id","frame");
+	const div1_3_7form = document.createElement("form");
+	div1_3_7form.setAttribute("id", "userreportsubmit");
+	div1_3_7form.setAttribute("action", "/userreportsubmit");
+	div1_3_7form.setAttribute("method", "POST");
 
 	const div1_3_7_1 = document.createElement("div");
-	div1_3_7_1.classList.add("report-confirm");
+	div1_3_7_1.setAttribute("id","frame");
 
-	const div1_3_7_1_p = document.createElement("p");
-	div1_3_7_1_p.innerText ="#{U_COM2_CTG_NO}";
+	const div1_3_7_1_1 = document.createElement("div");
+	div1_3_7_1_1.classList.add("report-confirm");
 
-	const div1_3_7_2 = document.createElement("div");
-	div1_3_7_2.classList.add("user-block");
+	const div1_3_7_1_1p = document.createElement("p");
+	div1_3_7_1_1p.innerText ="#{U_COM2_CTG_NO}";
 
-	const div1_3_7_2_input = document.createElement("input");
-	div1_3_7_2_input.setAttribute("type", "checkbox");
-	div1_3_7_2_input.setAttribute("name", "userblock");
-	div1_3_7_2_input.setAttribute("value", "${memberNo}");
-	div1_3_7_2_input.innerText = "이 사람을 더이상 보고싶지 않아요";
+	const div1_3_7_1_2 = document.createElement("div");
+	div1_3_7_1_2.classList.add("user-block");
 
-	const div1_3_8 = document.createElement("div");
-	div1_3_8.classList.add("notice");
+	const div1_3_7_1_2_input = document.createElement("input");
+	div1_3_7_1_2_input.setAttribute("type", "checkbox");
+	div1_3_7_1_2_input.setAttribute("name", "userblock");
+	div1_3_7_1_2_input.setAttribute("value", "${memberNo}");
+	div1_3_7_1_2_input.innerText = "이 사람을 더이상 보고싶지 않아요";
+
+	const div1_3_7_1_3 = document.createElement("div");
+	div1_3_7_1_3.classList.add("notice");
 	
-	const div1_3_8_p = document.createElement("p")
-	div1_3_8_p.innerText = "신고 내용은 상대에게 노출되지 않아요. 내용이 사실과 다를 경우 이용 제제를 받을 수 있으니 주의해 주세요."
+	const div1_3_7_1_3_p = document.createElement("p")
+	div1_3_7_1_3_p.innerText = "신고 내용은 상대에게 노출되지 않아요. 내용이 사실과 다를 경우 이용 제제를 받을 수 있으니 주의해 주세요."
 	
-	const div1_3_9 = document.createElement("div");
-	div1_3_9.classList.add("textbox");
+	const div1_3_7_1_4 = document.createElement("div");
+	div1_3_7_1_4.classList.add("textbox");
 
-	const div1_3_9_text = document.createElement("textarea");
-	div1_3_9_text.setAttribute("name", "reportbox");
-	div1_3_9_text.setAttribute("id", "reportbox");
-	div1_3_9_text.setAttribute("cols", "90");
-	div1_3_9_text.setAttribute("rows", "5");
-	div1_3_9_text.setAttribute("placeholder", "혹시 불쾌한 일을 겪으셨나요? 사유를 남겨주세요");
+	const div1_3_7_1_4_text = document.createElement("textarea");
+	div1_3_7_1_4_text.setAttribute("name", "reportbox");
+	div1_3_7_1_4_text.setAttribute("id", "reportbox");
+	div1_3_7_1_4_text.setAttribute("cols", "90");
+	div1_3_7_1_4_text.setAttribute("rows", "5");
+	div1_3_7_1_4_text.setAttribute("placeholder", "혹시 불쾌한 일을 겪으셨나요? 사유를 남겨주세요");
 	
-	const button = document.createElement("button");
-	button.setAttribute("type", "submit");
-	button.setAttribute("id", "reportsubmit");
-	button.innerText ="바나나 팀에게 보내기";
+	const div1_3_7_1_button = document.createElement("button");
+	div1_3_7_1_button.setAttribute("type", "submit");
+	div1_3_7_1_button.setAttribute("id", "reportsubmit");
+	div1_3_7_1_button.innerText ="바나나 팀에게 보내기";
 	
-	const forminput1 = document.createElement("input");
-	forminput1.setAttribute("type", "hidden");
-	forminput1.setAttribute("name", "ctg1");
-	forminput1.setAttribute("value", "");
-	forminput1.setAttribute("id", "ctg1");
+	const div1_3_7_2_input1 = document.createElement("input");
+	div1_3_7_2_input1.setAttribute("type", "hidden");
+	div1_3_7_2_input1.setAttribute("name", "ctg1");
+	div1_3_7_2_input1.setAttribute("value", "");
+	div1_3_7_2_input1.setAttribute("id", "ctg1");
 
-	const forminput2 = document.createElement("input");
-	forminput1.setAttribute("type", "hidden");
-	forminput1.setAttribute("name", "ctg2");
-	forminput1.setAttribute("value", "");
-	forminput1.setAttribute("id", "ctg2");
+	const div1_3_7_3_input2 = document.createElement("input");
+	div1_3_7_3_input2.setAttribute("type", "hidden");
+	div1_3_7_3_input2.setAttribute("name", "ctg2");
+	div1_3_7_3_input2.setAttribute("value", "");
+	div1_3_7_3_input2.setAttribute("id", "ctg2")
 
-
-
-
-
-
-
-
-
-
-
-	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	
-	
 
 
 
 	div0.append(div1);
-	div1.append(div1_1,div1_2,div1_3);
-	div1_1.append(div1_1a);
-	div1_1a.append(i);
+		div1.append(div1_1,div1_2,div1_3);
+			div1_1.append(div1_1a);
+				div1_1a.append(i);
+			div1_2.append(div1_2_i1, div1_2_i2, div1_2_i3,div1_2_span);
+			div1_3.append(div1_3_1, div1_3_2, div1_3_3, div1_3_4,div1_3_5,div1_3_6,div1_3_7form);
+				div1_3_1.append(div1_3_1_1,div1_3_1_2p);
+				div1_3_2.append(div1_3_2_1,div1_3_2_2,div1_3_2_3,div1_3_2_4,div1_3_2_5,div1_3_2_6,div1_3_2_7,div1_3_2_8);
+					div1_3_2_1.append(div1_3_2_1_1);
+					div1_3_2_2.append(div1_3_2_2_1);
+					div1_3_2_3.append(div1_3_2_3_1);
+					div1_3_2_4.append(div1_3_2_4_1);
+					div1_3_2_5.append(div1_3_2_5_1);
+					div1_3_2_7.append(div1_3_2_7_1);
+					div1_3_2_8.append(div1_3_2_8_1);
+				div1_3_3.append(div1_3_3_1,div1_3_3_1);
+					div1_3_3_1.append(div1_3_3_1_1);
+					div1_3_3_1.append(div1_3_3_2_1);	
+				div1_3_4.append(div1_3_3_1,div1_3_3_1);
+					div1_3_3_1.append(div1_3_4_1_1);
+					div1_3_3_1.append(div1_3_4_2_1);
+				div1_3_5.append(div1_3_3_1,div1_3_3_1,div1_3_3_1,div1_3_3_1,div1_3_3_1);
+					div1_3_3_1.append(div1_3_5_1_1);
+					div1_3_3_1.append(div1_3_5_2_1);
+					div1_3_3_1.append(div1_3_5_3_1);
+					div1_3_3_1.append(div1_3_5_4_1);
+					div1_3_3_1.append(div1_3_5_5_1);
+				div1_3_6.append(div1_3_3_1,div1_3_3_1,div1_3_3_1,div1_3_3_1,div1_3_3_1);
+					div1_3_3_1.append(div1_3_6_1_1);
+					div1_3_3_1.append(div1_3_6_2_1);
+					div1_3_3_1.append(div1_3_6_3_1);
+					div1_3_3_1.append(div1_3_6_4_1);
+					div1_3_3_1.append(div1_3_6_5_1);
+				div1_3_7form.append(div1_3_7_1,div1_3_7_2_input1,div1_3_7_3_input2);
+					div1_3_7_1.append(div1_3_7_1_1,div1_3_7_1_2,div1_3_7_1_3,div1_3_7_1_4,div1_3_7_1_button);
+						div1_3_7_1_1.append(div1_3_7_1_1p);
+						div1_3_7_1_2.append(div1_3_7_1_2_input);
+						div1_3_7_1_3.append(div1_3_7_1_3_p);
+						div1_3_7_1_4.append(div1_3_7_1_4_text);
 
-	
+					
 
-		
+
+
+
+
+
+
+
 		//const lid = document.createElement("li");// 메세지 시작 날짜
 		//lid.classList.add("date-line");// 메세지 시작 날짜
 		

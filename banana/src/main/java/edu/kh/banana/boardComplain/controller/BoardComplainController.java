@@ -22,58 +22,54 @@ public class BoardComplainController {
 
 	@Autowired
 	private BoardComplainService service;
-	
+
 	@GetMapping("/boardcomplain")
 	public String report() {
-		
+
 		return "board/boardcomplain";
 	}
-	
+
 	@GetMapping("/duplicateCheck2")
 	@ResponseBody
-	public int duplicateCheck (int category1, int category2 ) {
-		
+	public int duplicateCheck(int category1, int category2) {
+
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("category1", category1);
 		map.put("category2", category2);
-		
-		int result =  service.boardDuplication(map);  
+
+		int result = service.boardDuplication(map);
 		return result;
 	}
-	
-	
+
 	@PostMapping("/reportsubmit")
 	public String reportSubmit(@RequestParam Map<String, Object> submit,
-								@SessionAttribute("loginMember") Member loginMember,
-								RedirectAttributes ra ,
-								@RequestHeader("referer") String referer) {
-		
-		
+			@SessionAttribute("loginMember") Member loginMember, RedirectAttributes ra,
+			@RequestHeader("referer") String referer) {
+
 		submit.put("memberNo", loginMember.getMemberNo());
-		
-		
+
 		System.out.println(submit);
 		// int complained 사용하기
 		int result = service.reportsubmit(submit);
-		
+
 		String message = null;
-		
+
 		if (result > 0) {
 			message = "신고를 성공하였습니다.";
-			
-		}else {
+
+		} else {
 			message = "신고를 실패하였습니다.";
 		}
-		
+
 		ra.addFlashAttribute("message", message);
 		return "redirect:/board/boardDetail";
-		
-		
+
 	}
-	
-	@GetMapping("/usercomplain")
-	public String userReport(/*@PathVariable("otherUserNo") int otherUserNo*/) {
-		
-		return "usercomplain/usercomplain";
-	}
+
+	/*
+	 * @GetMapping("/usercomplain") public String
+	 * userReport(@PathVariable("otherUserNo") int otherUserNo) {
+	 * 
+	 * return "usercomplain/usercomplain"; }
+	 */
 }

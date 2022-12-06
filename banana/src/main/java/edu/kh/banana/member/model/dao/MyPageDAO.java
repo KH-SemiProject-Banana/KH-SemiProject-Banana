@@ -159,6 +159,30 @@ public class MyPageDAO {
 		
 		return sqlSession.selectList("myPageMapper.selectNewestReviewList",loginMember);
 	}
+	/** 회원 탈퇴
+	 * @param memberNo
+	 * @return result
+	 */
+	public int secession(int memberNo) {
+		return sqlSession.update("myPageMapper.secession",memberNo);
+	}
+
+	/** 회원탈퇴 회원 조회
+	 * @param memberNo
+	 * @return 
+	 */
+	public Member secessionSelect(int memberNo) {
+		return sqlSession.selectOne("memberMapper.secessionSelect", memberNo);
+	}
+
+	/** 회원 탈퇴
+	 * @param memberNo
+	 * @return
+	 */
+	public int secessionDelete(int memberNo) {
+		return sqlSession.update("memberMapper.secessionDelete",memberNo);
+	}
+
 
 	/** (거래후기 목록 조회)
 	 * @param map1

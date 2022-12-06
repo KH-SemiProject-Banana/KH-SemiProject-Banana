@@ -96,10 +96,12 @@ public interface MyPageService {
 	 * @return
 	 */
 	Map<String, Object> myGoodsLikeList(int memberNo, int cp);
-	 
 
-	
-
+	/** 회원 탈퇴
+	 * @param memberNo
+	 * @return result
+	 */
+	int secessionSelect(int memberNo, Map<String, Object> parMap);
 
 	
 }

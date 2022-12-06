@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
+<c:set var="goodsInfo" value="${map.goodsInfo}" />
+<c:set var="goodsImg" value="${map.goodsImg}" />
+<c:set var="sellerInfo" value="${map.sellerInfo}" />
+<c:set var="sellerGoods" value="${map.sellerGoods}" />
 
 <!DOCTYPE html>
 <html lang="en">
@@ -22,179 +29,217 @@
 
         <div>
             <div class="category">
-                <a href="/">HOME</a> 
-                <a href="#">> ${category.categoryName}</a> 
+                <a href="/">HOME</a>
+
+                <c:if test='${category.query == null}'>
+                    <a href="/category/?categoryNo=${category.categoryNo}">> ${category.categoryName}</a>
+                </c:if>
             </div>
 
             <div class="product">
                 <section>
-                    <div class="slideshow-container">
-  
-                        <div class="mySlides">
-                            <img src="../../resources/images/pikachu.jpg">
-                        </div>
-                      
-                        <div class="mySlides">
-                            <img src="../../resources/images/sampleGoods.jpg">
-                        </div>
-                      
-                        <div class="mySlides">
-                            <img src="../../resources/images/pikachu.jpg">
-                        </div>
-                      
-                        <div class="mySlides">
-                            <img src="../../resources/images/sampleGoods.jpg">
-                        </div>
-                      
-                        <div class="mySlides">
-                            <img src="../../resources/images/pikachu.jpg">
-                        </div>
+                    <div class="slideshow-container">                       
+                        <c:if test="${fn:length(goodsImg) == 0}">
+                            <div class="mySlides">
+                                <img src="../../resources/images/noImage.png">
+                            </div>
+                        </c:if>
+
+                        <c:forEach var="goods" items="${goodsImg}">
+                            <div class="mySlides">
+                                <img src="${goods}">
+                            </div>
+                        </c:forEach>
                       
                         <div class="arrow slide-arrow prev" onclick="plusSlides(-1)">&#10094;</div>
                         <div class="arrow slide-arrow next" onclick="plusSlides(1)">&#10095;</div>
-                      </div>
+                    </div>
                       
-                      <div class="dot-container">
+                    <div class="dot-container">
                         <div class="arrow list-arrow prev" onclick="plusSlides(-1)">&#10094;</div>
                       
                         <div class="dot-list">
-                            <div class="dot" onclick="currentSlide(1)">
-                                <img src="../../resources/images/pikachu.jpg">
-                            </div> 
-                      
-                            <div class="dot" onclick="currentSlide(2)">
-                                <img src="../../resources/images/sampleGoods.jpg">
-                            </div>
-                      
-                            <div class="dot" onclick="currentSlide(3)">
-                                <img src="../../resources/images/pikachu.jpg">
-                            </div>
-                      
-                            <div class="dot" onclick="currentSlide(4)">
-                                <img src="../../resources/images/sampleGoods.jpg">
-                            </div>
-                      
-                            <div class="dot" onclick="currentSlide(5)">
-                                <img src="../../resources/images/pikachu.jpg">
-                            </div>
+                            <c:set var="i" value="1" />
+                            <c:forEach var="goods" items="${goodsImg}">
+                                <div class="dot" onclick="currentSlide(i)">
+                                    <img src="${goods}">
+                                </div>
+
+                                <c:set var="i" value="${i+1}" />
+                            </c:forEach>
+                            
+                            <c:if test="${5 - fn:length(goodsImg) > 0}">
+                                <c:forEach var="i" begin="1" end="${5 - fn:length(goodsImg)}">
+                                    <div class="dot">
+                                        <img src="../../resources/images/noImage.png">
+                                    </div>
+                                </c:forEach>
+                            </c:if>
                         </div>
                       
                         <div class="arrow list-arrow next" onclick="plusSlides(1)">&#10095;</div>
-                      </div>
+                    </div>
                 </section>
 
                 <section class="product_intro">
                     <div class="product_top">
-                        <div class="top_left"><span>판매중</span></div>
-                        <div class="top_right"><span><a href="#">신고</a></span></div>
+                        <div class="top_left"><span>${goodsInfo.sellStatus}</span></div>
+                            
+                        <c:if test="${loginMember.memberNo == sellerInfo.memberNo}">
+                            <div class="top_right"><span><a href="#">삭제</a></span></div>
+                            <div class="top_right"><span>|</span></div>
+                            <div class="top_right"><span><a href="/goods/registerGoods">수정</a></span></div>
+                            <div class="top_right"><span>|</span></div>
+                        </c:if>
+
+                        <c:if test="${loginMember.memberNo != sellerInfo.memberNo}">
+                            <div class="top_right"><span><a href="#">신고</a></span></div>
+                            <div class="top_right"><span>|</span></div>
+                        </c:if>
+
+                        <div class="top_right"><span>찜&nbsp;</span><span id="likeCount">${goodsInfo.likeCount}</span></div>
                         <div class="top_right"><span>|</span></div>
-                        <div class="top_right"><span>찜 2</span></div>
-                        <div class="top_right"><span>|</span></div>
-                        <div class="top_right"><span>26분 전</span></div>
+                        <div class="top_right"><span>${goodsInfo.createdAt}</span></div>
                     </div>
 
                     <div class="product_title">
-                        <h2>피카츄 스티커 팔아요</h2>
-                        <h2>5,000원</h2>
+                        <h2>${goodsInfo.title}</h2>
+                        <h2><fmt:formatNumber value="${goodsInfo.sellPrice}" pattern="#,###"/></h2>
                     </div>
 
                     <div class="product_option">
                         <div>
                             <h3>거래방법</h3>
-                            <span>택배</span>
+                            <span>바나나 페이</span>
                         </div>
 
                         <div>
                             <h3>거래장소/배송출발지</h3>
-                            <span>서울시 중구</span>
+                            <span>${goodsInfo.address}</span>
                         </div>
                     </div>
 
                     <div class="detailed_intro">
                         <h3>상세설명</h3>
                         <span>
-                            피카츄 또 나왔어 짜증나
+                            ${goodsInfo.description}
                         </span>
                     </div>
 
-                    <div class="like_talk">
+                    <form action="/chatting/enter" method="post" class="like_talk">
                         <div>
-                            <input type="checkbox" name="like" id="like">
-                            <label for="like" id="like-icon"><i class="fa-solid fa-heart-circle-plus icon-change"></i></label>
+                            <input type="hidden" name="targetNo" value="${sellerInfo.memberNo}">
+                            <input type="hidden" name="goodsNo" value="${goodsInfo.goodsNo}">
+
+                            <c:choose>
+                                <c:when test="${loginMember.memberNo == goodsInfo.memberNo}">
+                                    <input type="checkbox" name="like" id="like" checked>
+                                    <label for="like" id="like-icon"><i class="fa-solid fa-heart-circle-check icon-change"></i></label>
+                                </c:when>
+
+                                <c:otherwise>
+                                    <input type="checkbox" name="like" id="like">
+                                    <label for="like" id="like-icon"><i class="fa-solid fa-heart-circle-plus icon-change"></i></label>
+                                </c:otherwise>
+                            </c:choose>
                         </div>
                         <div><button>바나나톡</button></div>
-                    </div>
+                    </form>
                 </section>
             </div>
 
             <div class="seller">
                 <div class="seller_profile">
                     <div class="seller_img">
-                        <a href="#"><img src="../../resources/images/ribbit.png"></a>
-                        <span><a href="#">깨꾹이</a></span>
+                        <c:choose>
+                                    <c:when test="${sellerInfo.profileImage == null}">
+                                        <a href="/member/myPage/main"><img src="../../resources/images/user.png"></a>
+                                    </c:when>
+
+                                    <c:otherwise>
+                                        <a href="/member/myPage/main"><img src="${sellerInfo.profileImage}"></a>
+                                    </c:otherwise>
+                        </c:choose>
+
+                        <span><a href="/member/myPage/main">${sellerInfo.memberNickname}</a></span>
                     </div>
 
                     <div>
                         <div  class="seller_product">
-                            <span><a href="#">상품</a></span>
-                            <span><a href="#">556</a></span>
+                            <span><a href="/member/myPage/main">상품</a></span>
+                            <span><a href="/member/myPage/main">${sellerInfo.goodsCount}</a></span>
                         </div>
 
                         <div class="manner">
-                            <span>매너온도</span>
+                            <span>바나나 온도</span>
                             <div></div>
                         </div>
                     </div>
                 </div>
 
                 <div class="seller_other">
-                    <div class="other_menu"> 
-                        <span>판매자의 다른 상품</span>
-                        <span><a href="#">전체보기 ></a></span>
+                    <div class="other_menu">
+                        <c:if test="${loginMember.memberNo == sellerInfo.memberNo}">
+                            <span>나의 다른 상품</span>
+                        </c:if>
+
+                        <c:if test="${loginMember.memberNo != sellerInfo.memberNo}">
+                            <span>판매자의 다른 상품</span>
+                        </c:if>
+                        <span><a href="/member/myPage/main">전체보기 ></a></span>
                     </div>
 
                     <div class="other_list">
-                        <div class="other_img">
-                            <a href="#"><img src="../../resources/images/../../resources/images/pikachu.jpg"></a>
-                            <span><a href="#">피카츄 스티커</a></span>
-                            <span><a href="#"><h4>5,000원</h4></a></span>
-                        </div>
+                        <c:set var="i" value="1" />
+                        <c:forEach var="sellerGoods" items="${sellerGoods}">
+                            <c:choose>
+                                <c:when test="${i%5 == 0}">
+                                    <div class="other_img other_img_end">
+                                </c:when>
+        
+                                <c:otherwise>
+                                    <div class="other_img">
+                                </c:otherwise>
+                            </c:choose>
 
-                        <div class="other_img">
-                            <a href="#"><img src="../../resources/images/../../resources/images/pikachu.jpg"></a>
-                            <span><a href="#">피카츄 스티커</a></span>
-                            <span><a href="#"><h4>5,000원</h4></a></span>
-                        </div>
+                                <c:choose>
+                                    <c:when test="${sellerGoods.imagePath == null}">
+                                        <a href="/goods/${sellerGoods.goodsNo}"><img src="../../resources/images/noImage.png"></a>
+                                    </c:when>
 
-                        <div class="other_img">
-                            <a href="#"><img src="../../resources/images/../../resources/images/pikachu.jpg"></a>
-                            <span><a href="#">피카츄 스티커</a></span>
-                            <span><a href="#"><h4>5,000원</h4></a></span>
-                        </div>
+                                    <c:otherwise>
+                                        <a href="/goods/${sellerGoods.goodsNo}"><img src="${sellerGoods.imagePath}"></a>
+                                    </c:otherwise>
+                                </c:choose>
 
-                        <div class="other_img">
-                            <a href="#"><img src="../../resources/images/../../resources/images/pikachu.jpg"></a>
-                            <span><a href="#">피카츄 스티커</a></span>
-                            <span><a href="#"><h4>5,000원</h4></a></span>
-                        </div>
+                                <span><a href="/goods/${sellerGoods.goodsNo}" class="title">${sellerGoods.title}</a></span>
+                                <span><a href="/goods/${sellerGoods.goodsNo}"><h4><fmt:formatNumber value="${sellerGoods.sellPrice}" pattern="#,###"/></h4></a></span>
+                            </div>
 
-                        <div class="other_img">
-                            <a href="#"><img src="../../resources/images/../../resources/images/pikachu.jpg"></a>
-                            <span><a href="#">피카츄 스티커</a></span>
-                            <span><a href="#"><h4>5,000원</h4></a></span>
-                        </div>
+                            <c:set var="i" value="${i+1}"/>
+                        </c:forEach>
                     </div>
                 </div>
             </div>
 
             <div class="precautions">
-                    * 거래 시 주의 사항
+                * 거래 시 주의 사항<br>
+                판매자에게 물품에 대한 정보를 더 확인하고 싶다면 바나나톡을 이용해 주세요.<br>
+                중고 거래 금지 물품은 구매하지 말고 신고해 주세요. 의약품, 화장품 샘플 등의 물품은 거래 금지 물품입니다.
             </div>
         </div>
     </main>
 
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
+<script>
+    const memberNo = "${loginMember.memberNo}";
+    const goodsNo = "${goodsInfo.goodsNo}";
+    const sellerNo = "${sellerInfo.memberNo}";
+    const query = "${category.query}";
+</script>
+
+<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 <script src="/resources/js/현진/detailedPage.js"></script>
 </body>
 </html>

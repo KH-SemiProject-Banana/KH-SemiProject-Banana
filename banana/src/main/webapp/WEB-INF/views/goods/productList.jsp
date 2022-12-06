@@ -1,11 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <c:set var="goodsList" value="${map.goodsList}" />
 <c:set var="categoryPagination" value="${map.categoryPagination}" />
+<c:set var="query" value="${category.query}" />
+<c:set var="ctgNo" value="" />
+<c:set var="searchQuery" value="" />
 <c:set var="locAddress" value="" />
 <c:set var="order" value="" />
+
+<c:if test="${category.query == null}">
+    <c:set var="ctgNo" value="${'categoryNo='}${category.categoryNo}" />
+</c:if>
+
+<c:if test="${category.query != null}">
+    <c:set var="searchQuery" value="${'query='}${query}" />
+</c:if>
 
 <c:forEach var="i" items="${paramValues.location}">
     <c:set var="locAddress" value="${locAddress}${'&location='}${i}" />
@@ -36,15 +48,30 @@
         <div class="mainContent">
             <div class="category">
                 <a href="/">HOME</a>
-                <a href="#">> ${category.categoryName}</a>
+
+                <c:if test='${category.query == null}'>
+                    <a href="/category/?categoryNo=${param.categoryNo}">> ${category.categoryName}</a>
+                </c:if>
             </div>
 
             <div class="category_title">
-                <h1>${category.categoryName}</h1>
+                <c:if test='${category.query == null}'>
+                    <h1>${category.categoryName}</h1>
+                </c:if>
+
+                <c:if test='${category.query != null}'>
+                    <h1>"${category.categoryName}" 검색 결과</h1>
+                </c:if>
             </div>
             
-            <form id="searchGu" action="/category?categoryNo=${category.categoryNo}">
-                <input type="hidden" name="categoryNo" value="${category.categoryNo}">
+            <form id="searchGu" action="/category">
+                <c:if  test="${category.query == null}">
+                    <input type="hidden" name="categoryNo" value="${category.categoryNo}">
+                </c:if>
+
+                <c:if test="${category.query != null}">
+                    <input type="hidden" name="query" value="${category.query}">
+                </c:if>
 
                 <div><h2>우리 동네에서 찾기</h2></div>
             
@@ -98,89 +125,99 @@
 
                 <div class="selectBox">
                     <select onchange="window.open(value,'_self');">
-                        <option value="/category?categoryNo=${category.categoryNo}${locAddress}&order=1">최신순</option>
-                        <option value="/category?categoryNo=${category.categoryNo}${locAddress}&order=2">저가순</option>
-                        <option value="/category?categoryNo=${category.categoryNo}${locAddress}&order=3">고가순</option>
+                        <option value="/category?${ctgNo}${searchQuery}${locAddress}&order=1">최신순</option>
+                        <option value="/category?${ctgNo}${searchQuery}${locAddress}&order=2">저가순</option>
+                        <option value="/category?${ctgNo}${searchQuery}${locAddress}&order=3">고가순</option>
                     </select>
                 </div>
             </div>
             
             <div>
-                <c:set var="i" value="1" />
-                <c:set var="e" value="true" />
-                <c:forEach var="goods" items="${goodsList}">
-                    
-                    <c:if test="${i%4 == 1}">
-                        <section>
-                        <c:set var="e" value="false" />
-                    </c:if>
-                    
-                    <c:choose>
-                        <c:when test="${i%4 == 0}">
-                            <div class="imgList_row imgList_row_end">
-                        </c:when>
+                <c:choose>
+                    <c:when test="${fn:length(goodsList) == 0}">
+                            <div class="no_list"><h2>게시글이 없습니다.</h2></div>
+                    </c:when>
 
-                        <c:otherwise>
-                            <div class="imgList_row">
-                        </c:otherwise>
-                    </c:choose>
-
-                        <c:choose>
-                            <c:when test="${loginMember.memberNo == goods.memberNo}">
-                                <input type="checkbox" id="like${i}" class="likeChk" value="${goods.goodsNo}" checked>
-                            </c:when>
-
-                            <c:otherwise>
-                                <input type="checkbox" id="like${i}" class="likeChk" value="${goods.goodsNo}">
-                            </c:otherwise>
-                        </c:choose>
-                        
-                        <label for="like${i}" class="like_yn"><i class="fa-solid fa-heart"></i></label>
-
-                        <c:choose>
-                            <c:when test="${goods.imagePath == null}">
-                                <a href="/detailed"><img src="../../resources/images/noImage.png"></a>
-                            </c:when>
-
-                            <c:otherwise>
-                                <a href="/detailed"><img src="${goods.imagePath}"></a>
-                            </c:otherwise>
-                        </c:choose>
-
-                        <span><h2><a href="/detailed" class="title">${goods.title}</a></h2></span>
-                        <span><h3><a href="/detailed"><fmt:formatNumber value="${goods.sellPrice}" pattern="#,###"/></a></h3></span>
-                    </div>
-
-                    <c:if test="${i%4 == 0}">
-                        </section>
+                    <c:otherwise>
+                        <c:set var="i" value="1" />
                         <c:set var="e" value="true" />
-                    </c:if>
+                        <c:forEach var="goods" items="${goodsList}">
+                            
+                            <c:if test="${i%4 == 1}">
+                                <section>
+                                <c:set var="e" value="false" />
+                            </c:if>
+                            
+                            <c:choose>
+                                <c:when test="${i%4 == 0}">
+                                    <div class="imgList_row imgList_row_end">
+                                </c:when>
 
-                    <c:set var="i" value="${i+1}" />
-                </c:forEach>
+                                <c:otherwise>
+                                    <div class="imgList_row">
+                                </c:otherwise>
+                            </c:choose>
 
-                <c:if test="${e eq false}">
-                    </section>
-                </c:if>
+                                <c:choose>
+                                    <c:when test="${loginMember.memberNo == goods.memberNo}">
+                                        <input type="checkbox" id="like${i}" class="likeChk" value="${goods.goodsNo}" checked>
+                                    </c:when>
+
+                                    <c:otherwise>
+                                        <input type="checkbox" id="like${i}" class="likeChk" value="${goods.goodsNo}">
+                                    </c:otherwise>
+                                </c:choose>
+                                
+                                <label for="like${i}" class="like_yn"><i class="fa-solid fa-heart"></i></label>
+
+                                <c:choose>
+                                    <c:when test="${goods.imagePath == null}">
+                                        <a href="/goods/${goods.goodsNo}"><img src="../../resources/images/noImage.png"></a>
+                                    </c:when>
+
+                                    <c:otherwise>
+                                        <a href="/goods/${goods.goodsNo}"><img src="${goods.imagePath}"></a>
+                                    </c:otherwise>
+                                </c:choose>
+
+                                <span><h2><a href="/goods/${goods.goodsNo}" class="title">${goods.title}</a></h2></span>
+                                <span><h3><a href="/goods/${goods.goodsNo}"><fmt:formatNumber value="${goods.sellPrice}" pattern="#,###"/></a></h3></span>
+                            </div>
+
+                            <c:if test="${i%4 == 0}">
+                                </section>
+                                <c:set var="e" value="true" />
+                            </c:if>
+
+                            <c:set var="i" value="${i+1}" />
+                        </c:forEach>
+
+                        <c:if test="${e eq false}">
+                            </section>
+                        </c:if>
+                    </c:otherwise>
+                </c:choose>
             </div>
 
-            <div class="pageList">
-                <a href="/category?categoryNo=${category.categoryNo}${locAddress}${order}&cp=${categoryPagination.prevPage}" class="page" id="leftArrow">&lt;</a>
-
-                <c:forEach var="i" begin="${categoryPagination.startPage}" end="${categoryPagination.endPage}" step="1">
-                    <c:choose>
-                        <c:when test="${i == categoryPagination.currentPage}">
-                            <a class="page selectPage">${i}</a>
-                        </c:when>
-
-                        <c:otherwise>
-                            <a href="/category?categoryNo=${category.categoryNo}${locAddress}${order}&cp=${i}" class="page otherPage">${i}</a>
-                        </c:otherwise>
-                    </c:choose>
-                </c:forEach>
-
-                <a href="/category?categoryNo=${category.categoryNo}${locAddress}${order}&cp=${categoryPagination.nextPage}" class="page" id="rightArrow">&gt;</a>
-            </div>
+            <c:if test="${fn:length(goodsList) != 0}">
+                <div class="pageList">
+                    <a href="/category?${ctgNo}${searchQuery}${locAddress}${order}&cp=${categoryPagination.prevPage}" class="page" id="leftArrow">&lt;</a>
+    
+                    <c:forEach var="i" begin="${categoryPagination.startPage}" end="${categoryPagination.endPage}" step="1">
+                        <c:choose>
+                            <c:when test="${i == categoryPagination.currentPage}">
+                                <a class="page selectPage">${i}</a>
+                            </c:when>
+    
+                            <c:otherwise>
+                                <a href="/category?${ctgNo}${searchQuery}${locAddress}${order}&cp=${i}" class="page otherPage">${i}</a>
+                            </c:otherwise>
+                        </c:choose>
+                    </c:forEach>
+    
+                    <a href="/category?${ctgNo}${searchQuery}${locAddress}${order}&cp=${categoryPagination.nextPage}" class="page" id="rightArrow">&gt;</a>
+                </div>
+            </c:if>
         </div>
     </main>
 
@@ -188,6 +225,7 @@
 
 <script>
     const memberNo = "${loginMember.memberNo}";
+    const query = "${query}";
 </script>
 
 <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>

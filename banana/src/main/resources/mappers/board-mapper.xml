@@ -73,7 +73,7 @@
   </select>
   
   <select id="selectBoardList" parameterType="_int" resultMap="board_rm">
-  	  SELECT BOARD_NO, BOARD_TITLE, MEMBER_NICKNAME, VIEW_COUNT, 
+  	  SELECT BOARD_NO, BOARD_TITLE, MEMBER_NICKNAME, VIEW_COUNT, BOARD_CONTENT,
 		<![CDATA[
 		CASE  
       WHEN SYSDATE - B_CREATED_AT < 1/24/60
@@ -336,5 +336,8 @@
 	
 	ORDER BY BOARD_NO DESC
   </select>
+  
+  
+
   
 </mapper>

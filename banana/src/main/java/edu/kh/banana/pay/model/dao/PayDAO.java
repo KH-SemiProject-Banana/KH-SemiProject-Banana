@@ -13,16 +13,7 @@ public class PayDAO {
 	private SqlSessionTemplate sqlSession;
 
 	/**
-	 * 결제 성공 시 포인트 충전
-	 * @param paramMap
-	 * @return result
-	 */
-	public int pointCharge(Map<String, Object> paramMap) {
-		return sqlSession.insert("payMapper.pointCharge", paramMap);
-	}
-
-	/**
-	 * 잔여 포인트 조회
+	 * 잔여 페이 조회
 	 * @param paramMap
 	 * @return result
 	 */
@@ -30,7 +21,20 @@ public class PayDAO {
 		return sqlSession.selectOne("payMapper.searchRemainPay", paramMap);
 	}
 
+	/**
+	 * 주문번호 조회
+	 * @return result
+	 */
 	public int searchOrderNo() {
 		return sqlSession.selectOne("payMapper.searchOrderNo");
+	}
+	
+	/**
+	 * 결제 히스토리
+	 * @param paramMap
+	 * @return result
+	 */
+	public int pointCharge(Map<String, Object> paramMap) {
+		return sqlSession.insert("payMapper.pointCharge", paramMap);
 	}
 }

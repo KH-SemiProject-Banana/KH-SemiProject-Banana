@@ -15,7 +15,6 @@ payLog.style.display = "none";
 //팝업 띄우기
 function openPop() {
     document.getElementById("popup_layer").style.display = "block";
-
     const payRemain = document.getElementById("payRemain");
 
     $.ajax({
@@ -28,7 +27,7 @@ function openPop() {
     },
     error : () => {console.log("바나나페이 조회 실패");}
     });
-    
+
     payLog.style.display = "block";
 }
 

@@ -36,9 +36,10 @@ document.getElementById("chargeSubmitBtn").addEventListener("click", () => {
                     type : "POST",
                     success : (result) => {
                         if(result > 0) {
-                            chargePrice.value = "";
+                            const price = Number(chargePrice.value).toLocaleString();
                             payRemain.innerText = Number(payRemain.innerText) + Number(chargePrice.value);
-                            alert("결제가 완료되었습니다.\n결제한 금액 : " + Number(chargePrice.value).toLocaleString('ko-KR'));
+                            chargePrice.value = "";
+                            alert("결제가 완료되었습니다.\n결제한 금액 : " + price);
 
                         } else {
                             alert("결제 중 오류가 발생했습니다.");
@@ -61,14 +62,15 @@ document.getElementById("refundSubmitBtn").addEventListener("click", () => {
 
             $.ajax({
                 url : "/payHistory",
-                type : "GET",
+                type : "POST",
                 data : {"memberNo" : memberNo,
                         "inputPrice" : Number(refundPrice.value) * (-1)},
                 success : (result) => {
                     if(result > 0) {
-                        refundPrice.value = "";
+                        const price = Number(refundPrice.value).toLocaleString();
                         payRemain.innerText = Number(payRemain.innerText) - Number(refundPrice.value);
-                        alert("환불이 완료되었습니다.\n환불한 금액 : " + Number(refundPrice.value).toLocaleString('ko-KR'));
+                        refundPrice.value = "";
+                        alert("환불이 완료되었습니다.\n환불한 금액 : " + price);
 
                     } else {
                         alert("환불 중 오류가 발생했습니다.");
@@ -76,11 +78,8 @@ document.getElementById("refundSubmitBtn").addEventListener("click", () => {
                 },
                 error : () => {alert("환불 중 오류가 발생했습니다.");}
             });
-            
-        } else {
-            alert("환불이 취소되었습니다.");
-            return;
-        }
+
+        } else {alert("환불이 취소되었습니다.");}
 
     } else {return;}
 })

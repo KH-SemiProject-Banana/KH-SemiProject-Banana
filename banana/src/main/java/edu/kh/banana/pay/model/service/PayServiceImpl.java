@@ -11,23 +11,24 @@ import edu.kh.banana.pay.model.dao.PayDAO;
 public class PayServiceImpl implements PayService{
 	@Autowired
 	private PayDAO dao;
+
+	// 잔여 페이 조회
+	@Override
+	public int searchRemainPay(Map<String, Object> paramMap) {
+		return dao.searchRemainPay(paramMap);
+	}
 	
+	// 주문번호 조회
 	@Override
 	public int searchOrderNo() {
 		return dao.searchOrderNo();
 	}
 	
-	// 결제 성공 시 포인트 충전
+	// 결제 히스토리
 	@Override
 	public int pointCharge(Map<String, Object> paramMap) {
 		int remainPoint = searchRemainPay(paramMap);
 		paramMap.put("remainPoint", remainPoint);
 		return dao.pointCharge(paramMap);
-	}
-
-	// 잔여 포인트 조회
-	@Override
-	public int searchRemainPay(Map<String, Object> paramMap) {
-		return dao.searchRemainPay(paramMap);
 	}
 }

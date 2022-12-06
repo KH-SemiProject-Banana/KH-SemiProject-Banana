@@ -31,24 +31,24 @@ public class PayController {
 		return "pay/bananaPay";
 	}
 	
+	// 잔여 페이 조회
 	@GetMapping("/searchRemainPay")
 	@ResponseBody
 	public int searchRemainPay(@RequestParam Map<String, Object> paramMap) {
 		return service.searchRemainPay(paramMap);
 	}
 	
+	// 주문번호 조회
 	@GetMapping("searchOrderNo")
 	@ResponseBody
 	public int searchOrderNo() {
 		return service.searchOrderNo();
 	}
 	
-	// 결제 성공 시 포인트 충전
+	// 결제 히스토리
 	@PostMapping("/payHistory")
 	@ResponseBody
     public int pointCharge(@RequestParam Map<String, Object> paramMap) {
         return service.pointCharge(paramMap);
     }
-	
-	
 }

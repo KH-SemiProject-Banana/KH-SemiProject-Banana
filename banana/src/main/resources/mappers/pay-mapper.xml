@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace = "payMapper">
-  <insert id="pointCharge">
-  	INSERT INTO REQUEST_PAY VALUES
-	(SEQ_ORDER_NO.NEXTVAL, NULL, #{memberNo}, DEFAULT,
-	#{inputPrice}, 1, #{remainPoint} + #{inputPrice})
-  </insert>
-
-  <select id="searchOrderNo" resultType="_int">
-  	SELECT LAST_NUMBER FROM USER_SEQUENCES WHERE SEQUENCE_NAME = 'SEQ_ORDER_NO'
-  </select>
-
+  <!-- 잔여 페이 조회 -->
   <select id="searchRemainPay" resultType="_int">
   	SELECT REMAIN_POINT FROM REQUEST_PAY
 	WHERE TRADER_NO = #{memberNo} AND ROWNUM = 1
 	ORDER BY ORDER_NO DESC
   </select>
+  
+  <!-- 주문번호 조회 -->
+  <select id="searchOrderNo" resultType="_int">
+  	SELECT LAST_NUMBER FROM USER_SEQUENCES WHERE SEQUENCE_NAME = 'SEQ_ORDER_NO'
+  </select>
+
+  <!-- 결제 히스토리 -->
+  <insert id="pointCharge">
+  	INSERT INTO REQUEST_PAY VALUES
+	(SEQ_ORDER_NO.NEXTVAL, NULL, #{memberNo}, DEFAULT,
+	#{inputPrice}, 1, #{remainPoint} + #{inputPrice})
+  </insert>
 </mapper>

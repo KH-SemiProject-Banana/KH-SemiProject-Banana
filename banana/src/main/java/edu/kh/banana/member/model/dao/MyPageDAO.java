@@ -176,6 +176,16 @@ public class MyPageDAO {
 		return sqlSession.update("memberMapper.secessionDelete",memberNo);
 	}
 
+	public List<Member> selectDeleteMemberList(int memberNo) {
+		
+		return sqlSession.selectList("memberMapper.selectDeleteMemberList", memberNo);
+	}
+
+	public int memberBlockCancel(Map<String, Object> map) {
+		
+		return sqlSession.delete("memberMapper.memberBlockCancel", map);
+	}
+
 	
 
 	

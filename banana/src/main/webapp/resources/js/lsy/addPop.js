@@ -14,17 +14,19 @@ document.getElementById("profilePop").addEventListener("click",function(){
 
 })
 
+// if(myPageCt != null){
 
-//판매중/판매완료/구매완료인지에 따라 글씨체 bold로 바뀌는거 
-switch(myPageCt){
-    case 1: document.getElementById("first-category").style.fontWeight = "bold"; 
-    document.getElementById("sold").style.fontWeight = "bold";
-    break;
-    case 2: document.getElementById("second-category").style.fontWeight = "bold"; break;
-    case 5: 
-    document.getElementById("first-category").style.fontWeight = "bold";
-    document.getElementById("selling").style.fontWeight = "bold"; break;
-}
+//     //판매중/판매완료/구매완료인지에 따라 글씨체 bold로 바뀌는거 
+//     switch(myPageCt){
+//         case 1: document.getElementById("first-category").style.fontWeight = "bold"; 
+//         document.getElementById("sold").style.fontWeight = "bold";
+//         break;
+//         case 2: document.getElementById("second-category").style.fontWeight = "bold"; break;
+//         case 5: 
+//         document.getElementById("first-category").style.fontWeight = "bold";
+//         document.getElementById("selling").style.fontWeight = "bold"; break;
+//     }
+// }
 
 
 const first = document.getElementById("myBanana-sellList");
@@ -644,7 +646,10 @@ function profileValidate(){
 
 
 
-
+// 차단관리
+document.getElementById("editBlockMember").addEventListener("click", () => {
+    location.href = "/member/myPage/editBlockMember";
+});
 
 
 

@@ -31,29 +31,176 @@
 			<!-- 없는 애도 있을 텐데 (ex)MEMBER_DEL_FL 그럼 걔는 걍 안담겨서 null로 나옴... -->
 </resultMap>
 
+<resultMap type="Review" id="Review_rm">
+   	
+   		<!-- DB에서 PK에 해당하는 필드, 컬럼을 작성하는 태그이다........ -->
+   		<id property = "ratingNo" column = "RATING_NO" />
+   		
+   		<!-- 나머지 일반 컬럼...!!!! -->
+   			<result property="memberNo" column="MEMBER_NO" />
+			<result property="goodsNo" column="GOODS_NO" />
+			<result property="receiverNo" column="RECEIVER_NO" />
+			<result property="message" column="MESSAGE" />
+			<result property="createdAt" column="CREATED_AT" />
+			<result property="title" column="TITLE" />
+			<result property="memberNickname" column="MEMBER_NICKNAME" />
+			<result property="mannerDescription" column="MANNER_DESCRIPTION" />
+			
+			
+			<!-- 없는 애도 있을 텐데 (ex)MEMBER_DEL_FL 그럼 걔는 걍 안담겨서 null로 나옴... -->
+</resultMap>
+
+<!-- 판매완료/판매중/구매완료 목록의 게시글 조회 -->
+<select id = "getListCount" parameterType = "_int" resultType = "_int">
+	SELECT COUNT(*) FROM(
+	SELECT G.GOODS_NO, SELLER_NO, TITLE,
+	<![CDATA[
+	CASE  
+	  WHEN SYSDATE - G.CREATED_AT < 1/24/60
+	  THEN FLOOR( (SYSDATE - G.CREATED_AT) * 24 * 60 * 60 ) || '초 전'
+	  WHEN SYSDATE - G.CREATED_AT < 1/24
+	  THEN FLOOR( (SYSDATE - G.CREATED_AT) * 24 * 60) || '분 전'
+	  WHEN SYSDATE - G.CREATED_AT < 1
+	  THEN FLOOR( (SYSDATE - G.CREATED_AT) * 24) || '시간 전'
+	  WHEN SYSDATE - G.CREATED_AT < 30
+	  THEN FLOOR(SYSDATE - G.CREATED_AT) || '일 전'
+	  WHEN SYSDATE - G.CREATED_AT < 365
+	  THEN FLOOR((SYSDATE-G.CREATED_AT)/30) || '달 전'
+	  ELSE TO_CHAR(G.CREATED_AT, 'YYYY-MM-DD')
+	END CREATED_AT, ]]> RATING_NO, BUYER_NO,
+	(SELECT MEMBER_NICKNAME FROM "MEMBER" WHERE MEMBER_NO = BUYER_NO) BUYER_NICKNAME,
+	(SELECT MEMBER_NICKNAME FROM "MEMBER" WHERE MEMBER_NO = SELLER_NO) SELLER_NICKNAME,
+	IMAGE_NO, IMAGE_PATH
+	FROM GOODS_SELL G
+	LEFT JOIN REVIEW R ON(G.GOODS_NO = R.GOODS_NO)
+	LEFT JOIN "MEMBER" M ON (M.MEMBER_NO = G.SELLER_NO)
+	LEFT JOIN "GOODS_IMAGE" I ON(G.GOODS_NO = I.GOODS_NO)
+		<choose>
+			<when test='myPageCt == "1"'>
+	WHERE GOODS_DEL_FL = 'N' AND SELLER_NO = #{memberNo}
+	AND (RECEIVER_NO != SELLER_NO  OR RECEIVER_NO IS NULL)	
+	AND BUYER_NO IS NOT NULL
+			</when>
+			<when test='myPageCt == "2"'>
+	WHERE GOODS_DEL_FL = 'N' AND BUYER_NO = #{memberNo}
+	AND (RECEIVER_NO != BUYER_NO  OR RECEIVER_NO IS NULL)
+			</when>
+			<otherwise>
+	WHERE GOODS_DEL_FL = 'N' AND SELLER_NO = #{memberNo}
+	AND (RECEIVER_NO != SELLER_NO  OR RECEIVER_NO IS NULL)
+	AND BUYER_NO IS NULL
+			</otherwise>
+		</choose>
+	AND I.IMG_ORDER = 0
+	ORDER BY GOODS_NO DESC
+	)
+</select>
+
+
+<!-- 조회 : 판매완료 -->
 <select id="selectGoodsSoldList" resultMap = "goodsSell_rm">
 	SELECT G.GOODS_NO, SELLER_NO, TITLE,
 	<![CDATA[
-	CASE  WHEN SYSDATE - G.CREATED_AT < 1/24/60
-	      THEN FLOOR( (SYSDATE - G.CREATED_AT) * 24 * 60 * 60 ) || '초 전'
-	      WHEN SYSDATE - G.CREATED_AT < 1/24
-	      THEN FLOOR( (SYSDATE - G.CREATED_AT) * 24 * 60) || '분 전'
-	      WHEN SYSDATE - G.CREATED_AT < 1
-	      THEN FLOOR( (SYSDATE - G.CREATED_AT) * 24) || '시간 전'
-	      WHEN SYSDATE - G.CREATED_AT < 30
-	      THEN FLOOR( (SYSDATE - G.CREATED_AT)  ) || '일 전'
-	      ELSE TO_CHAR(G.CREATED_AT, 'YYYY-MM-DD')
-	   END CREATED_AT, ]]> RATING_NO, BUYER_NO,
-	(SELECT MEMBER_NICKNAME FROM "MEMBER" WHERE MEMBER_NO = BUYER_NO) BUYER_NICKNAME, IMAGE_NO, IMAGE_PATH
+	CASE  
+	  WHEN SYSDATE - G.CREATED_AT < 1/24/60
+	  THEN FLOOR( (SYSDATE - G.CREATED_AT) * 24 * 60 * 60 ) || '초 전'
+	  WHEN SYSDATE - G.CREATED_AT < 1/24
+	  THEN FLOOR( (SYSDATE - G.CREATED_AT) * 24 * 60) || '분 전'
+	  WHEN SYSDATE - G.CREATED_AT < 1
+	  THEN FLOOR( (SYSDATE - G.CREATED_AT) * 24) || '시간 전'
+	  WHEN SYSDATE - G.CREATED_AT < 30
+	  THEN FLOOR(SYSDATE - G.CREATED_AT) || '일 전'
+	  WHEN SYSDATE - G.CREATED_AT < 365
+	  THEN FLOOR((SYSDATE-G.CREATED_AT)/30) || '달 전'
+	  ELSE TO_CHAR(G.CREATED_AT, 'YYYY-MM-DD')
+	END CREATED_AT, ]]> RATING_NO, BUYER_NO,
+	(SELECT MEMBER_NICKNAME FROM "MEMBER" WHERE MEMBER_NO = BUYER_NO) BUYER_NICKNAME,
+	(SELECT MEMBER_NICKNAME FROM "MEMBER" WHERE MEMBER_NO = SELLER_NO) SELLER_NICKNAME,
+	IMAGE_NO, IMAGE_PATH
+	FROM GOODS_SELL G
+	LEFT JOIN REVIEW R ON(G.GOODS_NO = R.GOODS_NO)
+	LEFT JOIN "MEMBER" M ON (M.MEMBER_NO = G.SELLER_NO)
+	LEFT JOIN "GOODS_IMAGE" I ON(G.GOODS_NO = I.GOODS_NO)
+		<choose>
+			<when test='myPageCt == "1"'>
+	WHERE GOODS_DEL_FL = 'N' AND SELLER_NO = #{memberNo}
+	AND (RECEIVER_NO != SELLER_NO  OR RECEIVER_NO IS NULL)	
+	AND BUYER_NO IS NOT NULL
+			</when>
+			<when test='myPageCt == "2"'>
+	WHERE GOODS_DEL_FL = 'N' AND BUYER_NO = #{memberNo}
+	AND (RECEIVER_NO != BUYER_NO  OR RECEIVER_NO IS NULL)
+			</when>
+			<otherwise>
+	WHERE GOODS_DEL_FL = 'N' AND SELLER_NO = #{memberNo}
+	AND (RECEIVER_NO != SELLER_NO  OR RECEIVER_NO IS NULL)
+	AND BUYER_NO IS NULL
+			</otherwise>
+		</choose>
+	AND I.IMG_ORDER = 0
+	ORDER BY GOODS_NO DESC
+</select>
+
+<!-- 조회 : 판매중 -->
+<!-- <select id="selectGoodsSellList" resultMap = "goodsSell_rm">
+	SELECT G.GOODS_NO, SELLER_NO, TITLE,
+	<![CDATA[
+	CASE  
+	  WHEN SYSDATE - G.CREATED_AT < 1/24/60
+	  THEN FLOOR( (SYSDATE - G.CREATED_AT) * 24 * 60 * 60 ) || '초 전'
+	  WHEN SYSDATE - G.CREATED_AT < 1/24
+	  THEN FLOOR( (SYSDATE - G.CREATED_AT) * 24 * 60) || '분 전'
+	  WHEN SYSDATE - G.CREATED_AT < 1
+	  THEN FLOOR( (SYSDATE - G.CREATED_AT) * 24) || '시간 전'
+	  WHEN SYSDATE - G.CREATED_AT < 30
+	  THEN FLOOR(SYSDATE - G.CREATED_AT) || '일 전'
+	  WHEN SYSDATE - G.CREATED_AT < 365
+	  THEN FLOOR((SYSDATE-G.CREATED_AT)/30) || '달 전'
+	  ELSE TO_CHAR(G.CREATED_AT, 'YYYY-MM-DD')
+	END CREATED_AT, ]]> RATING_NO, BUYER_NO,
+	(SELECT MEMBER_NICKNAME FROM "MEMBER" WHERE MEMBER_NO = BUYER_NO) BUYER_NICKNAME,
+	(SELECT MEMBER_NICKNAME FROM "MEMBER" WHERE MEMBER_NO = SELLER_NO) SELLER_NICKNAME,
+	IMAGE_NO, IMAGE_PATH
 	FROM GOODS_SELL G
 	LEFT JOIN REVIEW R ON(G.GOODS_NO = R.GOODS_NO)
 	LEFT JOIN "MEMBER" M ON (M.MEMBER_NO = G.SELLER_NO)
 	LEFT JOIN "GOODS_IMAGE" I ON(G.GOODS_NO = I.GOODS_NO)
 	WHERE GOODS_DEL_FL = 'N' AND SELLER_NO = #{memberNo}
 	AND (RECEIVER_NO != SELLER_NO  OR RECEIVER_NO IS NULL)
-	AND BUYER_NO IS NOT NULL
+	AND BUYER_NO IS NULL
+	AND I.IMG_ORDER = 0
 	ORDER BY GOODS_NO DESC
-</select>
+</select> -->
+
+<!-- 조회 : 구매완료 -->
+<!-- <select id="selectGoodsBuyList" resultMap = "goodsSell_rm">
+	SELECT G.GOODS_NO, SELLER_NO, TITLE,
+	<![CDATA[
+	CASE  
+	  WHEN SYSDATE - G.CREATED_AT < 1/24/60
+	  THEN FLOOR( (SYSDATE - G.CREATED_AT) * 24 * 60 * 60 ) || '초 전'
+	  WHEN SYSDATE - G.CREATED_AT < 1/24
+	  THEN FLOOR( (SYSDATE - G.CREATED_AT) * 24 * 60) || '분 전'
+	  WHEN SYSDATE - G.CREATED_AT < 1
+	  THEN FLOOR( (SYSDATE - G.CREATED_AT) * 24) || '시간 전'
+	  WHEN SYSDATE - G.CREATED_AT < 30
+	  THEN FLOOR(SYSDATE - G.CREATED_AT) || '일 전'
+	  WHEN SYSDATE - G.CREATED_AT < 365
+	  THEN FLOOR((SYSDATE-G.CREATED_AT)/30) || '달 전'
+	  ELSE TO_CHAR(G.CREATED_AT, 'YYYY-MM-DD')
+	END CREATED_AT, ]]> RATING_NO, BUYER_NO,
+	(SELECT MEMBER_NICKNAME FROM "MEMBER" WHERE MEMBER_NO = BUYER_NO) BUYER_NICKNAME,
+	(SELECT MEMBER_NICKNAME FROM "MEMBER" WHERE MEMBER_NO = SELLER_NO) SELLER_NICKNAME,
+	IMAGE_NO, IMAGE_PATH
+	FROM GOODS_SELL G
+	LEFT JOIN REVIEW R ON(G.GOODS_NO = R.GOODS_NO)
+	LEFT JOIN "MEMBER" M ON (M.MEMBER_NO = G.SELLER_NO)
+	LEFT JOIN "GOODS_IMAGE" I ON(G.GOODS_NO = I.GOODS_NO)
+	WHERE GOODS_DEL_FL = 'N' AND BUYER_NO = #{memberNo}
+	AND (RECEIVER_NO != BUYER_NO  OR RECEIVER_NO IS NULL)
+	AND I.IMG_ORDER = 0
+	ORDER BY GOODS_NO DESC
+</select> -->
   
  <update id="changeIntroduce">
   UPDATE "MEMBER" SET INTRODUCE = #{introduce}
@@ -71,15 +218,7 @@
 </update>
 
 
-<select id = "getListCount" parameterType = "_int" resultType = "_int">
-	SELECT COUNT(*) FROM(
-	SELECT RATING_NO 
-	FROM GOODS_SELL 
-	LEFT JOIN REVIEW  USING(GOODS_NO)
-	WHERE GOODS_DEL_FL = 'N' AND SELLER_NO = #{memberNo}
-	AND (RECEIVER_NO != SELLER_NO  OR RECEIVER_NO IS NULL)
-	AND BUYER_NO IS NOT NULL)
-</select>
+
 
 
  <!-- 내 회원 정보 수정 (비밀번호 제외) -->
@@ -91,6 +230,7 @@
 		WHERE MEMBER_NO = #{memberNo}
 </update>
 
+<!-- 거래 후기 인서트  -->
 <insert id="insertReview" parameterType = "Review" useGeneratedKeys = "true">
 
 <selectKey keyProperty = "ratingNo" resultType= "_int" order = "BEFORE">
@@ -101,23 +241,60 @@ INSERT INTO REVIEW
 VALUES (#{ratingNo}, #{memberNo},#{goodsNo},#{receiverNo},#{message}, DEFAULT )
 </insert>
 
-<insert id="insertManner"  parameterType = "map">
+<!-- 거래 후기 중 GOOD매너평가 인서트 -->
+<insert id="insertgoodManner"  parameterType = "map">
 INSERT INTO REVIEW_RATING
 SELECT #{reviewNo} REVIEW_NO, A.* FROM
- 	<foreach collection = "checkedArr" item = "i" open="(" close = ") A"
+ 	<foreach collection = "goodCheckedArr" item = "i" open="(" close = ") A"
 		separator = "UNION ALL">
  	SELECT #{i} MANNER_NO FROM DUAL 
  	</foreach>
 </insert>
 
+<!-- 거래 후기 중 BAD매너평가 인서트 -->
+<insert id="insertbadManner"  parameterType = "map">
+INSERT INTO REVIEW_RATING
+SELECT #{reviewNo} REVIEW_NO, A.* FROM
+ 	<foreach collection = "badCheckedArr" item = "i" open="(" close = ") A"
+		separator = "UNION ALL">
+ 	SELECT #{i} MANNER_NO FROM DUAL 
+ 	</foreach>
+</insert>
+
+<!-- 매너온도 올리기 -->
+<update id = "updateGood" parameterType = "map">
+UPDATE "MEMBER" SET
+MANNER = MANNER + (0.2 * #{goodResult})
+WHERE MEMBER_NO = #{reviewBuyerNo}
+</update>
+
+<!-- 매너온도 내리기 -->
+<update id = "updateBad" parameterType = "map">
+UPDATE "MEMBER" SET
+MANNER = MANNER - (0.2 * #{badResult})
+WHERE MEMBER_NO = #{reviewBuyerNo}
+</update>
 
 
+<select id = "selectSendingReview" resultMap = "Review_rm">
+SELECT  TITLE, RATING_NO, 
+(SELECT MEMBER_NICKNAME FROM MEMBER M WHERE R.RECEIVER_NO  = M.MEMBER_NO) MEMBER_NICKNAME , MANNER_DESCRIPTION
+FROM REVIEW R
+JOIN GOODS_SELL G ON (G.GOODS_NO = R.GOODS_NO)
+JOIN "MEMBER" M ON (R.MEMBER_NO  = M.MEMBER_NO)
+JOIN REVIEW_RATING RV ON (RATING_NO = REVIEW_NO)
+JOIN REVIEW_DESCRIPTION D ON (RV.MANNER_NO = D.MANNER_NO)
+WHERE RATING_NO = #{ratingNo}
+ORDER BY D.MANNER_NO
+</select>
 
-
-
-
-
-
+<!-- 프로필 이미지 수정 -->
+<!-- mybatis config 보면 ....별칭이 적혀있단다.......근데 parameterType속성 적는건 선택이니까 걍 안적음. -->
+<update id="updateProfile">
+	UPDATE "MEMBER" SET
+	PROFILE_IMG = #{profileImage}
+	WHERE MEMBER_NO = #{memberNo}
+</update>
 
 
 

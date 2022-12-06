@@ -1,3 +1,4 @@
+// 슬라이드
 let slideIndex = 1;
 showSlides(slideIndex);
 
@@ -30,17 +31,74 @@ function showSlides(n) {
   dots[slideIndex-1].className += " active";
 }
 
+// 찜
 const like = document.getElementById("like");
 
 like.addEventListener("change", () => {
+  if(memberNo == "") {
+    alert("로그인 후 이용해주세요.");
+    like.checked = false;
+    location.href = "/member/login";
+    return;
+  }
+
+  if(memberNo == sellerNo) {
+    alert("자신의 게시글에는 찜할 수 없습니다.");
+    like.checked = false;
+    return;
+  }
+
   const iconChange = document.getElementsByClassName("icon-change")[0];
+  const likeCount = document.getElementById("likeCount");
 
   if(like.checked) {
-    iconChange.classList.add("fa-heart-circle-check");
-    iconChange.classList.remove("fa-heart-circle-plus");
+    $.ajax({
+      url : "/goodsLikeUp",
+      data : {"goodsNo" : goodsNo, "memberNo" : memberNo},
+      type : "GET",
+      success : (result) => {
+        if (result > 0) {
+          iconChange.classList.add("fa-heart-circle-check");
+          iconChange.classList.remove("fa-heart-circle-plus");
+          likeCount.innerText = Number(likeCount.innerText) + 1;
+          alert("찜 목록에 추가되었습니다.");
+        } else {
+            console.log("찜 실패");
+        }
+      },
+      error : () => {console.log("찜 에러");}
+    });
   
   } else {
-    iconChange.classList.add("fa-heart-circle-plus");
-    iconChange.classList.remove("fa-heart-circle-check");
+      $.ajax({
+        url : "/goodsLikeDown",
+        data : {"goodsNo" : goodsNo, "memberNo" : memberNo},
+        type : "GET",
+        success : (result) => {
+          if (result > 0) {
+            iconChange.classList.add("fa-heart-circle-plus");
+            iconChange.classList.remove("fa-heart-circle-check");
+            likeCount.innerText = Number(likeCount.innerText) - 1;
+            alert("찜 목록에서 삭제되었습니다.");
+          } else {
+            console.log("취소 실패");
+          }
+        },
+        error : () => {console.log("취소 에러");}
+    });
   }
 })
+
+// 본인과 바나나톡 X
+document.getElementsByClassName("like_talk")[0].addEventListener("submit", event => {
+  if(memberNo == sellerNo) {
+    alert("본인과 바나나톡을 할 수 없습니다.");
+    event.preventDefault();
+    return;
+  }
+});
+
+// 검색어 남기기
+if(query != null) {
+  document.getElementById("query").value = query;
+}

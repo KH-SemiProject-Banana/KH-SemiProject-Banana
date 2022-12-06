@@ -8,6 +8,7 @@
                 <div>
                     <%-- <a href="/board/1" class="fa-regular fa-file-lines boardListLink"> 게시판</a> --%>
                 </div>
+                
                 <div class="talkAndlogin">
                     <a href="/chatting" class="topmenu__talk fa-regular fa-comment">바나나톡</a>
                     
@@ -44,16 +45,6 @@
                     </c:choose>
                 </div>
 
-
-                
-
-
-
-                
-           
-
-
-
             </section>
             <section class="section-query">
                 <div class="query__area">
@@ -69,7 +60,7 @@
                 <article class="search-area">
             
                     <!-- form : 내부 input태그의 값을 서버 또는 페이지로 전달(제출) -->
-                    <form action="#">
+                    <form action="/category" id="searchFrm">
                         <fieldset>
                             <input type="search" id="query" name="query" placeholder="검색어를 입력해주세요">
                             <button type="submit" id="search-btn" class="fa-solid fa-magnifying-glass">
@@ -82,3 +73,5 @@
                 </a>
             </section>
         </header>
+        
+        <script src="/resources/js/현진/search.js"></script>

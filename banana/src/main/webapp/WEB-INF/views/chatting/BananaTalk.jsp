@@ -25,28 +25,36 @@
         <!-- header 시작----------------------------------------------------------------------------------------- -->
         <header>
             <section class="section-query">
-                <!-- 바나나 로고 -->
                 <div class="query__area">
-                    <a href="/"> 
-                        <img src="/resources/images/banana-logo.png" id="logo-img">
-                    </a>
-                    <div class="query__logo">
-                        <p>바꾸고 나누자 나랑</p>
-                        <p id="query__banana">Banana Market</p>
+                    <div>
+                        <a href="/">
+                            <img src="/resources/images/banana-logo.png" id="logo-img"/>
+                        </a>
+                        <div class="query__logo">
+                            <p>바꾸고 나누자 나랑</p>
+                            <p id="query__banana">Banana Market</p>
+                        </div>
                     </div>
-                </div>
-                <!-- 프로필관련 -->
-                <div class="profil">
-                    <%-- <img class="profilImages" src="/resources/images/user.png" > --%>
-                    <div class="profileImgArea">
-                        <c:if test="${empty loginMember.profileImage}">
-                            <img  class="profilImages"src="/resources/images/banana-logo.png"  id="profileImg">
-                        </c:if>
-                        <c:if test="${not empty loginMember.profileImage}">
-                            <img  class="profilImages"src="${loginMember.profileImage}" id="profileImg">
-                        </c:if>
-                    </div>
-                    <div class="profilName">${loginMember.memberNickname}</div>
+                    <label for="header-menu-toggle">
+                        <div class="profileImgArea">
+                            <c:if test="${empty loginMember.profileImage}">
+                                <img src="/resources/images/banana-logo.png"  id="profileImg">
+                            </c:if>
+                            <c:if test="${not empty loginMember.profileImage}">
+                                <img src="${loginMember.profileImage}" id="profileImg">
+                            </c:if>
+                        </div>
+                        ${loginMember.memberNickname}
+                        <i class="fa-solid fa-caret-down"></i>
+                        <div>
+                            <input type="checkbox" id="header-menu-toggle">
+
+                            <div id="header-menu">
+                                <a href="/member/myPage/main">내 정보</a>
+                                <a href="/member/logout">로그아웃</a>
+                            </div>
+                        </div>
+                    </label>
                 </div>
             </section>
         </header>
@@ -55,15 +63,6 @@
             <div id="mainBox">
                 <!--------------------- 채팅 리스트 --------------------->
                 <div id="chatting-list">
-                    <!-- User프로필1 -->
-                    <%-- <div class="userProfile">
-                        <img class="talkProfileImages" src="/resources/images/banana-logo.png">
-                        <div class="name">바나나</div>
-                        <div class="talkClockAlarm">
-                            <div class="talkClock">오후 09:10</div>
-                            <div class="talkAlarm"> 1</div>
-                        </div>
-                    </div> --%>
 
                     <c:forEach var="room" items="${roomList}">
                         <%--  id == 채팅방 번호 --%>
@@ -85,42 +84,43 @@
                                 </p>
                                 <div>
                                     <p class="recent-message">${room.lastMessage}</p><%-- 채팅메세지 --%>
-                                    <c:if test="${room.notReadCount > 0}"> 
-                                        <p class="not-read-count">${room.notReadCount}</p><%-- 메세지 왔을때 카운트 --%>
-                                    </c:if>
+                                    <%-- 만약 0보다 크고 100보다 작으면 카운트 100보다 크면 99+ --%>
+                                    <c:choose>
+                                        <c:when test="${room.notReadCount > 0 && room.notReadCount <100}">
+                                            <p class="not-read-count">${room.notReadCount}</p><%-- 메세지 왔을때 카운트 --%>
+                                        </c:when>
+                                        <c:when test="${room.notReadCount>= 100}">
+                                            <p class="not-read-count">99+</p><%-- 메세지 왔을때 카운트 --%>
+                                        </c:when>
+                                        <c:otherwise>
+                                        </c:otherwise>
+                                    </c:choose>
                                 </div>
                             </div>
                         </li>
                     </c:forEach>
 
-
-
-
-
-
-
                 </div>
                 <!--------------------- 채팅 내용박스 --------------------->
                 <div id="chatBoxMain">
                     <!--------- 채팅박스 상단 상품 시작 --------->
-                    <div id="productInforBox">
-                        <div class="productImgBox">
+                    <ul id="productInforBox">
+                        <li class="productImgBox">
                             <img class="productImgBox1"src="\resources\images\hydong-test-RTX4090.jpg">
-                        </div>
-                        <div class="productNamePrice">
+                        </li>
+                        <li class="productNamePrice">
                             <div class="productNameArea">
                                 <div class="productStatus">거래완료</div>
                                 <div class="productName">RTX4090 누가좀 사주세요 제발 가지고싶다</div>
                             </div>
                             <div class="productPrice">2,500,000 원</div>
-                        </div>
+                        </li>
                         <div class="Declaration">
-                            <!-- 신고버튼 -->
-                            <a href="javascript:openPop()">
+                            <a href="javascript:openPop()"><!-- 신고버튼 -->
                                 <i class="fa-regular fa-bell-slash"></i>
                             </a>
                         </div>
-                    </div> 
+                    </ul> 
                     <!--------- 채팅박스 상단 상품 시작 끝--------->
 
 
@@ -189,6 +189,7 @@
 	<script>
 		// 로그인한 회원 번호
 		const loginMemberNo = "${loginMember.memberNo}";
+		const goodsNo = "${goodsNo}";
 
 		// 게시판에서 사용자 닉네임을 눌러서 채팅 화면으로 넘어온 경우 
 		// 그 때 전달 된 채팅방 번호를 저장하는 변수

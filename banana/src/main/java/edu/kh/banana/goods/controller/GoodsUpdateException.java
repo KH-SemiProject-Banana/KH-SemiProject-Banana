@@ -1,4 +1,4 @@
-package edu.kh.banana.goods.model.controller;
+package edu.kh.banana.goods.controller;
 
 public class GoodsUpdateException extends RuntimeException {
 	

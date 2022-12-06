@@ -58,7 +58,7 @@ for(let item of remove){
     })
 }
 
-// 좋아요
+// 찜
 const likeChk = document.getElementsByClassName("likeChk");
 
 for(let i = 0; i < likeChk.length; i++) {
@@ -71,6 +71,24 @@ for(let i = 0; i < likeChk.length; i++) {
         }
         
         const goodsNo = likeChk[i].value;
+        let sellerNo; 
+
+        $.ajax({
+            url : "/goodsLikeSelf",
+            data : {"goodsNo" : goodsNo},
+            async : false,
+            type : "GET",
+            success : (result) => {
+                sellerNo = result;
+            },
+            error : () => {console.log(sellerNo);}
+        });
+
+        if (memberNo == sellerNo) {
+            alert("자신의 게시글에는 찜할 수 없습니다.");
+            likeChk[i].checked = false;
+            return;
+        }
 
         if(likeChk[i].checked) {
             $.ajax({
@@ -81,10 +99,10 @@ for(let i = 0; i < likeChk.length; i++) {
                     if (result > 0) {
                         alert("찜 목록에 추가되었습니다.");
                     } else {
-                        console.log("좋아요 실패");
+                        console.log("찜 실패");
                     }
                 },
-                error : () => { console.log("좋아요 에러");}
+                error : () => {console.log("찜 에러");}
             });
 
         } else {
@@ -105,9 +123,13 @@ for(let i = 0; i < likeChk.length; i++) {
     })
 }
 
-// 시행착오 코드
+// 검색어 남기기
+if(query != null) {
+    document.getElementById("query").value = query;
+}
 
-// // 1페이지(초기화면)
+// 시행착오 코드
+// 1페이지(초기화면)
 // const selectPage = document.getElementsByClassName("selectPage");
 // const pageNo = document.getElementsByClassName("pageNo");
 
@@ -115,7 +137,7 @@ for(let i = 0; i < likeChk.length; i++) {
 //     pageNo[0].classList.add("selectPage");
 // }
 
-// // 페이지 번호
+// 페이지 번호
 // for(let i = 0; i < pageNo.length; i++){
 //     pageNo[i].addEventListener('click', function(){
 
@@ -127,7 +149,7 @@ for(let i = 0; i < likeChk.length; i++) {
 //     });
 // };
 
-// // 페이지 이동 - 왼쪽 화살표
+// 페이지 이동 - 왼쪽 화살표
 // document.getElementById("leftArrow").addEventListener("click", function(){
 //     const selectPage = document.getElementsByClassName("selectPage")[0].innerText;
 //     let href;
@@ -140,7 +162,7 @@ for(let i = 0; i < likeChk.length; i++) {
 //     }
 // });
 
-// // 페이지 이동 - 오른쪽 화살표
+// 페이지 이동 - 오른쪽 화살표
 // document.getElementById("rightArrow").addEventListener("click", function(){
 //     const selectPage = document.getElementsByClassName("selectPage")[0].innerText;
 //     let href;

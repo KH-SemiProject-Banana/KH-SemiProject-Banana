@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
@@ -30,13 +31,10 @@ public class MainController {
 	
 	@GetMapping("/")
 	public String mainPage(Model model,
-			@SessionAttribute(value="loginMember", required=false) Member loginMember) {
+			@SessionAttribute(value="loginMember", required=false) Member loginMember,
+			@RequestParam(value="query", required=false) String query) {
 		
-		// 1. Model model 넣고
-		// 2. service->dao->sql에서 조회한 goods(인기상품/최근) 조회해서 담기
-		// 3. Goods vo에 등록된 List<Goods>와 어떻게 연결?
-		
-		// + 로그인한 상태에서는 좋아요 눌렀는지 여부 체크는 어떻게..?
+
 		
 		
 		int memberNo = -1;
@@ -44,6 +42,8 @@ public class MainController {
 		if(loginMember != null) {
 			memberNo = loginMember.getMemberNo();
 		}
+		
+		
 		
 		
 		// 메인페이지 인기상품

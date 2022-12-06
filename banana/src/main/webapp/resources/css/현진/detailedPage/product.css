@@ -18,7 +18,7 @@ img{
     font-weight: bold;
 }
 
-.category > a, span > a{
+a{
     text-decoration: none;
     color: black;
 }
@@ -163,6 +163,9 @@ img{
     font-weight: bold;
     font-size: 17px;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .like_talk button:hover{
@@ -170,13 +173,15 @@ img{
     transition-duration: 0.5s;
 }
 
+/* 설명 */
 .precautions{
     background-color: rgb(255, 216, 76);
     height: 100px;
     margin-bottom: 50px;
     border-radius: 20px;
-    padding-top: 20px;
+    padding-top: 15px;
     padding-left: 30px;
     font-size: 13px;
     font-weight: bold;
+    line-height: 22px;
 }

@@ -1,5 +1,6 @@
 package edu.kh.banana.pay.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 
 import edu.kh.banana.member.model.vo.Member;
 import edu.kh.banana.pay.model.service.PayService;
+import edu.kh.banana.pay.model.vo.BananaPay;
 
 @Controller
 public class PayController {
@@ -51,4 +53,10 @@ public class PayController {
     public int pointCharge(@RequestParam Map<String, Object> paramMap) {
         return service.pointCharge(paramMap);
     }
+	
+	@GetMapping("/searchPayLogList")
+	@ResponseBody
+	public List<BananaPay> searchPayLogList(@RequestParam Map<String, Object> paramMap) {
+		return service.searchPayLogList(paramMap);
+	}
 }

@@ -1,11 +1,14 @@
 package edu.kh.banana.pay.model.dao;
 
 
+import java.util.List;
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import edu.kh.banana.pay.model.vo.BananaPay;
 
 @Repository
 public class PayDAO {
@@ -36,5 +39,9 @@ public class PayDAO {
 	 */
 	public int pointCharge(Map<String, Object> paramMap) {
 		return sqlSession.insert("payMapper.pointCharge", paramMap);
+	}
+
+	public List<BananaPay> searchPayLogList(Map<String, Object> paramMap) {
+		return sqlSession.selectList("payMapper.searchPayLogList", paramMap);
 	}
 }

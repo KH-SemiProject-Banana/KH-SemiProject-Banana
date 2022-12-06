@@ -17,6 +17,50 @@ function openPop() {
     payLog.style.display = "block";
     payCharge.style.display = "none";
     payRefund.style.display = "none";
+
+    // payLogList();
+}
+
+document.getElementById("selectYear").addEventListener("change", () => {
+    payLogList();
+})
+
+document.getElementById("selectMonth").addEventListener("change", () => {
+    payLogList();
+})
+
+const payMain = document.getElementsByClassName("payMain")[0];
+
+// 조회
+const payLogList = () => {
+    $.ajax({
+        url : "/searchPayLogList",
+        data : {"memberNo" : memberNo,
+                "selectYear" : selectYear.innerText,
+                "selectMonth" : selectMonth.innerText},
+        type : "GET",
+        async : false,
+        success : (result) => {
+            // result == payLogList
+            let monthDay = "";
+
+            for(let item of result) {
+                if(monthDay != item.monthDay) {
+                    payMain.innerHTML += "<div class='monthDateArea'>" + item.monthDay + "</div>";
+                    monthDay = item.monthDay;
+                }
+
+                payMain.innerHTML += "<div class='useDetail'>"
+                                   + "<div class='useDetail__title'>"
+                                   + "<p>" + item.status + "</p>"
+                                   + "<p>" + item.orderDate + "</p>"
+                                   + "</div>"
+                                   + "<div class='useDetail__money moneyPlus'>" + item.usePoint + "</div>"
+                                   + "</div>"; 
+            }
+        },
+        error : () => {console.log("바나나페이 조회 실패");}
+        });
 }
 
 // 결제

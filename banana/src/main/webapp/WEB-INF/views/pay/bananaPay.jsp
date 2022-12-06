@@ -152,9 +152,8 @@
                                         </div>
                                     </div>
 
-                                    <div class="monthDateArea">11월 8일(목)</div>
+                                    <!-- <div class="monthDateArea">11월 8일(목)</div>
 
-                                    <a href="#" class="useDetailArea">
                                         <div class="useDetail">
                                             <div class="useDetail__title">
                                                 <p>판매글이름</p>
@@ -162,9 +161,7 @@
                                             </div>
                                             <div class="useDetail__money moneyPlus">+14,000원</div>
                                         </div>
-                                    </a>
 
-                                    <a href="#" class="useDetailArea">
                                         <div class="useDetail">
                                             <div class="useDetail__title">
                                                 <p>판매글이름</p>
@@ -172,9 +169,7 @@
                                             </div>
                                             <div class="useDetail__money">-36,000원</div>
                                         </div>
-                                    </a>
 
-                                    <a href="#" class="useDetailArea">
                                         <div class="useDetail">
                                             <div class="useDetail__title">
                                                 <p>판매글이름</p>
@@ -182,11 +177,9 @@
                                             </div>
                                             <div class="useDetail__money moneyPlus">+38,000원</div>
                                         </div>
-                                    </a>
 
                                     <div class="monthDateArea">11월 7일(수)</div>
 
-                                    <a href="#" class="useDetailArea">
                                         <div class="useDetail">
                                             <div class="useDetail__title">
                                                 <p>판매글이름</p>
@@ -194,17 +187,14 @@
                                             </div>
                                             <div class="useDetail__money">-5,000원</div>
                                         </div>
-                                    </a>
 
-                                    <a href="#" class="useDetailArea">
                                         <div class="useDetail">
                                             <div class="useDetail__title">
                                                 <p>판매글이름</p>
                                                 <p>09:45</p>
                                             </div>
                                             <div class="useDetail__money">-5,000원</div>
-                                        </div>
-                                    </a>
+                                        </div> -->
                                 </div>
                             </div>
                         </section>

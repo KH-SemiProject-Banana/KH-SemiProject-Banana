@@ -1,11 +1,13 @@
 package edu.kh.banana.pay.model.service;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import edu.kh.banana.pay.model.dao.PayDAO;
+import edu.kh.banana.pay.model.vo.BananaPay;
 
 @Service
 public class PayServiceImpl implements PayService{
@@ -30,5 +32,10 @@ public class PayServiceImpl implements PayService{
 		int remainPoint = searchRemainPay(paramMap);
 		paramMap.put("remainPoint", remainPoint);
 		return dao.pointCharge(paramMap);
+	}
+
+	@Override
+	public List<BananaPay> searchPayLogList(Map<String, Object> paramMap) {
+		return dao.searchPayLogList(paramMap);
 	}
 }

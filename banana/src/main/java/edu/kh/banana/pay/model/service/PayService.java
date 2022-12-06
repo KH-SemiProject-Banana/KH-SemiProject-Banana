@@ -1,6 +1,9 @@
 package edu.kh.banana.pay.model.service;
 
+import java.util.List;
 import java.util.Map;
+
+import edu.kh.banana.pay.model.vo.BananaPay;
 
 public interface PayService {
 	/**
@@ -22,4 +25,6 @@ public interface PayService {
 	 * @return result
 	 */
 	int pointCharge(Map<String, Object> paramMap);
+
+	List<BananaPay> searchPayLogList(Map<String, Object> paramMap);
 }

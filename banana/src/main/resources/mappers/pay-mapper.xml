@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace = "payMapper">
+  <resultMap type="BananaPay" id="pay_rm">
+  	<id property="orderNo" column="ORDER_NO" />
+  	<result property="goodsNo" column="GOODS_NO" />
+  	<result property="orderDate" column="ORDER_DATE" />
+ 	<result property="usePoint" column="USE_POINT" /> 
+ 	<result property="buyStatus" column="BUY_STATUS" />
+ 	<result property="monthDay" column="MONTH_DAY" />
+ 	<result property="status" column="STATUS" />
+  </resultMap>
+
   <!-- 잔여 페이 조회 -->
   <select id="searchRemainPay" resultType="_int">
   	SELECT REMAIN_POINT FROM REQUEST_PAY
@@ -19,4 +29,26 @@
 	(SEQ_ORDER_NO.NEXTVAL, NULL, #{memberNo}, DEFAULT,
 	#{inputPrice}, 1, #{remainPoint} + #{inputPrice})
   </insert>
+  
+  <select id="searchPayLogList" resultMap="pay_rm">
+  	SELECT BUY_STATUS, USE_POINT,
+  	CASE 
+	WHEN BUY_STATUS = 1
+	THEN '바나나 페이 결제'
+	WHEN BUY_STATUS = 2
+	THEN '바나나 페이 환불'
+	WHEN BUY_STATUS = 3
+	THEN '물품 구매'
+	WHEN BUY_STATUS = 4
+	THEN '물품 판매'
+	END STATUS,
+	TO_CHAR(ORDER_DATE, 'MM"월" DD"일"(DY)') MONTH_DAY,
+	TO_CHAR(ORDER_DATE, 'YYYY"년"') SELECT_YEAR,
+	TO_CHAR(ORDER_DATE, 'MM"월"') SELECT_MONTH,
+	TO_CHAR(ORDER_DATE, 'HH24:MI') ORDER_DATE FROM REQUEST_PAY
+	WHERE TRADER_NO = #{memberNo}
+	AND TO_CHAR(ORDER_DATE, 'YYYY"년"') = #{selectYear}
+	AND TO_CHAR(ORDER_DATE, 'MM"월"') = #{selectMonth}
+	ORDER BY ORDER_NO DESC
+  </select>
 </mapper>

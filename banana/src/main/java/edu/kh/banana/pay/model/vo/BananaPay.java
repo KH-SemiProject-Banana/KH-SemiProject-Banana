@@ -19,5 +19,6 @@ public class BananaPay {
 	private int buyStatus;
 	private int remainPoint;
 	
-	// 추가할거 있으면 추가하세요
+	private String monthDay;
+	private String status;
 }

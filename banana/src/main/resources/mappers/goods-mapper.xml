@@ -26,6 +26,8 @@
    		
    		<result property="thumbnail" column="THUMBNAIL"></result>
    		<result property="isLike" column="IS_LIKE"></result>
+   		<result property="buyerNo" column="BUYER_NO"></result>
+   		<result property="sellStatus" column="SELL_STATUS"></result>
    		
 
    		
@@ -373,5 +375,13 @@
 	</if>
 
  </select>
+	<!-- 채팅방 상품정보조회 -->
+	<select id="selectProductInfor" resultMap="goods_rm">
+	 SELECT GOODS_NO, TITLE, SELL_PRICE, NVL2(BUYER_NO,'판매완료','판매중')SELL_STATUS, IMAGE_PATH
+	 FROM GOODS_SELL
+	 JOIN GOODS_IMAGE USING(GOODS_NO)
+ 	 JOIN CHATTING_ROOM USING(GOODS_NO)
+	 WHERE CHATTING_NO= #{chattingNo}
+	</select>
   
 </mapper>

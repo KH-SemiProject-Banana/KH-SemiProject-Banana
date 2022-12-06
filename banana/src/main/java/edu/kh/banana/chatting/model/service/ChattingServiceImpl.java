@@ -10,6 +10,7 @@ import edu.kh.banana.chatting.model.dao.ChattingDAO;
 import edu.kh.banana.chatting.model.vo.ChattingRoom;
 import edu.kh.banana.chatting.model.vo.Message;
 import edu.kh.banana.common.Util;
+import edu.kh.banana.goods.model.vo.GoodsSell;
 
 @Service
 public class ChattingServiceImpl implements ChattingService {
@@ -63,4 +64,10 @@ public class ChattingServiceImpl implements ChattingService {
 	        }
 	        return messageList;
 	    }
+
+	    // 상품정보을 비동기로 조회
+		@Override
+		public GoodsSell selectProductInfor(int chattingNo) {
+			return  dao.selectProductInfor(chattingNo);
+		}
 }

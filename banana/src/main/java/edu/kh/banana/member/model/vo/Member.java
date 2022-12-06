@@ -54,4 +54,6 @@ public class Member {
 	// 유저차단 테이블(USER_BLOCK)
 	private int[] userBlocked; // 차단당한사람
 	
+	// 회원의 글 개수
+	private int goodsCount;
 }

@@ -5,6 +5,7 @@
 	   <resultMap type="ChattingRoom" id="chattingRoom_rm">
       <id property="chattingNo" column="CHATTING_NO" />
 
+      <result property="goodsNo" column="GOODS_NO" />
       <result property="lastMessage" column="LAST_MESSAGE" />
       <result property="sendTime" column="SEND_TIME" />
       <result property="targetNo" column="TARGET_NO" />
@@ -30,8 +31,8 @@
    <select id="checkChattingNo" resultType="_int">
       SELECT NVL(SUM(CHATTING_NO),0) CHATTING_NO
       FROM CHATTING_ROOM
-      WHERE (OPEN_MEMBER = #{loginMemberNo} AND PARTICIPANT = #{targetNo})
-      OR (OPEN_MEMBER = #{targetNo} AND PARTICIPANT = #{loginMemberNo})
+      WHERE (OPEN_MEMBER = #{loginMemberNo} AND PARTICIPANT = #{targetNo} AND GOODS_NO=#{goodsNo})
+			OR (OPEN_MEMBER = #{targetNo} AND PARTICIPANT = #{loginMemberNo} AND GOODS_NO=#{goodsNo})
    </select>
    
    
@@ -43,7 +44,7 @@
       </selectKey>
    
       INSERT INTO CHATTING_ROOM
-      VALUES(#{chattingNo}, DEFAULT, #{loginMemberNo}, #{targetNo})
+      VALUES(#{chattingNo}, DEFAULT, #{goodsNo},#{loginMemberNo}, #{targetNo})
    </insert>
 
 
@@ -55,10 +56,18 @@
             WHERE M2.CHATTING_NO = R.CHATTING_NO
             ORDER BY MESSAGE_NO DESC) 
             WHERE ROWNUM = 1) LAST_MESSAGE
-         ,TO_CHAR(NVL((SELECT MAX(SEND_TIME) SEND_TIME
+         ,<![CDATA[
+         CASE  
+ 		  WHEN SYSDATE-TO_DATE(TO_CHAR( (NVL((SELECT MAX(SEND_TIME) SEND_TIME
+	       FROM MESSAGE M
+           WHERE R.CHATTING_NO  = M.CHATTING_NO), CH_CREATE_DATE))+1,'YYYY-MM-DD') ) < 0
+	      THEN TO_CHAR (NVL((SELECT MAX(SEND_TIME) SEND_TIME
                FROM MESSAGE M
-               WHERE R.CHATTING_NO  = M.CHATTING_NO), CH_CREATE_DATE), 
-               'YYYY.MM.DD') SEND_TIME
+               WHERE R.CHATTING_NO  = M.CHATTING_NO), CH_CREATE_DATE), 'PM HH24:MI')
+	      ELSE TO_CHAR(NVL((SELECT MAX(SEND_TIME) SEND_TIME
+               FROM MESSAGE M
+               WHERE R.CHATTING_NO  = M.CHATTING_NO), CH_CREATE_DATE), 'YYYY.MM.DD')
+       END SEND_TIME]]> 
          ,NVL2((SELECT OPEN_MEMBER FROM CHATTING_ROOM R2
             WHERE R2.CHATTING_NO = R.CHATTING_NO
             AND R2.OPEN_MEMBER = #{memberNo}),
@@ -108,6 +117,7 @@
       WHERE CHATTING_NO  = #{chattingNo}
       ORDER BY MESSAGE_NO
    </select>
+
 
 
 

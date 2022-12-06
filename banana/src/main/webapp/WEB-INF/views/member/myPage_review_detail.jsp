@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<c:set var="reviewDetailList" value="${map.reviewDetailList}" />
+<c:set var = "pagination" value = "${map.pagination}" />
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,103 +32,90 @@
     <section class = "total">
         <section class = "category">
             <div class = "category_border">
-                <div class = "both">전체 후기</div>
-                <div class = "buyer">구매자 후기</div>
-                <div class = "seller">판매자 후기</div>
+                <div class = "both"><a href="/member/myPage/review/detail?detailCt=1">전체 후기</a></div>
+                <div class = "buyer"><a href="/member/myPage/review/detail?detailCt=2">구매자 후기</a></div>
+                <div class = "seller"><a href="/member/myPage/review/detail?detailCt=3">판매자 후기</a></div>
             </div>
         </section>
         <section class = "review">
-           
-            <div class = "review_1">
-                <div class = "photo">
-                    <img  src="/resources/images/banana-logo.png" alt="">
-                </div>
-                <div class="memberInfoBox">
-                    <div class="memberInfo">
-                        <div class = "row1">
-                            <div class = "name">바나나</div>
-                        </div>
-                        <div class = "row2">
-                            <div class = "address">아현동</div>
-                            <div class = "date">11달 전</div>
+           <c:forEach var="review" items="${reviewDetailList}">
+                <div class = "review_1">
+                    <div class = "photo">
+                        <c:if test = "${not empty review.profileImage}">
+                        <img  src="${review.profileImage}" alt="">
+                        </c:if>
+                        <c:if test = "${empty review.profileImage}">
+                        <img  src="/resources/images/banana-logo.png" alt="">
+                        </c:if>
+                    </div>
+                
+                    <div class="memberInfoBox">
+                        <div class="memberInfo">
+                            <div class = "row1">
+                                <div class = "name">${review.memberNickname}</div>
+                            </div>
+                            <div class = "row2">
+                                <div class = "address">${review.address}</div>
+                                <div class = "date">${review.createdAt}</div>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class = "content">
-                    <div class = "row3">
-                        <pre class = "message Scroll">
-고주파로 새 제품 교환 찬스까지 썼지만 여전히 고주파 심함. 
-국내나 해외 후기들 보면 현재 4090 제품 중 가장 고주파 심한 제품임
-(슈프림 외에 터프, 스트릭스, FE도 고주파 심하니 참고). 
-굉장히 높은 확률로 고주파가 걸리는 제품이니 
-옆방에서 문만 열고 있는 상태에서도 들릴 정도의 
-고주파가 괜찮다싶은 사람만 구매 추천.
-고주파로 새 제품 교환 찬스까지 썼지만 여전히 고주파 심함. 
-국내나 해외 후기들 보면 현재 4090 제품 중 가장 고주파 심한 제품임
-(슈프림 외에 터프, 스트릭스, FE도 고주파 심하니 참고). 
-굉장히 높은 확률로 고주파가 걸리는 제품이니 
-옆방에서 문만 열고 있는 상태에서도 들릴 정도의 
-고주파가 괜찮다싶은 사람만 구매 추천.
-                        </pre>
-                    </div>
-                </div>
-            </div>
-
-
-
-            <div class = "review_2">
-                <div class = "photo">
-                    <img  src="/resources/images/banana-logo.png" alt="">
-                </div>
-                <div class="memberInfoBox">
-                    <div class="memberInfo">
-                        <div class = "row1">
-                            <div class = "name">바나나</div>
-                        </div>
-                        <div class = "row2">
-                            <div class = "address">아현동</div>
-                            <div class = "date">11달 전</div>
+                    <div class = "content">
+                        <div class = "row3">
+                            <pre class = "message Scroll">
+${review.message}
+                            </pre>
                         </div>
                     </div>
                 </div>
-                <div class = "content">
-                    <div class = "row3">
-                        <pre class = "message Scroll">
-감사해용
-                        </pre>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class = "review_3">
-                <div class = "photo">
-                    <img  src="/resources/images/banana-logo.png" alt="">
-                </div>
-                <div class="memberInfoBox">
-                    <div class="memberInfo">
-                        <div class = "row1">
-                            <div class = "name">바나나</div>
-                        </div>
-                        <div class = "row2">
-                            <div class = "address">아현동</div>
-                            <div class = "date">11달 전</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class = "content">
-                    <div class = "row3">
-                        <pre class = "message Scroll">
-좋은 물건
-                        </pre>
-                    </div>
-                </div>
-            </div>
-
+            </c:forEach>
 
         </section>
+
+        <div class="pagination-area">
+
+                    <%-- 페이지네이션 목록 추가  --%>
+                    <ul class="pagination">
+                    
+                        <!-- 첫 페이지로 이동 -->
+                        
+                        <%-- <li><a href="/member/myPage/review/detail?detailCt=${param.detailCt}&cp=1">&lt;&lt;</a></li> --%>
+
+                        <!-- 이전 목록 마지막 번호로 이동 -->
+                        <li><a href="/member/myPage/review/detail?detailCt=${param.detailCt}&cp=${pagination.prevPage}">&lt;</a></li>
+                        <%-- ?cp같은 쿼리스트링 형태로 적어야 함.....(이게 파라미터로 인식이 됨...) --%>
+                        
+                        <c:forEach var = "i" begin ="${pagination.startPage}" end = "${pagination.endPage}" step = "1" >
+
+                            <c:choose>
+                                <c:when test = "${i == pagination.currentPage}">
+                                <%-- 현재 페이지인 경우 --%>
+                                    <!-- 현재 보고있는 페이지 -->
+                                    <li><a class="current">${i}</a></li>
+                                </c:when>
+                                <c:otherwise>
+                                <!-- 현재 페이지를 제외한 나머지 -->
+                                <li><a href="/member/myPage/review/detail?detailCt=${param.detailCt}&cp=${i}">${i}</a></li>
+                                </c:otherwise>
+                            </c:choose>
+
+                        </c:forEach>
+
+                        <!-- 특정 페이지로 이동 -->
+                        
+                        
+                        
+                        
+                        
+                        <!-- 다음 목록 시작 번호로 이동 -->
+                        <li><a href="/member/myPage/review/detail?detailCt=${param.detailCt}&cp=${pagination.nextPage}">&gt;</a></li>
+
+                        <!-- 끝 페이지로 이동 -->
+                        <%-- <li><a href="/member/myPage/review/detail?detailCt=${param.detailCt}&cp=${pagination.maxPage}">&gt;&gt;</a></li> --%>
+
+                    </ul>
+                </div> 
     </section>
 </main>
      <script>

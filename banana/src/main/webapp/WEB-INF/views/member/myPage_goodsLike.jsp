@@ -202,8 +202,8 @@
 			</div> --%>
 			<section class="myBanana-sellList" id="myBanana-sellList">
 				<div class="myBanana-sell">
-					<div id="selling"><a href="/member/myPage/main?myPageCt=5">판매중</a></div>
-					<div id="sold"><a href="/member/myPage/main?myPageCt=1">판매완료</a></div>
+					<<%-- div id="selling"><a href="/member/myPage/main?myPageCt=5">판매중</a></div>
+					<div id="sold"><a href="/member/myPage/main?myPageCt=1">판매완료</a></div> --%>
 				</div>
 
 				<section class="content-favorite">
@@ -227,6 +227,7 @@
 									<div>
 										<div class="favorite__img">
 											<img src="${sold.imagePath}"> 
+                                            <%-- 여기서는 dot이 필요가 없지? --%>
                                             <i class="fa-solid fa-ellipsis-vertical dot" id="${sold.goodsNo}"></i>
                                             <div class="myGoodsDetail hidden">
                                                 <button class="updatGoods">상품 수정하기</button>
@@ -238,23 +239,10 @@
 											<div class="favorite__price">${sold.title}</div>
 										</div>
 									</div>
+                                    <%-- 찜한 시간? --%>
 									<div class="favorite__content">${sold.createdAt}</div>
                                      
-                                        <c:if test = "${sold.buyerNo != 0}">
-                                            <c:choose>
-                                                <c:when test="${sold.ratingNo == 0}">
-                                                    <a href="javascript:openPop(${sold.goodsNo},${sold.buyerNo},'${sold.buyerNickname}',
-                                                                                ${sold.sellerNo},'${sold.sellerNickname}','${sold.title}')" id="popopen">
-                                                        <div class="testcolor">거래 후기 보내기</div>
-                                                    </a>
-                                                </c:when>
-                                                <c:otherwise>
-                                                    <a id="popopen2" href="javascript:openReview(${sold.goodsNo},${sold.ratingNo},${sold.buyerNo},'${sold.buyerNickname}','${sold.title}',${sold.sellerNo},'${sold.sellerNickname}')">
-                                                    <div class="testcolor2">보낸 후기 보기</div>
-                                                    </a>
-                                                </c:otherwise>
-                                            </c:choose>
-                                        </c:if>
+                                        
                                         
 								</div>
                             </c:forEach>

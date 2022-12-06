@@ -19,80 +19,92 @@ document.getElementById("profilePop").addEventListener("click",function(){
 switch(myPageCt){
     case 1: document.getElementById("first-category").style.fontWeight = "bold"; 
     document.getElementById("sold").style.fontWeight = "bold";
+    //document.getElementById("popup_layer4").style.display = "none";
+    //const changeJsp = document.querySelector("#changeJsp");
+    //changeJsp.innerHTML = "";
     break;
-    case 2: document.getElementById("second-category").style.fontWeight = "bold"; break;
+    case 2: document.getElementById("second-category").style.fontWeight = "bold"; 
+    // const sellList = document.getElementById("myBanana-sell");
+    // sellList.innerHTML = "";
+    break;
     case 5: 
     document.getElementById("first-category").style.fontWeight = "bold";
     document.getElementById("selling").style.fontWeight = "bold"; break;
 }
 
 
-const first = document.getElementById("myBanana-sellList");
-const fourth = document.querySelector("#changeJsp");
+// const first = document.getElementById("myBanana-sellList");
+// const fourth = document.querySelector("#changeJsp");
 
-fourth.style.display = "none";
+// fourth.style.display = "none";
 
-// (1)판매목록 카테고리 클릭 시 오픈
-document.getElementById("first-category").addEventListener("click",function(e){
-    alert("첫번째 카테고리 open");
-
-    
-    fourth.style.display = "none";
-    if(first.style.display == "none"){
-        first.style.display = "block";
-        fourth.style.display = "none";
-    } else {
-        fourth.style.display = "none";  
-    }
-    
-    const firstValue = e.target.getAttribute("value"); // 1
-    
+// // (1)판매목록 카테고리 클릭 시 오픈
+// document.getElementById("first-category").addEventListener("click",function(e){
+//     alert("첫번째 카테고리 open");
 
     
-})
+//     fourth.style.display = "none";
+//     if(first.style.display == "none"){
+//         first.style.display = "block";
+//         fourth.style.display = "none";
+//     } else {
+//         fourth.style.display = "none";  
+//     }
 
-
-// document.getElementById("first-category").addEventListener("click", ()=>{
-
-//     document.getElementbyId("status").setAttribute("value","sell");
-//     document.getElementById("status").setAttribute("name","sell");
-//     document.getElementById("button").click();
 // })
 
 
-// (2)후기 카테고리 클릭 시 오픈
-document.getElementById("fourth-category").addEventListener("click",function(){
-    alert("네번째 오픈");
+// // (2)후기 카테고리 클릭 시 오픈
+// document.getElementById("fourth-category").addEventListener("click",function(){
+//     alert("네번째 오픈");
 
-    //first.style.display == "none";
-    // console.log(document.querySelector("#changeJsp"));
-    if(fourth.style.display == "none"){
-        fourth.style.display = "block";
-        first.style.display = "none";
-     } else {
-        first.style.display = "none";
-    }
+//     //first.style.display == "none";
+//     // console.log(document.querySelector("#changeJsp"));
+//     if(fourth.style.display == "none"){
+//         fourth.style.display = "block";
+//         first.style.display = "none";
+//      } else {
+//         first.style.display = "none";
+//     }
     
-       
-    
-})
 
-let reviewGoodsNo;
+    
+// })
+
+//첫번째 팝업에서 이용할 전역변수
+//2번째 팝업 열때 바로 이어지니까 이 변수에 집어넣은 값이
+//바로 2번째 팝업때 연결될 수 있을 듯? 실험해보자! -- 실험 성공!!!!!!!!!
+
+
+//만약에 [case1] : 첫번째 팝업-2번째 팝업 -3번째 팝업이라면 
+//1번팝업에서 매개변수에 담긴 게 계속 담길 거고...
+//(연속적이니까 중간에 [case2가 열려서 거기에 담긴 값이 담기지 않을 것 같다)
+//[case2]가 열린다면, 전역변수에 (보낸 후기 보기) 매개변수값이 담기게 한 후에
+//[case2]의 세번째 팝업에서 그 값이 담기게 하면 될 것 같기도?
+let reviewGoodsNo; 
 let reviewBuyerNo;
+let reviewBuyerNickname;
 let reviewSellerNo;
+let reviewSellerNickname;
+let goodsTitle;
 
 //첫번째 팝업 띄우기
-function openPop(goodsNo, buyerNo, buyerNickname,sellerNo, sellerNickname) {
+function openPop(goodsNo, buyerNo, buyerNickname,sellerNo, sellerNickname,title) {
     console.log(goodsNo);
     console.log(buyerNo);
     console.log(buyerNickname);
     console.log(sellerNo);
     console.log(sellerNickname);
+    console.log(title)
     $("input[name ='good']").prop("checked",false);
     $("input[name ='bad']").prop("checked",false);
     reviewGoodsNo = goodsNo;
     reviewBuyerNo = buyerNo;
+    reviewBuyerNickname = buyerNickname;
     reviewSellerNo = sellerNo;
+    reviewSellerNickname = sellerNickname;
+    goodsTitle = title;
+
     if(loginMemberNo == sellerNo){
         document.getElementById("buyerNickname").innerText = buyerNickname;
     }
@@ -201,6 +213,17 @@ function closePop2() {
 // }
 
 }
+//세번째 팝업 닫기
+function closePop3() {
+    document.getElementById("popup_layer").style.display = "none";
+    document.getElementById("popup_layer2").style.display = "none";
+    document.getElementById("popup_layer3").style.display = "none";
+//    for(let popupLayer of popupLayerList){
+
+//     popupLayer.style.display = "none";
+// }
+
+}
 
 //////////////////////////////////////////////////////////////////////////////
 
@@ -213,27 +236,43 @@ function closePop2() {
 
 // }
 
-//팝업 닫기
-function closePop2() {
-    document.getElementById("popup_layer2").style.display = "none";
-    const popopen = document.getElementById("popopen");
+///////////잠시 지운거임//////////////
+        //팝업 닫기(팝업 닫으면... 노랑이에서 흰색으로 바꿔지도록 하는 용도...)
+        // function closePop2() {
+        //     document.getElementById("popup_layer2").style.display = "none";
+        //     const popopen = document.getElementById("popopen");
 
-    
-    popopen.innerText = "보낸 후기 보기"
-    popopen.classList.add("testcolor2");
-    console.log("받은 후기버튼 누를 때 잘 되는지 확인해보는 용도")
+        //     //
+        //     popopen.innerText = "보낸 후기 보기"
+        //     popopen.classList.add("testcolor2");
+        //     console.log("받은 후기버튼 누를 때 잘 되는지 확인해보는 용도")
 
-    popopen.setAttribute("href", "#");
-    
-}
+        //     popopen.setAttribute("href", "#");
+            
+        // }
 
-//2번째 팝업 열리는 기능
+let somebodyNo;
+
+//2번째 팝업 열리는 기능(제출된 체크값들 보여주기!!!!)
 document.getElementById("submitButton").addEventListener("click",function(){
 
     document.getElementById("popup_layer2").style.display = "block";
     document.getElementById("popup_layer").style.display = "none";
 
-    //document.querySelectorAll("[name='good']:checked")[0].nextElementSibling.innerText
+    //첫번째 팝업 열릴 때 대입한 값을, 전역변수에 담아서 집어넣었음.
+    if(loginMemberNo == reviewSellerNo){
+        document.getElementById("nickName1").innerText = reviewBuyerNickname;
+        document.getElementById("nickName2").innerText = reviewBuyerNickname;
+        somebodyNo = reviewBuyerNo;
+        //받은 후기 보기할꺼라서 받은사람번호 좀...대입하자...
+        //"상대방(=보낸사람)" = somebody
+    }
+    if(loginMemberNo == reviewBuyerNo){
+        document.getElementById("nickName1").innerText = reviewSellerNickname;
+        document.getElementById("nickName2").innerText = reviewSellerNickname;
+        somebodyNo = reviewSellerNo;
+    }
+    document.getElementById("goodsTitle").innerText = goodsTitle;
 
     //기존 꺼 삭제(누적 방지)
     document.querySelector("#messageList").innerHTML = "";
@@ -253,15 +292,23 @@ document.getElementById("submitButton").addEventListener("click",function(){
     
 })
 
+
+
 //[보낸 후기 보기]를 할 때, 팝업 열리기!
-function openReview(ratingNo,buyerNo,buyerNickname,title,sellerNo,sellerNickname) {
+function openReview(goodsNo,ratingNo,buyerNo,buyerNickname,title,sellerNo,sellerNickname) {
     console.log(ratingNo);
     console.log(buyerNo);
     console.log(buyerNickname);
     console.log(title);
     console.log(sellerNo);
     console.log(sellerNickname);
-  
+
+    reviewGoodsNo = goodsNo;
+    reviewBuyerNo = buyerNo;
+    reviewBuyerNickname = buyerNickname;
+    reviewSellerNo =  sellerNo;
+    reviewSellerNickname = sellerNickname;
+    goodsTitle = title;
 
     //2번째 팝업페이지가 block되게 한다!
     document.getElementById("popup_layer2").style.display = "block";
@@ -287,6 +334,66 @@ function openReview(ratingNo,buyerNo,buyerNickname,title,sellerNo,sellerNickname
         type:"POST",
         dataType : "JSON", // 응답데이터의 형식이 JSON이다. -> 자동으로 JS객체로 변환해줌...
         success : (reviewList) => {
+            //console.log(reviewList); //레알 reviewList가 나오는지 console로 찍어볼게용
+
+            // 1) JSON 형태의 문자열로 반환된 경우(JSON -> JS 객체)
+            // 방법 1) JSON.parse(문자열)
+            //console.log(JSON.parse(member));
+
+            // 방법 2) dataType : "JSON" 추가
+
+            // 2. Jackson라이브러리를 이용하면 걍 그 자체가 옴...js객체로...
+
+            //----------------------------------------------------
+            
+            
+
+            for(let review of reviewList){
+                somebodyNo = review.receiverNo;
+                const li1 = document.createElement("li");
+                li1.innerText = review.mannerDescription;
+                document.querySelector("#messageList").append(li1);
+
+            }
+
+        },
+        error : () => {
+
+            console.log("받은/매너후기/목록 실패");
+
+        }
+    });
+}
+
+//세번째 팝업(받은 리뷰 보기 : 무조건 2번째 팝업에서 이어지잖아?)
+
+document.getElementById("finalPopUp").addEventListener("click",function(){
+
+    document.getElementById("popup_layer3").style.display = "block";
+
+    if(loginMemberNo == reviewSellerNo){
+        document.getElementById("nickName3").innerText = reviewBuyerNickname;
+        document.getElementById("nickName4").innerText = reviewBuyerNickname;
+    }
+    if(loginMemberNo == reviewBuyerNo){
+        document.getElementById("nickName3").innerText = reviewSellerNickname;
+        document.getElementById("nickName4").innerText = reviewSellerNickname;
+    }
+    document.getElementById("goodsTitle2").innerText = goodsTitle;
+
+    // //기존 꺼 삭제(누적 방지)
+    document.querySelector("#messageList").innerHTML = "";
+
+    console.log(somebodyNo);
+    console.log(loginMemberNo);
+
+    //ajax로 받은 리뷰 가져와야겠다..
+    $.ajax({
+        url:"/member/myPage/selectReceivedReview",
+        data:{"reviewGoodsNo":reviewGoodsNo,"somebodyNo":somebodyNo,"loginNo":loginMemberNo},
+        type:"POST",
+        dataType : "JSON", // 응답데이터의 형식이 JSON이다. -> 자동으로 JS객체로 변환해줌...
+        success : (reviewList) => {
             console.log(reviewList); //레알 reviewList가 나오는지 console로 찍어볼게용
 
             // 1) JSON 형태의 문자열로 반환된 경우(JSON -> JS 객체)
@@ -303,7 +410,7 @@ function openReview(ratingNo,buyerNo,buyerNickname,title,sellerNo,sellerNickname
 
                 const li1 = document.createElement("li");
                 li1.innerText = review.mannerDescription;
-                document.querySelector("#messageList").append(li1);
+                document.querySelector("#messageList2").append(li1);
 
             }
 
@@ -314,8 +421,11 @@ function openReview(ratingNo,buyerNo,buyerNickname,title,sellerNo,sellerNickname
 
         }
     });
-}
 
+})
+
+
+//////////////팝업 돌리기 끝 ///////////////////////////////
 
 
 

@@ -16,6 +16,20 @@ payLog.style.display = "none";
 function openPop() {
     document.getElementById("popup_layer").style.display = "block";
 
+    const payRemain = document.getElementById("payRemain");
+
+    $.ajax({
+    url : "/searchRemainPay",
+    data : {"memberNo" : memberNo},
+    type : "GET",
+    async : false,
+    success : (result) => {
+        payRemain.innerText = result;
+    },
+    error : () => {console.log("바나나페이 조회 실패");}
+    });
+    
+    payLog.style.display = "block";
 }
 
 
@@ -149,14 +163,24 @@ const chargeValidate = () => {
 
     if (regEx.test(chargePrice.value)) { // 유효한 경우
 
-        chargePrice.value = Number(chargePrice.value);
+        // chargeMessage.innerText = "유효한 형식입니다(숫자)";
+        // chargeMessage.classList.remove("error");
+        // chargeMessage.classList.add("confirm");
 
-        chargeMessage.innerText = "유효한 형식입니다(숫자)";
-        chargeMessage.classList.remove("error");
-        chargeMessage.classList.add("confirm");
+        if(chargePrice.value % 10000 != 0){
+            chargePrice.value = Number(chargePrice.value);
+            chargeMessage.innerText = "만 원 단위로만 입력해주세요";
+            chargeMessage.classList.add("error");
+            chargeMessage.classList.remove("confirm");
+            chargeFlag = false;
+            return;
 
-        chargeFlag = true;
-
+        } else {
+            chargeMessage.innerText = "유효한 형식입니다(숫자)";
+            chargeMessage.classList.remove("error");
+            chargeMessage.classList.add("confirm");
+            chargeFlag = true;
+        }
 
     } else if (regEx2.test(chargePrice.value)) {
 

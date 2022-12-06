@@ -29,12 +29,13 @@
 
         <section class="content">
 
+            <c:if test="${loginMember != null}">
             <a href="javascript:openPop()">
                 <div>
                     팝업오픈!
                 </div>
             </a>
-
+            </c:if>
 
             <div class="popup_layer" id="popup_layer" style="display: none;">
                 <div class="popup_box scroll">
@@ -74,7 +75,7 @@
                                 </div>
                             </div>
                             <div class="payBtnArea">
-                                <button id="chargeSubmitBtn">충전하기</button>
+                                <button type="button" id="chargeSubmitBtn">충전하기</button>
                             </div>
                         </form>
 
@@ -101,7 +102,7 @@
                                 </div>
                             </div>
                             <div class="payBtnArea">
-                                <button id="refundSubmitBtn">환불하기</button>
+                                <button type="button" id="refundSubmitBtn">환불하기</button>
                             </div>
                         </form>
 
@@ -242,6 +243,30 @@
             </div>
 
 
+                <!-- <div class="charge">
+
+                    <div class="chargeHeader">
+                        <p>충전 (만원 단위)</p>
+                        <p class="fa-solid fa-x close closeCharge"></p>
+                    </div>
+                    <div class="chargeMain">
+                        <p class="charge1"> + 1만원</p>
+                        <p class="charge5"> + 5만원</p>
+                        <p class="charge10"> + 10만원</p>
+                        <div class="resetPrice">금액 초기화하기</div>
+                        <div>
+                            직접 입력
+                            <input type="text" id="chargePrice">
+                            <span id="inputSelf">원</span>
+                            <span id="chargeMessage">숫자만 입력하세요</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="payBtnArea">
+                    <button type="button" id="chargeSubmitBtn">충전하기</button>
+                </div> -->
+
+
 
         </section>
     </main>
@@ -253,11 +278,19 @@
 
 
 
-
+    <script>
+        const memberNo = "${loginMember.memberNo}";
+        const buyerEmail = "${loginMember.memberEmail}";
+        const buyerName = "${loginMember.memberName}";
+        const memberTel = "${loginMember.memberTel}";
+        const memberAddress = "${loginMember.memberAddress}";
+    </script>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
-
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+    <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.8.js"></script>
     <script src="/resources/js/pay/bananaPay.js"></script>
+    <script src="/resources/js/pay/iamport.js"></script>
 </body>
 
 </html>

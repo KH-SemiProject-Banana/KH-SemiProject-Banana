@@ -10,6 +10,7 @@
                 </div>
                 
                 <div class="talkAndlogin">
+                    <a href="/pay">페이 테스트</a>
                     <a href="/chatting" class="topmenu__talk fa-regular fa-comment">바나나톡</a>
                     
                     <div id="header-top-menu">

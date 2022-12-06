@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import edu.kh.banana.board.model.vo.Pagination;
+import edu.kh.banana.goods.model.vo.GoodsSell;
 import edu.kh.banana.manager.model.dao.ManagerDAO;
 import edu.kh.banana.member.model.vo.Member;
 
@@ -110,6 +111,51 @@ public class ManagerServiceImpl implements ManagerService{
 	public int memberBlock(int memberNo) {
 		
 		return dao.memberBlock(memberNo);
+	}
+
+	/**
+	 * 상품 목록 조회
+	 */
+	@Override
+	public Map<String, Object> goodsSearch(Map<String, Object> paramMap, int cp) {
+		
+		// 조건에 맞는 상품 갯수 조회
+		int listCount = dao.getGoodsListCount(paramMap);
+		
+		// 전체 상품 수
+		int allGoodsCount = dao.allGoodsCount();
+		
+		// 전체 상품 수 + cp를 이용헤 페이징 처리
+		Pagination pagination = new Pagination(listCount, cp);
+		pagination.setLimit(30); // // 한 페이지에 보일 상품목록 수 : 30
+		
+		
+		// sort값 계산
+		paramMap.put("order", "GOODS_NO ASC");
+		if(paramMap.get("sort").equals("1")) {
+			paramMap.put("order", "GOODS_NO ASC");
+		}
+		if(paramMap.get("sort").equals("2")) {
+			paramMap.put("order", "GOODS_NO DESC");
+		}
+		if(paramMap.get("sort").equals("3")) {
+			paramMap.put("order", "SELL_PRICE ASC, GOODS_NO ASC");
+		}
+		if(paramMap.get("sort").equals("4")) {
+			paramMap.put("order", "SELL_PRICE DESC, GOODS_NO ASC");
+		}
+		
+		
+		// 조건에 맞는 상품 목록
+		List<GoodsSell> goodsList = dao.goodsSearch(pagination, paramMap);
+		
+		Map<String, Object> map = new HashMap<>();
+		map.put("pagination", pagination);
+		map.put("goodsList", goodsList);
+		map.put("allGoodsCount", allGoodsCount);
+		map.put("listCount", listCount);
+		
+		return map;
 	}
 
 

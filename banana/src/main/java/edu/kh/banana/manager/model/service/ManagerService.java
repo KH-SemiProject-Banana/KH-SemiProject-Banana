@@ -36,6 +36,13 @@ public interface ManagerService {
 	 */
 	int memberBlock(int memberNo);
 
+	/** 상품 목록 조회
+	 * @param paramMap
+	 * @param cp
+	 * @return
+	 */
+	Map<String, Object> goodsSearch(Map<String, Object> paramMap, int cp);
+
 
 
 

@@ -158,5 +158,30 @@ public class ManagerController {
 		int result = memberService.signUp(member);
 		return result;
 	}
+	
+	/** 상품 목록 조회
+	 * @param paramMap
+	 * @param model
+	 * @return
+	 */
+	@GetMapping("/goodsSearch")
+	public String goodsSearch(@RequestParam Map<String, Object> paramMap,
+			@RequestParam(value="cp", required=false, defaultValue="1" ) int cp,
+			Model model
+			) {
+		
+		// 조건이 있는 회원 목록 조회
+		Map<String, Object> map = service.goodsSearch(paramMap, cp);
+		
+		
+
+		
+		model.addAttribute("map", map);
+
+		
+		
+		
+		return "manager/manager-goods";
+	}
 
 }

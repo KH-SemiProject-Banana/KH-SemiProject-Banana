@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import edu.kh.banana.board.model.vo.Pagination;
+import edu.kh.banana.goods.model.vo.GoodsSell;
 import edu.kh.banana.member.model.vo.Member;
 
 @Repository
@@ -79,6 +80,36 @@ public class ManagerDAO {
 	public int memberBlock(int memberNo) {
 		
 		return sqlSession.update("memberMapper.memberBlock", memberNo);
+	}
+
+	/** 조건에 맞는 상품 갯수 조회
+	 * @param paramMap
+	 * @return listCount
+	 */
+	public int getGoodsListCount(Map<String, Object> paramMap) {
+		
+		return sqlSession.selectOne("goodsMapper.getGoodsCount", paramMap);
+	}
+
+	/** 전체 상품 갯수 조회
+	 * @return allMemberCount
+	 */
+	public int allGoodsCount() {
+		
+		return sqlSession.selectOne("goodsMapper.allGoodsCount");
+	}
+
+	/** 조건에 맞는 상품 목록 조회
+	 * @param pagination
+	 * @param paramMap
+	 * @return
+	 */
+	public List<GoodsSell> goodsSearch(Pagination pagination, Map<String, Object> paramMap) {
+		
+		int offset = (pagination.getCurrentPage() -1) * pagination.getLimit();
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+		
+		return sqlSession.selectList("goodsMapper.admin-goodsSearch", paramMap, rowBounds);
 	}
 
 }

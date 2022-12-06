@@ -108,7 +108,37 @@ for(let btn of btnDel) {
     });
 }
 
-// 회원정보 삭제
+// 회원정보 삭제 복구
+const btnDelBack = document.getElementsByClassName("btnDelBack");
+for(let btn of btnDelBack) {
+
+    btn.addEventListener("click", e => {
+
+        const memberNo = e.target.getAttribute("id");
+        
+        
+
+            $.ajax({
+
+                url : "/manager/memberDeleteBack",
+                data : {"memberNo": memberNo},
+                type : "get",
+                success : (result) => {
+                    if(result > 0) {
+                        alert("회원 정보가 복구되었습니다");
+                        document.getElementById("frmSearchBase").submit();
+                    } else {
+                        alert("회원 정보 복구 실패");
+                    }
+                }, 
+                error : () => {console.log("회원 정보 복구 중 에러 발생");}
+
+            })
+        
+    });
+}
+
+// 회원정보 차단
 const btnBlock = document.getElementsByClassName("btnBlock");
 for(let btn of btnBlock) {
 
@@ -135,6 +165,37 @@ for(let btn of btnBlock) {
 
             })
         }
+    });
+}
+
+
+// 회원정보 차단 복구
+const btnBlockBack = document.getElementsByClassName("btnBlockBack");
+for(let btn of btnBlockBack) {
+
+    btn.addEventListener("click", e => {
+
+        const memberNo = e.target.getAttribute("id");
+        
+        
+
+            $.ajax({
+
+                url : "/manager/memberBlockBack",
+                data : {"memberNo": memberNo},
+                type : "get",
+                success : (result) => {
+                    if(result > 0) {
+                        alert("회원이 차단 해제되었습니다");
+                        document.getElementById("frmSearchBase").submit();
+                    } else {
+                        alert("회원 차단해제 실패");
+                    }
+                }, 
+                error : () => {console.log("회원 차단해제 중 에러 발생");}
+
+            })
+        
     });
 }
 

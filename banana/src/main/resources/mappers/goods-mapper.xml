@@ -204,6 +204,13 @@
 	WHERE GOODS_NO = #{goodsNo}
   </update>
   
+  <!-- 상품 삭제 복구 -->
+  <update id="goodsDeleteBack" parameterType="_int">
+  	UPDATE  GOODS_SELL gs  SET
+	GOODS_DEL_FL = 'N'
+	WHERE GOODS_NO = #{goodsNo}
+  </update>
+  
   
   <!-- 상품 내용만 수정 -->
   <update id="updateGoodsContent" parameterType="GoodsSell">

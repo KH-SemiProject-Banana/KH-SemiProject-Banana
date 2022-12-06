@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -138,6 +139,16 @@ public class ManagerController {
 		return service.memberDelete(memberNo);
 	}
 	
+	/** 회원 정보 삭제 복구
+	 * @param memberNo
+	 * @return result
+	 */
+	@GetMapping("/memberDeleteBack")
+	@ResponseBody
+	public int memberDeleteBack(int memberNo) {
+		return service.memberDeleteBack(memberNo);
+	}
+	
 	/** 회원 정보 차단
 	 * @param memberNo
 	 * @return result
@@ -146,6 +157,16 @@ public class ManagerController {
 	@ResponseBody
 	public int memberBlock(int memberNo) {
 		return service.memberBlock(memberNo);
+	}
+	
+	/** 회원 정보 차단해제
+	 * @param memberNo
+	 * @return result
+	 */
+	@GetMapping("/memberBlockBack")
+	@ResponseBody
+	public int memberBlockBack(int memberNo) {
+		return service.memberBlockBack(memberNo);
 	}
 	
 	/** 회원 등록
@@ -183,5 +204,38 @@ public class ManagerController {
 		
 		return "manager/manager-goods";
 	}
+	
+	/** 상품 삭제
+	 * @param goodsNo
+	 * @return
+	 */
+	@GetMapping("/goodsDelete")
+	@ResponseBody
+	public int goodsDelete(int goodsNo) {
+		
+		return service.goodsDelete(goodsNo);
+	}
+	
+	/** 상품 삭제 취소
+	 * @param goodsNo
+	 * @return
+	 */
+	@GetMapping("/goodsDeleteBack")
+	@ResponseBody
+	public int goodsDeleteBack(int goodsNo) {
+		
+		return service.goodsDeleteBack(goodsNo);
+	}
+	
+	
+	@GetMapping("/manager/goodsUpdate/{goodsNo}")
+	public String goodsUpdate(@PathVariable("goodsNo") int goodsNo,
+			RedirectAttributes ra) {
+		
+		ra.addFlashAttribute("goodsNo", goodsNo);
+		
+		return null;
+	}
+	
 
 }

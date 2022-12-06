@@ -72,6 +72,15 @@ public class ManagerDAO {
 		return sqlSession.update("memberMapper.memberDelete", memberNo);
 	}
 	
+	/** 회원 정보 삭제 복구
+	 * @param memberNo
+	 * @return result
+	 */
+	public int memberDeleteBack(int memberNo) {
+		
+		return sqlSession.update("memberMapper.memberDeleteBack", memberNo);
+	}
+	
 	
 	/** 회원 차단
 	 * @param memberNo
@@ -80,6 +89,15 @@ public class ManagerDAO {
 	public int memberBlock(int memberNo) {
 		
 		return sqlSession.update("memberMapper.memberBlock", memberNo);
+	}
+	
+	/** 회원 차단 해제
+	 * @param memberNo
+	 * @return result
+	 */
+	public int memberBlockBack(int memberNo) {
+		
+		return sqlSession.update("memberMapper.memberBlockBack", memberNo);
 	}
 
 	/** 조건에 맞는 상품 갯수 조회
@@ -111,5 +129,25 @@ public class ManagerDAO {
 		
 		return sqlSession.selectList("goodsMapper.admin-goodsSearch", paramMap, rowBounds);
 	}
+
+	/** 상품 삭제
+	 * @param goodsNo
+	 * @return
+	 */
+	public int goodsDelete(int goodsNo) {
+		
+		return sqlSession.update("goodsMapper.goodsDelete", goodsNo);
+	}
+	
+	/** 상품 삭제 복구
+	 * @param goodsNo
+	 * @return
+	 */
+	public int goodsDeleteBack(int goodsNo) {
+		
+		return sqlSession.update("goodsMapper.goodsDeleteBack", goodsNo);
+	}
+	
+	
 
 }

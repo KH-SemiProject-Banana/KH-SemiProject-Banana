@@ -282,7 +282,7 @@
                         <c:forEach var="member" items="${memberList}">
                             <div class="search-content">
                                 <c:if test="${member.blockFlag == 'Y'}">
-                                    <button type="button" class="btn btn-white btn-sm btnBlockRemove disabled" 
+                                    <button type="button" class="btn btn-white btn-sm btnBlockBack disabled" 
                                     id="${member.memberNo}">차단해제</button>
                                 </c:if>
                                 <c:if test="${member.blockFlag == 'N'}">

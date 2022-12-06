@@ -103,6 +103,15 @@ public class ManagerServiceImpl implements ManagerService{
 		return dao.memberDelete(memberNo);
 	}
 	
+	/**
+	 * 회원 정보 삭제 복구
+	 */
+	@Override
+	public int memberDeleteBack(int memberNo) {
+		
+		return dao.memberDeleteBack(memberNo);
+	}
+	
 	
 	/**
 	 * 회원 차단
@@ -111,6 +120,15 @@ public class ManagerServiceImpl implements ManagerService{
 	public int memberBlock(int memberNo) {
 		
 		return dao.memberBlock(memberNo);
+	}
+	
+	/**
+	 * 회원 차단 해제
+	 */
+	@Override
+	public int memberBlockBack(int memberNo) {
+		
+		return dao.memberBlockBack(memberNo);
 	}
 
 	/**
@@ -156,6 +174,24 @@ public class ManagerServiceImpl implements ManagerService{
 		map.put("listCount", listCount);
 		
 		return map;
+	}
+
+	/**
+	 * 상품 삭제
+	 */
+	@Override
+	public int goodsDelete(int goodsNo) {
+		
+		return dao.goodsDelete(goodsNo);
+	}
+
+	/**
+	 * 상품 삭제 복구
+	 */
+	@Override
+	public int goodsDeleteBack(int goodsNo) {
+		
+		return dao.goodsDeleteBack(goodsNo);
 	}
 
 

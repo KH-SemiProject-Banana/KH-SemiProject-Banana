@@ -29,12 +29,24 @@ public interface ManagerService {
 	 */
 	int memberDelete(int memberNo);
 	
+	/** 회원 정보 삭제 복구
+	 * @param memberNo
+	 * @return
+	 */
+	int memberDeleteBack(int memberNo);
+	
 	
 	/** 회원 차단
 	 * @param memberNo
 	 * @return
 	 */
 	int memberBlock(int memberNo);
+	
+	/** 회원 차단 해제
+	 * @param memberNo
+	 * @return
+	 */
+	int memberBlockBack(int memberNo);
 
 	/** 상품 목록 조회
 	 * @param paramMap
@@ -42,6 +54,19 @@ public interface ManagerService {
 	 * @return
 	 */
 	Map<String, Object> goodsSearch(Map<String, Object> paramMap, int cp);
+
+	/** 상품 삭제
+	 * @param goodsNo
+	 * @return
+	 */
+	int goodsDelete(int goodsNo);
+
+	
+	/** 상품 삭제 복구
+	 * @param goodsNo
+	 * @return
+	 */
+	int goodsDeleteBack(int goodsNo);
 
 
 

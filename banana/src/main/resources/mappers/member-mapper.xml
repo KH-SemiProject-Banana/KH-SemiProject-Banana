@@ -223,10 +223,25 @@
  	 </update>
  	 
  	 
+ 	 <!-- 관리자 기능) 회원 정보 삭제 복구 -->
+ 	 <update id="memberDeleteBack">
+ 	 	UPDATE "MEMBER" SET
+ 	 	MEMBER_DEL_FL = 'N'
+ 	 	WHERE MEMBER_NO = #{memberNo}
+ 	 </update>
+ 	 
+ 	 
  	 <!-- 관리자 기능) 회원 차단 -->
  	 <update id="memberBlock">
  	 	UPDATE "MEMBER" SET
  	 	BLOCK_FL = 'Y'
+ 	 	WHERE MEMBER_NO = #{memberNo}
+ 	 </update>
+ 	 
+ 	 <!-- 관리자 기능) 회원 차단해제 -->
+ 	 <update id="memberBlockBack">
+ 	 	UPDATE "MEMBER" SET
+ 	 	BLOCK_FL = 'N'
  	 	WHERE MEMBER_NO = #{memberNo}
  	 </update>
  	 

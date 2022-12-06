@@ -48,7 +48,7 @@
             <section class="main-class">
                 <div class="member-title">
                     <h3>상품 거래 리스트</h3>
-                    <button>+ 거래글 등록</button>
+                    <%-- <button>+ 거래글 등록</button> --%>
                 </div>
 
                 <form id="frmSearchBase" method="get" class="member-search" action="/manager/goodsSearch">
@@ -262,7 +262,21 @@
                         </c:forEach>
                     </div>
 
-                    <div class="search-result-div" id="changeBoard">
+                    <div class="search-result-div" id="goodsDelFlag">
+                        <div class="search-result-tab">상품 삭제 여부</div>
+                        <c:forEach var="goods" items="${goodsList}">
+                            <c:if test="${goods.goodsDelFlag == 'Y'}">
+                                <div class="search-content disabled">삭제된 상품</div>
+                            </c:if>
+                            <c:if test="${goods.goodsDelFlag == 'N'}">
+                                <div class="search-content">유효한 상품</div>
+                            </c:if>
+                        </c:forEach>
+                    </div>
+
+
+
+                    <%-- <div class="search-result-div" id="changeBoard">
                         <div class="search-result-tab">글 수정</div>
                         <c:forEach var="goods" items="${goodsList}">
                             <div class="search-content">
@@ -270,7 +284,7 @@
                                 id="${goods.goodsNo}">수정</button>
                             </div>
                         </c:forEach>
-                    </div>
+                    </div> --%>
 
                     <div class="search-result-div" id="deleteBoard">
                         <div class="search-result-tab">글 삭제</div>

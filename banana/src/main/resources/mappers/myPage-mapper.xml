@@ -439,11 +439,48 @@ ORDER BY D.MANNER_NO
 </select>
 
 <select id="myGoodsLikeListCount" parameterType = "_int" resultType = "_int">
-
+SELECT COUNT(*) FROM (
+SELECT S.GOODS_NO ,TITLE, SELLER_NO,
+<![CDATA[
+CASE  
+     WHEN SYSDATE - S.CREATED_AT < 1/24/60
+     THEN FLOOR( (SYSDATE - S.CREATED_AT) * 24 * 60 * 60 ) || '초 전'
+     WHEN SYSDATE - S.CREATED_AT < 1/24
+     THEN FLOOR( (SYSDATE - S.CREATED_AT) * 24 * 60) || '분 전'
+     WHEN SYSDATE - S.CREATED_AT < 1
+     THEN FLOOR( (SYSDATE - S.CREATED_AT) * 24) || '시간 전'
+     WHEN SYSDATE - S.CREATED_AT < 30
+     THEN FLOOR(SYSDATE - S.CREATED_AT) || '일 전'
+     WHEN SYSDATE - S.CREATED_AT < 365
+     THEN FLOOR((SYSDATE-S.CREATED_AT)/30) || '달 전'
+     ELSE TO_CHAR(S.CREATED_AT, 'YYYY-MM-DD')
+   END CREATED_AT]]>, IMAGE_PATH
+FROM GOODS_LIKE L
+JOIN GOODS_SELL S ON(L.GOODS_NO = S.GOODS_NO)
+LEFT JOIN "GOODS_IMAGE" I ON(S.GOODS_NO = I.GOODS_NO)
+WHERE MEMBER_NO = #{memberNo})
 </select>
 
-<select id="selectmyGoodsLikeList" parameterType = "_int" resultType = "_int">
-
+<select id="selectmyGoodsLikeList" parameterType = "_int" resultMap = "goodsSell_rm">
+SELECT S.GOODS_NO ,TITLE, SELLER_NO,
+<![CDATA[
+CASE  
+     WHEN SYSDATE - S.CREATED_AT < 1/24/60
+     THEN FLOOR( (SYSDATE - S.CREATED_AT) * 24 * 60 * 60 ) || '초 전'
+     WHEN SYSDATE - S.CREATED_AT < 1/24
+     THEN FLOOR( (SYSDATE - S.CREATED_AT) * 24 * 60) || '분 전'
+     WHEN SYSDATE - S.CREATED_AT < 1
+     THEN FLOOR( (SYSDATE - S.CREATED_AT) * 24) || '시간 전'
+     WHEN SYSDATE - S.CREATED_AT < 30
+     THEN FLOOR(SYSDATE - S.CREATED_AT) || '일 전'
+     WHEN SYSDATE - S.CREATED_AT < 365
+     THEN FLOOR((SYSDATE-S.CREATED_AT)/30) || '달 전'
+     ELSE TO_CHAR(S.CREATED_AT, 'YYYY-MM-DD')
+   END CREATED_AT]]>, IMAGE_PATH
+FROM GOODS_LIKE L
+JOIN GOODS_SELL S ON(L.GOODS_NO = S.GOODS_NO)
+LEFT JOIN "GOODS_IMAGE" I ON(S.GOODS_NO = I.GOODS_NO)
+WHERE MEMBER_NO = #{memberNo}
 
 </select>
 

@@ -298,7 +298,7 @@ a {
 .favorite__pack > div {
     position :relative;
 }
-.fa-ellipsis-vertical {
+.like_yn {
     z-index: 100;
     position: absolute;
     right : 10px;

@@ -248,7 +248,7 @@ public class MyPageDAO {
 	 * @param pagination
 	 * @return
 	 */
-	public List<Review> myGoodsLikeList(int memberNo, MypageDetailPagination pagination) {
+	public List<GoodsSell> myGoodsLikeList(int memberNo, MypageDetailPagination pagination) {
 		
 		return sqlSession.selectList("myPageMapper.selectmyGoodsLikeList",memberNo);
 	}}

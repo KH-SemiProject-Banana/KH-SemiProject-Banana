@@ -283,7 +283,7 @@ public class MyPageServiceImpl implements MyPageService{
 			MypageDetailPagination pagination = new MypageDetailPagination(listCount,cp);
 			
 			
-			List<Review> myGoodsLikeList = dao.myGoodsLikeList(memberNo,pagination);
+			List<GoodsSell> myGoodsLikeList = dao.myGoodsLikeList(memberNo,pagination);
 			
 			
 			Map<String, Object> map = new HashMap<String, Object>();

@@ -22,4 +22,14 @@ public class Review {
 	String title;
 	String memberNickname;
 	String mannerDescription;
+	
+	//거래후기목록 조회하기에서 필요해서 추가한 필드
+	String profileImage;
+	String address;
+	
+	//매너온도목록 조회하기에서 필요해서 추가한 필드
+	int mannerCount;
+	int mannerNo;
+	
+	
 }

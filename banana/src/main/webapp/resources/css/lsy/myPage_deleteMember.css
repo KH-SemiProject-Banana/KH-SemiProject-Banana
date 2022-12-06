@@ -63,7 +63,7 @@
     align-items: center;
 }
 
-.memberAddress {
+.memberIntroduce {
     height: 100px;
     width: 650px;
     padding-left: 30px;
@@ -75,7 +75,7 @@
     /* background-color: aqua; */
 }
 
-.delAdm {
+.blockCancel {
 
     margin-right: 30px;
     padding: 5px;
@@ -89,7 +89,7 @@
     border-radius: 5px;
 }
 
-.delAdm:hover{
+.blockCancel:hover{
     background-color: #ccc;
     transition-duration: 0.3s;
 }

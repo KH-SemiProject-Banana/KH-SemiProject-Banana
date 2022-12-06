@@ -115,7 +115,7 @@
               <%-- 생년월일 --%>
             <div class="signUp-input-Birth textboxNo">
               <input
-                type="text"s
+                type="text"
                 name="memberBirth"
                 class="inputBoxNo"
                 id="memberBirth"

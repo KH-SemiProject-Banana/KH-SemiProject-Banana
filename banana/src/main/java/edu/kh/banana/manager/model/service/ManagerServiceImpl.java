@@ -9,6 +9,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import edu.kh.banana.board.model.vo.Board;
 import edu.kh.banana.board.model.vo.Pagination;
 import edu.kh.banana.goods.model.vo.GoodsSell;
 import edu.kh.banana.manager.model.dao.ManagerDAO;
@@ -40,6 +41,15 @@ public class ManagerServiceImpl implements ManagerService{
 	}
 
 	/**
+	 * 고객센터-자주묻는 질문 추가
+	 */
+	@Override
+	public int editBoard1(Board board) {
+		
+		return dao.editBoard1(board);
+	}
+
+	/*
 	 * 회원 목록 조회
 	 */
 	@Override

@@ -103,5 +103,25 @@ public interface MyPageService {
 	 */
 	int secessionSelect(int memberNo, Map<String, Object> parMap);
 
+	/** 차단관리
+	 * @param memberNo
+	 * @return
+	 */
+	List<Member> selectDeleteMemberList(int memberNo);
+
+	
+	/** 회원 차단 해제
+	 * @param blockedMemberNo
+	 * @param loginMemberNo
+	 * @return
+	 */
+	int memberBlockCancel(Map<String, Object> map);
+
+
+	 
+
+	
+
+
 	
 }

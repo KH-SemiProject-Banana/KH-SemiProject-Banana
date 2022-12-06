@@ -320,5 +320,26 @@ public class MyPageServiceImpl implements MyPageService{
 		}
 
 
+		/**
+		 * 차단관리
+		 */
+		@Override
+		public List<Member> selectDeleteMemberList(int memberNo) {
+			
+			return dao.selectDeleteMemberList(memberNo);
+		}
+
+
+		/**
+		 * 회원 차단 해제
+		 */
+		@Override
+		public int memberBlockCancel(Map<String, Object> map) {
+			
+			return dao.memberBlockCancel(map);
+		}
+
+
+
 	
 }

@@ -42,7 +42,7 @@
 			<section class="my-rotten-banana">
 				<!-- <p>탈퇴하기</p> -->
 				<i class="topmenu__alarm fa-regular fa-bell fa-2x"></i>
-				<p>차단 관리</p>
+				<p id="editBlockMember">차단 관리</p>
 			</section>
 			<!--섹션2********************************************************************************************************섹션1-->
 			<section class="myBanana-title">

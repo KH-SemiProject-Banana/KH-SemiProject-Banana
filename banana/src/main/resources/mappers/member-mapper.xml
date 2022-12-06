@@ -30,7 +30,10 @@
   
  	 </resultMap>
  	 
- 	 
+ 	 <resultMap type="UserBlock" id="userBlock_rm">
+ 	 	<result property="userBlocker" column="USER_BLOCKER"></result>
+  		<result property="userBlocked" column="USER_BLOCKED"></result>
+ 	 </resultMap>
 
  	 
 
@@ -271,5 +274,20 @@
 		WHERE MEMBER_NO = #{memberNo}
 	</update>
  	 
+ 	 
+ 	 
+ 	<!-- 차단 관리 -->
+ 	<select id="selectDeleteMemberList" resultMap="member_rm">
+ 		SELECT MEMBER_NO, MEMBER_NICKNAME, PROFILE_IMG, INTRODUCE FROM "MEMBER" M
+		WHERE MEMBER_NO = (SELECT USER_BLOCKED FROM USER_BLOCK WHERE USER_BLOCKER = #{memberNo})
+ 	</select>
+ 	
+ 	
+ 	<!-- 차단 취소 -->
+ 	<delete id="memberBlockCancel" parameterType="map">
+ 		DELETE FROM USER_BLOCK
+ 		WHERE USER_BLOCKED = #{blockedMemberNo}
+ 		AND USER_BLOCKER = #{loginMemberNo}
+ 	</delete>
   
 </mapper>

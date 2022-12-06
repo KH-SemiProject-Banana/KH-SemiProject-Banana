@@ -14,6 +14,7 @@ document.getElementById("profilePop").addEventListener("click",function(){
 
 })
 
+// if(myPageCt != null){
 
 //판매중/판매완료/구매완료인지에 따라 글씨체 bold로 바뀌는거 
 switch(myPageCt){
@@ -754,7 +755,10 @@ function profileValidate(){
 
 
 
-
+// 차단관리
+document.getElementById("editBlockMember").addEventListener("click", () => {
+    location.href = "/member/myPage/editBlockMember";
+});
 
 
 

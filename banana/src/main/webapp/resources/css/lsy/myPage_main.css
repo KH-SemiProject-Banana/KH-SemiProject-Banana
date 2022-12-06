@@ -492,3 +492,7 @@ form[name = 'myPage-frm']{position:relative;}
 .hidden{
     display: none;
 }
+
+#editBlockMember{
+    cursor: pointer;
+}

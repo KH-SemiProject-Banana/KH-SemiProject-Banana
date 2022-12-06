@@ -86,7 +86,7 @@ public class ManagerController {
 	@GetMapping("/memberSearch")
 	public String memberSearch(@RequestParam Map<String, Object> paramMap,
 			@RequestParam(value="cp", required=false, defaultValue="1" ) int cp,
-			@RequestParam(value="sort", required=false, defaultValue="1") String sort,
+//			@RequestParam(value="sort", required=false, defaultValue="1") String sort,
 			Model model
 			) {
 		

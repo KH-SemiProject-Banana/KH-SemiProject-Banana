@@ -52,7 +52,7 @@
 
 
                 <form id="frmSearchBase" method="get" class="member-search" action="/manager/memberSearch">
-                    <input type="hidden" name="sort" id="order1" value="M.MEMBER_NO ASC">
+                    <input type="hidden" name="sort" id="orderInput">
                     <p class="search__title">회원 검색</p>
                     <div class="search-detail-box form-inline">
                         <div class="search-detail-div">
@@ -170,11 +170,11 @@
                     
 
 
-                    <select onchange="orderBy()" id="orderBy">
-                        <option value="order1" ${order1}>가입일순</option>
-                        <option value="order2" ${order2}>가입일 역순</option>
-                        <option value="order3" ${order3}>판매순</option>
-                        <option value="order4" ${order4}>구매순</option>
+                    <select onchange="orderBy()" id="order">
+                        <option value="order1">가입일순</option>
+                        <option value="order2">가입일 역순</option>
+                        <option value="order3">판매순</option>
+                        <option value="order4">구매순</option>
                     </select>
                 </div>
 
@@ -281,8 +281,14 @@
                         <div class="search-result-tab" >차단</div>
                         <c:forEach var="member" items="${memberList}">
                             <div class="search-content">
-                                <button type="button" class="btn btn-white btn-sm btnBlock" 
-                                id="${member.memberNo}">차단</button>
+                                <c:if test="${member.blockFlag == 'Y'}">
+                                    <button type="button" class="btn btn-white btn-sm btnBlockRemove disabled" 
+                                    id="${member.memberNo}">차단해제</button>
+                                </c:if>
+                                <c:if test="${member.blockFlag == 'N'}">
+                                    <button type="button" class="btn btn-white btn-sm btnBlock" 
+                                    id="${member.memberNo}">차단</button>
+                                </c:if>
                             </div>
                         </c:forEach>
                     </div>
@@ -291,8 +297,14 @@
                         <div class="search-result-tab" >정보삭제</div>
                         <c:forEach var="member" items="${memberList}">
                             <div class="search-content">
-                                <button type="button" class="btn btn-white btn-sm btnDel"
-                                id="${member.memberNo}">삭제</button>
+                                <c:if test="${member.memberDeleteFlag == 'Y'}">
+                                    <button type="button" class="btn btn-white btn-sm btnDelBack disabled"
+                                    id="${member.memberNo}">삭제복귀</button>
+                                </c:if>
+                                <c:if test="${member.memberDeleteFlag == 'N'}">
+                                    <button type="button" class="btn btn-white btn-sm btnDel"
+                                    id="${member.memberNo}">삭제</button>
+                                </c:if>
                             </div>
                         </c:forEach>
                     </div>

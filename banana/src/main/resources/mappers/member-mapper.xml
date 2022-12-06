@@ -47,11 +47,11 @@
 
  	 <!-- 회원가입 입력 정보 제출 서비스 -->
  	 <insert id="signUp" parameterType="Member">
- 	 INSERT INTO "MEMBER"
-	VALUES (SEQ_MEMBER_NO.NEXTVAL,
-	#{memberEmail},#{memberPw},#{memberName},#{memberNickname},
-	DEFAULT,#{memberTel},#{memberAddress},NULL,DEFAULT,DEFAULT,DEFAULT,
-	DEFAULT,#{memberBirth},DEFAULT)
+ 	 	INSERT INTO "MEMBER"
+		VALUES (SEQ_MEMBER_NO.NEXTVAL,
+		#{memberEmail},#{memberPw},#{memberName},#{memberNickname},
+		DEFAULT,#{memberTel},#{memberAddress},NULL,DEFAULT,DEFAULT,DEFAULT,
+		DEFAULT,#{memberBirth},DEFAULT)
  	 </insert>
 
    <!-- 관리자 로그인 서비스 -->
@@ -73,12 +73,16 @@
 		FROM "MEMBER"
 		WHERE MEMBER_NAME = #{memberName}
 		AND MEMBER_TEL =#{memberTel}
+		AND BLOCK_FL = 'N'
+		AND MEMBER_DEL_FL = 'N'
  	 </select>
  	 
  	 <update id="findEmailPw">
 		UPDATE "MEMBER" SET
 		MEMBER_PW = #{encPw}
 		WHERE MEMBER_EMAIL = #{result}
+		AND BLOCK_FL = 'N'
+		AND MEMBER_DEL_FL = 'N'
  	 </update>
  	 
  	 
@@ -217,6 +221,7 @@
  	 	MEMBER_DEL_FL = 'Y'
  	 	WHERE MEMBER_NO = #{memberNo}
  	 </update>
+ 	 
  	 
  	 <!-- 관리자 기능) 회원 차단 -->
  	 <update id="memberBlock">

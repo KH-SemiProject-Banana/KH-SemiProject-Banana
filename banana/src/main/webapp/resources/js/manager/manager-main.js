@@ -1,13 +1,13 @@
-const order = document.getElementById("orderBy");
-const order1 = document.getElementById("order1");
+const order = document.getElementById("order");
+const orderInput = document.getElementById("orderInput");
 
 const orderBy = () => {
 
     switch(order.value){
-        case "order1" : order1.setAttribute("value", 1); break;
-        case "order2" : order1.setAttribute("value", 2); break;
-        case "order3" : order1.setAttribute("value", 3); break;
-        case "order4" : order1.setAttribute("value", 4); break;
+        case "order1" : orderInput.value = 1; break;
+        case "order2" : orderInput.value = 2; break;
+        case "order3" : orderInput.value = 3; break;
+        case "order4" : orderInput.value = 4; break;
     }
 
     document.getElementById("frmSearchBase").submit();

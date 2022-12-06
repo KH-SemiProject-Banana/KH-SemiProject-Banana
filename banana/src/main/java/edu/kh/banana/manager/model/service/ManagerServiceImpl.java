@@ -57,16 +57,16 @@ public class ManagerServiceImpl implements ManagerService{
 		
 		// sort값 계산
 		paramMap.put("order", "M.MEMBER_NO ASC");
-		if(paramMap.get("sort").equals(1)) {
+		if(paramMap.get("sort").equals("1")) {
 			paramMap.put("order", "M.MEMBER_NO ASC");
 		}
-		if(paramMap.get("sort").equals(2)) {
+		if(paramMap.get("sort").equals("2")) {
 			paramMap.put("order", "M.MEMBER_NO DESC");
 		}
-		if(paramMap.get("sort").equals(3)) {
+		if(paramMap.get("sort").equals("3")) {
 			paramMap.put("order", "SELL_COUNT ASC, M.MEMBER_NO ASC");
 		}
-		if(paramMap.get("sort").equals(4)) {
+		if(paramMap.get("sort").equals("4")) {
 			paramMap.put("order", "BUY_COUNT DESC, M.MEMBER_NO ASC");
 		}
 		

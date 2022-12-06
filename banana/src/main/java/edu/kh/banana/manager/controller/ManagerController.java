@@ -15,8 +15,17 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.kh.banana.manager.model.service.ManagerService;
+import edu.kh.banana.member.model.service.MemberService;
 import edu.kh.banana.member.model.vo.Member;
 
+/**
+ * @author User
+ *
+ */
+/**
+ * @author User
+ *
+ */
 @Controller
 @SessionAttributes({"loginManager", "message"})
 @RequestMapping("/manager")
@@ -25,6 +34,9 @@ public class ManagerController {
 	
 	@Autowired
 	private ManagerService service;
+	
+	@Autowired
+	private MemberService memberService;
 	
 	
 	@GetMapping("/login")
@@ -134,6 +146,17 @@ public class ManagerController {
 	@ResponseBody
 	public int memberBlock(int memberNo) {
 		return service.memberBlock(memberNo);
+	}
+	
+	/** 회원 등록
+	 * @param member
+	 * @return result
+	 */
+	@PostMapping("/memberSignUp")
+	@ResponseBody
+	public int memberSignUp(Member member) {
+		int result = memberService.signUp(member);
+		return result;
 	}
 
 }

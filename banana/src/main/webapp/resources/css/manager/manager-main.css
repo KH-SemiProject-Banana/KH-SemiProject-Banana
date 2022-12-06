@@ -1,7 +1,7 @@
 /*팝업 박스*/
 .popup_box {
     position: relative;
-    top: 0px;
+    top: -1000px;
     left: 50%;
 
     overflow: scroll;
@@ -386,7 +386,7 @@ input:-webkit-autofill:active  {
 /*************************************************/
 
 /* --------------------------------------------------------------- */
-#signUp-frm > div:nth-child(1){
+#signUp-frm > div:nth-child(1), #userUpdate-frm > div:nth-child(1){
     display: flex;
     flex-direction: column;
     justify-content: center;

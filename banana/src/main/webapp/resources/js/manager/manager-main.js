@@ -142,10 +142,104 @@ for(let btn of btnBlock) {
 //팝업 띄우기
 function openPop() {
     document.getElementById("popup_layer").style.display = "block";
+}
 
+function openPop2() {
+    document.getElementById("popup_layer2").style.display = "block";
 }
 
 // 팝업 닫기
 function closePop() {
     document.getElementById("popup_layer").style.display = "none";
 }
+function closePop2() {
+    document.getElementById("popup_layer2").style.display = "none";
+}
+
+
+
+/* 주소검색 api */
+function sample6_execDaumPostcode() {
+    new daum.Postcode({
+        oncomplete: function(data) {
+            // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+            // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+            // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+            var addr = ''; // 주소 변수
+
+            //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+            if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                addr = data.roadAddress;
+            } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                addr = data.jibunAddress;
+            }
+
+            // 우편번호와 주소 정보를 해당 필드에 넣는다.
+            sample6_postcode.value = data.zonecode;
+            sample6_address.value = addr;
+
+
+                // 커서를 상세주소 필드로 이동한다.
+                document.getElementById("sample6_detailAddress").focus();
+        }
+    }).open();
+}
+
+
+// 회원정보 등록
+document.getElementById("memberAddBtn").addEventListener("click", openPop2);
+
+
+document.getElementById("signUpBtn").addEventListener("click", () => {
+
+
+    const memberEmail = document.getElementById("inputEmail").value;
+    const memberPw = document.getElementById("inputPw").value;
+    const memberPw2 = document.getElementById("inputPw2").value;
+    const memberNickname = document.getElementById("inputNickname").value;
+    const memberName = document.getElementById("inputName").value;
+    const memberBirth = document.getElementById("inputBirth").value;
+    const memberTel = document.getElementById("inputTel").value;
+    // const memberAddress = document.querySelectorAll("input[name='memberAddress']");
+    const memberAddress = document.querySelectorAll("input[name='memberAddress']")[0].value
+        + ",," + document.querySelectorAll("input[name='memberAddress']")[1].value
+        + ",," + document.querySelectorAll("input[name='memberAddress']")[2].value; 
+
+    console.log(1);
+
+        if(memberPw != memberPw2) {
+    
+            alert("비밀번호가 일치하지 않습니다");
+            return;
+
+        } else {
+            console.log(2);
+            
+            
+            $.ajax({
+        
+                url : "/manager/memberSignUp",
+                data : {"memberEmail" : memberEmail,
+                        "memberPw" : memberPw,
+                        "memberNickname" : memberNickname,
+                        "memberName" : memberName,
+                        "memberBirth" : memberBirth,
+                        "memberTel" : memberTel,
+                        "memberAddress" : memberAddress },
+                type : "post",
+                success : result => {
+                    if(result > 0) {
+                        alert("회원 정보가 등록되었습니다.");
+                        document.getElementById("frmSearchBase").submit();
+                    }
+                },
+                error : () => {
+                    alert("회원 등록 실패");
+                }
+            })
+        }
+    
+
+
+});

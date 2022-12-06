@@ -47,7 +47,7 @@
             <section class="main-class">
                 <div class="member-title">
                     <h3>회원 리스트</h3>
-                    <button>+ 회원 등록</button>
+                    <button id="memberAddBtn">+ 회원 등록</button>
                 </div>
 
 
@@ -135,11 +135,11 @@
                             <div class="search-detail-keyword">회원가입일</div>
                             <div>
                                 <div class="input-group js-datepicker">
-                                    <input type="date" id="btn-icon-calander" name="calanderBefore" value="${param.calanderBefore}">
+                                    <input type="date"  name="calanderBefore" value="${param.calanderBefore}">
                                 </div>
                                 ~
                                 <div class="input-group js-datepicker">
-                                    <input type="date" id="btn-icon-calander" name="calanderAfter" value="${param.calanderAfter}">
+                                    <input type="date"  name="calanderAfter" value="${param.calanderAfter}">
                             </div>
                         
                             </div>
@@ -310,7 +310,7 @@
                     </div>
                 </div>
 
-                <%-- ------------------------------------------- --%>
+                <%-- 회원 정보 수정------------------------------------------- --%>
 
 
                 <div class="popup_layer" id="popup_layer" style="display: none;">
@@ -321,10 +321,10 @@
                         <!--팝업 컨텐츠 영역-->
                         <div class="popup_cont">
                             <div class="payRemainArea">
-                                <h1><span>내 바나나페이 : </span><span id="payRemain">65000</span><span>원</span></h1>
+                                <h1><span>회원정보 수정 </span></h1>
                             </div>
 
-                            <form  method="get" name="signUp-frm" id="signUp-frm" onsubmit="return false">
+                            <form  method="get" name="userUpdate-frm" id="userUpdate-frm" onsubmit="return false">
                                 <div>
                                     <!-- 닉네임 -->
                                     <div class="signUp-input-Nickname textbox">
@@ -359,6 +359,105 @@
                                 </div>
                                 <div class="SignUpAgreement6">
                                     <button class="SignUp">내 정보 수정 완료</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <%-- 회원 등록------------------------------------------- --%>
+
+
+                <div class="popup_layer" id="popup_layer2" style="display: none;">
+                    <div class="popup_box scroll">
+                        <div style="height: 10px; width: 500px; float: top;">
+                            <a href="javascript:closePop2();"><i class="fa-solid fa-x allClose"></i></a>
+                        </div>
+                        <!--팝업 컨텐츠 영역-->
+                        <div class="popup_cont">
+                            <div class="payRemainArea">
+                                <h1><span>회원 등록</span></h1>
+                            </div>
+
+                            <form  method="get" name="signUp-frm" id="signUp-frm" onsubmit="return false">
+                                <div>
+                                    <!-- 아이디(이메일) -->
+                                    <div class="signUp-input-Email textbox">
+                                        <input  type="text" name="memberEmail"  class="inputBox" id="inputEmail" 
+                                            placeholder="아이디 (이메일)" maxlength="20" autocomplete="off" />
+                                    </div>
+                                    
+                                    <!-- 비밀번호 -->
+                                    <div class="signUp-input-password textbox">
+                                        <input type="password"  name="memberPw"  class="inputBox" id="inputPw" 
+                                            placeholder="비밀번호" maxlength="20"/>
+                                    </div>
+                                    <%-- 비밀번호확인 --%>
+                                    <div class="signUp-input-password textbox">
+                                    <input type="password" name="memberPwConfirm" class="inputBox" id="inputPw2"
+                                        placeholder="비밀번호 확인" maxlength="20"/>
+                                    </div>
+                                    <div class="firstBox">
+                                        <span class="signUp-message" >영문자/숫자/특수문자 포함 8~16글자 사이로 입력해주세요.</span>
+                                    </div>
+
+                                    <!-- 닉네임 -->
+                                    <div class="signUp-input-Nickname textbox">
+                                        <input type="text" name="memberNickname" class="inputBox"  id="inputNickname"
+                                            placeholder="닉네임" maxlength="10" />
+                                    </div>
+                                    <div class="firstBox">
+                                        <span class="signUp-message" id="nickMessage">한글,영어,숫자로만 2~10글자 사이로 입력해주세요.</span>
+                                    </div>
+
+                                    <!-- 이름/생년월일/휴대번호 -->
+                                    <%-- 이름 --%>
+                                    <div class="signUp-input-Name textbox">
+                                    <input  type="text" name="memberName" class="inputBox" id="inputName"
+                                         placeholder="이름" maxlength="10"/>
+                                    </div>
+
+                                    <%-- 생년월일 --%>
+                                    <div class="signUp-input-Birth textbox">
+                                    <input type="text" name="memberBirth" class="inputBox" id="inputBirth"
+                                          placeholder="생년월일 ex)19910502" maxlength="8" />
+                                    </div>
+
+                                    <%-- 휴대번호 --%>
+                                    <div class="signUp-input-Tel textbox">
+                                    <input  type="text"  name="memberTel" class="inputBox" id="inputTel"
+                                          placeholder="휴대번호 ex)01045459986" maxlength="11" />
+                                    </div>
+
+
+
+
+                                    <!-- 우편 번호/주소/상세주소 -->
+                                    <%-- 우편번호 --%>
+                                    <div class="signUp-input-area textbox">
+                                    <input  type="text"  name="memberAddress" class="inputBox"  id="sample6_postcode"
+                                        placeholder="우편번호"   maxlength="6"  />
+                                    <button type="button" class="checkButton" onclick="sample6_execDaumPostcode()">검색</button>
+                                    </div>
+
+                                    <%-- 도로명/지번 주소 --%>
+                                    <div class="signUp-input-area textbox">
+                                    <input  auto  type="text"   name="memberAddress"  class="inputBox"
+                                        id="sample6_address"  placeholder="도로명/지번 주소"   />
+                                    </div>
+
+                                    <%-- 상세주소 --%>
+                                    <div class="signUp-input-area textbox">
+                                    <input type="text" name="memberAddress" class="inputBox"  id="sample6_detailAddress"
+                                        placeholder="상세 주소"   />
+                                    </div>
+                                </div>
+
+                                <div class="SignUpAgreement6">
+                                    <button class="SignUp" id="signUpBtn">회원 등록 완료</button>
                                 </div>
                             </form>
                         </div>
@@ -422,5 +521,6 @@
 
         <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
         <script src="/resources/js/manager/manager-main.js"></script>
+        <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     </body>
 </html>

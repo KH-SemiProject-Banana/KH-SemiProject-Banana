@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon"  sizes="16x16 32x32 64x64" href="https://i.ibb.co/4tCGZqD/Banana.png">
-    <title>신고하기 페이지</title>
+    <title>게시글 신고하기 페이지</title>
 
     <link rel="stylesheet" href="/resources/css/chiwoo/popup.css">
     <link rel="stylesheet" href="/resources/css/chiwoo/board-com.css">
@@ -259,16 +259,14 @@
                     <form id="reportsubmit" action = "/reportsubmit" method = "POST">
                         <div class="frame">
                             <div class="report-confirm">
-                                <a href="#">'신고목록'에서 선택한 이유</a>
+                                <p><%-- #{B_COM2_CTG_NO} --%> 신고사유</p>
                             </div>
                     
                         <%--       <div class="content-block">
                                 <input type="checkbox" name = "block">이 사람과 글을 보고싶지 않아요
                             </div> --%>
                     
-                            <div class="report-notice">
-                                ('나의 바나나> 설정 > 게시글 미노출 > 사용자 관리' 에서 취소할 수 있습니다.)
-                            </div>
+                    
                             <div class="report-submit">
                             
                                 <div class="notice">
@@ -281,11 +279,13 @@
                                     <textarea name="reportbox" id="reportbox" cols="90" rows="5" placeholder="혹시 불쾌한 일을 겪으셨나요? 사유를 남겨주세요" ></textarea>
                                         
                                 </div>
-                                <button type="submit" id = "reportsubmit" >바나나 팀에게 보내기</button>
+                                <button type="submit" id = "reportsubmitbutton" >바나나 팀에게 보내기</button>
                             </div>
                         </div>
-                        <input id= "input1" type="hidden" name="ctg1" value="">
-                        <input id= "input2" type="hidden" name="ctg2" value="">
+                        <input id= "ctg1" type="hidden" name="ctg1" value="">
+                        <input id= "ctg2" type="hidden" name="ctg2" value="">
+                        <input id= "memberNo2" type = "hidden" name="memberNo2" value= "${sellerInfo.memberNo}" >
+                        <input id= "goodsNo2" type = "hidden" name="goodsNo2" value="${goodsInfo.goodsNo}">
                     </form>
                     <!--팝업 버튼 영역-->
                     <!-- <div class="popup_btn" style="float: bottom; margin-top: 300px;">
@@ -308,8 +308,12 @@
 
     <!-- footer 끝----------------------------------------------------------------------------------------- -->
 
-    
+    <script>
+        const memberNo2 = "${sellerInfo.memberNo}";
+        const goodsNo2 = "${goodsInfo.goodsNo}";
+    </script>
     <script src="/resources/js/chiwoo/boardcomplain.js"></script>
+
     <%-- <script src="/resources/js/chiwoo/usercomplain.js"></script> --%>
 </body>
 </html>

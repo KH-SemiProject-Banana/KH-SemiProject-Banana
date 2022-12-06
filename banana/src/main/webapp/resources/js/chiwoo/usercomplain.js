@@ -252,7 +252,7 @@ function openPop(){
             }
                     
                     // 위에서 가져온 세부카테고리 배열 반복문으로 검사
-                    for(let i = 0; i < ctg2dsc.length; i++){
+                for(let i = 0; i < ctg2dsc.length; i++){
                         // 몇번째 인덱스가 클릭되었을때 이벤트 발생
 
                 ctg2dsc[i].addEventListener("click", () => {
@@ -357,8 +357,7 @@ function openPop(){
             case 2:
                 click2.style.display = "block";
             break;
-
-                            
+            
             case 6:
                 click6.style.display = "block";
             break;
@@ -374,7 +373,7 @@ function openPop(){
     // back2.addEventListener("click", () => {
         
     //     click.style.display = "block";
-       
+    
 
     // })
 

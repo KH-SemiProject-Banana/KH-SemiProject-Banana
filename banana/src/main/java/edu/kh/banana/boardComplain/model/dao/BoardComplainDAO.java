@@ -19,9 +19,14 @@ public class BoardComplainDAO {
 	 */
 	public int reportsubmit(Map<String, Object> submit) {
 		
-		return sqlsession.insert("boardcomplainMapper.reportsubmit", submit);
+		return sqlsession.insert("boardcomplainMapper.reportSubmit", submit);
 	}
 
+	
+	/** 게시글 신고 중복검사
+	 * @param map
+	 * @return
+	 */
 	public int boardDuplication(Map<String, Object> map) {
 		
 		return sqlsession.selectOne("boardcomplainMapper.boardDuplication",map);

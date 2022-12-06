@@ -2,21 +2,22 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace = "boardcomplainMapper">
 
-<insert id="reportsubmit">
-  INSERT INTO "USER_COMPLAIN"
-  VALUES(#{b_complain_no}, 
+<insert id="reportSubmit">
+  INSERT INTO "BOARD_COMPLAIN"
+  VALUES(SEQ_B_COM_NO.NEXTVAL, 
   		#{b_com1_ctg_no},
   		#{b_com2_ctg_no},
   		#{b_complainer},
+  		#{goods_no},
   		#{b_complained},
-  		#{b_com_content}
+  		#{b_com_content},
   		DEFAULT)
 </insert>
 
 <select id="boardDuplication">
 	SELECT COUNT * FROM "BOARD_COMPLAIN"
-	WHERE B_COM1_CTG_NO = #{category1}
-	AND B_COM2_CTG_NO = #{category2}; 
+	WHERE B_COMPLAINER = #{category1}
+	AND GOODS_NO = #{category2}; 
 </select>
   
   

@@ -382,6 +382,10 @@ chattingSock.onmessage = function(e) {
 	const div1_3_2 = document.createElement("div");
 	div1_3_2.setAttribute("id","click");
 
+
+
+
+
 	const div1_3_2_1 = document.createElement("div");
 	div1_3_2_1.classList.add("report-reason");
 	div1_3_2_1.setAttribute("id", "abc1");
@@ -447,6 +451,109 @@ chattingSock.onmessage = function(e) {
 	const div1_3_3_1_1 = document.createElement("div");
 	div1_3_3_1_1.innerText = "전문 판매업자";
 
+	const div1_3_3_2_1 = document.createElement("div");
+	div1_3_3_2_1.innerText = " 중고차 매매업자 ";
+
+	const div1_3_4 = document.createElement("div");
+	div1_3_4.setAttribute("id","click2");
+
+	const div1_3_4_1_1 = document.createElement("div");
+	div1_3_4_1_1.innerText = " 반말을 사용해요 ";
+	
+	const div1_3_4_2_1 = document.createElement("div");
+	div1_3_4_2_1.innerText = "불친절해요";
+
+	const div1_3_5 = document.createElement("div");
+	div1_3_5.setAttribute("id","click6");
+
+	const div1_3_5_1_1 = document.createElement("div");
+	div1_3_5_1_1.innerText = "카톡/문자 등 당근채팅 밖에서 대화를 유도해요";
+
+	const div1_3_5_2_1 = document.createElement("div");
+	div1_3_5_2_1.innerText = "가짜 안전결제/ 안전거래 사이트 링크를 보내요";
+
+	const div1_3_5_3_1 = document.createElement("div");
+	div1_3_5_3_1.innerText = "특수문자/ 사진 등 계좌/ 전화번호를 이상하게 보내요";
+
+	const div1_3_5_4_1 = document.createElement("div");
+	div1_3_5_4_1.innerText = "입금했는데 판매자가 물건을 주지 않고 잠적했어요";
+
+	const div1_3_5_5_1 = document.createElement("div");
+	div1_3_5_5_1.innerText = "물건을 보냈는데 구매자가 입금하지 않고 잠적했어요";
+
+	const div1_3_6 = document.createElement("div");
+	div1_3_6.setAttribute("id","click7");
+
+	const div1_3_6_1_1 = document.createElement("div");
+	div1_3_6_1_1.innerText = "불법 이용자 신고";
+
+	const div1_3_6_2_1 = document.createElement("div");
+	div1_3_6_2_1.innerText = "중복 게시글";
+
+	const div1_3_6_3_1 = document.createElement("div");
+	div1_3_6_3_1.innerText = "중복 게시글";
+
+	const div1_3_6_4_1 = document.createElement("div");
+	div1_3_6_4_1.innerText = "불건전 닉네임 신고";
+
+	const div1_3_6_5_1 = document.createElement("div");
+	div1_3_6_5_1.innerText = "채팅으로 정치/종교 대화를 시도해요";
+
+	const form = document.createElement("form");
+	form.setAttribute("id", "userreportsubmit");
+	form.setAttribute("action", "/userreportsubmit");
+	form.setAttribute("method", "POST");
+
+	const div1_3_7 = document.createElement("div");
+	div1_3_7.setAttribute("id","frame");
+
+	const div1_3_7_1 = document.createElement("div");
+	div1_3_7_1.classList.add("report-confirm");
+
+	const div1_3_7_1_p = document.createElement("p");
+	div1_3_7_1_p.innerText ="#{U_COM2_CTG_NO}";
+
+	const div1_3_7_2 = document.createElement("div");
+	div1_3_7_2.classList.add("user-block");
+
+	const div1_3_7_2_input = document.createElement("input");
+	div1_3_7_2_input.setAttribute("type", "checkbox");
+	div1_3_7_2_input.setAttribute("name", "userblock");
+	div1_3_7_2_input.setAttribute("value", "${memberNo}");
+	div1_3_7_2_input.innerText = "이 사람을 더이상 보고싶지 않아요";
+
+	const div1_3_8 = document.createElement("div");
+	div1_3_8.classList.add("notice");
+	
+	const div1_3_8_p = document.createElement("p")
+	div1_3_8_p.innerText = "신고 내용은 상대에게 노출되지 않아요. 내용이 사실과 다를 경우 이용 제제를 받을 수 있으니 주의해 주세요."
+	
+	const div1_3_9 = document.createElement("div");
+	div1_3_9.classList.add("textbox");
+
+	const div1_3_9_text = document.createElement("textarea");
+	div1_3_9_text.setAttribute("name", "reportbox");
+	div1_3_9_text.setAttribute("id", "reportbox");
+	div1_3_9_text.setAttribute("cols", "90");
+	div1_3_9_text.setAttribute("rows", "5");
+	div1_3_9_text.setAttribute("placeholder", "혹시 불쾌한 일을 겪으셨나요? 사유를 남겨주세요");
+	
+	const button = document.createElement("button");
+	button.setAttribute("type", "submit");
+	button.setAttribute("id", "reportsubmit");
+	button.innerText ="바나나 팀에게 보내기";
+	
+	const forminput1 = document.createElement("input");
+	forminput1.setAttribute("type", "hidden");
+	forminput1.setAttribute("name", "ctg1");
+	forminput1.setAttribute("value", "");
+	forminput1.setAttribute("id", "ctg1");
+
+	const forminput2 = document.createElement("input");
+	forminput1.setAttribute("type", "hidden");
+	forminput1.setAttribute("name", "ctg2");
+	forminput1.setAttribute("value", "");
+	forminput1.setAttribute("id", "ctg2");
 
 
 

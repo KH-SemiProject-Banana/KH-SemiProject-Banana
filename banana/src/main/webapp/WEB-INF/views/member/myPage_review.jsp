@@ -58,7 +58,7 @@
 
                                         <c:if test = "${empty loginMember.profileImage}"> <%-- 비어있다면, 기본이미지 보여주겠다. --%>
 
-                                            <img id = "profile-image" src="/resources/images/banana.png" alt="">
+                                            <img id = "profile-image" src="/resources/images/banana-logo.png" alt="">
 
                                         </c:if>
                                         <c:if test = "${not empty loginMember.profileImage}"> <%-- 안 비어있다면, . --%>
@@ -223,7 +223,13 @@
                     <c:forEach var = "review" items = "${reviewNewestList}">
                         <div class = "review_2">
                             <div class = "userphoto">
-                                <img  src="${review.profileImage}" alt="">
+                            <c:if test = "${not empty review.profileImage}">
+                            <img  src="${review.profileImage}" alt="">
+                            </c:if>
+                            <c:if test = "${empty review.profileImage}">
+                                <img class="photo" src="/resources/images/banana-logo.png" alt=""> 
+                            </c:if>
+                                
                             </div>
                             <div class="memberInfoBox">     
                                 <div class="memberInfo">

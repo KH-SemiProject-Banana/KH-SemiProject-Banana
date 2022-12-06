@@ -54,7 +54,7 @@
 
 
 
-   <logger name="java.sql.Connection">
+   <!-- <logger name="java.sql.Connection">
      <level value="debug" />
      <appender-ref ref="sql-console" />
    </logger>
@@ -82,7 +82,7 @@
    <logger name="jdbc.resultsettable" additivity="false">
      <level value="INFO" />
      <appender-ref ref="sql-console" />
-   </logger>
+   </logger> -->
 
    <!-- Root Logger -->
    <root>

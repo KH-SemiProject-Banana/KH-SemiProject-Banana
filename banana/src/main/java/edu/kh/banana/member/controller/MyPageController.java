@@ -43,7 +43,7 @@ public class MyPageController {
 						) {
 		
 		
-		System.out.println(loginMember);
+//		System.out.println(loginMember);
 		Map<String, Object> map1 = new HashMap<String, Object>(); //새로 추가
 //		map1.put("sell",sell); //새로 추가
 //		map1.put("buy", buy); //새로 추가
@@ -51,7 +51,7 @@ public class MyPageController {
 		map1.put("memberNo", memberNo); //새로 추가
 		map1.put("myPageCt", myPageCt);
 		//map1.put("cp", cp);
-		System.out.println(map1);
+//		System.out.println(map1);
 		model.addAttribute("loginMember",loginMember);
 		String address = loginMember.getMemberAddress();
 		model.addAttribute("address", address.substring(10,13));
@@ -59,7 +59,7 @@ public class MyPageController {
 		//Map<String, Object> map = service.selectGoodsList(memberNo); //기존 구문
 		Map<String, Object> map = service.selectGoodsList(map1,cp); 
 		model.addAttribute("map", map);
-		System.out.println(map);
+//		System.out.println(map);
 		
 		return "member/myPage_main";
 	}
@@ -271,5 +271,41 @@ public class MyPageController {
 		
 		return "member/myPage_review_detail";
 	}
+	
+	/** 받은 후기 조회하기
+	 * @param map
+	 * @return
+	 */
+	@PostMapping("/selectReceivedReview")
+	@ResponseBody
+	public String selectReceivedReview(
+			@RequestParam Map<String, Object> map
+			) {
+		System.out.println(map);
+		List<Review> reviewList = service.selectReceivedReview(map);
+		System.out.println(reviewList);
+		
+		return new Gson().toJson(reviewList);
+	}
+	
+	/**관심목록
+	 * @return
+	 */
+	@GetMapping("/myGoodsLike")
+	public String myGoodsLikeList(
+			@SessionAttribute("loginMember") Member loginMember, 
+			Model model,
+			@RequestParam(value="cp", required=false, defaultValue = "1") int cp
+			) {
+		
+		int memberNo = loginMember.getMemberNo();
+		Map<String, Object> map = service.myGoodsLikeList(memberNo,cp);
+		model.addAttribute("map", map);
+		System.out.println("관심목록" + map); //뷰 가기 전에 잘 담겼나 확인용
+		
+		return "member/myPage_goodsLike";
+	}
+	
+	
 	
 }

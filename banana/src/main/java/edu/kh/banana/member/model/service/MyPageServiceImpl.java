@@ -98,6 +98,9 @@ public class MyPageServiceImpl implements MyPageService{
 		}
 		review.setMessage(reviewText);
 		
+		int mannerGotPerson = review.getReceiverNo();
+		System.out.println("후기받는 인간 " + mannerGotPerson);
+		
 		int reviewNo = dao.insertReview(review); //여기서 reviewNo가 가져오는거구나
 		System.out.println("첫번째 인서트"+reviewNo);
 		
@@ -134,10 +137,10 @@ public class MyPageServiceImpl implements MyPageService{
 		System.out.println("나쁜 후기 인서트된 개수" + badResult);
 		
 		if(goodResult > 0) {
-			result2 = dao.updateGood(goodResult,reviewBuyerNo); //구매후기 받은 사람이 들어가야겠지....?
+			result2 = dao.updateGood(goodResult,review.getReceiverNo()); //수정했음 
 		}
 		if (badResult > 0) {
-			result3 = dao.updateBad(badResult,reviewBuyerNo);
+			result3 = dao.updateBad(badResult,review.getReceiverNo());
 		}
 		
 		if (result2 > 0 || result3 > 0 ) {
@@ -260,6 +263,38 @@ public class MyPageServiceImpl implements MyPageService{
 			
 			
 			return reviewList;
+		}
+
+
+		//받은 후기 조회하기
+		@Override
+		public List<Review> selectReceivedReview(Map<String, Object> map) {
+			
+			return dao.selectReceivedReview(map);
+		}
+
+		//관심목록 조회하기
+		@Override
+		public Map<String, Object> myGoodsLikeList(int memberNo, int cp) {
+			
+			//1. 전체 게시글 수 조회하기
+			int listCount = dao.myGoodsLikeListCount(memberNo);
+			
+			//2. 전체 게시글 수 + cp(현재페이지)를 이용해서 페이징 처리 객체를 생성한다.
+			MypageDetailPagination pagination = new MypageDetailPagination(listCount,cp);
+			
+			
+			List<Review> myGoodsLikeList = dao.myGoodsLikeList(memberNo,pagination);
+			
+			
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("pagination", pagination);
+			map.put("myGoodsLikeList", myGoodsLikeList);
+			
+			
+			
+			
+			return map;
 		}
 
 

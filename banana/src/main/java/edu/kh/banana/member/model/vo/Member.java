@@ -28,7 +28,7 @@ public class Member {
 	private String memberDeleteFlag;
 	private int authority;
 	private String blockFlag;
-	private int manner;
+	private double manner;
 	
 	
 	// 카테고리(CATEGORY)테이블

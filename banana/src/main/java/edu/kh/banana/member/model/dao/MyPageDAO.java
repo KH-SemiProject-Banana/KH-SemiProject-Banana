@@ -199,4 +199,32 @@ public class MyPageDAO {
 	public List<Review> reviewList(Map<String, Object> map1) {
 		
 		return sqlSession.selectList("myPageMapper.selectMannerList",map1);
+	}
+
+	/**받은 후기 조회하기
+	 * @param map
+	 * @return
+	 */
+	public List<Review> selectReceivedReview(Map<String, Object> map) {
+		
+		return sqlSession.selectList("myPageMapper.selectReceivedReview",map);
+	}
+
+	/**관심목록 게시글의 수
+	 * @param memberNo
+	 * @return
+	 */
+	public int myGoodsLikeListCount(int memberNo) {
+		
+		return sqlSession.selectOne("myPageMapper.myGoodsLikeListCount", memberNo);
+	}
+
+	/**관심목록 조회하기
+	 * @param memberNo
+	 * @param pagination
+	 * @return
+	 */
+	public List<Review> myGoodsLikeList(int memberNo, MypageDetailPagination pagination) {
+		
+		return sqlSession.selectList("myPageMapper.selectmyGoodsLikeList",memberNo);
 	}}

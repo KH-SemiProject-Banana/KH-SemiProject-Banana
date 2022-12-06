@@ -1,5 +1,6 @@
 package edu.kh.banana.manager.model.service;
 
+import edu.kh.banana.board.model.vo.Board;
 import java.util.List;
 import java.util.Map;
 
@@ -9,6 +10,14 @@ public interface ManagerService {
 
 	Member login(Member inputManager);
 
+	
+	
+	/** 고객센터-자주묻는 질문 추가
+	 * @param board
+	 * @return result
+	 */
+	int editBoard1(Board board);
+	
 	/** 회원 목록 조회
 	 * @param paramMap
 	 * @return memberList

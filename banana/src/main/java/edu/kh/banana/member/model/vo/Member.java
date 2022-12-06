@@ -28,7 +28,7 @@ public class Member {
 	private String memberDeleteFlag;
 	private int authority;
 	private String blockFlag;
-	private int manner;
+	private double manner;
 	
 	// 관리자기능
 	private int remainPay; //남은 바나나페이

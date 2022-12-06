@@ -109,7 +109,7 @@ a { text-decoration:none }
 
 /* 이름설정 */
 .name {
-    font-size : 25px;
+    font-size : 20px;
     padding: 10px;
     font-weight: bold;
 }
@@ -131,11 +131,11 @@ a { text-decoration:none }
     justify-content: center;
 }
 .memberInfoBox{
-
+    width: 200px;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0 10px 0 0;
+    /* margin: 0 10px 0 0; */
 }
 
 /* 스크롤바 설정*/
@@ -153,4 +153,38 @@ a { text-decoration:none }
 /* 스크롤바 뒷 배경 설정*/
 .Scroll::-webkit-scrollbar-track{
     opacity: 1;
+}
+
+/* ************************************** */
+
+.pagination{
+    list-style: none;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+    margin-bottom: 70px;
+}
+
+.pagination li{
+    width: 30px;
+    /* height: 30px; */
+    margin: 0 5px;
+    text-align: center;
+}
+
+.current{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(241, 189, 0);
+    border: 1px solid rgb(241, 189, 0);
+    width: 30px;
+    height: 30px;
+}
+
+a { 
+    text-decoration:none;
+    color: black;
 }

@@ -39,43 +39,32 @@ public class MyPageController {
 
 	// 마이페이지 이동
 	@GetMapping("/main") // 나머지 주소 작성
-	public String main(@SessionAttribute("loginMember") Member loginMember, Model model,
-			@RequestParam(value = "myPageCt", required = false, defaultValue = "1") int myPageCt,
-			@RequestParam(value = "cp", required = false, defaultValue = "1") int cp
-
-	) {
-
-		System.out.println(loginMember);
-		Map<String, Object> map1 = new HashMap<String, Object>(); // 새로 추가
+	public String main(@SessionAttribute("loginMember") Member loginMember, 
+						Model model,
+						@RequestParam(value="myPageCt", required=false, defaultValue = "1") int myPageCt,
+						@RequestParam(value="cp", required=false, defaultValue = "1") int cp
+						
+						) {
+		
+		
+//		System.out.println(loginMember);
+		Map<String, Object> map1 = new HashMap<String, Object>(); //새로 추가
 //		map1.put("sell",sell); //새로 추가
 //		map1.put("buy", buy); //새로 추가
 		int memberNo = loginMember.getMemberNo();
 		map1.put("memberNo", memberNo); // 새로 추가
 		map1.put("myPageCt", myPageCt);
-		// map1.put("cp", cp);
-		System.out.println(map1);
-		model.addAttribute("loginMember", loginMember);
+		//map1.put("cp", cp);
+//		System.out.println(map1);
+		model.addAttribute("loginMember",loginMember);
 		String address = loginMember.getMemberAddress();
 		model.addAttribute("address", address.substring(10, 13));
 
 		// Map<String, Object> map = service.selectGoodsList(memberNo); //기존 구문
 		Map<String, Object> map = service.selectGoodsList(map1, cp);
 		model.addAttribute("map", map);
-		System.out.println(map);
-
+//		System.out.println(map);
 		return "member/myPage_main";
-	}
-
-	// 리뷰 상세 페이지 이동 1
-	@GetMapping("/review/good")
-	public String reviewGood() {
-		return "member/myPage_review_good";
-	}
-
-	// 리뷰 상세 페이지 이동 2
-	@GetMapping("/review/detail")
-	public String reviewDetail() {
-		return "member/myPage_review_detail";
 	}
 
 	// 마이페이지 자기소개 수정
@@ -129,6 +118,16 @@ public class MyPageController {
 		return "redirect:updateInfo";
 	}
 
+	/**거래후기(REVIEW DB에 인서트) 한 다음에 그걸 가지고 매너후기 (REVIEW_RATIGN DB에 인서트)
+	 * @param goodChecked
+	 * @param badChecked
+	 * @param reviewText
+	 * @param loginMember
+	 * @param reviewGoodsNo
+	 * @param reviewBuyerNo
+	 * @param reviewSellerNo
+	 * @return
+	 */
 	@GetMapping("/sendingReview")
 	@ResponseBody
 	public int sendingReview(@RequestParam(value = "goodChecked", required = false) String goodChecked,
@@ -180,37 +179,124 @@ public class MyPageController {
 
 	// 프로필 이미지 수정
 	@PostMapping("/updateProfile")
-	public String updateProfile(@RequestParam(value = "profileImage") MultipartFile profileImage, /* 업로드된 파일 */
-			@SessionAttribute("loginMember") Member loginMember, /* 로그인 회원 정보 */
-			RedirectAttributes ra, /* 메시지 전달용 */
-			HttpServletRequest req /* 저장할 서버 경로 */
-	) throws Exception {
+	public String updateProfile(
+			@RequestParam(value = "profileImage") MultipartFile profileImage, /*업로드된 파일*/
+			@SessionAttribute("loginMember") Member loginMember, /*로그인 회원 정보*/
+			RedirectAttributes ra, /*메시지 전달용*/
+			HttpServletRequest req /*저장할 서버 경로*/
+			)throws Exception {
 
-		// ** 업로드된 이미지를 프로젝트 폴더 내부에 저장하는 방법 **
-		// 1) server -> 지정된 서버 설정 -> Server modules without publishing을 체크하기
-		// 2) 파일을 저장할 폴더 생성하기
-		// 3) HttpServletRequest를 이용해서 저장 폴더 절대 경로를 얻어오기
-		// 4) MultipartFile.transferTo()를 이용해서 지정된 경로에 파일을 저장한다.
+		   // ** 업로드된 이미지를 프로젝트 폴더 내부에 저장하는 방법 **
+		   // 1) server -> 지정된 서버 설정 -> Server modules without publishing을 체크하기
+		   // 2) 파일을 저장할 폴더 생성하기
+		   // 3) HttpServletRequest를 이용해서 저장 폴더 절대 경로를 얻어오기
+		   // 4) MultipartFile.transferTo()를 이용해서 지정된 경로에 파일을 저장한다.
 
-		// 인터넷 주소로 접근할 수 있는 경로
-		String webPath = "/resources/images/memberProfile/"; // 이 주소 쓰면 이제 여기로 들어올 수 있는 거야...
+		   // 인터넷 주소로 접근할 수 있는 경로
+		    String webPath = "/resources/images/memberProfile/"; //이 주소 쓰면 이제 여기로 들어올 수 있는 거야...
 
-		// 실제 파일이 저장된 (컴퓨터상의) 절대 경로
-		String filePath = req.getSession().getServletContext().getRealPath(webPath);
+		   // 실제 파일이 저장된 (컴퓨터상의) 절대 경로
+			String filePath = req.getSession().getServletContext().getRealPath(webPath);
 
-		int result = service.updateProfile(webPath, filePath, profileImage, loginMember); // 4개를 전달할꺼!
+		   int result = service.updateProfile(webPath, filePath, profileImage, loginMember); //4개를 전달할꺼!
 
-		String message = null;
-		if (result > 0)
-			message = "프로필 이미지가 변경되었습니다.";
-		else
-			message = "프로필 이미지 변경 실패";
+			String message = null;
+			if (result > 0 ) message = "프로필 이미지가 변경되었습니다.";
+			else			 message = "프로필 이미지 변경 실패";
 
-		ra.addFlashAttribute("message", message);
+			ra.addFlashAttribute("message", message);
 
-		return "/member/myPage";
+	    return "redirect:/member/myPage/main";
 	}
-
+	
+	 //받은 거래후기 최신순 3개
+	 //받은 매너온도 탑5
+	@GetMapping("/selectAllReview")
+	public String selectAllReview(
+							@SessionAttribute("loginMember") Member loginMember,	
+							Model model
+			){
+		
+		//받은 거래후기 최신순 3개 조회하기
+		Map<String, Object> map = service.selectNewestReviewList(loginMember);
+		model.addAttribute("map", map);
+		System.out.println(map);
+		
+		return "/member/myPage_review";
+	}
+	
+	// 리뷰 상세 페이지 이동 1
+		@GetMapping("/review/good")
+		public String reviewGood(
+				@SessionAttribute("loginMember") Member loginMember,	
+				Model model,
+				@RequestParam(value="mannerCt", required=false, defaultValue = "1") int mannerCt
+				) {
+			
+			List<Review> reviewList = service.reviewList(loginMember,mannerCt); 
+			model.addAttribute("reviewList", reviewList);
+			System.out.println(reviewList); //뷰 가기 전에 잘 담겼나 확인용
+			
+		
+			
+			return "member/myPage_review_good";
+		}
+		
+		
+	// 리뷰 상세 페이지 이동 2 (거래후기 목록 조회)
+	@GetMapping("/review/detail")
+	public String reviewDetailList(
+			@SessionAttribute("loginMember") Member loginMember, 
+			Model model,
+			@RequestParam(value="detailCt", required=false, defaultValue = "1") int detailCt,
+			@RequestParam(value="cp", required=false, defaultValue = "1") int cp
+			) {
+		Map<String, Object> map1 = new HashMap<String, Object>(); 
+		int memberNo = loginMember.getMemberNo();
+		map1.put("memberNo", memberNo); 
+		map1.put("detailCt", detailCt);
+		System.out.println(map1); //service가기 전에 잘 담겼나 확인용
+		Map<String, Object> map = service.reviewDetailList(map1,cp); 
+		model.addAttribute("map", map);
+		System.out.println(map); //뷰 가기 전에 잘 담겼나 확인용
+		
+		return "member/myPage_review_detail";
+	}
+	
+	/** 받은 후기 조회하기
+	 * @param map
+	 * @return
+	 */
+	@PostMapping("/selectReceivedReview")
+	@ResponseBody
+	public String selectReceivedReview(
+			@RequestParam Map<String, Object> map
+			) {
+		System.out.println(map);
+		List<Review> reviewList = service.selectReceivedReview(map);
+		System.out.println(reviewList);
+		
+		return new Gson().toJson(reviewList);
+	}
+	
+	/**관심목록
+	 * @return
+	 */
+	@GetMapping("/myGoodsLike")
+	public String myGoodsLikeList(
+			@SessionAttribute("loginMember") Member loginMember, 
+			Model model,
+			@RequestParam(value="cp", required=false, defaultValue = "1") int cp
+			) {
+		
+		int memberNo = loginMember.getMemberNo();
+		Map<String, Object> map = service.myGoodsLikeList(memberNo,cp);
+		model.addAttribute("map", map);
+		System.out.println("관심목록" + map); //뷰 가기 전에 잘 담겼나 확인용
+		
+		return "member/myPage_goodsLike";
+	}
+	
 	/**
 	 * 회원탈퇴 페이지 이동
 	 * 

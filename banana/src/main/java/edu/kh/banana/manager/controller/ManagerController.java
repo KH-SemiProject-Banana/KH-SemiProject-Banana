@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import edu.kh.banana.board.model.vo.Board;
 import edu.kh.banana.manager.model.service.ManagerService;
 import edu.kh.banana.member.model.service.MemberService;
 import edu.kh.banana.member.model.vo.Member;
@@ -88,6 +89,19 @@ public class ManagerController {
 	@GetMapping("/board")
 	public String managerBoard() {
 		return "manager/manager-board";
+	}
+	
+	
+	/** 고객센터-자주묻는질문 편집
+	 * @param board
+	 * @return result
+	 */
+	@GetMapping("/editBoard1")
+	@ResponseBody
+	public int editBoard1(Board board) {
+		
+		
+		return service.editBoard1(board);
 	}
 
 	

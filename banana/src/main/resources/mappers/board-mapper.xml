@@ -338,6 +338,36 @@
   </select>
   
   
+  <!-- 조건에 맞는 게시글 목록 조회 -->
+  <select id="getBoardListCount" parameterType="map" resultType="_int">
+  aaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+  </select>
 
+  
+ <!-- 전체 게시글 수 조회 -->
+ <select id="allBoardCount" resultType="_int">
+ 	SELECT COUNT(*) FROM BOARD
+ </select>
+ 
+ 
+ <!-- 조건에 맞는 게시글 목록 조회 -->
+ <select id="admin-boardSearch" parameterType="map" resultMap="board_rm">
+ aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+ </select>
+  
+  
+  <!-- 게시글 삭제 -->
+  <update id="boardDelete">
+  	UPDATE BOARD SET 
+  	BOARD_DEL_FL = 'Y'
+  	WHERE BOARD_NO = #{boardNo}
+  </update>
+  
+  <!-- 게시글 삭제 복구 -->
+  <update id="boardDeleteBack">
+    UPDATE BOARD SET 
+  	BOARD_DEL_FL = 'N'
+  	WHERE BOARD_NO = #{boardNo}
+  </update>
   
 </mapper>

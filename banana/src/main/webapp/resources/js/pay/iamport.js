@@ -1,7 +1,28 @@
+// 팝업
+function openPop() {
+    document.getElementById("popup_layer").style.display = "block";
+    const payRemain = document.getElementById("payRemain");
+
+    $.ajax({
+    url : "/searchRemainPay",
+    data : {"memberNo" : memberNo},
+    type : "GET",
+    async : false,
+    success : (result) => {
+        payRemain.innerText = result;
+    },
+    error : () => {console.log("바나나페이 조회 실패");}
+    });
+
+    payLog.style.display = "block";
+    payCharge.style.display = "none";
+    payRefund.style.display = "none";
+}
+
+// 결제
 var IMP = window.IMP;
 IMP.init("imp06652703");
 
-// 결제
 document.getElementById("chargeSubmitBtn").addEventListener("click", () => {
     if(chargeFlag) {
         const chargePrice = document.getElementById("chargePrice");

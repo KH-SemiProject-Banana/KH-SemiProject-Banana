@@ -49,7 +49,6 @@ like.addEventListener("change", () => {
   }
 
   const iconChange = document.getElementsByClassName("icon-change")[0];
-  const likeCount = document.getElementById("likeCount");
 
   if(like.checked) {
     $.ajax({
@@ -60,7 +59,6 @@ like.addEventListener("change", () => {
         if (result > 0) {
           iconChange.classList.add("fa-heart-circle-check");
           iconChange.classList.remove("fa-heart-circle-plus");
-          likeCount.innerText = Number(likeCount.innerText) + 1;
           alert("찜 목록에 추가되었습니다.");
         } else {
             console.log("찜 실패");
@@ -78,7 +76,6 @@ like.addEventListener("change", () => {
           if (result > 0) {
             iconChange.classList.add("fa-heart-circle-plus");
             iconChange.classList.remove("fa-heart-circle-check");
-            likeCount.innerText = Number(likeCount.innerText) - 1;
             alert("찜 목록에서 삭제되었습니다.");
           } else {
             console.log("취소 실패");
@@ -89,13 +86,14 @@ like.addEventListener("change", () => {
   }
 })
 
-// 본인과 바나나톡 X
-document.getElementsByClassName("like_talk")[0].addEventListener("submit", event => {
+// 자신과 바나나톡 X
+document.getElementById("talk").addEventListener("click", () => {
   if(memberNo == sellerNo) {
-    alert("본인과 바나나톡을 할 수 없습니다.");
-    event.preventDefault();
+    alert("자신과 바나나톡을 할 수 없습니다.");
     return;
   }
+
+  location.href = "/chatting";
 });
 
 // 검색어 남기기

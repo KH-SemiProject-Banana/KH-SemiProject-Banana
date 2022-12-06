@@ -12,25 +12,6 @@ payCharge.style.display = "none";
 payRefund.style.display = "none";
 payLog.style.display = "none";
 
-//팝업 띄우기
-function openPop() {
-    document.getElementById("popup_layer").style.display = "block";
-    const payRemain = document.getElementById("payRemain");
-
-    $.ajax({
-    url : "/searchRemainPay",
-    data : {"memberNo" : memberNo},
-    type : "GET",
-    async : false,
-    success : (result) => {
-        payRemain.innerText = result;
-    },
-    error : () => {console.log("바나나페이 조회 실패");}
-    });
-
-    payLog.style.display = "block";
-}
-
 
 document.getElementById("chargeBtn").addEventListener("click", function () {
     payCharge.style.display = "block";

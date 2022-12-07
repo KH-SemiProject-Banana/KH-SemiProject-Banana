@@ -13,6 +13,7 @@
 
 */
 
+/* 페이지네이션 관련 CSS  */
 .pagination-area{
     display: flex;
     justify-content: center;
@@ -51,9 +52,11 @@ a {
 }
 
 .myBanana{
-    height :1500px;
-    display: flex;
+    /* height :2000px; */
+    height :auto;
+    /* display: flex; */
     flex-direction: column;
+    max-height: 2000px;
 }
 /* 섹션1********************************************************************************************************섹션1 */
 .my-rotten-banana{
@@ -252,7 +255,7 @@ a {
     display: flex;
     justify-content: flex-end;
     height: 6%;
-    padding-bottom: 50px;
+    /* padding-bottom: 50px; */
     
 }
 .myBanana-sell > *{
@@ -267,8 +270,8 @@ a {
 
 .content-favorite {
     display: flex;
-    margin-top:50px;
-    height: 800px;
+    /* margin-top:50px; */
+    /* height: 800px; */
     /* overflow:scroll; */
     flex-wrap: wrap;
     align-content: space-between;
@@ -280,7 +283,7 @@ a {
     display: flex;
     flex-direction: column;
     /* border: 1px solid #ddd; */
-    margin: 0 6px;
+    margin: 0 6px 80px 6px;
 }
 
 .favorite__img{
@@ -341,6 +344,7 @@ a {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: 6px;
 }
 
 
@@ -357,12 +361,13 @@ a {
 
 .favorite__price{
     font-weight: 700;
-    font-size: 13px;
-    height: 30px;
+    font-size: 15px;
+    /* height: 30px; */
     width: 200px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow : ellipsis;
+    margin-bottom: 4px;
 }
 
 .testcolor{

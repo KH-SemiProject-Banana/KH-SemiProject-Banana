@@ -393,3 +393,10 @@ a {
 }
 
 
+.notAnswered{
+    background-color: var(--lightYellow);
+}
+
+.disabled {
+    background-color: #eee;
+}

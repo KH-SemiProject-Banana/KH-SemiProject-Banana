@@ -157,7 +157,55 @@ public class ManagerDAO {
 		
 		return sqlSession.update("goodsMapper.goodsDeleteBack", goodsNo);
 	}
+
+	/** 조건에 맞는 게시글 목록
+	 * @param paramMap
+	 * @return
+	 */
+	public int getBoardListCount(Map<String, Object> paramMap) {
+		
+		return sqlSession.selectOne("boardMapper.getBoardListCount", paramMap);
+	}
+
+	/** 전체 게시글 수 조회
+	 * @return
+	 */
+	public int allBoardCount() {
+		
+		return sqlSession.selectOne("boardMapper.allBoardCount");
+	}
+
+	/** 조건에 맞는 게시글 목록 조회
+	 * @param pagination
+	 * @param paramMap
+	 * @return
+	 */
+	public List<Board> boardSearch(Pagination pagination, Map<String, Object> paramMap) {
+		
+		int offset = (pagination.getCurrentPage() -1) * pagination.getLimit();
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+		
+		return sqlSession.selectList("boardMapper.admin-boardSearch", paramMap, rowBounds);
+	}
 	
+	/** 게시글 삭제
+	 * @param goodsNo
+	 * @return
+	 */
+	public int boardDelete(int boardNo) {
+		
+		return sqlSession.update("boardMapper.boardDelete", boardNo);
+	}
+	
+	/** 게시글 삭제 복구
+	 * @param goodsNo
+	 * @return
+	 */
+	public int boardDeleteBack(int boardNo) {
+		
+		return sqlSession.update("boardMapper.boardDeleteBack", boardNo);
+	}
+
 	
 
 }

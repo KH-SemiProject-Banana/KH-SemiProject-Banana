@@ -38,10 +38,8 @@
 
             <section class="category-lists">
             <a href = "/manager/main" class="detail link-member">회원</a>
-            <a href = "javascript:Getshow()" class="detail link-basic">기본설정</a>
             <a href = "/manager/goods" class="detail link-product activate">상품</a>
             <a href = "/manager/board" class="detail link-board">게시판</a>
-            <a href = "javascript:Getshow()" class="detail link-service">service</a>
             </section>
 
             
@@ -160,9 +158,9 @@
                 <div class="pull-left">
                     검색
                     <strong>${listCount}</strong>
-                    명 / 전체
+                    개 / 전체
                     <strong>${allGoodsCount}</strong>
-                    명
+                    개
                 </div>
 
 

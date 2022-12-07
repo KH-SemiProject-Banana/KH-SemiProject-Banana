@@ -41,8 +41,8 @@
 			<!--섹션1********************************************************************************************************섹션1-->
 			<section class="my-rotten-banana">
 				<!-- <p>탈퇴하기</p> -->
-				<i class="topmenu__alarm fa-regular fa-bell fa-2x"></i>
-				<p id="editBlockMember">차단 관리</p>
+				<%-- <i class="topmenu__alarm fa-regular fa-bell fa-2x"></i>
+				<p id="editBlockMember">차단 관리</p> --%>
 			</section>
 			<!--섹션2********************************************************************************************************섹션1-->
 			<section class="myBanana-title">
@@ -118,9 +118,6 @@
 								<p id="introUpdateBtn1" class="introUpdateBtn1">수정하기</p>
 							</a>
 						</div>
-                        <div class = "bananaPayBtn">
-                            <p class="introUpdateBtn1" >바나나페이</p>
-                        </div>
 					</div>
 
 					<div class="myBanana-intro">

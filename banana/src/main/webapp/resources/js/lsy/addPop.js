@@ -426,7 +426,10 @@ document.getElementById("finalPopUp").addEventListener("click",function(){
             // 2. Jackson라이브러리를 이용하면 걍 그 자체가 옴...js객체로...
 
             //----------------------------------------------------
-            if(reviewList.size() == 0){
+            document.querySelector("#messageList2").innerHTML = "";
+            console.log(reviewList.length);
+            if(reviewList.length == 0){
+                
                 const li1 = document.createElement("li");
                 li1.innerText = "받은 후기가 존재하지 않습니다.";
                 document.querySelector("#messageList2").append(li1);

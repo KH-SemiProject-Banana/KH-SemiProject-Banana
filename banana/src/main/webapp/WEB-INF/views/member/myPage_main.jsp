@@ -112,7 +112,7 @@
 				<div class="myBanana-content">
 					<div class="myBanana-info">
 						<div class="myBanana-name">${loginMember.memberNickname}</div>
-						<div class="myBanana-address">${address}</div>
+						<div class="myBanana-address">${loginMember.address}</div>
 						<div class="myBanana-changeInfo">
 							<a href="/member/myPage/updateInfo">
 								<p id="introUpdateBtn1" class="introUpdateBtn1">수정하기</p>

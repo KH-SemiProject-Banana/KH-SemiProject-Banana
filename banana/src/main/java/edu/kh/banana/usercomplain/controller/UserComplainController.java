@@ -23,11 +23,12 @@ public class UserComplainController {
 	@Autowired
 	private UserComplainService service;
 	
-	/*
-	 * @GetMapping("/usercomplain") public String userReport() {
-	 * 
-	 * return "usercomplain/usercomplain"; }
-	 */
+	
+	 @GetMapping("/usercomplain") public String userReport() {
+	  	
+	  return "userComplain/userComplain"; 
+	 
+	 }
 	
 	
 	// 신고 중복 안되게
@@ -76,7 +77,7 @@ public class UserComplainController {
 		}
 		
 		ra.addFlashAttribute("message", message);
-		return "redirect:/member/bananaTalk";
+		return "redirect:/chatting/BananaTalk";
 	}
 	
 	

@@ -239,7 +239,7 @@ const productInfor = () => {
 			div0_1.setAttribute("id","poppingThing")
 
 			const jsp = document.createElement("jsp:include");
-			jsp.setAttribute("page","/WEB-INF/views/usercomplain/usercomplain.jsp")
+			jsp.setAttribute("page","/WEB-INF/views/userComplain/userComplain.jsp")
 
 
 			ul.append(li1,li2,div0);

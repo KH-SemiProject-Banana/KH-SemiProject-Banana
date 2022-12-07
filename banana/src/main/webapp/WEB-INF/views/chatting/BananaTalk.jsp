@@ -118,7 +118,7 @@
                         </li>
                         <li class="productNamePrice">
                             <div class="productNameArea">
-                                <div class="productStatus">거래완료</div>
+                                <div class="productStatus">판매완료</div>
                                 <div class="productName">${loginMember.memberNickname}님과의 바나나톡 이용 약속</div>
                             </div>
                             <div class="productPrice">2,500,000 원</div>

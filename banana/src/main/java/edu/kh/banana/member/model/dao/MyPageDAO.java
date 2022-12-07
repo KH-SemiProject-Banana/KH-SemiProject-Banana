@@ -183,6 +183,17 @@ public class MyPageDAO {
 		return sqlSession.update("memberMapper.secessionDelete",memberNo);
 	}
 
+	public List<Member> selectDeleteMemberList(int memberNo) {
+		
+		return sqlSession.selectList("memberMapper.selectDeleteMemberList", memberNo);
+	}
+
+	public int memberBlockCancel(Map<String, Object> map) {
+		
+		return sqlSession.delete("memberMapper.memberBlockCancel", map);
+	}
+
+	
 
 	/** (거래후기 목록 조회)
 	 * @param map1
@@ -250,5 +261,9 @@ public class MyPageDAO {
 	 */
 	public List<GoodsSell> myGoodsLikeList(int memberNo, MypagePagination pagination) {
 		
-		return sqlSession.selectList("myPageMapper.selectmyGoodsLikeList",memberNo);
+int offset = (pagination.getCurrentPage()-1) * pagination.getLimit();
+		
+		RowBounds rowBounds = new RowBounds(offset,pagination.getLimit());
+		
+		return sqlSession.selectList("myPageMapper.selectmyGoodsLikeList",memberNo,rowBounds);
 	}}

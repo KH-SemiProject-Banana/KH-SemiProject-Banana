@@ -24,7 +24,11 @@
     <link rel="stylesheet" href="/resources/css/lsy/myPage_common.css">
         <link rel="stylesheet" href="/resources/css/현진/productList.css">
 
-
+    <style>
+    #third-category > a{
+        font-weight: bold;
+    }
+    </style>
 
     <script src="https://kit.fontawesome.com/f7459b8054.js" crossorigin="anonymous"></script>
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
@@ -167,20 +171,20 @@
 			<!--섹션4********************************************************************************************************섹션1-->
 			<section class="myBanana-category">
             
-                    <div id= "first-category" class = "category">
+                    <div id= "first-category" class = "categorys">
                         <a href="/member/myPage/main?myPageCt=1">판매내역</a>
                     </div>
 
                     <%-- c:if test = param.myPageCt=1 --%>
 
-                    <div id= "second-category" class = "category">
+                    <div id= "second-category" class = "categorys">
                         <a href="/member/myPage/main?myPageCt=2">구매내역</a>
                     </div>
-                    <div id= "third-category" class = "category">
+                    <div id= "third-category" class = "categorys">
                         <a href="/member/myPage/myGoodsLike">관심목록</a>
                     </div>
-                    <div id= "fourth-category" class = "category">
-                        <a href="/member/myPage/selectAllReview">후기</a>
+                    <div id= "fourth-category" class = "categorys">
+                        <a href="/member/myPage/selectAllReview" >후기</a>
                     </div>
                     
                     
@@ -383,11 +387,14 @@
         
         const memberNo = "${loginMember.memberNo}";
 
+    
+
     </script>
     <!-- jQuery 라이브러리(.js 파일) 추가(CDN 방식) -->
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 	
 	<script src="/resources/js/lsy/myPage_goodsLike.js"></script>
+    
 </body>
 
 </html>

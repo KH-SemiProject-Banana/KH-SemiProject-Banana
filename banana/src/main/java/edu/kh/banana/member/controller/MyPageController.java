@@ -343,4 +343,37 @@ public class MyPageController {
 	}
 	
 	
+
+	/** 차단관리
+	 * @param loginMember
+	 * @param model
+	 * @return
+	 */
+	@GetMapping("/editBlockMember")
+	public String editBlockMember(@SessionAttribute("loginMember") Member loginMember,
+			Model model) {
+		
+		List<Member> deleteMember = service.selectDeleteMemberList(loginMember.getMemberNo());
+		
+		model.addAttribute("deleteMember", deleteMember);
+		
+		return "member/myPage_deleteMember";
+	}
+	
+	/** 회원 차단해제
+	 * @param blockedMemberNo
+	 * @param loginMemberNo
+	 * @return
+	 */
+	@GetMapping("/memberBlockCancel")
+	@ResponseBody
+	public int memberBlockCancel(int blockedMemberNo, int loginMemberNo) {
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("blockedMemberNo", blockedMemberNo);
+		map.put("loginMemberNo", loginMemberNo);
+		
+		return service.memberBlockCancel(map);
+	}
+
 }

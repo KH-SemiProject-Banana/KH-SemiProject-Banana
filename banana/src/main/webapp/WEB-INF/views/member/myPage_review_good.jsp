@@ -28,7 +28,7 @@
         <jsp:include page="/WEB-INF/views/common/header.jsp" />
 
     <section class = "title">
-        <i id = "back" class="fa-solid fa-angle-right"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;매너 상세
+        <a href="/member/myPage/selectAllReview"><i id = "back" class="fa-solid fa-angle-right"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;매너 상세</a>
     </section>      
     <section class = "content">
         <div class= "side">
@@ -82,6 +82,11 @@
             mannerCt = ${param.mannerCt};
         } else {
             mannerCt = 1;
+        }
+
+        switch(mannerCt){
+            case 1: document.getElementById("side1").style.fontWeight = "bold"; break;
+            case 2: document.getElementById("side2").style.fontWeight = "bold"; break;
         }
     </script>
 

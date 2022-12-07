@@ -1,0 +1,175 @@
+/* *{border: 1px solid red;} */
+
+.report-top, .b-report-top{
+    display: flex;
+    justify-content: flex-start;
+    height: 60px;
+    border-bottom: 1px solid black;
+    font-size: 20px;
+    padding: 3%;
+    position: relative;
+}
+.report-top > *, .b-report-top > * {
+    text-decoration: none;
+    color: black;
+}
+
+.report-why, .b-report-why{
+    border-bottom: 1px solid black;
+    padding: 3%;
+    font-size: 20px;
+}
+
+
+.report-reason ,.b-report-reason  {
+    border-bottom: 1px solid black;
+    padding: 15px;
+    
+    
+}
+
+.report-reason:hover, .b-report-reason:hover{
+    background-color: var(--lightYellow);
+}
+
+.report-reason > a , .b-report-reason:hover > a {
+    
+    text-decoration: none;
+    color: black;
+    font-size: 15px;
+    height: 30%;
+}
+
+.report-reason > a  > div , .b-report-reason > a > div{
+    justify-content: space-between;
+}
+
+.report-other{
+    padding: 15px;
+    border-bottom: 1px solid black;
+}
+
+.report-other:hover{
+    background-color: var(--lightYellow);
+}
+
+.report-other >a {
+    text-decoration: none;
+    color: black;
+    font-size: 15px;
+    height: 30%;
+}
+
+.report-other > a > div{
+    display: flex;
+    justify-content: space-between;
+}
+
+.report-user{
+    display: flex;
+    border-bottom: 1px solid black;
+    font-size: 13px;
+    /* height: 30%; */
+    padding: 3%;
+    margin-top: 40px;
+    
+}
+
+.user-doreport{
+    font-size: 13px;
+  
+}
+
+.user-doreport > *{
+    text-decoration: none;
+   
+}
+
+.report-why > p:only-of-type, .b-report-why > p:only-of-type {
+    font-weight: bold;
+}
+
+.report-why > div:only-of-type, .b-report-why > div:only-of-type{
+    font-weight: bold;
+    padding: 5px;
+}
+
+.bottom {
+    margin-bottom: 100px;
+}
+
+
+ /* *{border: 1px solid red;}  */
+ .report-confirm, .b-report-confirm {
+    margin-bottom: 20px;
+}
+
+
+.content-block{
+    margin-bottom: 20px;
+}
+
+
+.report-notice{
+    color: gray;
+    margin-bottom:  20px;
+}
+
+
+#report-submit-button, #b-report-submit-button{
+    background-color: yellow;
+    cursor: pointer;
+    width: 400px;
+    height: 30px;
+}
+
+.report-confirm > a , .b-report-confirm > a{
+    text-decoration: none;
+    color: black;
+}
+
+
+
+.textbox > textarea {
+    resize: none;
+    margin-top: 30px;
+    border: 1px solid black;
+}
+
+
+
+/* 팝업 상단 뒤로가기 + 제목 스타일 */
+.fa-arrow-left-long {
+    position: absolute;
+    cursor: pointer;
+}
+
+#back1 {
+    display: none;
+}
+
+#back2 {
+    display: none;
+}
+
+#b_back1 {
+    display: none;
+}
+
+#b_back2 {
+    display: none;
+}
+
+#back3 {
+    display: none;
+}
+
+#user-com {
+    position: absolute;
+    left: 50px;
+}
+
+#board-com {
+    position: absolute;
+    left: 50px;
+}

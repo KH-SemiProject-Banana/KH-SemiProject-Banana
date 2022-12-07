@@ -79,6 +79,26 @@ public interface ManagerService {
 
 
 
+	/** 조건이 있는 게시글 조회
+	 * @param paramMap
+	 * @param cp
+	 * @return
+	 */
+	Map<String, Object> boardSearch(Map<String, Object> paramMap, int cp);
+
+
+	/** 게시글 삭제
+	 * @param boardNo
+	 * @return
+	 */
+	int boardDelete(int boardNo);
+
+	
+	/** 게시글 삭제 복구
+	 * @param boardNo
+	 * @return
+	 */
+	int boardDeleteBack(int boardNo);
 
 
 }

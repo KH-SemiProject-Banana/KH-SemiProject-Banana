@@ -30,7 +30,6 @@
 
 .pagination li{
     width: 30px;
-    /* height: 30px; */
     margin: 0 5px;
     text-align: center;
 }
@@ -52,11 +51,9 @@ a {
 
 .myBanana{
     display: flex;
-    /* height :2000px; */
     height :auto;
-    /* display: flex; */
     flex-direction: column;
-    max-height: 2000px;
+    /* max-height: 2000px; */
 }
 /* 섹션1********************************************************************************************************섹션1 */
 .my-rotten-banana{
@@ -250,6 +247,8 @@ a {
 /* ********************************************************************************************************섹션5 */
 .myBanana-sellList{
     margin-top: 15px;
+    flex-direction: column;
+
 }
 .myBanana-sell{
     display: flex;
@@ -270,10 +269,6 @@ a {
 .content-favorite {
     display: flex;
     margin-top:50px;
-    /* height: 800px; */
-    /* margin-top:50px; */
-    /* height: 800px; */
-    /* overflow:scroll; */
     flex-wrap: wrap;
     align-content: space-between;
 
@@ -283,8 +278,6 @@ a {
 .favorite__pack{
     display: flex;
     flex-direction: column;
-    /* border: 1px solid #ddd; */
-    /* margin: 0 6px; */
     margin: 0 6px 80px 6px;
 }
 
@@ -363,10 +356,7 @@ a {
 
 .favorite__price{
     font-weight: 700;
-    /* font-size: 13px; */
-    /* height: 30px; */
     font-size: 15px;
-    /* height: 30px; */
     width: 200px;
     overflow: hidden;
     white-space: nowrap;
@@ -509,17 +499,10 @@ form[name = 'myPage-frm']{
     height: 100px;
 }
 
-
 .hidden{
     display: none;
 }
-
-
-/* .xbtn{
-    position: relative;
-} */
 .xbtnBack{
-    /* position: absolute; */
     top: -21px;
     left: -21px;
 }

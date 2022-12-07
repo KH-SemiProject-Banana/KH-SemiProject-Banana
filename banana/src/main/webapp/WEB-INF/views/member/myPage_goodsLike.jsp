@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="/resources/css/screens/header-footer.css">
 
     <link rel="stylesheet" href="/resources/css/lsy/myPage_common.css">
+    <link rel="stylesheet" href="/resources/css/lsy/popup.css">
         <link rel="stylesheet" href="/resources/css/현진/productList.css">
 
     <style>
@@ -64,7 +65,9 @@
                     <div class="popup_layer4" id="popup_layer4" style="display: none;">
                         <div class="popup_box4  ">
                             <!-- <div  style="height: 10px; width: 375px; float: top;"> -->
-                            <a href="javascript:closePop4();"><i class="fa-solid fa-x" id = "fa-x"></i></a>
+                            <a href="javascript:closePop4();" class="xbtn">
+                                <i class="fa-solid fa-x xbtnBack" id = "fa-x"></i>
+                            </a>
                             <!-- </div> -->
                             <!--팝업 컨텐츠 영역-->
                             <div class="popup_cont4 " id = "popup_con4">
@@ -97,15 +100,7 @@
 
                                     </div>
 
-                                    <div class = "myPage-row">
-                                        <label >이메일</label>
-                                        <span>${loginMember.memberEmail}</span>
-                                    </div>
 
-                                    <div class = "myPage-row">
-                                        <label >가입일</label>
-                                        <span>${loginMember.enrollDate}</span>
-                                    </div>
 
                                     
                                     
@@ -114,10 +109,6 @@
 
                                 </form>
                             </div>
-                            <!--팝업 버튼 영역-->
-                            <!-- <div class="popup_btn" style="float: bottom; margin-top: 100px;">
-                            <a href="javascript:closePop();">닫기</a>
-                            </div> -->
                         </div>
                     </div>
 
@@ -259,69 +250,8 @@
 					</c:choose>
 
                     <%-- 현진이꺼 복붙 추가 시작--%>
-                    <div>
-                <%-- <c:choose>
-                    <c:when test="${fn:length(goodsList) == 0}">
-                            <div class="no_list"><h2>게시글이 없습니다.</h2></div>
-                    </c:when>
-
-                    <c:otherwise>
-                        <c:set var="i" value="1" /> --%>
-                        <%-- <c:set var="e" value="true" /> --%>
-                        <%-- <c:forEach var="goods" items="${goodsList}"> --%>
-                            
-                            <%-- <c:if test="${i%4 == 1}">
-                                <section>
-                                <c:set var="e" value="false" />
-                            </c:if> --%>
-                            
-                            <%-- <c:choose>
-                                <c:when test="${i%4 == 0}">
-                                    <div class="imgList_row imgList_row_end">
-                                </c:when>
-
-                                <c:otherwise>
-                                    <div class="imgList_row">
-                                </c:otherwise>
-                            </c:choose> --%>
-<%--  --%>
-                                
-
-                                <%-- <c:choose>
-                                    <c:when test="${goods.imagePath == null}">
-                                        <a href="/goods/${goods.goodsNo}"><img src="../../resources/images/noImage.png"></a>
-                                    </c:when>
-
-                                    <c:otherwise>
-                                        <a href="/goods/${goods.goodsNo}"><img src="${goods.imagePath}"></a>
-                                    </c:otherwise>
-                                </c:choose>
-
-                                <span><h2><a href="/goods/${goods.goodsNo}" class="title">${goods.title}</a></h2></span>
-                                <span><h3><a href="/goods/${goods.goodsNo}"><fmt:formatNumber value="${goods.sellPrice}" pattern="#,###"/></a></h3></span> --%>
-                            <%-- </div> --%>
-
-                            <%-- <c:if test="${i%4 == 0}">
-                                </section>
-                                <c:set var="e" value="true" />
-                            </c:if> --%>
-
-                            
-                        <%-- </c:forEach> --%>
-
-                        <%-- <c:if test="${e eq false}">
-                            </section>
-                        </c:if> --%>
-                    <%-- </c:otherwise>
-                </c:choose> --%>
-            </div>
-            <%-- 현진이꺼 복붙 추가 끝--%>
-
-                    
-                                <%-- 기존위치 --%>
-
-                                
-                <div class="pagination-area">
+            </section>  
+             <div class="pagination-area">
 
                     <%-- 페이지네이션 목록 추가  --%>
                     <ul class="pagination">
@@ -362,8 +292,7 @@
                         <%-- <li><a href="/member/myPage/main?myPageCt=${param.myPageCt}&cp=${pagination.maxPage}">&gt;&gt;</a></li> --%>
 
                     </ul>
-                </div> 
-            </section>    
+                </div>   
 		</div>
 	</main>
 
@@ -394,6 +323,7 @@
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 	
 	<script src="/resources/js/lsy/myPage_goodsLike.js"></script>
+	<script src="/resources/js/lsy/myPage_common.js"></script>
     
 </body>
 

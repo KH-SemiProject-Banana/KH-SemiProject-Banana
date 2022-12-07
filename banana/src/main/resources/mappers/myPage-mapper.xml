@@ -55,6 +55,23 @@
 			<!-- 없는 애도 있을 텐데 (ex)MEMBER_DEL_FL 그럼 걔는 걍 안담겨서 null로 나옴... -->
 </resultMap>
 
+<resultMap type="Member" id="Member_rm">
+   	
+   		<!-- DB에서 PK에 해당하는 필드, 컬럼을 작성하는 태그이다........ -->
+   		<id property = "memberNo" column = "MEMBER_NO" />
+   		
+   		<!-- 나머지 일반 컬럼...!!!! -->
+   			<result property="memberNickname" column="MEMBER_NICKNAME" />
+			<result property="memberAddress" column="MEMBER_ADDRESS" />
+			<result property="introduce" column="INTRODUCE" />
+			<result property="profileImage" column="PROFILE_IMG" />
+			<result property="manner" column="MANNER" />
+		
+			
+			
+			<!-- 없는 애도 있을 텐데 (ex)MEMBER_DEL_FL 그럼 걔는 걍 안담겨서 null로 나옴... -->
+</resultMap>
+
 <!-- 판매완료/판매중/구매완료한 내 게시글의 수 조회 -->
 <select id = "getListCount" parameterType = "_int" resultType = "_int">
 	SELECT COUNT(*) FROM(
@@ -424,6 +441,7 @@ GROUP BY D.MANNER_NO, MANNER_DESCRIPTION
 ORDER BY MANNER_COUNT DESC
 </select>
 
+<!-- 받은 후기 조회 -->
 <select id="selectReceivedReview" resultMap = "Review_rm">
 SELECT  TITLE, RATING_NO, 
 (SELECT MEMBER_NICKNAME FROM MEMBER M WHERE R.RECEIVER_NO  = M.MEMBER_NO) MEMBER_NICKNAME , MANNER_DESCRIPTION
@@ -485,18 +503,13 @@ WHERE MEMBER_NO = #{memberNo}
 
 </select>
 
-
-
-
-
-
-
-
-
-
-
-
-
+<select id="selectYourInfo" resultMap = "Member_rm">
+SELECT MEMBER_NICKNAME, INTRODUCE, 
+SUBSTR(MEMBER_ADDRESS,11,3) MEMBER_ADDRESS,
+PROFILE_IMG, MANNER
+FROM "MEMBER"
+WHERE MEMBER_NO = #{memberNo}
+</select>
 
 
 

@@ -246,7 +246,7 @@
 
 
                 <div class="content-finish">
-                    <button type="reset">취소</button>
+                    <button type="button" onclick="history.back()">취소</button>
                     <button type="submit">상품 수정 완료</button>
                 </div>
             </form>

@@ -52,13 +52,34 @@
                 <div class ="frequent-question__title">
                     <p>${boardName}</p>
                     <div class="foldBtnArea">
-                        <c:if test="${loginMember.authority == 2}">
-                            <button type="button" id="editBoard1">글 작성하기</button>
-                        </c:if>
+                        <%-- <c:if test="${loginMember.authority == 2}">
+                            <button type="button" id="writeBtn">글 작성하기</button>
+                        </c:if> --%>
                         <button type="button" id="foldAll">모두 접기</button>
                     </div>
                 </div>
-
+                <%-- <form class="frequent-question__content" id="writeBoard1" style="display:none" onsubmit="return false">
+                    <a class = "frequent-question__content-detail">
+                        <i class="fa-solid fa-circle-question"></i>
+                        <div class="frequent-question__content" style="width:100%;">
+                            <input name="boardTitle" id = "inputTitle" style="width:100%;">
+                        </div>
+                    </a>
+                    <div class="area" style="display:block;">
+                        <div class="profile">
+                            <div class="profile-img">
+                                <img src="/resources/images/banana-logo.png" class="admin-img">
+                            </div>
+                            <div class="name-date">
+                                <p class="nickname" id="admin-name">바나나마켓_운영지원팀</p>
+                            </div>
+                        </div>
+                        <div class="question-content">
+                            <textarea name="boardContent" class="user-content" id="inputContent"></textarea>
+                        </div>
+                    </div>
+                    <button id="finishWrite">자주묻는질문 수정</button>
+                </form> --%>
                 
                 <c:forEach var="board" items="${boardList}">
                     <div class="frequent-question__content">
@@ -277,6 +298,9 @@
     </script>
 
     <script src="/resources/js/board/boardList.js"></script>
+    <!-- jQuery CDN 방식으로 추가-->
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+
 
 </body>
 

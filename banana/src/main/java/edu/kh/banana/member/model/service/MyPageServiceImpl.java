@@ -339,6 +339,15 @@ public class MyPageServiceImpl implements MyPageService{
 			return dao.memberBlockCancel(map);
 		}
 
+		/*타인의 마이페이지*/
+
+		//1. 타인의 정보를 가져온다.(닉네임/자기소개/프로필이미지/바나나온도)
+		@Override
+		public Member selectYourInfo(int memberNo) {
+			
+			return dao.selectYourInfo(memberNo);
+		}
+
 
 
 	

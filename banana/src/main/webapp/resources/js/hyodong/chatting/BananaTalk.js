@@ -257,7 +257,7 @@ const selectRoomList = () => {
 		success : roomList => {
 			console.log(roomList);
 			// 채팅방 리스트
-			const chattingList = document.querySelector(".chatting-list");
+			const chattingList = document.querySelector("#chatting-list");
 
 			// 채팅방 리스트 지우기
 			chattingList.innerHTML = "";

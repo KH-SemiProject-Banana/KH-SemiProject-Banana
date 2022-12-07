@@ -302,6 +302,7 @@ form[name = 'myPage-frm']{position:relative;}
     display: flex;
     flex-direction: column;
     justify-content: center;
+    padding-bottom: 20px;
 
 }
 
@@ -364,6 +365,7 @@ form[name = 'myPage-frm']{position:relative;}
     /* width: 200px; */
     width: 250px;
     text-align: center;
+    padding: 5px;
 }
 
 .row > .row1col2{
@@ -416,6 +418,12 @@ form[name = 'myPage-frm']{position:relative;}
 .row > .row3col2{
     width: 250px;
     text-align: center;
+
+}
+
+.row3col2 {
+    font-size: 15px;
+    font-weight: bold;
 }
 
 .row > .row3col3{
@@ -606,4 +614,10 @@ form[name = 'myPage-frm']{position:relative;}
 /* 스크롤바 뒷 배경 설정*/
 .Scroll::-webkit-scrollbar-track{
     opacity: 1;
+}
+
+
+.mannerPic {
+    font-size: 50px;
+
 }

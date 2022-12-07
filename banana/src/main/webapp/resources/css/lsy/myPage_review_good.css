@@ -1,4 +1,7 @@
-a { text-decoration:none }
+a { 
+    text-decoration:none;
+    color: black;
+}
 
 .title{
     border-bottom: 1px solid #ddd;
@@ -21,27 +24,33 @@ a { text-decoration:none }
 .content{
     display: flex;
     width: 100%;
+    padding-bottom: 50px;
 }
 
 /* 사이드 텝 */
 .side{
     border-right: 1px solid #ddd;
-    padding : 30px;
+    /* padding : 30px; */
     font-size: 18px;
     width: 30%;
     
 }
 
 /* 사이드 텝 설정 */
+
+
 .side1:hover, .side2:hover {
     background-color:var(--lightYellow);
-    border-bottom: 1px solid #ddd;
+
 }
-.side > div {
+.side > a {
     display: flex;
     padding : 30px 0 30px 0;
-    
+}
 
+#side1, #side2 {
+    padding-left: 30px;
+    border-bottom: 1px solid #ddd;
 }
 
 .side1 > * , .side2 > * , .main_title > * {
@@ -130,6 +139,7 @@ a { text-decoration:none }
 .review {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     
 }
 .review  * {
@@ -146,4 +156,20 @@ a { text-decoration:none }
 .goodBadMain{
     flex-direction: column;
     width: 100%;
+
+}
+
+.mannerPic {
+    font-size: 25px;
+    color: var(--darkYellow);
+}
+
+.mannerCount {
+    font-size: 20px;
+}
+
+.iconBox{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

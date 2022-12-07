@@ -51,9 +51,10 @@ a {
 }
 
 .myBanana{
-    height :1500px;
+    min-height :1500px;
     display: flex;
     flex-direction: column;
+    padding-bottom: 150px;
 }
 /* 섹션1********************************************************************************************************섹션1 */
 .my-rotten-banana{
@@ -252,7 +253,7 @@ a {
     display: flex;
     justify-content: flex-end;
     height: 6%;
-    padding-bottom: 50px;
+    /* padding-bottom: 50px; */
     
 }
 .myBanana-sell > *{
@@ -271,8 +272,8 @@ a {
     height: 800px;
     /* overflow:scroll; */
     flex-wrap: wrap;
-    align-content: space-between;
-
+    /* align-content: space-between; */
+    
 
 }
 
@@ -281,6 +282,7 @@ a {
     flex-direction: column;
     /* border: 1px solid #ddd; */
     margin: 0 6px;
+    padding-bottom: 30px;
 }
 
 .favorite__img{

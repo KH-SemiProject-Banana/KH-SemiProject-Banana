@@ -243,9 +243,11 @@
                                 <button type="submit" id = "report-submit-button" >바나나 팀에게 보내기</button>
                             </div>
                             <%-- div1_3_7_2_input1 --%>
-                            <input type="hidden" name="ctg1" value="" id ="ctg1">
+                            <input  id ="ctg1" type="hidden" name="ctg1" value="">
                             <%-- div1_3_7_3_input2 --%>
-                            <input type="hidden" name="ctg2" value="" id ="ctg2">
+                            <input id ="ctg2" type="hidden" name="ctg2" value="" >
+                            <input id= "memberNo2" type = "hidden" name="memberNo2" value= "${sellerInfo.memberNo}" >
+                            <input id= "goodsNo2" type = "hidden" name="goodsNo2" value="${goodsInfo.goodsNo}">
                         </form>
                     </div>
                 </div>

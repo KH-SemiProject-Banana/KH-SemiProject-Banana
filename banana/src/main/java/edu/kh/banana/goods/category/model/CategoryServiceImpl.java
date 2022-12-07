@@ -33,6 +33,8 @@ public class CategoryServiceImpl implements CategoryService {
 		
 		List<GoodsSell> goodsList = dao.selectGoodsList(categoryPagination, category);
 		
+		sellStatus(goodsList);
+		
 		return map(categoryPagination, goodsList);
 	}
 
@@ -45,6 +47,8 @@ public class CategoryServiceImpl implements CategoryService {
 		
 		List<GoodsSell> allGoodsList = dao.selectAllGoodsList(categoryPagination, category);
 		
+		sellStatus(allGoodsList);
+		
 		return map(categoryPagination, allGoodsList);
 	}
 
@@ -56,6 +60,8 @@ public class CategoryServiceImpl implements CategoryService {
 		CategoryPagination categoryPagination = new CategoryPagination(listCount, category.getCp());
 		
 		List<GoodsSell> goodsList = dao.selectQueryGoodsList(categoryPagination, category);
+		
+		sellStatus(goodsList);
 	
 		return map(categoryPagination, goodsList);
 	}
@@ -68,6 +74,26 @@ public class CategoryServiceImpl implements CategoryService {
         map.put("goodsList", list);
         
         return map;
+	}
+	
+	// 구매 & 판매 상태 세팅
+	public void sellStatus(List<GoodsSell> goodsList) {
+		for(GoodsSell gs : goodsList) {
+			if(gs.getBuyerNo() == 0) {
+				if(gs.getCategoryNo() == 11) {
+					gs.setSellStatus("구매중");
+				} else {
+					gs.setSellStatus("판매중");					
+				}
+				
+			} else {
+				if(gs.getCategoryNo() == 11) {
+					gs.setSellStatus("구매완료");
+				} else {
+					gs.setSellStatus("판매완료");					
+				}
+			}
+		}
 	}
 	
 	// 자신의 게시글에 찜 불가능
@@ -102,10 +128,18 @@ public class CategoryServiceImpl implements CategoryService {
 		List<GoodsSell> sellerGoods = dao.selectSellerGoods(goodsNo);
 		
 		if(goodsInfo.getBuyerNo() == 0) {
-			goodsInfo.setSellStatus("판매중");
+			if(goodsInfo.getCategoryNo() == 11) {
+				goodsInfo.setSellStatus("구매중");
+			} else {
+				goodsInfo.setSellStatus("판매중");					
+			}
 			
 		} else {
-			goodsInfo.setSellStatus("판매완료");
+			if(goodsInfo.getCategoryNo() == 11) {
+				goodsInfo.setSellStatus("구매완료");
+			} else {
+				goodsInfo.setSellStatus("판매완료");					
+			}
 		}
 
 		map.put("goodsInfo", goodsInfo);

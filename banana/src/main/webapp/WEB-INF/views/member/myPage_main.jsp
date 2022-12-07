@@ -109,6 +109,7 @@
                         </div>
                     </div>
 
+
 				<div class="myBanana-content">
 					<div class="myBanana-info">
 						<div class="myBanana-name">${loginMember.memberNickname}</div>
@@ -119,9 +120,11 @@
 							</a>
 						</div>
                         <div class = "bananaPayBtn">
-                            <p class="introUpdateBtn1" >바나나페이</p>
+                            <p class="introUpdateBtn1" onclick="openPop5()">바나나페이</p>
                         </div>
 					</div>
+
+                    <jsp:include page="/WEB-INF/views/pay/bananaPay.jsp" />
 
 					<div class="myBanana-intro">
 						<%-- (기존꺼)강사님과 함께.... --%>

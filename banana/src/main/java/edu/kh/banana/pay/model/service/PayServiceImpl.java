@@ -20,6 +20,12 @@ public class PayServiceImpl implements PayService{
 		return dao.searchRemainPay(paramMap);
 	}
 	
+	// 페이 히스토리
+	@Override
+	public List<BananaPay> searchPayLogList(Map<String, Object> paramMap) {
+		return dao.searchPayLogList(paramMap);
+	}
+	
 	// 주문번호 조회
 	@Override
 	public int searchOrderNo() {
@@ -32,10 +38,5 @@ public class PayServiceImpl implements PayService{
 		int remainPoint = searchRemainPay(paramMap);
 		paramMap.put("remainPoint", remainPoint);
 		return dao.pointCharge(paramMap);
-	}
-
-	@Override
-	public List<BananaPay> searchPayLogList(Map<String, Object> paramMap) {
-		return dao.searchPayLogList(paramMap);
 	}
 }

@@ -19,10 +19,6 @@
     <link rel="stylesheet" href="/resources/css/style.css">
     <link rel="stylesheet" href="/resources/css/현진/detailedPage.css">
     <script src="https://kit.fontawesome.com/f7459b8054.js" crossorigin="anonymous"></script>
-    <style>
-        nav{z-index: 5;} 
-        .poppingThing{position:fixed; z-index: 300;}
-    </style>
 </head>
 <body>
     <main>
@@ -32,10 +28,7 @@
         <div>
             <div class="category">
                 <a href="/">HOME</a>
-
-                <c:if test='${category.query == null}'>
-                    <a href="/category/?categoryNo=${category.categoryNo}">> ${category.categoryName}</a>
-                </c:if>
+                <a href="/category/?categoryNo=${goodsInfo.categoryNo}">> ${goodsInfo.categoryName}</a>
             </div>
 
             <div class="product">
@@ -105,7 +98,7 @@
                         <div class="top_right"><span>${goodsInfo.createdAt}</span></div>
                     </div>
             
-                    <div id="poppingThing" class="poppingThing"> 
+                    <div id="poppingThing" class="poppingThing">
                     <jsp:include page="/WEB-INF/views/board/boardcomplain.jsp" />
                     </div>
 

@@ -375,5 +375,34 @@ public class MyPageController {
 		
 		return service.memberBlockCancel(map);
 	}
+	
+	/*타인의 마이페이지*/
+	
+	@GetMapping("/yourPageMain")
+	public String yourPageMain( int memberNo,
+			Model model,
+			@RequestParam(value="myPageCt", required=false, defaultValue = "1") int myPageCt,
+			@RequestParam(value="cp", required=false, defaultValue = "1") int cp
+			) {
+		
+		//1. 타인의 정보를 가져온다.(닉네임/자기소개/프로필이미지/바나나온도)
+		Member member = service.selectYourInfo(memberNo);
+		System.out.println(member);
+		model.addAttribute("member",member);
+		
+
+		
+		//2. 판매중/판매완료에 따라, 페이지네이션해서 가져온다.
+		Map<String, Object> map1 = new HashMap<String, Object>(); 
+		map1.put("memberNo", memberNo); 
+		map1.put("myPageCt", myPageCt);
+		
+		Map<String, Object> map = service.selectGoodsList(map1, cp);
+		model.addAttribute("map", map);
+
+		
+		
+		return "member/yourPage_main";
+	}
 
 }

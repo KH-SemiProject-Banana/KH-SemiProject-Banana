@@ -106,14 +106,14 @@
                     <!--------- 채팅박스 상단 상품 시작 --------->
                     <ul id="productInforBox">
                         <li class="productImgBox">
-                            <img class="productImgBox1"src="\resources\images\hydong-test-RTX4090.jpg">
+                            <img class="productImgBox1"src="\resources\images\bananaTalk.jpg">
                         </li>
                         <li class="productNamePrice">
                             <div class="productNameArea">
                                 <div class="productStatus">거래완료</div>
-                                <div class="productName">RTX4090 누가좀 사주세요 제발 가지고싶다</div>
+                                <div class="productName">${loginMember.memberNickname}님과의 바나나톡 이용 약속</div>
                             </div>
-                            <div class="productPrice">2,500,000 원</div>
+                            <div class="productPrice">0 원</div>
                         </li>
                         <div class="Declaration">
                             <a href="javascript:openPop()"><!-- 신고버튼 -->
@@ -131,44 +131,42 @@
                         
                             <!-- 메시지 시작 날짜 -->
                             <li class="date-line">
-                                <day >2021년 3월 29일 월요일</day>
-                            </li>
-
-                            <!-- 내채팅 -->
-                            <li class="my-chat">        
-                                <div class="my-chat-col">
-                                    <p class="chat">더 내려간다</p>
-                                    <p class="chat">바닷속으로</p>
-                                    <p class="chat">납작하게</p>
-                                    <p class="chat">엎드려있는ㅇㅇㅇㅇㅇㅇ</p>
-                                </div>
-                                <time class="chatDate">오전 10:30</time>
+                                <day >2022년 10월 20일 월요일</day>
                             </li>
 
                             <!-- 상대채팅 -->
                             <li class="target-chat">
-                                <img class="profile-img" src="/resources/images/user.png" alt="상대방프로필사진"> 
+                                <img class="profile-img" src="/resources/images/banana-logo.png" alt="상대방프로필사진"> 
                                 <div class="target-chat-col">
-                                    <name class="target-name">바나나</name>
-                                    <p class="chat">가자미 처럼</p>
-                                    <p class="chat">내려간다</p>
-                                    <p class="chat">답이없다..</p>
-                                    <p class="chat">떨어지는 내 주식처럼</p>
-                                    <p class="chat">떨어지는 내 주식처럼</p>
-                                    <p class="chat">떨어지는 내 주식처럼</p>
-                                    <p class="chat">떨어지는 내 주식처럼</p>
-                                    <p class="chat">떨어지는 내 주식처럼</p>
-                                    <p class="chat">떨어지는 내 주식처럼</p>
-                                    <p class="chat">떨어지는 내 주식처럼</p>
-                                    <p class="chat">떨어지는 내 주식처럼</p>
-                                    <p class="chat">떨어지는 내 주식처럼</p>
-                                    <p class="chat">떨어지는 내 주식처럼</p>
-                                    <p class="chat">ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ</p>
+                                    <name class="target-name">바나나운영팀</name>
+                                    <p class="chat">안녕하세요 ${loginMember.memberNickname}님</p>
+                                    <p class="chat">바나나 마켓을 이용해 주셔어 감사합니다.</p>
+                                    <p class="chat">다음과 같은 채팅 규칙을 준수해 주세요.</p>
                                 </div>
                                 <time class="chatDate">오전 10:35</time>
                             </li>
 
+                            <li class="my-chat">        
+                                <div class="my-chat-col">
+                                    <p class="chat">1. 젠더, 성적 지향, 성 정체성, 장애, 신체적인 외모, 신체 크기, 인종, 민족성, 정치적 소속, 종교에 대한 공격적인 발언 금지</p>
+                                    <p class="chat">2. 음담패설, 도배는 삼가 주세요.</p>
+                                    <p class="chat">3.상대방의 인격이나 신상에 관한 모욕적인 발언은 삼가 주세요.</p>
+                                    <p class="chat">4.진행 중인 선거에 관한 대화는 금지되어 있습니다.</p>
+                                    <p class="chat">5.정치 등, 최근 이슈와 관련된 이야기는 자제해주세요. 만일 다른 참가자가 중단을 요청하면 따라주세요.</p>
+                                </div>
+                                <time class="chatDate">오전 10:30</time>
+                            </li>
+                            
+                            <li class="target-chat">
+                                <img class="profile-img" src="/resources/images/banana-logo.png" alt="상대방프로필사진"> 
+                                <div class="target-chat-col">
+                                    <name class="target-name">바나나운영팀</name>
+                                    <p class="chat">바꾸고 나누자 나랑~ 바나나 마켓</p>
+                                </div>
+                                <time class="chatDate">오전 10:35</time>
+                            </li>
                         </ul>
+
 
                         <!-- 채팅 내용 입력 박스 -->
                         <div id="input-area">

@@ -55,7 +55,7 @@
                         <img class="photo" src="${member.profileImage}" alt=""> <i class="fa-solid fa-camera-retro fa-2x pen" id = "profilePop"></i>
                     
 				</div>
-                    
+                    <%--  --%>
 				<div class="myBanana-content">
 					<div class="myBanana-info">
 						<div class="myBanana-name">${member.memberNickname}</div>

@@ -130,7 +130,7 @@
                             </a>
 
                                 <div id = "poppingThing" class = "poppingThing"> 
-                                <jsp:include page="/WEB-INF/views/usercomplain/usercomplain.jsp"></jsp:include>
+                                <jsp:include page="/WEB-INF/views/userComplain/userComplain.jsp"></jsp:include>
                                 </div>
 
                         </div>

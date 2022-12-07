@@ -1,4 +1,4 @@
-package edu.kh.banana.userComplain.model.service;
+package edu.kh.banana.usercomplain.model.service;
 
 import java.util.Map;
 

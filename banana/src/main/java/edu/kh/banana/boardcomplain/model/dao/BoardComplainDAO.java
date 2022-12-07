@@ -1,4 +1,4 @@
-package edu.kh.banana.boardComplain.model.dao;
+package edu.kh.banana.boardcomplain.model.dao;
 
 import java.util.Map;
 

@@ -7,7 +7,9 @@
 <c:set var="allBoardCount" value="${map.allBoardCount}"/>
 <c:set var="listCount" value="${map.listCount}"/>
 
-<%-- <c:set var="sURL" value="sort=${param.sort}&key=${param.key}&query=${param.query}&isBlock=${param.isBlock}&isDelete=${param.isDelete}&calanderBefore=${param.calanderBefore}&calanderAfter=${param.calanderAfter}"/> --%>
+
+
+<c:set var="sURL" value="sort=${param.sort}&key=${param.key}&query=${param.query}&boardCode=${param.boardCode}&isAnswer=${param.isAnswer}&calanderBefore=${param.calanderBefore}&calanderAfter=${param.calanderAfter}"/>
 
 
 <!DOCTYPE html>

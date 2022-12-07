@@ -118,8 +118,11 @@ public interface MyPageService {
 	int memberBlockCancel(Map<String, Object> map);
 
 
-	 
 
+	/*타인의 마이페이지*/
+	
+	//1. 타인의 정보를 가져온다.(닉네임/자기소개/프로필이미지/바나나온도)
+	Member selectYourInfo(int memberNo);
 	
 
 

@@ -23,11 +23,12 @@ public class UserComplainController {
 	@Autowired
 	private UserComplainService service;
 	
-	/*
-	 * @GetMapping("/usercomplain") public String userReport() {
-	 * 
-	 * return "usercomplain/usercomplain"; }
-	 */
+	
+	 @GetMapping("/usercomplain") public String userReport() {
+	  	
+	  return "userComplain/userComplain"; 
+	 
+	 }
 	
 	
 	// 신고 중복 안되게
@@ -36,11 +37,11 @@ public class UserComplainController {
 	
 	@GetMapping("/duplicateCheck")
 	@ResponseBody
-	public int duplicateCheck (int category1, int category2 ) {
+	public int duplicateCheck (int memberNo, int memberNo2 ) {
 		
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("category1", category1);
-		map.put("category2", category2);
+		map.put("memberNo", memberNo);
+		map.put("memberNo2", memberNo2);
 		
 		int result =  service.userDuplication(map);  
 		return result;
@@ -53,17 +54,17 @@ public class UserComplainController {
 									@SessionAttribute("loginmember") Member loginmember,
 									RedirectAttributes ra,
 									@RequestHeader("referer") String referer,
-									/*@PathVariable("complained) int complained*/
 									@RequestParam(value = "userblock") int userBlocked
 																	) {
 		
+		
+		submit.put("memberNo", loginmember.getMemberNo());
 		
 		int blockedResult = service.userBlock(loginmember.getMemberNo(), userBlocked);
 		
 		int complained = 15; // 나중에 수정(@PathVariable)
 		
-		submit.put("complained", complained);
-		System.out.println("테스트"+submit);
+		
 		
 		int result = service.userReportSubmit(submit);
 		String message = null;
@@ -76,7 +77,7 @@ public class UserComplainController {
 		}
 		
 		ra.addFlashAttribute("message", message);
-		return "redirect:/member/bananaTalk";
+		return "redirect:/chatting/BananaTalk";
 	}
 	
 	

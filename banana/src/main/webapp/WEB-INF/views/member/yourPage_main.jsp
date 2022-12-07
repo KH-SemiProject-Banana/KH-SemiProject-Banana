@@ -55,7 +55,7 @@
                         <img class="photo" src="${member.profileImage}" alt=""> <i class="fa-solid fa-camera-retro fa-2x pen" id = "profilePop"></i>
                     
 				</div>
-                    
+                    <%--  --%>
 				<div class="myBanana-content">
 					<div class="myBanana-info">
 						<div class="myBanana-name">${member.memberNickname}</div>
@@ -95,7 +95,7 @@
 			<section class="myBanana-category">
             
                     <div id= "first-category" class = "category">
-                        <a href="/member/myPage/main?myPageCt=1">판매내역</a>
+                        <a href="/member/myPage/yourPageMain?myPageCt=1">판매내역</a>
                     </div>
                     <div id= "fourth-category" class = "category">
                         <a href="/member/myPage/selectAllReview">후기</a>
@@ -111,8 +111,8 @@
 				<div class="myBanana-sell">
                 <%-- <c:choose>
                     <c:when test = "${loginMember.memberNo eq soldList.sellerNo}"> --%>
-					    <div id="selling"><a href="/member/myPage/main?myPageCt=5">판매중</a></div>
-					    <div id="sold"><a href="/member/myPage/main?myPageCt=1">판매완료</a></div>
+					    <div id="selling"><a href="/member/myPage/yourPageMain?myPageCt=5">판매중</a></div>
+					    <div id="sold"><a href="/member/myPage/yourPageMain?myPageCt=1">판매완료</a></div>
                     <%-- </c:when>
                     <c:otherwise>
                     </c:otherwise>

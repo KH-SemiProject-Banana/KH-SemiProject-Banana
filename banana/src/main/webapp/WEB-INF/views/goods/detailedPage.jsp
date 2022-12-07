@@ -227,7 +227,7 @@
                         </c:forEach>
                     </div>
                 </div>
-                <input type="hidden" name="memberNo" value="${sellerInfo.memberNo}">
+                <input type="hidden" name="sellerNo" value="${sellerInfo.memberNo}">
             </form>
 
             <div class="precautions">

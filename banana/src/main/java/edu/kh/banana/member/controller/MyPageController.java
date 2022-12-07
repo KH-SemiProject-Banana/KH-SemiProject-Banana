@@ -377,17 +377,19 @@ public class MyPageController {
 	}
 	
 	/*타인의 마이페이지*/
-	
-	@GetMapping("/yourPageMain")
-	public String yourPageMain( int memberNo,
+	@RequestMapping("/yourPageMain")
+	public String yourPageMain( @RequestParam(value = "sellerNo") int memberNo,
 			Model model,
 			@RequestParam(value="myPageCt", required=false, defaultValue = "1") int myPageCt,
 			@RequestParam(value="cp", required=false, defaultValue = "1") int cp
 			) {
 		
 		//1. 타인의 정보를 가져온다.(닉네임/자기소개/프로필이미지/바나나온도)
+		//잘 받아졌는지 확인
+		System.out.println(memberNo);
 		Member member = service.selectYourInfo(memberNo);
-		System.out.println(member);
+		//잘 가는지 확인
+		System.out.println("상대방의 회원정보" + member);
 		model.addAttribute("member",member);
 		
 
@@ -398,6 +400,7 @@ public class MyPageController {
 		map1.put("myPageCt", myPageCt);
 		
 		Map<String, Object> map = service.selectGoodsList(map1, cp);
+		map.put("memberNo", memberNo);
 		model.addAttribute("map", map);
 
 		

@@ -22,14 +22,19 @@
     <%-- <link rel="stylesheet" href="/resources/css/screens/header-footer.css"> --%>
 
     <link rel="stylesheet" href="/resources/css/lsy/myPage_common.css">
-    <link rel="stylesheet" href="/resources/css/lsy/popup.css">
-    <link rel="stylesheet" href="/resources/css/lsy/pop1_review_survey.css">
+    <%-- <link rel="stylesheet" href="/resources/css/lsy/popup.css">
+    <link rel="stylesheet" href="/resources/css/lsy/pop1_review_survey.css"> --%>
 
 
 
     <script src="https://kit.fontawesome.com/f7459b8054.js" crossorigin="anonymous"></script>
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 
+	<style>
+		.pagination a{
+			cursor: pointer;
+		}
+	</style>
 </head>
 
 <body>
@@ -46,7 +51,7 @@
 			</section>
 			<!--섹션2********************************************************************************************************섹션1-->
 			<section class="myBanana-title">
-				<p>나의 바나나</p>
+				<p>너의 바나나</p>
 			</section>
 			<!--섹션3********************************************************************************************************섹션1-->
 			<section class="myBanana-detail">
@@ -55,11 +60,11 @@
                         <img class="photo" src="${member.profileImage}" alt=""> <i class="fa-solid fa-camera-retro fa-2x pen" id = "profilePop"></i>
                     
 				</div>
-                    
+                    <%--  --%>
 				<div class="myBanana-content">
 					<div class="myBanana-info">
 						<div class="myBanana-name">${member.memberNickname}</div>
-						<div class="myBanana-address">${member.address}</div>
+						<div class="myBanana-address">${member.memberAddress}</div>
 					</div>
 
 					<div class="myBanana-intro">
@@ -95,12 +100,12 @@
 			<section class="myBanana-category">
             
                     <div id= "first-category" class = "category">
-                        <a href="/member/myPage/main?myPageCt=1">판매내역</a>
+                        <a href="/member/myPage/yourPageMain?myPageCt=1">판매내역</a>
                     </div>
                     <div id= "fourth-category" class = "category">
                         <a href="/member/myPage/selectAllReview">후기</a>
                     </div>
-       
+
 
 			</section>
 			<!--섹션5********************************************************************************************************섹션1-->
@@ -108,16 +113,17 @@
 				<jsp:include page="/WEB-INF/views/member/myPage_review.jsp"></jsp:include>
 			</div> --%>
 			<section class="myBanana-sellList" id="myBanana-sellList">
-				<div class="myBanana-sell">
+				<form class="myBanana-sell" id = "myBanana-sell" method = "POST" onsubmit = "return false;">
                 <%-- <c:choose>
                     <c:when test = "${loginMember.memberNo eq soldList.sellerNo}"> --%>
-					    <div id="selling"><a href="/member/myPage/main?myPageCt=5">판매중</a></div>
-					    <div id="sold"><a href="/member/myPage/main?myPageCt=1">판매완료</a></div>
+					    <div id="selling"><a id = "sellingA">판매중</a></div>
+					    <div id="sold"><a id = "soldA">판매완료</a></div>
                     <%-- </c:when>
                     <c:otherwise>
                     </c:otherwise>
                 </c:choose> --%>
-				</div>
+				<input type="hidden" name="sellerNo" value="${map.memberNo}">
+				</form>
 
 				<section class="content-favorite">
 
@@ -162,7 +168,8 @@
                         
                         <%-- <li><a href="/member/myPage/main?myPageCt=${param.myPageCt}&cp=1">&lt;&lt;</a></li> --%>
                         <!-- 이전 목록 마지막 번호로 이동 -->
-                        <li><a href="/member/myPage/main?myPageCt=${param.myPageCt}&cp=${pagination.prevPage}">&lt;</a></li>
+                        <%-- <li><a href="/member/myPage/yourPageMain?myPageCt=${param.myPageCt}&cp=${pagination.prevPage}">&lt;</a></li> --%>
+                        <li><a data="${pagination.prevPage}">&lt;</a></li>
                         <%-- ?cp같은 쿼리스트링 형태로 적어야 함.....(이게 파라미터로 인식이 됨...) --%>
                         
                         <c:forEach var = "i" begin ="${pagination.startPage}" end = "${pagination.endPage}" step = "1" >
@@ -175,7 +182,8 @@
                                 </c:when>
                                 <c:otherwise>
                                 <!-- 현재 페이지를 제외한 나머지 -->
-                                <li><a href="/member/myPage/main?myPageCt=${param.myPageCt}&cp=${i}">${i}</a></li>
+                                <%-- <li><a href="/member/myPage/yourPageMain?myPageCt=${param.myPageCt}&cp=${i}">${i}</a></li> --%>
+                                <li><a data="${i}">${i}</a></li>
                                 </c:otherwise>
                             </c:choose>
 
@@ -188,7 +196,8 @@
                         
                         
                         <!-- 다음 목록 시작 번호로 이동 -->
-                        <li><a href="/member/myPage/main?myPageCt=${param.myPageCt}&cp=${pagination.nextPage}">&gt;</a></li>
+                        <%-- <li><a href="/member/myPage/yourPageMain?myPageCt=${param.myPageCt}&cp=${pagination.nextPage}">&gt;</a></li> --%>
+                        <li><a data="${pagination.nextPage}">&gt;</a></li>
 
                         <!-- 끝 페이지로 이동 -->
                         <%-- <li><a href="/member/myPage/main?myPageCt=${param.myPageCt}&cp=${pagination.maxPage}">&gt;&gt;</a></li> --%>
@@ -198,6 +207,11 @@
             </section>    
 		</div>
 	</main>
+
+	<form action="yourPageMain?myPageCt=${param.myPageCt}" method="post" name="submitFrm">
+		<input type="hidden" name="cp" id="cp" value="${pagination.currentPage}">
+		<input type="hidden" name="sellerNo" value="${param.sellerNo}">
+	</form>
 
 
 	<%-- footer.jsp.include --%>
@@ -212,15 +226,26 @@
             myPageCt = 1;
         }
 
-        let loginMemberNo;
+    
 
-        loginMemberNo = ${loginMember.memberNo};
+        //판매중/판매완료/구매완료인지에 따라 글씨체 bold로 바뀌는거 
+        switch(myPageCt){
+            case 1: document.getElementById("first-category").style.fontWeight = "bold"; 
+            document.getElementById("sold").style.fontWeight = "bold";
+            //document.getElementById("popup_layer4").style.display = "none";
+            //const changeJsp = document.querySelector("#changeJsp");
+            //changeJsp.innerHTML = "";
+            break;
+
+            case 5: 
+            document.getElementById("first-category").style.fontWeight = "bold";
+            document.getElementById("selling").style.fontWeight = "bold"; break;
+        }
 
     </script>
     <!-- jQuery 라이브러리(.js 파일) 추가(CDN 방식) -->
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
-	<script src="/resources/js/lsy/addPop.js"></script>
-	<script src="/resources/js/lsy/myPage_common.js"></script>
+	<script src="/resources/js/lsy/yourPage.js"></script>
 </body>
 
 </html>

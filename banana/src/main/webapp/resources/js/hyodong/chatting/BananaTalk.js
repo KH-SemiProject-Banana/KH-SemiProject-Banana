@@ -234,21 +234,22 @@ const productInfor = () => {
 			const i = document.createElement("i");
 			i.classList.add("fa-regular","fa-bell-slash");
 
-			const div0_1 = document.createElement("div");
-			div0_1.classList.add("poppingThing")
-			div0_1.setAttribute("id","poppingThing")
+			// const div0_1 = document.createElement("div");
+			// div0_1.classList.add("poppingThing")
+			// div0_1.setAttribute("id","poppingThing")
 
-			const jsp = document.createElement("jsp:include");
-			jsp.setAttribute("page","/WEB-INF/views/usercomplain/usercomplain.jsp")
+			// const jsp = document.createElement("jsp:include");
+			// jsp.setAttribute("page","/WEB-INF/views/userComplain/userComplain.jsp")
 
 
 			ul.append(li1,li2,div0);
 			li1.append(img);
 			li2.append(div1,div2);
 			div1.append(div1_1,div1_2);
-			div0.append(a,div0_1);
+			// div0.append(a,div0_1);
+			div0.append(a);
 			a.append(i);
-			div0_1.append(jsp)
+			// div0_1.append(jsp)
 
 			
 		},

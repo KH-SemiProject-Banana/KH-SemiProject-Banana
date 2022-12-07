@@ -63,7 +63,7 @@
            WHERE R.CHATTING_NO  = M.CHATTING_NO), CH_CREATE_DATE))+1,'YYYY-MM-DD') ) < 0
 	      THEN TO_CHAR (NVL((SELECT MAX(SEND_TIME) SEND_TIME
                FROM MESSAGE M
-               WHERE R.CHATTING_NO  = M.CHATTING_NO), CH_CREATE_DATE), 'PM HH24:MI')
+               WHERE R.CHATTING_NO  = M.CHATTING_NO), CH_CREATE_DATE), 'PM HH:MI')
 	      ELSE TO_CHAR(NVL((SELECT MAX(SEND_TIME) SEND_TIME
                FROM MESSAGE M
                WHERE R.CHATTING_NO  = M.CHATTING_NO), CH_CREATE_DATE), 'YYYY.MM.DD')
@@ -112,7 +112,7 @@
    <!-- 채팅방 메세지 조회 -->
    <select id="selectMessageList" resultMap="message_rm">
       SELECT MESSAGE_NO, MESSAGE_CONTENT, READ_FL, SENDER_NO, CHATTING_NO,
-      TO_CHAR(SEND_TIME, 'am HH24:MI') SEND_TIME 
+      TO_CHAR(SEND_TIME, 'am HH:MI') SEND_TIME 
       FROM MESSAGE
       WHERE CHATTING_NO  = #{chattingNo}
       ORDER BY MESSAGE_NO

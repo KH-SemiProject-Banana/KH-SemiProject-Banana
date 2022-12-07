@@ -32,6 +32,9 @@ const back3 = document.getElementById("back3");
 const ctg1 = document.getElementsByName("ctg1");
 const ctg2 = document.getElementsByName("ctg2");
 
+const pl = document.getElementById("popup_layer");
+const pp = document.getElementById("poppingThing");
+
 
 const disNone = () => {
 
@@ -43,8 +46,8 @@ const disNone = () => {
     back1.style.display = "none";
     back2.style.display = "none";
     back3.style.display = "none";
-    document.getElementById("popup_layer").style.display = "none";
-    document.getElementById("poppingThing").style.display = "none";    
+    pl.style.display = "none";
+    pp.style.display = "none";    
 
 }
 
@@ -56,8 +59,8 @@ disNone();
 
 function openPop(){
     
-    document.getElementById("popup_layer").style.display = "block";
-    document.getElementById("poppingThing").style.display = "block";
+    pl.style.display = "block";
+    pp.style.display = "block";
 
     
                 
@@ -226,15 +229,15 @@ function openPop(){
         })
     }
 
-    document.getElementById("userreportsubmit").addEventListener("submit",function(){
+    document.getElementById("userreportsubmit").addEventListener("submit",function(e){
 
         $.ajax({
             url : "/duplicateCheck",
-            data:{"category1":category1,"category2":category2},
+            data:{"memberNo":memberNo,"memberNo2":memberNo2},
             success:(result) => {
                 if(result>0){ //중복된 값이 있다.
                     alert("중복된 신고 사유입니다.");
-                    document.getElementById("userreportsubmit").setAttribute("onsubmit","return false");
+                    e.preventEvent();
                 } else { //중복된 값이 없다.
                     alert("중복검사 완료!")
                 }
@@ -265,7 +268,7 @@ function openPop(){
     // back2.style.display = "none";
 
     back1.addEventListener("click",() => {
-        userreportsubmit.style.display = "none"; // 문제 생기면 지울것
+        
         switch (ctg1.value) {
             case "1":
                 click1.style.display = "none";

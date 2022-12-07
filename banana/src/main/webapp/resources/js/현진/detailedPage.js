@@ -127,6 +127,8 @@ const sellerPage = document.getElementsByClassName("sellerPage");
 
 for(let item of sellerPage) {
   item.addEventListener("click", () => {
-    location.href = "/member/myPage/yourPageMain?myPageCt=1";
+    const seller = document.getElementsByClassName("seller")[0];
+    seller.action = "/member/myPage/yourPageMain?myPageCt=1";
+    seller.submit();
   })
 }

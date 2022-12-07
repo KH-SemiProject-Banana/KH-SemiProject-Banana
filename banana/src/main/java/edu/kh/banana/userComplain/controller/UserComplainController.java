@@ -63,6 +63,7 @@ public class UserComplainController {
 		int complained = 15; // 나중에 수정(@PathVariable)
 		
 		submit.put("complained", complained);
+		System.out.println("테스트"+submit);
 		
 		int result = service.userReportSubmit(submit);
 		String message = null;

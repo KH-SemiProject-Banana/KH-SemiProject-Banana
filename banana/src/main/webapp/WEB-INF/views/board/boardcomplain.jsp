@@ -282,7 +282,7 @@
                                     <textarea name="reportbox" id="reportbox" cols="90" rows="5" placeholder="혹시 불쾌한 일을 겪으셨나요? 사유를 남겨주세요" ></textarea>
                                         
                                 </div><br>
-                                <button type="submit" id = "b-report-submit-button" >바나나 팀에게 보내기</button>
+                                <button type="button" id="b-report-submit-button" >바나나 팀에게 보내기</button>
                             </div>
                         </div>
                         <input id= "b_ctg1" type="hidden" name="b_ctg1" value="">

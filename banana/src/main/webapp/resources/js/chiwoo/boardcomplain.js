@@ -199,30 +199,6 @@ function openPop(){
             }
         })
     }
-    
-    // 백엔드 보류
-    document.getElementById("reportsubmit").addEventListener("submit",function(e){
-        $.ajax({
-            url : "/duplicateCheck2",
-            data:{"memberNo2":memberNo2,"goodsNo2":goodsNo2},
-            success:(result) => {
-                if(result>0){ //중복된 값이 있다.
-                    alert("중복된 신고 입니다.");
-                    e.preventDefault(); // 제출 못하게
-                    return;
-                } else { //중복된 값이 없다.
-                    alert("신고 완료!")
-                }
-            },
-            error:() => {
-                console.log("동작 에러남")
-
-            },
-            complete:() =>{
-                console.log("완료시 로그가 찍혀라잇!")
-            }
-        })
-    }) 
 
     b_back2.addEventListener("click", () => {
         reportsubmit.style.display = "none";
@@ -280,6 +256,28 @@ function openPop(){
         b_click.style.display = "block";
         fin.style.display= "block";
     });
+    
+    document.getElementById("b-report-submit-button").addEventListener("click", () => {
+            $.ajax({
+                url : "/reportsubmit",
+                data : {"memberNo2" : document.getElementById("memberNo2").value,
+                        "b_ctg1" : document.getElementById("b_ctg1").value,
+                        "b_ctg2" : document.getElementById("b_ctg2").value,
+                        "goodsNo2" : document.getElementById("goodsNo2").value,
+                        "reportbox" : document.getElementById("reportbox").value},
+                type : "POST",
+                success : (result) => {
+                    if(result > 0) {
+                        alert("신고되었습니다.");
+                        closePop();
+                    } else {
+                        alert("신고 중 오류가 발생했습니다.");
+                    }
+                },
+                error : () => {alert("신고 중 오류가 발생했습니다.");}
+            });
+        }
+    )
 }
 
 function closePop(){

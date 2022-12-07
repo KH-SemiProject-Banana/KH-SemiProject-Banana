@@ -5,12 +5,12 @@
 <insert id="reportSubmit">
   INSERT INTO "BOARD_COMPLAIN"
   VALUES(SEQ_B_COM_NO.NEXTVAL, 
-  		#{b_com1_ctg_no},
-  		#{b_com2_ctg_no},
-  		#{b_complainer},
-  		#{goods_no},
-  		#{b_complained},
-  		#{b_com_content},
+  		#{memberNo},
+  		#{memberNo2},
+  		#{b_ctg1},
+  		#{b_ctg2},
+  		#{goodsNo2},
+  		#{reportbox},
   		DEFAULT)
 </insert>
 

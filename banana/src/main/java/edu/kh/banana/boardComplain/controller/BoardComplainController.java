@@ -42,7 +42,8 @@ public class BoardComplainController {
 	}
 
 	@PostMapping("/reportsubmit")
-	public String reportSubmit(@RequestParam Map<String, Object> submit,
+	@ResponseBody
+	public int reportSubmit(@RequestParam Map<String, Object> submit,
 			@SessionAttribute("loginMember") Member loginMember, RedirectAttributes ra,
 			@RequestHeader("referer") String referer) {
 
@@ -52,6 +53,7 @@ public class BoardComplainController {
 		// int complained 사용하기
 		int result = service.reportsubmit(submit);
 
+		System.out.println("테테테테테스스스스스스"+result);
 		String message = null;
 
 		if (result > 0) {
@@ -62,7 +64,7 @@ public class BoardComplainController {
 		}
 
 		ra.addFlashAttribute("message", message);
-		return "redirect:/goods/detailPage";
+		return result;
 
 	}
 

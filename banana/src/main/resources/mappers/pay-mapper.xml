@@ -27,7 +27,12 @@
   <insert id="pointCharge">
   	INSERT INTO REQUEST_PAY VALUES
 	(SEQ_ORDER_NO.NEXTVAL, NULL, #{memberNo}, DEFAULT,
-	#{inputPrice}, 1, #{remainPoint} + #{inputPrice})
+	#{inputPrice},
+	<choose>
+	  <when test='inputPrice > 0'> 1, </when>
+	  <otherwise> 2, </otherwise>
+	</choose>
+	#{remainPoint} + #{inputPrice})
   </insert>
   
   <select id="searchPayLogList" resultMap="pay_rm">

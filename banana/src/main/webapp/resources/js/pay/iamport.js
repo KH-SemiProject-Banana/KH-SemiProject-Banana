@@ -1,4 +1,7 @@
 // 팝업
+const payLL = document.getElementById("payLL");
+let remainPay;
+
 function openPop() {
     document.getElementById("popup_layer").style.display = "block";
     const payRemain = document.getElementById("payRemain");
@@ -9,7 +12,8 @@ function openPop() {
     type : "GET",
     async : false,
     success : (result) => {
-        payRemain.innerText = result;
+        remainPay = result;
+        payRemain.innerText = result.toLocaleString();
     },
     error : () => {console.log("바나나페이 조회 실패");}
     });
@@ -18,18 +22,27 @@ function openPop() {
     payCharge.style.display = "none";
     payRefund.style.display = "none";
 
-    // payLogList();
+    payLogList();
 }
 
-document.getElementById("selectYear").addEventListener("change", () => {
-    payLogList();
-})
+// selectYear, selectMonth 변화 감지
+var observer = new MutationObserver(mutations => {
+    mutations.forEach(mutation => {
+        payLogList();
+    });
+});
 
-document.getElementById("selectMonth").addEventListener("change", () => {
-    payLogList();
-})
+var config = {
+    childList: true,
+    attributes: true,
+    characterData: true,
+    subtree: false,
+    attributeOldValue: false,
+    characterDataOldValue: false
+};
 
-const payMain = document.getElementsByClassName("payMain")[0];
+observer.observe(selectYear, config);
+observer.observe(selectMonth, config);
 
 // 조회
 const payLogList = () => {
@@ -39,24 +52,37 @@ const payLogList = () => {
                 "selectYear" : selectYear.innerText,
                 "selectMonth" : selectMonth.innerText},
         type : "GET",
-        async : false,
         success : (result) => {
-            // result == payLogList
+            payLL.innerHTML = "";
             let monthDay = "";
+            let payText = "";
 
             for(let item of result) {
                 if(monthDay != item.monthDay) {
-                    payMain.innerHTML += "<div class='monthDateArea'>" + item.monthDay + "</div>";
+                    payLL.innerHTML += "<div class='monthDateArea'>" + item.monthDay + "</div>";
                     monthDay = item.monthDay;
                 }
 
-                payMain.innerHTML += "<div class='useDetail'>"
-                                   + "<div class='useDetail__title'>"
-                                   + "<p>" + item.status + "</p>"
-                                   + "<p>" + item.orderDate + "</p>"
-                                   + "</div>"
-                                   + "<div class='useDetail__money moneyPlus'>" + item.usePoint + "</div>"
-                                   + "</div>"; 
+                payText = "<div class='useDetail'>"
+                        + "<div class='useDetail__title'>"
+                        + "<p>" + item.status + "</p>"
+                        + "<p>" + item.orderDate + "</p>"
+                        + "</div>";
+
+                if(item.usePoint > 0 ) {
+                    payLL.innerHTML += payText
+                                     + "<div class='useDetail__money moneyPlus'>+" + item.usePoint.toLocaleString() + "</div>"
+                                     + "</div>";
+                                     
+                } else {
+                    payLL.innerHTML += payText
+                                     + "<div class='useDetail__money'>" + item.usePoint.toLocaleString() + "</div>"
+                                     + "</div>";
+                }
+            }
+
+            if(payLL.innerHTML == "") {
+                payLL.innerHTML += "<div class='noList'>조회 결과가 없습니다.</div>"
             }
         },
         error : () => {console.log("바나나페이 조회 실패");}
@@ -102,9 +128,10 @@ document.getElementById("chargeSubmitBtn").addEventListener("click", () => {
                     success : (result) => {
                         if(result > 0) {
                             const price = Number(chargePrice.value).toLocaleString();
-                            payRemain.innerText = Number(payRemain.innerText) + Number(chargePrice.value);
+                            remainPay = remainPay + Number(chargePrice.value);
+                            payRemain.innerText = remainPay.toLocaleString();
                             chargePrice.value = "";
-                            alert("결제가 완료되었습니다.\n결제한 금액 : " + price);
+                            alert("결제가 완료되었습니다.\n결제한 금액 : " + price + "원");
 
                         } else {
                             alert("결제 중 오류가 발생했습니다.");
@@ -133,9 +160,10 @@ document.getElementById("refundSubmitBtn").addEventListener("click", () => {
                 success : (result) => {
                     if(result > 0) {
                         const price = Number(refundPrice.value).toLocaleString();
-                        payRemain.innerText = Number(payRemain.innerText) - Number(refundPrice.value);
+                        remainPay = remainPay - Number(refundPrice.value);
+                        payRemain.innerText = remainPay.toLocaleString();
                         refundPrice.value = "";
-                        alert("환불이 완료되었습니다.\n환불한 금액 : " + price);
+                        alert("환불이 완료되었습니다.\n환불한 금액 : " + price + "원");
 
                     } else {
                         alert("환불 중 오류가 발생했습니다.");

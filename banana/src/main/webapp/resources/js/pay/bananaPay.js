@@ -419,16 +419,19 @@ selectPayCtg[0].addEventListener("click", () => {
     selectPayCtg[0].classList.add("ctgChecked");
     selectPayCtg[1].classList.remove("ctgChecked");
     selectPayCtg[2].classList.remove("ctgChecked");
+    payLogList();
 });
 
 selectPayCtg[1].addEventListener("click", () => {
     selectPayCtg[0].classList.remove("ctgChecked");
     selectPayCtg[1].classList.add("ctgChecked");
     selectPayCtg[2].classList.remove("ctgChecked");
+    payLogList();
 });
 
 selectPayCtg[2].addEventListener("click", () => {
     selectPayCtg[0].classList.remove("ctgChecked");
     selectPayCtg[1].classList.remove("ctgChecked");
     selectPayCtg[2].classList.add("ctgChecked");
+    payLogList();
 });

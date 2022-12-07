@@ -479,6 +479,7 @@
 }
 
 .useDetail__money {
+    color: rgb(241, 0, 0);
     font-weight: bold;
     text-decoration: none;
 }
@@ -535,4 +536,11 @@
     cursor: pointer;
     /* background-color: red; */
     padding: 5px 10px;
+}
+
+.noList{
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

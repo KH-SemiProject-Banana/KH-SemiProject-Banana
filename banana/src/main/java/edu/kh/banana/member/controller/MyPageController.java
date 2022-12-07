@@ -377,7 +377,7 @@ public class MyPageController {
 	}
 	
 	/*타인의 마이페이지*/
-	@PostMapping("/yourPageMain")
+	@RequestMapping("/yourPageMain")
 	public String yourPageMain( @RequestParam(value = "sellerNo") int memberNo,
 			Model model,
 			@RequestParam(value="myPageCt", required=false, defaultValue = "1") int myPageCt,
@@ -400,6 +400,7 @@ public class MyPageController {
 		map1.put("myPageCt", myPageCt);
 		
 		Map<String, Object> map = service.selectGoodsList(map1, cp);
+		map.put("memberNo", memberNo);
 		model.addAttribute("map", map);
 
 		

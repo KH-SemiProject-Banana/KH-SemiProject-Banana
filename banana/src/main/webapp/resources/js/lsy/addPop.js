@@ -436,10 +436,9 @@ document.getElementById("finalPopUp").addEventListener("click",function(){
                 const li1 = document.createElement("li");
                 li1.innerText = review.mannerDescription;
                 document.querySelector("#messageList2").append(li1);
-
             }
 
-        },
+            },
         error : () => {
 
             console.log("받은/매너후기/목록 실패");

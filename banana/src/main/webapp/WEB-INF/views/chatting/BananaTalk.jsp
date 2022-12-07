@@ -128,12 +128,7 @@
                             <a href="javascript:openPop()"><!-- 신고버튼 -->
                                 <i class="fa-regular fa-bell-slash"></i>
                             </a>
-
-                            <div id = "poppingThing" class = "poppingThing"> 
-                                <jsp:include page="/WEB-INF/views/userComplain/userComplain.jsp"></jsp:include>
-                            </div>
-
-                        </div>
+                        </div>  
                     </ul> 
                     <!--------- 채팅박스 상단 상품 시작 끝--------->
 

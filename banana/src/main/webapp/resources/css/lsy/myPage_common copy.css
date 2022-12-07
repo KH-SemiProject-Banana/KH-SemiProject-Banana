@@ -274,8 +274,8 @@ a {
     /* height: 800px; */
     /* overflow:scroll; */
     flex-wrap: wrap;
-    align-content: space-between;
-
+    /* align-content: space-between; */
+    
 
 }
 

@@ -217,10 +217,14 @@
                         <div class="search-result-tab">제목</div>
                         <c:forEach var="goods" items="${goodsList}">
                             <c:if test="${fn:length(goods.title) > 10}">
-                                <div class="search-content">${fn:substring(goods.title, 0, 10)}...</div>
+                                <a href="/goods/${goods.goodsNo}">
+                                    <div class="search-content">${fn:substring(goods.title, 0, 10)}...</div>
+                                </a>
                             </c:if>
                             <c:if test="${fn:length(goods.title) <= 10}">
-                                <div class="search-content">${goods.title}</div>
+                                <a href="/goods/${goods.goodsNo}">
+                                    <div class="search-content">${goods.title}</div>
+                                </a>
                             </c:if>
                         </c:forEach>
                     </div>

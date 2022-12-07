@@ -491,37 +491,76 @@ for(let dot of dotList){
         })
 
 
-        div2.classList.add("anotherPop1" , "babo");
-        div2.innerText = "글 삭제하기";
-        // div2.addEventListener("click", $.ajax({
 
-        //     url : "/goods/delete",
-        //     data : {"goodsNo" : goodsNo},
-        //     type : "GET",
-        //     success : (result) => {
-        //         if(result > 0) {
-        //             // 상품태그 메인에서 지우기
-        //             e.target.parentElement.parentElement.parentElement.remove();
-        //         } else {
-        //             console.log("상품글 삭제 실패");
-        //         }
-        //     },
-        //     error : () => {
-        //         console.log("상품글 삭제 중 오류 발생");
-        //     }
-        // }))
+    //     // 글 삭제
+    //     div2.classList.add("anotherPop1" , "babo");
+    //     div2.innerText = "글 삭제하기";
+    //     div2.addEventListener("click", () => {
 
+    //         if(confirm("정말 상품을 삭제하시겠습니까?")){
+    //             () => {
+                    
+    //                 $.ajax({
+            
+    //                     url : "/goods/delete",
+    //                     data : {"goodsNo" : goodsNo},
+    //                     type : "GET",
+    //                     success : (result) => {
+    //                         if(result > 0) {
+    //                             // 상품태그 메인에서 지우기
+    //                             alert("상품이 삭제되었습니다");
+    //                             e.target.parentElement.parentElement.parentElement.remove();
+    //                         } else {
+    //                             console.log("상품글 삭제 실패");
+    //                         }
+    //                     },
+    //                     error : () => {
+    //                         console.log("상품글 삭제 중 오류 발생");
+    //                     }
+    //                 })
+    //             }
+    //         }
+    //     }
+
+            
+                
+
+                
+            
+        
+    // );
+
+
+        // 끌어올리기
         div3.classList.add("anotherPop1");
         div3.innerText = "끌어올리기";
-        div3.addEventListener("click", function(){
+        div3.addEventListener("click", ()=>{
             
-        })
-
+            $.ajax({
+    
+                url : "/goods/refresh/" + goodsNo,
+                data : {"goodsNo" : goodsNo},
+                type : "GET",
+                success : (result) => {
+                    if(result > 0) {
+                        alert("해당 상품이 끌어올리기 되었습니다")
+                    } else {
+                        console.log("상품글 끌어올리기 실패");
+                    }
+                },
+                error : () => {
+                    console.log("상품글 끌어올리기 중 오류 발생");
+                }
+            
+                
+            })
+        }
         
-
-
+        )
     });
 }
+
+
 
 
 // 화면 어디를 클릭하든

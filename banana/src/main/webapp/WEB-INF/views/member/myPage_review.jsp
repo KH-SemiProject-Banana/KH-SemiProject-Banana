@@ -191,16 +191,35 @@
                         <div class = "row"><p class = "row1col5">제가 있는 곳까지 와서 거래했어요</p></div> --%>
                     </section>
                     <section class = "row2">
-                        
-                        <div class="iconBox"><i class="fa-solid fa-face-smile circle"></i></div>
-                        <div class="iconBox"><i class="fa-solid fa-sack-dollar circle"></i></div>
-                        <div class="iconBox"><i class="fa-solid fa-clock circle"></i></div>
-                        <div class="iconBox"><i class="fa-solid fa-bolt circle"></i></div>
-                        <div class="iconBox"><i class="fa-solid fa-person-walking circle"></i></div>
+                    <c:forEach var="manner" items="${mannerTopList}">
+                        <c:choose>
+                            <c:when test="${manner.mannerNo == 1}">
+                                <div class="iconBox"><i class="fa-solid fa-hand-holding-hand mannerPic"></i></div>
+                            </c:when>
+                            <c:when test="${manner.mannerNo == 2}">
+                                <div class="iconBox"><i class="fa-solid fa-wand-magic-sparkles mannerPic"></i></div>
+                            </c:when>
+                            <c:when test="${manner.mannerNo == 3}">
+                                <div class="iconBox"><i class="fa-solid fa-arrow-up-short-wide mannerPic"></i></div>
+                            </c:when>
+                            <c:when test="${manner.mannerNo == 4}">
+                                <div class="iconBox"><i class="fa-solid fa-money-bill-1-wave mannerPic"></i></div>
+                            </c:when>
+                            <c:when test="${manner.mannerNo == 5}">
+                                <div class="iconBox"><i class="fa-solid fa-clock mannerPic"></i></div>
+                            </c:when>
+                            <c:when test="${manner.mannerNo == 6}">
+                                <div class="iconBox"><i class="fa-solid fa-truck-fast mannerPic"></i></div>
+                            </c:when>
+                            <c:when test="${manner.mannerNo == 7}">
+                                <div class="iconBox"><i class="fa-solid fa-thumbs-up mannerPic"></i></div>
+                            </c:when>
+                        </c:choose>
+                    </c:forEach>
                     </section>
                     <section class = "row3">
                         <c:forEach var = "manner" items = "${mannerTopList}">
-                        <div class = "row33"><p class = "row3col2">${manner.mannerCount}</p></div>
+                        <div class = "row33"><p class = "row3col2">${manner.mannerCount}명</p></div>
                         </c:forEach>
                         <%-- <div class = "row33"><p class = "row3col1">40</p></div>
                         <div class = "row33"><p class = "row3col2">30</p></div>

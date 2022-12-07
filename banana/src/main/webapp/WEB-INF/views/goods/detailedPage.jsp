@@ -86,7 +86,7 @@
                         <div class="top_left"><span>${goodsInfo.sellStatus}</span></div>
                             
                         <c:if test="${loginMember.memberNo == sellerInfo.memberNo}">
-                            <div class="top_right"><span><a href="#">삭제</a></span></div>
+                            <div class="top_right"><span><a href="/goods/delete">삭제</a></span></div>
                             <div class="top_right"><span>|</span></div>
                             <div class="top_right"><span><a href="/goods/registerGoods">수정</a></span></div>
                             <div class="top_right"><span>|</span></div>

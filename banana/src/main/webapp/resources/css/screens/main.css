@@ -144,7 +144,7 @@ input[name="heart"] + label{
     height: 30px;
     font-size: 33px;
 
-
+    opacity: 0.7;
     z-index: 3;
     /* color: rgba(0,0,0,0.7); */
 
@@ -164,7 +164,7 @@ input[name="heart"] + label{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 10px 0;
+    margin: 10px 5px;
     font-size: 18px;
     font-weight: bold;
 }
@@ -180,14 +180,14 @@ label[for="heart"]{
   
     display: flex;
     align-items: center;
-    font: 24px !important;
+    font-size: 24px !important;
     font-weight: bold;
     /* color: rgba(0,0,0,0.6); */
 }
 
 .favorite__price, .new__price{
     font-weight: 700;
-    font-size: 20px;
+    font-size: 18px;
 }
 
 
@@ -325,6 +325,7 @@ label[for="heart"]{
 /* heart */
 .favorite__img {
   position: relative;
+  padding-bottom: 5px;
 }
 
 .favorite__heart {
@@ -333,16 +334,14 @@ label[for="heart"]{
   right: 10px;
 }
 
-.like_yn:hover,
-input[id *= "like"]:checked + .like_yn{
-    opacity: 1;
+.like_yn *:hover{
+    opacity: 1 !important;
     color: rgb(255, 23, 66);
 }
 
-.like_yn:active,
-input[id *= "like"]:checked + .like_yn:active{
-    opacity: 1;
-    color: rgb(219, 16, 53);
+input[id *= "like"]:checked + .like_yn *{
+    opacity: 1 !important;
+    color: rgb(255, 23, 66);
 }
 
 input[id *= "like"]{display: none;}

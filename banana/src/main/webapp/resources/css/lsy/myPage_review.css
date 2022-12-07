@@ -239,6 +239,7 @@ a {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    padding-bottom: 20px;
 
 }
 
@@ -302,6 +303,7 @@ a {
     /* width: 200px; */
     width: 250px;
     text-align: center;
+    padding: 5px;
 }
 
 .row > .row1col2{
@@ -354,6 +356,12 @@ a {
 .row > .row3col2{
     width: 250px;
     text-align: center;
+
+}
+
+.row3col2 {
+    font-size: 15px;
+    font-weight: bold;
 }
 
 .row > .row3col3{
@@ -544,4 +552,10 @@ a {
 /* 스크롤바 뒷 배경 설정*/
 .Scroll::-webkit-scrollbar-track{
     opacity: 1;
+}
+
+
+.mannerPic {
+    font-size: 50px;
+
 }

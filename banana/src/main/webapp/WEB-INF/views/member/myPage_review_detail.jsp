@@ -27,14 +27,14 @@
         <jsp:include page="/WEB-INF/views/common/header.jsp" />
 
     <section class = "title">
-        <i id = "back" class="fa-solid fa-angle-right"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;후기 상세
+        <a href="/member/myPage/selectAllReview"><i id = "back" class="fa-solid fa-angle-right"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;후기 상세</a>
     </section>  
     <section class = "total">
         <section class = "category">
             <div class = "category_border">
-                <div class = "both"><a href="/member/myPage/review/detail?detailCt=1">전체 후기</a></div>
-                <div class = "buyer"><a href="/member/myPage/review/detail?detailCt=2">구매자 후기</a></div>
-                <div class = "seller"><a href="/member/myPage/review/detail?detailCt=3">판매자 후기</a></div>
+                <div class = "both" id = "both"><a href="/member/myPage/review/detail?detailCt=1">전체 후기</a></div>
+                <div class = "buyer" id = "buyer"><a href="/member/myPage/review/detail?detailCt=2">구매자 후기</a></div>
+                <div class = "seller" id = "seller"><a href="/member/myPage/review/detail?detailCt=3">판매자 후기</a></div>
             </div>
         </section>
         <section class = "review">
@@ -118,11 +118,20 @@ ${review.message}
                 </div> 
     </section>
 </main>
-     <script>
-        document.getElementById("back").addEventListener("click",function(){
-        alert("안녕");
-        window.history.back();
-        })
+    <script>
+        let detailCt 
+        
+        if(${param.detailCt != null}) {
+            detailCt=  ${param.detailCt};
+        } else {
+            detailCt = 1;
+        }
+
+        switch(detailCt){
+            case 1: document.getElementById("both").style.fontWeight = "bold"; break;
+            case 2: document.getElementById("buyer").style.fontWeight = "bold"; break;
+            case 3: document.getElementById("seller").style.fontWeight = "bold"; break;
+        }
     </script>
 
     <%-- footer.jsp.include --%>

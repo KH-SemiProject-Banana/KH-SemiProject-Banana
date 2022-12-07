@@ -61,7 +61,9 @@
                     <div class="popup_layer4" id="popup_layer4" style="display: none;">
                         <div class="popup_box4  ">
                             <!-- <div  style="height: 10px; width: 375px; float: top;"> -->
-                            <a href="javascript:closePop4();"><i class="fa-solid fa-x" id = "fa-x"></i></a>
+                            <a href="javascript:closePop4();" class="xbtn">
+                                <i class="fa-solid fa-x xbtnBack" id = "fa-x"></i>
+                            </a>
                             <!-- </div> -->
                             <!--팝업 컨텐츠 영역-->
                             <div class="popup_cont4 " id = "popup_con4">

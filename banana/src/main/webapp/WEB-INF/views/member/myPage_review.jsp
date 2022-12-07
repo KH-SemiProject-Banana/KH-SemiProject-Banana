@@ -15,6 +15,8 @@
 
     <link rel="stylesheet" href="/resources/css/style.css">
     <link rel="stylesheet" href="/resources/css/lsy/myPage_review.css ">
+    <link rel="stylesheet" href="/resources/css/lsy/myPage_common.css ">
+    <link rel="stylesheet" href="/resources/css/lsy/popup.css ">
 
     <script src="https://kit.fontawesome.com/f7459b8054.js" crossorigin="anonymous"></script>
 </head>
@@ -46,10 +48,10 @@
                     <div class="popup_layer4" id="popup_layer4" style="display: none;">
                         <div class="popup_box4  ">
                             <!-- <div  style="height: 10px; width: 375px; float: top;"> -->
-                            <a href="javascript:closePop4();"><i class="fa-solid fa-x" id = "fa-x"></i></a>
+                            <a href="javascript:closePop4();" class="xbtn"><i class="fa-solid fa-x xbtnBack" id = "fa-x"></i></a>
                             <!-- </div> -->
                             <!--팝업 컨텐츠 영역-->
-                            <div class="popup_cont4 " id = "popup_con3">
+                            <div class="popup_cont4 " id = "popup_con4">
                                 <form action = "/member/myPage/updateProfile" method = "POST" 
                                         name = "myPage-frm" enctype = "multipart/form-data"
                                         onsubmit = "return profileValidate()">
@@ -58,7 +60,7 @@
 
                                         <c:if test = "${empty loginMember.profileImage}"> <%-- 비어있다면, 기본이미지 보여주겠다. --%>
 
-                                            <img id = "profile-image" src="/resources/images/banana-logo.png" alt="">
+                                            <img id = "profile-image" src="/resources/images/banana.png" alt="">
 
                                         </c:if>
                                         <c:if test = "${not empty loginMember.profileImage}"> <%-- 안 비어있다면, . --%>
@@ -79,20 +81,6 @@
 
                                     </div>
 
-                                    <div class = "myPage-row">
-                                        <label >이메일</label>
-                                        <span>${loginMember.memberEmail}</span>
-                                    </div>
-
-                                    <div class = "myPage-row">
-                                        <label >가입일</label>
-                                        <span>${loginMember.enrollDate}</span>
-                                    </div>
-
-                                    
-                                    
-
-                                    
 
                                 </form>
                             </div>

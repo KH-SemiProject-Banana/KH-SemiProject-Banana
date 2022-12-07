@@ -13,7 +13,6 @@
 
 */
 
-/* 페이지네이션 관련 CSS  */
 .pagination-area{
     display: flex;
     justify-content: center;
@@ -52,9 +51,12 @@ a {
 }
 
 .myBanana{
-    height :1500px;
     display: flex;
+    /* height :2000px; */
+    height :auto;
+    /* display: flex; */
     flex-direction: column;
+    max-height: 2000px;
 }
 /* 섹션1********************************************************************************************************섹션1 */
 .my-rotten-banana{
@@ -253,7 +255,6 @@ a {
     display: flex;
     justify-content: flex-end;
     height: 6%;
-    padding-bottom: 50px;
     
 }
 .myBanana-sell > *{
@@ -269,7 +270,9 @@ a {
 .content-favorite {
     display: flex;
     margin-top:50px;
-    height: 800px;
+    /* height: 800px; */
+    /* margin-top:50px; */
+    /* height: 800px; */
     /* overflow:scroll; */
     flex-wrap: wrap;
     align-content: space-between;
@@ -281,7 +284,8 @@ a {
     display: flex;
     flex-direction: column;
     /* border: 1px solid #ddd; */
-    margin: 0 6px;
+    /* margin: 0 6px; */
+    margin: 0 6px 80px 6px;
 }
 
 .favorite__img{
@@ -342,6 +346,7 @@ a {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: 6px;
 }
 
 
@@ -358,12 +363,15 @@ a {
 
 .favorite__price{
     font-weight: 700;
-    font-size: 13px;
-    height: 30px;
+    /* font-size: 13px; */
+    /* height: 30px; */
+    font-size: 15px;
+    /* height: 30px; */
     width: 200px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow : ellipsis;
+    margin-bottom: 4px;
 }
 
 .testcolor{
@@ -412,25 +420,29 @@ a {
 }
 
 #profile-image {
-    
     height: 100%;
-
 }
 
-form[name = 'myPage-frm']{position:relative;}
+form[name = 'myPage-frm']{
+    position:relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
 
 /* 삭제버튼 */
 #delete-image {
     
     position: absolute;
-    top: -2px;
-    right :240px;
+    top: 3px;
+    right :209px;
     cursor: pointer;
 }
 
 /* 이미지 버튼 영역 */
 .profile-btn-area {
-    width: 230px;
+    width: 300px;
     margin: 20px 0;
     display: flex;
 
@@ -439,23 +451,31 @@ form[name = 'myPage-frm']{position:relative;}
 }
 
 .profile-btn-area > * {
-    width: 110px;
+    width: 130px;
     height: 30px;
     padding : 5px 10px;
     font-size: 14px;
-
     border: 1px solid black;
     background-color: white;
     cursor: pointer;
     text-align: center;
+    border-radius: 50px;
+    border: none;
+    background-color: #FFF176;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.profile-btn-area > *:hover{
+    
+    border: 2px solid #e53095;
+
 }
 
 #image-input {display: none;}
 
 .profile-btn-area > button {
-    background-color: #455ba8;
-    color: white;
-    margin-left : 2px;
+    margin-left : 30px;
 }
 
 
@@ -492,4 +512,14 @@ form[name = 'myPage-frm']{position:relative;}
 
 .hidden{
     display: none;
+}
+
+
+/* .xbtn{
+    position: relative;
+} */
+.xbtnBack{
+    /* position: absolute; */
+    top: -21px;
+    left: -21px;
 }

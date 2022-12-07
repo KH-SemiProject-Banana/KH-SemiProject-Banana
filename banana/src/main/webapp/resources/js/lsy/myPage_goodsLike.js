@@ -63,12 +63,12 @@ const likeChk = document.getElementsByClassName("likeChk");
 
 for(let i = 0; i < likeChk.length; i++) {
     likeChk[i].addEventListener("change", () => {
-        if(memberNo == "") {
-            alert("로그인 후 이용해주세요.");
-            likeChk[i].checked = false;
-            location.href = "/member/login";
-            return;
-        }
+        // if(memberNo == "") {
+        //     alert("로그인 후 이용해주세요.");
+        //     likeChk[i].checked = false;
+        //     location.href = "/member/login";
+        //     return;
+        // }
         
         const goodsNo = likeChk[i].value;
         let sellerNo; 
@@ -84,11 +84,11 @@ for(let i = 0; i < likeChk.length; i++) {
             error : () => {console.log(sellerNo);}
         });
 
-        if (memberNo == sellerNo) {
-            alert("자신의 게시글에는 찜할 수 없습니다.");
-            likeChk[i].checked = false;
-            return;
-        }
+        // if (memberNo == sellerNo) {
+        //     alert("자신의 게시글에는 찜할 수 없습니다.");
+        //     likeChk[i].checked = false;
+        //     return;
+        // }
 
         if(likeChk[i].checked) {
             $.ajax({

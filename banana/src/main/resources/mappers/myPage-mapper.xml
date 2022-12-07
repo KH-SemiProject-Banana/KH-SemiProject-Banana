@@ -27,6 +27,7 @@
 			<result property="ratingNo" column="RATING_NO" />
 			<result property="sellerNickname" column="SELLER_NICKNAME" />
 			<result property="buyerNickname" column="BUYER_NICKNAME" />
+			<result property="memberNo" column="MEMBER_NO" />
 			
 			<!-- 없는 애도 있을 텐데 (ex)MEMBER_DEL_FL 그럼 걔는 걍 안담겨서 null로 나옴... -->
 </resultMap>
@@ -462,7 +463,7 @@ WHERE MEMBER_NO = #{memberNo})
 </select>
 
 <select id="selectmyGoodsLikeList" parameterType = "_int" resultMap = "goodsSell_rm">
-SELECT S.GOODS_NO ,TITLE, SELLER_NO,
+SELECT S.GOODS_NO ,TITLE, SELLER_NO, MEMBER_NO,
 <![CDATA[
 CASE  
      WHEN SYSDATE - S.CREATED_AT < 1/24/60

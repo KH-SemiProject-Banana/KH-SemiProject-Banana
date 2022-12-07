@@ -21,9 +21,7 @@
     <link rel="stylesheet" href="/resources/css/style.css">
     <link rel="stylesheet" href="/resources/css/screens/header-footer.css">
 
-    <%-- <link rel="stylesheet" href="/resources/css/lsy/addPop.css"> --%>
-    <link rel="stylesheet" href="/resources/css/lsy/myPage_main.css">
-    <%-- <link rel="stylesheet" href="/resources/css/lsy/review_survey.css"> --%>
+    <link rel="stylesheet" href="/resources/css/lsy/myPage_common.css">
 
 
 
@@ -202,7 +200,7 @@
 			</div> --%>
 			<section class="myBanana-sellList" id="myBanana-sellList">
 				<div class="myBanana-sell">
-					<<%-- div id="selling"><a href="/member/myPage/main?myPageCt=5">판매중</a></div>
+					<%-- div id="selling"><a href="/member/myPage/main?myPageCt=5">판매중</a></div>
 					<div id="sold"><a href="/member/myPage/main?myPageCt=1">판매완료</a></div> --%>
 				</div>
 
@@ -369,17 +367,21 @@
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
     <script>
-        let myPageCt
+        // let myPageCt
 
-        if(${param.myPageCt != null}) {
-            myPageCt = ${param.myPageCt};
-        } else {
-            myPageCt = 1;
-        }
+        // if(${param.myPageCt != null}) {
+        //     myPageCt = ${param.myPageCt};
+        // } else {
+        //     myPageCt = 1;
+        // }
 
-        let loginMemberNo;
+        // let loginMemberNo;
 
-        loginMemberNo = ${loginMember.memberNo};
+        // loginMemberNo = ${loginMember.memberNo};
+
+        
+        const memberNo = "${loginMember.memberNo}";
+
     </script>
     <!-- jQuery 라이브러리(.js 파일) 추가(CDN 방식) -->
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>

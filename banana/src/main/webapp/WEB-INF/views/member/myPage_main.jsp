@@ -21,9 +21,9 @@
     <link rel="stylesheet" href="/resources/css/style.css">
     <%-- <link rel="stylesheet" href="/resources/css/screens/header-footer.css"> --%>
 
-    <link rel="stylesheet" href="/resources/css/lsy/addPop.css">
-    <link rel="stylesheet" href="/resources/css/lsy/myPage_main.css">
-    <link rel="stylesheet" href="/resources/css/lsy/review_survey.css">
+    <link rel="stylesheet" href="/resources/css/lsy/myPage_common.css">
+    <link rel="stylesheet" href="/resources/css/lsy/popup.css">
+    <link rel="stylesheet" href="/resources/css/lsy/pop1_review_survey.css">
 
 
 
@@ -94,7 +94,7 @@
 
                                     </div>
 
-                                    <div class = "myPage-row">
+                                    <%-- <div class = "myPage-row">
                                         <label >이메일</label>
                                         <span>${loginMember.memberEmail}</span>
                                     </div>
@@ -102,7 +102,7 @@
                                     <div class = "myPage-row">
                                         <label >가입일</label>
                                         <span>${loginMember.enrollDate}</span>
-                                    </div>
+                                    </div> --%>
 
                                     
                                     
@@ -202,8 +202,14 @@
 			</div> --%>
 			<section class="myBanana-sellList" id="myBanana-sellList">
 				<div class="myBanana-sell">
-					<div id="selling"><a href="/member/myPage/main?myPageCt=5">판매중</a></div>
-					<div id="sold"><a href="/member/myPage/main?myPageCt=1">판매완료</a></div>
+                <%-- <c:choose>
+                    <c:when test = "${loginMember.memberNo eq soldList.sellerNo}"> --%>
+					    <div id="selling"><a href="/member/myPage/main?myPageCt=5">판매중</a></div>
+					    <div id="sold"><a href="/member/myPage/main?myPageCt=1">판매완료</a></div>
+                    <%-- </c:when>
+                    <c:otherwise>
+                    </c:otherwise>
+                </c:choose> --%>
 				</div>
 
 				<section class="content-favorite">
@@ -412,7 +418,7 @@
                                             <!-- ♥ 여기 안에다가 넣자 ♥-->
                                             <section class="send_message1">
                                                 <p><span id="nickName1"></span>님에게 따뜻한 후기를 보냈어요!</p>
-                                                <p><span id="nickName2"></span>님과 <span id="goodsTitle2"></span>를 거래했어요!</p>
+                                                <p><span id="nickName2"></span>님과 <span id="goodsTitle"></span>를 거래했어요!</p>
                                             </section>
                                             <section class="send_message2">
                                                 <ul id = "messageList">
@@ -443,7 +449,7 @@
                                             <!-- ♥ 여기 안에다가 넣자 ♥-->
                                             <section class="send_message1">
                                                 <p><span id="nickName3"></span>님이 따뜻한 후기를 보냈어요!</p>
-                                                <p><span id="nickName4"></span>님과 <span id="goodsTitle"></span>를 거래했어요!</p>
+                                                <p><span id="nickName4"></span>님과 <span id="goodsTitle2"></span>를 거래했어요!</p>
                                             </section>
                                             <section class="send_message2">
                                                 <ul id = "messageList2">

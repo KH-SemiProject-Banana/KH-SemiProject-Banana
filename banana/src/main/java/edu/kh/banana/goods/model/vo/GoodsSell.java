@@ -71,4 +71,6 @@ import lombok.ToString;
 		private String sellerNickname;
 		private String buyerNickname;
 		private List<BananaPay> payList;
+		
+		
 }

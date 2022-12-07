@@ -21,10 +21,7 @@
     <script src="https://kit.fontawesome.com/f7459b8054.js" crossorigin="anonymous"></script>
     <style>
         nav{z-index: 5;} 
-        .poppingThing{
-            position:fixed;
-            z-index: 300;
-        }
+        .poppingThing{position:fixed; z-index: 300;}
     </style>
 </head>
 <body>
@@ -158,7 +155,7 @@
                 </section>
             </div>
 
-            <form action="/member/myPage/yourPageMain?myPageCt=1" method="post" class="seller">
+            <form method="post" class="seller" onsubmit="return false;">
                 <div class="seller_profile">
                     <div class="seller_img">
                         <c:choose>
@@ -230,7 +227,7 @@
                         </c:forEach>
                     </div>
                 </div>
-                <input type="hidden" name="sellerNo" value="${sellerInfo.memberNo}">
+                <input type="hidden" name="memberNo" value="${sellerInfo.memberNo}">
             </form>
 
             <div class="precautions">
@@ -249,8 +246,6 @@
     const sellerNo = "${sellerInfo.memberNo}";
     const categoryNo = "${category.categoryNo}";
     const query = "${category.query}";
-
-    console.log(categoryNo);
 </script>
 
 <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>

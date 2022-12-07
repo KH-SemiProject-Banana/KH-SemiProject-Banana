@@ -46,7 +46,7 @@
 			</section>
 			<!--섹션2********************************************************************************************************섹션1-->
 			<section class="myBanana-title">
-				<p>나의 바나나</p>
+				<p>너의 바나나</p>
 			</section>
 			<!--섹션3********************************************************************************************************섹션1-->
 			<section class="myBanana-detail">
@@ -59,7 +59,7 @@
 				<div class="myBanana-content">
 					<div class="myBanana-info">
 						<div class="myBanana-name">${member.memberNickname}</div>
-						<div class="myBanana-address">${member.address}</div>
+						<div class="myBanana-address">${member.memberAddress}</div>
 					</div>
 
 					<div class="myBanana-intro">

@@ -378,7 +378,7 @@ public class MyPageController {
 	
 	/*타인의 마이페이지*/
 	
-	@GetMapping("/yourPageMain")
+	@PostMapping("/yourPageMain")
 	public String yourPageMain( int memberNo,
 			Model model,
 			@RequestParam(value="myPageCt", required=false, defaultValue = "1") int myPageCt,

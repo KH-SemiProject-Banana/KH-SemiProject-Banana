@@ -127,11 +127,8 @@ const sellerPage = document.getElementsByClassName("sellerPage");
 
 for(let item of sellerPage) {
   item.addEventListener("click", () => {
-    $.ajax({
-      url : "/member/myPage/yourPageMain?myPageCt=1",
-      async : false,
-      data : {"sellerNo" : sellerNo},
-      type : "GET"
-    });
+    const seller = document.getElementsByClassName("seller")[0];
+    seller.action = "/member/myPage/yourPageMain?myPageCt=1";
+    seller.submit();
   })
 }

@@ -25,6 +25,15 @@ public class PayDAO {
 	}
 
 	/**
+	 * 페이 히스토리
+	 * @param paramMap
+	 * @return payLogList
+	 */
+	public List<BananaPay> searchPayLogList(Map<String, Object> paramMap) {
+		return sqlSession.selectList("payMapper.searchPayLogList", paramMap);
+	}
+	
+	/**
 	 * 주문번호 조회
 	 * @return result
 	 */
@@ -39,9 +48,5 @@ public class PayDAO {
 	 */
 	public int pointCharge(Map<String, Object> paramMap) {
 		return sqlSession.insert("payMapper.pointCharge", paramMap);
-	}
-
-	public List<BananaPay> searchPayLogList(Map<String, Object> paramMap) {
-		return sqlSession.selectList("payMapper.searchPayLogList", paramMap);
 	}
 }

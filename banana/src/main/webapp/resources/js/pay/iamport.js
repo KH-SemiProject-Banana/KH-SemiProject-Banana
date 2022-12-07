@@ -2,7 +2,7 @@
 const payLL = document.getElementById("payLL");
 let remainPay;
 
-function openPop() {
+function openPop5() {
     document.getElementById("popup_layer").style.display = "block";
     const payRemain = document.getElementById("payRemain");
 

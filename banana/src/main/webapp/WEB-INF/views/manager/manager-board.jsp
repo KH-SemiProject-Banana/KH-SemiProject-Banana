@@ -112,7 +112,7 @@
                             </div>
                         </div>
                         <div  class="search-detail-div">
-                            <div class="search-detail-keyword">답변여부</div>
+                            <div class="search-detail-keyword">관리자 답변여부</div>
                             <div>
 
                                 <c:set var="allAnswerChk" value="checked"/>

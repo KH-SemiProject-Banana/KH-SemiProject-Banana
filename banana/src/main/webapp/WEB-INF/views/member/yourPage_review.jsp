@@ -1,13 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<%-- map에 저장된 값을 꺼내어 각각 변수에 저장 --%>
-
-<c:set var="goodsList" value="${map.myGoodsLikeList}" />
-<c:set var = "pagination" value = "${map.pagination}" />
-
-
-
+<c:set var="reviewNewestList" value="${map.reviewNewestList}" />
+<c:set var="mannerTopList" value="${map.mannerTopList}" />
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,29 +14,23 @@
     <title>바꾸고 나누자 나랑: 바나나 마켓</title>
 
     <link rel="stylesheet" href="/resources/css/style.css">
-    <link rel="stylesheet" href="/resources/css/screens/header-footer.css">
-
-    <link rel="stylesheet" href="/resources/css/lsy/myPage_common.css">
-    <link rel="stylesheet" href="/resources/css/lsy/popup.css">
-        <link rel="stylesheet" href="/resources/css/현진/productList.css">
+    <link rel="stylesheet" href="/resources/css/lsy/myPage_review.css ">
+    <link rel="stylesheet" href="/resources/css/lsy/myPage_common.css ">
+    <link rel="stylesheet" href="/resources/css/lsy/popup.css ">
 
     <style>
-    #third-category > a{
+    #fourth-category > a{
         font-weight: bold;
     }
     </style>
 
     <script src="https://kit.fontawesome.com/f7459b8054.js" crossorigin="anonymous"></script>
-    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-
 </head>
-
 <body>
-	<main>
-		<jsp:include page="/WEB-INF/views/common/header.jsp" />
+    <main>
+        <jsp:include page="/WEB-INF/views/common/header.jsp" />
 		<jsp:include page="/WEB-INF/views/common/nav.jsp" />
-
-		<div class="myBanana">
+        <div class = "myBanana" id = "reviewss">
 			<!--섹션1********************************************************************************************************섹션1-->
 			<section class="my-rotten-banana">
 				<!-- <p>탈퇴하기</p> -->
@@ -100,15 +89,9 @@
 
                                     </div>
 
-
-
-                                    
-                                    
-
-                                    
-
                                 </form>
                             </div>
+                       
                         </div>
                     </div>
 
@@ -160,170 +143,130 @@
 				</div>
 			</section>
 			<!--섹션4********************************************************************************************************섹션1-->
-			<section class="myBanana-category">
+		    <section class="myBanana-category">
             
-                    <div id= "first-category" class = "categorys">
+                    <div id= "first-category" class = "category">
                         <a href="/member/myPage/main?myPageCt=1">판매내역</a>
                     </div>
 
                     <%-- c:if test = param.myPageCt=1 --%>
 
-                    <div id= "second-category" class = "categorys">
+                    <div id= "second-category" class = "category">
                         <a href="/member/myPage/main?myPageCt=2">구매내역</a>
                     </div>
-                    <div id= "third-category" class = "categorys">
+                    <div id= "third-category" class = "category">
                         <a href="/member/myPage/myGoodsLike">관심목록</a>
                     </div>
-                    <div id= "fourth-category" class = "categorys">
-                        <a href="/member/myPage/selectAllReview" >후기</a>
+                    <div id= "fourth-category" class = "category">
+                        <a href="/member/myPage/selectAllReview">후기</a>
                     </div>
                     
                     
 
 
-            <%-- 판매내역 클랙->js에서 1을 input에 넣고
-                button을 클릭하도록 함
-                document.getElementById("first-category").addEventListener("click", ()=>{
-                    document.getElementbyId("status").value = 1;
-                    document.getElementById("button").click();
-                })
-             --%>
+                <%-- 판매내역 클랙->js에서 1을 input에 넣고
+                    button을 클릭하도록 함
+                    document.getElementById("first-category").addEventListener("click", ()=>{
+                        document.getElementbyId("status").value = 1;
+                        document.getElementById("button").click();
+                    })
+                --%>
 
 			</section>
-			<!--섹션5********************************************************************************************************섹션1-->
-			<%-- <div id=changeJsp>
-				<jsp:include page="/WEB-INF/views/member/myPage_review.jsp"></jsp:include>
-			</div> --%>
-			<section class="myBanana-sellList" id="myBanana-sellList">
-				<div class="myBanana-sell">
-					<%-- div id="selling"><a href="/member/myPage/main?myPageCt=5">판매중</a></div>
-					<div id="sold"><a href="/member/myPage/main?myPageCt=1">판매완료</a></div> --%>
-				</div>
-
-				<section class="content-favorite">
-
-					<!-- 게시글 목록 조회 결과가 비어있다면 -->
-
-					<%-- choose 내에서는 jsp주석 적어야 해 --%>
-                   
-					<c:choose>
-						<c:when test="${empty goodsList}">
-							<%-- 게시글 목록 조회 결과가 비어있다면 --%>
-							<tr>
-								<th colspan="6">게시글이 존재하지 않습니다.</th>
-							</tr>
-						</c:when>
-
-						<c:otherwise>
-							<c:forEach var="goods" items="${goodsList}">
-								<%-- 상품박스 --%>
-								<div class="favorite__pack">
-									<div>
-										<div class="favorite__img">
-											<img src="${goods.imagePath}"> 
-                                            <%-- 여기서는 dot이 필요가 없지? --%>
-                                            <%-- <c:choose> --%>
-                                                <%-- <c:when test="${loginMember.memberNo == goods.memberNo}"> --%>
-                                                    <input type="checkbox" id="like${i}" class="likeChk" value="${goods.goodsNo}" checked>
-                                                <%-- </c:when> --%>
-
-                                                <%-- <c:otherwise>
-                                                    <input type="checkbox" id="like${i}" class="likeChk" value="${goods.goodsNo}">
-                                                </c:otherwise>
-                                            </c:choose> --%>
-                                
-                                <label for="like${i}" class="like_yn"><i class="fa-solid fa-heart"></i></label>
-										</div>
-										<div class="favorite__price-heart">
-											<div class="favorite__price">${goods.title}</div>
-										</div>
-									</div>
-                                    <%-- 찜한 시간? --%>
-									<div class="favorite__content">${goods.createdAt}</div>
-                                     
-                                        
-                                        
-								</div>
-                                <c:set var="i" value="${i+1}" />
-                            </c:forEach>
-						</c:otherwise>
-					</c:choose>
-
-                    <%-- 현진이꺼 복붙 추가 시작--%>
-            </section>  
-             <div class="pagination-area">
-
-                    <%-- 페이지네이션 목록 추가  --%>
-                    <ul class="pagination">
-                    
-                        <!-- 첫 페이지로 이동 -->
-                        
-                        <%-- <li><a href="/member/myPage/main?myPageCt=${param.myPageCt}&cp=1">&lt;&lt;</a></li> --%>
-                        <!-- 이전 목록 마지막 번호로 이동 -->
-                        <li><a href="/member/myPage/myGoodsLike?cp=${pagination.prevPage}">&lt;</a></li>
-                        <%-- ?cp같은 쿼리스트링 형태로 적어야 함.....(이게 파라미터로 인식이 됨...) --%>
-                        
-                        <c:forEach var = "i" begin ="${pagination.startPage}" end = "${pagination.endPage}" step = "1" >
-
-                            <c:choose>
-                                <c:when test = "${i == pagination.currentPage}">
-                                <%-- 현재 페이지인 경우 --%>
-                                    <!-- 현재 보고있는 페이지 -->
-                                    <li><a class="current">${i}</a></li>
-                                </c:when>
-                                <c:otherwise>
-                                <!-- 현재 페이지를 제외한 나머지 -->
-                                <li><a href="/member/myPage/myGoodsLike?cp=${i}">${i}</a></li>
-                                </c:otherwise>
-                            </c:choose>
-
+            <%--  섹션5에 해당하는 듯 --%>
+            <%-- <div class = "myBanana" id = "reviewss"> --%>
+            <section class = "myBanana-reviewList">
+                <section class = "title_section_1">
+                    <a href="/member/myPage/review/good?mannerCt=1">받은 매너 평가&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+                </section>
+                </section>
+                <section class ="review_section_1">
+                    <section class = "row1">
+                        <c:forEach var = "manner" items = "${mannerTopList}">
+                        <div class = "row"><p class = "row1col1">${manner.mannerDescription}</p></div>
                         </c:forEach>
-
-                        <!-- 특정 페이지로 이동 -->
+                        <%-- <div class = "row"><p class = "row1col2">좋은 상품을 저렴하게 판매해요</p></div>
+                        <div class = "row"><p class = "row1col3">시간 약속을 잘 지켜요</p></div>
+                        <div class = "row"><p class = "row1col4">응답이 빨라요</p></div>
+                        <div class = "row"><p class = "row1col5">제가 있는 곳까지 와서 거래했어요</p></div> --%>
+                    </section>
+                    <section class = "row2">
                         
-                        
-                        
-                        
-                        
-                        <!-- 다음 목록 시작 번호로 이동 -->
-                        <li><a href="/member/myPage/myGoodsLike?cp=${pagination.nextPage}">&gt;</a></li>
+                        <div class="iconBox"><i class="fa-solid fa-face-smile circle"></i></div>
+                        <div class="iconBox"><i class="fa-solid fa-sack-dollar circle"></i></div>
+                        <div class="iconBox"><i class="fa-solid fa-clock circle"></i></div>
+                        <div class="iconBox"><i class="fa-solid fa-bolt circle"></i></div>
+                        <div class="iconBox"><i class="fa-solid fa-person-walking circle"></i></div>
+                    </section>
+                    <section class = "row3">
+                        <c:forEach var = "manner" items = "${mannerTopList}">
+                        <div class = "row33"><p class = "row3col2">${manner.mannerCount}</p></div>
+                        </c:forEach>
+                        <%-- <div class = "row33"><p class = "row3col1">40</p></div>
+                        <div class = "row33"><p class = "row3col2">30</p></div>
+                        <div class = "row33"><p class = "row3col3">20</p></div>
+                        <div class = "row33"><p class = "row3col4">10</p></div>
+                        <div class = "row33"><p class = "row3col5">5</p></div> --%>
+                    </section>
+                </section>
+                <section class = "title_section_2">
+                    <a href="/member/myPage/review/detail?detailCt=1">받은 거래 후기&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+                </section>
+                <section class = "review_section_2">
+                    <c:forEach var = "review" items = "${reviewNewestList}">
+                        <div class = "review_2">
+                            <div class = "userphoto">
+                            <c:if test = "${not empty review.profileImage}">
+                            <img  src="${review.profileImage}" alt="">
+                            </c:if>
+                            <c:if test = "${empty review.profileImage}">
+                                <img class="photo" src="/resources/images/banana-logo.png" alt=""> 
+                            </c:if>
+                                
+                            </div>
+                            <div class="memberInfoBox">     
+                                <div class="memberInfo">
+                                    <div class = "row2_1">
+                                        <div class = "name">${review.memberNickname}</div>
+                                    </div>
+                                    <div class = "row2_2">
+                                        <div class = "address">${review.address}</div>
+                                        <div class = "date">${review.createdAt}</div>
+                                    </div>
+                                </div>
+                            </div>
 
-                        <!-- 끝 페이지로 이동 -->
-                        <%-- <li><a href="/member/myPage/main?myPageCt=${param.myPageCt}&cp=${pagination.maxPage}">&gt;&gt;</a></li> --%>
+                            <div class = "content">
+                                <div class = "row2_3">
+                                    <pre class = "message Scroll">
+${review.message}
+                                    </pre>
+                                </div>
+                            </div>
+                        </div>
+                    </c:forEach>
+                </section>
+            </section>
+        </div>
+    </main>
 
-                    </ul>
-                </div>   
-		</div>
-	</main>
-
-
-	<%-- footer.jsp.include --%>
+    <%-- footer.jsp.include --%>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
     <script>
-        // let myPageCt
-
-        // if(${param.myPageCt != null}) {
-        //     myPageCt = ${param.myPageCt};
-        // } else {
-        //     myPageCt = 1;
-        // }
-
-        // let loginMemberNo;
-
-        // loginMemberNo = ${loginMember.memberNo};
-
-        
-        const memberNo = "${loginMember.memberNo}";
-
-    
-
+        document.getElementById("third-category").addEventListener("click",function(){
+        document.getElementById("third-category").style.fontWeight = "bold";
+        })
+        document.getElementById("fourth-category").addEventListener("click",function(){
+        document.getElementById("fourth-category").style.fontWeight = "bold";
+        })  
     </script>
+
     <!-- jQuery 라이브러리(.js 파일) 추가(CDN 방식) -->
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
-	
-	<script src="/resources/js/lsy/myPage_goodsLike.js"></script>
 	<script src="/resources/js/lsy/myPage_common.js"></script>
+    
+	
     
 </body>
 

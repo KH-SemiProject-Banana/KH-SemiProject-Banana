@@ -6,6 +6,13 @@ document.getElementById("profilePop").addEventListener("click",function(){
 
 })
 
+//네번째 팝업 닫기
+function closePop4() {
+
+    document.getElementById("popup_layer4").style.display = "none";
+
+}
+
 
 //자기소개 수정하기 
 const introUpdateBtn2 = document.getElementById("introUpdateBtn2");
@@ -205,7 +212,10 @@ function profileValidate(){
     return false;
 }
 
-
+// 차단관리
+document.getElementById("editBlockMember").addEventListener("click", () => {
+    location.href = "/member/myPage/editBlockMember";
+});
 
 
 

@@ -1,11 +1,11 @@
-package edu.kh.banana.userComplain.model.service;
+package edu.kh.banana.usercomplain.model.service;
 
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import edu.kh.banana.userComplain.model.dao.UserComplainDAO;
+import edu.kh.banana.usercomplain.model.dao.UserComplainDAO;
 
 @Service
 public class UsercomplainServiceImpl implements UserComplainService {

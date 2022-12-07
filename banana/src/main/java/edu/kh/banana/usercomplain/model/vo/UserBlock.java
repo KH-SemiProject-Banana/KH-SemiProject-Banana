@@ -1,4 +1,4 @@
-package edu.kh.banana.userComplain.model.vo;
+package edu.kh.banana.usercomplain.model.vo;
 
 import lombok.Getter;
 import lombok.Setter;

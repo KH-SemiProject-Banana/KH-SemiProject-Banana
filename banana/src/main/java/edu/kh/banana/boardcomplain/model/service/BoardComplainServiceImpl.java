@@ -1,15 +1,15 @@
-package edu.kh.banana.boardComplain.model.service;
+package edu.kh.banana.boardcomplain.model.service;
 
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import edu.kh.banana.boardComplain.model.dao.BoardComplainDAO;
+import edu.kh.banana.boardcomplain.model.dao.BoardComplainDAO;
 
-
+  
 @Service
-public class BoardComplainServiceimpl implements BoardComplainService {
+public class BoardComplainServiceImpl implements BoardComplainService {
 
 	@Autowired
 	private BoardComplainDAO dao;

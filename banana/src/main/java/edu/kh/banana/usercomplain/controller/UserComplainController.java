@@ -1,4 +1,4 @@
-package edu.kh.banana.userComplain.controller;
+package edu.kh.banana.usercomplain.controller;
 
 import java.lang.ProcessBuilder.Redirect;
 import java.util.HashMap;
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.kh.banana.member.model.vo.Member;
-import edu.kh.banana.userComplain.model.service.UserComplainService;
+import edu.kh.banana.usercomplain.model.service.UserComplainService;
 
 @Controller
 public class UserComplainController {

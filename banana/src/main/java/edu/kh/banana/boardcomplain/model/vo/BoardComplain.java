@@ -1,4 +1,4 @@
-package edu.kh.banana.boardComplain.model.vo;
+package edu.kh.banana.boardcomplain.model.vo;
 
 public class BoardComplain {
 

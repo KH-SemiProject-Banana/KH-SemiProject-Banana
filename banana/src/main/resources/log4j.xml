@@ -27,13 +27,13 @@
        <layout class="org.apache.log4j.PatternLayout">
          <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} [%p] %m%n" />
       </layout>
-   </appender> 
+   </appender>  
    
    <!-- Application Loggers -->
-   <logger name="edu.kh.banana">
+    <logger name="edu.kh.banana">
       <level value="debug" />
       <appender-ref ref="dailyRollingFile" />
-   </logger>
+   </logger> 
    
    <!-- 3rdparty Loggers -->
    <logger name="org.springframework.core">
@@ -82,8 +82,7 @@
    <logger name="jdbc.resultsettable" additivity="false">
      <level value="INFO" />
      <appender-ref ref="sql-console" />
-   </logger>
-
+   </logger> 
    <!-- Root Logger -->
    <root>
       <priority value="warn" />

@@ -19,6 +19,14 @@
       <result property="profileImage" column="PROFILE_IMG"/>
       <result property="thumbnail" column="THUMBNAIL"/>
       
+      <result property="boardCode" column="BOARD_CODE"/>
+      <result property="boardName" column="BOARD_NAME"/>
+<!--       <result property="boardType" column="BOARD_TYPE"/> -->
+      <result property="boardDelFlag" column="BOARD_DEL_FL"/>
+      <result property="managerComment" column="MANAGER_COMMENT"/>
+      
+      
+      
       
       
       <collection property="imageList" javaType="java.util.ArrayList"
@@ -73,7 +81,7 @@
   </select>
   
   <select id="selectBoardList" parameterType="_int" resultMap="board_rm">
-  	  SELECT BOARD_NO, BOARD_TITLE, MEMBER_NICKNAME, VIEW_COUNT, 
+  	  SELECT BOARD_NO, BOARD_TITLE, MEMBER_NICKNAME, VIEW_COUNT, BOARD_CONTENT,
 		<![CDATA[
 		CASE  
       WHEN SYSDATE - B_CREATED_AT < 1/24/60
@@ -243,6 +251,7 @@
   	WHERE BOARD_NO = #{boardNo}
   </update>
   
+
   
   <!-- 게시글 이미지만 수정 -->
   <update id="boardImageUpdate">
@@ -336,5 +345,155 @@
 	
 	ORDER BY BOARD_NO DESC
   </select>
+  
+  
+  <!-- 조건에 맞는 게시글 수 조회 -->
+  <select id="getBoardListCount" parameterType="map" resultType="_int">
+  	SELECT COUNT(*) FROM
+		(SELECT BOARD_NO, BOARD_CODE, BOARD_NAME, BOARD_TITLE, MEMBER_NO, MEMBER_NICKNAME,
+		TO_CHAR(B_CREATED_AT, 'YYYY-MM-DD') B_CREATED_AT, 
+		VIEW_COUNT, BOARD_DEL_FL,
+		(SELECT COUNT(*) FROM "COMMENT" C WHERE C.BOARD_NO = B.BOARD_NO) COMMENT_COUNT,
+		DECODE((SELECT COUNT(*)
+			FROM "COMMENT" C
+			JOIN MEMBER USING(MEMBER_NO)
+			WHERE AUTHORITY = 2
+			AND C.BOARD_NO = B.BOARD_NO), 0,'N','Y') MANAGER_COMMENT
+		FROM BOARD B
+		JOIN BOARD_TYPE bt USING(BOARD_CODE)
+		JOIN MEMBER USING(MEMBER_NO))
+		WHERE BOARD_NO > 0
+		
+		<if test='query != null and query != ""'>
+			<choose>
+				<when test='key == "boardTitle"'>
+					AND BOARD_TITLE LIKE '%${query}%'
+				</when>
+				<when test='"memberNickname"'>
+					AND MEMBER_NICKNAME LIKE '%${query}%'
+				</when>
+			</choose>
+		</if>
+		
+		<if test='boardCode != null'>
+			<choose>
+				<when test='boardCode == "1"'>
+					AND BOARD_CODE = 1
+				</when>
+				<when test='boardCode == "2"'>
+					AND BOARD_CODE = 2
+				</when>
+				<when test='boardCode == "3"'>
+					AND BOARD_CODE = 3
+				</when>
+				<when test='boardCode == "4"'>
+					AND BOARD_CODE = 4
+				</when>
+			</choose>
+		</if>
+
+		<if test='isAnswer != null'>
+			<if test='isAnswer == "answered"'>
+				AND MANAGER_COMMENT = 'Y'
+			</if>
+			<if test='isAnswer == "notAnswered"'>
+				AND MANAGER_COMMENT = 'N'
+			</if>
+		</if>
+
+		<if test='calanderBefore != ""'>
+			AND B_CREATED_AT >= TO_DATE(#{calanderBefore}, 'YYYY-MM-DD') 
+		</if>
+		<if test='calanderAfter != ""'>
+			<![CDATA[
+			AND B_CREATED_AT <= TO_DATE(#{calanderAfter}, 'YYYY-MM-DD') 
+			]]>
+		</if>
+		
+  </select>
+
+  
+ <!-- 전체 게시글 수 조회 -->
+ <select id="allBoardCount" resultType="_int">
+ 	SELECT COUNT(*) FROM BOARD
+ </select>
+ 
+ 
+ <!-- 조건에 맞는 게시글 목록 조회 -->
+ <select id="admin-boardSearch" parameterType="map" resultMap="board_rm">
+ 	SELECT BOARD_NO, BOARD_CODE, BOARD_NAME, BOARD_TITLE, MEMBER_NO, MEMBER_NICKNAME,
+	B_CREATED_AT, VIEW_COUNT, BOARD_DEL_FL, COMMENT_COUNT, MANAGER_COMMENT FROM
+		(SELECT BOARD_NO, BOARD_CODE, BOARD_NAME, BOARD_TITLE, MEMBER_NO, MEMBER_NICKNAME,
+		TO_CHAR(B_CREATED_AT, 'YYYY-MM-DD') B_CREATED_AT, 
+		VIEW_COUNT, BOARD_DEL_FL,
+		(SELECT COUNT(*) FROM "COMMENT" C WHERE C.BOARD_NO = B.BOARD_NO) COMMENT_COUNT,
+		DECODE((SELECT COUNT(*)
+			FROM "COMMENT" C
+			JOIN MEMBER USING(MEMBER_NO)
+			WHERE AUTHORITY = 2
+			AND C.BOARD_NO = B.BOARD_NO), 0,'N','Y') MANAGER_COMMENT
+		FROM BOARD B
+		JOIN BOARD_TYPE bt USING(BOARD_CODE)
+		JOIN MEMBER USING(MEMBER_NO))
+		WHERE BOARD_NO > 0
+		
+		<if test='query != null and query != ""'>
+			<choose>
+				<when test='key == "boardTitle"'>
+					AND BOARD_TITLE LIKE '%${query}%'
+				</when>
+				<when test='"memberNickname"'>
+					AND MEMBER_NICKNAME LIKE '%${query}%'
+				</when>
+			</choose>
+		</if>
+		
+		<if test='boardCode != null'>
+			<choose>
+				<when test='boardCode == "1"'>
+					AND BOARD_CODE = 1
+				</when>
+				<when test='boardCode == "2"'>
+					AND BOARD_CODE = 2
+				</when>
+				<when test='boardCode == "3"'>
+					AND BOARD_CODE = 3
+				</when>
+				<when test='boardCode == "4"'>
+					AND BOARD_CODE = 4
+				</when>
+			</choose>
+		</if>
+
+		<if test='isAnswer != null'>
+			<if test='isAnswer == "answered"'>
+				AND MANAGER_COMMENT = 'Y'
+			</if>
+			<if test='isAnswer == "notAnswered"'>
+				AND MANAGER_COMMENT = 'N'
+			</if>
+		</if>
+
+		<if test='calanderBefore != ""'>
+			AND B_CREATED_AT >= TO_DATE(#{calanderBefore}, 'YYYY-MM-DD') 
+		</if>
+		<if test='calanderAfter != ""'>
+			<![CDATA[
+			AND B_CREATED_AT <= TO_DATE(#{calanderAfter}, 'YYYY-MM-DD') 
+			]]>
+		</if>
+		ORDER BY ${order}
+		
+ </select>
+  
+  
+
+  
+  <!-- 게시글 삭제 복구 -->
+  <update id="boardDeleteBack">
+    UPDATE BOARD SET 
+  	BOARD_DEL_FL = 'N'
+  	WHERE BOARD_NO = #{boardNo}
+  </update>
   
 </mapper>

@@ -31,5 +31,10 @@ public class Board {
     
     
     private int boardCode;
+    private String boardType;
+    private String boardName;
+    private String boardDelFlag;
+    private String managerComment;
+    
     
 }

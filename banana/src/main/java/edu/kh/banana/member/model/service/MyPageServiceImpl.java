@@ -14,6 +14,7 @@ import edu.kh.banana.common.Util;
 import edu.kh.banana.goods.model.vo.GoodsSell;
 import edu.kh.banana.member.model.dao.MyPageDAO;
 import edu.kh.banana.member.model.vo.Member;
+import edu.kh.banana.member.model.vo.MypageDetailPagination;
 import edu.kh.banana.member.model.vo.MypagePagination;
 import edu.kh.banana.review.model.vo.Review;
 
@@ -77,7 +78,7 @@ public class MyPageServiceImpl implements MyPageService{
 
 
 
-	//REVIEW_RATING DB에 인서트하기
+	//거래후기(REVIEW DB에 인서트) 한 다음에 그걸 가지고 매너후기 (REVIEW_RATIGN DB에 인서트)
 	@Transactional
 	@Override
 	public int sendingMannerReview(List<String> goodCheckedArr, List<String> badCheckedArr, String reviewText, 
@@ -96,6 +97,9 @@ public class MyPageServiceImpl implements MyPageService{
 			review.setReceiverNo(reviewBuyerNo);
 		}
 		review.setMessage(reviewText);
+		
+		int mannerGotPerson = review.getReceiverNo();
+		System.out.println("후기받는 인간 " + mannerGotPerson);
 		
 		int reviewNo = dao.insertReview(review); //여기서 reviewNo가 가져오는거구나
 		System.out.println("첫번째 인서트"+reviewNo);
@@ -133,10 +137,10 @@ public class MyPageServiceImpl implements MyPageService{
 		System.out.println("나쁜 후기 인서트된 개수" + badResult);
 		
 		if(goodResult > 0) {
-			result2 = dao.updateGood(goodResult,reviewBuyerNo); //구매후기 받은 사람이 들어가야겠지....?
+			result2 = dao.updateGood(goodResult,review.getReceiverNo()); //수정했음 
 		}
 		if (badResult > 0) {
-			result3 = dao.updateBad(badResult,reviewBuyerNo);
+			result3 = dao.updateBad(badResult,review.getReceiverNo());
 		}
 		
 		if (result2 > 0 || result3 > 0 ) {
@@ -205,6 +209,136 @@ public class MyPageServiceImpl implements MyPageService{
 			
 			return result;
 		}
+
+		//받은 거래후기 최신순 3개
+		//받은 매너온도 탑5
+		@Override
+		public Map<String, Object> selectNewestReviewList(Member loginMember) {
+			
+			List<Review> reviewNewestList = dao.selectNewestReviewList(loginMember);
+			List<Review> mannerTopList = dao.selectMannerTopList(loginMember);
+			System.out.println(reviewNewestList);
+			System.out.println(mannerTopList);
+			
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("reviewNewestList", reviewNewestList);
+			map.put("mannerTopList", mannerTopList);
+			return map;
+		}
+
+		//(거래후기 목록 조회)
+		@Override
+		public Map<String, Object> reviewDetailList(Map<String, Object> map1, int cp) {
+			
+			//1. 전체 게시글 수 조회하기(판매중일때/판매완료일때/구매완료일때)
+			int listCount = dao.getDetailListCount(map1);
+			//2. 전체 게시글 수 + cp(현재페이지)를 이용해서 페이징 처리 객체를 생성한다.
+			MypageDetailPagination pagination = new MypageDetailPagination(listCount,cp);
+			
+			//
+			List<Review> reviewDetailList = dao.reviewDetailList(map1,pagination);
+			
+			
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("pagination", pagination);
+			map.put("reviewDetailList", reviewDetailList);
+			return map;
+		}
+
+
+		/**거래후기 전체 조회하기
+		 *
+		 */
+		@Override
+		public List<Review> reviewList(Member loginMember, int mannerCt) {
+			
+			Map<String, Object> map1 = new HashMap<String, Object>();
+			map1.put("memberNo", loginMember.getMemberNo());
+			map1.put("mannerCt", mannerCt);
+			
+			//Map<String, Object> map2 = new HashMap<String, Object>();
+			
+			List<Review> reviewList = dao.reviewList(map1);
+			//map2.put("reviewList", reviewList);
+			
+			return reviewList;
+		}
+
+
+		//받은 후기 조회하기
+		@Override
+		public List<Review> selectReceivedReview(Map<String, Object> map) {
+			
+			return dao.selectReceivedReview(map);
+		}
+
+		//관심목록 조회하기
+		@Override
+		public Map<String, Object> myGoodsLikeList(int memberNo, int cp) {
+			
+			//1. 전체 게시글 수 조회하기
+			int listCount = dao.myGoodsLikeListCount(memberNo);
+			
+			//2. 전체 게시글 수 + cp(현재페이지)를 이용해서 페이징 처리 객체를 생성한다.
+			MypagePagination pagination = new MypagePagination(listCount,cp);
+			
+			
+			List<GoodsSell> myGoodsLikeList = dao.myGoodsLikeList(memberNo,pagination);
+			
+			
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("pagination", pagination);
+			map.put("myGoodsLikeList", myGoodsLikeList);
+			
+			return map;
+		}
+
+		// 회원 탈퇴 
+		@Transactional
+		@Override
+		public int secessionSelect(int memberNo, Map<String, Object> parMap) {
+			
+			// 1. 회원탈퇴 회원 조회 (아이디/ 비밀번호/이름)
+	    	Member memeberInf = dao.secessionSelect(memberNo);
+ 
+	    	
+			// 2. 입력 값 과 조회된 값이 같은지 확인
+	    	// 비밀번호가 맞는지 먼저 확인
+			if (bcrypt.matches((CharSequence) parMap.get("memberPw"), memeberInf.getMemberPw())) {
+			
+				// map 에서 값 꺼내서 아이디 , 이름 같은지 조회
+				if ( parMap.get("memberNewEmail").equals(memeberInf.getMemberEmail()) &&
+					 parMap.get("memberName").equals(memeberInf.getMemberName())	) {
+					
+					// 같다면 탈퇴 처리 
+					int result = dao.secessionDelete(memberNo);
+					
+	               return result;
+				}
+			}
+			return 0;
+		}
+
+
+		/**
+		 * 차단관리
+		 */
+		@Override
+		public List<Member> selectDeleteMemberList(int memberNo) {
+			
+			return dao.selectDeleteMemberList(memberNo);
+		}
+
+
+		/**
+		 * 회원 차단 해제
+		 */
+		@Override
+		public int memberBlockCancel(Map<String, Object> map) {
+			
+			return dao.memberBlockCancel(map);
+		}
+
 
 
 	

@@ -167,13 +167,13 @@
 		</dependency>
 
 		<!-- AspectJ -->
-		<dependency>
+ 		<dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjrt</artifactId>
 			<version>${org.aspectj-version}</version>
 		</dependency>
 
-		<!-- Logging -->
+	<!--Logging -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
@@ -190,12 +190,12 @@
 			<artifactId>slf4j-log4j12</artifactId>
 			<version>${org.slf4j-version}</version>
 			<scope>runtime</scope>
-		</dependency>
+		</dependency> 
 		
 		
 		<!-- aspectjweaver : AOP 코드 생성용 유틸 -->
 		<!-- https://mvnrepository.com/artifact/org.aspectj/aspectjweaver -->
-		<dependency>
+ 		<dependency>
 		    <groupId>org.aspectj</groupId>
 		    <artifactId>aspectjweaver</artifactId>
 		    <version>${org.aspectj-version}</version>
@@ -214,11 +214,11 @@
 		
 		
 		<!-- DB에서 수행되는 sql, 조회 결과, DML 결과를 로그로 출력 -->
-	    <dependency>  
+ 	    <dependency>  
 	       <groupId>org.lazyluke</groupId>  
 	       <artifactId>log4jdbc-remix</artifactId>  
 	       <version>0.2.7</version>  
-	    </dependency>
+	    </dependency> 
 
 		<!-- @Inject -->
 		<dependency>

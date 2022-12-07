@@ -26,7 +26,7 @@ import lombok.ToString;
 		private String refreshedAt;
 		private String createdAt;
 		private String goodsDelFlag;
-		private String sellStatus; // LSY : 필요있나?
+		private String sellStatus; // 채팅창 상품정보조회 필요
 		private int imageNo;
 		private String imagePath;
 		
@@ -71,4 +71,6 @@ import lombok.ToString;
 		private String sellerNickname;
 		private String buyerNickname;
 		private List<BananaPay> payList;
+		
+		
 }

@@ -48,13 +48,9 @@ document.addEventListener("DOMContentLoaded", ()=>{
 	
 	// 채팅 리스트가 8개 이상 일 경우 css 추가
 	if(document.getElementsByClassName("chatting-item").length >7 ){
-		//console.log("8개 이상!");
-		//console.log(document.getElementsByClassName("chatting-item").length);
 		lastchild.style.borderBottom="none";
 		
 	} else{
-		//console.log("7개 이하~~");
-		//console.log(document.getElementsByClassName("chatting-item").length);
 		lastchild.style.borderBottom="border";
 	}
 
@@ -81,13 +77,10 @@ document.addEventListener("DOMContentLoaded", ()=>{
         default : nowDay = "알수없는요일"; break;
     }
 	console.log(nowDay);
-
-
 })
 
 // 채팅 메세지 영역
 const display = document.getElementsByClassName("display-chatting")[0];
-
 
 // 채팅방 목록에 이벤트를 추가하는 함수 
 const roomListAddEvent = () => {
@@ -104,7 +97,8 @@ const roomListAddEvent = () => {
 			selectTargetNo = arr[1];
 			selectTargetProfile = item.children[0].children[0].getAttribute("src");
 			selectTargetName = item.children[1].children[0].children[0].innerText;
-
+			// selectGoodsNo= item.children[2].value;
+			
 			if(item.children[1].children[1].children[1] != undefined){
 				item.children[1].children[1].children[1].remove();
 			}
@@ -117,6 +111,9 @@ const roomListAddEvent = () => {
 	
 			// 비동기로 메세지 목록을 조회하는 함수 호출
 			selectChattingFn();
+
+			// 비동기로 상품 정보 조회하는 함수 호출
+			productInfor(); //수정 상품정보
 		});
 	}
 }
@@ -128,7 +125,6 @@ const selectChattingFn = () => {
 		data : {"chattingNo" : selectChattingNo, "memberNo" : loginMemberNo},
 		dataType : "JSON",
 		success : messageList => {
-			console.log(messageList);
 
 			// <ul class="display-chatting">
 			const ul = document.querySelector(".display-chatting");
@@ -141,10 +137,6 @@ const selectChattingFn = () => {
 				const li = document.createElement("li");
 				//<div class="my-chat-col"></div>
 				const div = document.createElement("div")
-				
-				
-				//const lid = document.createElement("li");// 메세지 시작 날짜
-				//lid.classList.add("date-line");// 메세지 시작 날짜
 				
 				// 메세지 내용
 				const p = document.createElement("p");
@@ -188,12 +180,71 @@ const selectChattingFn = () => {
 					li.append(img,div, time);
 				}
 				ul.append(li);
-				//lid.append(div) // 메세지 시작 날짜
-
 				display.scrollTop = display.scrollHeight; // 스크롤 제일 밑으로
 			}
 		},
-		error : () => {console.log("에러");}
+		error : () => {console.log(" 메세지 목록 조회 에러");}
+	})
+}
+
+
+//수정 상품정보
+//// 비동기로 상품 정보 조회하는 함수
+const productInfor = () => {
+
+	$.ajax({
+		url : "/chatting/selectProductInfor",
+		data : {"chattingNo" : selectChattingNo},
+		dataType : "JSON",
+		success : selectProductInfor => {
+
+			// <ul id="productInforBox">
+			const ul = document.querySelector("#productInforBox");
+			ul.innerHTML = ""; // 이전 내용 지우기
+
+			const li1 = document.createElement("li");
+			li1.classList.add("productImgBox");
+
+			const img = document.createElement("img");
+			img.classList.add("productImgBox1");
+			img.setAttribute("src",selectProductInfor.imagePath)
+
+			const li2 = document.createElement("li");
+			li2.classList.add("productNamePrice");
+
+			const div1 = document.createElement("div");
+			div1.classList.add("productNameArea");
+			const div1_1 = document.createElement("div");
+			div1_1.classList.add("productStatus");
+			div1_1.innerText=selectProductInfor.sellStatus;
+			const div1_2 = document.createElement("div");
+			div1_2.classList.add("productName");
+			div1_2.innerText=selectProductInfor.title;
+
+			const div2 = document.createElement("div");
+			div2.classList.add("productPrice");
+			div2.innerText=selectProductInfor.sellPrice+"원"
+
+			const div0 = document.createElement("div");
+			div0.classList.add("Declaration");
+
+			const a = document.createElement("a");
+			a.setAttribute("href","javascript:openPop()")
+
+			const i = document.createElement("i");
+			i.classList.add("fa-regular","fa-bell-slash");
+
+
+			ul.append(li1,li2,div0);
+			li1.append(img);
+			li2.append(div1,div2);
+			div1.append(div1_1,div1_2);
+			div0.append(a);
+			a.append(i);
+
+			
+		},
+		error : () => {console.log("상품 정보 조회 에러");}
 	})
 }
 
@@ -206,7 +257,7 @@ const selectRoomList = () => {
 		success : roomList => {
 			console.log(roomList);
 			// 채팅방 리스트
-			const chattingList = document.querySelector(".chatting-list");
+			const chattingList = document.querySelector("#chatting-list");
 
 			// 채팅방 리스트 지우기
 			chattingList.innerHTML = "";
@@ -291,7 +342,6 @@ const selectRoomList = () => {
 	})
 }
 
-
 // 채팅 입력
 const send = document.getElementById("send");
 
@@ -327,9 +377,6 @@ inputChatting.addEventListener("keyup", e => {
 	}
 })
 
-
-
-
 // WebSocket 객체 chattingSock이 서버로 부터 메세지를 통지 받으면 자동으로 실행될 콜백 함수
 chattingSock.onmessage = function(e) {
 	// 메소드를 통해 전달받은 객체값을 JSON객체로 변환해서 msg 변수에 저장.
@@ -347,10 +394,7 @@ chattingSock.onmessage = function(e) {
 		//<div class="my-chat-col"></div>
 		const div = document.createElement("div")
 
-		
-		//const lid = document.createElement("li");// 메세지 시작 날짜
-		//lid.classList.add("date-line");// 메세지 시작 날짜
-		
+			
 		// 메세지 내용
 		const p = document.createElement("p");
 		p.classList.add("chat");
@@ -391,15 +435,13 @@ chattingSock.onmessage = function(e) {
 	
 			div.append(name, p);
 			li.append(img,div, time);
-			//lid.append(div) // 메세지 시작 날짜
+
 	
 		}
 	
 		ul.append(li)
 		display.scrollTop = display.scrollHeight; // 스크롤 제일 밑으로
 	}
-
-
 
 	selectRoomList();
 }

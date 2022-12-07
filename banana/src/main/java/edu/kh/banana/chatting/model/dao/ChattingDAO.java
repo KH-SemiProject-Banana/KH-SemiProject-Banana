@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import edu.kh.banana.chatting.model.vo.ChattingRoom;
 import edu.kh.banana.chatting.model.vo.Message;
+import edu.kh.banana.goods.model.vo.GoodsSell;
 
 @Repository
 public class ChattingDAO {
@@ -68,6 +69,14 @@ public class ChattingDAO {
     public List<Message> selectMessageList(int chattingNo) {
        return sqlSession.selectList("chattingMapper.selectMessageList", chattingNo);
     }
+
+	/** 상품정보을 비동기로 조회
+	 * @param goodsNo
+	 * @return selectProductInfor
+	 */
+	public GoodsSell selectProductInfor(int chattingNo) {
+		return sqlSession.selectOne("goodsMapper.selectProductInfor",chattingNo);
+	}
     
     
     

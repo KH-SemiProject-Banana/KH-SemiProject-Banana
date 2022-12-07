@@ -31,6 +31,8 @@
 		<typeAlias type="edu.kh.banana.customer.model.vo.Customer" alias="Customer"/>
 		<typeAlias type="edu.kh.banana.chatting.model.vo.ChattingRoom" alias="ChattingRoom" />
 		<typeAlias type="edu.kh.banana.chatting.model.vo.Message" alias="Message" />
+		<typeAlias type="edu.kh.banana.userComplain.model.vo.UserBlock" alias="UserBlock" />
+
 		
 		
 		

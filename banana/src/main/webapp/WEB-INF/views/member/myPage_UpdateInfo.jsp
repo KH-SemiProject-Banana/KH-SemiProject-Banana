@@ -115,7 +115,7 @@
               <%-- 생년월일 --%>
             <div class="signUp-input-Birth textboxNo">
               <input
-                type="text"s
+                type="text"
                 name="memberBirth"
                 class="inputBoxNo"
                 id="memberBirth"
@@ -187,9 +187,11 @@
           <!--------------------- 회원 정보 수정 입력 끝  --------------------->
 
           <div class="SignUpAgreement6">
+              <a href="/member/myPage/secessionPage" class="secession">회원 탈퇴</a><%-- 수정중 --%>
               <button class="SignUp">내 정보 수정 완료</button>
           </div>
         </form>
+
       </div>
     </main>
 

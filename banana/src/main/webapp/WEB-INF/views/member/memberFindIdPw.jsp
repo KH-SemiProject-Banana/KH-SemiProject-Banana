@@ -69,7 +69,7 @@
                         id="memberNewEmail"
                         class="inputBox" 
                         placeholder="메일을 받을수 있는 새 이메일" 
-                        maxlength="20"
+                        maxlength="30"
                         autocomplete="off"
                         value="${tempMember.memberNewEmail}">
                     </div>

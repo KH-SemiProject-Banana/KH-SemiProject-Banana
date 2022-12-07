@@ -26,7 +26,6 @@
         }
     </style>
 
-
 </head>
 <body> 
     <main>
@@ -56,7 +55,6 @@
                         <i class="fa-solid fa-caret-down-chatting"></i>
                         <div>
                             <input type="checkbox" id="header-menu-toggle-chatting">
-
                             <div id="header-menu-chatting">
                                 <a href="/member/myPage/main">내 정보</a>
                                 <a href="/member/logout">로그아웃</a>
@@ -107,7 +105,6 @@
                             </div>
                         </li>
                     </c:forEach>
-
                 </div>
                 <!--------------------- 채팅 내용박스 --------------------->
                 <div id="chatBoxMain">
@@ -128,15 +125,9 @@
                             <a href="javascript:openPop()"><!-- 신고버튼 -->
                                 <i class="fa-regular fa-bell-slash"></i>
                             </a>
-
-                            <div id = "poppingThing" class = "poppingThing"> 
-                                <jsp:include page="/WEB-INF/views/userComplain/userComplain.jsp"></jsp:include>
-                            </div>
-
-                        </div>
+                        </div>  
                     </ul> 
                     <!--------- 채팅박스 상단 상품 시작 끝--------->
-
 
                     <!-- 채팅박스 -->
                     <div  class="chatting-content">
@@ -197,7 +188,6 @@
     <div id = "poppingThing" class = "poppingThing"> 
         <jsp:include page="/WEB-INF/views/userComplain/userComplain.jsp"></jsp:include>
     </div> 
-    
     <!--------------------------------------- sockjs를 이용한 WebSocket 구현을 위해 라이브러리 추가 ---------------------------------------------->
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 	

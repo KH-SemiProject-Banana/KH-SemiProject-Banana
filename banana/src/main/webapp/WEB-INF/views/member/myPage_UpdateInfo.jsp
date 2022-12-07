@@ -46,7 +46,7 @@
                 id="memberEmail"
                 class="inputBoxNo"
                 placeholder="아이디 (이메일)"
-                maxlength="20"
+                maxlength="30"
                 autocomplete="off"
                 value="${loginMember.memberEmail}"
                 disabled
@@ -61,7 +61,7 @@
                 class="inputBox"
                 id="memberPw"
                 placeholder="새 비밀번호"
-                maxlength="20"
+                maxlength="16"
               />
             </div>
             <%-- 새 비밀번호확인 --%>
@@ -72,7 +72,7 @@
                 class="inputBox"
                 id="memberPwConfirm"
                 placeholder="새 비밀번호 확인"
-                maxlength="20"
+                maxlength="16"
               />
             </div>
             <div class="firstBox">

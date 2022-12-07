@@ -13,6 +13,7 @@
 
 */
 
+/* 페이지네이션 관련 CSS  */
 .pagination-area{
     display: flex;
     justify-content: center;
@@ -298,7 +299,7 @@ a {
 .favorite__pack > div {
     position :relative;
 }
-.like_yn {
+.fa-ellipsis-vertical {
     z-index: 100;
     position: absolute;
     right : 10px;

@@ -1,0 +1,495 @@
+/* *{
+        border: 1px solid red;
+}   */
+
+
+/* /* 
+섹션 1 5
+섹션 2 10
+섹션 3 25
+섹션 4 5
+섹션 5 55
+
+
+*/
+
+/* 페이지네이션 관련 CSS  */
+.pagination-area{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.pagination{
+    list-style: none;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+    margin-bottom: 70px;
+}
+
+.pagination li{
+    width: 30px;
+    /* height: 30px; */
+    margin: 0 5px;
+    text-align: center;
+}
+
+.current{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(241, 189, 0);
+    border: 1px solid rgb(241, 189, 0);
+    width: 30px;
+    height: 30px;
+}
+
+a { 
+    text-decoration:none;
+    color: black;
+}
+
+.myBanana{
+    height :1500px;
+    display: flex;
+    flex-direction: column;
+}
+/* 섹션1********************************************************************************************************섹션1 */
+.my-rotten-banana{
+    height: 55px;
+    display: flex;
+    justify-content: flex-end;
+
+    padding-right: 20px;
+
+    font-size: 12px;
+}
+
+
+.my-rotten-banana > * {
+   margin-top: 15px;
+   margin-right:20px
+}
+.my-rotten-banana > p:only-of-type{
+    font-size: 18px;
+    margin-top:16px;
+}
+/* 섹션2********************************************************************************************************섹션2 */
+.myBanana-title {
+    height: 120px;
+    width:100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 40px;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-bottom: 15px;
+    
+}
+
+
+
+/* 섹션3********************************************************************************************************섹션3 */
+
+.myBanana-detail{
+    border: 4px solid rgb(139, 138, 138);
+    background-color: var(--yellow);
+    border-radius: 20px;
+    height: 220px;
+    width: 100%;
+    display: flex;
+    margin-bottom: 30px;
+}
+.myBanana-photo{
+    width:20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position : relative;
+}
+.myBanana-photo > .photo {
+    height:175px;
+    width: 175px;
+    border-radius: 50%;
+    border :3px solid  rgb(139, 138, 138);
+    background-color: white;
+}
+.myBanana-photo > .pen {
+    position: absolute;
+    bottom: 30px;
+    left: 155px;
+    color :#333;
+    cursor: pointer;
+    
+
+}
+
+
+.myBanana-content {
+    width:70%;
+}
+.myBanana-info{
+    display: flex;
+    width: 100%;
+    height: 100px;
+    padding:  0 0 0 20px;
+    align-items: center;
+}
+.myBanana-name{
+    font-size: 25px;
+    font-weight: bold;
+}
+.myBanana-address{
+    margin: 10px 0 0 10px;
+    font-size: 15px;
+}
+
+.myBanana-intro{
+    height: 20%;
+    padding: 0px 20px 20px 20px;
+    display: flex;
+    align-items: center;
+}
+
+
+.p_intro{
+    margin-right: 15px;
+    font-size: 15px;
+    
+    
+}
+.changed{
+    width: 500px;
+    height: 32px;
+    font-size: 15px;
+    border: 0;
+    border-radius: 15px;
+    outline: none;
+    padding-left: 10px;
+    margin-right:10px;
+    background-color: var(--lightYellow);
+    }
+
+.introUpdateBtn1 {
+    border : 1px solid black;
+    padding: 8px;
+    border-radius: 10px;
+    background-color: var(--menu);
+    cursor: pointer;
+    margin: 0 0 0 20PX;
+}
+
+.introUpdateBtn2 {
+    border : 1px solid black;
+    padding: 8px;
+    border-radius: 10px;
+    background-color: var(--menu);
+    cursor: pointer;
+}
+
+.changedBtn{
+    cursor: pointer;
+    border : 1px solid black;
+    padding:8px;
+    border-radius: 10px;
+    background-color: var(--menu);
+    cursor: pointer;
+}
+
+.myBanana-temp{
+    font-size: 15px;
+    padding: 0px 20px 20px 20px;
+    display: flex;
+    flex-direction: column;
+}
+.myBanana-temp > .temp-text {
+    font-weight: bold;
+}
+
+.container {
+    margin-top: 15px;
+    background-color: rgb(208, 223, 175);
+    width: 80%;
+    height : 20px;
+        border-radius: 15px;
+}
+
+.temperature{
+    height: 100%;
+    padding: 1%;
+    border-radius: 15px;
+}
+
+
+
+/*섹션4 ********************************************************************************************************섹션4 */
+.myBanana-category{
+    height: 70px;
+    display: flex;
+    flex-direction: row;
+    font-size: 20px;
+    margin-top: 60px;
+    border-bottom: 5px solid #efefef;
+    
+}
+
+.myBanana-category > *{
+    margin: 10px;
+    border-radius: 5px;
+
+
+}
+
+
+/* ********************************************************************************************************섹션5 */
+.myBanana-sellList{
+    margin-top: 15px;
+}
+.myBanana-sell{
+    display: flex;
+    justify-content: flex-end;
+    height: 6%;
+    padding-bottom: 50px;
+    
+}
+.myBanana-sell > *{
+    margin-right: 20px;
+    font-size: 20px;
+    margin-bottom: 70px;
+    
+}
+
+
+/* ************************************************************** */
+
+.content-favorite {
+    display: flex;
+    margin-top:50px;
+    height: 800px;
+    /* overflow:scroll; */
+    flex-wrap: wrap;
+    align-content: space-between;
+
+
+}
+
+.favorite__pack{
+    display: flex;
+    flex-direction: column;
+    /* border: 1px solid #ddd; */
+    margin: 0 6px;
+}
+
+.favorite__img{
+    overflow: hidden;
+}
+
+.favorite__pack img{ /* 이게 옷사진인듯???????????????????????? */
+    height: 223.33px;
+    width: 215.33px;
+    object-fit : cover;
+    border-radius: 15px;
+    
+}
+
+.favorite__pack > div {
+    position :relative;
+}
+.fa-ellipsis-vertical {
+    z-index: 100;
+    position: absolute;
+    right : 10px;
+    top : 10px;
+    cursor: pointer;
+}
+/****************************************/
+
+.favorite__img {
+    position: relative;
+}
+/* 글 수정하기/ 글 삭제하기/ 끌어올리기 설정*/
+.anotherPop{
+    position : absolute;
+    z-index: 100;
+    right : 18px;
+    top : 10px;
+    cursor: pointer;
+    background-color: rgb(245, 237, 237);
+    border: 1px solid black;
+}
+
+.babo{
+    border-bottom: 1px solid black;
+}
+
+.anotherPop1{
+    width: 80px;
+    height: 21px;
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.favorite__price-heart {
+    margin-left: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+
+.favorite__content {
+    margin-left: 5px;
+  
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    color: rgba(0,0,0,0.6);
+    font-size: 12px;
+}
+
+.favorite__price{
+    font-weight: 700;
+    font-size: 13px;
+    height: 30px;
+    width: 200px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow : ellipsis;
+}
+
+.testcolor{
+    color: black;
+    font-weight: bold;
+    border: 1px solid #ddd;
+    margin-top: 10px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 13px;
+    background-color: var(--menu);
+    text-decoration: none;
+    border-radius: 15px;
+}
+.testcolor2{
+    color: orangered;
+    font-weight: bold;
+    border: 1px solid #ddd;
+    margin-top: 10px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 13px;
+    text-decoration: none;
+    border-radius: 15px;
+
+}
+
+/* **************************************************** */
+
+/***************프로필 화면 *********************/
+.profile-image-area {
+    width : 150px;
+    height: 150px;
+    border: 3px solid #ccc;
+    border-radius:  50%;
+    position: relative;
+
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#profile-image {
+    
+    height: 100%;
+
+}
+
+form[name = 'myPage-frm']{position:relative;}
+
+/* 삭제버튼 */
+#delete-image {
+    
+    position: absolute;
+    top: -2px;
+    right :240px;
+    cursor: pointer;
+}
+
+/* 이미지 버튼 영역 */
+.profile-btn-area {
+    width: 230px;
+    margin: 20px 0;
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-btn-area > * {
+    width: 110px;
+    height: 30px;
+    padding : 5px 10px;
+    font-size: 14px;
+
+    border: 1px solid black;
+    background-color: white;
+    cursor: pointer;
+    text-align: center;
+}
+
+#image-input {display: none;}
+
+.profile-btn-area > button {
+    background-color: #455ba8;
+    color: white;
+    margin-left : 2px;
+}
+
+
+/* dot */
+
+.favorite__img {
+    position: relative;
+}
+
+
+
+.myGoodsDetail {
+    display: flex;
+    flex-direction: column;
+    position : absolute;
+
+    top: 20px;
+    right: 20px;
+    
+    margin-top: 5px;
+    border: 1px solid black;
+    background-color: white;
+
+    z-index: 5000;
+    height: 80px;
+    width: 100px;
+}
+
+.myGoodsDetail * {
+    color: rgba(0, 0, 0, 0.6);
+    height: 100px;
+}
+
+
+.hidden{
+    display: none;
+}

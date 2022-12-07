@@ -194,7 +194,7 @@
 
     <div id = "poppingThing" class = "poppingThing"> 
         <jsp:include page="/WEB-INF/views/userComplain/userComplain.jsp"></jsp:include>
-    </div>
+    </div> 
     
     <!--------------------------------------- sockjs를 이용한 WebSocket 구현을 위해 라이브러리 추가 ---------------------------------------------->
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>

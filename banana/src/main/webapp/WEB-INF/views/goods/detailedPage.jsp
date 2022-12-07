@@ -106,7 +106,7 @@
                             <div class="top_right"><span>|</span></div>
                         </c:if>
 
-                        <div class="top_right"><span>찜 ${goodsInfo.likeCount}</span></div>
+                        <div class="top_right"><span>찜&nbsp;</span><span id="likeCount">${goodsInfo.likeCount}</span></div>
                         <div class="top_right"><span>|</span></div>
                         <div class="top_right"><span>${goodsInfo.createdAt}</span></div>
                     </div>
@@ -138,8 +138,11 @@
                         </span>
                     </div>
 
-                    <div class="like_talk">
+                    <form action="/chatting/enter" method="post" class="like_talk">
                         <div>
+                            <input type="hidden" name="targetNo" value="${sellerInfo.memberNo}">
+                            <input type="hidden" name="goodsNo" value="${goodsInfo.goodsNo}">
+
                             <c:choose>
                                 <c:when test="${loginMember.memberNo == goodsInfo.memberNo}">
                                     <input type="checkbox" name="like" id="like" checked>
@@ -152,8 +155,8 @@
                                 </c:otherwise>
                             </c:choose>
                         </div>
-                        <div><a id="talk">바나나톡</a></div>
-                    </div>
+                        <div><button>바나나톡</button></div>
+                    </form>
                 </section>
             </div>
 

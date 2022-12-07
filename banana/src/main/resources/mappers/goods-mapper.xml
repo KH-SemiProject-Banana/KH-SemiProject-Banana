@@ -8,7 +8,11 @@
    		<id property="goodsNo" column="GOODS_NO"/>
    		
    		<result property="sellerNo" column="SELLER_NO"></result>
+   		<result property="sellerNickname" column="SELLER_NICKNAME"></result>
    		<result property="categoryNo" column="CATEGORY_NO"></result>
+   		<result property="categoryName" column="CATEGORY_NAME"></result>   		<result property="viewCount" column="VIEW_COUNT"></result>
+   		<result property="sellStatus" column="SELL_STATUS"></result>
+   		
    		<result property="title" column="TITLE"></result>
    		<result property="sellPrice" column="SELL_PRICE"></result>
    		<result property="viewCount" column="VIEW_COUNT"></result>
@@ -22,6 +26,8 @@
    		
    		<result property="thumbnail" column="THUMBNAIL"></result>
    		<result property="isLike" column="IS_LIKE"></result>
+   		<result property="buyerNo" column="BUYER_NO"></result>
+   		<result property="sellStatus" column="SELL_STATUS"></result>
    		
 
    		
@@ -200,6 +206,13 @@
 	WHERE GOODS_NO = #{goodsNo}
   </update>
   
+  <!-- 상품 삭제 복구 -->
+  <update id="goodsDeleteBack" parameterType="_int">
+  	UPDATE  GOODS_SELL gs  SET
+	GOODS_DEL_FL = 'N'
+	WHERE GOODS_NO = #{goodsNo}
+  </update>
+  
   
   <!-- 상품 내용만 수정 -->
   <update id="updateGoodsContent" parameterType="GoodsSell">
@@ -241,6 +254,134 @@
 	REFRESHED_AT  = SYSDATE 
 	WHERE GOODS_NO = #{goodsNo}
   </update>
+  
+  
+  <!-- 전체 상품 갯수 조회 -->
+  <select id="allGoodsCount" resultType = "_int">
+  	SELECT COUNT(*) FROM GOODS_SELL
+  </select>
 
+
+ <!-- 특정 상품 목록 조회 -->
+ <select id="admin-goodsSearch" parameterType="map" resultMap="goods_rm">
+ 	SELECT GOODS_NO, SELLER_NO, TITLE, GOODS_DEL_FL, SELL_STATUS, CATEGORY_NO,
+	SELLER_NICKNAME, SELL_PRICE,  CREATED_AT, LIKE_COUNT, CATEGORY_NAME, VIEW_COUNT 
+	FROM
+		(SELECT GOODS_NO, SELLER_NO, TITLE, GOODS_DEL_FL, VIEW_COUNT, CATEGORY_NAME, CATEGORY_NO,
+			CASE 
+				WHEN BUYER_NO  IS  NULL THEN (SELECT 'Y' FROM DUAL)
+				ELSE (SELECT 'N' FROM DUAL) 
+			END SELL_STATUS,
+		MEMBER_NICKNAME SELLER_NICKNAME,
+		SELL_PRICE, 
+		TO_CHAR(CREATED_AT, 'YYYY-MM-DD') CREATED_AT, 
+		(SELECT COUNT(*) FROM GOODS_LIKE GL WHERE GS.GOODS_NO = GL.GOODS_NO) LIKE_COUNT
+		FROM GOODS_SELL GS
+		JOIN MEMBER M ON(MEMBER_NO = SELLER_NO)
+		JOIN CATEGORY USING(CATEGORY_NO)
+		) 
+	WHERE GOODS_NO > 0
+	
+	<if test='query != null and query != ""'>
+		<choose>
+			<when test='key == "title"'>
+				AND TITLE LIKE '%${query}%'
+			</when>
+			<when test='key == "category"'>
+				AND CATEGORY_NAME LIKE '%${query}%'
+			</when>
+			<when test='key == "sellerNickname"'>
+				AND SELLER_NICKNAME LIKE '%${query}%'
+			</when>
+		</choose>
+	</if>
+
+	<if test='isSell != null'>
+		<choose>
+			<when test='isSell == "yesSell"'>
+				AND SELL_STATUS = 'Y'
+			</when>
+			<when test='isSell == "noSell"'>
+				AND SELL_STATUS = 'N'
+			</when>
+		</choose>
+	</if>
+
+	<if test='calanderBefore != ""'>
+		AND CREATED_AT >= TO_DATE(#{calanderBefore}, 'YYYY-MM-DD') 
+	</if>
+	<if test='calanderAfter != ""'>
+		<![CDATA[
+		AND CREATED_AT <= TO_DATE(#{calanderAfter}, 'YYYY-MM-DD') 
+		]]>
+	</if>
+	
+	ORDER BY ${order}
+
+ </select>
+ 
+ 
+ <!-- 특정 상품 갯수 조회 -->
+ <select id="getGoodsCount" parameterType="map" resultType="_int">
+  	SELECT COUNT(*)
+	FROM
+		(SELECT GOODS_NO, SELLER_NO, TITLE, GOODS_DEL_FL, VIEW_COUNT, CATEGORY_NAME,
+			CASE 
+				WHEN BUYER_NO  IS  NULL THEN (SELECT 'Y' FROM DUAL)
+				ELSE (SELECT 'N' FROM DUAL) 
+			END SELL_STATUS,
+		MEMBER_NICKNAME SELLER_NICKNAME,
+		SELL_PRICE, 
+		TO_CHAR(CREATED_AT, 'YYYY-MM-DD') CREATED_AT, 
+		(SELECT COUNT(*) FROM GOODS_LIKE GL WHERE GS.GOODS_NO = GL.GOODS_NO) LIKE_COUNT
+		FROM GOODS_SELL GS
+		JOIN MEMBER M ON(MEMBER_NO = SELLER_NO)
+		JOIN CATEGORY USING(CATEGORY_NO)
+		) 
+	WHERE GOODS_NO > 0
+	
+	<if test='query != null and query != ""'>
+		<choose>
+			<when test='key == "title"'>
+				AND TITLE LIKE '%${query}%'
+			</when>
+			<when test='key == "category"'>
+				AND CATEGORY_NAME LIKE '%${query}%'
+			</when>
+			<when test='key == "sellerNickname"'>
+				AND SELLER_NICKNAME LIKE '%${query}%'
+			</when>
+		</choose>
+	</if>
+
+	<if test='isSell != null'>
+		<choose>
+			<when test='isSell == "yesSell"'>
+				AND SELL_STATUS = 'Y'
+			</when>
+			<when test='isSell == "noSell"'>
+				AND SELL_STATUS = 'N'
+			</when>
+		</choose>
+	</if>
+
+	<if test='calanderBefore != ""'>
+		AND CREATED_AT >= TO_DATE(#{calanderBefore}, 'YYYY-MM-DD') 
+	</if>
+	<if test='calanderAfter != ""'>
+		<![CDATA[
+		AND CREATED_AT <= TO_DATE(#{calanderAfter}, 'YYYY-MM-DD') 
+		]]>
+	</if>
+
+ </select>
+	<!-- 채팅방 상품정보조회 -->
+	<select id="selectProductInfor" resultMap="goods_rm">
+	 SELECT GOODS_NO, TITLE, SELL_PRICE, NVL2(BUYER_NO,'판매완료','판매중')SELL_STATUS, IMAGE_PATH
+	 FROM GOODS_SELL
+	 JOIN GOODS_IMAGE USING(GOODS_NO)
+ 	 JOIN CHATTING_ROOM USING(GOODS_NO)
+	 WHERE CHATTING_NO= #{chattingNo}
+	</select>
   
 </mapper>

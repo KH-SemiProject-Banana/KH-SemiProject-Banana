@@ -42,7 +42,7 @@
 			<section class="my-rotten-banana">
 				<!-- <p>탈퇴하기</p> -->
 				<i class="topmenu__alarm fa-regular fa-bell fa-2x"></i>
-				<p>차단 관리</p>
+				<p id="editBlockMember">차단 관리</p>
 			</section>
 			<!--섹션2********************************************************************************************************섹션1-->
 			<section class="myBanana-title">
@@ -64,7 +64,7 @@
                             <a href="javascript:closePop4();"><i class="fa-solid fa-x" id = "fa-x"></i></a>
                             <!-- </div> -->
                             <!--팝업 컨텐츠 영역-->
-                            <div class="popup_cont4 " id = "popup_con3">
+                            <div class="popup_cont4 " id = "popup_con4">
                                 <form action = "/member/myPage/updateProfile" method = "POST" 
                                         name = "myPage-frm" enctype = "multipart/form-data"
                                         onsubmit = "return profileValidate()">
@@ -167,19 +167,25 @@
 			</section>
 			<!--섹션4********************************************************************************************************섹션1-->
 			<section class="myBanana-category">
-                   
-                     <div id= "first-category" class = "category">
+            
+                    <div id= "first-category" class = "category">
                         <a href="/member/myPage/main?myPageCt=1">판매내역</a>
-                     </div>
+                    </div>
 
                     <%-- c:if test = param.myPageCt=1 --%>
 
-                    <div id= "second-category" class = "category"><a href="/member/myPage/main?myPageCt=2">구매내역</a></div>
-                    <div id= "third-category" class = "category">관심목록</a></div>
-                    <div id= "fourth-category" class = "category">후기</a></div>
+                    <div id= "second-category" class = "category">
+                        <a href="/member/myPage/main?myPageCt=2">구매내역</a>
+                    </div>
+                    <div id= "third-category" class = "category">
+                        <a href="/member/myPage/myGoodsLike">관심목록</a>
+                    </div>
+                    <div id= "fourth-category" class = "category">
+                        <a href="/member/myPage/selectAllReview">후기</a>
+                    </div>
                     
                     
-              
+
 
             <%-- 판매내역 클랙->js에서 1을 input에 넣고
                 button을 클릭하도록 함
@@ -191,9 +197,9 @@
 
 			</section>
 			<!--섹션5********************************************************************************************************섹션1-->
-			<div id=changeJsp>
+			<%-- <div id=changeJsp>
 				<jsp:include page="/WEB-INF/views/member/myPage_review.jsp"></jsp:include>
-			</div>
+			</div> --%>
 			<section class="myBanana-sellList" id="myBanana-sellList">
 				<div class="myBanana-sell">
 					<div id="selling"><a href="/member/myPage/main?myPageCt=5">판매중</a></div>
@@ -238,12 +244,12 @@
                                             <c:choose>
                                                 <c:when test="${sold.ratingNo == 0}">
                                                     <a href="javascript:openPop(${sold.goodsNo},${sold.buyerNo},'${sold.buyerNickname}',
-                                                                                ${sold.sellerNo},'${sold.sellerNickname}')" id="popopen">
+                                                                                ${sold.sellerNo},'${sold.sellerNickname}','${sold.title}')" id="popopen">
                                                         <div class="testcolor">거래 후기 보내기</div>
                                                     </a>
                                                 </c:when>
                                                 <c:otherwise>
-                                                    <a id="popopen2" href="javascript:openReview(${sold.ratingNo},${sold.buyerNo},'${sold.buyerNickname}','${sold.title}',${sold.sellerNo},'${sold.sellerNickname}')">
+                                                    <a id="popopen2" href="javascript:openReview(${sold.goodsNo},${sold.ratingNo},${sold.buyerNo},'${sold.buyerNickname}','${sold.title}',${sold.sellerNo},'${sold.sellerNickname}')">
                                                     <div class="testcolor2">보낸 후기 보기</div>
                                                     </a>
                                                 </c:otherwise>
@@ -406,7 +412,7 @@
                                             <!-- ♥ 여기 안에다가 넣자 ♥-->
                                             <section class="send_message1">
                                                 <p><span id="nickName1"></span>님에게 따뜻한 후기를 보냈어요!</p>
-                                                <p><span id="nickName2"></span>님과 <span id="goodsTitle"></span>를 거래했어요!</p>
+                                                <p><span id="nickName2"></span>님과 <span id="goodsTitle2"></span>를 거래했어요!</p>
                                             </section>
                                             <section class="send_message2">
                                                 <ul id = "messageList">
@@ -416,7 +422,38 @@
                                             </section>
                                             <section class="send_message3">
                                                 <div>
-                                                    <a href="javascript:closePop2();"><button>받은 후기 보기</button>
+                                                    <a href="javascript:closePop2();"><button id = finalPopUp>받은 후기 보기</button>
+                                                </div>
+                                                </a> <img src="/resources/images/2leaf.png" alt="">
+                                            </section>
+                                        </div>
+                                        <!--팝업 버튼 영역-->
+                                        <!-- <div class="popup_btn" style="float: bottom; margin-top: 100px;">
+                                        <a href="javascript:closePop();">닫기</a>
+                                        </div> -->
+                                    </div>
+                                </div>
+                                <div class="popup_layer3" id="popup_layer3" style="display: none;">
+                                    <div class="popup_box3  ">
+                                        <!-- <div  style="height: 10px; width: 375px; float: top;"> -->
+                                        <a href="javascript:closePop3();"><i class="fa-solid fa-x" id = "fa-x"></i></a>
+                                        <!-- </div> -->
+                                        <!--팝업 컨텐츠 영역-->
+                                        <div class="popup_cont3 " id = "popup_con3">
+                                            <!-- ♥ 여기 안에다가 넣자 ♥-->
+                                            <section class="send_message1">
+                                                <p><span id="nickName3"></span>님이 따뜻한 후기를 보냈어요!</p>
+                                                <p><span id="nickName4"></span>님과 <span id="goodsTitle"></span>를 거래했어요!</p>
+                                            </section>
+                                            <section class="send_message2">
+                                                <ul id = "messageList2">
+                                                
+                                                </ul>
+                                            
+                                            </section>
+                                            <section class="send_message3">
+                                                <div>
+                                                    <a href="javascript:closePop3();"><button id = finalClose>닫기</button>
                                                 </div>
                                                 </a> <img src="/resources/images/2leaf.png" alt="">
                                             </section>
@@ -436,8 +473,7 @@
                     
                         <!-- 첫 페이지로 이동 -->
                         
-                        <li><a href="/member/myPage/main?myPageCt=${param.myPageCt}&cp=1">&lt;&lt;</a></li>
-
+                        <%-- <li><a href="/member/myPage/main?myPageCt=${param.myPageCt}&cp=1">&lt;&lt;</a></li> --%>
                         <!-- 이전 목록 마지막 번호로 이동 -->
                         <li><a href="/member/myPage/main?myPageCt=${param.myPageCt}&cp=${pagination.prevPage}">&lt;</a></li>
                         <%-- ?cp같은 쿼리스트링 형태로 적어야 함.....(이게 파라미터로 인식이 됨...) --%>
@@ -468,7 +504,7 @@
                         <li><a href="/member/myPage/main?myPageCt=${param.myPageCt}&cp=${pagination.nextPage}">&gt;</a></li>
 
                         <!-- 끝 페이지로 이동 -->
-                        <li><a href="/member/myPage/main?myPageCt=${param.myPageCt}&cp=${pagination.maxPage}">&gt;&gt;</a></li>
+                        <%-- <li><a href="/member/myPage/main?myPageCt=${param.myPageCt}&cp=${pagination.maxPage}">&gt;&gt;</a></li> --%>
 
                     </ul>
                 </div> 

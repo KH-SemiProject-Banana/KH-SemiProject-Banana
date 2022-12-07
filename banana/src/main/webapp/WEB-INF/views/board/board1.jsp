@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <c:set var="boardName" value="${boardTypeList[boardCode-1].BOARD_NAME}"/>
+<c:set var="boardList" value="${map.boardList}"></c:set>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -47,23 +48,30 @@
                     <p>고객센터</p>
                 </div>
                 
+                
                 <div class ="frequent-question__title">
                     <p>${boardName}</p>
-                    <button type="button" id="foldAll">모두 접기</button>
+                    <div class="foldBtnArea">
+                        <c:if test="${loginMember.authority == 2}">
+                            <button type="button" id="editBoard1">글 작성하기</button>
+                        </c:if>
+                        <button type="button" id="foldAll">모두 접기</button>
+                    </div>
                 </div>
+
                 
-    
+                <c:forEach var="board" items="${boardList}">
                     <div class="frequent-question__content">
                         <a  class="frequent-question__content-detail"  onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display=='none')?'block':'none'; ">                    
                             <i class="fa-solid fa-circle-question"></i>
                             <div  class="frequent-question__content">
-                                <p>판매할 물품은 어떻게 올리나요?</P>
+                                <p>${board.boardTitle}</P>
                             </div>
                         </a>
                         <div class="area" style="display:none">
                             <div class="profile">
                                 <div class="profile-img">
-                                    <img src="/resources/images/banana-logo.png" id="admin-img">
+                                    <img src="/resources/images/banana-logo.png" class="admin-img">
                                 </div>
                                 <div class="name-date">
                                     <p class= "nickname" id="admin-name">바나나마켓_운영지원팀</p>
@@ -71,13 +79,13 @@
                                 </div>
                             </div>
                             <div class="question-content">
-                                <p name="content" id="user-content" >
-                                    헬로마켓 웹사이트 상단 [판매하기] 버튼을 누르시고 상품의 사진과 정보를 입력하여 등록해주시면 됩니다.  <br>
+                                <p name="content" class="user-content" >
+                                    ${board.boardContent}<br>
                                 </p>
                             </div>
                         </div>
                     </div>
-    
+                </c:forEach>
 
                     <div class="frequent-question__content">
                         <a class="frequent-question__content-detail" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display=='none')?'block':'none'; ">                

@@ -154,7 +154,7 @@ a{
 
 .like_talk div:last-child{width: 85%;}
 
-.like_talk a{
+.like_talk button{
     background-color: rgb(255, 216, 76);
     width: 100%;
     height: 50px;
@@ -168,7 +168,7 @@ a{
     justify-content: center;
 }
 
-.like_talk a:hover{
+.like_talk button:hover{
     background-color: rgb(255, 200, 0);
     transition-duration: 0.5s;
 }

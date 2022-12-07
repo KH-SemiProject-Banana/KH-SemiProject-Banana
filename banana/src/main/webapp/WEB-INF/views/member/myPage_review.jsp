@@ -15,6 +15,14 @@
 
     <link rel="stylesheet" href="/resources/css/style.css">
     <link rel="stylesheet" href="/resources/css/lsy/myPage_review.css ">
+    <link rel="stylesheet" href="/resources/css/lsy/myPage_common.css ">
+    <link rel="stylesheet" href="/resources/css/lsy/popup.css ">
+
+    <style>
+    #fourth-category > a{
+        font-weight: bold;
+    }
+    </style>
 
     <script src="https://kit.fontawesome.com/f7459b8054.js" crossorigin="anonymous"></script>
 </head>
@@ -46,10 +54,12 @@
                     <div class="popup_layer4" id="popup_layer4" style="display: none;">
                         <div class="popup_box4  ">
                             <!-- <div  style="height: 10px; width: 375px; float: top;"> -->
-                            <a href="javascript:closePop4();"><i class="fa-solid fa-x" id = "fa-x"></i></a>
+                            <a href="javascript:closePop4();" class="xbtn">
+                                <i class="fa-solid fa-x xbtnBack" id = "fa-x"></i>
+                            </a>
                             <!-- </div> -->
                             <!--팝업 컨텐츠 영역-->
-                            <div class="popup_cont4 " id = "popup_con3">
+                            <div class="popup_cont4 " id = "popup_con4">
                                 <form action = "/member/myPage/updateProfile" method = "POST" 
                                         name = "myPage-frm" enctype = "multipart/form-data"
                                         onsubmit = "return profileValidate()">
@@ -58,7 +68,7 @@
 
                                         <c:if test = "${empty loginMember.profileImage}"> <%-- 비어있다면, 기본이미지 보여주겠다. --%>
 
-                                            <img id = "profile-image" src="/resources/images/banana-logo.png" alt="">
+                                            <img id = "profile-image" src="/resources/images/banana.png" alt="">
 
                                         </c:if>
                                         <c:if test = "${not empty loginMember.profileImage}"> <%-- 안 비어있다면, . --%>
@@ -79,27 +89,9 @@
 
                                     </div>
 
-                                    <div class = "myPage-row">
-                                        <label >이메일</label>
-                                        <span>${loginMember.memberEmail}</span>
-                                    </div>
-
-                                    <div class = "myPage-row">
-                                        <label >가입일</label>
-                                        <span>${loginMember.enrollDate}</span>
-                                    </div>
-
-                                    
-                                    
-
-                                    
-
                                 </form>
                             </div>
-                            <!--팝업 버튼 영역-->
-                            <!-- <div class="popup_btn" style="float: bottom; margin-top: 100px;">
-                            <a href="javascript:closePop();">닫기</a>
-                            </div> -->
+                       
                         </div>
                     </div>
 
@@ -151,7 +143,7 @@
 				</div>
 			</section>
 			<!--섹션4********************************************************************************************************섹션1-->
-			<section class="myBanana-category">
+		    <section class="myBanana-category">
             
                     <div id= "first-category" class = "category">
                         <a href="/member/myPage/main?myPageCt=1">판매내역</a>
@@ -162,7 +154,8 @@
                     <div id= "second-category" class = "category">
                         <a href="/member/myPage/main?myPageCt=2">구매내역</a>
                     </div>
-                    <div id= "third-category" class = "category">관심목록
+                    <div id= "third-category" class = "category">
+                        <a href="/member/myPage/myGoodsLike">관심목록</a>
                     </div>
                     <div id= "fourth-category" class = "category">
                         <a href="/member/myPage/selectAllReview">후기</a>
@@ -184,7 +177,7 @@
             <%-- <div class = "myBanana" id = "reviewss"> --%>
             <section class = "myBanana-reviewList">
                 <section class = "title_section_1">
-                    <a href="/member/myPage/review/good">받은 매너 평가&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+                    <a href="/member/myPage/review/good?mannerCt=1">받은 매너 평가&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa-solid fa-angle-right"></i></a>
                 </section>
                 </section>
                 <section class ="review_section_1">
@@ -198,16 +191,35 @@
                         <div class = "row"><p class = "row1col5">제가 있는 곳까지 와서 거래했어요</p></div> --%>
                     </section>
                     <section class = "row2">
-                        
-                        <div class="iconBox"><i class="fa-solid fa-face-smile circle"></i></div>
-                        <div class="iconBox"><i class="fa-solid fa-sack-dollar circle"></i></div>
-                        <div class="iconBox"><i class="fa-solid fa-clock circle"></i></div>
-                        <div class="iconBox"><i class="fa-solid fa-bolt circle"></i></div>
-                        <div class="iconBox"><i class="fa-solid fa-person-walking circle"></i></div>
+                    <c:forEach var="manner" items="${mannerTopList}">
+                        <c:choose>
+                            <c:when test="${manner.mannerNo == 1}">
+                                <div class="iconBox"><i class="fa-solid fa-hand-holding-hand mannerPic"></i></div>
+                            </c:when>
+                            <c:when test="${manner.mannerNo == 2}">
+                                <div class="iconBox"><i class="fa-solid fa-wand-magic-sparkles mannerPic"></i></div>
+                            </c:when>
+                            <c:when test="${manner.mannerNo == 3}">
+                                <div class="iconBox"><i class="fa-solid fa-arrow-up-short-wide mannerPic"></i></div>
+                            </c:when>
+                            <c:when test="${manner.mannerNo == 4}">
+                                <div class="iconBox"><i class="fa-solid fa-money-bill-1-wave mannerPic"></i></div>
+                            </c:when>
+                            <c:when test="${manner.mannerNo == 5}">
+                                <div class="iconBox"><i class="fa-solid fa-clock mannerPic"></i></div>
+                            </c:when>
+                            <c:when test="${manner.mannerNo == 6}">
+                                <div class="iconBox"><i class="fa-solid fa-truck-fast mannerPic"></i></div>
+                            </c:when>
+                            <c:when test="${manner.mannerNo == 7}">
+                                <div class="iconBox"><i class="fa-solid fa-thumbs-up mannerPic"></i></div>
+                            </c:when>
+                        </c:choose>
+                    </c:forEach>
                     </section>
                     <section class = "row3">
                         <c:forEach var = "manner" items = "${mannerTopList}">
-                        <div class = "row33"><p class = "row3col2">${manner.mannerCount}</p></div>
+                        <div class = "row33"><p class = "row3col2">${manner.mannerCount}명</p></div>
                         </c:forEach>
                         <%-- <div class = "row33"><p class = "row3col1">40</p></div>
                         <div class = "row33"><p class = "row3col2">30</p></div>
@@ -217,7 +229,7 @@
                     </section>
                 </section>
                 <section class = "title_section_2">
-                    <a href="/member/myPage/review/detail">받은 거래 후기&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+                    <a href="/member/myPage/review/detail?detailCt=1">받은 거래 후기&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa-solid fa-angle-right"></i></a>
                 </section>
                 <section class = "review_section_2">
                     <c:forEach var = "review" items = "${reviewNewestList}">
@@ -260,9 +272,20 @@ ${review.message}
     <%-- footer.jsp.include --%>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
+    <script>
+        document.getElementById("third-category").addEventListener("click",function(){
+        document.getElementById("third-category").style.fontWeight = "bold";
+        })
+        document.getElementById("fourth-category").addEventListener("click",function(){
+        document.getElementById("fourth-category").style.fontWeight = "bold";
+        })  
+    </script>
+
     <!-- jQuery 라이브러리(.js 파일) 추가(CDN 방식) -->
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
-	<script src="/resources/js/lsy/myPage_review.js"></script>
+	<script src="/resources/js/lsy/myPage_common.js"></script>
+    
+	
     
 </body>
 

@@ -19,11 +19,11 @@
     <title>바꾸고 나누자 나랑: 바나나 마켓</title>
 
     <link rel="stylesheet" href="/resources/css/style.css">
-    <link rel="stylesheet" href="/resources/css/screens/header-footer.css">
+    <%-- <link rel="stylesheet" href="/resources/css/screens/header-footer.css"> --%>
 
-    <link rel="stylesheet" href="/resources/css/lsy/addPop.css">
-    <link rel="stylesheet" href="/resources/css/lsy/myPage_main.css">
-    <link rel="stylesheet" href="/resources/css/lsy/review_survey.css">
+    <link rel="stylesheet" href="/resources/css/lsy/myPage_common.css">
+    <link rel="stylesheet" href="/resources/css/lsy/popup.css">
+    <link rel="stylesheet" href="/resources/css/lsy/pop1_review_survey.css">
 
 
 
@@ -61,7 +61,9 @@
                     <div class="popup_layer4" id="popup_layer4" style="display: none;">
                         <div class="popup_box4  ">
                             <!-- <div  style="height: 10px; width: 375px; float: top;"> -->
-                            <a href="javascript:closePop4();"><i class="fa-solid fa-x" id = "fa-x"></i></a>
+                            <a href="javascript:closePop4();" class="xbtn">
+                                <i class="fa-solid fa-x xbtnBack" id = "fa-x"></i>
+                            </a>
                             <!-- </div> -->
                             <!--팝업 컨텐츠 영역-->
                             <div class="popup_cont4 " id = "popup_con4">
@@ -94,15 +96,7 @@
 
                                     </div>
 
-                                    <div class = "myPage-row">
-                                        <label >이메일</label>
-                                        <span>${loginMember.memberEmail}</span>
-                                    </div>
-
-                                    <div class = "myPage-row">
-                                        <label >가입일</label>
-                                        <span>${loginMember.enrollDate}</span>
-                                    </div>
+                          
 
                                     
                                     
@@ -111,10 +105,7 @@
 
                                 </form>
                             </div>
-                            <!--팝업 버튼 영역-->
-                            <!-- <div class="popup_btn" style="float: bottom; margin-top: 100px;">
-                            <a href="javascript:closePop();">닫기</a>
-                            </div> -->
+                       
                         </div>
                     </div>
 
@@ -127,6 +118,9 @@
 								<p id="introUpdateBtn1" class="introUpdateBtn1">수정하기</p>
 							</a>
 						</div>
+                        <div class = "bananaPayBtn">
+                            <p class="introUpdateBtn1" >바나나페이</p>
+                        </div>
 					</div>
 
 					<div class="myBanana-intro">
@@ -202,8 +196,14 @@
 			</div> --%>
 			<section class="myBanana-sellList" id="myBanana-sellList">
 				<div class="myBanana-sell">
-					<div id="selling"><a href="/member/myPage/main?myPageCt=5">판매중</a></div>
-					<div id="sold"><a href="/member/myPage/main?myPageCt=1">판매완료</a></div>
+                <%-- <c:choose>
+                    <c:when test = "${loginMember.memberNo eq soldList.sellerNo}"> --%>
+					    <div id="selling"><a href="/member/myPage/main?myPageCt=5">판매중</a></div>
+					    <div id="sold"><a href="/member/myPage/main?myPageCt=1">판매완료</a></div>
+                    <%-- </c:when>
+                    <c:otherwise>
+                    </c:otherwise>
+                </c:choose> --%>
 				</div>
 
 				<section class="content-favorite">
@@ -292,11 +292,12 @@
                                                 <p>거래선호도는 나만 볼 수 있어요</p>
                                                 <div class="choice">
                                                     <div>
-                                                        <input type="checkbox" name="badchoice" class="badchoice" id="badchoice" value="badchoice"> <label for="badchoice"></label>
+                                                        
+                                                        <input type="checkbox" name="badchoice" class="badchoice" id="badchoice" value="badchoice"> <label for="badchoice" id = "badchoiceLabel"></label>
                                                         <p>별로예요</p>
                                                     </div>
                                                     <div>
-                                                        <input type="checkbox" name="goodchoice" class="goodchoice" id="goodchoice" value="goodchoice"> <label for="goodchoice"></label>
+                                                        <input type="checkbox" name="goodchoice" class="goodchoice" id="goodchoice" value="goodchoice"> <label for="goodchoice" id = "goodchoiceLabel"></label>
                                                         <p>최고예요</p>
                                                     </div>
                                                     <!-- <a href="javascript:doDisplay();">별로예요</a> -->
@@ -412,7 +413,7 @@
                                             <!-- ♥ 여기 안에다가 넣자 ♥-->
                                             <section class="send_message1">
                                                 <p><span id="nickName1"></span>님에게 따뜻한 후기를 보냈어요!</p>
-                                                <p><span id="nickName2"></span>님과 <span id="goodsTitle2"></span>를 거래했어요!</p>
+                                                <p><span id="nickName2"></span>님과 <span id="goodsTitle"></span>를 거래했어요!</p>
                                             </section>
                                             <section class="send_message2">
                                                 <ul id = "messageList">
@@ -443,7 +444,7 @@
                                             <!-- ♥ 여기 안에다가 넣자 ♥-->
                                             <section class="send_message1">
                                                 <p><span id="nickName3"></span>님이 따뜻한 후기를 보냈어요!</p>
-                                                <p><span id="nickName4"></span>님과 <span id="goodsTitle"></span>를 거래했어요!</p>
+                                                <p><span id="nickName4"></span>님과 <span id="goodsTitle2"></span>를 거래했어요!</p>
                                             </section>
                                             <section class="send_message2">
                                                 <ul id = "messageList2">
@@ -528,10 +529,12 @@
         let loginMemberNo;
 
         loginMemberNo = ${loginMember.memberNo};
+
     </script>
     <!-- jQuery 라이브러리(.js 파일) 추가(CDN 방식) -->
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 	<script src="/resources/js/lsy/addPop.js"></script>
+	<script src="/resources/js/lsy/myPage_common.js"></script>
 	<script src="/resources/js/lsy/review_survey.js"></script>
 </body>
 

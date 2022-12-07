@@ -28,18 +28,18 @@
         <jsp:include page="/WEB-INF/views/common/header.jsp" />
 
     <section class = "title">
-        <i id = "back" class="fa-solid fa-angle-right"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;매너 상세
+        <a href="/member/myPage/selectAllReview"><i id = "back" class="fa-solid fa-angle-right"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;매너 상세</a>
     </section>      
     <section class = "content">
         <div class= "side">
-            <div class= "side1" id = "side1">
+            <a class= "side1" id = "side1" href="/member/myPage/review/good?mannerCt=1">
                 <div><i class="fa-regular fa-face-smile-beam imo1"></i></div>
-                <p><a href="/member/myPage/review/good?mannerCt=1">받은 매너 칭찬</a></p> 
-            </div>
-            <div class= "side2" id = "side2"> 
+                <p>받은 매너 칭찬</p> 
+            </a>
+            <a class= "side2" id = "side2" href="/member/myPage/review/good?mannerCt=2">
                 <div><i class="fa-regular fa-face-angry imo1"></i></div>
-                <p><a href="/member/myPage/review/good?mannerCt=2">받은 비매너 후기</a></p>
-            </div>
+                <p>받은 비매너 후기</p> 
+            </a>
         </div>
 
         <div class="goodBadMain">
@@ -49,7 +49,7 @@
                         <div><%-- divG2_1div --%>
                             <i class="fa-regular fa-face-smile-beam imo"></i><%-- divG2_1div_i --%>
                         </div>
-                        <p>받은 매너 칭찬</p> <%-- divG2_2p --%>
+                        <h1>받은 매너 칭찬</h1> <%-- divG2_2p --%>
                     </div>
                 </div>
 
@@ -59,10 +59,64 @@
             <div class = "main_content">
                 <c:forEach var = "review" items = "${reviewList}">
                 <div class = "review">
+                    <div>
+                        <c:choose>
+                            <c:when test="${review.mannerNo == 1}">
+                                <div class="iconBox"><i class="fa-solid fa-hand-holding-hand mannerPic"></i></div>
+                            </c:when>
+                            <c:when test="${review.mannerNo == 2}">
+                                <div class="iconBox"><i class="fa-solid fa-wand-magic-sparkles mannerPic"></i></div>
+                            </c:when>
+                            <c:when test="${review.mannerNo == 3}">
+                                <div class="iconBox"><i class="fa-solid fa-arrow-up-short-wide mannerPic"></i></div>
+                            </c:when>
+                            <c:when test="${review.mannerNo == 4}">
+                                <div class="iconBox"><i class="fa-solid fa-money-bill-1-wave mannerPic"></i></div>
+                            </c:when>
+                            <c:when test="${review.mannerNo == 5}">
+                                <div class="iconBox"><i class="fa-solid fa-clock mannerPic"></i></div>
+                            </c:when>
+                            <c:when test="${review.mannerNo == 6}">
+                                <div class="iconBox"><i class="fa-solid fa-truck-fast mannerPic"></i></div>
+                            </c:when>
+                            <c:when test="${review.mannerNo == 7}">
+                                <div class="iconBox"><i class="fa-solid fa-thumbs-up mannerPic"></i></div>
+                            </c:when>
+
+
+                            <c:when test="${review.mannerNo == 8}">
+                                <div class="iconBox"><i class="fa-solid fa-hand-holding-dollar mannerPic"></i></div>
+                            </c:when>
+                            <c:when test="${review.mannerNo == 9}">
+                                <div class="iconBox"><i class="fa-solid fa-clock-rotate-left mannerPic"></i></div>
+                            </c:when>
+                            <c:when test="${review.mannerNo == 10}">
+                                <div class="iconBox"><i class="fa-solid fa-question mannerPic"></i></div>
+                            </c:when>
+                            <c:when test="${review.mannerNo == 11}">
+                                <div class="iconBox"><i class="fa-solid fa-ban mannerPic"></i></div>
+                            </c:when>
+                            <c:when test="${review.mannerNo == 12}">
+                                <div class="iconBox"><i class="fa-solid fa-phone-slash mannerPic"></i></div>
+                            </c:when>
+                            <c:when test="${review.mannerNo == 13}">
+                                <div class="iconBox"><i class="fa-solid fa-person-circle-question mannerPic"></i></div>
+                            </c:when>
+                            <c:when test="${review.mannerNo == 14}">
+                                <div class="iconBox"><i class="fa-solid fa-certificate mannerPic"></i></div>
+                            </c:when>
+                            <c:when test="${review.mannerNo == 15}">
+                                <div class="iconBox"><i class="fa-solid fa-person-harassing mannerPic"></i></div>
+                            </c:when>
+                            <c:when test="${review.mannerNo == 16}">
+                                <div class="iconBox"><i class="fa-solid fa-face-frown mannerPic"></i></div>
+                            </c:when>
+                        </c:choose>
                     <p>${review.mannerDescription}</p>
+                    </div>
                     <div>
                         <i class="fa-solid fa-user-group"></i>
-                        <p>${review.mannerCount}</p>
+                        <p class="mannerCount">${review.mannerCount}</p>
                     </div>
                 </div>
                 </c:forEach>
@@ -82,6 +136,11 @@
             mannerCt = ${param.mannerCt};
         } else {
             mannerCt = 1;
+        }
+
+        switch(mannerCt){
+            case 1: document.getElementById("side1").style.fontWeight = "bold"; break;
+            case 2: document.getElementById("side2").style.fontWeight = "bold"; break;
         }
     </script>
 

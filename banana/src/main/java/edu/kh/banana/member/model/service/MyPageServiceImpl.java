@@ -280,10 +280,10 @@ public class MyPageServiceImpl implements MyPageService{
 			int listCount = dao.myGoodsLikeListCount(memberNo);
 			
 			//2. 전체 게시글 수 + cp(현재페이지)를 이용해서 페이징 처리 객체를 생성한다.
-			MypageDetailPagination pagination = new MypageDetailPagination(listCount,cp);
+			MypagePagination pagination = new MypagePagination(listCount,cp);
 			
 			
-			List<Review> myGoodsLikeList = dao.myGoodsLikeList(memberNo,pagination);
+			List<GoodsSell> myGoodsLikeList = dao.myGoodsLikeList(memberNo,pagination);
 			
 			
 			Map<String, Object> map = new HashMap<String, Object>();
@@ -337,6 +337,15 @@ public class MyPageServiceImpl implements MyPageService{
 		public int memberBlockCancel(Map<String, Object> map) {
 			
 			return dao.memberBlockCancel(map);
+		}
+
+		/*타인의 마이페이지*/
+
+		//1. 타인의 정보를 가져온다.(닉네임/자기소개/프로필이미지/바나나온도)
+		@Override
+		public Member selectYourInfo(int memberNo) {
+			
+			return dao.selectYourInfo(memberNo);
 		}
 
 

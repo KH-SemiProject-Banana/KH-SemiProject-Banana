@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 
 
@@ -75,7 +76,7 @@
                     <div class="favorite__pack">
                         <div>
                             <div class="favorite__img">
-                                <a href="">
+                                <a href="/goods/${favorite.goodsNo}">
                                     <img src="${favorite.thumbnail}" class="favorite__img">
                                 </a>
                                 <div class="favorite__heart">
@@ -90,12 +91,20 @@
                                     </label>
                                 </div>
                             </div>
-                            <div class="favorite__price-heart">
-                                <div class="favorite__price">${favorite.sellPrice}</div>
-                            </div>
                         </div>
-                    
-                        <div class="favorite__title">${favorite.title}</div>
+                        <c:choose>
+                            <c:when test="${fn:length(favorite.title) gt 10}">
+                                <div class="favorite__title">${fn:substring(favorite.title, 0, 9)}...</div>
+                            </c:when>
+                            <c:otherwise>
+                                <div class="favorite__title">${favorite.title}</div>
+                            </c:otherwise>
+                        </c:choose>
+                            <div class="favorite__price-heart">
+                                <div class="favorite__price">
+                                    <fmt:formatNumber value="${favorite.sellPrice}" pattern="#,###" />원
+                                </div>
+                            </div>
                     </div>
 
                     <c:remove var="isLike"/>
@@ -111,7 +120,7 @@
                     <p class="title">  최근글</p>
                 </div>
                 
-                <a href="#">더보기</a>
+                <%-- <a href="#">더보기</a> --%>
             </section>
 
 
@@ -127,7 +136,7 @@
                     <div class="favorite__pack">
                         <div>
                             <div class="favorite__img">
-                                <a href="">
+                                <a href="/goods/${newGoods.goodsNo}">
                                     <img src="${newGoods.thumbnail}" class="new__img">
                                 </a>
                                 <div class="favorite__heart">
@@ -142,13 +151,21 @@
                                     </label>
                                 </div>
                             </div>
-                            <div class="favorite__price-heart">
-                                <div class="new__price">${newGoods.sellPrice}</div>
-                                
-                            </div>
+                            
                         </div>
-                    
-                        <div class="new__title">${newGoods.title}</div>
+                        <c:choose>
+                            <c:when test="${fn:length(newGoods.title) gt 10}">
+                                <div class="new__title">${fn:substring(newGoods.title, 0, 9)}...</div>
+                            </c:when>
+                            <c:otherwise>
+                                <div class="new__title">${newGoods.title}</div>
+                            </c:otherwise>
+                        </c:choose>
+                            <div class="favorite__price-heart">
+                                <div class="new__price">
+                                    <fmt:formatNumber value="${newGoods.sellPrice}" pattern="#,###" />원
+                                </div>
+                            </div>
                     </div>
                 </c:forEach>
             </section>

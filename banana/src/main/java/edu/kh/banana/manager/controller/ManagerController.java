@@ -251,5 +251,57 @@ public class ManagerController {
 		return null;
 	}
 	
+	
+	/** 게시글 목록 조회
+	 * @param paramMap
+	 * @param model
+	 * @return
+	 */
+	@GetMapping("/boardSearch")
+	public String boardSearch(@RequestParam Map<String, Object> paramMap,
+			@RequestParam(value="cp", required=false, defaultValue="1" ) int cp,
+			Model model
+			) {
+		
+		// 조건이 있는 게시글 목록 조회
+		Map<String, Object> map = service.boardSearch(paramMap, cp);
+		
+		
+
+		
+		model.addAttribute("map", map);
+
+		
+		
+		
+		return "manager/manager-board";
+	}
+	
+	
+
+	
+	
+	/** 게시글 삭제
+	 * @param goodsNo
+	 * @return
+	 */
+	@GetMapping("/boardDelete")
+	@ResponseBody
+	public int boardDelete(int boardNo) {
+		
+		return service.boardDelete(boardNo);
+	}
+	
+	/** 게시글 삭제 취소
+	 * @param goodsNo
+	 * @return
+	 */
+	@GetMapping("/boardDeleteBack")
+	@ResponseBody
+	public int boardDeleteBack(int boardNo) {
+		
+		return service.boardDeleteBack(boardNo);
+	}
+	
 
 }

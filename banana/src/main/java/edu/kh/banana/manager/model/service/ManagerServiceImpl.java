@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import edu.kh.banana.board.model.vo.Board;
@@ -204,8 +205,69 @@ public class ManagerServiceImpl implements ManagerService{
 		return dao.goodsDeleteBack(goodsNo);
 	}
 
+	/**
+	 * 조건이 있는 게시글 조회
+	 */
+	@Override
+	public Map<String, Object> boardSearch(Map<String, Object> paramMap, int cp) {
+		
+		// 조건에 맞는 게시글 갯수 조회
+		int listCount = dao.getBoardListCount(paramMap);
+		
+		// 전체 게시글 수
+		int allBoardCount = dao.allBoardCount();
+		
+		// 전체 상품 수 + cp를 이용헤 페이징 처리
+		Pagination pagination = new Pagination(listCount, cp);
+		pagination.setLimit(30); // // 한 페이지에 보일 상품목록 수 : 30
+		
+		
+		// sort값 계산
+		paramMap.put("order", "BOARD_CODE ASC, BOARD_NO ASC");
+		if(paramMap.get("sort").equals("1")) {
+			paramMap.put("order", "BOARD_CODE ASC, BOARD_NO ASC ");
+		}
+		if(paramMap.get("sort").equals("2")) {
+			paramMap.put("order", "BOARD_CODE ASC, BOARD_NO DESC ");
+		}
+		if(paramMap.get("sort").equals("3")) {
+			paramMap.put("order", "BOARD_CODE ASC, VIEW_COUNT DESC");
+		}
+		if(paramMap.get("sort").equals("4")) {
+			paramMap.put("order", "BOARD_CODE ASC, VIEW_COUNT ASC");
+		}
+		
+		
+		// 조건에 맞는 게시글 목록
+		List<Board> boardList = dao.boardSearch(pagination, paramMap);
+		
+		Map<String, Object> map = new HashMap<>();
+		map.put("pagination", pagination);
+		map.put("boardList", boardList);
+		map.put("allBoardCount", allBoardCount);
+		map.put("listCount", listCount);
+		
+		return map;
+	}
 
 
+	/**
+	 * 게시글 삭제
+	 */
+	@Override
+	public int boardDelete(int boardNo) {
+		
+		return dao.boardDelete(boardNo);
+	}
+
+	/**
+	 * 게시글 삭제 복구
+	 */
+	@Override
+	public int boardDeleteBack(int boardNo) {
+		
+		return dao.boardDeleteBack(boardNo);
+	}
 
 
 

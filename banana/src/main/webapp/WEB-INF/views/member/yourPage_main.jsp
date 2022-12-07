@@ -46,7 +46,7 @@
 			</section>
 			<!--섹션2********************************************************************************************************섹션1-->
 			<section class="myBanana-title">
-				<p>나의 바나나</p>
+				<p>너의 바나나</p>
 			</section>
 			<!--섹션3********************************************************************************************************섹션1-->
 			<section class="myBanana-detail">
@@ -95,7 +95,7 @@
 			<section class="myBanana-category">
             
                     <div id= "first-category" class = "category">
-                        <a href="/member/myPage/main?myPageCt=1">판매내역</a>
+                        <a href="/member/myPage/yourPageMain?myPageCt=1">판매내역</a>
                     </div>
                     <div id= "fourth-category" class = "category">
                         <a href="/member/myPage/selectAllReview">후기</a>
@@ -111,8 +111,8 @@
 				<div class="myBanana-sell">
                 <%-- <c:choose>
                     <c:when test = "${loginMember.memberNo eq soldList.sellerNo}"> --%>
-					    <div id="selling"><a href="/member/myPage/main?myPageCt=5">판매중</a></div>
-					    <div id="sold"><a href="/member/myPage/main?myPageCt=1">판매완료</a></div>
+					    <div id="selling"><a href="/member/myPage/yourPageMain?myPageCt=5">판매중</a></div>
+					    <div id="sold"><a href="/member/myPage/yourPageMain?myPageCt=1">판매완료</a></div>
                     <%-- </c:when>
                     <c:otherwise>
                     </c:otherwise>

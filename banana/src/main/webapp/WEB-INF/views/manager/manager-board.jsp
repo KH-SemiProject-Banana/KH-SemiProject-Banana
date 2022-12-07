@@ -3,8 +3,8 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <c:set var="pagination" value="${map.pagination}"/>
-<c:set var="memberList" value="${map.memberList}"/>
-<c:set var="allMemberCount" value="${map.allBoardCount}"/>
+<c:set var="boardList" value="${map.boardList}"/>
+<c:set var="allBoardCount" value="${map.allBoardCount}"/>
 <c:set var="listCount" value="${map.listCount}"/>
 
 <%-- <c:set var="sURL" value="sort=${param.sort}&key=${param.key}&query=${param.query}&isBlock=${param.isBlock}&isDelete=${param.isDelete}&calanderBefore=${param.calanderBefore}&calanderAfter=${param.calanderAfter}"/> --%>
@@ -42,16 +42,10 @@
             <section class="main-class">
                 <div class="member-title">
                     <h3>게시판</h3>
-                    <div class="uploadBox">
-                        <button><a href="#">+ 배너 등록</a></button>
-                        <button><a href="#">+ 게시글 등록</a></button>
-                    </div>
                 </div>
 
                 <form id="frmSearchBase" method="get" class="member-search" action="/manager/boardSearch">
-                    <input type="hidden" name="sort" value="entryDt asc">
-                    <input type="hidden" name="sort" value="entryDt asc">
-                    <input type="hidden" name="sort" value="entryDt asc">
+                    <input type="hidden" name="sort" id="orderInput">
                     <p class="search__title">게시글 검색</p>
                     <div class="search-detail-box form-inline">
                         <div class="search-detail-div">
@@ -80,38 +74,38 @@
                             <div>
 
                                 <c:set var="allBoardChk" value="checked"/>
-                                <c:if test="${param.boardType == 'board1'}">
+                                <c:if test="${param.boardCode == '1'}">
                                     <c:set var="board1Chk" value="checked"></c:set>
                                     <c:set var="allBoardChk" value=""/>
                                 </c:if>
-                                <c:if test="${param.boardType == 'board2'}">
+                                <c:if test="${param.boardCode == '2'}">
                                     <c:set var="board2Chk" value="checked"></c:set>
                                     <c:set var="allBoardChk" value=""/>
                                 </c:if>
-                                <c:if test="${param.boardType == 'board3'}">
+                                <c:if test="${param.boardCode == '3'}">
                                     <c:set var="board3Chk" value="checked"></c:set>
                                     <c:set var="allBoardChk" value=""/>
                                 </c:if>
-                                <c:if test="${param.boardType == 'board4'}">
+                                <c:if test="${param.boardCode == '4'}">
                                     <c:set var="board4Chk" value="checked"></c:set>
                                     <c:set var="allBoardChk" value=""/>
                                 </c:if>
 
                                 
                                 <label class="radio-inline">
-                                    <input type="radio" name="boardType" value="allBoard" ${allBoardChk}>전체
+                                    <input type="radio" name="boardCode"  ${allBoardChk}>전체
                                 </label>
                                 <label class="radio-inline">
-                                    <input type="radio" name="boardType" value="board1" ${board1Chk}>자주 묻는 질문
+                                    <input type="radio" name="boardCode" value="1" ${board1Chk}>자주 묻는 질문
                                 </label>
                                 <label class="radio-inline">
-                                    <input type="radio" name="boardType" value="board2" ${board2Chk}>운영정책
+                                    <input type="radio" name="boardCode" value="2" ${board2Chk}>운영정책
                                 </label>
                                 <label class="radio-inline">
-                                    <input type="radio" name="boardType" value="board3" ${board3Chk}>일반문의
+                                    <input type="radio" name="boardCode" value="3" ${board3Chk}>일반문의
                                 </label>
                                 <label class="radio-inline">
-                                    <input type="radio" name="boardType" value="board4" ${board4Chk}>공지사항
+                                    <input type="radio" name="boardCode" value="4" ${board4Chk}>공지사항
                                 </label>
                             </div>
                         </div>
@@ -192,9 +186,9 @@
                 <div class="pull-left">
                     검색
                     <strong>${listCount}</strong>
-                    명 / 전체
+                    개 / 전체
                     <strong>${allBoardCount}</strong>
-                    명
+                    개
                 </div>
                 <div class="search-result-area">
                     <div class="search-result-div" id="goodsNumber">
@@ -208,16 +202,16 @@
                         <div class="search-result-tab">게시판종류</div>
                         <c:forEach var="board" items="${boardList}">
                             <c:choose>
-                                <c:when test="${board.boardType == 1}">
+                                <c:when test="${board.boardCode == 1}">
                                     <div class="search-content">자주 묻는 질문</div>
                                 </c:when>
-                                <c:when test="${board.boardType == 2}">
+                                <c:when test="${board.boardCode == 2}">
                                     <div class="search-content">운영정책</div>
                                 </c:when>
-                                <c:when test="${board.boardType == 3}">
+                                <c:when test="${board.boardCode == 3}">
                                     <div class="search-content">일반 문의</div>
                                 </c:when>
-                                <c:when test="${board.boardType == 4}">
+                                <c:when test="${board.boardCode == 4}">
                                     <div class="search-content">공지사항</div>
                                 </c:when>
                             </c:choose>
@@ -228,27 +222,43 @@
                         <div class="search-result-tab">제목</div>
                         <c:forEach var="board" items="${boardList}">
                             <c:if test="${fn:length(board.boardTitle) > 10}">
-                                <div class="search-content">${fn:substring(board.boardTitle, 0, 10)}...</div>
+                                <c:if test="${board.boardCode == 1}">
+                                    <a href="/board/${board.boardCode}">
+                                        <div class="search-content">${fn:substring(board.boardTitle, 0, 10)}...</div>
+                                    </a>    
+                                </c:if>
+                                <c:if test="${board.boardCode != 1}">
+                                    <a href="/board/${board.boardCode}/${board.boardNo}">
+                                        <div class="search-content">${fn:substring(board.boardTitle, 0, 10)}...</div>
+                                    </a>    
+                                </c:if>
                             </c:if>
                             <c:if test="${fn:length(board.boardTitle) <= 10}">
-                                <div class="search-content">${board.boardTitle}</div>
+                                <c:if test="${board.boardCode == 1}">
+                                    <a href="/board/${board.boardCode}">
+                                        <div class="search-content">${board.boardTitle}</div>
+                                    </a>    
+                                </c:if>
+                                <c:if test="${board.boardCode != 1}">
+                                    <a href="/board/${board.boardCode}/${board.boardNo}">
+                                        <div class="search-content">${board.boardTitle}</div>
+                                    </a>    
+                                </c:if>
                             </c:if>
                         </c:forEach>
                     </div>
                     <div class="search-result-div" id="managerComment">
                         <div class="search-result-tab">답변상태</div>
                         <c:forEach var="board" items="${boardList}">
-                            <c:when test="${board.boardType == 3}">
-                                <c:if test="${board.managerComment == 0 }">
-                                    <div class="search-content">미답변</div>
-                                </c:if>
-                                <c:if test="${board.managerComment > 0 }">
-                                    <div class="search-content">답변완료</div>
-                                </c:if>
-                            </c:when>
-                            <c:otherwise>
+                            <c:if test="${board.boardCode == 3 && board.managerComment == 'N' }">
+                                <div class="search-content notAnswered">미답변</div>
+                            </c:if>
+                            <c:if test="${board.boardCode == 3 && board.managerComment == 'Y' }">
+                                <div class="search-content">답변완료</div>
+                            </c:if>
+                            <c:if test="${board.boardCode != 3}">
                                 <div class="search-content"> - </div>
-                            </c:otherwise>
+                            </c:if>
                         </c:forEach>
                     </div>
 
@@ -281,7 +291,7 @@
                     </div>
 
                     <div class="search-result-div" id="boardDelFlag">
-                        <div class="search-result-tab">글 수정</div>
+                        <div class="search-result-tab">글 상태</div>
                         <c:forEach var="board" items="${boardList}">
                             <c:if test="${board.boardDelFlag == 'Y'}">
                                 <div class="search-content disabled">삭제된 게시글</div>

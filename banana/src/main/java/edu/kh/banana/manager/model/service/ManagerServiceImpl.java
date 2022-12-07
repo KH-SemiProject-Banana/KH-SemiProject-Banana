@@ -223,23 +223,23 @@ public class ManagerServiceImpl implements ManagerService{
 		
 		
 		// sort값 계산
-		paramMap.put("order", "BOARD_NO ASC, BOARD_CODE ASC");
+		paramMap.put("order", "BOARD_CODE ASC, BOARD_NO ASC");
 		if(paramMap.get("sort").equals("1")) {
-			paramMap.put("order", "BOARD_NO ASC, BOARD_CODE ASC");
+			paramMap.put("order", "BOARD_CODE ASC, BOARD_NO ASC ");
 		}
 		if(paramMap.get("sort").equals("2")) {
-			paramMap.put("order", "BOARD_NO DESC, BOARD_CODE ASC");
+			paramMap.put("order", "BOARD_CODE ASC, BOARD_NO DESC ");
 		}
 		if(paramMap.get("sort").equals("3")) {
-			paramMap.put("order", "VIEW_COUNT DESC, BOARD_CODE ASC");
+			paramMap.put("order", "BOARD_CODE ASC, VIEW_COUNT DESC");
 		}
 		if(paramMap.get("sort").equals("4")) {
-			paramMap.put("order", "VIEW_COUNT ASC, BOARD_CODE ASC");
+			paramMap.put("order", "BOARD_CODE ASC, VIEW_COUNT ASC");
 		}
 		
 		
 		// 조건에 맞는 게시글 목록
-		List<GoodsSell> boardList = dao.boardSearch(pagination, paramMap);
+		List<Board> boardList = dao.boardSearch(pagination, paramMap);
 		
 		Map<String, Object> map = new HashMap<>();
 		map.put("pagination", pagination);

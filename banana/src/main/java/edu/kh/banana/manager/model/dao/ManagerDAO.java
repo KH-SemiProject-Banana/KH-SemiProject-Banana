@@ -180,7 +180,7 @@ public class ManagerDAO {
 	 * @param paramMap
 	 * @return
 	 */
-	public List<GoodsSell> boardSearch(Pagination pagination, Map<String, Object> paramMap) {
+	public List<Board> boardSearch(Pagination pagination, Map<String, Object> paramMap) {
 		
 		int offset = (pagination.getCurrentPage() -1) * pagination.getLimit();
 		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
@@ -194,7 +194,7 @@ public class ManagerDAO {
 	 */
 	public int boardDelete(int boardNo) {
 		
-		return sqlSession.update("goodsMapper.boardDelete", boardNo);
+		return sqlSession.update("boardMapper.boardDelete", boardNo);
 	}
 	
 	/** 게시글 삭제 복구
@@ -203,7 +203,7 @@ public class ManagerDAO {
 	 */
 	public int boardDeleteBack(int boardNo) {
 		
-		return sqlSession.update("goodsMapper.boardDeleteBack", boardNo);
+		return sqlSession.update("boardMapper.boardDeleteBack", boardNo);
 	}
 
 	

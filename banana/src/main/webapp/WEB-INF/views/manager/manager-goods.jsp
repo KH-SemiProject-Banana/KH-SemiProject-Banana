@@ -158,9 +158,9 @@
                 <div class="pull-left">
                     검색
                     <strong>${listCount}</strong>
-                    명 / 전체
+                    개 / 전체
                     <strong>${allGoodsCount}</strong>
-                    명
+                    개
                 </div>
 
 

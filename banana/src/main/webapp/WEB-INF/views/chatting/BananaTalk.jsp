@@ -128,7 +128,7 @@
                             <a href="javascript:openPop()"><!-- 신고버튼 -->
                                 <i class="fa-regular fa-bell-slash"></i>
                             </a>
-                        </div>
+                        </div>  
                     </ul> 
                     <!--------- 채팅박스 상단 상품 시작 끝--------->
 

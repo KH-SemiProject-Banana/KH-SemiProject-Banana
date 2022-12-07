@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import edu.kh.banana.boardcomplain.model.dao.BoardComplainDAO;
 
-
+  
 @Service
 public class BoardComplainServiceImpl implements BoardComplainService {
 

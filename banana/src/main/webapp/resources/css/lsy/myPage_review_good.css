@@ -160,7 +160,7 @@ a {
 }
 
 .mannerPic {
-    font-size: 25px;
+    font-size: 30px;
     color: var(--darkYellow);
 }
 
@@ -172,4 +172,8 @@ a {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.iconBox p {
+    padding-bottom: 5px;
 }

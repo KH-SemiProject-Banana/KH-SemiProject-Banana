@@ -49,7 +49,7 @@
                         <div><%-- divG2_1div --%>
                             <i class="fa-regular fa-face-smile-beam imo"></i><%-- divG2_1div_i --%>
                         </div>
-                        <h2>받은 매너 칭찬</h2> <%-- divG2_2p --%>
+                        <h1>받은 매너 칭찬</h1> <%-- divG2_2p --%>
                     </div>
                 </div>
 

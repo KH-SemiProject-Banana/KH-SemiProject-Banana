@@ -125,7 +125,7 @@ public class EmailServiceImpl implements EmailService {
             String mailContent 
                 = "<p>바나나 마켓 회원 가입한 아이디입니다.</p>"
                 + "<h3 style='color:blue'>" + result + "</h3>"
-                + "<p> 로그인 페이지로 이동 : http://localhost/member/login </p>";
+                + "<p> 로그인 페이지로 이동 : http://kh-classa.xyz/ </p>";
             
             // 송신자(보내는 사람) 지정
             mail.setFrom(new InternetAddress(fromEmail, fromUsername));
@@ -175,10 +175,11 @@ public class EmailServiceImpl implements EmailService {
             = "<p>바나나 마켓 회원 임시 비밀번호 입니다.</p>"
             + "<h3 style='color:blue'>" + authKey + "</h3>"
             + "<p> 내정보 수정에서 비밀번호를 꼭 변경해 주세요. </p>"
-            + "<p> 로그인 페이지로 이동 : http://localhost/member/login </p>";
+            + "<p> 로그인 페이지로 이동 : http://kh-classa.xyz/ </p>";
             
             
             // 송신자(보내는 사람) 지정
+            
             mail.setFrom(new InternetAddress(fromEmail, fromUsername));
             
             // 수신자(받는사람) 지정

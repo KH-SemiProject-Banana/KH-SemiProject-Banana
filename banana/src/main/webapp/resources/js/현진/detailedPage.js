@@ -127,6 +127,11 @@ const sellerPage = document.getElementsByClassName("sellerPage");
 
 for(let item of sellerPage) {
   item.addEventListener("click", () => {
-    location.href = "/member/myPage/yourPageMain?myPageCt=1";
+    $.ajax({
+      url : "/member/myPage/yourPageMain?myPageCt=1",
+      async : false,
+      data : {"sellerNo" : sellerNo},
+      type : "GET"
+    });
   })
 }

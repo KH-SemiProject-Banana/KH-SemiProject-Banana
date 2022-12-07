@@ -158,7 +158,7 @@
                 </section>
             </div>
 
-            <div class="seller">
+            <form action="/member/myPage/yourPageMain?myPageCt=1" method="post" class="seller">
                 <div class="seller_profile">
                     <div class="seller_img">
                         <c:choose>
@@ -230,7 +230,8 @@
                         </c:forEach>
                     </div>
                 </div>
-            </div>
+                <input type="hidden" name="sellerNo" value="${sellerInfo.memberNo}">
+            </form>
 
             <div class="precautions">
                 * 거래 시 주의 사항<br>

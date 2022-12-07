@@ -154,7 +154,7 @@ label[for="header-menu-toggle-chatting"]:hover {
     top: 40px; */
     margin-top: 5px;
     border: 1px solid black;
-    background-color: white;
+    background-color: white; 
 }
 
 #header-menu-chatting>a {

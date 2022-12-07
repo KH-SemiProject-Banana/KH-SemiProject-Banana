@@ -1,5 +1,5 @@
 // 1 페이지
-const click =  document.getElementById("clickk");
+const click =  document.getElementById("click");
 
 // 2페이지
 const click1 = document.getElementById("click1");
@@ -66,7 +66,7 @@ function openPop(){
                 
     abc1.addEventListener("click",function(){
     
-        clickk.style.display = "none";
+        click.style.display = "none";
         click1.style.display = "block";
         back1.style.display = "block";
             

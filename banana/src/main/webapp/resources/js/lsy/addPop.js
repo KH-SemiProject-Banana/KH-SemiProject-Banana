@@ -492,21 +492,27 @@ for(let dot of dotList){
     //     // 글 삭제
         div2.classList.add("anotherPop1" , "babo", "deleteGoods");
         div2.innerText = "글 삭제하기";
-        div2.addEventListener("click", deleteGoods(goodsNo));
+        e.target.nextElementSibling.childNodes[1].addEventListener("click", () => {deleteGoods(goodsNo)});
+        // div2.addEventListener("click", deleteGoods(goodsNo));
         
         // 끌어올리기
         div3.classList.add("anotherPop1", "refreshGoods");
         div3.innerText = "끌어올리기";
-        div3.addEventListener("click", refreshGoods(goodsNo));
+        e.target.nextElementSibling.childNodes[2].addEventListener("click", () => {refreshGoods(goodsNo)});
+
+        // div3.addEventListener("click", refreshGoods(goodsNo));
         
     });
 }
 
 
+
+
 const deleteGoods = (goodsNo) => {
 
     if(confirm("정말 상품을 삭제하시겠습니까?")){
-        () => {
+
+        (() => {
             
             $.ajax({
     
@@ -517,7 +523,7 @@ const deleteGoods = (goodsNo) => {
                     if(result > 0) {
                         // 상품태그 메인에서 지우기
                         alert("상품이 삭제되었습니다");
-                        e.target.parentElement.parentElement.parentElement.remove();
+                        location.href = location.href;
                     } else {
                         console.log("상품글 삭제 실패");
                     }
@@ -526,7 +532,7 @@ const deleteGoods = (goodsNo) => {
                     console.log("상품글 삭제 중 오류 발생");
                 }
             })
-        }
+        })();
     }
 }
 

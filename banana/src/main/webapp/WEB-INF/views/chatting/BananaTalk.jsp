@@ -32,32 +32,32 @@
     <main>
         <!-- header 시작----------------------------------------------------------------------------------------- -->
         <header>
-            <section class="section-query">
-                <div class="query__area">
+            <section class="section-query-chatting">
+                <div class="query__area-chatting">
                     <div>
                         <a href="/">
-                            <img src="/resources/images/banana-logo.png" id="logo-img"/>
+                            <img src="/resources/images/banana-logo.png" id="logo-img-chatting"/>
                         </a>
-                        <div class="query__logo">
+                        <div class="query__logo-chatting">
                             <p>바꾸고 나누자 나랑</p>
-                            <p id="query__banana">Banana Market</p>
+                            <p id="query__banana-chatting">Banana Market</p>
                         </div>
                     </div>
-                    <label for="header-menu-toggle">
+                    <label for="header-menu-toggle-chatting">
                         <div class="profileImgArea">
                             <c:if test="${empty loginMember.profileImage}">
                                 <img src="/resources/images/banana-logo.png"  id="profileImg">
                             </c:if>
                             <c:if test="${not empty loginMember.profileImage}">
-                                <img src="${loginMember.profileImage}" id="profileImg">
+                                <img src="${loginMember.profileImage}" id="profileImg-chatting">
                             </c:if>
                         </div>
                         ${loginMember.memberNickname}
-                        <i class="fa-solid fa-caret-down"></i>
+                        <i class="fa-solid fa-caret-down-chatting"></i>
                         <div>
-                            <input type="checkbox" id="header-menu-toggle">
+                            <input type="checkbox" id="header-menu-toggle-chatting">
 
-                            <div id="header-menu">
+                            <div id="header-menu-chatting">
                                 <a href="/member/myPage/main">내 정보</a>
                                 <a href="/member/logout">로그아웃</a>
                             </div>
@@ -118,7 +118,7 @@
                         </li>
                         <li class="productNamePrice">
                             <div class="productNameArea">
-                                <div class="productStatus">거래완료</div>
+                                <div class="productStatus">판매완료</div>
                                 <div class="productName">${loginMember.memberNickname}님과의 바나나톡 이용 약속</div>
                             </div>
                             <div class="productPrice">2,500,000 원</div>
@@ -129,10 +129,12 @@
                                 <i class="fa-regular fa-bell-slash"></i>
                             </a>
 
+                            <div id = "poppingThing" class = "poppingThing"> 
+                                <jsp:include page="/WEB-INF/views/userComplain/userComplain.jsp"></jsp:include>
+                            </div>
+
                         </div>
                     </ul> 
-
-                    
                     <!--------- 채팅박스 상단 상품 시작 끝--------->
 
 
@@ -191,11 +193,6 @@
         </div>
     </main>
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
-
-    <div id = "poppingThing" class = "poppingThing"> 
-        <jsp:include page="/WEB-INF/views/userComplain/userComplain.jsp"></jsp:include>
-    </div>
-    
     <!--------------------------------------- sockjs를 이용한 WebSocket 구현을 위해 라이브러리 추가 ---------------------------------------------->
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 	

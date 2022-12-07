@@ -132,7 +132,7 @@ public class MyPageDAO {
 		return sqlSession.update("myPageMapper.updateBad", map);
 	}
 
-	/**내가 쓴 후기 조회
+	/**4. 내가 쓴 후기 조회
 	 * @param ratingNo
 	 * @return
 	 */
@@ -150,7 +150,9 @@ public class MyPageDAO {
 		return sqlSession.update("myPageMapper.updateProfile", loginMember);
 		
 	}
-
+	
+	/****4  후기  ******/
+	
 	/**받은 거래후기 최신순3개를 조회하기
 	 * @param loginMember
 	 * @return
@@ -159,6 +161,8 @@ public class MyPageDAO {
 		
 		return sqlSession.selectList("myPageMapper.selectNewestReviewList",loginMember);
 	}
+	
+	
 	/** 회원 탈퇴
 	 * @param memberNo
 	 * @return result
@@ -244,6 +248,8 @@ public class MyPageDAO {
 		
 		return sqlSession.selectList("myPageMapper.selectReceivedReview",map);
 	}
+	
+	/////////////////////3 관심목록///////////////////////////////
 
 	/**관심목록 게시글의 수
 	 * @param memberNo

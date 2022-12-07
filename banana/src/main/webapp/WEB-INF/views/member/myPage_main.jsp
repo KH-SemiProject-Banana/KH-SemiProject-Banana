@@ -96,15 +96,7 @@
 
                                     </div>
 
-                                    <%-- <div class = "myPage-row">
-                                        <label >이메일</label>
-                                        <span>${loginMember.memberEmail}</span>
-                                    </div>
-
-                                    <div class = "myPage-row">
-                                        <label >가입일</label>
-                                        <span>${loginMember.enrollDate}</span>
-                                    </div> --%>
+                          
 
                                     
                                     
@@ -113,10 +105,7 @@
 
                                 </form>
                             </div>
-                            <!--팝업 버튼 영역-->
-                            <!-- <div class="popup_btn" style="float: bottom; margin-top: 100px;">
-                            <a href="javascript:closePop();">닫기</a>
-                            </div> -->
+                       
                         </div>
                     </div>
 

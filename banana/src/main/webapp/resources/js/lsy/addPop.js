@@ -33,6 +33,7 @@ switch(myPageCt){
 }
 
 
+
 // const first = document.getElementById("myBanana-sellList");
 // const fourth = document.querySelector("#changeJsp");
 
@@ -218,10 +219,12 @@ function closePop3() {
     document.getElementById("popup_layer").style.display = "none";
     document.getElementById("popup_layer2").style.display = "none";
     document.getElementById("popup_layer3").style.display = "none";
-//    for(let popupLayer of popupLayerList){
 
-//     popupLayer.style.display = "none";
-// }
+}
+//네번째 팝업 닫기
+function closePop4() {
+
+    document.getElementById("popup_layer4").style.display = "none";
 
 }
 

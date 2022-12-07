@@ -19,7 +19,7 @@
     <title>바꾸고 나누자 나랑: 바나나 마켓</title>
 
     <link rel="stylesheet" href="/resources/css/style.css">
-    <link rel="stylesheet" href="/resources/css/screens/header-footer.css">
+    <%-- <link rel="stylesheet" href="/resources/css/screens/header-footer.css"> --%>
 
     <link rel="stylesheet" href="/resources/css/lsy/addPop.css">
     <link rel="stylesheet" href="/resources/css/lsy/myPage_main.css">

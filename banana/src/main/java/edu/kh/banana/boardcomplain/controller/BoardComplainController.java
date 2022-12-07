@@ -31,11 +31,11 @@ public class BoardComplainController {
 
 	@GetMapping("/duplicateCheck2")
 	@ResponseBody
-	public int duplicateCheck(int category1, int category2) {
+	public int duplicateCheck(int memberNo, int memberNo2) {
 
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("category1", category1);
-		map.put("category2", category2);
+		map.put("memberNo", memberNo);
+		map.put("memberNo2", memberNo2);
 
 		int result = service.boardDuplication(map);
 		return result;
@@ -53,7 +53,7 @@ public class BoardComplainController {
 		// int complained 사용하기
 		int result = service.reportsubmit(submit);
 
-		System.out.println("테테테테테스스스스스스"+result);
+		
 		String message = null;
 
 		if (result > 0) {

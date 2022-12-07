@@ -51,7 +51,6 @@
                                 <button onclick="deleteComment(${comment.commentNo})">삭제</button>
                             </c:if>
                             </div>
-
                         </c:if>
                     </li>
                 </c:if>

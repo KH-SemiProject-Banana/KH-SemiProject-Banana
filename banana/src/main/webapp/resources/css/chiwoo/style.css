@@ -1,0 +1,13 @@
+
+
+/* screens */
+@import "screens/header-footer.css";
+@import "screens/main.css";
+@import "screens/question.css";
+
+
+
+@import "variables.css";
+
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap');
+

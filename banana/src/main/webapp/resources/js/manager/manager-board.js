@@ -47,7 +47,7 @@ for(let btn of btnDel) {
 }
 
 
-// 상품 삭제 취소
+// 게시글 삭제 취소
 const btnDelBack = document.getElementsByClassName("btnDelBack");
 for(let btn of btnDelBack) {
 
@@ -55,7 +55,7 @@ for(let btn of btnDelBack) {
 
         const boardNo = e.target.getAttribute("id");
         
-        if(confirm("정말 상품 정보를 복구하시겠습니까?")){
+        if(confirm("정말 게시글 정보를 복구하시겠습니까?")){
 
             $.ajax({
 

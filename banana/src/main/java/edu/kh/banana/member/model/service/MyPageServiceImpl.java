@@ -280,7 +280,7 @@ public class MyPageServiceImpl implements MyPageService{
 			int listCount = dao.myGoodsLikeListCount(memberNo);
 			
 			//2. 전체 게시글 수 + cp(현재페이지)를 이용해서 페이징 처리 객체를 생성한다.
-			MypageDetailPagination pagination = new MypageDetailPagination(listCount,cp);
+			MypagePagination pagination = new MypagePagination(listCount,cp);
 			
 			
 			List<GoodsSell> myGoodsLikeList = dao.myGoodsLikeList(memberNo,pagination);

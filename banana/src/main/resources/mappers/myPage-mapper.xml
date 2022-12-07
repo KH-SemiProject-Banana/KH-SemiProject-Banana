@@ -441,7 +441,7 @@ ORDER BY D.MANNER_NO
 
 <select id="myGoodsLikeListCount" parameterType = "_int" resultType = "_int">
 SELECT COUNT(*) FROM (
-SELECT S.GOODS_NO ,TITLE, SELLER_NO,
+SELECT S.GOODS_NO ,TITLE, SELLER_NO, MEMBER_NO,
 <![CDATA[
 CASE  
      WHEN SYSDATE - S.CREATED_AT < 1/24/60

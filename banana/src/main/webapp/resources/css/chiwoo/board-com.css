@@ -145,15 +145,15 @@
 }
 
 #back1 {
-    display: block;
+    display: none;
 }
 
 #back2 {
-    display: block;
+    display: none;
 }
 
 #b_back1 {
-    display: block;
+    display: none;
 }
 
 #b_back2 {

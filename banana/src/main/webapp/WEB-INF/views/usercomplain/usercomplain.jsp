@@ -28,14 +28,6 @@
 
         
         <section class="content"> 
-            
-        <%--     <a href="javascript:openPop()">
-                <div>
-                    팝업오픈!
-                </div>
-            </a>
-
- --%>       
             <%-- div0 --%>
             <div class="popup_layer" id="popup_layer" style="display: block;">
                 <%-- div1 --%>

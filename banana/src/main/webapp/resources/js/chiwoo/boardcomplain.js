@@ -148,12 +148,12 @@ function openPop(){
 
     for(let i = 0; i < b_abc.length; i++) {
 
-        // b_abc의 i번째 친구가 눌렸을 때 
+        // b_abc의 i번째가 눌렸을 때 
         b_abc[i].addEventListener("click", () => {
 
             // 0번부터 눌리니깐 +1
             b_ctg1.value = i + 1;
-            console.log(b_ctg1);
+        
             
             // b_ctg2 설명을 담을 껍데기 변수 선언
             let b_ctg2dsc;

@@ -6,12 +6,13 @@
 
 <insert id="userreportsubmit">
   INSERT INTO "USER_COMPLAIN"
-  VALUES(#{u_complain_no}, 
-  		#{u_com1_ctg_no},
-  		#{u_com2_ctg_no},
-  		#{u_complainer},
-  		#{u_complained},
-  		#{u_com_content}
+  VALUES(#SEQ_U_COM_NO.NEXTVAL, 
+  		#{memberNo},
+  		#{memberNo2},
+  		#{b_ctg1},
+  		#{b_ctg2},
+  		#{goodsNo2},
+  		#{reportbox},
   		DEFAULT)
 </insert>
 
@@ -25,7 +26,7 @@
 <insert id="userBlock">
   INSERT INTO "USER_BLOCK"
   VALUES(#{memberNo}, 
-  		#{memberNo})
+  		#{memberNo2})
 </insert>
 
 

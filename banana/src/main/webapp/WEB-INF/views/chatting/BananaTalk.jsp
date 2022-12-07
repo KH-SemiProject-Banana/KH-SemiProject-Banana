@@ -19,6 +19,14 @@
     <link rel="stylesheet" href="/resources/css/hyodong/BananaTalk_Header-footer.css">
     <link rel="stylesheet" href="/resources/css/hyodong/BananaTalk.css">
 
+    <style>
+        .poppingThing{
+            position:fixed;
+            z-index: 100;
+        }
+    </style>
+
+
 </head>
 <body> 
     <main>
@@ -113,12 +121,18 @@
                                 <div class="productStatus">거래완료</div>
                                 <div class="productName">${loginMember.memberNickname}님과의 바나나톡 이용 약속</div>
                             </div>
-                            <div class="productPrice">0 원</div>
+                            <div class="productPrice">2,500,000 원</div>
+
                         </li>
                         <div class="Declaration">
                             <a href="javascript:openPop()"><!-- 신고버튼 -->
                                 <i class="fa-regular fa-bell-slash"></i>
                             </a>
+
+                                <div id = "poppingThing" class = "poppingThing"> 
+                                <jsp:include page="/WEB-INF/views/usercomplain/usercomplain.jsp"></jsp:include>
+                                </div>
+
                         </div>
                     </ul> 
                     <!--------- 채팅박스 상단 상품 시작 끝--------->

@@ -118,6 +118,9 @@
 								<p id="introUpdateBtn1" class="introUpdateBtn1">수정하기</p>
 							</a>
 						</div>
+                        <div class = "bananaPayBtn">
+                            <p class="introUpdateBtn1" >바나나페이</p>
+                        </div>
 					</div>
 
 					<div class="myBanana-intro">
@@ -289,11 +292,12 @@
                                                 <p>거래선호도는 나만 볼 수 있어요</p>
                                                 <div class="choice">
                                                     <div>
-                                                        <input type="checkbox" name="badchoice" class="badchoice" id="badchoice" value="badchoice"> <label for="badchoice"></label>
+                                                        
+                                                        <input type="checkbox" name="badchoice" class="badchoice" id="badchoice" value="badchoice"> <label for="badchoice" id = "badchoiceLabel"></label>
                                                         <p>별로예요</p>
                                                     </div>
                                                     <div>
-                                                        <input type="checkbox" name="goodchoice" class="goodchoice" id="goodchoice" value="goodchoice"> <label for="goodchoice"></label>
+                                                        <input type="checkbox" name="goodchoice" class="goodchoice" id="goodchoice" value="goodchoice"> <label for="goodchoice" id = "goodchoiceLabel"></label>
                                                         <p>최고예요</p>
                                                     </div>
                                                     <!-- <a href="javascript:doDisplay();">별로예요</a> -->
@@ -525,10 +529,12 @@
         let loginMemberNo;
 
         loginMemberNo = ${loginMember.memberNo};
+
     </script>
     <!-- jQuery 라이브러리(.js 파일) 추가(CDN 방식) -->
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 	<script src="/resources/js/lsy/addPop.js"></script>
+	<script src="/resources/js/lsy/myPage_common.js"></script>
 	<script src="/resources/js/lsy/review_survey.js"></script>
 </body>
 

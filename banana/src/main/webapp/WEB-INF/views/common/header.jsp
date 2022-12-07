@@ -10,8 +10,9 @@
                 </div>
                 
                 <div class="talkAndlogin">
-                    <a href="/pay">페이 테스트</a>
-                    <a href="/chatting" class="topmenu__talk fa-regular fa-comment">바나나톡</a>
+                    <c:if test="${not empty sessionScope.loginMember}">
+                        <a href="/chatting" class="topmenu__talk fa-regular fa-comment"> 바나나톡</a>
+                    </c:if>
                     
                     <div id="header-top-menu">
                     <c:choose>

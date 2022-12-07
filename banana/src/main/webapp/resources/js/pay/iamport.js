@@ -22,13 +22,15 @@ function openPop() {
     payCharge.style.display = "none";
     payRefund.style.display = "none";
 
-    payLogList();
+    payLogList(order);
+    chargeMe();
+    refundMe();
 }
 
 // selectYear, selectMonth 변화 감지
 var observer = new MutationObserver(mutations => {
     mutations.forEach(mutation => {
-        payLogList();
+        payLogList(order);
     });
 });
 
@@ -45,12 +47,13 @@ observer.observe(selectYear, config);
 observer.observe(selectMonth, config);
 
 // 조회
-const payLogList = () => {
+const payLogList = order => {
     $.ajax({
         url : "/searchPayLogList",
         data : {"memberNo" : memberNo,
                 "selectYear" : selectYear.innerText,
-                "selectMonth" : selectMonth.innerText},
+                "selectMonth" : selectMonth.innerText,
+                "order" : order},
         type : "GET",
         success : (result) => {
             payLL.innerHTML = "";
@@ -130,7 +133,7 @@ document.getElementById("chargeSubmitBtn").addEventListener("click", () => {
                             const price = Number(chargePrice.value).toLocaleString();
                             remainPay = remainPay + Number(chargePrice.value);
                             payRemain.innerText = remainPay.toLocaleString();
-                            chargePrice.value = "";
+                            chargeMe();
                             alert("결제가 완료되었습니다.\n결제한 금액 : " + price + "원");
 
                         } else {
@@ -162,7 +165,7 @@ document.getElementById("refundSubmitBtn").addEventListener("click", () => {
                         const price = Number(refundPrice.value).toLocaleString();
                         remainPay = remainPay - Number(refundPrice.value);
                         payRemain.innerText = remainPay.toLocaleString();
-                        refundPrice.value = "";
+                        refundMe();
                         alert("환불이 완료되었습니다.\n환불한 금액 : " + price + "원");
 
                     } else {

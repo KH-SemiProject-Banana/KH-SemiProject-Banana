@@ -45,7 +45,7 @@
                             </div>
                         </div>
 
-                        <form method="post" name="payCharge" id="payCharge">
+                        <div name="payCharge" id="payCharge">
                             <div class="charge">
                                 <div class="chargeHeader">
                                     <p>충전 (만원 단위)</p>
@@ -70,9 +70,9 @@
                             <div class="payBtnArea">
                                 <button type="button" id="chargeSubmitBtn">충전하기</button>
                             </div>
-                        </form>
+                        </div>
 
-                        <form method="post" name="payRefund" id="payRefund">
+                        <div name="payRefund" id="payRefund">
                             <div class="charge">
                                 <div class="chargeHeader">
                                     <p>환불하기</p>
@@ -97,7 +97,7 @@
                             <div class="payBtnArea">
                                 <button type="button" id="refundSubmitBtn">환불하기</button>
                             </div>
-                        </form>
+                        </div>
 
                         <section id="payLogArea">
                             <div class="charge">
@@ -152,52 +152,7 @@
                                         </div>
                                     </div>
 
-                                    <div id="payLL">
-
-                                    </div>
-                                    <!-- <div class="monthDateArea">11월 8일(목)</div>
-
-                                        <div class="useDetail">
-                                            <div class="useDetail__title">
-                                                <p>판매글이름</p>
-                                                <p>08:25</p>
-                                            </div>
-                                            <div class="useDetail__money moneyPlus">+14,000원</div>
-                                        </div>
-
-                                        <div class="useDetail">
-                                            <div class="useDetail__title">
-                                                <p>판매글이름</p>
-                                                <p>08:25</p>
-                                            </div>
-                                            <div class="useDetail__money">-36,000원</div>
-                                        </div>
-
-                                        <div class="useDetail">
-                                            <div class="useDetail__title">
-                                                <p>판매글이름</p>
-                                                <p>09:45</p>
-                                            </div>
-                                            <div class="useDetail__money moneyPlus">+38,000원</div>
-                                        </div>
-
-                                    <div class="monthDateArea">11월 7일(수)</div>
-
-                                        <div class="useDetail">
-                                            <div class="useDetail__title">
-                                                <p>판매글이름</p>
-                                                <p>09:45</p>
-                                            </div>
-                                            <div class="useDetail__money">-5,000원</div>
-                                        </div>
-
-                                        <div class="useDetail">
-                                            <div class="useDetail__title">
-                                                <p>판매글이름</p>
-                                                <p>09:45</p>
-                                            </div>
-                                            <div class="useDetail__money">-5,000원</div>
-                                        </div> -->
+                                    <div id="payLL"></div>
                                 </div>
                             </div>
                         </section>

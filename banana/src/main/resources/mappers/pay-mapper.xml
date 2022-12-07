@@ -54,6 +54,8 @@
 	WHERE TRADER_NO = #{memberNo}
 	AND TO_CHAR(ORDER_DATE, 'YYYY"년"') = #{selectYear}
 	AND TO_CHAR(ORDER_DATE, 'MM"월"') = #{selectMonth}
+	<if test='order == 1'><![CDATA[AND USE_POINT > 0]]></if>
+	<if test='order == 2'><![CDATA[AND USE_POINT < 0]]></if>
 	ORDER BY ORDER_NO DESC
   </select>
 </mapper>

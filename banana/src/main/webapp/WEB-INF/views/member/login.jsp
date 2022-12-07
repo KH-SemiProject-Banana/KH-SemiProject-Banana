@@ -23,6 +23,7 @@
         <jsp:include page="/WEB-INF/views/common/header.jsp" />
         <jsp:include page="/WEB-INF/views/common/nav.jsp" />
 
+
         <div class="loginClass">
             <!-- 바나나 이미 및 로고 텍스트 -->
             <div class="loginHeader">

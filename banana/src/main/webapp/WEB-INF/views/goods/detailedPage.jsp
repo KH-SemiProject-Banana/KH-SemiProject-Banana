@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>ing
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
@@ -19,7 +19,15 @@
     <link rel="stylesheet" href="/resources/css/style.css">
     <link rel="stylesheet" href="/resources/css/현진/detailedPage.css">
     <script src="https://kit.fontawesome.com/f7459b8054.js" crossorigin="anonymous"></script>
-    <style>nav{z-index: 5;}</style>
+    <style>nav{z-index: 5;} 
+
+            .poppingThing{
+            position:fixed;
+            z-index: 300;
+        }
+    </style>
+
+     
 </head>
 <body>
     <main>
@@ -93,13 +101,19 @@
                         </c:if>
 
                         <c:if test="${loginMember.memberNo != sellerInfo.memberNo}">
-                            <div class="top_right"><span><a href="#">신고</a></span></div>
+                            <div class="top_right"><span><a href="javascript:openPop()">신고</a></span></div>
+                            
                             <div class="top_right"><span>|</span></div>
                         </c:if>
 
                         <div class="top_right"><span>찜&nbsp;</span><span id="likeCount">${goodsInfo.likeCount}</span></div>
                         <div class="top_right"><span>|</span></div>
                         <div class="top_right"><span>${goodsInfo.createdAt}</span></div>
+                    </div>
+            
+            
+                    <div id="poppingThing" class="poppingThing"> 
+                    <jsp:include page="/WEB-INF/views/board/boardcomplain.jsp" />
                     </div>
 
                     <div class="product_title">

@@ -101,7 +101,7 @@ public class CategoryServiceImpl implements CategoryService {
 		
 		List<GoodsSell> sellerGoods = dao.selectSellerGoods(goodsNo);
 		
-		if(goodsInfo.getBuyerNo() != 0) {
+		if(goodsInfo.getBuyerNo() == 0) {
 			goodsInfo.setSellStatus("판매중");
 			
 		} else {

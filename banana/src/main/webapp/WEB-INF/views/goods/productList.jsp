@@ -181,7 +181,7 @@
                                 </c:choose>
 
                                 <span><h2><a href="/goods/${goods.goodsNo}" class="title">${goods.title}</a></h2></span>
-                                <span><h3><a href="/goods/${goods.goodsNo}"><fmt:formatNumber value="${goods.sellPrice}" pattern="#,###"/></a></h3></span>
+                                <span><h3><a href="/goods/${goods.goodsNo}"><fmt:formatNumber value="${goods.sellPrice}" pattern="#,###"/>원</a></h3></span>
                             </div>
 
                             <c:if test="${i%4 == 0}">

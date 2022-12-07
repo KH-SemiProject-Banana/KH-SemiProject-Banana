@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>ing
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
@@ -111,7 +111,7 @@
 
                     <div class="product_title">
                         <h2>${goodsInfo.title}</h2>
-                        <h2><fmt:formatNumber value="${goodsInfo.sellPrice}" pattern="#,###"/></h2>
+                        <h2><fmt:formatNumber value="${goodsInfo.sellPrice}" pattern="#,###"/>원</h2>
                     </div>
 
                     <div class="product_option">

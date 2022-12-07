@@ -259,7 +259,11 @@ public class MyPageDAO {
 	 * @param pagination
 	 * @return
 	 */
-	public List<Review> myGoodsLikeList(int memberNo, MypageDetailPagination pagination) {
+	public List<GoodsSell> myGoodsLikeList(int memberNo, MypagePagination pagination) {
 		
-		return sqlSession.selectList("myPageMapper.selectmyGoodsLikeList",memberNo);
+int offset = (pagination.getCurrentPage()-1) * pagination.getLimit();
+		
+		RowBounds rowBounds = new RowBounds(offset,pagination.getLimit());
+		
+		return sqlSession.selectList("myPageMapper.selectmyGoodsLikeList",memberNo,rowBounds);
 	}}

@@ -1,6 +1,6 @@
 
 
-
+//좋은 매너인지/ 나쁜 매너인지에 따라 타이틀 바뀌는 거
 switch(mannerCt){
     case 1: document.getElementById("side1").style.fontWeight = "bold";
     const divG0 = document.querySelector(".goodBadBox");
@@ -27,7 +27,7 @@ switch(mannerCt){
     divG2_1div.append(divG2_1div_i);
     break;
 
-    case 2: 
+    case 2: document.getElementById("side2").style.fontWeight = "bold";
     const div0 = document.querySelector(".goodBadBox");
     div0.innerHTML="";//초기화
     
@@ -251,9 +251,10 @@ document.addEventListener("click",function(e){
 
 })
 
+//뒤로가기... 
 
-document.getElementById("back").addEventListener("click",function(){
-    alert("안녕");
-    window.history.back();
-})
+// document.getElementById("back").addEventListener("click",function(){
+//     alert("안녕");
+//     window.history.back();
+// })
 

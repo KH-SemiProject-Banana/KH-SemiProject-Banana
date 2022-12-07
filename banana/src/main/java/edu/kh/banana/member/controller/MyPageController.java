@@ -343,6 +343,7 @@ public class MyPageController {
 	}
 	
 	
+
 	/** 차단관리
 	 * @param loginMember
 	 * @param model
@@ -374,4 +375,5 @@ public class MyPageController {
 		
 		return service.memberBlockCancel(map);
 	}
+
 }

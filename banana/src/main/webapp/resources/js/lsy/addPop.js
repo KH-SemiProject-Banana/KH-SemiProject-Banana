@@ -34,6 +34,7 @@ switch(myPageCt){
 }
 
 
+
 // const first = document.getElementById("myBanana-sellList");
 // const fourth = document.querySelector("#changeJsp");
 
@@ -219,10 +220,12 @@ function closePop3() {
     document.getElementById("popup_layer").style.display = "none";
     document.getElementById("popup_layer2").style.display = "none";
     document.getElementById("popup_layer3").style.display = "none";
-//    for(let popupLayer of popupLayerList){
 
-//     popupLayer.style.display = "none";
-// }
+}
+//네번째 팝업 닫기
+function closePop4() {
+
+    document.getElementById("popup_layer4").style.display = "none";
 
 }
 
@@ -406,7 +409,11 @@ document.getElementById("finalPopUp").addEventListener("click",function(){
             // 2. Jackson라이브러리를 이용하면 걍 그 자체가 옴...js객체로...
 
             //----------------------------------------------------
-            
+            if(reviewList.size() == 0){
+                const li1 = document.createElement("li");
+                li1.innerText = "받은 후기가 존재하지 않습니다.";
+                document.querySelector("#messageList2").append(li1);
+            }
             for(let review of reviewList){
 
                 const li1 = document.createElement("li");

@@ -22,8 +22,8 @@
     <%-- <link rel="stylesheet" href="/resources/css/screens/header-footer.css"> --%>
 
     <link rel="stylesheet" href="/resources/css/lsy/myPage_common.css">
-    <link rel="stylesheet" href="/resources/css/lsy/popup.css">
-    <link rel="stylesheet" href="/resources/css/lsy/pop1_review_survey.css">
+    <%-- <link rel="stylesheet" href="/resources/css/lsy/popup.css">
+    <link rel="stylesheet" href="/resources/css/lsy/pop1_review_survey.css"> --%>
 
 
 
@@ -212,15 +212,26 @@
             myPageCt = 1;
         }
 
-        let loginMemberNo;
+    
 
-        loginMemberNo = ${loginMember.memberNo};
+        //판매중/판매완료/구매완료인지에 따라 글씨체 bold로 바뀌는거 
+        switch(myPageCt){
+            case 1: document.getElementById("first-category").style.fontWeight = "bold"; 
+            document.getElementById("sold").style.fontWeight = "bold";
+            //document.getElementById("popup_layer4").style.display = "none";
+            //const changeJsp = document.querySelector("#changeJsp");
+            //changeJsp.innerHTML = "";
+            break;
+
+            case 5: 
+            document.getElementById("first-category").style.fontWeight = "bold";
+            document.getElementById("selling").style.fontWeight = "bold"; break;
+        }
 
     </script>
     <!-- jQuery 라이브러리(.js 파일) 추가(CDN 방식) -->
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
-	<script src="/resources/js/lsy/addPop.js"></script>
-	<script src="/resources/js/lsy/myPage_common.js"></script>
+
 </body>
 
 </html>

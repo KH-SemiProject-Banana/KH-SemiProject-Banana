@@ -32,32 +32,32 @@
     <main>
         <!-- header 시작----------------------------------------------------------------------------------------- -->
         <header>
-            <section class="section-query">
-                <div class="query__area">
+            <section class="section-query-chatting">
+                <div class="query__area-chatting">
                     <div>
                         <a href="/">
-                            <img src="/resources/images/banana-logo.png" id="logo-img"/>
+                            <img src="/resources/images/banana-logo.png" id="logo-img-chatting"/>
                         </a>
-                        <div class="query__logo">
+                        <div class="query__logo-chatting">
                             <p>바꾸고 나누자 나랑</p>
-                            <p id="query__banana">Banana Market</p>
+                            <p id="query__banana-chatting">Banana Market</p>
                         </div>
                     </div>
-                    <label for="header-menu-toggle">
+                    <label for="header-menu-toggle-chatting">
                         <div class="profileImgArea">
                             <c:if test="${empty loginMember.profileImage}">
                                 <img src="/resources/images/banana-logo.png"  id="profileImg">
                             </c:if>
                             <c:if test="${not empty loginMember.profileImage}">
-                                <img src="${loginMember.profileImage}" id="profileImg">
+                                <img src="${loginMember.profileImage}" id="profileImg-chatting">
                             </c:if>
                         </div>
                         ${loginMember.memberNickname}
-                        <i class="fa-solid fa-caret-down"></i>
+                        <i class="fa-solid fa-caret-down-chatting"></i>
                         <div>
-                            <input type="checkbox" id="header-menu-toggle">
+                            <input type="checkbox" id="header-menu-toggle-chatting">
 
-                            <div id="header-menu">
+                            <div id="header-menu-chatting">
                                 <a href="/member/myPage/main">내 정보</a>
                                 <a href="/member/logout">로그아웃</a>
                             </div>

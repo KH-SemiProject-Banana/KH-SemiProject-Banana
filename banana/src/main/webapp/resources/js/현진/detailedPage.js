@@ -102,3 +102,31 @@ document.getElementsByClassName("like_talk")[0].addEventListener("submit", event
 if(query != null) {
   document.getElementById("query").value = query;
 }
+
+// 게시글 삭제 + 게시글 수정
+if(memberNo == sellerNo){
+  document.getElementById("goodsDelete").addEventListener("click", () => {
+    if(confirm("정말 삭제하시겠습니까?")) {
+      $.ajax({
+        url : "/goods/delete",
+        data : {"goodsNo" : goodsNo},
+        type : "GET",
+        success : (result) => {
+          alert("삭제되었습니다.");
+          location.href = "/category?categoryNo=" + categoryNo;
+        }
+      });
+    } else {
+      alert("삭제가 취소되었습니다.");
+    }
+  })
+}
+
+// 판매자 마이 페이지 이동
+const sellerPage = document.getElementsByClassName("sellerPage");
+
+for(let item of sellerPage) {
+  item.addEventListener("click", () => {
+    location.href = "/member/myPage/yourPageMain?myPageCt=1";
+  })
+}

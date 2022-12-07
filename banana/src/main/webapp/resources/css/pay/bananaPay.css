@@ -45,8 +45,6 @@
     -moz-box-shadow: 2px 5px 10px 0px rgba(0, 0, 0, 0.35);
 }
 
-
-
 /* 팝업박스 스크롤 */
 .scroll::-webkit-scrollbar{
     width: 15px;
@@ -58,11 +56,6 @@
     background-color: var(--yellow);
     /* border-radius: 10px;   */
 }
-
-
-
-
-
 
 /*컨텐츠 영역*/
 .popup_box .popup_cont {
@@ -83,8 +76,6 @@
     width: 100%;
 
 }
-
-
 
 /*버튼영역*/
 .popup_box .popup_btn {
@@ -176,7 +167,6 @@
     color: black;
 }
 
-
 .payRemainArea {
     padding: 15px;
     background-color: var(--yellow);
@@ -192,7 +182,6 @@
 .fa-database {
     margin-right: 10px;
 }
-
 
 .fa-store,
 .fa-rotate-right,
@@ -226,8 +215,6 @@
     box-shadow: 3px 3px 3px #ddd;
     transition-duration: 0.3s;
 }
-
-
 
 
 /* 충전 */
@@ -450,17 +437,11 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-
-}
-
-.useDetail>div:nth-child(1) {
-    flex-basis: 10%;
-    height: 100%;
-    /* background-color: red; */
+    justify-content: space-between;
+    padding: 0 10px;
 }
 
 .useDetail>div:nth-child(2) {
-    flex-basis: 60%;
     height: 100%;
     padding-top: 10px;
     /* background-color: aqua; */
@@ -498,6 +479,7 @@
 }
 
 .useDetail__money {
+    color: rgb(241, 0, 0);
     font-weight: bold;
     text-decoration: none;
 }
@@ -554,4 +536,11 @@
     cursor: pointer;
     /* background-color: red; */
     padding: 5px 10px;
+}
+
+.noList{
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

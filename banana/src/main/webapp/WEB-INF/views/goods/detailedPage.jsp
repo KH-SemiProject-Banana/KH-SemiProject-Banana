@@ -19,19 +19,16 @@
     <link rel="stylesheet" href="/resources/css/style.css">
     <link rel="stylesheet" href="/resources/css/현진/detailedPage.css">
     <script src="https://kit.fontawesome.com/f7459b8054.js" crossorigin="anonymous"></script>
-    <style>nav{z-index: 5;} 
-
-            .poppingThing{
+    <style>
+        nav{z-index: 5;} 
+        .poppingThing{
             position:fixed;
             z-index: 300;
         }
     </style>
-
-     
 </head>
 <body>
     <main>
-
     <jsp:include page="/WEB-INF/views/common/header.jsp" />
     <jsp:include page="/WEB-INF/views/common/nav.jsp" />
 
@@ -94,9 +91,9 @@
                         <div class="top_left"><span>${goodsInfo.sellStatus}</span></div>
                             
                         <c:if test="${loginMember.memberNo == sellerInfo.memberNo}">
-                            <div class="top_right"><span><a href="/goods/delete">삭제</a></span></div>
+                            <div class="top_right"><span><a id="goodsDelete">삭제</a></span></div>
                             <div class="top_right"><span>|</span></div>
-                            <div class="top_right"><span><a href="/goods/registerGoods">수정</a></span></div>
+                            <div class="top_right"><span><a href="/goods/update/${goodsInfo.goodsNo}">수정</a></span></div>
                             <div class="top_right"><span>|</span></div>
                         </c:if>
 
@@ -110,7 +107,6 @@
                         <div class="top_right"><span>|</span></div>
                         <div class="top_right"><span>${goodsInfo.createdAt}</span></div>
                     </div>
-            
             
                     <div id="poppingThing" class="poppingThing"> 
                     <jsp:include page="/WEB-INF/views/board/boardcomplain.jsp" />
@@ -167,21 +163,21 @@
                     <div class="seller_img">
                         <c:choose>
                                     <c:when test="${sellerInfo.profileImage == null}">
-                                        <a href="/member/myPage/main"><img src="../../resources/images/user.png"></a>
+                                        <a class="sellerPage"><img src="../../resources/images/user.png"></a>
                                     </c:when>
 
                                     <c:otherwise>
-                                        <a href="/member/myPage/main"><img src="${sellerInfo.profileImage}"></a>
+                                        <a class="sellerPage"><img src="${sellerInfo.profileImage}"></a>
                                     </c:otherwise>
                         </c:choose>
 
-                        <span><a href="/member/myPage/main">${sellerInfo.memberNickname}</a></span>
+                        <span><a class="sellerPage">${sellerInfo.memberNickname}</a></span>
                     </div>
 
                     <div>
                         <div  class="seller_product">
-                            <span><a href="/member/myPage/main">상품</a></span>
-                            <span><a href="/member/myPage/main">${sellerInfo.goodsCount}</a></span>
+                            <span><a class="sellerPage">상품</a></span>
+                            <span><a class="sellerPage">${sellerInfo.goodsCount}</a></span>
                         </div>
 
                         <div class="manner">
@@ -200,7 +196,7 @@
                         <c:if test="${loginMember.memberNo != sellerInfo.memberNo}">
                             <span>판매자의 다른 상품</span>
                         </c:if>
-                        <span><a href="/member/myPage/main">전체보기 ></a></span>
+                        <span><a class="sellerPage">전체보기 ></a></span>
                     </div>
 
                     <div class="other_list">
@@ -250,7 +246,10 @@
     const memberNo = "${loginMember.memberNo}";
     const goodsNo = "${goodsInfo.goodsNo}";
     const sellerNo = "${sellerInfo.memberNo}";
+    const categoryNo = "${category.categoryNo}";
     const query = "${category.query}";
+
+    console.log(categoryNo);
 </script>
 
 <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>

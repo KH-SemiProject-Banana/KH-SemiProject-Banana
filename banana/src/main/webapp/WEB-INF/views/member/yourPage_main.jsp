@@ -59,7 +59,7 @@
 				<div class="myBanana-content">
 					<div class="myBanana-info">
 						<div class="myBanana-name">${member.memberNickname}</div>
-						<div class="myBanana-address">${member.address}</div>
+						<div class="myBanana-address">${member.memberAddress}</div>
 					</div>
 
 					<div class="myBanana-intro">

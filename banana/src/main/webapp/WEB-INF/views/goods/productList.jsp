@@ -38,7 +38,6 @@
     <link rel="stylesheet" href="/resources/css/style.css">
     <link rel="stylesheet" href="/resources/css/현진/productList.css">
     <script src="https://kit.fontawesome.com/f7459b8054.js" crossorigin="anonymous"></script>
-    <style>nav{z-index: 5;}</style>
 </head>
 <body>
     <main>
@@ -181,7 +180,7 @@
                                 </c:choose>
 
                                 <span><h2><a href="/goods/${goods.goodsNo}" class="title">${goods.title}</a></h2></span>
-                                <span><h3><a href="/goods/${goods.goodsNo}"><fmt:formatNumber value="${goods.sellPrice}" pattern="#,###"/></a></h3></span>
+                                <span><h3><a href="/goods/${goods.goodsNo}"><fmt:formatNumber value="${goods.sellPrice}" pattern="#,###"/>원</a>&nbsp;&nbsp;<span style="font-size: 0.7em; color: #FFAB00;">${goods.sellStatus}</span></h3></span>
                             </div>
 
                             <c:if test="${i%4 == 0}">

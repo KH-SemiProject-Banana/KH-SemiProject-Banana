@@ -62,8 +62,6 @@ public class UserComplainController {
 		
 		int blockedResult = service.userBlock(loginmember.getMemberNo(), userBlocked);
 		
-		int complained = 15; // 나중에 수정(@PathVariable)
-		
 		
 		
 		int result = service.userReportSubmit(submit);

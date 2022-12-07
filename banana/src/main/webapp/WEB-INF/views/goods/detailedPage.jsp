@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>ing
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
@@ -110,9 +110,11 @@
                         <div class="top_right"><span>|</span></div>
                         <div class="top_right"><span>${goodsInfo.createdAt}</span></div>
                     </div>
-                                <div id = "poppingThing" class = "poppingThing"> 
-                                <jsp:include page="/WEB-INF/views/board/boardcomplain.jsp"></jsp:include>
-                                </div>
+            
+            
+                    <div id="poppingThing" class="poppingThing"> 
+                    <jsp:include page="/WEB-INF/views/board/boardcomplain.jsp" />
+                    </div>
 
                     <div class="product_title">
                         <h2>${goodsInfo.title}</h2>

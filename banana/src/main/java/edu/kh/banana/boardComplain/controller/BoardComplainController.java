@@ -48,7 +48,7 @@ public class BoardComplainController {
 
 		submit.put("memberNo", loginMember.getMemberNo());
 
-		System.out.println(submit);
+	
 		// int complained 사용하기
 		int result = service.reportsubmit(submit);
 
@@ -62,7 +62,7 @@ public class BoardComplainController {
 		}
 
 		ra.addFlashAttribute("message", message);
-		return "redirect:/board/boardDetail";
+		return "redirect:/goods/detailPage";
 
 	}
 

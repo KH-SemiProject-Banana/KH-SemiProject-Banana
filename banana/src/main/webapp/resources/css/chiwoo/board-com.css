@@ -1,6 +1,6 @@
 /* *{border: 1px solid red;} */
 
-.report-top{
+.report-top, .b-report-top{
     display: flex;
     justify-content: flex-start;
     height: 60px;
@@ -9,31 +9,30 @@
     padding: 3%;
     position: relative;
 }
-.report-top > *{
+.report-top > *, .b-report-top > * {
     text-decoration: none;
     color: black;
 }
 
-.report-why{
+.report-why, .b-report-why{
     border-bottom: 1px solid black;
-    height: 30%;
     padding: 3%;
     font-size: 20px;
 }
 
 
-.report-reason  {
+.report-reason ,.b-report-reason  {
     border-bottom: 1px solid black;
     padding: 15px;
     
     
 }
 
-.report-reason:hover{
+.report-reason:hover, .b-report-reason:hover{
     background-color: var(--lightYellow);
 }
 
-.report-reason > a {
+.report-reason > a , .b-report-reason:hover > a {
     
     text-decoration: none;
     color: black;
@@ -41,8 +40,7 @@
     height: 30%;
 }
 
-.report-reason > a  > div{
-    display: flex;
+.report-reason > a  > div , .b-report-reason > a > div{
     justify-content: space-between;
 }
 
@@ -71,7 +69,7 @@
     display: flex;
     border-bottom: 1px solid black;
     font-size: 13px;
-    height: 30%;
+    /* height: 30%; */
     padding: 3%;
     margin-top: 40px;
     
@@ -87,11 +85,11 @@
    
 }
 
-.report-why > p:only-of-type{
+.report-why > p:only-of-type, .b-report-why > p:only-of-type {
     font-weight: bold;
 }
 
-.report-why > div:only-of-type{
+.report-why > div:only-of-type, .b-report-why > div:only-of-type{
     font-weight: bold;
     padding: 5px;
 }
@@ -102,9 +100,10 @@
 
 
  /* *{border: 1px solid red;}  */
-.report-confirm{
+ .report-confirm, .b-report-confirm {
     margin-bottom: 20px;
 }
+
 
 .content-block{
     margin-bottom: 20px;
@@ -117,14 +116,14 @@
 }
 
 
-.report-submit button{
+#report-submit-button, #b-report-submit-button{
     background-color: yellow;
     cursor: pointer;
     width: 400px;
     height: 30px;
 }
 
-.report-confirm > a{
+.report-confirm > a , .b-report-confirm > a{
     text-decoration: none;
     color: black;
 }
@@ -146,11 +145,28 @@
 }
 
 #back1 {
-    display: none;
+    display: block;
 }
 
 #back2 {
+    display: block;
+}
+
+#b_back1 {
+    display: block;
+}
+
+#b_back2 {
     display: none;
+}
+
+#back3 {
+    display: none;
+}
+
+#user-com {
+    position: absolute;
+    left: 50px;
 }
 
 #board-com {

@@ -78,42 +78,42 @@
                         <%-- div1_3_2 --%>                   
                         <div id="click">
                             <%-- div1_3_2_1 --%>
-                            <div class="report-reason" id = "abc1">
+                            <div class="report-reason abc" id = "abc1">
                                 <%-- div1_3_2_1_1 --%>
                                 <div>전문 판매업자 같아요 <i class="fa-solid fa-chevron-right"></i></div>
                             </div>
                             <%-- div1_3_2_2 --%>
-                            <div class="report-reason" id = "abc2">
+                            <div class="report-reason abc" id = "abc2">
                                 <%-- div1_3_2_2_1 --%>
                                 <div>비매너 사용자에요 <i class="fa-solid fa-chevron-right"></i></div>
                             </div>
                             <%-- div1_3_2_3 --%>
-                            <div class="report-reason" id="abc3">
+                            <div class="report-reason abc" id="abc3">
                                 <%-- div1_3_2_3_1 --%>
                                 <div> 욕설을 해요 <i class="fa-solid fa-chevron-right"></i></div>
                             </div>
                             <%-- div1_3_2_4 --%>
-                            <div class="report-reason"  id="abc4">
+                            <div class="report-reason abc"  id="abc4">
                                 <%-- div1_3_2_4_1 --%>
                                 <div>성희롱을 해요<i class="fa-solid fa-chevron-right"></i></div>
                             </div>
                             <%-- div1_3_2_5 --%>
-                            <div class="report-reason"  id="abc5">
+                            <div class="report-reason abc"  id="abc5">
                                 <%-- div1_3_2_5_1 --%>
                                 <div>거래/환불 분쟁신고<i class="fa-solid fa-chevron-right"></i></div>
                             </div>
                             <%-- div1_3_2_6 --%>
-                            <div class="report-reason"  id="abc6">
+                            <div class="report-reason abc"  id="abc6">
                                 <%-- div1_3_2_6_1 --%>
                                 <div>사기당했어요<i class="fa-solid fa-chevron-right"></i></div>
                             </div>
                             <%-- div1_3_2_7 --%>
-                            <div class="report-reason"  id="abc7">
+                            <div class="report-reason abc"  id="abc7">
                                 <%-- div1_3_2_7_1 --%>
                                 <div>다른 문제가 있어요<i class="fa-solid fa-chevron-right"></i></div>
                             </div>
                             <%-- div1_3_2_8 --%>
-                            <div class="report-reason"  id="abc8">
+                            <div class="report-reason abc"  id="abc8">
                                 <%-- div1_3_2_8_1 --%>
                                 <div>연애 목적의 대화를 시도해요<i class="fa-solid fa-chevron-right"></i></div>
                             </div>
@@ -125,8 +125,8 @@
                                 <%-- div1_3_3_1_1 --%>  
                                 <div>전문 판매업자 <i class="fa-solid fa-chevron-right"></i></div>
                             </div>
-                            <%-- div1_3_3_1 --%>  
-                            <div class="report-reason ">
+                            <%-- div1_3_3_2 --%>  
+                            <div class="report-reason">
                                 <%-- div1_3_3_2_1 --%>  
                                 <div> 중고차 매매업자 <i class="fa-solid fa-chevron-right"></i></div>
                             </div>
@@ -134,12 +134,12 @@
                         
                         <%-- div1_3_4 --%>  
                         <div id="click2"> 
-                            <%-- div1_3_3_1 --%>  
+                            <%-- div1_3_4_1 --%>  
                             <div class="report-reason" >
                                 <%-- div1_3_4_1_1 --%>  
                                 <div>반말을 사용해요 <i class="fa-solid fa-chevron-right"></i></div>
                             </div>
-                            <%-- div1_3_3_1 --%>  
+                            <%-- div1_3_4_2 --%>  
                             <div class="report-reason">
                                 <%-- div1_3_4_2_1 --%>  
                                 <div>불친절해요 <i class="fa-solid fa-chevron-right"></i></div>
@@ -148,27 +148,27 @@
 
                         <%-- div1_3_5 --%>  
                         <div id="click6">
-                            <%-- div1_3_3_1 --%>  
+                            <%-- div1_3_5_1 --%>  
                             <div class="report-reason" >
                                 <%-- div1_3_5_1_1 --%>  
                                 <div>카톡/문자 등 당근채팅 밖에서 대화를 유도해요 <i class="fa-solid fa-chevron-right"></i></div>
                             </div>
-                            <%-- div1_3_3_1 --%>  
+                            <%-- div1_3_5_2 --%>  
                             <div class="report-reason">
                                 <%-- div1_3_5_2_1 --%>  
                                 <div>가짜 안전결제/ 안전거래 사이트 링크를 보내요 <i class="fa-solid fa-chevron-right"></i></div>
                             </div>
-                            <%-- div1_3_3_1 --%>  
+                            <%-- div1_3_5_3 --%>  
                             <div class="report-reason">
                                 <%-- div1_3_5_3_1 --%>  
                                 <div> 특수문자/ 사진 등 계좌/ 전화번호를 이상하게 보내요 <i class="fa-solid fa-chevron-right"></i></div>        
                             </div>
-                            <%-- div1_3_3_1 --%>  
+                            <%-- div1_3_5_4 --%>  
                             <div class="report-reason">
                                 <%-- div1_3_5_4_1 --%>  
                                 <div> 입금했는데 판매자가 물건을 주지 않고 잠적했어요 <i class="fa-solid fa-chevron-right"></i></div>        
                             </div>
-                            <%-- div1_3_3_1 --%>  
+                            <%-- div1_3_5_5 --%>  
                             <div class="report-reason">
                                 <%-- div1_3_5_5_1 --%> 
                                 <div> 물건을 보냈는데 구매자가 입금하지 않고 잠적했어요 <i class="fa-solid fa-chevron-right"></i></div>        
@@ -178,27 +178,27 @@
                     
                         <%-- div1_3_6 --%> 
                         <div id="click7">
-                            <%-- div1_3_3_1 --%> 
+                            <%-- div1_3_6_1 --%> 
                             <div class="report-reason" >
                                 <%-- div1_3_6_1_1 --%> 
                                 <div>불법 이용자 신고<i class="fa-solid fa-chevron-right"></i></div>
                             </div>
-                            <%-- div1_3_3_1 --%> 
+                            <%-- div1_3_6_2 --%> 
                             <div class="report-reason">
                                 <%-- div1_3_6_2_1 --%> 
                                 <div>중복 게시글 <i class="fa-solid fa-chevron-right"></i></div>
                             </div>
-                            <%-- div1_3_3_1 --%>
+                            <%-- div1_3_6_3 --%>
                             <div class="report-reason">
                                 <%-- div1_3_6_3_1 --%>
                                 <div> 프로필 사진 신고<i class="fa-solid fa-chevron-right"></i></div>
                             </div>
-                            <%-- div1_3_3_1 --%>
+                            <%-- div1_3_6_4 --%>
                             <div class="report-reason">
                                 <%-- div1_3_6_4_1 --%>
                                 <div>불건전 닉네임 신고 <i class="fa-solid fa-chevron-right"></i></div>
                             </div>
-                            <%-- div1_3_3_1 --%>
+                            <%-- div1_3_6_5 --%>
                             <div class="report-reason">
                                 <%-- div1_3_6_5_1 --%>
                                 <div>채팅으로 정치/종교 대화를 시도해요 <i class="fa-solid fa-chevron-right"></i></div>
@@ -220,7 +220,7 @@
                                 <%-- div1_3_7_1_1 --%> 
                                 <div class="report-confirm">
                                     <%-- div1_3_7_1_1p --%> 
-                                    <p>#{U_COM2_CTG_NO}</p>
+                                    <p>${U_COM2_CTG_NO}</p>
                                 </div>
 
                                 <%-- div1_3_7_1_2 --%> 
@@ -248,7 +248,7 @@
                                         
                                 </div>
                                 <%-- div1_3_7_1_button --%>
-                                <button type="submit" id = "reportsubmit" >바나나 팀에게 보내기</button>
+                                <button type="submit" id = "report-submit-button" >바나나 팀에게 보내기</button>
                             </div>
                             <%-- div1_3_7_2_input1 --%>
                             <input type="hidden" name="ctg1" value="" id ="ctg1">

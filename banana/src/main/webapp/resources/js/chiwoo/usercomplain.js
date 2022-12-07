@@ -217,35 +217,35 @@ function openPop(){
             
             // ctg 1벨류가 특정값일때 
             switch (ctg1.value) {
-                case 1:
+                case "1":
                     ctg2dsc = document.getElementById("click1").children;
                     // 클릭1 자식요소 가져오기
                     break;
                     
-                case 2:
+                case "2":
                     ctg2dsc = document.getElementById("click2").children;
                         // 클릭 2 자식요소(세부카테고리) 가져오기
                     break;
-                case 3:
+                case "3":
                     ctg2dsc = 0;
                     break;
                             
-                case 4:
+                case "4":
                     ctg2dsc = 0;
                 break;
 
-                case 5:
+                case "5":
                     ctg2dsc = 0;
                 break;
                 
-                case 6:
+                case "6":
                     ctg2dsc = document.getElementById("click6").children;
                     break;
         
-                case 7:
+                case "7":
                     ctg2dsc = document.getElementById("click7").children;
                     break;
-                case 8:
+                case "8":
                     ctg2dsc = 0;
                 break;
                         
@@ -281,7 +281,7 @@ function openPop(){
         })
     }
 
-    document.getElementById("reportsubmit").addEventListener("click",function(){
+    document.getElementById("userreportsubmit").addEventListener("submit",function(){
 
         $.ajax({
             url : "/duplicateCheck",
@@ -322,20 +322,20 @@ function openPop(){
     back1.addEventListener("click",() => {
         userreportsubmit.style.display = "none"; // 문제 생기면 지울것
         switch (ctg1.value) {
-            case 1:
+            case "1":
                 click1.style.display = "none";
             break;
                 
-            case 2:
+            case "2":
                 click2.style.display = "none";
             break;
                     
                     
-            case 6:
+            case "6":
                 click6.style.display = "none";
             break;
                         
-            case 7:
+            case "7":
                 click7.style.display = "none";   
             break;          
         }
@@ -350,19 +350,19 @@ function openPop(){
         userreportsubmit.style.display = "none";
 
         switch (ctg1.value) {
-            case 1:
+            case "1":
                 click1.style.display = "block";
             break;
                 
-            case 2:
+            case "2":
                 click2.style.display = "block";
             break;
             
-            case 6:
+            case "6":
                 click6.style.display = "block";
             break;
     
-            case 7:
+            case "7":
                 click7.style.display = "block";   
             break;          
             }

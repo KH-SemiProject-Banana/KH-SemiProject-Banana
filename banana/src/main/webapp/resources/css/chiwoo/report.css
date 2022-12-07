@@ -9,12 +9,24 @@
     padding: 3%;
     position: relative;
 }
-.report-top > *{
+
+.b-report-top{
+
+    display: flex;
+    justify-content: flex-start;
+    height: 60px;
+    border-bottom: 1px solid black;
+    font-size: 20px;
+    padding: 3%;
+    position: relative;
+
+}
+.report-top > *, .b-report-top > * {
     text-decoration: none;
     color: black;
 }
 
-.report-why{
+.report-why, .b-report-why{
     border-bottom: 1px solid black;
     height: 30%;
     padding: 3%;
@@ -22,18 +34,18 @@
 }
 
 
-.report-reason  {
+.report-reason, .b-report-reason {
     border-bottom: 1px solid black;
     padding: 15px;
     
     
 }
 
-.report-reason:hover{
+.report-reason:hover, .b-report-reason:hover{
     background-color: var(--lightYellow);
 }
 
-.report-reason > a {
+.report-reason > a , .b-report-reason:hover > a {
     
     text-decoration: none;
     color: black;
@@ -41,7 +53,7 @@
     height: 30%;
 }
 
-.report-reason > a  > div{
+.report-reason > a  > div , .b-report-reason > a > div{
     display: flex;
     justify-content: space-between;
 }
@@ -87,11 +99,11 @@
    
 }
 
-.report-why > p:only-of-type{
+.report-why > p:only-of-type, .b-report-why > p:only-of-type {
     font-weight: bold;
 }
 
-.report-why > div:only-of-type{
+.report-why > div:only-of-type, .b-report-why > div:only-of-type{
     font-weight: bold;
     padding: 5px;
 }
@@ -102,7 +114,7 @@
 
 
  /* *{border: 1px solid red;}  */
-.report-confirm{
+.report-confirm, .b-report-confirm {
     margin-bottom: 20px;
 }
 
@@ -117,14 +129,14 @@
 }
 
 
-.report-submit button{
+#report-submit-button, #b-report-submit-button{
     background-color: yellow;
     cursor: pointer;
     width: 400px;
     height: 30px;
 }
 
-.report-confirm > a{
+.report-confirm > a , .b-report-confirm > a{
     text-decoration: none;
     color: black;
 }

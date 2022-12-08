@@ -7,10 +7,10 @@
 <insert id="userreportsubmit">
   INSERT INTO "USER_COMPLAIN"
   VALUES(#SEQ_U_COM_NO.NEXTVAL, 
-  		#{memberNo},
+  		#{u_ctg1},
+  		#{u_ctg2},
   		#{memberNo2},
-  		#{b_ctg1},
-  		#{b_ctg2},
+  		#{memberNo},
   		#{goodsNo2},
   		#{reportbox},
   		DEFAULT)

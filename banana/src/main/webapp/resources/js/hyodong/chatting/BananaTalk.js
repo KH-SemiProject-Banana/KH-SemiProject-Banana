@@ -229,7 +229,7 @@ const productInfor = () => {
 			div0.classList.add("Declaration");
 
 			const a = document.createElement("a");
-			a.setAttribute("href","javascript:openPop(selectProductInfor.goodsNo)")
+			a.setAttribute("href","javascript:openPop("+selectProductInfor.goodsNo+")");
 	
 
 			const i = document.createElement("i");

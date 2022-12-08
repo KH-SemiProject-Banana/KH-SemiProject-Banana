@@ -244,15 +244,15 @@
                     
                 <div>
                     <div id="fin">
-                        <div class="report-user">
+                        <%-- <div class="report-user">
                             <p>혹시 ${sellerInfo.memberNickname}님을 신고하고싶으신가요?</p>
-                        </div>
+                        </div> --%>
 
-                        <div class="b-report-reason" id="b_click6">
+                    <%--     <div class="b-report-reason" id="b_click6">
                             <div> 
                                 사용자 신고하러 가기 <i class="fa-solid fa-chevron-right"></i>
                             </div>
-                        </div>
+                        </div> --%>
 
                     
                     </div>

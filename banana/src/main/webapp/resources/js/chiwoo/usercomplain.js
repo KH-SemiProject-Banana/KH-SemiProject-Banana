@@ -232,7 +232,7 @@ function openPop(){
     document.getElementById("userreportsubmit").addEventListener("submit",function(e){
 
         $.ajax({
-            url : "/duplicateCheck",
+            url : "/duplicateCheck2",
             data:{"memberNo":memberNo,"memberNo2":memberNo2},
             success:(result) => {
                 if(result>0){ //중복된 값이 있다.
@@ -247,7 +247,7 @@ function openPop(){
 
             },
             complete:() =>{
-                console.log("아무때나 나타나는 신호")
+                console.log("완료시 콘솔에 떠라")
             }
 
         })

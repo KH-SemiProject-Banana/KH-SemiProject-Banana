@@ -64,8 +64,14 @@
     display: inline-block;
     width: 50%;
     height: 7px;
-    background-color: rgb(255, 216, 76);
+    background-color: rgb(178, 178, 197);
     border-radius: 100px;
+}
+
+.temperature{
+    height: 100%;
+    padding: 1%;
+    border-radius: 15px;
 }
 
 .seller_other{
@@ -121,7 +127,7 @@
     font-size: 14px;
 }
 
-.title{
+.title > h4{
     width: 100%;
     display: inline-block;
     white-space : nowrap;

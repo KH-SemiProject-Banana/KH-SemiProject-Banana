@@ -27,6 +27,8 @@ switch(order) {
     case "1": orderSelect[0].selected = true; break;
     case "2": orderSelect[1].selected = true; break;
     case "3": orderSelect[2].selected = true; break;
+    case "4": orderSelect[1].selected = true; break;
+    case "5": orderSelect[2].selected = true; break;
 }
 
 // 체크박스 개수 제한

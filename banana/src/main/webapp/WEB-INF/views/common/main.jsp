@@ -104,11 +104,22 @@
                                 <div class="favorite__price">
                                     <fmt:formatNumber value="${favorite.sellPrice}" pattern="#,###" />원
                                 </div>
-                                <c:if test="${favorite.buyerNo != ''}">
-                                    &nbsp;&nbsp;&nbsp;<span style="font-size: 0.7em; color: #FFAB00;">판매완료</span>
+
+                                <c:if test="${favorite.categoryNo != 11}">
+                                    <c:if test="${favorite.buyerNo != ''}">
+                                        &nbsp;&nbsp;&nbsp;<span style="font-size: 0.7em; color: #5c5c5c;">판매완료</span>
+                                    </c:if>
+                                    <c:if test="${favorite.buyerNo == ''}">
+                                        &nbsp;&nbsp;&nbsp;<span style="font-size: 0.7em; color: #FFAB00;">판매중</span>
+                                    </c:if>
                                 </c:if>
-                                <c:if test="${favorite.buyerNo == ''}">
-                                    &nbsp;&nbsp;&nbsp;<span style="font-size: 0.7em; color: #FFAB00;">판매중</span>
+                                <c:if test="${favorite.categoryNo == 11}">
+                                    <c:if test="${favorite.buyerNo != ''}">
+                                        &nbsp;&nbsp;&nbsp;<span style="font-size: 0.7em; color: #5c5c5c;">구매완료</span>
+                                    </c:if>
+                                    <c:if test="${favorite.buyerNo == ''}">
+                                        &nbsp;&nbsp;&nbsp;<span style="font-size: 0.7em; color: #FFAB00;">구매중</span>
+                                    </c:if>
                                 </c:if>
                             </div>
                     </div>
@@ -157,7 +168,6 @@
                                     </label>
                                 </div>
                             </div>
-                            
                         </div>
                         <c:choose>
                             <c:when test="${fn:length(newGoods.title) gt 10}">
@@ -171,11 +181,21 @@
                                 <div class="new__price">
                                     <fmt:formatNumber value="${newGoods.sellPrice}" pattern="#,###" />원
                                 </div>
-                                <c:if test="${newGoods.buyerNo != ''}">
-                                    &nbsp;&nbsp;&nbsp;<span style="font-size: 0.7em; color: #FFAB00;">판매완료</span>
+                                <c:if test="${newGoods.categoryNo != 11}">
+                                    <c:if test="${newGoods.buyerNo != 0}">
+                                        &nbsp;&nbsp;&nbsp;<span style="font-size: 0.7em; color: #5c5c5c;">판매완료</span>
+                                    </c:if>
+                                    <c:if test="${newGoods.buyerNo == 0}">
+                                        &nbsp;&nbsp;&nbsp;<span style="font-size: 0.7em; color: #FFAB00;">판매중</span>
+                                    </c:if>
                                 </c:if>
-                                <c:if test="${newGoods.buyerNo == ''}">
-                                    &nbsp;&nbsp;&nbsp;<span style="font-size: 0.7em; color: #FFAB00;">판매중</span>
+                                <c:if test="${newGoods.categoryNo == 11}">
+                                    <c:if test="${newGoods.buyerNo != 0}">
+                                        &nbsp;&nbsp;&nbsp;<span style="font-size: 0.7em; color: #5c5c5c;">구매완료</span>
+                                    </c:if>
+                                    <c:if test="${newGoods.buyerNo == 0}">
+                                        &nbsp;&nbsp;&nbsp;<span style="font-size: 0.7em; color: #FFAB00;">구매중</span>
+                                    </c:if>
                                 </c:if>
                             </div>
                     </div>

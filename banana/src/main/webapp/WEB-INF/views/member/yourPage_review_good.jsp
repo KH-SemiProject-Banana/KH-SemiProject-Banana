@@ -19,13 +19,7 @@
     <script src="https://kit.fontawesome.com/f7459b8054.js" crossorigin="anonymous"></script>
 
     <style>
-    .side{
-        padding: 50px;
-        font-size : 20px;
 
-
-
-    }
     </style>
 
 </head>
@@ -41,17 +35,15 @@
     </form>      
     <section class = "content">
         <div class= "side">
-            <div class= "side1Box">
                 <form class= "side1" id = "title_section_1" method = "post">
                     <input type="hidden" name="sellerNo" value="${member.memberNo}">
-                    <%-- <div><i class="fa-regular fa-face-smile-beam imo1"></i></div> --%>
-                    <p><a id= "goToManner">받은 매너 칭찬</a></p> 
+                    <div><i class="fa-regular fa-face-smile-beam imo1"></i></div>
+                    <p id= "goToManner">받은 매너 칭찬 </p> 
                 </form>
                 <%-- <div class= "side2" id = "side2"> 
                     <div><i class="fa-regular fa-face-angry imo1"></i></div>
                     <p><a href="/member/myPage/review/good?mannerCt=2">받은 비매너 후기</a></p>
                 </div> --%>
-            </div>
         </div>
 
         <div class="goodBadMain">

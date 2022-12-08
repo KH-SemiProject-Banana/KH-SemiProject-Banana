@@ -12,46 +12,38 @@ payCharge.style.display = "none";
 payRefund.style.display = "none";
 payLog.style.display = "none";
 
-const hideDrop = () => {
-    document.getElementsByClassName("dropdown-content1")[0].style.display = "none";
-    document.getElementsByClassName("dropdown-content2")[0].style.display = "none";
-}
-
 document.getElementById("chargeBtn").addEventListener("click", function () {
     payCharge.style.display = "block";
     payRefund.style.display = "none";
     payLog.style.display = "none";
-    hideDrop();
 });
 
 document.getElementById("refundBtn").addEventListener("click", function () {
     payRefund.style.display = "block";
     payCharge.style.display = "none";
     payLog.style.display = "none";
-    hideDrop();
 });
 
 document.getElementById("logBtn").addEventListener("click", function () {
-    payLog.style.display = "block";
-    payCharge.style.display = "none";
-    payRefund.style.display = "none";
+    logBlock();
     payLogList(order);
 });
 
 document.querySelector(".closeCharge").addEventListener("click", function () {
     payCharge.style.display = "none";
 });
+
 document.querySelector(".closeRefund").addEventListener("click", function () {
     payRefund.style.display = "none";
 });
+
 document.querySelector(".closeLog").addEventListener("click", function () {
     payLog.style.display = "none";
 });
 
 //팝업 닫기
-function closePop() {
-    document.getElementById("popup_layer").style.display = "none";
-    hideDrop();
+function closePop5() {
+    document.getElementById("popup_layer5").style.display = "none";
 }
 
 const chargePrice = document.getElementById("chargePrice");
@@ -90,7 +82,7 @@ document.getElementsByClassName("charge10")[1].addEventListener("click", functio
 });
 
 document.getElementById("chargeAll").addEventListener("click", function () {
-    refundPrice.value = payRemain.innerText;
+    refundPrice.value = payRemain.innerText.split(",").join("");
     refundValidate();
 });
 
@@ -107,7 +99,7 @@ resetPrice[1].addEventListener("click", function () {
     refundValidate();
 });
 
-// 직접입력 input버튼에 콤마 구현, 유효성 검사
+// 직접 입력 input버튼에 콤마 구현, 유효성 검사
 refundPrice.addEventListener("change", function () {
     refundValidate();
     if (refundPrice.value.length == 0) {
@@ -172,20 +164,13 @@ const chargeValidate = () => {
     }
 };
 
-const chargeMe = () => {
-    chargeMessage.innerText = "숫자만 입력해주세요.";
-    chargeMessage.classList.remove("error", "confirm");
-    chargePrice.value = 0;
-
-    chargeFlag = false;
-}
-
 // 환불 유효성 검사
 const refundMessage = document.getElementById("refundMessage");
 
 const refundValidate = () => {
 
     if (refundPrice.value.trim().length == 0 || refundPrice.value == 0) {
+        refundMe();
         return;
     }
 
@@ -222,14 +207,6 @@ const refundValidate = () => {
         return;
     }
 };
-
-const refundMe = () => {
-    refundMessage.innerText = "숫자만 입력해주세요.";
-    refundMessage.classList.remove("error", "confirm");
-    refundPrice.value = 0;
-
-    refundFlag = false;
-}
 
 //충전하기
 document.getElementById("chargeSubmitBtn").addEventListener("click", function (e) {
@@ -302,6 +279,10 @@ selectMonth.addEventListener("mouseenter", () => {
     selectYear.nextElementSibling.style.display = "none";
 });
 
+selectMonth.addEventListener("mouseleave", () => {
+    selectMonth.nextElementSibling.style.display = "none";
+});
+
 for (let month of dropdownContent2) {
     month.addEventListener("mouseleave", () => {
         selectYear.nextElementSibling.style.display = "none";
@@ -326,6 +307,10 @@ selectYear.addEventListener("mouseenter", () => {
     selectMonth.nextElementSibling.style.display = "none";
 })
 
+selectYear.addEventListener("mouseleave", () => {
+    selectYear.nextElementSibling.style.display = "none";
+})
+
 for (let year of dropdownContent1) {
     year.addEventListener("mouseleave", () => {
         selectYear.nextElementSibling.style.display = "none";
@@ -345,7 +330,6 @@ document.getElementById("monthBefore").addEventListener("click", () => {
         if (selectYear.innerText == "2022년") {
             alert("바나나마켓이 출시한 연도보다 이전 날짜를 조회할 수 없어요~ ^^*");
 
-        // 2022년이 아닐 때
         } else {
             selectYear.innerText = (Number(selectYear.innerText.substring(0, 4)) - 1) + "년";
             document.getElementById("month1").classList.remove("selected");

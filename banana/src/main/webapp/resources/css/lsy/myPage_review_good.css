@@ -48,13 +48,17 @@ a {
     display: flex;
     padding : 30px 0 30px 0;
 }
+#title_section_1{
+    display: flex;
+    padding : 30px 0 30px 0;
+}
 
-#side1, #side2 {
+#side1, #side2 ,#title_section_1{
     padding-left: 30px;
     border-bottom: 1px solid #ddd;
 }
 
-.side1 > * , .side2 > * , .main_title > * {
+.side1 > * , .side2 > * , .main_title > *,#title_section_1>* {
     margin-right: 10px;
     display: flex;
     justify-content: center;
@@ -179,6 +183,6 @@ a {
     padding-bottom: 5px;
 }
 
-#title_section_1{
+/* #title_section_1{
     display: flex;
-}
+} */

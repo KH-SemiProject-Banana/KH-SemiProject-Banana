@@ -29,8 +29,8 @@ const back2 = document.getElementById("back2");
 const back3 = document.getElementById("back3");
 
 // 카테고리 번호
-const ctg1 = document.getElementsByName("ctg1");
-const ctg2 = document.getElementsByName("ctg2");
+const ctg1 = document.getElementsByName("ctg1")[0];
+const ctg2 = document.getElementsByName("ctg2")[0];
 
 const pl = document.getElementById("popup_layer");
 const pp = document.getElementById("poppingThing");
@@ -51,28 +51,20 @@ const disNone = () => {
 
 }
 
-
 disNone();
 
+function openPop(sellerNo, memberNickname){
+    document.getElementById("userEu").innerText = memberNickname + "를 신고하는 이유를 선택해주세요";
 
-
-
-function openPop(){
-    
     pl.style.display = "block";
     pp.style.display = "block";
-
+    click.style.display = "block";
     
                 
     abc1.addEventListener("click",function(){
-    
         click.style.display = "none";
         click1.style.display = "block";
         back1.style.display = "block";
-            
-    
-        
-        
     })
     
     abc2.addEventListener("click", () => {
@@ -142,7 +134,6 @@ function openPop(){
     
     
     click1.addEventListener("click", () => {
-    
         click1.style.display = "none";
         userreportsubmit.style.display = "block";
         back2.style.display = "block";
@@ -184,6 +175,7 @@ function openPop(){
             
             // 0번부터 눌리니깐 +1
             ctg1.value = i + 1;
+            ctg2.value = 0;
             console.log(ctg1.value);
             
             // ctg2 설명을 담을 껍데기 변수 선언
@@ -191,37 +183,40 @@ function openPop(){
             
             // ctg 1벨류가 특정값일때 
             switch (ctg1.value) {
-                case "1" :
-                    ctg2dsc = document.getElementById("click1").children;
+                case 1 :
+                    ctg2dsc = click1.children;
                     // 클릭1 자식요소 가져오기
                     break;
-                case "2" :
-                    ctg2dsc = document.getElementById("click2").children;
+                case 2 :
+                    ctg2dsc = click2.children;
                         // 클릭 2 자식요소(세부카테고리) 가져오기
                     break;
-                case "6":
-                    ctg2dsc = document.getElementById("click6").children;
+
+                case 6:
+                    ctg2dsc = click6.children;
                     break;
-                case "7":
-                    ctg2dsc = document.getElementById("click7").children;
+                case 7:
+                    ctg2dsc = click7.children;
                     break;
             }
 
             console.log(ctg2dsc);
         
             if(ctg2dsc != null) {
-                for(let i = 0; i < ctg2dsc.length; i++){
+                for(let j = 0; j < ctg2dsc.length; j++){
                 // 몇번째 인덱스가 클릭되었을때 이벤트 발생
         
-                    ctg2dsc[i].addEventListener("click", () => {
+                    ctg2dsc[j].addEventListener("click", () => {
                         // 0번째 인덱스는 디비에 없으니 +1
                             
-                        if(i == 2 || i ==3 || i== 4 ||  i== 7){                      
-                            ctg2.value = i;
+                        // if(j == 2 || j ==3 || j== 4 ||  j== 7){                      
+                        //     ctg2.value = j;
                                 
-                        } else{
-                            ctg2.value = i + 1;
-                        }
+                        // } else{
+                            ctg2.value = j + 1;
+                        // }
+
+                        console.log(ctg2.value);
                     })
                 }
             }
@@ -261,29 +256,25 @@ function openPop(){
             back3.style.display = "none";
         });
     
-
-    
-
-
     // back2.style.display = "none";
 
     back1.addEventListener("click",() => {
         
         switch (ctg1.value) {
-            case "1":
+            case 1:
                 click1.style.display = "none";
             break;
                 
-            case "2":
+            case 2:
                 click2.style.display = "none";
             break;
                     
                     
-            case "6":
+            case 6:
                 click6.style.display = "none";
             break;
                         
-            case "7":
+            case 7:
                 click7.style.display = "none";   
             break;          
         }
@@ -298,23 +289,24 @@ function openPop(){
         userreportsubmit.style.display = "none";
 
         switch (ctg1.value) {
-            case "1":
+            case 1:
                 click1.style.display = "block";
             break;
                 
-            case "2":
+            case 2:
                 click2.style.display = "block";
             break;
             
-            case "6":
+            case 6:
                 click6.style.display = "block";
             break;
     
-            case "7":
+            case 7:
                 click7.style.display = "block";   
             break;          
             }
 
+            back1.style.display = "block";
             back2.style.display = "none";
     })
 
@@ -336,7 +328,7 @@ function openPop(){
     document.getElementById("report-submit-button").addEventListener("click", () => {
         $.ajax({
             url : "/reportsubmit",
-            data : {"memberNo2" : document.getElementById("memberNo2").value,
+            data : {"sellerNo" : document.getElementById("memberNo2").value,
                     "ctg1" : document.getElementById("ctg1").value,
                     "ctg2" : document.getElementById("ctg2").value,
                     "reportbox" : document.getElementById("reportbox").value},
@@ -363,7 +355,7 @@ function openPop(){
     
 
 function closePop(){
-    document.getElementById("popup_layer").style.display = "none";
+    disNone();
 }
 
 

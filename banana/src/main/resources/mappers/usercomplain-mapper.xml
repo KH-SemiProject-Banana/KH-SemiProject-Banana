@@ -6,9 +6,9 @@
 
 <insert id="userreportsubmit">
   INSERT INTO "USER_COMPLAIN"
-  VALUES(#SEQ_U_COM_NO.NEXTVAL, 
-  		#{u_ctg1},
-  		#{u_ctg2},
+  VALUES(SEQ_U_COM_NO.NEXTVAL, 
+  		#{ctg1},
+  		#{ctg2},
   		#{memberNo2},
   		#{memberNo},
   		#{reportbox},
@@ -17,9 +17,9 @@
 
   
 <select id="userDuplication">
-	SELECT COUNT * FROM "USER_COMPLAIN"
+	SELECT COUNT(*) FROM "USER_COMPLAIN"
 	WHERE U_COMPLAINER = #{memberNo}
-	AND U_COMPLAINED = #{memberNo2}; 
+	AND U_COMPLAINED = #{memberNo2}
 </select>
 
 <!-- <insert id="userBlock">

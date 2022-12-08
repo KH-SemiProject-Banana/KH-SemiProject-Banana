@@ -49,9 +49,9 @@ public class UserComplainController {
 	
 	
 	
-	@PostMapping("/userreportsubmit/")
+	@PostMapping("/userreportsubmit")
 	public String userReportSubmit(@RequestParam Map<String, Object> submit, 
-									@SessionAttribute("loginmember") Member loginmember,
+									@SessionAttribute("loginMember") Member loginmember,
 									RedirectAttributes ra,
 									@RequestHeader("referer") String referer
 	/* @RequestParam(value = "userblock") int userBlocked */

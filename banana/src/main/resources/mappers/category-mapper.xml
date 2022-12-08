@@ -151,7 +151,7 @@
 			AND BUYER_NO IS NOT NULL
 		</if>
 		
-		ORDER BY LIKE_COUNT DESC
+		ORDER BY LIKE_COUNT DESC, GOODS_NO DESC
 	 </select>
 
 	 <!-- 검색 시 게시글 수 조회 -->

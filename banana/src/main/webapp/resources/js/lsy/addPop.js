@@ -439,10 +439,9 @@ document.getElementById("finalPopUp").addEventListener("click",function(){
                 const li1 = document.createElement("li");
                 li1.innerText = review.mannerDescription;
                 document.querySelector("#messageList2").append(li1);
-
             }
 
-        },
+            },
         error : () => {
 
             console.log("받은/매너후기/목록 실패");
@@ -487,80 +486,79 @@ for(let dot of dotList){
         dot.after(container);
 
         
-        div1.classList.add("anotherPop1" , "babo");
+        div1.classList.add("anotherPop1" , "editGoods", "babo");
         div1.innerText = "글 수정하기";
         div1.addEventListener("click", function(){
             location.href = "/goods/update/" + goodsNo;
         })
 
-
-
     //     // 글 삭제
-    //     div2.classList.add("anotherPop1" , "babo");
-    //     div2.innerText = "글 삭제하기";
-    //     div2.addEventListener("click", () => {
-
-    //         if(confirm("정말 상품을 삭제하시겠습니까?")){
-    //             () => {
-                    
-    //                 $.ajax({
-            
-    //                     url : "/goods/delete",
-    //                     data : {"goodsNo" : goodsNo},
-    //                     type : "GET",
-    //                     success : (result) => {
-    //                         if(result > 0) {
-    //                             // 상품태그 메인에서 지우기
-    //                             alert("상품이 삭제되었습니다");
-    //                             e.target.parentElement.parentElement.parentElement.remove();
-    //                         } else {
-    //                             console.log("상품글 삭제 실패");
-    //                         }
-    //                     },
-    //                     error : () => {
-    //                         console.log("상품글 삭제 중 오류 발생");
-    //                     }
-    //                 })
-    //             }
-    //         }
-    //     }
-
-            
-                
-
-                
-            
+        div2.classList.add("anotherPop1" , "babo", "deleteGoods");
+        div2.innerText = "글 삭제하기";
+        e.target.nextElementSibling.childNodes[1].addEventListener("click", () => {deleteGoods(goodsNo)});
+        // div2.addEventListener("click", deleteGoods(goodsNo));
         
-    // );
-
-
         // 끌어올리기
-        div3.classList.add("anotherPop1");
+        div3.classList.add("anotherPop1", "refreshGoods");
         div3.innerText = "끌어올리기";
-        div3.addEventListener("click", ()=>{
+        e.target.nextElementSibling.childNodes[2].addEventListener("click", () => {refreshGoods(goodsNo)});
+
+        // div3.addEventListener("click", refreshGoods(goodsNo));
+        
+    });
+}
+
+
+
+
+const deleteGoods = (goodsNo) => {
+
+    if(confirm("정말 상품을 삭제하시겠습니까?")){
+
+        (() => {
             
             $.ajax({
     
-                url : "/goods/refresh/" + goodsNo,
+                url : "/goods/delete",
                 data : {"goodsNo" : goodsNo},
                 type : "GET",
                 success : (result) => {
                     if(result > 0) {
-                        alert("해당 상품이 끌어올리기 되었습니다")
+                        // 상품태그 메인에서 지우기
+                        alert("상품이 삭제되었습니다");
+                        location.href = location.href;
                     } else {
-                        console.log("상품글 끌어올리기 실패");
+                        console.log("상품글 삭제 실패");
                     }
                 },
                 error : () => {
-                    console.log("상품글 끌어올리기 중 오류 발생");
+                    console.log("상품글 삭제 중 오류 발생");
                 }
-            
-                
             })
+        })();
+    }
+}
+
+const refreshGoods =  (goodsNo) => {
+
+    $.ajax({
+    
+        url : "/goods/refresh/" + goodsNo,
+        data : {"goodsNo" : goodsNo},
+        type : "GET",
+        success : (result) => {
+            if(result > 0) {
+                alert("해당 상품이 끌어올리기 되었습니다")
+            } else {
+                console.log("상품글 끌어올리기 실패");
+            }
+        },
+        error : () => {
+            console.log("상품글 끌어올리기 중 오류 발생");
         }
+    
         
-        )
-    });
+    })
 }
 
 

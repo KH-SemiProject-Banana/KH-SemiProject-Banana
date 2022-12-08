@@ -1,3 +1,4 @@
+
 * {
     box-sizing: border-box;
     padding: 0;
@@ -48,59 +49,59 @@ footer span {
 /* header-------------------------------------------------------------------------- */
 /* ----------------------------------------------------------------------------- */
 /* 로고 글씨 폰트 */
-#query__banana {
+#query__banana-chatting {
     font-family: 'Noto Serif', serif;
 }
 
 header {
-    height: 180px;
+    height: 230px;
     display: flex;
     flex-direction: column;
     padding: 0 20px;
     border-bottom: 3px solid #ddd;
 }
 
-.query__area {
+.query__area-chatting {
     justify-content: space-between;
 }
-.query__area > div{
+.query__area-chatting > div{
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 /* ------------------------------------------- */
-.section-query {
+.section-query-chatting {
     width: 100%;
     padding-right: 20px;
 }
 
-.section-query>*:nth-child(2) {
+.section-query-chatting>*:nth-child(2) {
     width: 50%;
 }
 
-.section-query>*:nth-child(3) {
+.section-query-chatting>*:nth-child(3) {
     width: 20%;
 }
 
-.section-query>*:nth-child(1) {
+.section-query-chatting>*:nth-child(1) {
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
-.query__logo>p:first-child {
+.query__logo-chatting>p:first-child {
     font-size: 18px;
     font-weight: 600;
     color: rgba(0, 0, 0, 0.6);
 }
 
-#query__banana {
+#query__banana-chatting {
     font-size: 22px;
     font-weight: 600;
 }
 
-#logo-img {
+#logo-img-chatting {
     height: 100px;
     width: 100px;
 }
@@ -110,7 +111,7 @@ header {
 /* ------------------------------------- */
 /* 오른쪽 상단 닉네임 */
 /* label태그 중 for속성 값이 header-menu-toggle인 것 */
-label[for="header-menu-toggle"] {
+label[for="header-menu-toggle-chatting"] {
     cursor: pointer;
     display: flex;
     height: 42px;
@@ -122,30 +123,30 @@ label[for="header-menu-toggle"] {
     position: relative;
 }
 
-#header-menu-toggle {
+#header-menu-toggle-chatting {
     visibility: hidden;
 }
 
-label[for="header-menu-toggle"]:hover {
+label[for="header-menu-toggle-chatting"]:hover {
     text-decoration: underline;
 }
 
 /* 체크박스 다음 div */
-#header-menu-toggle+div {
+#header-menu-toggle-chatting+div {
     display: none;
 }
 
 /* 체크박스가 체크되었을때 다음 div */
-#header-menu-toggle:checked+div {
+#header-menu-toggle-chatting:checked+div {
     display: block;
 }
 
-.fa-caret-down {
+.fa-caret-down-chatting {
     margin: 0 3px;
 }
 
 /* 닉네임 클릭시 보이는 메뉴 */
-#header-menu {
+#header-menu-chatting {
     position: absolute;
     z-index: 500;
     width: 100px;
@@ -154,10 +155,10 @@ label[for="header-menu-toggle"]:hover {
     top: 40px; */
     margin-top: 5px;
     border: 1px solid black;
-    background-color: white;
+    background-color: white; 
 }
 
-#header-menu>a {
+#header-menu-chatting>a {
     display: flex;
     height: 50%;
     width: 100%;
@@ -168,15 +169,15 @@ label[for="header-menu-toggle"]:hover {
     color: rgba(0, 0, 0, 0.6);
 }
 
-#header-menu>a:first-child {
+#header-menu-chatting>a:first-child {
     border-bottom: 1px solid #ccc;
 }
 
-#header-menu>a:hover {
+#header-menu-chatting>a:hover {
     background-color: var(--lightYellow);
 }
 
-#profileImg {
+#profileImg-chatting {
     width: 56px;
     height: 56px;
     margin-right: 5px;

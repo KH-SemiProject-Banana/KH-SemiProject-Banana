@@ -14,6 +14,13 @@ public interface PayService {
 	int searchRemainPay(Map<String, Object> paramMap);
 
 	/**
+	 * 페이 히스토리
+	 * @param paramMap
+	 * @return payLogList
+	 */
+	List<BananaPay> searchPayLogList(Map<String, Object> paramMap);
+	
+	/**
 	 * 주문번호 조회
 	 * @return result
 	 */
@@ -25,6 +32,4 @@ public interface PayService {
 	 * @return result
 	 */
 	int pointCharge(Map<String, Object> paramMap);
-
-	List<BananaPay> searchPayLogList(Map<String, Object> paramMap);
 }

@@ -77,19 +77,19 @@
 						<div class="container">
 							<c:choose>
 								<c:when test="${member.manner >= 80}">
-									<div class="temperature" style="width:${member.manner}%; background-color:red"></div>
+									<div class="temperature" style="width:${member.manner}%; background: brown;"></div>
 								</c:when>
 								<c:when test="${member.manner >= 60}">
-									<div class="temperature" style="width:${member.manner}%; background-color:orange"></div>
+									<div class="temperature" style="width:${member.manner}%; background: tomato ;"></div>
 								</c:when>
 								<c:when test="${member.manner >= 40}">
-									<div class="temperature" style="width:${member.manner}%; background-color:yellow"></div>
+									<div class="temperature" style="width:${member.manner}%; background: yellow;"></div>
 								</c:when>
 								<c:when test="${member.manner >= 20}">
-									<div class="temperature" style="width:${member.manner}%; background-color:green"></div>
+									<div class="temperature" style="width:${member.manner}%; background: yellowgreen;"></div>
 								</c:when>
 								<c:otherwise>
-									<div class="temperature" style="width:${member.manner}%; background-color:blue"></div>
+									<div class="temperature" style="width:${member.manner}%; background:  green;"></div>
 								</c:otherwise>
 							</c:choose>
 						</div>
@@ -99,12 +99,14 @@
 			<!--섹션4********************************************************************************************************섹션1-->
 			<section class="myBanana-category">
             
-                    <div id= "first-category" class = "category">
-                        <a href="/member/myPage/yourPageMain?myPageCt=1">판매내역</a>
-                    </div>
-                    <div id= "fourth-category" class = "category">
-                        <a href="/member/myPage/selectAllReview">후기</a>
-                    </div>
+                    <form id= "first-category" class = "category" method = "POST">
+                        <a id = "firstCt">판매내역</a>
+						<input type="hidden" name="sellerNo" value="${map.memberNo}">
+                    </form>
+                    <form id= "fourth-category" class = "category" method = "POST">
+                        <a id = "lastCt" >후기</a>
+						<input type="hidden" name="sellerNo" value="${map.memberNo}">
+                    </form>
 
 
 			</section>
@@ -245,7 +247,7 @@
     </script>
     <!-- jQuery 라이브러리(.js 파일) 추가(CDN 방식) -->
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
-	<script src="/resources/js/lsy/yourPage.js"></script>
+	<script src="/resources/js/lsy/yourPage_common.js"></script>
 </body>
 
 </html>

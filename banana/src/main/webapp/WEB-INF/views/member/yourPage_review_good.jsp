@@ -18,7 +18,9 @@
 
     <script src="https://kit.fontawesome.com/f7459b8054.js" crossorigin="anonymous"></script>
 
+    <style>
 
+    </style>
 
 </head>
 <body>
@@ -27,19 +29,21 @@
         <%-- header.jsp.include --%>
         <jsp:include page="/WEB-INF/views/common/header.jsp" />
 
-    <section class = "title">
-        <a href="/member/myPage/selectAllReview"><i id = "back" class="fa-solid fa-angle-right"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;매너 상세</a>
-    </section>      
+    <form class = "title" id = "fourth-category" method = "post">
+        <a id = "lastCt" ><i id = "back" class="fa-solid fa-angle-right"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;매너 상세</a>
+        <input type="hidden" name="sellerNo" value="${member.memberNo}">
+    </form>      
     <section class = "content">
         <div class= "side">
-            <div class= "side1" id = "side1">
-                <div><i class="fa-regular fa-face-smile-beam imo1"></i></div>
-                <p><a href="/member/myPage/review/good?mannerCt=1">받은 매너 칭찬</a></p> 
-            </div>
-            <div class= "side2" id = "side2"> 
-                <div><i class="fa-regular fa-face-angry imo1"></i></div>
-                <p><a href="/member/myPage/review/good?mannerCt=2">받은 비매너 후기</a></p>
-            </div>
+                <form class= "side1" id = "title_section_1" method = "post">
+                    <input type="hidden" name="sellerNo" value="${member.memberNo}">
+                    <div><i class="fa-regular fa-face-smile-beam imo1"></i></div>
+                    <p id= "goToManner">받은 매너 칭찬 </p> 
+                </form>
+                <%-- <div class= "side2" id = "side2"> 
+                    <div><i class="fa-regular fa-face-angry imo1"></i></div>
+                    <p><a href="/member/myPage/review/good?mannerCt=2">받은 비매너 후기</a></p>
+                </div> --%>
         </div>
 
         <div class="goodBadMain">
@@ -49,7 +53,7 @@
                         <div><%-- divG2_1div --%>
                             <i class="fa-regular fa-face-smile-beam imo"></i><%-- divG2_1div_i --%>
                         </div>
-                        <p>받은 매너 칭찬</p> <%-- divG2_2p --%>
+                        <p> 받은 매너 칭찬</p> <%-- divG2_2p --%>
                     </div>
                 </div>
 
@@ -75,7 +79,7 @@
     <%-- footer.jsp.include --%>
     <jsp:include page = "/WEB-INF/views/common/footer.jsp" />
 
-    <script>
+    <%-- <script>
         let mannerCt
 
         if(${param.mannerCt != null}) {
@@ -88,8 +92,25 @@
             case 1: document.getElementById("side1").style.fontWeight = "bold"; break;
             case 2: document.getElementById("side2").style.fontWeight = "bold"; break;
         }
+    </script> --%>
+
+    <script>
+
+    //'후기'을 클릭했을 때, form태그 제출 (후기 조회됨)
+    document.getElementById("lastCt").addEventListener("click",function(){
+        const myBananaSell = document.getElementById("fourth-category");
+        myBananaSell.action = "/member/myPage/selectAllYourReview";
+        myBananaSell.submit();
+    })
+    //'받은 매너 평가'를 클릭했을 때, form태그 제출
+    document.getElementById("goToManner").addEventListener("click",function(){
+    const myBananaSell = document.getElementById("title_section_1");
+    myBananaSell.action = "/member/myPage/yourReview/good";
+    myBananaSell.submit();
+    })
+
     </script>
 
-    <script src="/resources/js/lsy/myPage_review_good.js"></script>
+    <%-- <script src="/resources/js/lsy/myPage_review_good.js"></script> --%>
 </body>
 </html>

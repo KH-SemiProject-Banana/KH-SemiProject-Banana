@@ -13,6 +13,7 @@ public interface UserComplainService {
 	 * @param userBlocked
 	 * @return result
 	 */
-	int userBlock(int memberNo, int userBlocked);
-
+	
+	  int userBlock(int memberNo, int userBlocked);
+	 
 }

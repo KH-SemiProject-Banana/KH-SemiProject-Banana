@@ -80,14 +80,14 @@ public class GoodsController {
 		
 
 		inputGoods.setSellerNo(loginMember.getMemberNo());
-		int result = service.registerGoods(webPath, folderPath, inputImageList, inputGoods);
+		int goodsNo = service.registerGoods(webPath, folderPath, inputImageList, inputGoods);
 		
 		String path = null;
 		String message = null;
 		
-		if(result > 0) {
+		if(goodsNo > 0) {
 			
-			path = "/";
+			path = "/goods/" + goodsNo;
 			message = "상품 등록 완료";
 		} else {
 			

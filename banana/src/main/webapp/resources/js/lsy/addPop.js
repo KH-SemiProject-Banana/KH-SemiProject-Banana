@@ -476,12 +476,13 @@ for(let dot of dotList){
         const container = document.createElement("div");
         const div1 = document.createElement("div");
         const div2 = document.createElement("div");
-        const div3 = document.createElement("div");
+        // const div3 = document.createElement("div");
         
         container.classList.add("anotherPop");
 
 
-        container.append(div1, div2, div3);
+        // container.append(div1, div2, div3);
+        container.append(div1, div2);
 
         dot.after(container);
 
@@ -499,9 +500,9 @@ for(let dot of dotList){
         // div2.addEventListener("click", deleteGoods(goodsNo));
         
         // 끌어올리기
-        div3.classList.add("anotherPop1", "refreshGoods");
-        div3.innerText = "끌어올리기";
-        e.target.nextElementSibling.childNodes[2].addEventListener("click", () => {refreshGoods(goodsNo)});
+        // div3.classList.add("anotherPop1", "refreshGoods");
+        // div3.innerText = "끌어올리기";
+        // e.target.nextElementSibling.childNodes[2].addEventListener("click", () => {refreshGoods(goodsNo)});
 
         // div3.addEventListener("click", refreshGoods(goodsNo));
         

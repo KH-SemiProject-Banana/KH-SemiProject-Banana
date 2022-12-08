@@ -30,34 +30,20 @@ function loadFile(input) {
             return false;
         }
 
-
         var newImage = document.createElement("img");
         newImage.classList.add("img");
-
         newImage.src = URL.createObjectURL(file);
 
-
-
-
-
         var container = document.getElementById('image-show');
-
-        // var del = document.createTextNode('삭제');
-
-
         container.appendChild(newImage);
 
-               
-        
+
         // 이미지 삭제 구현
-        newImage.addEventListener("click", (e)=>{
+        newImage.addEventListener("click", (e) => {
 
             container.removeChild(e.target);
             deleteFile(e.target);
-         });
- 
- 
-
+        });
 
 
         const count = container.childElementCount;
@@ -79,17 +65,17 @@ function loadFile(input) {
 
 
 
-function deleteFile(img){
+function deleteFile(img) {
 
     let fileNum = -1;
-    for(let i = 0; i < list.length; i++){
-        if(list[i] == img){
+    for (let i = 0; i < list.length; i++) {
+        if (list[i] == img) {
             fileNum = i;
             break;
         }
     }
 
-    if(fileNum > -1) {
+    if (fileNum > -1) {
 
         const dataTransfer = new DataTransfer();
         let fileCount = document.getElementById("chooseFile"); // label
@@ -101,7 +87,7 @@ function deleteFile(img){
         console.log(fileArray);
         fileArray.splice(fileNum, 1);
 
-        fileArray.forEach(file => {dataTransfer.items.add(file)});
+        fileArray.forEach(file => { dataTransfer.items.add(file) });
         console.log(dataTransfer.files);
         fileCount.files = dataTransfer.files;
     }
@@ -146,7 +132,7 @@ document.getElementById("register__form").addEventListener("submit", e => {
             e.preventDefault();
             return;
         }
-        
+
     }
 });
 
@@ -155,9 +141,9 @@ document.getElementById("register__form").addEventListener("submit", e => {
 
 // 상품 이미지 유효성검사
 const chooseFile = document.getElementById("chooseFile");
-chooseFile.addEventListener("change", () =>{
+chooseFile.addEventListener("change", () => {
 
-    if(chooseFile.value == ''){
+    if (chooseFile.value == '') {
 
         goodsImage = false;
 

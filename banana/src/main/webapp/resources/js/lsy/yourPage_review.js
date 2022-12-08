@@ -26,7 +26,8 @@ document.getElementById("lastCt").addEventListener("click",function(){
 //     myBananaSell.submit();
 // })
 
-//추가
+//일단 각자 페이지에 넣어놓음(주석처리 해놓음)
+// //추가
 //'받은 매너 평가'를 클릭했을 때, form태그 제출
 document.getElementById("goToManner").addEventListener("click",function(){
     const myBananaSell = document.getElementById("title_section_1");
@@ -34,9 +35,29 @@ document.getElementById("goToManner").addEventListener("click",function(){
     myBananaSell.submit();
 })
 
-//
+// //
 
-//'받은 거래 후기'를 클릭했을 때, form태그 제출
+
+
+// //추가
+// //'받은 거래 후기'를 클릭했을 때, form태그 제출
+// document.getElementById("bothD").addEventListener("click",function(){
+//     const myBananaSell = document.getElementById("category_border");
+//     myBananaSell.action = "/member/myPage/yourReview/detail?detailCt=1";
+//     myBananaSell.submit();
+// })
+// document.getElementById("bothB").addEventListener("click",function(){
+//     const myBananaSell = document.getElementById("category_border");
+//     myBananaSell.action = "/member/myPage/yourReview/detail?detailCt=2";
+//     myBananaSell.submit();
+// })
+// document.getElementById("bothS").addEventListener("click",function(){
+//     const myBananaSell = document.getElementById("category_border");
+//     myBananaSell.action = "/member/myPage/yourReview/detail?detailCt=3";
+//     myBananaSell.submit();
+// })
+
+
 
 // 페이지네이션 a태그 얻어오기
 const list = document.querySelectorAll(".pagination a");

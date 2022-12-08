@@ -318,6 +318,8 @@ public class MyPageController {
 			){
 		
 		int memberNo = loginMember.getMemberNo();
+		String address = loginMember.getMemberAddress();
+		model.addAttribute("address", address.substring(10, 13));
 		Map<String, Object> map = service.selectNewestReviewList(memberNo);
 		model.addAttribute("map", map);
 		System.out.println(map);
@@ -377,6 +379,8 @@ public class MyPageController {
 			@RequestParam(value="cp", required=false, defaultValue = "1") int cp
 			) {
 		
+		String address = loginMember.getMemberAddress();
+		model.addAttribute("address", address.substring(10, 13));
 		int memberNo = loginMember.getMemberNo();
 		Map<String, Object> map = service.myGoodsLikeList(memberNo,cp);
 		model.addAttribute("map", map);
@@ -428,7 +432,7 @@ public class MyPageController {
 	 * @param model
 	 * @return
 	 */
-	@PostMapping("selectAllYourReview")
+	@PostMapping("/selectAllYourReview")
 	public String selectAllYourReview(
 			@SessionAttribute("loginMember") Member loginMember,
 			@RequestParam(value = "sellerNo") int memberNo,
@@ -465,7 +469,7 @@ public class MyPageController {
 	
 	// 리뷰 상세 페이지 이동 2 
 	// (2. 거래후기 목록 조회)
-	@GetMapping("/yourReview/detail")
+	@PostMapping("/yourReview/detail")
 	public String yourReviewDetailList(
 			@SessionAttribute("loginMember") Member loginMember, 
 			@RequestParam(value = "sellerNo") int memberNo,
@@ -478,8 +482,7 @@ public class MyPageController {
 		Member member = service.selectYourInfo(memberNo);
 		
 		Map<String, Object> map1 = new HashMap<String, Object>(); 
-		int memberNo1 = loginMember.getMemberNo();
-		map1.put("memberNo", memberNo1); 
+		map1.put("memberNo", memberNo); 
 		map1.put("detailCt", detailCt);
 		System.out.println(map1); //service가기 전에 잘 담겼나 확인용
 		Map<String, Object> map = service.reviewDetailList(map1,cp); 
@@ -487,7 +490,7 @@ public class MyPageController {
 		model.addAttribute("member", member);
 		System.out.println(map); //뷰 가기 전에 잘 담겼나 확인용
 		
-		return "member/myPage_review_detail";
+		return "member/yourPage_review_detail";
 	}
 	
 }

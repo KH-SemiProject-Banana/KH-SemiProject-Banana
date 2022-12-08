@@ -154,9 +154,10 @@
                         <div class = "row33"><p class = "row3col5">5</p></div> --%>
                     </section>
                 </section>
-                <section class = "title_section_2">
-                    <a href="/member/myPage/review/detail?detailCt=1">받은 거래 후기&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-                </section>
+                <form class = "title_section_2" method = "POST" id =  "title_section_2">
+                    <input type="hidden" name="sellerNo" value="${member.memberNo}">
+                    <a id = "bothD">받은 거래 후기&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+                </form>
                 <section class = "review_section_2">
                     <c:forEach var = "review" items = "${reviewNewestList}">
                         <div class = "review_2">
@@ -206,6 +207,13 @@ ${review.message}
         document.getElementById("fourth-category").style.fontWeight = "bold";
         })  
     </script> --%>
+    <script>
+    document.getElementById("bothD").addEventListener("click",function(){
+    const myBananaSell = document.getElementById("title_section_2");
+    myBananaSell.action = "/member/myPage/yourReview/detail?detailCt=1";
+    myBananaSell.submit();
+    })
+    </script>
 
     <!-- jQuery 라이브러리(.js 파일) 추가(CDN 방식) -->
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>

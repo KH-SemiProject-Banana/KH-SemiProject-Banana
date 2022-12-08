@@ -82,7 +82,7 @@ document.getElementsByClassName("charge10")[1].addEventListener("click", functio
 });
 
 document.getElementById("chargeAll").addEventListener("click", function () {
-    refundPrice.value = payRemain.innerText;
+    refundPrice.value = payRemain.innerText.split(",").join("");
     refundValidate();
 });
 

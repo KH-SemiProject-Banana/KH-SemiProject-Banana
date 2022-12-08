@@ -455,3 +455,9 @@ chattingSock.onmessage = function(e) {
 	selectRoomList();
 }
 
+const admNo = document.getElementById("admNo")
+
+admNo.addEventListener("click",()=>{
+	alert("안돼요~ 관리자를 신고할 수는 없어요~ 채팅 규칙을 잘 지켜주세요~")
+
+})

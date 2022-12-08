@@ -13,9 +13,9 @@
 
   <!-- 잔여 페이 조회 -->
   <select id="searchRemainPay" resultType="_int">
-  	SELECT REMAIN_POINT FROM REQUEST_PAY
+  	SELECT REMAIN_POINT
+  	FROM (SELECT * FROM REQUEST_PAY ORDER BY ORDER_NO DESC)
 	WHERE TRADER_NO = #{memberNo} AND ROWNUM = 1
-	ORDER BY ORDER_NO DESC
   </select>
   
   <!-- 주문번호 조회 -->

@@ -106,6 +106,14 @@
 			
 			)
 		</if>
+		
+		<if test="order == 4">
+			AND BUYER_NO IS NULL
+		</if>
+		
+		<if test="order == 5">
+			AND BUYER_NO IS NOT NULL
+		</if>
 	 </select>
 	 
 	 <!-- 인기매물 게시글 목록 조회 -->
@@ -135,19 +143,15 @@
 			)
 		</if>
 		
-		ORDER BY LIKE_COUNT DESC,
-		
-		<if test='order == 1'>
-			CREATED_AT DESC
+		<if test="order == 4">
+			AND BUYER_NO IS NULL
 		</if>
 		
-		<if test='order == 2'>
-			SELL_PRICE ASC
+		<if test="order == 5">
+			AND BUYER_NO IS NOT NULL
 		</if>
 		
-		<if test='order == 3'>
-			SELL_PRICE DESC
-		</if>
+		ORDER BY LIKE_COUNT DESC
 	 </select>
 
 	 <!-- 검색 시 게시글 수 조회 -->
@@ -253,7 +257,9 @@
 	 <!-- 상세 페이지 이미지 목록 조회 -->
 	 <select id="selectGoodsImg" resultType="string">
 	 	<![CDATA[
-	 	SELECT IMAGE_PATH FROM GOODS_IMAGE WHERE GOODS_NO = #{goodsNo} AND ROWNUM <= 5 ORDER BY IMG_ORDER
+	 	SELECT IMAGE_PATH
+	 	FROM (SELECT * FROM GOODS_IMAGE ORDER BY IMG_ORDER)
+	 	 WHERE GOODS_NO = #{goodsNo} AND ROWNUM <= 5
 	 	]]>
 	 </select>
 	 
@@ -268,10 +274,10 @@
 	 	<![CDATA[
 	 	SELECT TITLE, SELL_PRICE, GOODS_NO,
 		(SELECT IMAGE_PATH FROM GOODS_IMAGE GI WHERE IMG_ORDER = 0 AND GI.GOODS_NO = GS.GOODS_NO) IMAGE_PATH
-		FROM GOODS_SELL GS
+		FROM (SELECT * FROM GOODS_SELL ORDER BY CREATED_AT DESC) GS
 		WHERE SELLER_NO = (SELECT SELLER_NO FROM GOODS_SELL WHERE GOODS_NO = #{goodsNo})
+		AND GOODS_DEL_FL = 'N'
 		AND ROWNUM <= 5
-		ORDER BY CREATED_AT DESC
 		]]>
 	 </select>
 </mapper>

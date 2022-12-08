@@ -16,14 +16,14 @@
 </head>
 <body>
     <main>
-        <div class="popup_layer" id="popup_layer" style="display: none;">
-            <div class="popup_box scroll">
+        <div class="popup_layer5" id="popup_layer5" style="display: none;">
+            <div class="popup_box5 scroll">
                 <div style="height: 10px; width: 500px; float: top;">
-                    <a href="javascript:closePop();"><i class="fa-solid fa-x allClose"></i></a>
+                    <a href="javascript:closePop5();"><i class="fa-solid fa-x allClose"></i></a>
                 </div>
 
                 <!--팝업 컨텐츠 영역-->
-                <div class="popup_cont">
+                <div class="popup_cont5">
                     <div class="payRemainArea">
                         <h1><span>내 바나나페이 : </span><span id="payRemain">65000</span><span>원</span></h1>
                         <div class="payButton">
@@ -64,7 +64,7 @@
                         <div class="charge">
                             <div class="chargeHeader">
                                 <p>환불하기</p>
-                                <p class="fa-solid fa-x close closeRefund"></p>
+                                <p><i class="fa-solid fa-x close closeRefund"></i></p>
                             </div>
 
                             <div class="chargeMain">

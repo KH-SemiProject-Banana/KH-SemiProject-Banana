@@ -123,11 +123,23 @@
                 <div id="Gu"></div>
 
                 <div class="selectBox">
-                    <select onchange="window.open(value,'_self');">
-                        <option value="/category?${ctgNo}${searchQuery}${locAddress}&order=1">최신순</option>
-                        <option value="/category?${ctgNo}${searchQuery}${locAddress}&order=2">저가순</option>
-                        <option value="/category?${ctgNo}${searchQuery}${locAddress}&order=3">고가순</option>
-                    </select>
+                    <c:choose>
+                        <c:when test="${param.categoryNo == 0}">
+                            <select onchange="window.open(value,'_self');">
+                                <option value="/category?${ctgNo}${searchQuery}${locAddress}">전체보기</option>
+                                <option value="/category?${ctgNo}${searchQuery}${locAddress}&order=4">거래중</option>
+                                <option value="/category?${ctgNo}${searchQuery}${locAddress}&order=5">거래완료</option>
+                            </select>
+                        </c:when>
+
+                        <c:otherwise>
+                            <select onchange="window.open(value,'_self');">
+                                <option value="/category?${ctgNo}${searchQuery}${locAddress}&order=1">최신순</option>
+                                <option value="/category?${ctgNo}${searchQuery}${locAddress}&order=2">저가순</option>
+                                <option value="/category?${ctgNo}${searchQuery}${locAddress}&order=3">고가순</option>
+                            </select>
+                        </c:otherwise>
+                    </c:choose>
                 </div>
             </div>
             
@@ -180,7 +192,19 @@
                                 </c:choose>
 
                                 <span><h2><a href="/goods/${goods.goodsNo}" class="title">${goods.title}</a></h2></span>
-                                <span><h3><a href="/goods/${goods.goodsNo}"><fmt:formatNumber value="${goods.sellPrice}" pattern="#,###"/>원</a>&nbsp;&nbsp;<span style="font-size: 0.7em; color: #FFAB00;">${goods.sellStatus}</span></h3></span>
+                                <span><h3>
+                                    <a href="/goods/${goods.goodsNo}"><fmt:formatNumber value="${goods.sellPrice}" pattern="#,###"/>원</a>&nbsp;&nbsp;&nbsp;
+
+                                    <c:choose>
+                                        <c:when test="${goods.buyerNo == 0}">
+                                            <span style="font-size: 0.7em; color: #FFAB00;">${goods.sellStatus}</span>
+                                        </c:when>
+
+                                        <c:otherwise>
+                                            <span style="font-size: 0.7em; color: #5c5c5c;">${goods.sellStatus}</span>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </h3></span>
                             </div>
 
                             <c:if test="${i%4 == 0}">

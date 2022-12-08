@@ -66,24 +66,36 @@ public class MemberController {
 		Member loginMember = service.login(inputMember);
 		
 		String path = null;
+
 		
 		if(loginMember != null) {
 			
-			path = "/";
 			
-			model.addAttribute("loginMember", loginMember);
-			
-			Cookie cookie = new Cookie("saveId", loginMember.getMemberEmail());
-			
-			if(saveId != null) {
-				cookie.setMaxAge(60*60*24*365);
+			if(loginMember.getBlockFlag().equals("Y")) {
+				
+				path = referer;
+				ra.addFlashAttribute("message","차단된 회원은 이용할 수 없습니다" );
+				
 			} else {
-				cookie.setMaxAge(0);
+				
+				path = "/";
+				
+				model.addAttribute("loginMember", loginMember);
+				
+				Cookie cookie = new Cookie("saveId", loginMember.getMemberEmail());
+				
+				if(saveId != null) {
+					cookie.setMaxAge(60*60*24*365);
+				} else {
+					cookie.setMaxAge(0);
+				}
+				
+				cookie.setPath("/");
+				
+				resp.addCookie(cookie);
 			}
 			
-			cookie.setPath("/");
-			
-			resp.addCookie(cookie);
+
 		} else {
 			
 			path = referer;

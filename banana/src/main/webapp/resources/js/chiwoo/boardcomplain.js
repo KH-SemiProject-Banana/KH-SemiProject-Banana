@@ -279,6 +279,39 @@ function openPop(){
         }
     )
 
+
+    document.getElementById("b-report-submit-button").addEventListener("submit",function(e){
+
+        $.ajax({
+            url : "/duplicateCheck",
+            data:{"memberNo":memberNo,"memberNo2":memberNo2},
+            success:(result) => {
+                if(result>0){ //중복된 값이 있다.
+                    alert("중복된 신고 입니다.");
+                    e.preventEvent();
+                } else { //중복된 값이 없다.
+                    alert("신고 완료!")
+                }
+            },
+            error:() => {
+                console.log("동작 에러남")
+
+            },
+            complete:() =>{
+                console.log("완료시 콘솔에 떠라")
+            }
+
+        })
+
+
+    })
+    
+
+
+
+
+
+
 }
 
 function closePop(){

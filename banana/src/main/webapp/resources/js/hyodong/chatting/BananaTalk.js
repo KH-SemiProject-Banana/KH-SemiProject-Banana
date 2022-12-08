@@ -229,8 +229,7 @@ const productInfor = () => {
 			div0.classList.add("Declaration");
 
 			const a = document.createElement("a");
-			a.setAttribute("href","javascript:openPop("+selectProductInfor.sellerNo ,selectProductInfor.memberNickname+")")
-	
+			a.setAttribute("href","javascript:openPop("+selectProductInfor.sellerNo +",'"+selectProductInfor.memberNickname + "')")
 
 			const i = document.createElement("i");
 			i.classList.add("fa-regular","fa-bell-slash");

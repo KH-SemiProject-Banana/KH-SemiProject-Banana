@@ -10,7 +10,7 @@ public interface BoardComplainService {
 
 	/** 게시글 신고
 	 * @param submit
-	 * @return result
+	 * @return resultL
 	 */
 	int reportsubmit(Map<String, Object> submit);
 

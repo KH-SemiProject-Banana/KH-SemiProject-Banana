@@ -15,16 +15,16 @@ const orderBy = () => {
 
 
 // 판매자 마이 페이지 이동
-// const sellerPage = document.getElementsByClassName("sellerPage");
+const sellerPage = document.getElementsByClassName("sellerPage");
 
-// // for(let item of sellerPage) {
-// for(let i = 0; i < sellerPage.length; i++) {
-//     sellerPage[i].addEventListener("click", () => {
-//     const seller = document.getElementsByClassName("seller")[i];
-//     seller.action = "/member/myPage/yourPageMain?myPageCt=1";
-//     seller.submit();
-//   })
-// }
+// for(let item of sellerPage) {
+for(let i = 0; i < sellerPage.length; i++) {
+    sellerPage[i].addEventListener("click", () => {
+    const seller = document.getElementsByClassName("seller")[i];
+    seller.action = "/member/myPage/yourPageMain?myPageCt=1";
+    seller.submit();
+  })
+}
 
 
 

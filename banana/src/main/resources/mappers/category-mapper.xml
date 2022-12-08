@@ -55,7 +55,7 @@
 	 
 	 <!-- 특정 카테고리 게시글 목록 조회 -->
 	 <select id="selectGoodsList" resultMap="goods_rm">
-		SELECT GS.GOODS_NO, TITLE, SELL_PRICE, CREATED_AT,
+		SELECT GS.GOODS_NO, TITLE, SELL_PRICE, CREATED_AT, BUYER_NO, CATEGORY_NO,
 		
 		<if test="loginMemberNo != 0"> GLL.MEMBER_NO, </if>
 		
@@ -110,7 +110,7 @@
 	 
 	 <!-- 인기매물 게시글 목록 조회 -->
 	 <select id="selectAllGoodsList" resultMap="goods_rm">
-		SELECT GS.GOODS_NO, TITLE, SELL_PRICE, CREATED_AT,
+		SELECT GS.GOODS_NO, TITLE, SELL_PRICE, CREATED_AT, BUYER_NO, CATEGORY_NO,
 		
 		<if test="loginMemberNo != 0"> GLL.MEMBER_NO, </if>
 		
@@ -162,7 +162,7 @@
 	 
 	 <!-- 검색 시 게시글 목록 조회 -->
 	 <select id="selectQueryGoodsList" resultMap="goods_rm">
-	 	SELECT GS.GOODS_NO, TITLE, SELL_PRICE, CREATED_AT,
+	 	SELECT GS.GOODS_NO, TITLE, SELL_PRICE, CREATED_AT, BUYER_NO, CATEGORY_NO,
 		
 		<if test="loginMemberNo != 0"> GLL.MEMBER_NO, </if>
 		
@@ -221,7 +221,8 @@
 	 
 	 <!-- 상세 페이지 상품 정보 조회 -->
 	 <select id="selectGoodsInfo" resultMap="goods_rm">
-		SELECT GS.GOODS_NO, TITLE, SELL_PRICE, DESCRIPTION, BUYER_NO,
+		SELECT GS.GOODS_NO, TITLE, SELL_PRICE, DESCRIPTION, BUYER_NO, CATEGORY_NO,
+		(SELECT CATEGORY_NAME FROM CATEGORY C WHERE GS.CATEGORY_NO = C.CATEGORY_NO) CATEGORY_NAME,
 		SUBSTR(MEMBER_ADDRESS, INSTR(MEMBER_ADDRESS, '서'), INSTR(MEMBER_ADDRESS, '구')-INSTR(MEMBER_ADDRESS, '서')+1) ADDRESS,
 		<if test="loginMemberNo != 0"> GLL.MEMBER_NO, </if>
 		<![CDATA[

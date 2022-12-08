@@ -25,19 +25,26 @@ public class PayController {
 	@Autowired
 	private PayService service;
 	
-	// 페이 페이지 이동(임시)
-	@GetMapping("/pay")
-	public String payMain(@SessionAttribute("loginMember") Member loginMember,
-						  Model model) {
-		model.addAttribute("loginMember", loginMember);
-		return "pay/bananaPay";
-	}
+//	페이 페이지 이동
+//	@GetMapping("/pay")
+//	public String payMain(@SessionAttribute("loginMember") Member loginMember,
+//						  Model model) {
+//		model.addAttribute("loginMember", loginMember);
+//		return "pay/bananaPay";
+//	}
 	
 	// 잔여 페이 조회
 	@GetMapping("/searchRemainPay")
 	@ResponseBody
 	public int searchRemainPay(@RequestParam Map<String, Object> paramMap) {
 		return service.searchRemainPay(paramMap);
+	}
+	
+	// 페이 히스토리
+	@GetMapping("/searchPayLogList")
+	@ResponseBody
+	public List<BananaPay> searchPayLogList(@RequestParam Map<String, Object> paramMap) {
+		return service.searchPayLogList(paramMap);
 	}
 	
 	// 주문번호 조회
@@ -53,10 +60,4 @@ public class PayController {
     public int pointCharge(@RequestParam Map<String, Object> paramMap) {
         return service.pointCharge(paramMap);
     }
-	
-	@GetMapping("/searchPayLogList")
-	@ResponseBody
-	public List<BananaPay> searchPayLogList(@RequestParam Map<String, Object> paramMap) {
-		return service.searchPayLogList(paramMap);
-	}
 }

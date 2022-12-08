@@ -3,7 +3,7 @@ const payLL = document.getElementById("payLL");
 let remainPay;
 
 function openPop5() {
-    document.getElementById("popup_layer").style.display = "block";
+    document.getElementById("popup_layer5").style.display = "block";
     const payRemain = document.getElementById("payRemain");
 
     $.ajax({
@@ -18,11 +18,8 @@ function openPop5() {
     error : () => {console.log("바나나페이 조회 실패");}
     });
 
-    payLog.style.display = "block";
-    payCharge.style.display = "none";
-    payRefund.style.display = "none";
-
     payLogList(order);
+    logBlock();
     chargeMe();
     refundMe();
 }
@@ -179,3 +176,28 @@ document.getElementById("refundSubmitBtn").addEventListener("click", () => {
 
     } else {return;}
 })
+
+// 내 페이 사용내역
+const logBlock = () => {
+    payLog.style.display = "block";
+    payCharge.style.display = "none";
+    payRefund.style.display = "none";
+}
+
+// 충전 유효성 검사
+const chargeMe = () => {
+    chargeMessage.innerText = "숫자만 입력해주세요.";
+    chargeMessage.classList.remove("error", "confirm");
+    chargePrice.value = 0;
+
+    chargeFlag = false;
+}
+
+// 환불 유효성 검사
+const refundMe = () => {
+    refundMessage.innerText = "숫자만 입력해주세요.";
+    refundMessage.classList.remove("error", "confirm");
+    refundPrice.value = 0;
+
+    refundFlag = false;
+}

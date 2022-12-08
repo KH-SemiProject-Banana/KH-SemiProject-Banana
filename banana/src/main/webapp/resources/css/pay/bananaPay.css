@@ -17,7 +17,7 @@
 }
 
 /*popup*/
-.popup_layer {
+.popup_layer5 {
     position: fixed;
     top: 0;
     left: 0;
@@ -28,7 +28,7 @@
 }
 
 /*팝업 박스*/
-.popup_box {
+.popup_box5 {
     position: relative;
     top: 50%;
     left: 50%;
@@ -58,27 +58,27 @@
 }
 
 /*컨텐츠 영역*/
-.popup_box .popup_cont {
+.popup_box5 .popup_cont5 {
     padding: 30px;
     /* line-height: 3rem; */
     font-size: 14px;
 
 }
 
-.popup_box .popup_cont h2 {
+.popup_box5 .popup_cont5 h2 {
     padding: 15px 0;
     color: #333;
     margin: 0;
 }
 
-.popup_cont {
+.popup_cont5 {
     position: absolute;
     width: 100%;
 
 }
 
 /*버튼영역*/
-.popup_box .popup_btn {
+.popup_box5 .popup_btn {
     display: table;
     table-layout: fixed;
     width: 100%;
@@ -87,7 +87,7 @@
     word-break: break-word;
 }
 
-.popup_box .popup_btn a {
+.popup_box5 .popup_btn a {
     position: relative;
     display: table-cell;
 
@@ -98,7 +98,7 @@
     background: #ECECEC;
 }
 
-.popup_box .popup_btn a:before {
+.popup_box5 .popup_btn a:before {
     content: '';
     display: block;
     position: absolute;
@@ -114,7 +114,7 @@
     transform: rotate(-45deg);
 }
 
-.popup_box .popup_btn a:after {
+.popup_box5 .popup_btn a:after {
     content: '';
     display: block;
     position: absolute;
@@ -130,12 +130,12 @@
     transform: rotate(45deg);
 }
 
-.popup_box .popup_btn a.close_day {
+.popup_box5 .popup_btn a.close_day {
     background: #5d5d5d;
 }
 
-.popup_box .popup_btn a.close_day:before,
-.popup_box .popup_btn a.close_day:after {
+.popup_box5 .popup_btn a.close_day:before,
+.popup_box5 .popup_btn a.close_day:after {
     display: none;
 }
 
@@ -219,9 +219,8 @@
 
 /* 충전 */
 .chargeHeader {
-    padding-top: 10px;
+    height: 40px;
     padding-left: 15px;
-    padding-right: 5px;
     background-color: #eee;
 
     margin-top: 10px;
@@ -229,13 +228,17 @@
     border-radius: 10px;
 
     display: flex;
-    justify-content: space-between;
+    align-items: center;
 }
 
 .chargeHeader>p:first-child {
     font-size: 18px;
     font-weight: bold;
     color: rgba(0, 0, 0, 0.7);
+}
+
+.chargeHeader>p:last-child {
+    display: none;
 }
 
 .chargeMain {

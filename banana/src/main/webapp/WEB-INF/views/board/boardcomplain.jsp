@@ -182,7 +182,7 @@
                             <div>여러 계정으로 같은 물건을 팔아요 <i class="fa-solid fa-chevron-right"></i></div>
                         </div>
                         <div class="b-report-reason">
-                            <div>한 계정으로 같은 물거늘 상업적으로 팔아요 <i class="fa-solid fa-chevron-right"></i></div>
+                            <div>한 계정으로 같은 물건을 상업적으로 팔아요 <i class="fa-solid fa-chevron-right"></i></div>
                         </div>
                         <div class="b-report-reason">
                             <div> 인터넷 쇼핑몰을 홍보하는 판매업자 같아요 <i class="fa-solid fa-chevron-right"></i></div>        

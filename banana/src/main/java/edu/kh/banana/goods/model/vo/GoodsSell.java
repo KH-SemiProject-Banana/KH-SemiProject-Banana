@@ -72,5 +72,8 @@ import lombok.ToString;
 		private String buyerNickname;
 		private List<BananaPay> payList;
 		
+		// hoydong : 채팅창 신고 관련 
+		private int memberNickname;
+		
 		
 }

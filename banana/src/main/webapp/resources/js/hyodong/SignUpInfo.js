@@ -40,7 +40,6 @@ const memberEmail = document.getElementById("memberEmail");
 const emailMessage = document.getElementById("emailMessage");
 
 memberEmail.addEventListener("input",()=>{
-
     // 미입력시
     if(memberEmail.value.trim().length == 0){
         emailMessage.innerText="인증번호를 받을 수 있는 이메일을 입력해주세요.";
@@ -49,7 +48,6 @@ memberEmail.addEventListener("input",()=>{
         checkObj.memberEmail = false;
         return;
     }
-
     // 정규표현식
     const regEx = /^[A-Za-z\d\-\_]{4,}@[\w\-\_]+(\.\w+){1,3}$/;
     
@@ -78,7 +76,6 @@ memberEmail.addEventListener("input",()=>{
                 console.log("이메일 ajax 중복검사 완료");
             },
         });
-
     } else { //유효하지 않은 경우
         emailMessage.innerText = "이메일 형식이 유효하지 않습니다.";
         emailMessage.classList.remove("confirm");
@@ -487,21 +484,16 @@ sample6_address.addEventListener("input",()=>{
 
 
 /*************************** 이메일 인증번호 ***************************/
-
 // 이메일 인증코드 발송 / 확인
-
-// 인증번호 발송
 const sendAuthKeyBtn = document.getElementById("sendAuthKeyBtn");
 const authKeyMessage = document.getElementById("authKeyMessage");
 let authTimer;
 let authMin = 4;
 let authSec = 59;
-
 sendAuthKeyBtn.addEventListener("click", function(){
     authMin = 4;
     authSec = 59;
     checkObj.memberEmailCertification = false;
-
     if(checkObj.memberEmail){ // 중복이 아닌 이메일인 경우
         $.ajax({
             url : "/sendEmail/signUp",
@@ -519,8 +511,6 @@ sendAuthKeyBtn.addEventListener("click", function(){
         alert("인증번호가 발송 되었습니다.");
         authKeyMessage.innerText = "05:00";
         authKeyMessage.classList.remove("confirm");
-
-
         authTimer = window.setInterval(()=>{
 
             authKeyMessage.innerText = "0" + authMin + ":" + (authSec<10 ? "0" + authSec : authSec);

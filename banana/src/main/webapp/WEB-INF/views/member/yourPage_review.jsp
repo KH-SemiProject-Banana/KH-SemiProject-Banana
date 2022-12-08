@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<c:set var = "member" value = "${map.member}"/>
 <c:set var="reviewNewestList" value="${map.reviewNewestList}" />
 <c:set var="mannerTopList" value="${map.mannerTopList}" />
 <!DOCTYPE html>
@@ -31,111 +31,53 @@
         <jsp:include page="/WEB-INF/views/common/header.jsp" />
 		<jsp:include page="/WEB-INF/views/common/nav.jsp" />
         <div class = "myBanana" id = "reviewss">
-			<!--섹션1********************************************************************************************************섹션1-->
+            <!--섹션1********************************************************************************************************섹션1-->
 			<section class="my-rotten-banana">
 				<!-- <p>탈퇴하기</p> -->
-				<i class="topmenu__alarm fa-regular fa-bell fa-2x"></i>
-				<p>차단 관리</p>
+				<%-- <i class="topmenu__alarm fa-regular fa-bell fa-2x"></i>
+				<p id="editBlockMember">차단 관리</p> --%>
 			</section>
 			<!--섹션2********************************************************************************************************섹션1-->
 			<section class="myBanana-title">
-				<p>나의 바나나</p>
+				<p>너의 바나나</p>
 			</section>
 			<!--섹션3********************************************************************************************************섹션1-->
 			<section class="myBanana-detail">
 				<div class="myBanana-photo">
-                    <c:if test = "${not empty loginMember.profileImage}">
-                        <img class="photo" src="${loginMember.profileImage}" alt=""> <i class="fa-solid fa-camera-retro fa-2x pen" id = "profilePop"></i>
-                    </c:if>
-                    <c:if test = "${empty loginMember.profileImage}">
-                        <img class="photo" src="/resources/images/banana-logo.png" alt=""> <i class="fa-solid fa-camera-retro fa-2x pen" id = "profilePop"></i>
-                    </c:if>
+                    
+                        <img class="photo" src="${member.profileImage}" alt=""> <i class="fa-solid fa-camera-retro fa-2x pen" id = "profilePop"></i>
+                    
 				</div>
-                    <div class="popup_layer4" id="popup_layer4" style="display: none;">
-                        <div class="popup_box4  ">
-                            <!-- <div  style="height: 10px; width: 375px; float: top;"> -->
-                            <a href="javascript:closePop4();" class="xbtn">
-                                <i class="fa-solid fa-x xbtnBack" id = "fa-x"></i>
-                            </a>
-                            <!-- </div> -->
-                            <!--팝업 컨텐츠 영역-->
-                            <div class="popup_cont4 " id = "popup_con4">
-                                <form action = "/member/myPage/updateProfile" method = "POST" 
-                                        name = "myPage-frm" enctype = "multipart/form-data"
-                                        onsubmit = "return profileValidate()">
-
-                                    <div class = "profile-image-area">
-
-                                        <c:if test = "${empty loginMember.profileImage}"> <%-- 비어있다면, 기본이미지 보여주겠다. --%>
-
-                                            <img id = "profile-image" src="/resources/images/banana.png" alt="">
-
-                                        </c:if>
-                                        <c:if test = "${not empty loginMember.profileImage}"> <%-- 안 비어있다면, . --%>
-
-                                            <img id = "profile-image" src="${loginMember.profileImage}" alt="">
-
-                                        </c:if>
-                                    </div>
-                                    <span id = "delete-image">&times;</span>
-
-                                    <div class = "profile-btn-area">
-                                        <label for="image-input">이미지 선택</label>
-
-                                        <!-- accept= 속성 : 업로드 가능한 파일의 타입을 제한하는 속성 -->
-                                        <input type="file" name = "profileImage" id = "image-input" accept="image/*">
-
-                                        <button>변경하기</button>
-
-                                    </div>
-
-                                </form>
-                            </div>
-                       
-                        </div>
-                    </div>
-
+                    <%--  --%>
 				<div class="myBanana-content">
 					<div class="myBanana-info">
-						<div class="myBanana-name">${loginMember.memberNickname}</div>
-						<div class="myBanana-address">${address}</div>
-						<div class="myBanana-changeInfo">
-							<a href="/member/myPage/updateInfo">
-								<p id="introUpdateBtn1" class="introUpdateBtn1">수정하기</p>
-							</a>
-						</div>
+						<div class="myBanana-name">${member.memberNickname}</div>
+						<div class="myBanana-address">${member.memberAddress}</div>
 					</div>
 
 					<div class="myBanana-intro">
-						<%-- (기존꺼)강사님과 함께.... --%>
-						<%-- <p id = "p_intro">나는 썩은 바나나가 아니에요</p>
-                        <a href="#" id="introUpdateBtn"><i id = "pen_intro" class = "fa-solid fa-pen" ></i></a>
-                        --%>
 
-						<p id="p_intro" class="p_intro">${loginMember.introduce}</p>
-
-						<p id="introUpdateBtn2" class="introUpdateBtn2">수정하기</p>
-						
+						<p id="p_intro" class="p_intro">${member.introduce}</p>
 
 					</div>
 					<div class="myBanana-temp">
-						<p class="temp-text">나의 바나나 온도 : ${loginMember.manner}도</p>
+						<p class="temp-text">나의 바나나 온도 : ${member.manner}도</p>
 						<div class="container">
 							<c:choose>
-								<c:when test="${loginMember.manner >= 80}">
-									<div class="temperature" style="width:${loginMember.manner}%; background-color:red"></div>
+								<c:when test="${member.manner >= 80}">
+									<div class="temperature" style="width:${member.manner}%; background: linear-gradient(to top, #009fe8, #c4168d);"></div>
 								</c:when>
-								<c:when test="${loginMember.manner >= 60}">
-									<div class="temperature" style="width:${loginMember.manner}%; background-color:orange"></div>
+								<c:when test="${member.manner >= 60}">
+									<div class="temperature" style="width:${member.manner}%; background: linear-gradient(to top, #009fe8, #c4168d);"></div>
 								</c:when>
-								<c:when test="${loginMember.manner >= 40}">
-									<div class="temperature" style="width:${loginMember.manner}%; background-color:yellow"></div>
+								<c:when test="${member.manner >= 40}">
+									<div class="temperature" style="width:${member.manner}%; background: linear-gradient(to top, #009fe8, #c4168d);"></div>
 								</c:when>
-								<c:when test="${loginMember.manner >= 20}">
-									<div class="temperature" style="width:${loginMember.manner}%; background-color:green"></div>
+								<c:when test="${member.manner >= 20}">
+									<div class="temperature" style="width:${member.manner}%; background: linear-gradient(to top, #009fe8, #c4168d);"></div>
 								</c:when>
 								<c:otherwise>
-									<div class="temperature" style="width:${loginMember.manner}%; background-color:blue"></div>
+									<div class="temperature" style="width:${member.manner}%; background: linear-gradient(to top, #009fe8, #c4168d);"></div>
 								</c:otherwise>
 							</c:choose>
 						</div>
@@ -143,42 +85,26 @@
 				</div>
 			</section>
 			<!--섹션4********************************************************************************************************섹션1-->
-		    <section class="myBanana-category">
+			<section class="myBanana-category">
             
-                    <div id= "first-category" class = "category">
-                        <a href="/member/myPage/main?myPageCt=1">판매내역</a>
-                    </div>
+                    <form id= "first-category" class = "category" method = "POST">
+                        <a id = "firstCt">판매내역</a>
+						<input type="hidden" name="sellerNo" value="${member.memberNo}">
+                    </form>
+                    <form id= "fourth-category" class = "category" method = "POST">
+                        <a id = "lastCt" >후기</a>
+						<input type="hidden" name="sellerNo" value="${member.memberNo}">
+                    </form>
 
-                    <%-- c:if test = param.myPageCt=1 --%>
-
-                    <div id= "second-category" class = "category">
-                        <a href="/member/myPage/main?myPageCt=2">구매내역</a>
-                    </div>
-                    <div id= "third-category" class = "category">
-                        <a href="/member/myPage/myGoodsLike">관심목록</a>
-                    </div>
-                    <div id= "fourth-category" class = "category">
-                        <a href="/member/myPage/selectAllReview">후기</a>
-                    </div>
-                    
-                    
-
-
-                <%-- 판매내역 클랙->js에서 1을 input에 넣고
-                    button을 클릭하도록 함
-                    document.getElementById("first-category").addEventListener("click", ()=>{
-                        document.getElementbyId("status").value = 1;
-                        document.getElementById("button").click();
-                    })
-                --%>
 
 			</section>
             <%--  섹션5에 해당하는 듯 --%>
             <%-- <div class = "myBanana" id = "reviewss"> --%>
             <section class = "myBanana-reviewList">
-                <section class = "title_section_1">
-                    <a href="/member/myPage/review/good?mannerCt=1">받은 매너 평가&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-                </section>
+                <form class = "title_section_1" method = "POST" id = "title_section_1" >
+                    <input type="hidden" name="sellerNo" value="${member.memberNo}">
+                    <a id = goToManner >받은 매너 평가&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+                </form>
                 </section>
                 <section class ="review_section_1">
                     <section class = "row1">
@@ -191,16 +117,35 @@
                         <div class = "row"><p class = "row1col5">제가 있는 곳까지 와서 거래했어요</p></div> --%>
                     </section>
                     <section class = "row2">
-                        
-                        <div class="iconBox"><i class="fa-solid fa-face-smile circle"></i></div>
-                        <div class="iconBox"><i class="fa-solid fa-sack-dollar circle"></i></div>
-                        <div class="iconBox"><i class="fa-solid fa-clock circle"></i></div>
-                        <div class="iconBox"><i class="fa-solid fa-bolt circle"></i></div>
-                        <div class="iconBox"><i class="fa-solid fa-person-walking circle"></i></div>
+                        <c:forEach var="manner" items="${mannerTopList}">
+                            <c:choose>
+                                <c:when test="${manner.mannerNo == 1}">
+                                    <div class="iconBox"><i class="fa-solid fa-hand-holding-hand mannerPic"></i></div>
+                                </c:when>
+                                <c:when test="${manner.mannerNo == 2}">
+                                    <div class="iconBox"><i class="fa-solid fa-wand-magic-sparkles mannerPic"></i></div>
+                                </c:when>
+                                <c:when test="${manner.mannerNo == 3}">
+                                    <div class="iconBox"><i class="fa-solid fa-arrow-up-short-wide mannerPic"></i></div>
+                                </c:when>
+                                <c:when test="${manner.mannerNo == 4}">
+                                    <div class="iconBox"><i class="fa-solid fa-money-bill-1-wave mannerPic"></i></div>
+                                </c:when>
+                                <c:when test="${manner.mannerNo == 5}">
+                                    <div class="iconBox"><i class="fa-solid fa-clock mannerPic"></i></div>
+                                </c:when>
+                                <c:when test="${manner.mannerNo == 6}">
+                                    <div class="iconBox"><i class="fa-solid fa-truck-fast mannerPic"></i></div>
+                                </c:when>
+                                <c:when test="${manner.mannerNo == 7}">
+                                    <div class="iconBox"><i class="fa-solid fa-thumbs-up mannerPic"></i></div>
+                                </c:when>
+                            </c:choose>
+                        </c:forEach>
                     </section>
                     <section class = "row3">
                         <c:forEach var = "manner" items = "${mannerTopList}">
-                        <div class = "row33"><p class = "row3col2">${manner.mannerCount}</p></div>
+                        <div class = "row33"><p class = "row3col2">${manner.mannerCount}명</p></div>
                         </c:forEach>
                         <%-- <div class = "row33"><p class = "row3col1">40</p></div>
                         <div class = "row33"><p class = "row3col2">30</p></div>
@@ -209,9 +154,10 @@
                         <div class = "row33"><p class = "row3col5">5</p></div> --%>
                     </section>
                 </section>
-                <section class = "title_section_2">
-                    <a href="/member/myPage/review/detail?detailCt=1">받은 거래 후기&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-                </section>
+                <form class = "title_section_2" method = "POST" id =  "title_section_2">
+                    <input type="hidden" name="sellerNo" value="${member.memberNo}">
+                    <a id = "bothD">받은 거래 후기&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+                </form>
                 <section class = "review_section_2">
                     <c:forEach var = "review" items = "${reviewNewestList}">
                         <div class = "review_2">
@@ -253,18 +199,26 @@ ${review.message}
     <%-- footer.jsp.include --%>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
-    <script>
+    <%-- <script>
         document.getElementById("third-category").addEventListener("click",function(){
         document.getElementById("third-category").style.fontWeight = "bold";
         })
         document.getElementById("fourth-category").addEventListener("click",function(){
         document.getElementById("fourth-category").style.fontWeight = "bold";
         })  
+    </script> --%>
+    <script>
+    document.getElementById("bothD").addEventListener("click",function(){
+    const myBananaSell = document.getElementById("title_section_2");
+    myBananaSell.action = "/member/myPage/yourReview/detail?detailCt=1";
+    myBananaSell.submit();
+    })
     </script>
 
     <!-- jQuery 라이브러리(.js 파일) 추가(CDN 방식) -->
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
-	<script src="/resources/js/lsy/myPage_common.js"></script>
+	<%-- <script src="/resources/js/lsy/yourPage_common.js"></script> --%>
+	<script src="/resources/js/lsy/yourPage_review.js"></script>
     
 	
     

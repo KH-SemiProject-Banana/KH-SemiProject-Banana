@@ -19,13 +19,7 @@
     <script src="https://kit.fontawesome.com/f7459b8054.js" crossorigin="anonymous"></script>
 
     <style>
-    .side{
-        padding: 50px;
-        font-size : 20px;
 
-
-
-    }
     </style>
 
 </head>
@@ -44,7 +38,7 @@
             <div class= "side1Box">
                 <form class= "side1" id = "title_section_1" method = "post">
                     <input type="hidden" name="sellerNo" value="${member.memberNo}">
-                    <%-- <div><i class="fa-regular fa-face-smile-beam imo1"></i></div> --%>
+                    <div><i class="fa-regular fa-face-smile-beam imo1"></i></div>
                     <p><a id= "goToManner">받은 매너 칭찬</a></p> 
                 </form>
                 <%-- <div class= "side2" id = "side2"> 

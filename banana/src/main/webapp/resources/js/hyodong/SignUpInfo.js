@@ -542,6 +542,7 @@ const memberEmailCertification = document.getElementById("memberEmailCertificati
 const checkAuthKeyBtn = document.getElementById("checkAuthKeyBtn");
 
 checkAuthKeyBtn.addEventListener("click", function(){
+    authKeyMessage.classList.remove("confirm");
 
     if(authMin > 0 || authSec > 0){ // 시간 제한이 지나지 않은 경우에만 인증번호 검사 진행
 
@@ -558,6 +559,7 @@ checkAuthKeyBtn.addEventListener("click", function(){
 
                 } else{
                     alert("인증번호가 일치하지 않습니다.")
+                    authKeyMessage.classList.remove("confirm");
                     checkObj.memberEmailCertification = false;
                 }
             }, 

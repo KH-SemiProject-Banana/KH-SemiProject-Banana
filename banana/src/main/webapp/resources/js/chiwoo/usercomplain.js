@@ -169,20 +169,20 @@ function openPop(sellerNo, memberNickname){
     })
 
 
-    for(let i = 0; i < abc.length; i++) {
+    //for(let i = 0; i < abc.length; i++) {
         // abc의 i번째가 눌렸을 때 
-        abc[i].addEventListener("click", () => {
-            
+       // abc[i].addEventListener("click", () => {
+         $(".abc").click(function(){ 
             // 0번부터 눌리니깐 +1
-            ctg1.value = i + 1;
-            ctg2.value = 0;
-            console.log(ctg1.value);
+            ctg1.value = this.getAttribute("title");
+           // ctg2.value = 0;
+            console.log("1 ="+ctg1.value);
             
             // ctg2 설명을 담을 껍데기 변수 선언
-            let ctg2dsc;
-            
+            //let ctg2dsc;
+          
             // ctg 1벨류가 특정값일때 
-            switch (ctg1.value) {
+            /* switch (ctg1.value) {
                 case 1 :
                     ctg2dsc = click1.children;
                     // 클릭1 자식요소 가져오기
@@ -198,11 +198,11 @@ function openPop(sellerNo, memberNickname){
                 case 7:
                     ctg2dsc = click7.children;
                     break;
-            }
+            } */
 
-            console.log(ctg2dsc);
+           
         
-            if(ctg2dsc != null) {
+          /*   if(ctg2dsc != null) {
                 for(let j = 0; j < ctg2dsc.length; j++){
                 // 몇번째 인덱스가 클릭되었을때 이벤트 발생
         
@@ -219,36 +219,44 @@ function openPop(sellerNo, memberNickname){
                         console.log(ctg2.value);
                     })
                 }
-            }
+            } */
         // 위에서 가져온 세부카테고리 배열 반복문으로 검사
         })
-    }
+   // }
 
-    document.getElementById("userreportsubmit").addEventListener("submit",function(e){
+    $(".abcd2").click(function(){ 
+        ctg2.value = this.getAttribute("title");
+        console.log("2 = "+ctg2.value);
+    });
 
-        $.ajax({
-            url : "/duplicateCheck2",
-            data:{"memberNo":memberNo,"memberNo2":memberNo2},
-            success:(result) => {
-                if(result>0){ //중복된 값이 있다.
-                    alert("중복된 신고 사유입니다.");
-                    e.preventEvent();
-                } else { //중복된 값이 없다.
-                    alert("중복검사 완료!")
-                }
-            },
-            error:() => {
-                console.log("동작 에러남")
-
-            },
-            complete:() =>{
-                console.log("완료시 콘솔에 떠라")
-            }
-
-        })
+   
 
 
-    })
+    // document.getElementById("userreportsubmit").addEventListener("submit",function(e){
+
+    //     $.ajax({
+    //         url : "/duplicateCheck2",
+    //         data:{"memberNo":memberNo,"sellerNo":sellerNo},
+    //         success:(result) => {
+    //             if(result>0){ //중복된 값이 있다.
+    //                 alert("중복된 신고 사유입니다.");
+    //                 e.preventEvent();
+    //             } else { //중복된 값이 없다.
+    //                 alert("중복검사 완료!")
+    //             }
+    //         },
+    //         error:() => {
+    //             console.log("동작 에러남")
+
+    //         },
+    //         complete:() =>{
+    //             console.log("완료시 콘솔에 떠라")
+    //         }
+
+    //     })
+
+
+    // })
     
         back3.addEventListener("click", () => {
             userreportsubmit.style.display = "none";
@@ -326,23 +334,27 @@ function openPop(sellerNo, memberNickname){
 
     
     document.getElementById("report-submit-button").addEventListener("click", () => {
-        $.ajax({
-            url : "/reportsubmit",
-            data : {"sellerNo" : document.getElementById("memberNo2").value,
-                    "ctg1" : document.getElementById("ctg1").value,
-                    "ctg2" : document.getElementById("ctg2").value,
-                    "reportbox" : document.getElementById("reportbox").value},
-            type : "POST",
-            success : (result) => {
-                if(result > 0) {
-                    alert("신고되었습니다.");
-                    closePop();
-                } else {
-                    alert("신고 중 오류가 발생했습니다.");
-                }
-            },
-            error : () => {alert("신고 중 오류가 발생했습니다.");}
-        });
+        
+        alert(sellerNo)
+
+        document.getElementById("sellerNo").value = sellerNo;
+        // $.ajax({
+        //     url : "/reportsubmit",
+        //     data : {"sellerNo" : sellerNo,
+        //             "ctg1" : document.getElementById("ctg1").value,
+        //             "ctg2" : document.getElementById("ctg2").value,
+        //             "reportbox" : document.getElementById("reportbox").value},
+        //     type : "POST",
+        //     success : (result) => {
+        //         if(result > 0) {
+        //             alert("신고 가즈앗!!");
+        //             closePop();
+        //         } else {
+        //             alert("신고 중 오류가 발생했습니다.");
+        //         }
+        //     },
+        //     error : () => {alert("신고 중 오류가 발생했습니다.");}
+        // });
     }
 )
 

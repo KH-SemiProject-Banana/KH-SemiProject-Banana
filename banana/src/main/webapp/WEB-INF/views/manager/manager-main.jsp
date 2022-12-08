@@ -200,9 +200,13 @@
                         </c:forEach>
                     </div>
                     <div class="search-result-div" id="nickname">
-                        <div class="search-result-tab">닉네임</div>
+                        <div class="search-result-tab sellerPage">닉네임</div>
                         <c:forEach var="member" items="${memberList}">
-                            <div class="search-content">${member.memberNickname}</div>
+                            <form method="post" class="seller" onsubmit="return false;">
+                                <div class="search-content">${member.memberNickname}</div>
+                                <c:set var="sellerNo" value="${member.memberNo}"/>
+                                <input type="hidden" value="${sellerNo}">
+                            </form>
                         </c:forEach>
                     </div>
                     <div class="search-result-div" id="pay">

@@ -100,10 +100,16 @@
                                 <div class="favorite__title">${favorite.title}</div>
                             </c:otherwise>
                         </c:choose>
-                            <div class="favorite__price-heart">
+                            <div class="favorite__price-heart sellStatus">
                                 <div class="favorite__price">
                                     <fmt:formatNumber value="${favorite.sellPrice}" pattern="#,###" />원
                                 </div>
+                                <c:if test="${favorite.buyerNo != ''}">
+                                    &nbsp;&nbsp;&nbsp;<span style="font-size: 0.7em; color: #FFAB00;">판매완료</span>
+                                </c:if>
+                                <c:if test="${favorite.buyerNo == ''}">
+                                    &nbsp;&nbsp;&nbsp;<span style="font-size: 0.7em; color: #FFAB00;">판매중</span>
+                                </c:if>
                             </div>
                     </div>
 
@@ -161,10 +167,16 @@
                                 <div class="new__title">${newGoods.title}</div>
                             </c:otherwise>
                         </c:choose>
-                            <div class="favorite__price-heart">
+                            <div class="favorite__price-heart sellStatus">
                                 <div class="new__price">
                                     <fmt:formatNumber value="${newGoods.sellPrice}" pattern="#,###" />원
                                 </div>
+                                <c:if test="${newGoods.buyerNo != ''}">
+                                    &nbsp;&nbsp;&nbsp;<span style="font-size: 0.7em; color: #FFAB00;">판매완료</span>
+                                </c:if>
+                                <c:if test="${newGoods.buyerNo == ''}">
+                                    &nbsp;&nbsp;&nbsp;<span style="font-size: 0.7em; color: #FFAB00;">판매중</span>
+                                </c:if>
                             </div>
                     </div>
                 </c:forEach>

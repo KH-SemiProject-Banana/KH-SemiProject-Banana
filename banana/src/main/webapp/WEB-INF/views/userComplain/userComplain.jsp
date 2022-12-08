@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%-- <c:set var="goodsInfo" value="${map.goodsInfo}" /> --%>
+<c:set var="goodsInfo" value="${map.ProductInfor}" />
+
 
 
 <!DOCTYPE html>
@@ -61,10 +63,10 @@
                         <%-- div1_3_1 --%>
                         <div class="report-why">
                             <%-- div1_3_1_1 --%>
-                            <div><input type = "hidden" name="complained" value = "{loginMember.memberNickname}"></div>
+                            <div><input type = "hidden" name="complained" value = "${ProductInfor.memberNickname}"></div>
                             <%-- div1_3_1_2p --%>
                             <p>
-                                ${loginMember.memberNickname} 사용자를 신고하는 이유를 선택해주세요
+                                ${ProductInfor.memberNickname}사용자를 신고하는 이유를 선택해주세요
                             </p>
                         </div>
 
@@ -247,8 +249,7 @@
                             <input  id ="ctg1" type="hidden" name="ctg1" value="">
                             <%-- div1_3_7_3_input2 --%>
                             <input id ="ctg2" type="hidden" name="ctg2" value="" >
-                            <input id= "memberNo2" type = "hidden" name="memberNo2" value= "${sellerInfo.memberNo}" >
-                            <input id= "goodsNo2" type = "hidden" name="goodsNo2" value="${goodsInfo.goodsNo}">
+                            <input id= "memberNo2" type = "hidden" name="memberNo2" value= "${selectProductInfor.sellerNo}" >
                         </form>
                     </div>
                 </div>

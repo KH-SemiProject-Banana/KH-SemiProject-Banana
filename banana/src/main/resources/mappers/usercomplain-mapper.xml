@@ -11,7 +11,6 @@
   		#{u_ctg2},
   		#{memberNo2},
   		#{memberNo},
-  		#{goodsNo2},
   		#{reportbox},
   		DEFAULT)
 </insert>
@@ -19,16 +18,16 @@
   
 <select id="userDuplication">
 	SELECT COUNT * FROM "USER_COMPLAIN"
-	WHERE U_COM1_CTG_NO = #{category1}
-	AND U_COM2_CTG_NO = #{category2}; 
+	WHERE U_COMPLAINER = #{memberNo}
+	AND U_COMPLAINED = #{memberNo2}; 
 </select>
 
-<insert id="userBlock">
+<!-- <insert id="userBlock">
   INSERT INTO "USER_BLOCK"
   VALUES(#{memberNo}, 
   		#{memberNo2})
 </insert>
-
+ -->
 
   
   

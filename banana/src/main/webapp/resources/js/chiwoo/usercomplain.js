@@ -332,6 +332,29 @@ function openPop(){
     }) */
 
 
+    
+    document.getElementById("report-submit-button").addEventListener("click", () => {
+        $.ajax({
+            url : "/reportsubmit",
+            data : {"memberNo2" : document.getElementById("memberNo2").value,
+                    "ctg1" : document.getElementById("ctg1").value,
+                    "ctg2" : document.getElementById("ctg2").value,
+                    "reportbox" : document.getElementById("reportbox").value},
+            type : "POST",
+            success : (result) => {
+                if(result > 0) {
+                    alert("신고되었습니다.");
+                    closePop();
+                } else {
+                    alert("신고 중 오류가 발생했습니다.");
+                }
+            },
+            error : () => {alert("신고 중 오류가 발생했습니다.");}
+        });
+    }
+)
+
+
 
     
 };

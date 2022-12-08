@@ -28,11 +28,7 @@ public class MyPageServiceImpl implements MyPageService{
 	private BCryptPasswordEncoder bcrypt;
 
 	
-	// 마이페이지 자기소개 수정 
-	@Override
-	public int changeIntroduce(Member member) {
-		return dao.changeIntroduce(member);
-	}
+	
 
 	
 	// 내 회원 정보 수정
@@ -51,12 +47,65 @@ public class MyPageServiceImpl implements MyPageService{
 			 result =  dao.updateInfoPw(inputMember);
 		}
 		
-		
-		
 		return result;
 	}
-
 	
+	// 회원 탈퇴 
+	@Transactional
+	@Override
+	public int secessionSelect(int memberNo, Map<String, Object> parMap) {
+		
+		// 1. 회원탈퇴 회원 조회 (아이디/ 비밀번호/이름)
+	    	Member memeberInf = dao.secessionSelect(memberNo);
+ 
+	    	
+			// 2. 입력 값 과 조회된 값이 같은지 확인
+    	// 비밀번호가 맞는지 먼저 확인
+		if (bcrypt.matches((CharSequence) parMap.get("memberPw"), memeberInf.getMemberPw())) {
+		
+			// map 에서 값 꺼내서 아이디 , 이름 같은지 조회
+			if ( parMap.get("memberNewEmail").equals(memeberInf.getMemberEmail()) &&
+				 parMap.get("memberName").equals(memeberInf.getMemberName())	) {
+				
+				// 같다면 탈퇴 처리 
+				int result = dao.secessionDelete(memberNo);
+				
+               return result;
+			}
+		}
+		return 0;
+	}
+
+
+	/**
+	 * 차단관리
+	 */
+	@Override
+	public List<Member> selectDeleteMemberList(int memberNo) {
+		
+		return dao.selectDeleteMemberList(memberNo);
+	}
+
+
+	/**
+	 * 회원 차단 해제
+	 */
+	@Override
+	public int memberBlockCancel(Map<String, Object> map) {
+		
+		return dao.memberBlockCancel(map);
+	}
+
+
+	/*********마이페이지**********/
+	
+	// 마이페이지 자기소개 수정 
+	@Override
+	public int changeIntroduce(Member member) {
+		return dao.changeIntroduce(member);
+	}
+	
+	// 판매완료/판매중/구매완료한 목록 조회
 	@Override
 	public Map<String, Object> selectGoodsList(Map<String, Object> map1, int cp) {
 		
@@ -74,10 +123,6 @@ public class MyPageServiceImpl implements MyPageService{
 	}
 
 	//reviewDB에 인서트하기
-	
-
-
-
 	//거래후기(REVIEW DB에 인서트) 한 다음에 그걸 가지고 매너후기 (REVIEW_RATIGN DB에 인서트)
 	@Transactional
 	@Override
@@ -150,11 +195,18 @@ public class MyPageServiceImpl implements MyPageService{
 		return result;
 	}
 
-	//내가 쓴 후기 조회
+	//4. 내가 쓴 후기 조회
 	@Override
 	public List<Review> selectSendingReview(int ratingNo) {
 		
 		return dao.selectSendingReview(ratingNo);
+	}
+	
+	//5. 받은 후기 조회하기
+	@Override
+	public List<Review> selectReceivedReview(Map<String, Object> map) {
+		
+		return dao.selectReceivedReview(map);
 	}
 	
 	// 프로필 이미지 수정
@@ -210,13 +262,13 @@ public class MyPageServiceImpl implements MyPageService{
 			return result;
 		}
 
-		//받은 거래후기 최신순 3개
-		//받은 매너온도 탑5
+		//1. 받은 매너온도 탑5
+		//2. 받은 거래후기 최신순 3개
 		@Override
-		public Map<String, Object> selectNewestReviewList(Member loginMember) {
+		public Map<String, Object> selectNewestReviewList(int memberNo) {
 			
-			List<Review> reviewNewestList = dao.selectNewestReviewList(loginMember);
-			List<Review> mannerTopList = dao.selectMannerTopList(loginMember);
+			List<Review> reviewNewestList = dao.selectNewestReviewList(memberNo);
+			List<Review> mannerTopList = dao.selectMannerTopList(memberNo);
 			System.out.println(reviewNewestList);
 			System.out.println(mannerTopList);
 			
@@ -225,8 +277,26 @@ public class MyPageServiceImpl implements MyPageService{
 			map.put("mannerTopList", mannerTopList);
 			return map;
 		}
+		
+		// 리뷰 상세 페이지 이동 1 (매너온도)
+		// 1_1.매너온도 목록 조회하기
+		@Override
+		public List<Review> reviewList(Member loginMember, int mannerCt) {
+			
+			Map<String, Object> map1 = new HashMap<String, Object>();
+			map1.put("memberNo", loginMember.getMemberNo());
+			map1.put("mannerCt", mannerCt);
+			
+			//Map<String, Object> map2 = new HashMap<String, Object>();
+			
+			List<Review> reviewList = dao.reviewList(map1);
+			//map2.put("reviewList", reviewList);
+			
+			return reviewList;
+		}
 
-		//(거래후기 목록 조회)
+		// 리뷰 상세 페이지 이동 2 
+		// (2. 거래후기 목록 조회)
 		@Override
 		public Map<String, Object> reviewDetailList(Map<String, Object> map1, int cp) {
 			
@@ -245,32 +315,6 @@ public class MyPageServiceImpl implements MyPageService{
 			return map;
 		}
 
-
-		/**거래후기 전체 조회하기
-		 *
-		 */
-		@Override
-		public List<Review> reviewList(Member loginMember, int mannerCt) {
-			
-			Map<String, Object> map1 = new HashMap<String, Object>();
-			map1.put("memberNo", loginMember.getMemberNo());
-			map1.put("mannerCt", mannerCt);
-			
-			//Map<String, Object> map2 = new HashMap<String, Object>();
-			
-			List<Review> reviewList = dao.reviewList(map1);
-			//map2.put("reviewList", reviewList);
-			
-			return reviewList;
-		}
-
-
-		//받은 후기 조회하기
-		@Override
-		public List<Review> selectReceivedReview(Map<String, Object> map) {
-			
-			return dao.selectReceivedReview(map);
-		}
 
 		//관심목록 조회하기
 		@Override
@@ -293,53 +337,8 @@ public class MyPageServiceImpl implements MyPageService{
 			return map;
 		}
 
-		// 회원 탈퇴 
-		@Transactional
-		@Override
-		public int secessionSelect(int memberNo, Map<String, Object> parMap) {
-			
-			// 1. 회원탈퇴 회원 조회 (아이디/ 비밀번호/이름)
-	    	Member memeberInf = dao.secessionSelect(memberNo);
- 
-	    	
-			// 2. 입력 값 과 조회된 값이 같은지 확인
-	    	// 비밀번호가 맞는지 먼저 확인
-			if (bcrypt.matches((CharSequence) parMap.get("memberPw"), memeberInf.getMemberPw())) {
-			
-				// map 에서 값 꺼내서 아이디 , 이름 같은지 조회
-				if ( parMap.get("memberNewEmail").equals(memeberInf.getMemberEmail()) &&
-					 parMap.get("memberName").equals(memeberInf.getMemberName())	) {
-					
-					// 같다면 탈퇴 처리 
-					int result = dao.secessionDelete(memberNo);
-					
-	               return result;
-				}
-			}
-			return 0;
-		}
-
-
-		/**
-		 * 차단관리
-		 */
-		@Override
-		public List<Member> selectDeleteMemberList(int memberNo) {
-			
-			return dao.selectDeleteMemberList(memberNo);
-		}
-
-
-		/**
-		 * 회원 차단 해제
-		 */
-		@Override
-		public int memberBlockCancel(Map<String, Object> map) {
-			
-			return dao.memberBlockCancel(map);
-		}
-
-		/*타인의 마이페이지*/
+		
+		/************타인의 마이페이지*****************/
 
 		//1. 타인의 정보를 가져온다.(닉네임/자기소개/프로필이미지/바나나온도)
 		@Override
@@ -347,6 +346,18 @@ public class MyPageServiceImpl implements MyPageService{
 			
 			return dao.selectYourInfo(memberNo);
 		}
+		
+		// 너의 리뷰 상세 페이지 이동 1 (매너온도)
+		// 1_1.좋은 매너온도 목록 조회하기
+		@Override
+		public List<Review> yourMannerList(int memberNo) {
+			
+			List<Review> reviewList = dao.yourMannerList(memberNo);
+			//map2.put("reviewList", reviewList);
+			
+			return reviewList;
+		}
+		
 
 
 

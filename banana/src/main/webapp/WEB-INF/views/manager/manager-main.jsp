@@ -151,17 +151,17 @@
 
                 <div class="selectBox">
 
-                    <c:set var="order1" value="checked"/>
+                    <c:set var="order1" value="selected"/>
                     <c:if test="${param.sort == '2'}">
-                        <c:set var="order2" value="checked"></c:set>
+                        <c:set var="order2" value="selected"></c:set>
                         <c:set var="order1" value=""/>
                     </c:if>
                     <c:if test="${param.sort == '3'}">
-                        <c:set var="order3" value="checked"></c:set>
+                        <c:set var="order3" value="selected"></c:set>
                         <c:set var="order1" value=""/>
                     </c:if>
                     <c:if test="${param.sort == '4'}">
-                        <c:set var="order4" value="checked"></c:set>
+                        <c:set var="order4" value="selected"></c:set>
                         <c:set var="order1" value=""/>
                     </c:if>
 
@@ -169,10 +169,10 @@
 
 
                     <select onchange="orderBy()" id="order">
-                        <option value="order1">가입일순</option>
-                        <option value="order2">가입일 역순</option>
-                        <option value="order3">판매순</option>
-                        <option value="order4">구매순</option>
+                        <option value="order1" ${order1}>가입일순</option>
+                        <option value="order2" ${order2}>가입일 역순</option>
+                        <option value="order3" ${order3}>판매순</option>
+                        <option value="order4" ${order4}>구매순</option>
                     </select>
                 </div>
 
@@ -455,7 +455,7 @@
                                 </div>
 
                                 <div class="SignUpAgreement6">
-                                    <button class="SignUp" id="signUpBtn">회원 등록 완료</button>
+                                    <button type="button" class="SignUp" id="signUpBtn">회원 등록 완료</button>
                                 </div>
                             </form>
                         </div>

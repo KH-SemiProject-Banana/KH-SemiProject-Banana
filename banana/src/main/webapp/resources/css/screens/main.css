@@ -345,3 +345,10 @@ input[id *= "like"]:checked + .like_yn *{
 }
 
 input[id *= "like"]{display: none;}
+
+
+.sellStatus {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}

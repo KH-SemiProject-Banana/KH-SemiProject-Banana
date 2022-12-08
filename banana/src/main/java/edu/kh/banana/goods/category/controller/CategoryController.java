@@ -46,7 +46,7 @@ public class CategoryController {
 			map = service.selectQueryGoodsList(category);
 		}
 				
-		// 인기검색
+		// 인기매물
 		else if(category.getCategoryNo() == 0) {
 			category.setCategoryName("인기매물");
 			map = service.selectLikeGoodsList(category);

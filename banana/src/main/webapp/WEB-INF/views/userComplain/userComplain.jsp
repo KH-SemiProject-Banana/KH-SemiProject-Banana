@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<%-- <c:set var="goodsInfo" value="${selectProductInfor.sellerNo}" />
+<c:set var="memberInfo" value="${selectProductInfor.memberNickname}" /> --%>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -60,10 +64,10 @@
                         <%-- div1_3_1 --%>
                         <div class="report-why">
                             <%-- div1_3_1_1 --%>
-                            <div><input type = "hidden" name="complained" value = "${memberNickname}"></div>
+                            <div><input type = "hidden" name="complained" value = "${selectProductInfor.memberNickname}"></div>
                             <%-- div1_3_1_2p --%>
-                            <p>
-                                ${memberNickname} 사용자를 신고하는 이유를 선택해주세요
+                            <p id="userEu">
+                                사용자를 신고하는 이유를 선택해주세요
                             </p>
                         </div>
 
@@ -210,16 +214,16 @@
                             <%-- div1_3_7_1 --%> 
                             <div id="frame">
                                 <%-- div1_3_7_1_1 --%> 
-                                <div class="report-confirm">
+                                <%-- <div class="report-confirm"> --%>
                                     <%-- div1_3_7_1_1p --%> 
-                                    <p>${U_COM2_CTG_NO}</p>
-                                </div>
+                                <%--    <p>${U_COM2_CTG_NO}</p> --%>
+                                <%-- </div> --%>
 
                                 <%-- div1_3_7_1_2 --%> 
-                                <div class="user-block">
+                              <%--   <div class="user-block"> --%>
                                     <%-- div1_3_7_1_2_input --%> 
-                                    <input type="checkbox" name = "userblock" value = "${memberNo}">이 사람을 더이상 보고싶지 않아요
-                                </div>
+                               <%--      <input type="checkbox" name = "userblock" value = "${memberNo}">이 사람을 더이상 보고싶지 않아요
+                                </div> --%>
                         
                                     <%--     <div class="report-notice">
                                     ('나의 바나나> 설정 > 게시글 미노출 > 사용자 관리' 에서 취소할 수 있습니다.)
@@ -246,8 +250,7 @@
                             <input  id ="ctg1" type="hidden" name="ctg1" value="">
                             <%-- div1_3_7_3_input2 --%>
                             <input id ="ctg2" type="hidden" name="ctg2" value="" >
-                            <input id= "memberNo2" type = "hidden" name="memberNo2" value= "${sellerInfo.memberNo}" >
-                            <input id= "goodsNo2" type = "hidden" name="goodsNo2" value="${goodsInfo.goodsNo}">
+                            <%-- <input id= "sellerNo" type = "hidden" name="sellerNo" value= "${selectProductInfor.sellerNo}" > --%>
                         </form>
                     </div>
                 </div>
@@ -267,7 +270,5 @@
 
     
     <script src="/resources/js/chiwoo/usercomplain.js"></script>
-    
-
 </body>
 </html>

@@ -68,7 +68,7 @@ public interface MyPageService {
 	 * @param loginMember
 	 * @return
 	 */
-	Map<String, Object> selectNewestReviewList(Member loginMember);
+	Map<String, Object> selectNewestReviewList(int memberNo);
 
 	/**(거래후기 목록 조회)
 	 * @param map1
@@ -123,6 +123,11 @@ public interface MyPageService {
 	
 	//1. 타인의 정보를 가져온다.(닉네임/자기소개/프로필이미지/바나나온도)
 	Member selectYourInfo(int memberNo);
+
+	//좋은 매너후기만 가져올 거야
+	List<Review> yourMannerList(int memberNo);
+
+
 	
 
 

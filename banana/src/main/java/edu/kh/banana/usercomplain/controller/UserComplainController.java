@@ -49,21 +49,21 @@ public class UserComplainController {
 	
 	
 	
-	@PostMapping("/userreportsubmit/")
+	@PostMapping("/userreportsubmit")
 	public String userReportSubmit(@RequestParam Map<String, Object> submit, 
-									@SessionAttribute("loginmember") Member loginmember,
+									@SessionAttribute("loginMember") Member loginmember,
 									RedirectAttributes ra,
-									@RequestHeader("referer") String referer,
-									@RequestParam(value = "userblock") int userBlocked
+									@RequestHeader("referer") String referer
+	/* @RequestParam(value = "userblock") int userBlocked */
 																	) {
 		
 		
 		submit.put("memberNo", loginmember.getMemberNo());
 		
-		int blockedResult = service.userBlock(loginmember.getMemberNo(), userBlocked);
-		
-		int complained = 15; // 나중에 수정(@PathVariable)
-		
+		/*
+		 * int blockedResult = service.userBlock(loginmember.getMemberNo(),
+		 * userBlocked);
+		 */
 		
 		
 		int result = service.userReportSubmit(submit);

@@ -147,8 +147,8 @@
 
 
                     <select onchange="orderBy()" id="order">
-                        <option value="order1" ${order1}>가입일순</option>
-                        <option value="order2" ${order2}>가입일 역순</option>
+                        <option value="order1" ${order1}>등록일 빠른순</option>
+                        <option value="order2" ${order2}>등록일 역순</option>
                         <option value="order3" ${order3}>금액 낮은순</option>
                         <option value="order4" ${order4}>금액 높은순</option>
                     </select>

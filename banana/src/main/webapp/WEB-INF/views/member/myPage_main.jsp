@@ -109,6 +109,7 @@
                         </div>
                     </div>
 
+
 				<div class="myBanana-content">
 					<div class="myBanana-info">
 						<div class="myBanana-name">${loginMember.memberNickname}</div>
@@ -119,9 +120,11 @@
 							</a>
 						</div>
                         <div class = "bananaPayBtn">
-                            <p class="introUpdateBtn1" >바나나페이</p>
+                            <p class="introUpdateBtn1" onclick="openPop5()">바나나페이</p>
                         </div>
 					</div>
+
+                    <jsp:include page="/WEB-INF/views/pay/bananaPay.jsp" />
 
 					<div class="myBanana-intro">
 						<%-- (기존꺼)강사님과 함께.... --%>
@@ -140,19 +143,19 @@
 						<div class="container">
 							<c:choose>
 								<c:when test="${loginMember.manner >= 80}">
-									<div class="temperature" style="width:${loginMember.manner}%; background-color:red"></div>
+									<div class="temperature" style="width:${loginMember.manner}%; background: linear-gradient(to right, yellowgreen, yellow,red ) ;"></div>
 								</c:when>
 								<c:when test="${loginMember.manner >= 60}">
-									<div class="temperature" style="width:${loginMember.manner}%; background-color:orange"></div>
+									<div class="temperature" style="width:${loginMember.manner}%; background: linear-gradient(to right, yellowgreen, yellow,red ) ;"></div>
 								</c:when>
 								<c:when test="${loginMember.manner >= 40}">
-									<div class="temperature" style="width:${loginMember.manner}%; background-color:yellow"></div>
+									<div class="temperature" style="width:${loginMember.manner}%; background: linear-gradient(to right, yellowgreen, yellow,red ) ;"></div>
 								</c:when>
 								<c:when test="${loginMember.manner >= 20}">
-									<div class="temperature" style="width:${loginMember.manner}%; background-color:green"></div>
+									<div class="temperature" style="width:${loginMember.manner}%; background: linear-gradient(to right, yellowgreen, yellow,red ) ;"></div>
 								</c:when>
 								<c:otherwise>
-									<div class="temperature" style="width:${loginMember.manner}%; background-color:blue"></div>
+									<div class="temperature" style="width:${loginMember.manner}%; background: linear-gradient(to right, yellowgreen, yellow,red  );"></div>
 								</c:otherwise>
 							</c:choose>
 						</div>

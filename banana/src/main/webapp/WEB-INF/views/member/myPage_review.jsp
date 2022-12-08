@@ -91,7 +91,7 @@
 
                                 </form>
                             </div>
-                       
+                    
                         </div>
                     </div>
 
@@ -104,7 +104,12 @@
 								<p id="introUpdateBtn1" class="introUpdateBtn1">수정하기</p>
 							</a>
 						</div>
+                        <div class = "bananaPayBtn">
+                            <p class="introUpdateBtn1" onclick="openPop5()">바나나페이</p>
+                        </div>
 					</div>
+
+                    <jsp:include page="/WEB-INF/views/pay/bananaPay.jsp" />
 
 					<div class="myBanana-intro">
 						<%-- (기존꺼)강사님과 함께.... --%>
@@ -123,19 +128,19 @@
 						<div class="container">
 							<c:choose>
 								<c:when test="${loginMember.manner >= 80}">
-									<div class="temperature" style="width:${loginMember.manner}%; background-color:red"></div>
+									<div class="temperature" style="width:${loginMember.manner}%; background: linear-gradient(to right, yellowgreen, yellow,red)  ;"></div>
 								</c:when>
 								<c:when test="${loginMember.manner >= 60}">
-									<div class="temperature" style="width:${loginMember.manner}%; background-color:orange"></div>
+									<div class="temperature" style="width:${loginMember.manner}%; background: linear-gradient(to right, yellowgreen, yellow,red)  ;"></div>
 								</c:when>
 								<c:when test="${loginMember.manner >= 40}">
-									<div class="temperature" style="width:${loginMember.manner}%; background-color:yellow"></div>
+									<div class="temperature" style="width:${loginMember.manner}%; background: linear-gradient(to right, yellowgreen, yellow,red)  ;"></div>
 								</c:when>
 								<c:when test="${loginMember.manner >= 20}">
-									<div class="temperature" style="width:${loginMember.manner}%; background-color:green"></div>
+									<div class="temperature" style="width:${loginMember.manner}%; background: linear-gradient(to right, yellowgreen, yellow,red)  ;"></div>
 								</c:when>
 								<c:otherwise>
-									<div class="temperature" style="width:${loginMember.manner}%; background-color:blue"></div>
+									<div class="temperature" style="width:${loginMember.manner}%; background: linear-gradient(to right, yellowgreen, yellow,red)  ;"></div>
 								</c:otherwise>
 							</c:choose>
 						</div>
@@ -143,7 +148,7 @@
 				</div>
 			</section>
 			<!--섹션4********************************************************************************************************섹션1-->
-		    <section class="myBanana-category">
+		 <section class="myBanana-category">
             
                     <div id= "first-category" class = "category">
                         <a href="/member/myPage/main?myPageCt=1">판매내역</a>
@@ -164,13 +169,13 @@
                     
 
 
-                <%-- 판매내역 클랙->js에서 1을 input에 넣고
-                    button을 클릭하도록 함
-                    document.getElementById("first-category").addEventListener("click", ()=>{
-                        document.getElementbyId("status").value = 1;
-                        document.getElementById("button").click();
-                    })
-                --%>
+            <%-- 판매내역 클랙->js에서 1을 input에 넣고
+                button을 클릭하도록 함
+                document.getElementById("first-category").addEventListener("click", ()=>{
+                    document.getElementbyId("status").value = 1;
+                    document.getElementById("button").click();
+                })
+             --%>
 
 			</section>
             <%--  섹션5에 해당하는 듯 --%>
@@ -255,7 +260,7 @@
                                 </div>
                             </div>
 
-                            <div class = "content">
+                            <div class = "messageContent">
                                 <div class = "row2_3">
                                     <pre class = "message Scroll">
 ${review.message}
@@ -283,6 +288,7 @@ ${review.message}
 
     <!-- jQuery 라이브러리(.js 파일) 추가(CDN 방식) -->
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+	<%-- <script src="/resources/js/lsy/myPage_common.js"></script> --%>
 	<script src="/resources/js/lsy/myPage_common.js"></script>
     
 	

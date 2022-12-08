@@ -77,19 +77,19 @@
 						<div class="container">
 							<c:choose>
 								<c:when test="${member.manner >= 80}">
-									<div class="temperature" style="width:${member.manner}%; background: linear-gradient(to top, #009fe8, #c4168d);"></div>
+									<div class="temperature" style="width:${member.manner}%; background: linear-gradient(to right, yellowgreen, yellow,red  );"></div>
 								</c:when>
 								<c:when test="${member.manner >= 60}">
-									<div class="temperature" style="width:${member.manner}%; background: linear-gradient(to top, #009fe8, #c4168d);"></div>
+									<div class="temperature" style="width:${member.manner}%; background: linear-gradient(to right, yellowgreen, yellow,red );"></div>
 								</c:when>
 								<c:when test="${member.manner >= 40}">
-									<div class="temperature" style="width:${member.manner}%; background: linear-gradient(to top, #009fe8, #c4168d);"></div>
+									<div class="temperature" style="width:${member.manner}%; background: linear-gradient(to right,  yellowgreen, yellow,red  );"></div>
 								</c:when>
 								<c:when test="${member.manner >= 20}">
-									<div class="temperature" style="width:${member.manner}%; background: linear-gradient(to top, #009fe8, #c4168d);"></div>
+									<div class="temperature" style="width:${member.manner}%; background: linear-gradient(to right, yellowgreen, yellow,red  );"></div>
 								</c:when>
 								<c:otherwise>
-									<div class="temperature" style="width:${member.manner}%; background: linear-gradient(to top, #009fe8, #c4168d);"></div>
+									<div class="temperature" style="width:${member.manner}%; background: linear-gradient(to right, yellowgreen, yellow,red ) ;"></div>
 								</c:otherwise>
 							</c:choose>
 						</div>

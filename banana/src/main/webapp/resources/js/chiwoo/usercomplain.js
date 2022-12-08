@@ -335,7 +335,6 @@ function openPop(sellerNo, memberNickname){
     
     document.getElementById("report-submit-button").addEventListener("click", () => {
         
-        alert(sellerNo)
 
         document.getElementById("sellerNo").value = sellerNo;
         // $.ajax({

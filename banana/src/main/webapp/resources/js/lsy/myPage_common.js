@@ -66,7 +66,7 @@ introUpdateBtn2.addEventListener("click", e => {
                     pIntro.style.display = "block";
                     introUpdateBtn2.style.display = "block";
                     
-                    alert("수정 완료된 듯?");
+                    
     
                 } else { //실패
                     console.log("서버에 저장 실패");

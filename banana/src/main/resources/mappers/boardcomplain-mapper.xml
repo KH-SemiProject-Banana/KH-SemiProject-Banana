@@ -16,8 +16,8 @@
 
 <select id="boardDuplication">
 	SELECT COUNT * FROM "BOARD_COMPLAIN"
-	WHERE B_COMPLAINER = #{category1}
-	AND GOODS_NO = #{category2}; 
+	WHERE B_COMPLAINER = #{memberNo}
+	AND B_COMPLAINED = #{memberNo2}; 
 </select>
   
   

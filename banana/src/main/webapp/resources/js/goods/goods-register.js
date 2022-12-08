@@ -51,6 +51,30 @@ function loadFile(input) {
 
     }
 
+    // 이미지 선택 완료시
+    // 기존 input태그의 id속성을 바꾸고, 새 input태그를 만들어 id속성값을 기존걸로 바꿔서
+    // label태그와 연결되게 한다
+
+
+
+    const inputClone = document.createElement("input");
+    inputClone.setAttribute("type", "file");
+    inputClone.setAttribute("id", "chooseFile");
+    inputClone.classList.add("chooseFile");
+    inputClone.setAttribute("name", "inputImage");
+    inputClone.setAttribute("accept", "image/*");
+    inputClone.setAttribute("onchange", "return loadFile(this)");
+    inputClone.setAttribute("multiple", "true");
+    inputClone.style.visibility="hidden";
+    document.getElementById("chooseFile").after(inputClone);
+
+    document.getElementById("chooseFile").removeAttribute("id");
+
+
+
+
+
+
     list = document.getElementsByClassName("img");
     console.log(list.length);
     if (list.length > 0) {
@@ -92,7 +116,6 @@ function deleteFile(img) {
         fileCount.files = dataTransfer.files;
     }
 }
-
 
 
 

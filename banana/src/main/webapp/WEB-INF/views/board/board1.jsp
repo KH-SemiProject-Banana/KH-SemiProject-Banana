@@ -111,7 +111,7 @@
                     
 
                     <div class="alarm-or-question">
-                        <a href="#" class="notice__alarm">신고하기</a>
+                        <%-- <a href="#" class="notice__alarm">신고하기</a> --%>
                             
                         <a  class="notice__question" id="insertBtn">문의하기</a>
                     </div>

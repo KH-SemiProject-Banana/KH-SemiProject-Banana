@@ -122,7 +122,7 @@
 
                         </li>
                         <div class="Declaration">
-                            <a href="javascript:openPop()"><!-- 신고버튼 -->
+                            <a href="javascript:openPoppp()" id="admNo"><!-- 신고버튼 -->
                                 <i class="fa-regular fa-bell-slash"></i>
                             </a>
                         </div>  

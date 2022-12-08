@@ -56,7 +56,7 @@
                         <div class="dot-list">
                             <c:set var="i" value="1" />
                             <c:forEach var="goods" items="${goodsImg}">
-                                <div class="dot" onclick="currentSlide(i)">
+                                <div class="dot" onclick="currentSlide(${i})">
                                     <img src="${goods}">
                                 </div>
 
@@ -172,7 +172,29 @@
 
                         <div class="manner">
                             <span>바나나 온도</span>
-                            <div></div>
+                            <div>
+                                <c:choose>
+                                    <c:when test="${sellerInfo.manner >= 80}">
+                                        <div class="temperature" style="width:${sellerInfo.manner}%; background-color:brown;"></div>
+                                    </c:when>
+
+                                    <c:when test="${sellerInfo.manner >= 60}">
+                                        <div class="temperature" style="width:${sellerInfo.manner}%; background-color:tomato;"></div>
+                                    </c:when>
+
+                                    <c:when test="${sellerInfo.manner >= 40}">
+                                        <div class="temperature" style="width:${sellerInfo.manner}%; background-color:yellow;"></div>
+                                    </c:when>
+
+                                    <c:when test="${sellerInfo.manner >= 20}">
+                                        <div class="temperature" style="width:${sellerInfo.manner}%; background-color:yellowgreen;"></div>
+                                    </c:when>
+
+                                    <c:otherwise>
+                                        <div class="temperature" style="width:${sellerInfo.manner}%; background-color:green;"></div>
+                                    </c:otherwise>
+                                </c:choose>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -212,8 +234,8 @@
                                     </c:otherwise>
                                 </c:choose>
 
-                                <span><a href="/goods/${sellerGoods.goodsNo}" class="title">${sellerGoods.title}</a></span>
-                                <span><a href="/goods/${sellerGoods.goodsNo}"><h4><fmt:formatNumber value="${sellerGoods.sellPrice}" pattern="#,###"/></h4></a></span>
+                                <span><a href="/goods/${sellerGoods.goodsNo}" class="title"><h4>${sellerGoods.title}</h4></a></span>
+                                <span><a href="/goods/${sellerGoods.goodsNo}"><h4><fmt:formatNumber value="${sellerGoods.sellPrice}" pattern="#,###"/>원</h4></a></span>
                             </div>
 
                             <c:set var="i" value="${i+1}"/>

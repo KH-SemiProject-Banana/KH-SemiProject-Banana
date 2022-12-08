@@ -143,19 +143,19 @@
 						<div class="container">
 							<c:choose>
 								<c:when test="${loginMember.manner >= 80}">
-									<div class="temperature" style="width:${loginMember.manner}%; background-color:red"></div>
+									<div class="temperature" style="width:${loginMember.manner}%; background: brown  ;"></div>
 								</c:when>
 								<c:when test="${loginMember.manner >= 60}">
-									<div class="temperature" style="width:${loginMember.manner}%; background-color:orange"></div>
+									<div class="temperature" style="width:${loginMember.manner}%; background: tomato  ;"></div>
 								</c:when>
 								<c:when test="${loginMember.manner >= 40}">
-									<div class="temperature" style="width:${loginMember.manner}%; background-color:yellow"></div>
+									<div class="temperature" style="width:${loginMember.manner}%; background: yellow  ;"></div>
 								</c:when>
 								<c:when test="${loginMember.manner >= 20}">
-									<div class="temperature" style="width:${loginMember.manner}%; background-color:green"></div>
+									<div class="temperature" style="width:${loginMember.manner}%; background: yellowgreen  ;"></div>
 								</c:when>
 								<c:otherwise>
-									<div class="temperature" style="width:${loginMember.manner}%; background-color:blue"></div>
+									<div class="temperature" style="width:${loginMember.manner}%; background:  green  ;"></div>
 								</c:otherwise>
 							</c:choose>
 						</div>

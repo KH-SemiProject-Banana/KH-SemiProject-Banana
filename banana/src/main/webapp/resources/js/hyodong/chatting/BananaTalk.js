@@ -229,8 +229,7 @@ const productInfor = () => {
 			div0.classList.add("Declaration");
 
 			const a = document.createElement("a");
-			a.setAttribute("href","javascript:openPop("+selectProductInfor.sellerNo ,selectProductInfor.memberNickname+")")
-	
+			a.setAttribute("href","javascript:openPop("+selectProductInfor.sellerNo +",'"+selectProductInfor.memberNickname + "')")
 
 			const i = document.createElement("i");
 			i.classList.add("fa-regular","fa-bell-slash");
@@ -456,3 +455,9 @@ chattingSock.onmessage = function(e) {
 	selectRoomList();
 }
 
+const admNo = document.getElementById("admNo")
+
+admNo.addEventListener("click",()=>{
+	alert("안돼요~ 관리자를 신고할 수는 없어요~ 채팅 규칙을 잘 지켜주세요~")
+
+})

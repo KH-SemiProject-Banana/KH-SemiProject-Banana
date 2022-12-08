@@ -271,12 +271,17 @@ a {
     justify-content: center;
 } */
 
+
+
 .row1 {
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-evenly;
     /* background-color: aqua; */
     padding-bottom: 20px;
+    
+
+
 
 }
 
@@ -301,7 +306,7 @@ a {
 
 .row > .row1col1{
     /* width: 200px; */
-    width: 250px;
+    width: 350px;
     text-align: center;
     padding: 5px;
 }
@@ -524,7 +529,7 @@ a {
     border-left: 1px solid black;
 }
 
-.content{
+.messageContent{
     display: flex;
     align-items: center;
     justify-content: center;

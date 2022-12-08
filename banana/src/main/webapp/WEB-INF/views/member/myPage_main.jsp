@@ -241,7 +241,7 @@
 											<div class="favorite__price">${sold.title}</div>
 										</div>
 									</div>
-									<div class="favorite__content">${sold.refreshedAt}</div>
+									<div class="favorite__content">${sold.createdAt}</div>
                                      
                                         <c:if test = "${sold.buyerNo != 0}">
                                             <c:choose>

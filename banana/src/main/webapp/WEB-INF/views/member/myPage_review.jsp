@@ -143,7 +143,7 @@
 				</div>
 			</section>
 			<!--섹션4********************************************************************************************************섹션1-->
-		    <section class="myBanana-category">
+		 <section class="myBanana-category">
             
                     <div id= "first-category" class = "category">
                         <a href="/member/myPage/main?myPageCt=1">판매내역</a>
@@ -164,13 +164,13 @@
                     
 
 
-                <%-- 판매내역 클랙->js에서 1을 input에 넣고
-                    button을 클릭하도록 함
-                    document.getElementById("first-category").addEventListener("click", ()=>{
-                        document.getElementbyId("status").value = 1;
-                        document.getElementById("button").click();
-                    })
-                --%>
+            <%-- 판매내역 클랙->js에서 1을 input에 넣고
+                button을 클릭하도록 함
+                document.getElementById("first-category").addEventListener("click", ()=>{
+                    document.getElementbyId("status").value = 1;
+                    document.getElementById("button").click();
+                })
+             --%>
 
 			</section>
             <%--  섹션5에 해당하는 듯 --%>
@@ -283,6 +283,7 @@ ${review.message}
 
     <!-- jQuery 라이브러리(.js 파일) 추가(CDN 방식) -->
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+	<%-- <script src="/resources/js/lsy/myPage_common.js"></script> --%>
 	<script src="/resources/js/lsy/myPage_common.js"></script>
     
 	

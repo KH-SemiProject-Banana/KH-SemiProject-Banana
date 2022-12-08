@@ -21,16 +21,6 @@ public class MyPageDAO {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 
-	
-	
-	/** 마이페이지 자기소개 수정 
-	 * @param member
-	 * @return
-	 */
-	public int changeIntroduce(Member member) {
-		return sqlSession.update("myPageMapper.changeIntroduce",member);
-	}
-
 	/** 내 회원 정보 수정 (비밀번호 포함)
 	 * @param inputMember
 	 * @return
@@ -45,6 +35,56 @@ public class MyPageDAO {
 	 */
 	public int updateInfoNoPw(Member inputMember) {
 		return sqlSession.update("myPageMapper.updateInfoNoPw",inputMember);
+	}
+	
+	/** 마이페이지 자기소개 수정 
+	 * @param member
+	 * @return
+	 */
+	public int changeIntroduce(Member member) {
+		return sqlSession.update("myPageMapper.changeIntroduce",member);
+	}
+
+	/** 회원 탈퇴
+	 * @param memberNo
+	 * @return result
+	 */
+	public int secession(int memberNo) {
+		return sqlSession.update("myPageMapper.secession",memberNo);
+	}
+
+	/** 회원탈퇴 회원 조회
+	 * @param memberNo
+	 * @return 
+	 */
+	public Member secessionSelect(int memberNo) {
+		return sqlSession.selectOne("memberMapper.secessionSelect", memberNo);
+	}
+
+	/** 회원 탈퇴
+	 * @param memberNo
+	 * @return
+	 */
+	public int secessionDelete(int memberNo) {
+		return sqlSession.update("memberMapper.secessionDelete",memberNo);
+	}
+
+	/** 차단관리
+	 * @param memberNo
+	 * @return
+	 */
+	public List<Member> selectDeleteMemberList(int memberNo) {
+		
+		return sqlSession.selectList("memberMapper.selectDeleteMemberList", memberNo);
+	}
+
+	/** 회원 차단 해제
+	 * @param map
+	 * @return
+	 */
+	public int memberBlockCancel(Map<String, Object> map) {
+		
+		return sqlSession.delete("memberMapper.memberBlockCancel", map);
 	}
 
 	
@@ -132,13 +172,22 @@ public class MyPageDAO {
 		return sqlSession.update("myPageMapper.updateBad", map);
 	}
 
-	/**내가 쓴 후기 조회
+	/**4. 내가 쓴 후기 조회
 	 * @param ratingNo
 	 * @return
 	 */
 	public List<Review> selectSendingReview(int ratingNo) {
 		
 		return sqlSession.selectList("myPageMapper.selectSendingReview",ratingNo);
+	}
+	
+	/**5.받은 후기 조회하기
+	 * @param map
+	 * @return
+	 */
+	public List<Review> selectReceivedReview(Map<String, Object> map) {
+		
+		return sqlSession.selectList("myPageMapper.selectReceivedReview",map);
 	}
 
 	/** 프로필 이미지를 수정
@@ -150,52 +199,42 @@ public class MyPageDAO {
 		return sqlSession.update("myPageMapper.updateProfile", loginMember);
 		
 	}
+	
+	
+	
+	
+	
 
-	/**받은 거래후기 최신순3개를 조회하기
+	/****4  후기  ******/
+	
+	/**1. 받은 매너온도 탑5
 	 * @param loginMember
 	 * @return
 	 */
-	public List<Review> selectNewestReviewList(Member loginMember) {
+	public List<Review> selectMannerTopList(int memberNo) {
 		
-		return sqlSession.selectList("myPageMapper.selectNewestReviewList",loginMember);
-	}
-	/** 회원 탈퇴
-	 * @param memberNo
-	 * @return result
-	 */
-	public int secession(int memberNo) {
-		return sqlSession.update("myPageMapper.secession",memberNo);
+		return sqlSession.selectList("myPageMapper.mannerTopList",memberNo);
 	}
 
-	/** 회원탈퇴 회원 조회
-	 * @param memberNo
-	 * @return 
-	 */
-	public Member secessionSelect(int memberNo) {
-		return sqlSession.selectOne("memberMapper.secessionSelect", memberNo);
-	}
-
-	/** 회원 탈퇴
-	 * @param memberNo
+	/**1_1.매너온도 목록 조회하기
+	 * @param map1
 	 * @return
 	 */
-	public int secessionDelete(int memberNo) {
-		return sqlSession.update("memberMapper.secessionDelete",memberNo);
-	}
-
-	public List<Member> selectDeleteMemberList(int memberNo) {
+	public List<Review> reviewList(Map<String, Object> map1) {
 		
-		return sqlSession.selectList("memberMapper.selectDeleteMemberList", memberNo);
+		return sqlSession.selectList("myPageMapper.selectMannerList",map1);
 	}
-
-	public int memberBlockCancel(Map<String, Object> map) {
-		
-		return sqlSession.delete("memberMapper.memberBlockCancel", map);
-	}
-
 	
+	/**2. 받은 거래후기 최신순3개를 조회하기
+	 * @param loginMember
+	 * @return
+	 */
+	public List<Review> selectNewestReviewList(int memberNo) {
+		
+		return sqlSession.selectList("myPageMapper.selectNewestReviewList",memberNo);
+	}
 
-	/** (거래후기 목록 조회)
+	/** (2_1.거래후기 목록 조회)
 	 * @param map1
 	 * @param pagination
 	 * @return
@@ -209,7 +248,7 @@ public class MyPageDAO {
 		return sqlSession.selectList("myPageMapper.reviewDetailList",map1,rowBounds);
 	}
 
-	/**(거래후기 목록의 게시글 수 조회)
+	/**(2_2.거래후기 목록의 게시글 수 조회)
 	 * @param map1
 	 * @return
 	 */
@@ -218,32 +257,8 @@ public class MyPageDAO {
 		return sqlSession.selectOne("myPageMapper.getDetailListCount", map1);
 	}
 
-	/**받은 매너온도 탑5
-	 * @param loginMember
-	 * @return
-	 */
-	public List<Review> selectMannerTopList(Member loginMember) {
-		
-		return sqlSession.selectList("myPageMapper.mannerTopList",loginMember);
-	}
-
-	/**매너온도 목록 조회하기
-	 * @param map1
-	 * @return
-	 */
-	public List<Review> reviewList(Map<String, Object> map1) {
-		
-		return sqlSession.selectList("myPageMapper.selectMannerList",map1);
-	}
-
-	/**받은 후기 조회하기
-	 * @param map
-	 * @return
-	 */
-	public List<Review> selectReceivedReview(Map<String, Object> map) {
-		
-		return sqlSession.selectList("myPageMapper.selectReceivedReview",map);
-	}
+	
+	/////////////////////3 관심목록///////////////////////////////
 
 	/**관심목록 게시글의 수
 	 * @param memberNo
@@ -268,10 +283,17 @@ public class MyPageDAO {
 		return sqlSession.selectList("myPageMapper.selectmyGoodsLikeList",memberNo,rowBounds);
 	}
 
-	/*타인의 마이페이지*/
+	/*********************타인의 마이페이지****************************/
 	
 	public Member selectYourInfo(int memberNo) {
 		
 		return sqlSession.selectOne("myPageMapper.selectYourInfo",memberNo);
-	}}
+	}
+
+	public List<Review> yourMannerList(int memberNo) {
+		
+		return sqlSession.selectList("myPageMapper.selectYourMannerList",memberNo);
+	}
+}
+	
 

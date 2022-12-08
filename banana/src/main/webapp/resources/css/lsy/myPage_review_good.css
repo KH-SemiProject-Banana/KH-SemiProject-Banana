@@ -34,6 +34,7 @@ a {
     font-size: 18px;
     width: 30%;
     
+    
 }
 
 /* 사이드 텝 설정 */
@@ -176,4 +177,8 @@ a {
 
 .iconBox p {
     padding-bottom: 5px;
+}
+
+#title_section_1{
+    display: flex;
 }

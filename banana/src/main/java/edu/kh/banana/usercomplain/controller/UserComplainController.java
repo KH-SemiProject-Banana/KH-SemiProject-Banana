@@ -77,7 +77,7 @@ public class UserComplainController {
 		}
 		
 		ra.addFlashAttribute("message", message);
-		return "redirect:/chatting/BananaTalk";
+		return "redirect:/chatting";
 	}
 	
 	

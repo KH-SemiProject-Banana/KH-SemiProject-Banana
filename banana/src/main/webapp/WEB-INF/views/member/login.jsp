@@ -45,7 +45,7 @@
                         id="memberEmail" 
                         class="inputBox" 
                         placeholder="아이디 (이메일)"
-                        maxlength="20" 
+                        maxlength="40" 
                         autocomplete="off" 
                         value="${cookie.saveId.value}">
                     </div>

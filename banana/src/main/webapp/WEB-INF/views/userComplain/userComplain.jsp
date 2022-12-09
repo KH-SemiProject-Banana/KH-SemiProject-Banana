@@ -74,42 +74,42 @@
                         <%-- div1_3_2 --%>                   
                         <div id="click">
                             <%-- div1_3_2_1 --%>
-                            <div class="report-reason abc" id = "abc1">
+                            <div class="report-reason abc" id = "abc1" title="1">
                                 <%-- div1_3_2_1_1 --%>
                                 <div>전문 판매업자 같아요 <i class="fa-solid fa-chevron-right"></i></div>
                             </div>
                             <%-- div1_3_2_2 --%>
-                            <div class="report-reason abc" id = "abc2">
+                            <div class="report-reason abc" id = "abc2" title="2">
                                 <%-- div1_3_2_2_1 --%>
                                 <div>비매너 사용자에요 <i class="fa-solid fa-chevron-right"></i></div>
                             </div>
                             <%-- div1_3_2_3 --%>
-                            <div class="report-reason abc" id="abc3">
+                            <div class="report-reason abc" id="abc3" title="3">
                                 <%-- div1_3_2_3_1 --%>
                                 <div> 욕설을 해요 <i class="fa-solid fa-chevron-right"></i></div>
                             </div>
                             <%-- div1_3_2_4 --%>
-                            <div class="report-reason abc"  id="abc4">
+                            <div class="report-reason abc"  id="abc4" title="4">
                                 <%-- div1_3_2_4_1 --%>
                                 <div>성희롱을 해요<i class="fa-solid fa-chevron-right"></i></div>
                             </div>
                             <%-- div1_3_2_5 --%>
-                            <div class="report-reason abc"  id="abc5">
+                            <div class="report-reason abc"  id="abc5" title="5">
                                 <%-- div1_3_2_5_1 --%>
                                 <div>거래/환불 분쟁신고<i class="fa-solid fa-chevron-right"></i></div>
                             </div>
                             <%-- div1_3_2_6 --%>
-                            <div class="report-reason abc"  id="abc6">
+                            <div class="report-reason abc"  id="abc6" title="6">
                                 <%-- div1_3_2_6_1 --%>
                                 <div>사기당했어요<i class="fa-solid fa-chevron-right"></i></div>
                             </div>
                             <%-- div1_3_2_7 --%>
-                            <div class="report-reason abc"  id="abc7">
+                            <div class="report-reason abc"  id="abc7" title="7">
                                 <%-- div1_3_2_7_1 --%>
                                 <div>다른 문제가 있어요<i class="fa-solid fa-chevron-right"></i></div>
                             </div>
                             <%-- div1_3_2_8 --%>
-                            <div class="report-reason abc"  id="abc8">
+                            <div class="report-reason abc"  id="abc8" title="8">
                                 <%-- div1_3_2_8_1 --%>
                                 <div>연애 목적의 대화를 시도해요<i class="fa-solid fa-chevron-right"></i></div>
                             </div>
@@ -117,12 +117,12 @@
                         <%-- div1_3_3 --%>   
                         <div id="click1">
                             <%-- div1_3_3_1 --%>  
-                            <div class="report-reason">
+                            <div class="report-reason abcd2" title="1">
                                 <%-- div1_3_3_1_1 --%>  
                                 <div>전문 판매업자 <i class="fa-solid fa-chevron-right"></i></div>
                             </div>
                             <%-- div1_3_3_2 --%>  
-                            <div class="report-reason">
+                            <div class="report-reason abcd2" title="2">
                                 <%-- div1_3_3_2_1 --%>  
                                 <div> 중고차 매매업자 <i class="fa-solid fa-chevron-right"></i></div>
                             </div>
@@ -131,12 +131,12 @@
                         <%-- div1_3_4 --%>  
                         <div id="click2"> 
                             <%-- div1_3_4_1 --%>  
-                            <div class="report-reason" >
+                            <div class="report-reason abcd2" title="1">
                                 <%-- div1_3_4_1_1 --%>  
                                 <div>반말을 사용해요 <i class="fa-solid fa-chevron-right"></i></div>
                             </div>
                             <%-- div1_3_4_2 --%>  
-                            <div class="report-reason">
+                            <div class="report-reason abcd2" title="2">
                                 <%-- div1_3_4_2_1 --%>  
                                 <div>불친절해요 <i class="fa-solid fa-chevron-right"></i></div>
                             </div>
@@ -145,27 +145,27 @@
                         <%-- div1_3_5 --%>  
                         <div id="click6">
                             <%-- div1_3_5_1 --%>  
-                            <div class="report-reason" >
+                            <div class="report-reason abcd2" title="1">
                                 <%-- div1_3_5_1_1 --%>  
                                 <div>카톡/문자 등 당근채팅 밖에서 대화를 유도해요 <i class="fa-solid fa-chevron-right"></i></div>
                             </div>
                             <%-- div1_3_5_2 --%>  
-                            <div class="report-reason">
+                            <div class="report-reason abcd2" title="2">
                                 <%-- div1_3_5_2_1 --%>  
                                 <div>가짜 안전결제/ 안전거래 사이트 링크를 보내요 <i class="fa-solid fa-chevron-right"></i></div>
                             </div>
                             <%-- div1_3_5_3 --%>  
-                            <div class="report-reason">
+                            <div class="report-reason abcd2" title="3">
                                 <%-- div1_3_5_3_1 --%>  
                                 <div> 특수문자/ 사진 등 계좌/ 전화번호를 이상하게 보내요 <i class="fa-solid fa-chevron-right"></i></div>        
                             </div>
                             <%-- div1_3_5_4 --%>  
-                            <div class="report-reason">
+                            <div class="report-reason abcd2" title="4">
                                 <%-- div1_3_5_4_1 --%>  
                                 <div> 입금했는데 판매자가 물건을 주지 않고 잠적했어요 <i class="fa-solid fa-chevron-right"></i></div>        
                             </div>
                             <%-- div1_3_5_5 --%>  
-                            <div class="report-reason">
+                            <div class="report-reason abcd2" title="5">
                                 <%-- div1_3_5_5_1 --%> 
                                 <div> 물건을 보냈는데 구매자가 입금하지 않고 잠적했어요 <i class="fa-solid fa-chevron-right"></i></div>        
                             </div>
@@ -175,27 +175,27 @@
                         <%-- div1_3_6 --%> 
                         <div id="click7">
                             <%-- div1_3_6_1 --%> 
-                            <div class="report-reason" >
+                            <div class="report-reason abcd2" title="1">
                                 <%-- div1_3_6_1_1 --%> 
                                 <div>불법 이용자 신고<i class="fa-solid fa-chevron-right"></i></div>
                             </div>
                             <%-- div1_3_6_2 --%> 
-                            <div class="report-reason">
+                            <div class="report-reason abcd2" title="2">
                                 <%-- div1_3_6_2_1 --%> 
                                 <div>중복 게시글 <i class="fa-solid fa-chevron-right"></i></div>
                             </div>
                             <%-- div1_3_6_3 --%>
-                            <div class="report-reason">
+                            <div class="report-reason abcd2" title="3">
                                 <%-- div1_3_6_3_1 --%>
                                 <div> 프로필 사진 신고<i class="fa-solid fa-chevron-right"></i></div>
                             </div>
                             <%-- div1_3_6_4 --%>
-                            <div class="report-reason">
+                            <div class="report-reason abcd2" title="4">
                                 <%-- div1_3_6_4_1 --%>
                                 <div>불건전 닉네임 신고 <i class="fa-solid fa-chevron-right"></i></div>
                             </div>
                             <%-- div1_3_6_5 --%>
-                            <div class="report-reason">
+                            <div class="report-reason abcd2" title="5">
                                 <%-- div1_3_6_5_1 --%>
                                 <div>채팅으로 정치/종교 대화를 시도해요 <i class="fa-solid fa-chevron-right"></i></div>
                             </div>
@@ -220,14 +220,13 @@
                                 <%-- </div> --%>
 
                                 <%-- div1_3_7_1_2 --%> 
-                              <%--   <div class="user-block"> --%>
+                               <%--  <div class="user-block"> --%>
                                     <%-- div1_3_7_1_2_input --%> 
-                               <%--      <input type="checkbox" name = "userblock" value = "${memberNo}">이 사람을 더이상 보고싶지 않아요
-                                </div> --%>
+                                  <%--   <input type="checkbox" name = "userblock" value = "">이 사람을 더이상 보고싶지 않아요</div> --%>
                         
-                                    <%--     <div class="report-notice">
+                                    <%-- <div class="report-notice">
                                     ('나의 바나나> 설정 > 게시글 미노출 > 사용자 관리' 에서 취소할 수 있습니다.)
-                                    </div> --%>
+                                    </div>  --%>
                                 
                                 <%-- div1_3_7_1_3 --%> 
                                 <div class="notice">
@@ -250,7 +249,7 @@
                             <input  id ="ctg1" type="hidden" name="ctg1" value="">
                             <%-- div1_3_7_3_input2 --%>
                             <input id ="ctg2" type="hidden" name="ctg2" value="" >
-                            <%-- <input id= "sellerNo" type = "hidden" name="sellerNo" value= "${selectProductInfor.sellerNo}" > --%>
+                            <input id= "sellerNo" type = "hidden" name="sellerNo" id="sellerNo" value= "${selectProductInfor.sellerNo}" > 
                         </form>
                     </div>
                 </div>

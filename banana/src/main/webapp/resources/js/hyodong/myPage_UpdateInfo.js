@@ -365,8 +365,9 @@ sample6_postcode.addEventListener("input", ()=>{
 
         // 도로명/ 지번 주소 미 입력시
         if(sample6_address.value.trim().length == 0){
-            addMessage.innerText="검색을 눌러 주소를 입력해 주세요.";
-            addMessage.classList.remove("confirm","error");
+            addMessage.innerText="우편번호 형식이 일치합니다. 도로명/지번 을 작성해 주세요.";
+            addMessage.classList.remove("error");
+            addMessage.classList.add("confirm")
             checkObj.memberAddress = false;
             return;
         }
@@ -415,8 +416,9 @@ sample6_address.addEventListener("input",()=>{
 
         // 우편번호 미 입력시
         if(sample6_postcode.value.trim().length == 0){
-            addMessage.innerText="검색을 눌러 주소를 입력해 주세요.";
-            addMessage.classList.remove("confirm","error");
+            addMessage.innerText="도로명/지번 형식이 일치합니다. 우편번호를 입력해주세요.";
+            addMessage.classList.remove("error");
+            addMessage.classList.add("confirm")
             checkObj.memberAddress = false;
             return;
         }

@@ -1,9 +1,3 @@
-// 첨부파일 추가
-
-// const realUpload = document.querySelector('.real-upload');
-// const upload = document.querySelector('.upload');
-
-// upload.addEventListener('click', () => realUpload.click());
 
 const checkObj = {
     "goodsImage": false,
@@ -15,87 +9,85 @@ const checkObj = {
 
 
 
+const handler = {
 
-function loadFile(input) {
+    init() {
+        const chooseFile = document.getElementById("chooseFile");
+        const imageShow = document.getElementById("image-show");
 
+        chooseFile.addEventListener("change", () => {
+            const files = Array.from(chooseFile.files);
+            const imgList = document.getElementsByClassName("img");
 
-    const files = input.files;
+            files.forEach(file => {
 
+                if(imgList != null){
+                    if(imgList.length >= 5){
+                        alert("최대 5개의 이미지를 등록할 수 있습니다");
+                        return;
+                    }
+                }
 
-    for (let file of files) {
-        const temp = document.querySelectorAll("#image-show > img");
+                imageShow.innerHTML +=
+                `<p id="${file.lastModified}" class="imgArea">
+                    <img class="img">
+                    <button data-index='${file.lastModified}' class='file-remove'>X</button>
+                </p>`;
 
-        if (temp.length == 5) {
-            alert("최대 5개의 파일을 등록할 수 있습니다");
-            return false;
-        }
+                imgList[imgList.length -1].src = URL.createObjectURL(file);
+                console.log(URL.createObjectURL(file));
 
-        var newImage = document.createElement("img");
-        newImage.classList.add("img");
-        newImage.src = URL.createObjectURL(file);
+                if (document.getElementsByClassName("img").length > 0) {
+                    checkObj.goodsImage = true;
+                } else {
+                    checkObj.goodsImage = false;
+                }
+    
+                const container = document.getElementById('image-show');
+                const count = container.childElementCount;
+                document.getElementsByClassName("img__pic-count")[0].innerText = "(" + count + "/5)";
+            });
 
-        var container = document.getElementById('image-show');
-        container.appendChild(newImage);
-
-
-        // 이미지 삭제 구현
-        newImage.addEventListener("click", (e) => {
-
-            container.removeChild(e.target);
-            deleteFile(e.target);
         });
 
+    },
 
-        const count = container.childElementCount;
-        document.getElementsByClassName("img__pic-count")[0].innerText = "(" + count + "/5)";
-
-    }
-
-    list = document.getElementsByClassName("img");
-    console.log(list.length);
-    if (list.length > 0) {
-        checkObj.goodsImage = true;
-    } else {
-        checkObj.goodsImage = false;
-    }
-
-    return true;
-
-};
+    removeFile: () => {
+        document.addEventListener("click", e => {
+            const removeTargetId = e.target.dataset.index;
+            console.log(removeTargetId); 
 
 
+            const removeTarget = document.getElementById(removeTargetId);
+            const files = document.getElementById("chooseFile").files;
+            const dataTransfer = new DataTransfer();
 
-function deleteFile(img) {
+            Array.from(files)
+                .filter(file => file.lastModified != removeTargetId)
+                .forEach(file => { dataTransfer.items.add(file) });
 
-    let fileNum = -1;
-    for (let i = 0; i < list.length; i++) {
-        if (list[i] == img) {
-            fileNum = i;
-            break;
-        }
-    }
+            document.getElementById("chooseFile").files = dataTransfer.files;
+            console.log(removeTarget);
+            removeTarget.remove();
 
-    if (fileNum > -1) {
 
-        const dataTransfer = new DataTransfer();
-        let fileCount = document.getElementById("chooseFile"); // label
 
-        let files = fileCount.files; // 사용자가 입력한 파일을 변수에 할당
+            if (document.getElementsByClassName("img").length > 0) {
+                checkObj.goodsImage = true;
+            } else {
+                checkObj.goodsImage = false;
+            }
 
-        let fileArray = Array.from(files); // 배열로 변환
-        console.log(fileNum);
-        console.log(fileArray);
-        fileArray.splice(fileNum, 1);
+            const container = document.getElementById('image-show');
+            const count = container.childElementCount;
+            document.getElementsByClassName("img__pic-count")[0].innerText = "(" + count + "/5)";
 
-        fileArray.forEach(file => { dataTransfer.items.add(file) });
-        console.log(dataTransfer.files);
-        fileCount.files = dataTransfer.files;
+        })
     }
 }
 
-
-
-
+handler.init();
+handler.removeFile();
 
 
 
@@ -138,22 +130,6 @@ document.getElementById("register__form").addEventListener("submit", e => {
 
 
 
-
-// 상품 이미지 유효성검사
-const chooseFile = document.getElementById("chooseFile");
-chooseFile.addEventListener("change", () => {
-
-    if (chooseFile.value == '') {
-
-        goodsImage = false;
-
-    } else {
-        goodsImage = true;
-    }
-
-
-
-});
 
 
 // 상품제목 유효성검사

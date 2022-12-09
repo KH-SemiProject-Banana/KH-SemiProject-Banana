@@ -20,7 +20,7 @@ public interface GoodsService {
 	 * @throws IOException 
 	 * @throws IllegalStateException 
 	 */
-	int registerGoods(String webPath, String folderPath, List<MultipartFile> inputImageList, GoodsSell inputGoods) throws Exception;
+	int registerGoods(String webPath, String folderPath, List<MultipartFile> inputImageList, GoodsSell inputGoods, String realImageList) throws Exception;
 
 	
 	

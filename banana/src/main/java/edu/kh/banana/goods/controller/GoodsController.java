@@ -65,6 +65,7 @@ public class GoodsController {
 			GoodsSell inputGoods,	
 			RedirectAttributes ra,
 			@RequestParam(value="inputImage", required = false) List<MultipartFile> inputImageList,
+			@RequestParam(value="realImageList", required = false) String realImageList,
 			HttpServletRequest req,
 			HttpSession session,
 			@RequestHeader("referer") String referer) throws Exception{
@@ -80,7 +81,7 @@ public class GoodsController {
 		
 
 		inputGoods.setSellerNo(loginMember.getMemberNo());
-		int goodsNo = service.registerGoods(webPath, folderPath, inputImageList, inputGoods);
+		int goodsNo = service.registerGoods(webPath, folderPath, inputImageList, inputGoods, realImageList);
 		
 		String path = null;
 		String message = null;

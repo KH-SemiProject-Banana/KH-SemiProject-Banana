@@ -7,70 +7,156 @@ const checkObj = {
 };
 
 
+const handler = {
 
-function loadFile(input) {
-    // let fileCount = document.getElementById("chooseFile");
+    init() {
+        const chooseFile = document.getElementById("chooseFile");
+        const imageShow = document.getElementById("image-show");
 
-    const files = input.files;
+        chooseFile.addEventListener("change", () => {
+            const files = Array.from(chooseFile.files);
+            const imgList = document.getElementsByClassName("img");
+
+            if(imgList.length >= 5){
+                alert("최대 5개의 이미지를 등록할 수 있습니다");
+                return;
+            }
+
+            files.forEach(file => {
+
+                
+                if(imgList.length > 5){
+                    alert("최대 5개의 이미지를 등록할 수 있습니다");
+                    return;
+                }
+                
+
+                imageShow.innerHTML +=
+                `<p id="${file.lastModified}" class="imgArea">
+                    <img class="img">
+                    <button data-index='${file.lastModified}' class='file-remove'>X</button>
+                </p>`;
+
+                imgList[imgList.length -1].src = URL.createObjectURL(file);
+                console.log(URL.createObjectURL(file));
+
+                if (document.getElementsByClassName("img").length > 0) {
+                    checkObj.questionImage = true;
+                } else {
+                    checkObj.questionImage = false;
+                }
+    
+                const container = document.getElementById('image-show');
+                const count = container.childElementCount;
+                document.getElementsByClassName("img__pic-count")[0].innerText = "(" + count + "/5)";
+            });
+
+        });
+
+    },
+
+    removeFile: () => {
+        document.addEventListener("click", e => {
+            const removeTargetId = e.target.dataset.index;
+            console.log(removeTargetId); 
+
+
+            const removeTarget = document.getElementById(removeTargetId);
+            const files = document.getElementById("chooseFile").files;
+            const dataTransfer = new DataTransfer();
+
+            Array.from(files)
+                .filter(file => file.lastModified != removeTargetId)
+                .forEach(file => { dataTransfer.items.add(file) });
+
+            document.getElementById("chooseFile").files = dataTransfer.files;
+            console.log(removeTarget);
+            removeTarget.remove();
 
 
 
-    for (let file of files) {
+            if (document.getElementsByClassName("img").length > 0) {
+                checkObj.questionImage = true;
+            } else {
+                checkObj.questionImage = false;
+            }
 
-
-        const temp = document.querySelectorAll("#image-show > img");
-
-        if (temp.length == 5) {
-            alert("최대 5개의 파일을 등록할 수 있습니다");
-            return false;
-        }
-
-
-        var newImage = document.createElement("img");
-        // var newImage = document.createElement("input");
-        newImage.setAttribute("class", 'img');
-        // newImage.setAttribute("type", 'file');
-
-
-        newImage.src = URL.createObjectURL(file);
-
-
-
-        var container = document.getElementById('image-show');
-
-        // var del = document.createTextNode('삭제');
-
-
-
-        container.appendChild(newImage);
-
-        // 이미지 삭제
-        newImage.addEventListener("click", (e) => {
-
-            container.removeChild(e.target);
-            deleteFile(e.target);
+            const container = document.getElementById('image-show');
+            const count = container.childElementCount;
+            document.getElementsByClassName("img__pic-count")[0].innerText = "(" + count + "/5)";
 
         })
-
-
-        const count = container.childElementCount;
-        document.getElementsByClassName("img__pic-count")[0].innerText = "(" + count + "/5)";
-
-
-
     }
+}
 
-    list = document.getElementsByClassName("img");
-    console.log(list.length);
-    if (list.length > 0) {
-        checkObj.questionImage = true;
-    } else {
-        checkObj.questionImage = false;
-    }
+handler.init();
+handler.removeFile();
 
-    return true;
 
-};
+
+// function loadFile(input) {
+//     // let fileCount = document.getElementById("chooseFile");
+
+//     const files = input.files;
+
+
+
+//     for (let file of files) {
+
+
+//         const temp = document.querySelectorAll("#image-show > img");
+
+//         if (temp.length == 5) {
+//             alert("최대 5개의 파일을 등록할 수 있습니다");
+//             return false;
+//         }
+
+
+//         var newImage = document.createElement("img");
+//         // var newImage = document.createElement("input");
+//         newImage.setAttribute("class", 'img');
+//         // newImage.setAttribute("type", 'file');
+
+
+//         newImage.src = URL.createObjectURL(file);
+
+
+
+//         var container = document.getElementById('image-show');
+
+//         // var del = document.createTextNode('삭제');
+
+
+
+//         container.appendChild(newImage);
+
+//         // 이미지 삭제
+//         newImage.addEventListener("click", (e) => {
+
+//             container.removeChild(e.target);
+//             deleteFile(e.target);
+
+//         })
+
+
+//         const count = container.childElementCount;
+//         document.getElementsByClassName("img__pic-count")[0].innerText = "(" + count + "/5)";
+
+
+
+//     }
+
+//     list = document.getElementsByClassName("img");
+//     console.log(list.length);
+//     if (list.length > 0) {
+//         checkObj.questionImage = true;
+//     } else {
+//         checkObj.questionImage = false;
+//     }
+
+//     return true;
+
+// };
 
 
 
@@ -218,5 +304,7 @@ const myQuestionList = document.getElementById("myQuestionList");
             return;
         }
     });
+
+
 
 

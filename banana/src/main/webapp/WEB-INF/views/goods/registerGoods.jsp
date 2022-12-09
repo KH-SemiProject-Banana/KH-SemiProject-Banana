@@ -142,6 +142,7 @@
                     <button type="button" onclick="history.back()">취소</button>
                     <button type="submit">상품 등록 완료</button>
                 </div>
+                <input type="hidden" id="deleteList" name="deleteList">
             </form>
         </section>
     </main>

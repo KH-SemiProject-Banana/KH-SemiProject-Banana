@@ -20,31 +20,71 @@ function loadFile(input) {
 
 
     const files = input.files;
+    const deleteList = [];
 
 
     for (let file of files) {
         const temp = document.querySelectorAll("#image-show > img");
+
+        list = document.getElementsByClassName("img");
+
+        if (list.length > 0) {
+            checkObj.goodsImage = true;
+        } else {
+            checkObj.goodsImage = false;
+        }
+
+
+        // 이미지 삭제 구현
+        var newImage = document.createElement("img");
+        newImage.classList.add("img");
+        newImage.src = URL.createObjectURL(file);
+        
+        newImage.addEventListener("click", (e) => {
+
+            deleteList.push(e.target.src);
+            document.getElementById("deleteList").value += "||" + deleteList;
+            console.log(deleteList);
+
+            container.removeChild(e.target);
+            deleteFile(e.target);
+
+            // 이미지 삭제 후 이미지가 4개인 경우 -> input를 1개 추가해서 값을 넣을 수 있도록 한다
+            // if(temp.length == 4) {
+            //     const inputClone = document.createElement("input");
+            //     inputClone.setAttribute("type", "file");
+            //     inputClone.setAttribute("id", "chooseFile");
+            //     inputClone.classList.add("chooseFile");
+            //     inputClone.setAttribute("name", "inputImage");
+            //     inputClone.setAttribute("accept", "image/*");
+            //     inputClone.setAttribute("onchange", "return loadFile(this)");
+            //     inputClone.setAttribute("multiple", "true");
+            //     inputClone.style.visibility="hidden";
+            //     document.getElementById("chooseFile").after(inputClone);
+            
+            //     document.getElementById("chooseFile").removeAttribute("id");
+            // }
+
+            if (list.length > 0) {
+                checkObj.goodsImage = true;
+            } else {
+                checkObj.goodsImage = false;
+            }
+
+            const count = container.childElementCount;
+            document.getElementsByClassName("img__pic-count")[0].innerText = "(" + count + "/5)";
+        });
+
 
         if (temp.length == 5) {
             alert("최대 5개의 파일을 등록할 수 있습니다");
             return false;
         }
 
-        var newImage = document.createElement("img");
-        newImage.classList.add("img");
-        newImage.src = URL.createObjectURL(file);
+        
 
         var container = document.getElementById('image-show');
         container.appendChild(newImage);
-
-
-        // 이미지 삭제 구현
-        newImage.addEventListener("click", (e) => {
-
-            container.removeChild(e.target);
-            deleteFile(e.target);
-        });
-
 
         const count = container.childElementCount;
         document.getElementsByClassName("img__pic-count")[0].innerText = "(" + count + "/5)";
@@ -54,9 +94,6 @@ function loadFile(input) {
     // 이미지 선택 완료시
     // 기존 input태그의 id속성을 바꾸고, 새 input태그를 만들어 id속성값을 기존걸로 바꿔서
     // label태그와 연결되게 한다
-
-
-
     const inputClone = document.createElement("input");
     inputClone.setAttribute("type", "file");
     inputClone.setAttribute("id", "chooseFile");
@@ -75,13 +112,7 @@ function loadFile(input) {
 
 
 
-    list = document.getElementsByClassName("img");
-    console.log(list.length);
-    if (list.length > 0) {
-        checkObj.goodsImage = true;
-    } else {
-        checkObj.goodsImage = false;
-    }
+    
 
     return true;
 
@@ -89,32 +120,59 @@ function loadFile(input) {
 
 
 
+// function deleteFile(img) {
+
+//     let fileNum = -1;
+//     for (let i = 0; i < list.length; i++) {
+//         if (list[i] == img) {
+//             fileNum = i;
+//             break;
+//         }
+//     }
+
+//     if (fileNum > -1) {
+
+//         const dataTransfer = new DataTransfer();
+//         let fileCount = document.getElementsByClassName("chooseFile"); // label
+
+//         let files = fileCount.files; // 사용자가 입력한 파일을 변수에 할당
+
+//         let fileArray = Array.from(files); // 배열로 변환
+//         console.log(fileNum);
+//         console.log(fileArray);
+//         fileArray.splice(fileNum, 1);
+
+//         fileArray.forEach(file => { dataTransfer.items.add(file) });
+//         console.log(dataTransfer.files);
+//         fileCount.files = dataTransfer.files;
+//     }
+// }
+
 function deleteFile(img) {
 
-    let fileNum = -1;
-    for (let i = 0; i < list.length; i++) {
-        if (list[i] == img) {
-            fileNum = i;
-            break;
+
+    const dataTransfer = new DataTransfer();
+    let fileCount = document.getElementsByClassName("chooseFile"); // label
+
+    let fileArray = [];
+
+    for(let file of fileCount){
+        let files = file.files; // 사용자가 입력한 파일을 변수에 할당
+
+        for(let temp of files){
+
+            fileArray.push(temp);
         }
     }
 
-    if (fileNum > -1) {
 
-        const dataTransfer = new DataTransfer();
-        let fileCount = document.getElementById("chooseFile"); // label
+    // let fileArray = Array.from(files); // 배열로 변환
 
-        let files = fileCount.files; // 사용자가 입력한 파일을 변수에 할당
 
-        let fileArray = Array.from(files); // 배열로 변환
-        console.log(fileNum);
-        console.log(fileArray);
-        fileArray.splice(fileNum, 1);
-
-        fileArray.forEach(file => { dataTransfer.items.add(file) });
-        console.log(dataTransfer.files);
-        fileCount.files = dataTransfer.files;
-    }
+    fileArray.forEach(file => { dataTransfer.items.add(file) });
+    console.log(dataTransfer.files);
+    fileCount.files = dataTransfer.files;
+    
 }
 
 
@@ -163,20 +221,20 @@ document.getElementById("register__form").addEventListener("submit", e => {
 
 
 // 상품 이미지 유효성검사
-const chooseFile = document.getElementById("chooseFile");
-chooseFile.addEventListener("change", () => {
+// const chooseFile = document.getElementById("chooseFile");
+// chooseFile.addEventListener("change", () => {
 
-    if (chooseFile.value == '') {
+//     if (chooseFile.value == '') {
 
-        goodsImage = false;
+//         goodsImage = false;
 
-    } else {
-        goodsImage = true;
-    }
+//     } else {
+//         goodsImage = true;
+//     }
 
 
 
-});
+// });
 
 
 // 상품제목 유효성검사

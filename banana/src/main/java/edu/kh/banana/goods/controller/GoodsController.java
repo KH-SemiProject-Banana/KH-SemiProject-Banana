@@ -65,6 +65,7 @@ public class GoodsController {
 			GoodsSell inputGoods,	
 			RedirectAttributes ra,
 			@RequestParam(value="inputImage", required = false) List<MultipartFile> inputImageList,
+			@RequestParam(value="deleteList", required = false) String deleteImageList,
 			HttpServletRequest req,
 			HttpSession session,
 			@RequestHeader("referer") String referer) throws Exception{

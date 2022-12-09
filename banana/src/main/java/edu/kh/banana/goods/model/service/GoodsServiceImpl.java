@@ -49,10 +49,17 @@ public class GoodsServiceImpl implements GoodsService {
 			List<String> renameList = new ArrayList<>();
 			
 			
+			int iFin = -1; 
 			
 			if(inputImageList != null) {
 				
-				for (int i = 0; i < inputImageList.size(); i++) {
+				if(inputImageList.size() >= 5) {
+					iFin = 5;
+				} else {
+					iFin = inputImageList.size() -1;
+				}
+				
+				for (int i = 0; i < iFin; i++) {
 					
 					GoodsImage img = new GoodsImage();
 					img.setGoodsNo(goodsNo);
@@ -73,7 +80,7 @@ public class GoodsServiceImpl implements GoodsService {
 			int result = dao.insertGoodsImageList(goodsImageList);
 			if(result == goodsImageList.size()) {
 				
-				for(int i = 0; i < inputImageList.size(); i++) {
+				for(int i = 0; i < iFin; i++) {
 					
 					inputImageList.get(i).transferTo(new File(folderPath + renameList.get(i)));
 				}

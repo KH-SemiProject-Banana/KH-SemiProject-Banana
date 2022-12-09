@@ -255,6 +255,11 @@ input, select, .introduce{
     border : 1px solid rgba(0,0,0,0.1);
     border-radius: 8px;
     object-fit: contain;
+
+}
+
+.imgArea{
+    position: relative;
 }
 
 
@@ -291,4 +296,14 @@ input, select, .introduce{
 .delete-image:hover{
     font-weight: bold;
     background-color: rgba(0,0,0,0.3);
+}
+
+/* .imgArea {
+    position: relative;
+} */
+
+.file-remove {
+    position:absolute;
+    bottom: 0;
+    right: 0;
 }

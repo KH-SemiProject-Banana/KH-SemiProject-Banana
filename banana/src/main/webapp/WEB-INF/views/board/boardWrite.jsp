@@ -112,7 +112,7 @@
                                     </label>
                                 </div>
                                 <input type="file" id="chooseFile" name="images" accept="image/*"
-                                    onchange="return loadFile(this)" multiple />
+                                     multiple />
                                     <div class="file-list" id="image-show"></div>
                             </div>
         

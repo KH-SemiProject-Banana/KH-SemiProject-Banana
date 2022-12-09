@@ -27,7 +27,7 @@ public class GoodsServiceImpl implements GoodsService {
 
 	@Override
 	@Transactional(rollbackFor = Exception.class)
-	public int registerGoods(String webPath, String folderPath, List<MultipartFile> inputImageList, GoodsSell inputGoods)
+	public int registerGoods(String webPath, String folderPath, List<MultipartFile> inputImageList, GoodsSell inputGoods, String realImageList)
 			throws Exception {
 
 		// 상품사진 제외한 나머지 등록
@@ -53,14 +53,16 @@ public class GoodsServiceImpl implements GoodsService {
 			
 			if(inputImageList != null) {
 				
-				if(inputImageList.size() >= 5) {
-					iFin = 5;
-				} else {
-					iFin = inputImageList.size() -1;
-				}
+//				if(inputImageList.size() >= 5) {
+//					iFin = 5;
+//				} else {
+//					iFin = inputImageList.size() -1;
+//				}
+
 				
-				for (int i = 0; i < iFin; i++) {
+				for (int i = 0; i < inputImageList.size(); i++) {
 					
+
 					GoodsImage img = new GoodsImage();
 					img.setGoodsNo(goodsNo);
 					
@@ -80,7 +82,7 @@ public class GoodsServiceImpl implements GoodsService {
 			int result = dao.insertGoodsImageList(goodsImageList);
 			if(result == goodsImageList.size()) {
 				
-				for(int i = 0; i < iFin; i++) {
+				for(int i = 0; i < inputImageList.size(); i++) {
 					
 					inputImageList.get(i).transferTo(new File(folderPath + renameList.get(i)));
 				}

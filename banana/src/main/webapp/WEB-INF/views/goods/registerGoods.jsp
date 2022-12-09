@@ -31,7 +31,7 @@
                 <p>상품 등록</p>
                 <p><span class="required">* 필수 항목</span>은 꼭 입력해주세요</p>
             </div>
-            <form name="register__content" id="register__form"  action="/goods/registerGoods" method="post"  enctype="multipart/form-data">
+            <form name="register__content" id="register__form"  action="/goods/registerGoods" method="post"  enctype="multipart/form-data" >
 
                 <div class="content-image">
                     <div class="content-image__title left-bar">
@@ -52,7 +52,7 @@
                                     </label>
                                 </div>
                                 <input type="file" id="chooseFile" class="chooseFile" name="inputImage" accept="image/*"
-                                    onchange="return loadFile(this)" multiple/>
+                                    multiple/>
                                     <div class="file-list" id="image-show"></div>
                                
                             </div>
@@ -142,7 +142,7 @@
                     <button type="button" onclick="history.back()">취소</button>
                     <button type="submit">상품 등록 완료</button>
                 </div>
-                <input type="hidden" id="deleteList" name="deleteList">
+                <input type="hidden" id="realImageList" name="realImageList">
             </form>
         </section>
     </main>

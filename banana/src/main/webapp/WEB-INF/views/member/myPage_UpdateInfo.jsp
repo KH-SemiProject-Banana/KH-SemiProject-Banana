@@ -46,7 +46,7 @@
                 id="memberEmail"
                 class="inputBoxNo"
                 placeholder="아이디 (이메일)"
-                maxlength="30"
+                maxlength="40"
                 autocomplete="off"
                 value="${loginMember.memberEmail}"
                 disabled

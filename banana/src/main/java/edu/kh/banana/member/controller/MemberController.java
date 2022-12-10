@@ -59,17 +59,17 @@ public class MemberController {
 	 */
 	@PostMapping("/member/login")
 	public String login(/*@ModelAttribute*/ Member inputMember,
-				Model  model, RedirectAttributes ra, @RequestParam(value="saveId", required=false) String saveId,
-				HttpServletResponse resp, @RequestHeader(value="referer") String referer) { 
-		
-		
+						Model  model,
+						RedirectAttributes ra, 
+						HttpServletResponse resp, 
+						@RequestParam(value="saveId", required=false) String saveId,
+						@RequestHeader(value="referer") String referer) { 
+
 		Member loginMember = service.login(inputMember);
 		
 		String path = null;
-
 		
 		if(loginMember != null) {
-			
 			
 			if(loginMember.getBlockFlag().equals("Y")) {
 				
@@ -79,9 +79,7 @@ public class MemberController {
 			} else {
 				
 				path = "/";
-				
 				model.addAttribute("loginMember", loginMember);
-				
 				Cookie cookie = new Cookie("saveId", loginMember.getMemberEmail());
 				
 				if(saveId != null) {
@@ -89,20 +87,15 @@ public class MemberController {
 				} else {
 					cookie.setMaxAge(0);
 				}
-				
 				cookie.setPath("/");
-				
 				resp.addCookie(cookie);
 			}
-			
 
 		} else {
 			
 			path = referer;
-			
 			ra.addFlashAttribute("message", "아이디 또는 비밀번호가 일치하지 않습니다");
 		}
-		
 		return "redirect:" + path;
 	}
 	

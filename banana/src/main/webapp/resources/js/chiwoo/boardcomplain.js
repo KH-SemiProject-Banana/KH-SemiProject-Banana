@@ -268,13 +268,13 @@ function openPop(){
                 type : "POST",
                 success : (result) => {
                     if(result > 0) {
-                        alert("신고되었습니다.");
+                        alert("신고 가즈앗!!.");
                         closePop();
                     } else {
-                        alert("신고 중 오류가 발생했습니다.");
+                        alert("신고중 오류가 발생했습니다.");
                     }
                 },
-                error : () => {alert("신고 중 오류가 발생했습니다.");}
+                error : () => {alert("신고중 오류가 발생했습니다.");}
             });
         }
     )

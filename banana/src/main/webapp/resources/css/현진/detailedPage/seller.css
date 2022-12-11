@@ -127,7 +127,7 @@
     font-size: 14px;
 }
 
-.title{
+.title > h4{
     width: 100%;
     display: inline-block;
     white-space : nowrap;

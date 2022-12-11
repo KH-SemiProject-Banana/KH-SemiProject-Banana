@@ -9,8 +9,8 @@
   VALUES(SEQ_U_COM_NO.NEXTVAL, 
   		#{ctg1},
   		#{ctg2},
-  		#{memberNo2},
   		#{memberNo},
+  		#{sellerNo},
   		#{reportbox},
   		DEFAULT)
 </insert>

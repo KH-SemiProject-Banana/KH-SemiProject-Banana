@@ -180,23 +180,21 @@ public class MyPageController {
 						) {
 		
 		
-//		System.out.println(loginMember);
+
 		Map<String, Object> map1 = new HashMap<String, Object>(); //새로 추가
-//		map1.put("sell",sell); //새로 추가
-//		map1.put("buy", buy); //새로 추가
+
 		int memberNo = loginMember.getMemberNo();
 		map1.put("memberNo", memberNo); // 새로 추가
 		map1.put("myPageCt", myPageCt);
-		//map1.put("cp", cp);
-//		System.out.println(map1);
+
 		model.addAttribute("loginMember",loginMember);
 		String address = loginMember.getMemberAddress();
 		model.addAttribute("address", address.substring(10, 13));
 
-		// Map<String, Object> map = service.selectGoodsList(memberNo); //기존 구문
+	
 		Map<String, Object> map = service.selectGoodsList(map1, cp);
 		model.addAttribute("map", map);
-//		System.out.println(map);
+
 		return "member/myPage_main";
 	}
 
@@ -218,7 +216,7 @@ public class MyPageController {
 			@RequestParam(value = "badChecked", required = false) String badChecked, String reviewText,
 			@SessionAttribute("loginMember") Member loginMember, int reviewGoodsNo, int reviewBuyerNo,
 			int reviewSellerNo) {
-		System.out.println("컨트롤러에 입성");
+		
 
 		// good값 세팅
 		List<String> goodCheckedArr = null;
@@ -237,11 +235,11 @@ public class MyPageController {
 		} else {
 			badCheckedArr = new ArrayList<String>();
 		}
-		// System.out.println("badCheckedArr : " + badCheckedArr);
+		
 
 		int result = service.sendingMannerReview(goodCheckedArr, badCheckedArr, reviewText, loginMember, reviewGoodsNo,
 				reviewBuyerNo, reviewSellerNo);
-		// int result = service.sendingReview();
+		
 		return result;
 	}
 

@@ -7,7 +7,9 @@
 <c:set var="allMemberCount" value="${map.allMemberCount}"/>
 <c:set var="listCount" value="${map.listCount}"/>
 
-<c:set var="sURL" value="sort=${param.sort}&key=${param.key}&query=${param.query}&isBlock=${param.isBlock}&isDelete=${param.isDelete}&calanderBefore=${param.calanderBefore}&calanderAfter=${param.calanderAfter}"/>
+<c:set var="sURL" value="sort=${param.sort}&key=${param.key}&query=${param.query}
+            &isBlock=${param.isBlock}&isDelete=${param.isDelete}
+            &calanderBefore=${param.calanderBefore}&calanderAfter=${param.calanderAfter}"/>
 
 
 
@@ -165,9 +167,6 @@
                         <c:set var="order1" value=""/>
                     </c:if>
 
-                    
-
-
                     <select onchange="orderBy()" id="order">
                         <option value="order1" ${order1}>가입일순</option>
                         <option value="order2" ${order2}>가입일 역순</option>
@@ -268,7 +267,7 @@
                         </c:forEach>
 
                     </div>
-                    <div class="search-result-div"id="changeData">
+                    <%-- <div class="search-result-div"id="changeData">
                         <div class="search-result-tab" >정보수정</div>
                         <c:forEach var="member" items="${memberList}">
                             <div class="search-content">
@@ -276,7 +275,7 @@
                                 id="${member.memberNo}||${member.memberNickname}||${member.memberName}||${member.memberBirth}||${member.memberTel}">수정</button>
                             </div>
                         </c:forEach>
-                    </div>
+                    </div> --%>
 
                     <div class="search-result-div"id="blockData">
                         <div class="search-result-tab" >차단</div>
@@ -314,7 +313,7 @@
                 <%-- 회원 정보 수정------------------------------------------- --%>
 
 
-                <div class="popup_layer" id="popup_layer" style="display: none;">
+                <%-- <div class="popup_layer" id="popup_layer" style="display: none;">
                     <div class="popup_box scroll">
                         <div style="height: 10px; width: 500px; float: top;">
                             <a href="javascript:closePop();"><i class="fa-solid fa-x allClose"></i></a>
@@ -338,19 +337,19 @@
 
                                     <!-- 이름/생년월일/휴대번호 -->
                                     <%-- 이름 --%>
-                                    <div class="signUp-input-Name textboxNo">
+                                    <%-- <div class="signUp-input-Name textboxNo">
                                         <input type="text" name="memberName" class="inputBoxNo" id="memberName"
                                             placeholder="이름" maxlength="10"/>
                                     </div>
 
                                     <%-- 생년월일 --%>
-                                    <div class="signUp-input-Birth textboxNo">
+                                    <%-- <div class="signUp-input-Birth textboxNo">
                                         <input type="text" name="memberBirth" class="inputBoxNo" id="memberBirth" placeholder="생년월일 ex)19910502" 
-                                            maxlength="8" />
-                                    </div>
+                                            maxlength="8" /> --%>
+                                    <%-- </div> --%>
 
                                     <%-- 휴대번호 --%>
-                                    <div class="signUp-input-Tel textbox">
+                                    <%-- <div class="signUp-input-Tel textbox">
                                         <input type="text"  name="memberTel" class="inputBox" id="memberTel" 
                                             placeholder="휴대번호 ex)01045459986" maxlength="11" />
                                     </div>
@@ -359,12 +358,12 @@
                                     </div>
                                 </div>
                                 <div class="SignUpAgreement6">
-                                    <button class="SignUp">내 정보 수정 완료</button>
+                                    <button class="SignUp">회원 정보 수정 완료</button>
                                 </div>
                             </form>
                         </div>
                     </div>
-                </div>
+                </div> --%>  
 
 
 

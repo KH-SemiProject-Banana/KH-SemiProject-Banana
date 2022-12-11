@@ -54,16 +54,16 @@ const handler = {
 
     removeFile: () => {
         document.addEventListener("click", e => {
-            const removeTargetId = e.target.dataset.index;
+            const removeTargetId = e.target.dataset.index; // x버튼의 데이터값
             console.log(removeTargetId); 
 
 
-            const removeTarget = document.getElementById(removeTargetId);
-            const files = document.getElementById("chooseFile").files;
+            const removeTarget = document.getElementById(removeTargetId); // x버튼들 클래스 모음
+            const files = document.getElementById("chooseFile").files; // input태그의 파일들
             const dataTransfer = new DataTransfer();
 
             Array.from(files)
-                .filter(file => file.lastModified != removeTargetId)
+                .filter(file => file.lastModified != removeTargetId) // x버튼을 눌렀을때
                 .forEach(file => { dataTransfer.items.add(file) });
 
             document.getElementById("chooseFile").files = dataTransfer.files;

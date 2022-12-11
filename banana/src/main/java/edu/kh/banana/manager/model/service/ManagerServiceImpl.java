@@ -223,18 +223,18 @@ public class ManagerServiceImpl implements ManagerService{
 		
 		
 		// sort값 계산
-		paramMap.put("order", "BOARD_CODE ASC, BOARD_NO ASC");
+		paramMap.put("order", "BOARD_CODE ASC, BOARD_NO DESC");
 		if(paramMap.get("sort").equals("1")) {
-			paramMap.put("order", "BOARD_CODE ASC, BOARD_NO ASC ");
-		}
-		if(paramMap.get("sort").equals("2")) {
 			paramMap.put("order", "BOARD_CODE ASC, BOARD_NO DESC ");
 		}
+		if(paramMap.get("sort").equals("2")) {
+			paramMap.put("order", "BOARD_CODE ASC, BOARD_NO ASC ");
+		}
 		if(paramMap.get("sort").equals("3")) {
-			paramMap.put("order", "BOARD_CODE ASC, VIEW_COUNT DESC");
+			paramMap.put("order", "BOARD_CODE ASC, VIEW_COUNT DESC, BOARD_NO DESC");
 		}
 		if(paramMap.get("sort").equals("4")) {
-			paramMap.put("order", "BOARD_CODE ASC, VIEW_COUNT ASC");
+			paramMap.put("order", "BOARD_CODE ASC, VIEW_COUNT ASC, BOARD_NO DESC");
 		}
 		
 		

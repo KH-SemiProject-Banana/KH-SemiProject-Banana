@@ -304,7 +304,7 @@
 	<if test='isSell != null'>
 		<choose>
 			<when test='isSell == "yesSell"'>
-				AND SELL_STATUS = 'Y'
+				AND SELL_STATUS = 'Y' AND GOODS_DEL_FL = 'N'
 			</when>
 			<when test='isSell == "noSell"'>
 				AND SELL_STATUS = 'N'
@@ -362,7 +362,7 @@
 	<if test='isSell != null'>
 		<choose>
 			<when test='isSell == "yesSell"'>
-				AND SELL_STATUS = 'Y'
+				AND SELL_STATUS = 'Y' AND GOODS_DEL_FL = 'N'
 			</when>
 			<when test='isSell == "noSell"'>
 				AND SELL_STATUS = 'N'

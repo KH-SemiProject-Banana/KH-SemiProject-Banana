@@ -167,7 +167,7 @@ private void makePagination() {
       prevPage = startPage - 1;
    
    if(endPage == maxPage) nextPage = maxPage;
-   else               nextPage = endPage + 1;
+   else                   nextPage = endPage + 1;
    
 }
 

@@ -59,6 +59,7 @@ function openPop(sellerNo, memberNickname){
     pl.style.display = "block";
     pp.style.display = "block";
     click.style.display = "block";
+
     
                 
     abc1.addEventListener("click",function(){
@@ -262,6 +263,7 @@ function openPop(sellerNo, memberNickname){
             userreportsubmit.style.display = "none";
             click.style.display = "block";
             back3.style.display = "none";
+            alert("back3");
         });
     
     // back2.style.display = "none";
@@ -289,11 +291,14 @@ function openPop(sellerNo, memberNickname){
                         
         click.style.display = "block";
         back1.style.display = "none";
+        alert("back1");
+       
     })
                     
                     
 
     back2.addEventListener("click",() => {
+        
         userreportsubmit.style.display = "none";
 
         switch (ctg1.value) {
@@ -316,6 +321,7 @@ function openPop(sellerNo, memberNickname){
 
             back1.style.display = "block";
             back2.style.display = "none";
+            alert("back2");
     })
 
     // back2.addEventListener("click", () => {

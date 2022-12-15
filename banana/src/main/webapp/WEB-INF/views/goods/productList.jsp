@@ -38,6 +38,7 @@
     <link rel="stylesheet" href="/resources/css/style.css">
     <link rel="stylesheet" href="/resources/css/현진/productList.css">
     <script src="https://kit.fontawesome.com/f7459b8054.js" crossorigin="anonymous"></script>
+    <style>body{background-color: white;}</style>
 </head>
 <body>
     <main>

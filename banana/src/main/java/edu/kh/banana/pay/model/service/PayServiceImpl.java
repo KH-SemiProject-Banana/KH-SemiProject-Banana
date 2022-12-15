@@ -17,7 +17,10 @@ public class PayServiceImpl implements PayService{
 	// 잔여 페이 조회
 	@Override
 	public int searchRemainPay(Map<String, Object> paramMap) {
-		return dao.searchRemainPay(paramMap);
+		int history = dao.searchUseHistory(paramMap);
+		
+		if(history == 0) return 0;
+		else			 return dao.searchRemainPay(paramMap);
 	}
 	
 	// 페이 히스토리

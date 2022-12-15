@@ -168,7 +168,6 @@ const chargeValidate = () => {
 const refundMessage = document.getElementById("refundMessage");
 
 const refundValidate = () => {
-
     if (refundPrice.value.trim().length == 0 || refundPrice.value == 0) {
         refundMe();
         return;
@@ -216,14 +215,14 @@ document.getElementById("chargeSubmitBtn").addEventListener("click", function (e
             chargePrice.value = Number(0);
             chargePrice.focus();
             e.preventDefault();
-            return;
         }
+
         if (chargePrice.value % 10000 != 0) {
             alert("충전할 금액을 만 원 단위로 입력해주세요.");
             chargePrice.value = Number(0);
             chargePrice.focus();
             e.preventDefault();
-            return;
+            chargeMe();
         }
 
         return;
@@ -240,11 +239,13 @@ document.getElementById("refundSubmitBtn").addEventListener("click", function (e
         return;
     }
 
-    if (refundPrice.value - payRemain.innerText > 0) {
+    if (refundPrice.value - Number(payRemain.innerText.split(",").join("")) > 0) {
         alert("현재 잔액보다 더 큰 금액을 환불할 수 없습니다.");
         refundPrice.value = Number(0);
         refundPrice.focus();
+        refundFlag = false;
         e.preventDefault();
+        refundMe();
         return;
     }
 });

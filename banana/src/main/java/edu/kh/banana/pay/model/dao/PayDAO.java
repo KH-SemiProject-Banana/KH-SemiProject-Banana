@@ -14,7 +14,16 @@ import edu.kh.banana.pay.model.vo.BananaPay;
 public class PayDAO {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
-
+	
+	/**
+	 * 페이 이용 내역 조회
+	 * @param paramMap
+	 * @return history
+	 */
+	public int searchUseHistory(Map<String, Object> paramMap) {
+		return sqlSession.selectOne("payMapper.searchUseHistory", paramMap);
+	}
+	
 	/**
 	 * 잔여 페이 조회
 	 * @param paramMap

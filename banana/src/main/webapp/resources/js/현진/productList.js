@@ -57,6 +57,7 @@ for(let item of remove){
         document.querySelector("input[value='" + goo + "']").checked = false;
     
         this.parentElement.remove();
+        document.getElementById("searchGu").submit();
     })
 }
 

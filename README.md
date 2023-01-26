@@ -36,20 +36,24 @@
 
 ## 3. ERD 설계
 [ERD-Cloud 주소](https://www.erdcloud.com/d/Xs6TpKvPYM4ZEFzvk)
+![image](https://user-images.githubusercontent.com/102362636/214777562-f6a9c7f7-ac49-43aa-874f-4ba37da128b2.png)
+![image](https://user-images.githubusercontent.com/102362636/214777622-c4471c51-8e5f-4f7c-9a89-70709a236283.png)
 
 
 ## 4. 핵심 기능
 바나나마켓 프로젝트의 핵심 기능은 상품 등록, 사용자간 채팅, 카카오페이를 이용한 결제(가상), 신고 기능입니다.
---> 핵심 기능 캡쳐 떠서 추가할 것입니다
-
 
 <details>
 <summery<<b>핵심 기능 설명 펼치기</b></summery>
 <div markdown="1">
 
-### 4.1 상품 등록
-
-
+![image](https://user-images.githubusercontent.com/102362636/214777701-56529ad0-de97-4dc7-b7e0-ca5a37afa6ba.png)
+![image](https://user-images.githubusercontent.com/102362636/214777746-3348972e-ec34-437f-b537-fcbfe737d7a4.png)
+![image](https://user-images.githubusercontent.com/102362636/214777777-bd707b3b-e818-42b4-a48e-f6fa52257d8e.png)
+![image](https://user-images.githubusercontent.com/102362636/214777812-facbd953-58a1-4d8d-8084-4d526608bec7.png)
+![image](https://user-images.githubusercontent.com/102362636/214777861-22e669c4-bbd4-45be-a082-e47aa2d56832.png)
+![image](https://user-images.githubusercontent.com/102362636/214777895-8b6687f2-ebf9-4039-8284-29e937138eb8.png)
+![image](https://user-images.githubusercontent.com/102362636/214777932-de4ce328-0bea-48e6-a34a-2d3a87634390.png)
 
 </div>
 </detail>

@@ -117,7 +117,13 @@ function openPop(goodsNo, buyerNo, buyerNickname,sellerNo, sellerNickname,title)
     }
     
     document.getElementById("popup_layer").style.display = "block";
-
+    /* [첫번째 팝업 열렸을 때 초기화 목록] */
+    //1. 체크박스 section 누르기 전에는 닫혀 있게 하기
+    document.getElementById("badsection").style.display = "none";
+    document.getElementById("goodsection").style.display = "none";
+    //2. 체크박스 border 색깔 초기화
+    document.getElementById("badchoiceLabel").style.border = "2px solid #ccc";
+    document.getElementById("goodchoiceLabel").style.border = "2px solid #ccc";
 }
 //(첫번째 팝업 내부)눌렀을 때 색상
 document.getElementById("goodchoiceLabel").addEventListener("click", function(){

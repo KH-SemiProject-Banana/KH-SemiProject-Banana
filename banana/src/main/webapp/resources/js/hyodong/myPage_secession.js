@@ -3,7 +3,7 @@ const checkObj = {
     "memberPw" : false,
     "memberName" : false
 }
-// 회원 가입 양식이 제출 되었을 때
+// 회원 탈퇴 양식이 제출 되었을 때
 const deleteMeber=event => {
 
     for(let key in checkObj){

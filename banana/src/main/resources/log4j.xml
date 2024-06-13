@@ -9,15 +9,15 @@
          <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} [%p] %m%n" />
       </layout>
    </appender>
-   
+
    <!-- Appenders -->
    <appender name="sql-console" class="org.apache.log4j.ConsoleAppender">
       <param name="Target" value="System.out" />
       <layout class="org.apache.log4j.PatternLayout">
          <param name="ConversionPattern" value="%m%n" />
       </layout>
-   </appender> 
-   
+   </appender>
+
    <!-- //날짜별 로그 파일 생성 하기 -->
    <appender name="dailyRollingFile" class="org.apache.log4j.DailyRollingFileAppender">
        <param name="File" value="/Users/User/eclipse-workspace/KH-SemiProject-Banana/banana/logs/runtime.log" />
@@ -27,23 +27,23 @@
        <layout class="org.apache.log4j.PatternLayout">
          <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} [%p] %m%n" />
       </layout>
-   </appender>  
-   
+   </appender>
+
    <!-- Application Loggers -->
     <logger name="edu.kh.banana">
       <level value="debug" />
       <appender-ref ref="dailyRollingFile" />
-   </logger> 
-   
+   </logger>
+
    <!-- 3rdparty Loggers -->
    <logger name="org.springframework.core">
       <level value="info" />
    </logger>
-   
+
    <logger name="org.springframework.beans">
       <level value="info" />
    </logger>
-   
+
    <logger name="org.springframework.context">
       <level value="info" />
    </logger>
@@ -58,37 +58,37 @@
      <level value="debug" />
      <appender-ref ref="sql-console" />
    </logger>
-   
+
    <logger name="java.sql.Statement">
      <level value="debug" />
      <appender-ref ref="sql-console" />
    </logger>
-   
+
    <logger name="java.sql.PreparedStatement">
      <level value="debug" />
      <appender-ref ref="sql-console" />
    </logger>
-   
+
    <logger name="java.sql.ResultSet">
      <level value="debug" />
      <appender-ref ref="sql-console" />
    </logger>
-   
+
    <logger name="jdbc.sqlonly" additivity="false">
      <level value="INFO" />
      <appender-ref ref="sql-console" />
    </logger>
-   
+
    <logger name="jdbc.resultsettable" additivity="false">
      <level value="INFO" />
      <appender-ref ref="sql-console" />
-   </logger> 
+   </logger>
    <!-- Root Logger -->
    <root>
       <priority value="warn" />
       <appender-ref ref="console" />
    </root>
-   
+
 </log4j:configuration>
 
 
